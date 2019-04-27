@@ -1,0 +1,46 @@
+language: swift
+osx_image: xcode10.1
+os: osx
+branches:
+ only:
+  - /.*/
+cache:
+    directories:
+      - Carthage
+env:
+  global:
+  - LC_CTYPE=en_US.UTF-8
+  - LANG=en_US.UTF-8
+  - PROJECT=HyperwalletSDK.xcodeproj
+  - IOS_FRAMEWORK_SCHEME="HyperwalletSDK"
+
+  matrix:
+    - ios_version='12.1'  ios_device='iPhone XR' scheme="$IOS_FRAMEWORK_SCHEME"  platform='iOS Simulator'
+before_install:
+  # Boot the emulator by ID
+  - |
+     ios_uid=$(xcrun instruments -s devices | grep Simulator | grep "$ios_device ($ios_version)*" | grep -o "[0-9A-F]\{8\}-[0-9A-F]\{4\}-[0-9A-F]\{4\}-[0-9A-F]\{4\}-[0-9A-F]\{12\}")
+     xcrun simctl boot $ios_uid
+  # List all emulator available
+  - xcrun simctl list
+  # Update the brew and build dependencies tools
+  - brew outdated carthage || brew upgrade carthage
+  - carthage bootstrap --verbose --no-use-binaries --platform iOS --cache-builds
+  # Force to update the Swiftlint to the last stable version
+  - brew outdated swiftlint || brew upgrade swiftlint
+  # Print the booted emulator
+  - xcrun simctl list | grep "(Booted)"
+  # Print the swiftlint version
+  - swiftlint version
+script: |
+  set -o pipefail
+  set -e
+  # Define the destination emulator
+  destination="platform=$platform,OS=$ios_version,name=$ios_device"
+  # Build and test Framework in Debug
+  xcodebuild build test analyze -project "$PROJECT" \
+    -scheme "$scheme" \
+    -destination "$destination" \
+    -configuration Debug ONLY_ACTIVE_ARCH=NO ENABLE_TESTABILITY=YES
+  # Lint - Add `--strict` to fail for warning and violation
+  swiftlint lint --reporter json

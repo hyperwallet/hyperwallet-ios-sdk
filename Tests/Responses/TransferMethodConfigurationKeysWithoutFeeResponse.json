@@ -1,0 +1,41 @@
+{
+    "data":{
+        "transferMethodConfigurations":{
+            "nodes":[
+                {
+                    "countries":[
+                        "CA"
+                    ],
+                    "currencies":[
+                        "USD"
+                    ],
+                    "transferMethodType":"BANK_ACCOUNT",
+                    "profile":"INDIVIDUAL",
+                    "fees":null,
+                    "processingTime":"1-3 Business days"
+                }
+            ]
+        }
+    },
+    "errors":[
+        {
+            "message":"Could not find associated fees.",
+            "locations":[
+                {
+                    "line":9,
+                    "column":4
+                }
+            ],
+            "path":[
+                "transferMethodConfigurations",
+                "nodes",
+                4,
+                "fees"
+            ],
+            "extensions":{
+                "errorType":"DataFetchingException",
+                "timestamp":"2019-03-05 12:11:54"
+            }
+        }
+    ]
+}

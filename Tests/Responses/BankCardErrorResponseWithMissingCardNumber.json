@@ -1,0 +1,9 @@
+{
+    "errors": [
+        {
+            "message": "You have left the cardNumber field empty",
+            "fieldName": "cardNumber",
+            "code": "MISSING_FIELD"
+        }
+    ]
+}

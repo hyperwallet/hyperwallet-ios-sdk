@@ -1,0 +1,9 @@
+{
+    "errors": [
+        {
+            "message": "Invalid field length for cardNumber",
+            "fieldName": "cardNumber",
+            "code": "INVALID_FIELD_LENGTH"
+        }
+    ]
+}

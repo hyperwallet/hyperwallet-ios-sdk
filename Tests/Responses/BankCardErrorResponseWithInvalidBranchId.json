@@ -1,0 +1,9 @@
+{
+    "errors": [
+        {
+            "message": "Invalid field length for branch id",
+            "fieldName": "branchId",
+            "code": "INVALID_FIELD_LENGTH"
+        }
+    ]
+}

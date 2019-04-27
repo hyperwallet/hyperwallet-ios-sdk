@@ -1,0 +1,68 @@
+{
+    "data":{
+        "transferMethodConfigurations":{
+            "count":218,
+            "nodes":[
+                {
+                    "countries":[
+                        "US"
+                    ],
+                    "currencies":[
+                        "USD"
+                    ],
+                    "transferMethodType":"BANK_ACCOUNT",
+                    "profile":"INDIVIDUAL"
+                },
+                {
+                    "countries":[
+                        "US"
+                    ],
+                    "currencies":[
+                        "USD"
+                    ],
+                    "transferMethodType":"BANK_ACCOUNT",
+                    "profile":"BUSINESS"
+                }
+            ]
+        }
+    },
+    "errors":[
+        {
+            "message":"Name for character with ID 1002 could not be fetched.",
+            "locations":[
+                {
+                    "line":6,
+                    "column":7
+                }
+            ],
+            "path":[
+                "hero",
+                "heroFriends",
+                "name"
+            ],
+            "extensions":{
+                "code":"CAN_NOT_FETCH_BY_ID",
+                "timestamp":"Fri Feb 9 14:33:09 UTC 2018"
+            }
+        },
+        {
+            "message":"Name for character with ID 1002 could not be fetched.",
+            "locations":[
+                {
+                    "line":6,
+                    "column":7
+                }
+            ],
+            "path":[
+                "hero",
+                "heroFriends",
+                "name"
+            ],
+            "extensions":{
+                "code":"CAN_NOT_FETCH_BY_ID",
+                "timestamp":"Fri Feb 9 14:33:09 UTC 2018"
+            }
+        }
+    ],
+    "dataPresent":true
+}

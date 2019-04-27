@@ -1,0 +1,9 @@
+{
+    "errors": [
+        {
+            "message": "You have to provide a value for this field",
+            "fieldName": "bankId",
+            "code": "CONSTRAIN_VALIDATION"
+        }
+    ]
+}
