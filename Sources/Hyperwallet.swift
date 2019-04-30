@@ -55,6 +55,25 @@ public final class Hyperwallet {
         instance = Hyperwallet(provider)
     }
 
+    /// Returns the `HyperwalletUser` for the User associated with the authentication token returned from
+    /// `HyperwalletAuthenticationTokenProvider.retrieveAuthenticationToken(_ : @escaping CompletionHandler)` or nil
+    /// if none exists.
+    ///
+    /// The `completion: @escaping (HyperwalletUser?, HyperwalletErrorType?) -> Void` that is passed in to
+    /// this method invocation will receive the successful response(HyperwalletUser) or error(HyperwalletErrorType)
+    /// from processing the request.
+    ///
+    /// This function will request a new authentication token via `HyperwalletAuthenticationTokenProvider`
+    /// if the current one is expired or is about to expire.
+    ///
+    /// - Parameter completion: the callback handler of responses from the Hyperwallet platform
+    public func getUser(completion: @escaping (HyperwalletUser?, HyperwalletErrorType?) -> Void) {
+        httpTransaction.performRest(httpMethod: .get,
+                                    urlPath: "users/%@",
+                                    payload: "",
+                                    completionHandler: completion)
+    }
+
     /// Creates a `HyperwalletBankAccount` for the User associated with the authentication token returned from
     /// `HyperwalletAuthenticationTokenProvider.retrieveAuthenticationToken(_ : @escaping CompletionHandler)`.
     ///

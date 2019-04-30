@@ -54,6 +54,8 @@
 		DB1A0423225D571B0080C8D6 /* AuthenticationProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1A0421225D571B0080C8D6 /* AuthenticationProviderMock.swift */; };
 		DB2A3B092261D2DC0049F891 /* HyperwalletSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = DB2A3B082261D2DC0049F891 /* HyperwalletSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DB2A3B0E2261D4260049F891 /* Hippolyte.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB2A3B0D2261D4260049F891 /* Hippolyte.framework */; };
+		DB3151CF22780AA300FC9F8E /* UserIndividualResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = DB3151CE22780AA300FC9F8E /* UserIndividualResponse.json */; };
+		DB764E91227833E10053BB91 /* UserBusinessResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = DB764E8F22782D890053BB91 /* UserBusinessResponse.json */; };
 		DB866F262261EE28003C41F6 /* Cartfile.resolved in Resources */ = {isa = PBXBuildFile; fileRef = DB866F212261EE28003C41F6 /* Cartfile.resolved */; };
 		DB866F272261EE28003C41F6 /* HyperwalletSDK.podspec in Resources */ = {isa = PBXBuildFile; fileRef = DB866F222261EE28003C41F6 /* HyperwalletSDK.podspec */; };
 		DB866F282261EE28003C41F6 /* Cartfile.private in Resources */ = {isa = PBXBuildFile; fileRef = DB866F232261EE28003C41F6 /* Cartfile.private */; };
@@ -142,6 +144,8 @@
 		DB1A0421225D571B0080C8D6 /* AuthenticationProviderMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationProviderMock.swift; sourceTree = "<group>"; };
 		DB2A3B082261D2DC0049F891 /* HyperwalletSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HyperwalletSDK.h; sourceTree = "<group>"; };
 		DB2A3B0D2261D4260049F891 /* Hippolyte.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Hippolyte.framework; path = Carthage/Build/iOS/Hippolyte.framework; sourceTree = "<group>"; };
+		DB3151CE22780AA300FC9F8E /* UserIndividualResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = UserIndividualResponse.json; sourceTree = "<group>"; };
+		DB764E8F22782D890053BB91 /* UserBusinessResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = UserBusinessResponse.json; sourceTree = "<group>"; };
 		DB866F212261EE28003C41F6 /* Cartfile.resolved */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile.resolved; sourceTree = "<group>"; };
 		DB866F222261EE28003C41F6 /* HyperwalletSDK.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HyperwalletSDK.podspec; sourceTree = "<group>"; };
 		DB866F232261EE28003C41F6 /* Cartfile.private */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile.private; sourceTree = "<group>"; };
@@ -341,6 +345,8 @@
 		DB99FF2E225D600000F86181 /* Responses */ = {
 			isa = PBXGroup;
 			children = (
+				DB764E8F22782D890053BB91 /* UserBusinessResponse.json */,
+				DB3151CE22780AA300FC9F8E /* UserIndividualResponse.json */,
 				DBCA37AA225D6D1700CD4137 /* BankAccountErrorResponseWithMissingBankId.json */,
 				DBCA37A1225D6D1600CD4137 /* BankAccountResponse.json */,
 				DBCA37AC225D6D1700CD4137 /* BankCardErrorResponseWithInvalidBranchId.json */,
@@ -482,11 +488,13 @@
 				DBCA37C0225D6E3A00CD4137 /* TransferMethodMockedSuccessResponse.json in Resources */,
 				DBCA37BC225D6DD900CD4137 /* BankCardErrorResponseWithMissingCardNumber.json in Resources */,
 				DBCA37B5225D6D1700CD4137 /* TransferMethodConfigurationEmptyResponse.json in Resources */,
+				DB764E91227833E10053BB91 /* UserBusinessResponse.json in Resources */,
 				DBCA37B9225D6D1700CD4137 /* BankCardErrorResponseWithInvalidBranchId.json in Resources */,
 				DBCA37BE225D6E1900CD4137 /* BankCardResponse.json in Resources */,
 				DBCA37BA225D6D1700CD4137 /* TransferMethodConfigurationKeysResponse.json in Resources */,
 				DBCA37AF225D6D1700CD4137 /* ListBankAccountResponse.json in Resources */,
 				DBCA37B6225D6D1700CD4137 /* TransferMethodConfigurationFieldsResponse.json in Resources */,
+				DB3151CF22780AA300FC9F8E /* UserIndividualResponse.json in Resources */,
 				DBCA37B8225D6D1700CD4137 /* TransferMethodConfigurationKeysWithoutFeeResponse.json in Resources */,
 				DBCA37B7225D6D1700CD4137 /* BankAccountErrorResponseWithMissingBankId.json in Resources */,
 				DBCA37AE225D6D1700CD4137 /* BankAccountResponse.json in Resources */,
