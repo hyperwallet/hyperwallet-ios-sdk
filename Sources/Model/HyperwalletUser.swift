@@ -19,7 +19,7 @@
 import UIKit
 
 /// Representation of the Hyperwallet's user.
-public class HyperwalletUser: Codable {
+public struct HyperwalletUser: Codable {
     private var storage = [String: AnyCodable]()
 
     /// Representation of the user field type.
@@ -192,7 +192,7 @@ public class HyperwalletUser: Codable {
         self.storage = data
     }
 
-    public required init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         let data = try container.decode(Dictionary<String, AnyCodable>.self)
         self.storage = data
@@ -767,13 +767,22 @@ public class HyperwalletUser: Codable {
             return setField(key: UserField.postalCode, value: programToken)
         }
 
-        /// Sets the field value based on the key
+        /// Sets the field value based on the `UserField`
         ///
         /// - Parameters:
-        ///   - key: The `TransferMethodField` value
+        ///   - key: The `UserField` value
         ///   - value: The value
         public func setField(key: UserField, value: String) -> Builder {
-            storage[key.rawValue] = AnyCodable(value: value)
+            return setField(key: key.rawValue, value: value)
+        }
+
+        /// Sets the field value based on the `UserField.RawValue`
+        ///
+        /// - Parameters:
+        ///   - key: The `UserField.RawValue` value
+        ///   - value: The value
+        public func setField(key: UserField.RawValue, value: String) -> Builder {
+            storage[key] = AnyCodable(value: value)
             return self
         }
 
@@ -839,7 +848,7 @@ public class HyperwalletUser: Codable {
 
     /// Gets the field value
     ///
-    /// - Parameter fieldName: The `TransferMethodField` type
+    /// - Parameter fieldName: The `UserField` type
     /// - Returns: Returns the field value, or nil if none exists.
     private func getField(_ fieldName: UserField) -> Any? {
         return storage[fieldName.rawValue]?.value
