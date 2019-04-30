@@ -259,10 +259,10 @@
 				DBCA3772225D6A8D00CD4137 /* HyperwalletErrorTests.swift */,
 				DBCA376E225D6A8D00CD4137 /* HyperwalletTransferMethodConfigurationTests.swift */,
 				DBCA3773225D6A8D00CD4137 /* HyperwalletTransferMethodTests.swift */,
+				DB0AFDF42277868E00ABEFFD /* HyperwalletUserTests.swift */,
 				98101DCA2238A2F000BA04CA /* Info.plist */,
 				DB1A0413225D4D8B0080C8D6 /* TransactionTypeTests.swift */,
 				DBCA376F225D6A8D00CD4137 /* TransferMethodConfigurationResultTests.swift */,
-				DB0AFDF42277868E00ABEFFD /* HyperwalletUserTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";

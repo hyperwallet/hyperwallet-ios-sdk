@@ -584,15 +584,6 @@ public struct HyperwalletUser: Codable {
             return setField(key: UserField.city, value: city)
         }
 
-        /// Set the client-defined identifier for the user. This is the unique ID assigned to the user on your system.
-        ///
-        /// - Parameter clientUserId: The client-defined identifier for the user. This is the unique ID assigned to
-        ///             the user on your system.
-        /// - Returns: a self reference of `HyperwalletUser.Builder` instance.
-        public func clientUserId(_ clientUserId: String) -> Builder {
-            return setField(key: UserField.clientUserId, value: clientUserId)
-        }
-
         /// Set the user's country.
         ///
         /// - Parameter country: The user's country.
