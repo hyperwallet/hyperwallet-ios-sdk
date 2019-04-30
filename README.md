@@ -88,6 +88,22 @@ public struct AuthenticationTokenProvider: HyperwalletAuthenticationTokenProvide
 The functions in the core SDK are available to use once the authentication is done.
 
 
+
+### Get User
+```swift
+Hyperwallet.shared.getUser { (user, error) in
+    guard error == nil else {
+        print(error?.getHyperwalletErrors()?.errorList?)
+        return
+    } 
+    
+    if let user = result {
+        print(user.firstName!)
+        print(user.lastName!)
+    }
+}
+```
+
 ### Create Bank Account
 
 ```swift
