@@ -129,12 +129,12 @@ public struct HyperwalletUser: Codable {
     /// The user's role in the organization.
     ///
     /// - director: Director.
-    /// - owner: Owner.
     /// - other: Other.
+    /// - owner: Owner.
     public enum BusinessContactRole: String {
         case director = "DIRECTOR"
-        case owner = "OWNER"
         case other = "OTHER"
+        case owner = "OWNER"
     }
 
     /// Representation of the gender.
@@ -172,15 +172,15 @@ public struct HyperwalletUser: Codable {
 
     /// Representation of the user's verification status type.
     ///
+    /// - failed: The user's verification status is fail. Temporary status before changing to REQUIRED.
     /// - notRequired: The user's verification status is not require.
     /// - required:  The user's verification status is require.
-    /// - failed: The user's verification status is fail. Temporary status before changing to REQUIRED.
     /// - underReview:  The user's verification status is under review.
     /// - verified:  The user's verification status is verified.
     public enum VerificationStatus: String, Codable {
+        case failed = "FAILED"
         case notRequired = "NOT_REQUIRED"
         case required = "REQUIRED"
-        case failed = "FAILED"
         case underReview = "UNDER_REVIEW"
         case verified = "VERIFIED"
     }
@@ -447,7 +447,7 @@ public struct HyperwalletUser: Codable {
     public final class Builder {
         private var storage = [String: AnyCodable]()
 
-        /// Set the user's street address.
+        /// Sets the user's street address.
         ///
         /// - Parameter addressLine1: The user's street address
         /// - Returns: a self reference of `HyperwalletUser.Builder` instance.
@@ -455,7 +455,7 @@ public struct HyperwalletUser: Codable {
             return setField(key: UserField.addressLine1, value: addressLine1)
         }
 
-        /// Set the user's address, second line.
+        /// Sets the user's address, second line.
         ///
         /// - Parameter addressLine2: The user's address, second line.
         /// - Returns: a self reference of `HyperwalletUser.Builder` instance.
@@ -470,7 +470,7 @@ public struct HyperwalletUser: Codable {
             return HyperwalletUser(data: self.storage)
         }
 
-        /// Set the business contact's street address.
+        /// Sets the business contact's street address.
         ///
         /// - Parameter businessContactAddressLine1: The business contact's street address.
         /// - Returns: a self reference of `HyperwalletUser.Builder` instance.
@@ -478,7 +478,7 @@ public struct HyperwalletUser: Codable {
             return setField(key: UserField.businessContactAddressLine1, value: businessContactAddressLine1)
         }
 
-        /// Set the business contact's address, second line.
+        /// Sets the business contact's address, second line.
         ///
         /// - Parameter businessContactAddressLine2: The business contact's address, second line.
         /// - Returns: a self reference of `HyperwalletUser.Builder` instance.
@@ -486,7 +486,7 @@ public struct HyperwalletUser: Codable {
             return setField(key: UserField.businessContactAddressLine2, value: businessContactAddressLine2)
         }
 
-        /// Set the business contact's city.
+        /// Sets the business contact's city.
         ///
         /// - Parameter businessContactCity: The business contact's city.
         /// - Returns: a self reference of `HyperwalletUser.Builder` instance.
@@ -494,7 +494,7 @@ public struct HyperwalletUser: Codable {
             return setField(key: UserField.businessContactCity, value: businessContactCity)
         }
 
-        /// Set the business contact's country.
+        /// Sets the business contact's country.
         ///
         /// - Parameter businessContactCountry: The business contact's city.
         /// - Returns: a self reference of `HyperwalletUser.Builder` instance.
@@ -502,7 +502,7 @@ public struct HyperwalletUser: Codable {
             return setField(key: UserField.businessContactCountry, value: businessContactCountry)
         }
 
-        /// Set the business contact's postal code.
+        /// Sets the business contact's postal code.
         ///
         /// - Parameter businessContactPostalCode: The business contact's postal code.
         /// - Returns: a self reference of `HyperwalletUser.Builder` instance.
@@ -510,7 +510,7 @@ public struct HyperwalletUser: Codable {
             return setField(key: UserField.businessContactPostalCode, value: businessContactPostalCode)
         }
 
-        /// Set the user's role in the organization.
+        /// Sets the user's role in the organization.
         ///
         /// - Parameter businessContactPostalCode: The `BusinessContactRole`.
         /// - Returns: a self reference of `HyperwalletUser.Builder` instance.
@@ -518,7 +518,7 @@ public struct HyperwalletUser: Codable {
             return setField(key: UserField.businessContactRole, value: businessContactRole.rawValue)
         }
 
-        /// Set the business contact's state, province or region.
+        /// Sets the business contact's state, province or region.
         ///
         /// - Parameter businessContactStateProvince: The business contact's state, province or region.
         /// - Returns: a self reference of `HyperwalletUser.Builder` instance.
@@ -526,7 +526,7 @@ public struct HyperwalletUser: Codable {
             return setField(key: UserField.businessContactStateProvince, value: businessContactStateProvince)
         }
 
-        /// Set the business name.
+        /// Sets the business name.
         ///
         /// - Parameter businessName: The business name.
         /// - Returns: a self reference of `HyperwalletUser.Builder` instance.
@@ -534,7 +534,7 @@ public struct HyperwalletUser: Codable {
             return setField(key: UserField.businessName, value: businessName)
         }
 
-        /// Set the business' operating name.
+        /// Sets the business' operating name.
         ///
         /// - Parameter businessName: The business' operating name.
         /// - Returns: a self reference of `HyperwalletUser.Builder` instance.
@@ -542,7 +542,7 @@ public struct HyperwalletUser: Codable {
             return setField(key: UserField.businessOperatingName, value: businessOperatingName)
         }
 
-        /// Set the country where the business is registered.
+        /// Sets the country where the business is registered.
         ///
         /// - Parameter businessRegistrationCountry: The country where the business is registered.
         /// - Returns: a self reference of `HyperwalletUser.Builder` instance.
@@ -550,7 +550,7 @@ public struct HyperwalletUser: Codable {
             return setField(key: UserField.businessRegistrationCountry, value: businessRegistrationCountry)
         }
 
-        /// Set the business registration number or identifier assigned by a government body.
+        /// Sets the business registration number or identifier assigned by a government body.
         ///
         /// - Parameter businessRegistrationId: The business registration number or identifier assigned by a
         ///             government body.
@@ -559,7 +559,7 @@ public struct HyperwalletUser: Codable {
             return setField(key: UserField.businessRegistrationId, value: businessRegistrationId)
         }
 
-        /// Set the state, province or region where the business is registered.
+        /// Sets the state, province or region where the business is registered.
         ///
         /// - Parameter businessRegistrationStateProvince: The business registration number or identifier assigned by a
         ///             government body.
@@ -568,7 +568,7 @@ public struct HyperwalletUser: Codable {
             return setField(key: UserField.businessRegistrationStateProvince, value: businessRegistrationStateProvince)
         }
 
-        /// Set the business type.
+        /// Sets the business type.
         ///
         /// - Parameter businessRegistrationStateProvince: The `BusinessType`.
         /// - Returns: a self reference of `HyperwalletUser.Builder` instance.
@@ -576,7 +576,7 @@ public struct HyperwalletUser: Codable {
             return setField(key: UserField.businessType, value: businessType.rawValue)
         }
 
-        /// Set the user's city.
+        /// Sets the user's city.
         ///
         /// - Parameter city: The user's city.
         /// - Returns: a self reference of `HyperwalletUser.Builder` instance.
@@ -584,7 +584,7 @@ public struct HyperwalletUser: Codable {
             return setField(key: UserField.city, value: city)
         }
 
-        /// Set the user's country.
+        /// Sets the user's country.
         ///
         /// - Parameter country: The user's country.
         /// - Returns: a self reference of `HyperwalletUser.Builder` instance.
@@ -592,7 +592,7 @@ public struct HyperwalletUser: Codable {
             return setField(key: UserField.country, value: country)
         }
 
-        /// Set the user's birth country.
+        /// Sets the user's birth country.
         ///
         /// - Parameter country: The user's birth country.
         /// - Returns: a self reference of `HyperwalletUser.Builder` instance.
@@ -600,7 +600,7 @@ public struct HyperwalletUser: Codable {
             return setField(key: UserField.countryOfBirth, value: countryOfBirth)
         }
 
-        /// Set the user's country of citizenship or nationality.
+        /// Sets the user's country of citizenship or nationality.
         ///
         /// - Parameter countryOfNationality: The user's country of citizenship or nationality.
         /// - Returns: a self reference of `HyperwalletUser.Builder` instance.
@@ -608,7 +608,7 @@ public struct HyperwalletUser: Codable {
             return setField(key: UserField.countryOfNationality, value: countryOfNationality)
         }
 
-        /// Set the datetime the user account was created on in ISO 8601 format (YYYY-MM-DDThh:mm:ss). Note that the
+        /// Sets the datetime the user account was created on in ISO 8601 format (YYYY-MM-DDThh:mm:ss). Note that the
         /// timezone used is UTC, therefore no time offset is returned.
         ///
         /// - Parameter createdOn: The datetime the user account was created on in ISO 8601
@@ -619,7 +619,7 @@ public struct HyperwalletUser: Codable {
             return setField(key: UserField.createdOn, value: createdOn)
         }
 
-        /// Set the user's date of birth (All users must be at least 13 years old).
+        /// Sets the user's date of birth (All users must be at least 13 years old).
         ///
         /// - Parameter dateOfBirth: The user's date of birth (All users must be at least 13 years old).
         /// - Returns: a self reference of `HyperwalletUser.Builder` instance.
@@ -627,7 +627,7 @@ public struct HyperwalletUser: Codable {
             return setField(key: UserField.dateOfBirth, value: dateOfBirth)
         }
 
-        /// Set the user's driver's license number.
+        /// Sets the user's driver's license number.
         ///
         /// - Parameter driversLicenseId: The user's driver's license number.
         /// - Returns: a self reference of `HyperwalletUser.Builder` instance.
@@ -635,7 +635,7 @@ public struct HyperwalletUser: Codable {
             return setField(key: UserField.driversLicenseId, value: driversLicenseId)
         }
 
-        /// Set the contact email address for the user account. This must be unique for your program, so you cannot
+        /// Sets the contact email address for the user account. This must be unique for your program, so you cannot
         /// have two users belonging to the same program with the same email address.
         ///
         /// - Parameter driversLicenseId: the contact email address for the user account. This must be unique for your
@@ -646,7 +646,7 @@ public struct HyperwalletUser: Codable {
             return setField(key: UserField.email, value: email)
         }
 
-        /// Set the user's employer identifier, generally used for tax purposes.
+        /// Sets the user's employer identifier, generally used for tax purposes.
         ///
         /// - Parameter employerId: The user's employer identifier, generally used for tax purposes.
         /// - Returns: a self reference of `HyperwalletUser.Builder` instance.
@@ -654,7 +654,7 @@ public struct HyperwalletUser: Codable {
             return setField(key: UserField.employerId, value: employerId)
         }
 
-        /// Set the user's first name.
+        /// Sets the user's first name.
         ///
         /// - Parameter firstName: The user's first name.
         /// - Returns: a self reference of `HyperwalletUser.Builder` instance.
@@ -662,7 +662,7 @@ public struct HyperwalletUser: Codable {
             return setField(key: UserField.employerId, value: firstName)
         }
 
-        /// Set the user's gender.
+        /// Sets the user's gender.
         ///
         /// - Parameter gender: The `Gender`.
         /// - Returns: a self reference of `HyperwalletUser.Builder` instance.
@@ -670,7 +670,7 @@ public struct HyperwalletUser: Codable {
             return setField(key: UserField.gender, value: gender.rawValue)
         }
 
-        /// Set the user's government ID number, such as a Social Security Number.
+        /// Sets the user's government ID number, such as a Social Security Number.
         ///
         /// - Parameter governmentId: The user's government ID number, such as a Social Security Number.
         /// - Returns: a self reference of `HyperwalletUser.Builder` instance.
@@ -678,7 +678,7 @@ public struct HyperwalletUser: Codable {
             return setField(key: UserField.employerId, value: governmentId)
         }
 
-        /// Set the user's government ID type.
+        /// Sets the user's government ID type.
         ///
         /// - Parameter governmentIdType: The user's government ID type.
         /// - Returns: a self reference of `HyperwalletUser.Builder` instance.
@@ -686,7 +686,7 @@ public struct HyperwalletUser: Codable {
             return setField(key: UserField.governmentIdType, value: governmentIdType)
         }
 
-        /// Set the preferred language for the user's account. Defaults to English if not provided.
+        /// Sets the preferred language for the user's account. Defaults to English if not provided.
         ///
         /// - Parameter language: The preferred language for the user's account. Defaults to English if not provided.
         /// - Returns: a self reference of `HyperwalletUser.Builder` instance.
@@ -694,7 +694,7 @@ public struct HyperwalletUser: Codable {
             return setField(key: UserField.language, value: language)
         }
 
-        /// Set the user's last name.
+        /// Sets the user's last name.
         ///
         /// - Parameter lastName: The user's last name.
         /// - Returns: a self reference of `HyperwalletUser.Builder` instance.
@@ -702,7 +702,7 @@ public struct HyperwalletUser: Codable {
             return setField(key: UserField.lastName, value: lastName)
         }
 
-        /// Set the user's middle name.
+        /// Sets the user's middle name.
         ///
         /// - Parameter middleName: The user's middle name.
         /// - Returns: a self reference of `HyperwalletUser.Builder` instance.
@@ -710,7 +710,7 @@ public struct HyperwalletUser: Codable {
             return setField(key: UserField.middleName, value: middleName)
         }
 
-        /// Set the user's cell phone number.
+        /// Sets the user's cell phone number.
         ///
         /// - Parameter middleName: The user's middle name.
         /// - Returns: a self reference of `HyperwalletUser.Builder` instance.
@@ -718,7 +718,7 @@ public struct HyperwalletUser: Codable {
             return setField(key: UserField.mobileNumber, value: mobileNumber)
         }
 
-        /// Set the user's passport number.
+        /// Sets the user's passport number.
         ///
         /// - Parameter passportId: The user's passport number.
         /// - Returns: a self reference of `HyperwalletUser.Builder` instance.
@@ -726,7 +726,7 @@ public struct HyperwalletUser: Codable {
             return setField(key: UserField.passportId, value: passportId)
         }
 
-        /// Set the user's phone number.
+        /// Sets the user's phone number.
         ///
         /// - Parameter passportId: The user's phone number.
         /// - Returns: a self reference of `HyperwalletUser.Builder` instance.
@@ -734,7 +734,7 @@ public struct HyperwalletUser: Codable {
             return setField(key: UserField.phoneNumber, value: phoneNumber)
         }
 
-        /// Set the user's postal code.
+        /// Sets the user's postal code.
         ///
         /// - Parameter postalCode: The user's postal code.
         /// - Returns: a self reference of `HyperwalletUser.Builder` instance.
@@ -742,7 +742,7 @@ public struct HyperwalletUser: Codable {
             return setField(key: UserField.postalCode, value: postalCode)
         }
 
-        /// Set the user's profile type.
+        /// Sets the user's profile type.
         ///
         /// - Parameter profileType: The `ProfileType`.
         /// - Returns: a self reference of `HyperwalletUser.Builder` instance.
@@ -750,7 +750,7 @@ public struct HyperwalletUser: Codable {
             return setField(key: UserField.profileType, value: profileType.rawValue)
         }
 
-        /// Set the unique identifier for the program to which the user will belong.
+        /// Sets the unique identifier for the program to which the user will belong.
         ///
         /// - Parameter programToken: The unique identifier for the program to which the user will belong.
         /// - Returns: a self reference of `HyperwalletUser.Builder` instance.
@@ -777,7 +777,7 @@ public struct HyperwalletUser: Codable {
             return self
         }
 
-        /// Set the user's state, province or region.
+        /// Sets the user's state, province or region.
         ///
         /// - Parameter stateProvince: The user's state, province or region.
         /// - Returns: a self reference of `HyperwalletUser.Builder` instance.
@@ -785,7 +785,7 @@ public struct HyperwalletUser: Codable {
             return setField(key: UserField.stateProvince, value: stateProvince)
         }
 
-        /// Set the user account status.
+        /// Sets the user account status.
         ///
         /// - Parameter status: The user's state, province or region.
         /// - Returns: a self reference of `HyperwalletUser.Builder` instance.
@@ -793,14 +793,14 @@ public struct HyperwalletUser: Codable {
             return setField(key: UserField.status, value: status.rawValue)
         }
 
-        /// The local time of a region or a country. e.g. GMT, PST, ...
+        /// Sets the local time of a region or a country. e.g. GMT, PST, ...
         ///
         /// - Parameter timeZone: The local time of a region or a country.
         /// - Returns: a self reference of `HyperwalletUser.Builder` instance.
         public func timeZone(_ timeZone: String) -> Builder {
             return setField(key: UserField.timeZone, value: timeZone)
         }
-        /// Set the unique, auto-generated user identifier. Max 64 characters, prefixed with "usr-".
+        /// Sets the unique, auto-generated user identifier. Max 64 characters, prefixed with "usr-".
         ///
         /// - Parameter token: The unique, auto-generated user identifier. Max 64 characters, prefixed with "usr-".
         /// - Returns: a self reference of `HyperwalletUser.Builder` instance.
@@ -808,7 +808,7 @@ public struct HyperwalletUser: Codable {
             return setField(key: UserField.token, value: token)
         }
 
-        /// Set the the user's verification status. A user may be required to verify their identity after a certain
+        /// Sets the the user's verification status. A user may be required to verify their identity after a certain
         /// threshold of payments is reached.
         ///
         /// - Parameter verificationStatus: The user's verification status. A user may be required to verify their
