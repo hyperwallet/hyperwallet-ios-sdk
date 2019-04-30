@@ -100,6 +100,27 @@ public final class Hyperwallet {
                                     completionHandler: completion)
     }
 
+    /// Creates a `HyperwalletPaypalAccount` for the User associated with the authentication token returned from
+    /// `HyperwalletAuthenticationTokenProvider.retrieveAuthenticationToken(_ : @escaping CompletionHandler)`.
+    ///
+    /// The `completion: @escaping (HyperwalletPaypalAccount?, HyperwalletErrorType?) -> Void` that is passed in to this
+    /// method invocation will receive the successful response(HyperwalletPaypalAccount) or error(HyperwalletErrorType)
+    /// from processing the request.
+    ///
+    /// This function will request a new authentication token via `HyperwalletAuthenticationTokenProvider`
+    /// if the current one is expired or is about to expire.
+    ///
+    /// - Parameters:
+    ///   - account: the `HyperwalletPaypalAccount` to be created
+    ///   - completion: the callback handler of responses from the Hyperwallet platform
+    public func createPaypalAccount(account: HyperwalletPaypalAccount,
+                                    completion: @escaping (HyperwalletPaypalAccount?, HyperwalletErrorType?) -> Void) {
+        httpTransaction.performRest(httpMethod: .post,
+                                    urlPath: "users/%@/paypal-accounts",
+                                    payload: account,
+                                    completionHandler: completion)
+    }
+
     /// Deactivates the `HyperwalletBankAccount` linked to the transfer method token specified. The
     /// `HyperwalletBankAccount` being deactivated must belong to the User that is associated with the
     /// authentication token returned from
@@ -158,6 +179,35 @@ public final class Hyperwallet {
                                     completionHandler: completion)
     }
 
+    /// Deactivates the `HyperwalletPaypalAccount` linked to the transfer method token specified. The
+    /// `HyperwalletPaypalAccount` being deactivated must belong to the User that is associated with the
+    /// authentication token returned from
+    /// `HyperwalletAuthenticationTokenProvider.retrieveAuthenticationToken(_ : @escaping CompletionHandler)`.
+    ///
+    /// The `completion: @escaping (HyperwalletStatusTransition?, HyperwalletErrorType?) -> Void` that is passed in to
+    /// this method invocation will receive the successful response(HyperwalletStatusTransition) or
+    /// error(HyperwalletErrorType) from processing the request.
+    ///
+    /// This function will request a new authentication token via `HyperwalletAuthenticationTokenProvider`
+    /// if the current one is expired or is about to expire.
+    ///
+    /// - Parameters:
+    ///   - transferMethodToken: the Hyperwallet specific unique identifier for the `HyperwalletPaypalAccount`
+    ///                          being deactivated
+    ///   - notes: a note regarding the status change
+    ///   - completion: the callback handler of responses from the Hyperwallet platform
+    public func deactivatePaypalAccount(transferMethodToken: String,
+                                        notes: String? = nil,
+                                        completion: @escaping (HyperwalletStatusTransition?,
+                                                               HyperwalletErrorType?) -> Void) {
+        let statusTransition = HyperwalletStatusTransition(transition: .deactivated)
+        statusTransition.notes = notes
+        httpTransaction.performRest(httpMethod: .post,
+                                    urlPath: "users/%@/paypal-accounts/\(transferMethodToken)/status-transitions",
+                                    payload: statusTransition,
+                                    completionHandler: completion)
+    }
+
     /// Returns the `HyperwalletBankAccount` linked to the transfer method token specified, or nil if none exists.
     ///
     /// The `completion: @escaping (HyperwalletBankAccount?, HyperwalletErrorType?) -> Void` that is passed in to this
@@ -193,6 +243,24 @@ public final class Hyperwallet {
                             completion: @escaping (HyperwalletBankCard?, HyperwalletErrorType?) -> Void) {
         httpTransaction.performRest(httpMethod: .get,
                                     urlPath: "users/%@/bank-cards/\(transferMethodToken)",
+                                    payload: "",
+                                    completionHandler: completion)
+    }
+
+    /// Returns the `HyperwalletPaypalAccount` linked to the transfer method token specified, or nil if none exists.
+    ///
+    /// The `completion: @escaping (HyperwalletPaypalAccount?, HyperwalletErrorType?) -> Void` that is passed in to this
+    /// method invocation will receive the successful response(HyperwalletPaypalAccount) or error(HyperwalletErrorType)
+    /// from processing the request.
+    ///
+    /// - Parameters:
+    ///   - transferMethodToken: the Hyperwallet specific unique identifier for the `HyperwalletPaypalAccount`
+    ///                          being requested
+    ///   - completion: the callback handler of responses from the Hyperwallet platform
+    public func getPaypalAccount(transferMethodToken: String,
+                                 completion: @escaping (HyperwalletPaypalAccount?, HyperwalletErrorType?) -> Void) {
+        httpTransaction.performRest(httpMethod: .get,
+                                    urlPath: "users/%@/paypal-accounts/\(transferMethodToken)",
                                     payload: "",
                                     completionHandler: completion)
     }
@@ -266,6 +334,42 @@ public final class Hyperwallet {
                                                      HyperwalletErrorType?) -> Void) {
         httpTransaction.performRest(httpMethod: .get,
                                     urlPath: "users/%@/bank-cards",
+                                    payload: "",
+                                    pagination: pagination,
+                                    completionHandler: completion)
+    }
+
+    /// Returns the `HyperwalletPaypalAccount` for the User associated with the authentication token returned from
+    /// `HyperwalletAuthenticationTokenProvider.retrieveAuthenticationToken(_ : @escaping CompletionHandler)`,
+    /// or nil if non exist.
+    ///
+    /// The ordering and filtering of `HyperwalletPaypalAccount` will be based on the criteria specified within the
+    /// `HyperwalletPaypalAccountPagination` object, if it is not nil. Otherwise the default ordering and
+    /// filtering will be applied.
+    ///
+    /// * Offset: 0
+    /// * Limit: 10
+    /// * Created Before: N/A
+    /// * Created After: N/A
+    /// * Status: All
+    /// * Sort By: Created On
+    ///
+    /// The `completion: @escaping (HyperwalletPageList<HyperwalletPaypalAccount>?, HyperwalletErrorType?) -> Void`
+    /// that is passed in to this method invocation will receive the successful
+    /// response(HyperwalletPageList<HyperwalletPaypalAccount>?) or error(HyperwalletErrorType) from processing the
+    /// request.
+    ///
+    /// This function will request a new authentication token via `HyperwalletAuthenticationTokenProvider`
+    /// if the current one is expired or is about to expire.
+    ///
+    /// - Parameters:
+    ///   - pagination: the ordering and filtering criteria
+    ///   - completion: the callback handler of responses from the Hyperwallet platform
+    public func listPaypalAccounts(pagination: HyperwalletPaypalAccountPagination? = nil,
+                                   completion: @escaping (HyperwalletPageList<HyperwalletPaypalAccount>?,
+                                                          HyperwalletErrorType?) -> Void) {
+        httpTransaction.performRest(httpMethod: .get,
+                                    urlPath: "users/%@/paypal-accounts",
                                     payload: "",
                                     pagination: pagination,
                                     completionHandler: completion)
@@ -399,6 +503,31 @@ public final class Hyperwallet {
         let token = account.getField(fieldName: .token) as? String ?? ""
         httpTransaction.performRest(httpMethod: .put,
                                     urlPath: "users/%@/bank-cards/\(token)",
+                                    payload: account,
+                                    completionHandler: completion)
+    }
+
+    /// Updates the `HyperwalletPaypalAccount` for the User associated with the authentication token returned from
+    /// `HyperwalletAuthenticationTokenProvider.retrieveAuthenticationToken(_ : @escaping CompletionHandler)`.
+    ///
+    /// To identify the `HyperwalletPaypalAccount` that is going to be updated, the transfer method token must be
+    /// set as part of the `HyperwalletPaypalAccount` object passed in.
+    ///
+    /// The `completion: @escaping (HyperwalletPaypalAccount?, HyperwalletErrorType?) -> Void` that is passed in to this
+    /// method invocation will receive the successful response(HyperwalletPaypalAccount) or error(HyperwalletErrorType)
+    /// from processing the request.
+    ///
+    /// This function will request a new authentication token via `HyperwalletAuthenticationTokenProvider`
+    /// if the current one is expired or is about to expire.
+    ///
+    /// - Parameters:
+    ///   - account: the `HyperwalletPaypalAccount` to be updated
+    ///   - completion: the callback handler of responses from the Hyperwallet platform
+    public func updatePaypalAccount(account: HyperwalletPaypalAccount,
+                                    completion: @escaping (HyperwalletPaypalAccount?, HyperwalletErrorType?) -> Void) {
+        let token = account.getField(fieldName: .token) as? String ?? ""
+        httpTransaction.performRest(httpMethod: .put,
+                                    urlPath: "users/%@/paypal-accounts/\(token)",
                                     payload: account,
                                     completionHandler: completion)
     }
