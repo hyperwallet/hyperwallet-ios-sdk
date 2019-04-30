@@ -1,0 +1,45 @@
+{
+ "token": "YourUserToken",
+ "status": "PRE_ACTIVATED",
+ "verificationStatus": "NOT_REQUIRED",
+ "createdOn": "2019-03-05T19:18:23",
+ "clientUserId": "myBusinessIdd01",
+ "profileType": "BUSINESS",
+ "businessType": "CORPORATION",
+ "businessName": "Your Business LTD",
+ "businessRegistrationId": "ABC0000",
+ "businessOperatingName": "My Business LTD",
+ "businessRegistrationStateProvince": "BCA",
+ "businessRegistrationCountry": "US",
+ "businessContactRole": "DIRECTOR",
+ "businessContactCountry": "US",
+ "businessContactAddressLine1": "Business-Address",
+ "businessContactAddressLine2": "Business-Address 2",
+ "businessContactCity": "Flagstaff",
+ "businessContactPostalCode": "0000",
+ "businessContactStateProvince": "AZ",
+ "firstName": "John",
+ "middleName": "Anthony",
+ "lastName": "John",
+ "dateOfBirth": "1980-01-01",
+ "gender": "MALE",
+ "phoneNumber": "000-00000",
+ "email": "director@mybusiness.net",
+ "governmentId": "000000000",
+ "addressLine1": "Business-Address",
+ "city": "Phonenix",
+ "stateProvince": "AZ",
+ "country": "US",
+ "postalCode": "V0Z0L0",
+ "language": "en",
+ "countryOfNationality": "US",
+ "programToken": "prg-0000",
+ "links": [
+   {
+     "params": {
+       "rel": "self"
+     },
+     "href": "https://qamaster.aws.paylution.net/rest/v3/users/usr-8758edb9-e40b-4a2f-bd6a-456f1d0f3c82"
+   }
+ ]
+}

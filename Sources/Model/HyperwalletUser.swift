@@ -20,7 +20,7 @@ import UIKit
 
 /// Representation of the Hyperwallet's user.
 public class HyperwalletUser: Codable {
-    private var storage: [String: AnyCodable]
+    private var storage = [String: AnyCodable]()
 
     /// Representation of the user field type.
     ///
@@ -67,6 +67,7 @@ public class HyperwalletUser: Codable {
     /// - programToken: The unique identifier for the program to which the user will belong.
     /// - stateProvince: The user's state, province or region.
     /// - status: The user account status.
+    /// - timeZone: The local time of a region or a country. e.g. GMT, PST, ...
     /// - token: The unique, auto-generated user identifier. Max 64 characters, prefixed with "usr-".
     /// - verificationStatus: The user's verification status. A user may be required to verify their identity after
     ///                       a certain threshold of payments is reached.
@@ -111,6 +112,7 @@ public class HyperwalletUser: Codable {
         case programToken
         case stateProvince
         case status
+        case timeZone
         case token
         case verificationStatus
     }
@@ -181,11 +183,6 @@ public class HyperwalletUser: Codable {
         case failed = "FAILED"
         case underReview = "UNDER_REVIEW"
         case verified = "VERIFIED"
-    }
-
-    /// Creates a new instance of the `HyperwalletUser`
-    private init() {
-        self.storage = [String: AnyCodable]()
     }
 
     /// Creates a new instance of the `HyperwalletUser` based on the storage dictionaty.
@@ -416,6 +413,11 @@ public class HyperwalletUser: Codable {
             return nil
         }
         return Status(rawValue: value)
+    }
+
+    /// The local time of a region or a country. e.g. GMT, PST, ...
+    public var timeZone: String? {
+        return getField(.timeZone) as? String
     }
 
     /// The unique, auto-generated user identifier. Max 64 characters, prefixed with "usr-".
@@ -791,6 +793,13 @@ public class HyperwalletUser: Codable {
             return setField(key: UserField.status, value: status.rawValue)
         }
 
+        /// The local time of a region or a country. e.g. GMT, PST, ...
+        ///
+        /// - Parameter timeZone: The local time of a region or a country.
+        /// - Returns: a self reference of `HyperwalletUser.Builder` instance.
+        public func timeZone(_ timeZone: String) -> Builder {
+            return setField(key: UserField.timeZone, value: timeZone)
+        }
         /// Set the unique, auto-generated user identifier. Max 64 characters, prefixed with "usr-".
         ///
         /// - Parameter token: The unique, auto-generated user identifier. Max 64 characters, prefixed with "usr-".
@@ -807,16 +816,6 @@ public class HyperwalletUser: Codable {
         /// - Returns: a self reference of `HyperwalletUser.Builder` instance.
         public func verificationStatus(_ verificationStatus: VerificationStatus) -> Builder {
             return setField(key: UserField.verificationStatus, value: verificationStatus.rawValue)
-        }
-
-        /// Set the user's verification status. A user may be required to verify their identity after a certain
-        /// threshold of payments is reached.
-        ///
-        /// - Parameter verificationStatus: The user's verification status. A user may be required to verify their
-        ///                                 identity after a certain threshold of payments is reached.
-        /// - Returns: a self reference of `HyperwalletUser.Builder` instance.
-        public func verificationStatus(_ verificationStatus: String) -> Builder {
-            return setField(key: UserField.verificationStatus, value: verificationStatus)
         }
     }
 
@@ -838,16 +837,11 @@ public class HyperwalletUser: Codable {
         }
     }
 
-    /// Retrive all fields
-    internal func getFields() -> [String: AnyCodable] {
-        return self.storage
-    }
-
     /// Gets the field value
     ///
     /// - Parameter fieldName: The `TransferMethodField` type
     /// - Returns: Returns the field value, or nil if none exists.
     private func getField(_ fieldName: UserField) -> Any? {
-        return storage[fieldName.rawValue]
+        return storage[fieldName.rawValue]?.value
     }
 }
