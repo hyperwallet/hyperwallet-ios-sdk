@@ -97,10 +97,8 @@ Hyperwallet.shared.getUser { (user, error) in
         return
     } 
     
-    if let user = result {
-        print(user.firstName!)
-        print(user.lastName!)
-    }
+    print(user?.firstName)
+    print(user?.lastName)
 }
 ```
 
