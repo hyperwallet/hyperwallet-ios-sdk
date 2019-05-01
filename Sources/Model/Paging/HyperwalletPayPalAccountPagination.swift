@@ -18,7 +18,7 @@
 
 import Foundation
 
-/// Representation of the bank card pagination fields.
+/// Representation of the PayPal accoun t pagination fields.
 public class HyperwalletPayPalAccountPagination: HyperwalletTransferMethodPagination {
     /// Builds the `HyperwalletPayPalAccountPagination`'s URL Queries.
     ///

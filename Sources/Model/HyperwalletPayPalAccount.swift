@@ -17,7 +17,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 import Foundation
-/// Representation of the user's payPal account
+/// Representation of the user's PayPal account
 public final class HyperwalletPayPalAccount: HyperwalletTransferMethod {
     override private init(data: [String: AnyCodable]) {
         super.init(data: data)
@@ -34,7 +34,7 @@ public final class HyperwalletPayPalAccount: HyperwalletTransferMethod {
         /// Creates a new instance of the `HyperwalletPayPalAccount` based on the required parameter to update
         /// PayPal account.
         ///
-        /// - Parameter token: The payPal account token.
+        /// - Parameter token: The PayPal account token.
         public init(token: String) {
             storage[TransferMethodField.token.rawValue] = AnyCodable(value: token)
         }
@@ -43,8 +43,8 @@ public final class HyperwalletPayPalAccount: HyperwalletTransferMethod {
         /// PayPal account.
         ///
         /// - Parameters:
-        ///   - transferMethodCountry: The payPal account country.
-        ///   - transferMethodCurrency: The payPal account currency.
+        ///   - transferMethodCountry: The PayPal account country.
+        ///   - transferMethodCurrency: The PayPal account currency.
         public init(transferMethodCountry: String, transferMethodCurrency: String) {
             storage[TransferMethodField.type.rawValue] = AnyCodable(value: TransferMethodType.payPalAccount.rawValue)
             storage[TransferMethodField.transferMethodCountry.rawValue] = AnyCodable(value: transferMethodCountry)
@@ -53,7 +53,7 @@ public final class HyperwalletPayPalAccount: HyperwalletTransferMethod {
 
         /// Sets the email address
         ///
-        /// - Parameter email: The email address user want to create a payPal account
+        /// - Parameter email: The email address user want to create a PayPal account
         /// - Returns: a self `HyperwalletPayPalAccount.Builder` instance.
         public func email(_ email: String) -> Builder {
             storage[TransferMethodField.email.rawValue] = AnyCodable(value: email)

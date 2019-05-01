@@ -116,7 +116,7 @@ public final class Hyperwallet {
     public func createPayPalAccount(account: HyperwalletPayPalAccount,
                                     completion: @escaping (HyperwalletPayPalAccount?, HyperwalletErrorType?) -> Void) {
         httpTransaction.performRest(httpMethod: .post,
-                                    urlPath: "users/%@/payPal-accounts",
+                                    urlPath: "users/%@/paypal-accounts",
                                     payload: account,
                                     completionHandler: completion)
     }
@@ -203,7 +203,7 @@ public final class Hyperwallet {
         let statusTransition = HyperwalletStatusTransition(transition: .deactivated)
         statusTransition.notes = notes
         httpTransaction.performRest(httpMethod: .post,
-                                    urlPath: "users/%@/payPal-accounts/\(transferMethodToken)/status-transitions",
+                                    urlPath: "users/%@/paypal-accounts/\(transferMethodToken)/status-transitions",
                                     payload: statusTransition,
                                     completionHandler: completion)
     }
@@ -260,7 +260,7 @@ public final class Hyperwallet {
     public func getPayPalAccount(transferMethodToken: String,
                                  completion: @escaping (HyperwalletPayPalAccount?, HyperwalletErrorType?) -> Void) {
         httpTransaction.performRest(httpMethod: .get,
-                                    urlPath: "users/%@/payPal-accounts/\(transferMethodToken)",
+                                    urlPath: "users/%@/paypal-accounts/\(transferMethodToken)",
                                     payload: "",
                                     completionHandler: completion)
     }
@@ -369,7 +369,7 @@ public final class Hyperwallet {
                                    completion: @escaping (HyperwalletPageList<HyperwalletPayPalAccount>?,
                                                           HyperwalletErrorType?) -> Void) {
         httpTransaction.performRest(httpMethod: .get,
-                                    urlPath: "users/%@/payPal-accounts",
+                                    urlPath: "users/%@/paypal-accounts",
                                     payload: "",
                                     pagination: pagination,
                                     completionHandler: completion)
@@ -527,7 +527,7 @@ public final class Hyperwallet {
                                     completion: @escaping (HyperwalletPayPalAccount?, HyperwalletErrorType?) -> Void) {
         let token = account.getField(fieldName: .token) as? String ?? ""
         httpTransaction.performRest(httpMethod: .put,
-                                    urlPath: "users/%@/payPal-accounts/\(token)",
+                                    urlPath: "users/%@/paypal-accounts/\(token)",
                                     payload: account,
                                     completionHandler: completion)
     }
