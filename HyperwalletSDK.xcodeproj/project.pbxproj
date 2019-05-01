@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0733FE092277C191000FB92A /* HyperwalletPayPalAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0733FE082277C191000FB92A /* HyperwalletPayPalAccount.swift */; };
-		0733FE2C2277C7F1000FB92A /* HyperwalletPaypalAccountTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0733FE2A2277C743000FB92A /* HyperwalletPaypalAccountTests.swift */; };
+		0733FE2C2277C7F1000FB92A /* HyperwalletPayPalAccountTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0733FE2A2277C743000FB92A /* HyperwalletPayPalAccountTests.swift */; };
 		07C00B032277D25700E0930C /* HyperwalletPayPalAccountPagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C00B022277D25700E0930C /* HyperwalletPayPalAccountPagination.swift */; };
 		07C00B082277D54700E0930C /* PayPalAccountResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 07C00B062277D30000E0930C /* PayPalAccountResponse.json */; };
 		07C00B0B2277D5DC00E0930C /* PayPalAccountResponseWithMissingEmail.json in Resources */ = {isa = PBXBuildFile; fileRef = 07C00B092277D5CB00E0930C /* PayPalAccountResponseWithMissingEmail.json */; };
@@ -100,7 +100,7 @@
 
 /* Begin PBXFileReference section */
 		0733FE082277C191000FB92A /* HyperwalletPayPalAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperwalletPayPalAccount.swift; sourceTree = "<group>"; };
-		0733FE2A2277C743000FB92A /* HyperwalletPaypalAccountTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperwalletPaypalAccountTests.swift; sourceTree = "<group>"; };
+		0733FE2A2277C743000FB92A /* HyperwalletPayPalAccountTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperwalletPayPalAccountTests.swift; sourceTree = "<group>"; };
 		07C00B022277D25700E0930C /* HyperwalletPayPalAccountPagination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperwalletPayPalAccountPagination.swift; sourceTree = "<group>"; };
 		07C00B062277D30000E0930C /* PayPalAccountResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = PayPalAccountResponse.json; sourceTree = "<group>"; };
 		07C00B092277D5CB00E0930C /* PayPalAccountResponseWithMissingEmail.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = PayPalAccountResponseWithMissingEmail.json; sourceTree = "<group>"; };
@@ -265,7 +265,7 @@
 				DBCA3770225D6A8D00CD4137 /* HyperwalletBankAccountTests.swift */,
 				DBCA3771225D6A8D00CD4137 /* HyperwalletBankCardTests.swift */,
 				DBCA3772225D6A8D00CD4137 /* HyperwalletErrorTests.swift */,
-				0733FE2A2277C743000FB92A /* HyperwalletPaypalAccountTests.swift */,
+				0733FE2A2277C743000FB92A /* HyperwalletPayPalAccountTests.swift */,
 				DBCA376E225D6A8D00CD4137 /* HyperwalletTransferMethodConfigurationTests.swift */,
 				DBCA3773225D6A8D00CD4137 /* HyperwalletTransferMethodTests.swift */,
 				98101DCA2238A2F000BA04CA /* Info.plist */,
@@ -593,7 +593,7 @@
 				DB1A0417225D4D8B0080C8D6 /* AnyCodableTests.swift in Sources */,
 				DBCA377A225D6A8D00CD4137 /* HyperwalletTransferMethodTests.swift in Sources */,
 				DBCA3777225D6A8D00CD4137 /* HyperwalletBankAccountTests.swift in Sources */,
-				0733FE2C2277C7F1000FB92A /* HyperwalletPaypalAccountTests.swift in Sources */,
+				0733FE2C2277C7F1000FB92A /* HyperwalletPayPalAccountTests.swift in Sources */,
 				DB1A0422225D571B0080C8D6 /* AuthenticationTokenGeneratorMock.swift in Sources */,
 				DBCA3775225D6A8D00CD4137 /* HyperwalletTransferMethodConfigurationTests.swift in Sources */,
 				DB1A0414225D4D8B0080C8D6 /* ConfigurationTests.swift in Sources */,
