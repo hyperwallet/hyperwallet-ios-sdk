@@ -17,8 +17,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 import Foundation
-/// Representation of the user's paypal account
-public final class HyperwalletPaypalAccount: HyperwalletTransferMethod {
+/// Representation of the user's payPal account
+public final class HyperwalletPayPalAccount: HyperwalletTransferMethod {
     override private init(data: [String: AnyCodable]) {
         super.init(data: data)
     }
@@ -27,44 +27,44 @@ public final class HyperwalletPaypalAccount: HyperwalletTransferMethod {
         try super.init(from: decoder)
     }
 
-    /// A helper class to build the `HyperwalletPaypalAccount` instance.
+    /// A helper class to build the `HyperwalletPayPalAccount` instance.
     public final class Builder {
         private var storage = [String: AnyCodable]()
 
-        /// Creates a new instance of the `HyperwalletPaypalAccount` based on the required parameter to update
-        /// Paypal account.
+        /// Creates a new instance of the `HyperwalletPayPalAccount` based on the required parameter to update
+        /// PayPal account.
         ///
-        /// - Parameter token: The paypal account token.
+        /// - Parameter token: The payPal account token.
         public init(token: String) {
             storage[TransferMethodField.token.rawValue] = AnyCodable(value: token)
         }
 
-        /// Creates a new instance of the `HyperwalletPaypalAccount` based on the required parameters to create
-        /// Paypal account.
+        /// Creates a new instance of the `HyperwalletPayPalAccount` based on the required parameters to create
+        /// PayPal account.
         ///
         /// - Parameters:
-        ///   - transferMethodCountry: The paypal account country.
-        ///   - transferMethodCurrency: The paypal account currency.
+        ///   - transferMethodCountry: The payPal account country.
+        ///   - transferMethodCurrency: The payPal account currency.
         public init(transferMethodCountry: String, transferMethodCurrency: String) {
-            storage[TransferMethodField.type.rawValue] = AnyCodable(value: TransferMethodType.paypalAccount.rawValue)
+            storage[TransferMethodField.type.rawValue] = AnyCodable(value: TransferMethodType.payPalAccount.rawValue)
             storage[TransferMethodField.transferMethodCountry.rawValue] = AnyCodable(value: transferMethodCountry)
             storage[TransferMethodField.transferMethodCurrency.rawValue] = AnyCodable(value: transferMethodCurrency)
         }
 
         /// Sets the email address
         ///
-        /// - Parameter email: The email address user want to create a paypal account
-        /// - Returns: a self `HyperwalletPaypalAccount.Builder` instance.
+        /// - Parameter email: The email address user want to create a payPal account
+        /// - Returns: a self `HyperwalletPayPalAccount.Builder` instance.
         public func email(_ email: String) -> Builder {
             storage[TransferMethodField.email.rawValue] = AnyCodable(value: email)
             return self
         }
 
-        /// Builds a new instance of the `HyperwalletPaypalAccount`.
+        /// Builds a new instance of the `HyperwalletPayPalAccount`.
         ///
-        /// - Returns: a new instance of the `HyperwalletPaypalAccount`.
-        public func build() -> HyperwalletPaypalAccount {
-            return HyperwalletPaypalAccount(data: self.storage)
+        /// - Returns: a new instance of the `HyperwalletPayPalAccount`.
+        public func build() -> HyperwalletPayPalAccount {
+            return HyperwalletPayPalAccount(data: self.storage)
         }
     }
 }

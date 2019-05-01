@@ -3,7 +3,7 @@ import Hippolyte
 import XCTest
 
 // swiftlint:disable force_cast
-class HyperwalletPaypalAccountTests: XCTestCase {
+class HyperwalletPayPalAccountTests: XCTestCase {
     override func setUp() {
         Hyperwallet.setup(HyperwalletTestHelper.authenticationProvider)
     }
@@ -14,55 +14,55 @@ class HyperwalletPaypalAccountTests: XCTestCase {
         }
     }
 
-    func testCreatePaypalAccount_success() {
+    func testCreatePayPalAccount_success() {
         // Given
-        let expectation = self.expectation(description: "Create paypal account completed")
-        let response = HyperwalletTestHelper.okHTTPResponse(for: "PaypalAccountResponse")
-        let url = String(format: "%@/paypal-accounts", HyperwalletTestHelper.userRestURL)
+        let expectation = self.expectation(description: "Create payPal account completed")
+        let response = HyperwalletTestHelper.okHTTPResponse(for: "PayPalAccountResponse")
+        let url = String(format: "%@/payPal-accounts", HyperwalletTestHelper.userRestURL)
         let request = HyperwalletTestHelper.buildPostResquest(baseUrl: url, response)
         HyperwalletTestHelper.setUpMockServer(request: request)
 
-        var paypalAccountResponse: HyperwalletPaypalAccount?
+        var payPalAccountResponse: HyperwalletPayPalAccount?
         var errorResponse: HyperwalletErrorType?
 
         // When
-        let paypalAccount = HyperwalletPaypalAccount
+        let payPalAccount = HyperwalletPayPalAccount
             .Builder(transferMethodCountry: "US", transferMethodCurrency: "USD")
-            .email("test@paypal.com")
+            .email("test@payPal.com")
             .build()
 
-        Hyperwallet.shared.createPaypalAccount(account: paypalAccount, completion: { (result, error) in
-            paypalAccountResponse = result
+        Hyperwallet.shared.createPayPalAccount(account: payPalAccount, completion: { (result, error) in
+            payPalAccountResponse = result
             errorResponse = error
             expectation.fulfill()
         })
         wait(for: [expectation], timeout: 1)
 
         // Then
-        XCTAssertNotNil(paypalAccount)
+        XCTAssertNotNil(payPalAccount)
         XCTAssertNil(errorResponse, "The `errorResponse` should be nil")
-        XCTAssertNotNil(paypalAccountResponse?.getFields())
-        XCTAssertEqual(paypalAccountResponse?.getField(fieldName: .email) as! String, "test@paypal.com")
+        XCTAssertNotNil(payPalAccountResponse?.getFields())
+        XCTAssertEqual(payPalAccountResponse?.getField(fieldName: .email) as! String, "test@payPal.com")
     }
 
-    func testCreatePaypalAccount_missingMandatoryField_returnBadRequest() {
+    func testCreatePayPalAccount_missingMandatoryField_returnBadRequest() {
         // Given
-        let expectation = self.expectation(description: "Create paypal account failed")
-        let response = HyperwalletTestHelper.badRequestHTTPResponse(for: "PaypalAccountResponseWithMissingEmail")
-        let url = String(format: "%@/paypal-accounts", HyperwalletTestHelper.userRestURL)
+        let expectation = self.expectation(description: "Create payPal account failed")
+        let response = HyperwalletTestHelper.badRequestHTTPResponse(for: "PayPalAccountResponseWithMissingEmail")
+        let url = String(format: "%@/payPal-accounts", HyperwalletTestHelper.userRestURL)
         let request = HyperwalletTestHelper.buildPostResquest(baseUrl: url, response)
         HyperwalletTestHelper.setUpMockServer(request: request)
 
-        var paypalAccountResponse: HyperwalletPaypalAccount?
+        var payPalAccountResponse: HyperwalletPayPalAccount?
         var errorResponse: HyperwalletErrorType?
 
         // When
-        let paypalAccount = HyperwalletPaypalAccount.Builder(transferMethodCountry: "US",
+        let payPalAccount = HyperwalletPayPalAccount.Builder(transferMethodCountry: "US",
                                                              transferMethodCurrency: "USD")
                                                     .build()
 
-        Hyperwallet.shared.createPaypalAccount(account: paypalAccount, completion: { (result, error) in
-        paypalAccountResponse = result
+        Hyperwallet.shared.createPayPalAccount(account: payPalAccount, completion: { (result, error) in
+        payPalAccountResponse = result
         errorResponse = error
         expectation.fulfill()
         })
@@ -70,79 +70,30 @@ class HyperwalletPaypalAccountTests: XCTestCase {
 
         // Then
         XCTAssertNotNil(errorResponse, "The `errorResponse` should not be nil")
-        XCTAssertNil(paypalAccountResponse)
+        XCTAssertNil(payPalAccountResponse)
         XCTAssertEqual(errorResponse?.getHttpCode(), 400)
         XCTAssertEqual(errorResponse?.getHyperwalletErrors()?.errorList?.first?.fieldName, "email")
     }
 
-    func testGetPaypalAccount_success() {
+    func testCreatePayPalAccount_notProfileEmail_returnBadRequest() {
         // Given
-        let expectation = self.expectation(description: "Get paypal account completed")
-        let response = HyperwalletTestHelper.okHTTPResponse(for: "PaypalAccountResponse")
-        let url = String(format: "%@/paypal-accounts/trm-12345", HyperwalletTestHelper.userRestURL)
-        let request = HyperwalletTestHelper.buildGetRequest(baseUrl: url, response)
+        let expectation = self.expectation(description: "Create payPal account failed")
+        let response = HyperwalletTestHelper.badRequestHTTPResponse(for: "PayPalAccountResponseNotProfileEmail")
+        let url = String(format: "%@/payPal-accounts", HyperwalletTestHelper.userRestURL)
+        let request = HyperwalletTestHelper.buildPostResquest(baseUrl: url, response)
         HyperwalletTestHelper.setUpMockServer(request: request)
 
-        var paypalAccountResponse: HyperwalletPaypalAccount?
+        var payPalAccountResponse: HyperwalletPayPalAccount?
         var errorResponse: HyperwalletErrorType?
 
         // When
-        Hyperwallet.shared.getPaypalAccount(transferMethodToken: "trm-12345", completion: { (result, error) in
-            paypalAccountResponse = result
-            errorResponse = error
-            expectation.fulfill()
-        })
-        wait(for: [expectation], timeout: 1)
+        let payPalAccount = HyperwalletPayPalAccount.Builder(transferMethodCountry: "US",
+                                                             transferMethodCurrency: "USD")
+                                                    .email("notProfileEmail@paypal.com")
+                                                    .build()
 
-        // Then
-        XCTAssertNil(errorResponse, "The `errorResponse` should be nil")
-        XCTAssertNotNil(paypalAccountResponse?.getFields())
-        XCTAssertEqual(paypalAccountResponse?.getField(fieldName: .email) as? String, "test@paypal.com")
-    }
-
-    func testUpdatePaypalAccount_success() {
-        // Given
-        let expectation = self.expectation(description: "Update paypal account completed")
-        let response = HyperwalletTestHelper.okHTTPResponse(for: "PaypalAccountResponse")
-        let url = String(format: "%@/paypal-accounts/trm-12345", HyperwalletTestHelper.userRestURL)
-        let request = HyperwalletTestHelper.buildPutRequest(baseUrl: url, response)
-        HyperwalletTestHelper.setUpMockServer(request: request)
-
-        var paypalAccountResponse: HyperwalletPaypalAccount?
-        var errorResponse: HyperwalletErrorType?
-
-        // When
-        let paypalAccount = HyperwalletPaypalAccount.Builder(token: "trm-12345").email("test@paypal.com").build()
-
-        Hyperwallet.shared.updatePaypalAccount(account: paypalAccount, completion: { (result, error) in
-            paypalAccountResponse = result
-            errorResponse = error
-            expectation.fulfill()
-        })
-        wait(for: [expectation], timeout: 1)
-
-        // Then
-        XCTAssertNil(errorResponse, "The `errorResponse` should be nil")
-        XCTAssertNotNil(paypalAccountResponse?.getFields())
-        XCTAssertEqual(paypalAccountResponse?.getField(fieldName: .email) as! String, "test@paypal.com")
-    }
-
-    func testUpdatePaypalAccount_invalidEmail() {
-        // Given
-        let expectation = self.expectation(description: "Update paypal account failed")
-        let response = HyperwalletTestHelper.badRequestHTTPResponse(for: "PaypalAccountResponseWithInvalidEmail")
-        let url = String(format: "%@/paypal-accounts/trm-12345", HyperwalletTestHelper.userRestURL)
-        let request = HyperwalletTestHelper.buildPutRequest(baseUrl: url, response)
-        HyperwalletTestHelper.setUpMockServer(request: request)
-
-        var paypalAccountResponse: HyperwalletPaypalAccount?
-        var errorResponse: HyperwalletErrorType?
-
-        // When
-        let paypalAccount = HyperwalletPaypalAccount.Builder(token: "trm-12345").email("test").build()
-
-        Hyperwallet.shared.updatePaypalAccount(account: paypalAccount, completion: { (result, error) in
-            paypalAccountResponse = result
+        Hyperwallet.shared.createPayPalAccount(account: payPalAccount, completion: { (result, error) in
+            payPalAccountResponse = result
             errorResponse = error
             expectation.fulfill()
         })
@@ -150,17 +101,98 @@ class HyperwalletPaypalAccountTests: XCTestCase {
 
         // Then
         XCTAssertNotNil(errorResponse, "The `errorResponse` should not be nil")
-        XCTAssertNil(paypalAccountResponse, "The paypalAccountResponse should be nil")
+        XCTAssertNil(payPalAccountResponse)
+        XCTAssertEqual(errorResponse?.getHttpCode(), 400)
+        XCTAssertNil(errorResponse?.getHyperwalletErrors()?.errorList?.first?.fieldName)
+        XCTAssertEqual(errorResponse?.getHyperwalletErrors()?.errorList?.first?.code, "CONSTRAINT_VIOLATIONS")
+    }
+
+    func testGetPayPalAccount_success() {
+        // Given
+        let expectation = self.expectation(description: "Get payPal account completed")
+        let response = HyperwalletTestHelper.okHTTPResponse(for: "PayPalAccountResponse")
+        let url = String(format: "%@/payPal-accounts/trm-12345", HyperwalletTestHelper.userRestURL)
+        let request = HyperwalletTestHelper.buildGetRequest(baseUrl: url, response)
+        HyperwalletTestHelper.setUpMockServer(request: request)
+
+        var payPalAccountResponse: HyperwalletPayPalAccount?
+        var errorResponse: HyperwalletErrorType?
+
+        // When
+        Hyperwallet.shared.getPayPalAccount(transferMethodToken: "trm-12345", completion: { (result, error) in
+            payPalAccountResponse = result
+            errorResponse = error
+            expectation.fulfill()
+        })
+        wait(for: [expectation], timeout: 1)
+
+        // Then
+        XCTAssertNil(errorResponse, "The `errorResponse` should be nil")
+        XCTAssertNotNil(payPalAccountResponse?.getFields())
+        XCTAssertEqual(payPalAccountResponse?.getField(fieldName: .email) as? String, "test@payPal.com")
+    }
+
+    func testUpdatePayPalAccount_success() {
+        // Given
+        let expectation = self.expectation(description: "Update payPal account completed")
+        let response = HyperwalletTestHelper.okHTTPResponse(for: "PayPalAccountResponse")
+        let url = String(format: "%@/payPal-accounts/trm-12345", HyperwalletTestHelper.userRestURL)
+        let request = HyperwalletTestHelper.buildPutRequest(baseUrl: url, response)
+        HyperwalletTestHelper.setUpMockServer(request: request)
+
+        var payPalAccountResponse: HyperwalletPayPalAccount?
+        var errorResponse: HyperwalletErrorType?
+
+        // When
+        let payPalAccount = HyperwalletPayPalAccount.Builder(token: "trm-12345").email("test@payPal.com").build()
+
+        Hyperwallet.shared.updatePayPalAccount(account: payPalAccount, completion: { (result, error) in
+            payPalAccountResponse = result
+            errorResponse = error
+            expectation.fulfill()
+        })
+        wait(for: [expectation], timeout: 1)
+
+        // Then
+        XCTAssertNil(errorResponse, "The `errorResponse` should be nil")
+        XCTAssertNotNil(payPalAccountResponse?.getFields())
+        XCTAssertEqual(payPalAccountResponse?.getField(fieldName: .email) as! String, "test@payPal.com")
+    }
+
+    func testUpdatePayPalAccount_invalidEmail() {
+        // Given
+        let expectation = self.expectation(description: "Update payPal account failed")
+        let response = HyperwalletTestHelper.badRequestHTTPResponse(for: "PayPalAccountResponseWithInvalidEmail")
+        let url = String(format: "%@/payPal-accounts/trm-12345", HyperwalletTestHelper.userRestURL)
+        let request = HyperwalletTestHelper.buildPutRequest(baseUrl: url, response)
+        HyperwalletTestHelper.setUpMockServer(request: request)
+
+        var payPalAccountResponse: HyperwalletPayPalAccount?
+        var errorResponse: HyperwalletErrorType?
+
+        // When
+        let payPalAccount = HyperwalletPayPalAccount.Builder(token: "trm-12345").email("test").build()
+
+        Hyperwallet.shared.updatePayPalAccount(account: payPalAccount, completion: { (result, error) in
+            payPalAccountResponse = result
+            errorResponse = error
+            expectation.fulfill()
+        })
+        wait(for: [expectation], timeout: 1)
+
+        // Then
+        XCTAssertNotNil(errorResponse, "The `errorResponse` should not be nil")
+        XCTAssertNil(payPalAccountResponse, "The payPalAccountResponse should be nil")
         XCTAssertEqual(errorResponse?.getHttpCode(), 400)
         XCTAssertEqual(errorResponse?.getHyperwalletErrors()?.errorList?.first?.fieldName, "email")
         XCTAssertEqual(errorResponse?.getHyperwalletErrors()?.errorList?.first?.code, "INVALID_EMAIL_ADDRESS")
     }
 
-    func testDeactivatePaypalAccount_success() {
+    func testDeactivatePayPalAccount_success() {
         // Given
-        let expectation = self.expectation(description: "Deactivate paypal account completed")
+        let expectation = self.expectation(description: "Deactivate payPal account completed")
         let response = HyperwalletTestHelper.okHTTPResponse(for: "StatusTransitionMockedResponseSuccess")
-        let url = String(format: "%@/paypal-accounts/trm-12345/status-transitions", HyperwalletTestHelper.userRestURL)
+        let url = String(format: "%@/payPal-accounts/trm-12345/status-transitions", HyperwalletTestHelper.userRestURL)
         let request = HyperwalletTestHelper.buildPostResquest(baseUrl: url, response)
         HyperwalletTestHelper.setUpMockServer(request: request)
 
@@ -168,8 +200,8 @@ class HyperwalletPaypalAccountTests: XCTestCase {
         var errorResponse: HyperwalletErrorType?
 
         // When
-        Hyperwallet.shared.deactivatePaypalAccount(transferMethodToken: "trm-12345",
-                                                   notes: "deactivate paypal account",
+        Hyperwallet.shared.deactivatePayPalAccount(transferMethodToken: "trm-12345",
+                                                   notes: "deactivate payPal account",
                                                    completion: { (result, error) in
                                                     statusTransitionResponse = result
                                                     errorResponse = error
@@ -183,12 +215,12 @@ class HyperwalletPaypalAccountTests: XCTestCase {
         XCTAssertEqual(statusTransitionResponse?.transition, HyperwalletStatusTransition.Status.deactivated)
     }
 
-    func testDeactivatePaypalAccount_invalidTransition() {
+    func testDeactivatePayPalAccount_invalidTransition() {
         // Given
-        let expectation = self.expectation(description: "Deactivate paypal account failed")
+        let expectation = self.expectation(description: "Deactivate payPal account failed")
         let response = HyperwalletTestHelper
             .badRequestHTTPResponse(for: "StatusTransitionMockedResponseInvalidTransition")
-        let url = String(format: "%@/paypal-accounts/trm-12345/status-transitions", HyperwalletTestHelper.userRestURL)
+        let url = String(format: "%@/payPal-accounts/trm-12345/status-transitions", HyperwalletTestHelper.userRestURL)
         let request = HyperwalletTestHelper.buildPostResquest(baseUrl: url, response)
         HyperwalletTestHelper.setUpMockServer(request: request)
 
@@ -196,7 +228,7 @@ class HyperwalletPaypalAccountTests: XCTestCase {
         var errorResponse: HyperwalletErrorType?
 
         // When
-        Hyperwallet.shared.deactivatePaypalAccount(transferMethodToken: "trm-12345",
+        Hyperwallet.shared.deactivatePayPalAccount(transferMethodToken: "trm-12345",
                                                    notes: "deactivate bank account",
                                                    completion: { (result, error) in
                                                     statusTransitionResponse = result
@@ -212,26 +244,26 @@ class HyperwalletPaypalAccountTests: XCTestCase {
         XCTAssertEqual(errorResponse?.getHyperwalletErrors()?.errorList?.first?.code, "INVALID_FIELD_VALUE")
     }
 
-    func testListPaypalAccounts_success() {
+    func testListPayPalAccounts_success() {
         // Given
-        let expectation = self.expectation(description: "List paypal account completed")
-        let response = HyperwalletTestHelper.okHTTPResponse(for: "ListPaypalAccountResponse")
-        let url = String(format: "%@/paypal-accounts?+", HyperwalletTestHelper.userRestURL)
+        let expectation = self.expectation(description: "List payPal account completed")
+        let response = HyperwalletTestHelper.okHTTPResponse(for: "ListPayPalAccountResponse")
+        let url = String(format: "%@/payPal-accounts?+", HyperwalletTestHelper.userRestURL)
         let request = HyperwalletTestHelper.buildGetRequestRegexMatcher(pattern: url, response)
         HyperwalletTestHelper.setUpMockServer(request: request)
 
-        var paypalAccountList: HyperwalletPageList<HyperwalletPaypalAccount>?
+        var payPalAccountList: HyperwalletPageList<HyperwalletPayPalAccount>?
         var errorResponse: HyperwalletErrorType?
 
         // When
-        let paypalAccountPagination = HyperwalletPaypalAccountPagination()
-        paypalAccountPagination.status = .activated
-        paypalAccountPagination.createdAfter = HyperwalletPaypalAccountPagination
+        let payPalAccountPagination = HyperwalletPayPalAccountPagination()
+        payPalAccountPagination.status = .activated
+        payPalAccountPagination.createdAfter = HyperwalletPayPalAccountPagination
                                                 .iso8601
                                                 .date(from: "2018-12-15T00:30:11")
 
-        Hyperwallet.shared.listPaypalAccounts(pagination: paypalAccountPagination) { (result, error) in
-            paypalAccountList = result
+        Hyperwallet.shared.listPayPalAccounts(pagination: payPalAccountPagination) { (result, error) in
+            payPalAccountList = result
             errorResponse = error
             expectation.fulfill()
         }
@@ -239,36 +271,36 @@ class HyperwalletPaypalAccountTests: XCTestCase {
 
         // Then
         XCTAssertNil(errorResponse, "The `errorResponse` should be nil")
-        XCTAssertNotNil(paypalAccountList, "The `bankAccountList` should not be nil")
-        XCTAssertEqual(paypalAccountList?.count, 1, "The `count` should be 204")
-        XCTAssertNotNil(paypalAccountList?.data, "The `data` should be not nil")
+        XCTAssertNotNil(payPalAccountList, "The `bankAccountList` should not be nil")
+        XCTAssertEqual(payPalAccountList?.count, 1, "The `count` should be 1")
+        XCTAssertNotNil(payPalAccountList?.data, "The `data` should be not nil")
 
-        XCTAssertNotNil(paypalAccountList?.links, "The `links` should be not nil")
-        XCTAssertNotNil(paypalAccountList?.links.first?.params.rel)
+        XCTAssertNotNil(payPalAccountList?.links, "The `links` should be not nil")
+        XCTAssertNotNil(payPalAccountList?.links.first?.params.rel)
 
-        let paypalAccount = paypalAccountList?.data.first
-        XCTAssertEqual(paypalAccount?.getField(fieldName: .token) as? String, "trm-123456789")
-        XCTAssertEqual(paypalAccount?.getField(fieldName: .email) as? String, "test@paypal.com")
+        let payPalAccount = payPalAccountList?.data.first
+        XCTAssertEqual(payPalAccount?.getField(fieldName: .token) as? String, "trm-123456789")
+        XCTAssertEqual(payPalAccount?.getField(fieldName: .email) as? String, "test@payPal.com")
     }
 
-    func testListPaypalAccounts_emptyResult() {
+    func testListPayPalAccounts_emptyResult() {
         // Given
-        let expectation = self.expectation(description: "List paypal account completed")
+        let expectation = self.expectation(description: "List payPal account completed")
         let response = HyperwalletTestHelper.noContentHTTPResponse()
-        let url = String(format: "%@/paypal-accounts?+", HyperwalletTestHelper.userRestURL)
+        let url = String(format: "%@/payPal-accounts?+", HyperwalletTestHelper.userRestURL)
         let request = HyperwalletTestHelper.buildGetRequestRegexMatcher(pattern: url, response)
         HyperwalletTestHelper.setUpMockServer(request: request)
 
-        var paypalAccountList: HyperwalletPageList<HyperwalletPaypalAccount>?
+        var payPalAccountList: HyperwalletPageList<HyperwalletPayPalAccount>?
         var errorResponse: HyperwalletErrorType?
 
         // When
-        let paypalAccountPagination = HyperwalletPaypalAccountPagination()
-        paypalAccountPagination.status = .deActivated
+        let payPalAccountPagination = HyperwalletPayPalAccountPagination()
+        payPalAccountPagination.status = .deActivated
 
         // When
-        Hyperwallet.shared.listPaypalAccounts(pagination: paypalAccountPagination) { (result, error) in
-            paypalAccountList = result
+        Hyperwallet.shared.listPayPalAccounts(pagination: payPalAccountPagination) { (result, error) in
+            payPalAccountList = result
             errorResponse = error
             expectation.fulfill()
         }
@@ -276,6 +308,6 @@ class HyperwalletPaypalAccountTests: XCTestCase {
 
         // Then
         XCTAssertNil(errorResponse, "The `errorResponse` should be nil")
-        XCTAssertNil(paypalAccountList, "The `paypalAccountList` should be nil")
+        XCTAssertNil(payPalAccountList, "The `payPalAccountList` should be nil")
     }
 }

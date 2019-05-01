@@ -19,8 +19,8 @@
 import Foundation
 
 /// Representation of the bank card pagination fields.
-public class HyperwalletPaypalAccountPagination: HyperwalletTransferMethodPagination {
-    /// Builds the `HyperwalletPaypalAccountPagination`'s URL Queries.
+public class HyperwalletPayPalAccountPagination: HyperwalletTransferMethodPagination {
+    /// Builds the `HyperwalletPayPalAccountPagination`'s URL Queries.
     ///
     /// - Returns: Returns the URL Query's dictionary.
     override public func toQuery() -> [String: String] {

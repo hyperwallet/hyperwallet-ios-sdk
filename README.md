@@ -1,6 +1,6 @@
 # Hyperwallet iOS Core SDK
 
-Welcome to Hyperwallet's iOS SDK. This library will help you create transfer methods in your iOS app, such as bank account, Paypal account, etc. See our [iOS Integration Guide](https://www.hyperwallet.com/developers/) to get started!
+Welcome to Hyperwallet's iOS SDK. This library will help you create transfer methods in your iOS app, such as bank account, PayPal account, etc. See our [iOS Integration Guide](https://www.hyperwallet.com/developers/) to get started!
 
 Note that this SDK is geared towards those who only require backend data, which means you will have to build your own UI.
 

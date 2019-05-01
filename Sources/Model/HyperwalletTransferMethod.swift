@@ -108,8 +108,8 @@ public class HyperwalletTransferMethod: Codable {
         case cardType
         case cvv
         case dateOfExpiry
-        
-        // Paypal account related fields
+
+        // PayPal account related fields
         case email
     }
 
@@ -121,11 +121,11 @@ public class HyperwalletTransferMethod: Codable {
     ///
     /// - bankAccount:   When the transfer method is Bank Account
     /// - bankCard:      When the transfer method is Bank Card
-    /// - paypalAccount: When the transfer method is Paypal Account
+    /// - payPalAccount: When the transfer method is PayPal Account
     public enum TransferMethodType: String {
         case bankAccount = "BANK_ACCOUNT"
         case bankCard = "BANK_CARD"
-        case paypalAccount = "PAYPAL_ACCOUNT"
+        case payPalAccount = "PAYPAL_ACCOUNT"
     }
 
     /// Creates a new instance of the `HyperwalletTransferMethod`
