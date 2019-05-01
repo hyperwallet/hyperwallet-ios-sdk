@@ -670,6 +670,14 @@ public struct HyperwalletUser: Codable {
             return setField(key: UserField.gender, value: gender.rawValue)
         }
 
+        /// Gets the field value
+        ///
+        /// - Parameter fieldName: The `UserField` type
+        /// - Returns: Returns the field value, or nil if none exists.
+        public func getField(_ fieldName: UserField) -> Any? {
+            return storage[fieldName.rawValue]?.value
+        }
+
         /// Sets the user's government ID number, such as a Social Security Number.
         ///
         /// - Parameter governmentId: The user's government ID number, such as a Social Security Number.
@@ -835,13 +843,5 @@ public struct HyperwalletUser: Codable {
         static func make(key: String) -> CodingKeys {
             return CodingKeys(stringValue: key)!
         }
-    }
-
-    /// Gets the field value
-    ///
-    /// - Parameter fieldName: The `UserField` type
-    /// - Returns: Returns the field value, or nil if none exists.
-    private func getField(_ fieldName: UserField) -> Any? {
-        return storage[fieldName.rawValue]?.value
     }
 }
