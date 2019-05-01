@@ -443,6 +443,14 @@ public struct HyperwalletUser: Codable {
         }
     }
 
+    /// Gets the field value
+    ///
+    /// - Parameter fieldName: The `UserField` type
+    /// - Returns: Returns the field value, or nil if none exists.
+    public func getField(_ fieldName: UserField) -> Any? {
+        return storage[fieldName.rawValue]?.value
+    }
+
     /// A helper class to build the `HyperwalletUser` instance.
     public final class Builder {
         private var storage = [String: AnyCodable]()
@@ -668,14 +676,6 @@ public struct HyperwalletUser: Codable {
         /// - Returns: a self reference of `HyperwalletUser.Builder` instance.
         public func gender(_ gender: Gender) -> Builder {
             return setField(key: UserField.gender, value: gender.rawValue)
-        }
-
-        /// Gets the field value
-        ///
-        /// - Parameter fieldName: The `UserField` type
-        /// - Returns: Returns the field value, or nil if none exists.
-        public func getField(_ fieldName: UserField) -> Any? {
-            return storage[fieldName.rawValue]?.value
         }
 
         /// Sets the user's government ID number, such as a Social Security Number.
