@@ -229,7 +229,7 @@ class HyperwalletPayPalAccountTests: XCTestCase {
 
         // When
         Hyperwallet.shared.deactivatePayPalAccount(transferMethodToken: "trm-12345",
-                                                   notes: "deactivate bank account",
+                                                   notes: "deactivate PayPal account",
                                                    completion: { (result, error) in
                                                     statusTransitionResponse = result
                                                     errorResponse = error
@@ -271,7 +271,7 @@ class HyperwalletPayPalAccountTests: XCTestCase {
 
         // Then
         XCTAssertNil(errorResponse, "The `errorResponse` should be nil")
-        XCTAssertNotNil(payPalAccountList, "The `bankAccountList` should not be nil")
+        XCTAssertNotNil(payPalAccountList, "The `payPalAccountList` should not be nil")
         XCTAssertEqual(payPalAccountList?.count, 1, "The `count` should be 1")
         XCTAssertNotNil(payPalAccountList?.data, "The `data` should be not nil")
 
