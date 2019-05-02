@@ -231,7 +231,6 @@ Hyperwallet.shared.listBankCards(pagination: bankCardPagination) { (result, erro
 }
 ```
 
-
 ### Create PayPal Account
 ```swift
 let payPalAccount = HyperwalletPayPalAccount.Builder(transferMethodCountry: "US", transferMethodCurrency: "USD")
@@ -266,7 +265,7 @@ Hyperwallet.shared.updatePayPalAccount(account: payPalAccount, completion: { (re
 })
 ```
 
-### Deactivate Bank Card
+### Deactivate PayPal Account
 ```swift
 Hyperwallet.shared.deactivatePayPalAccount(transferMethodToken: "trm-12345", notes: "deactivate PayPal account", completion: { (result, error) in
     // Code to handle successful response or error
