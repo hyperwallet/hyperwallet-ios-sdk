@@ -95,6 +95,20 @@ public struct AuthenticationTokenProvider: HyperwalletAuthenticationTokenProvide
 The functions in the core SDK are available to use once the authentication is done.
 
 
+
+### Get User
+```swift
+Hyperwallet.shared.getUser { (user, error) in
+    guard error == nil else {
+        print(error?.getHyperwalletErrors()?.errorList?)
+        return
+    } 
+    
+    print(user?.firstName)
+    print(user?.lastName)
+}
+```
+
 ### Create Bank Account
 
 ```swift
@@ -105,7 +119,7 @@ let bankAccount = HyperwalletBankAccount.Builder(transferMethodCountry: "US", tr
 .build()
 
 Hyperwallet.shared.createBankAccount(account: bankAccount, completion: { (result, error) in
-    // In case of failure, error (ErrorType) will contain HyperwalletErrors containing information about what caused the failure of account creation
+    // In case of failure, error (HyperwalletErrorType) will contain HyperwalletErrors containing information about what caused the failure of account creation
     guard error == nil else {
         print(error?.getHyperwalletErrors()?.errorList?)
         return
@@ -119,7 +133,7 @@ Hyperwallet.shared.createBankAccount(account: bankAccount, completion: { (result
 ```swift
 Hyperwallet.shared.getBankAccount(transferMethodToken: "123123", completion: { (result, error) in
     // In case of successful, response (HyperwalletBankCard? in this case) will contain information about the user’s bank account or nil if not exist.
-    // In case of failure, error (ErrorType) will contain HyperwalletErrors containing information about what caused the failure 
+    // In case of failure, error (HyperwalletErrorType) will contain HyperwalletErrors containing information about what caused the failure 
 })
 ```
 
@@ -134,7 +148,7 @@ let bankAccount = HyperwalletBankAccount
 Hyperwallet.shared.updateBankAccount(account: bankAccount, completion: { (response, error) in
     // Code to handle successful response or error
     // In case of successful creation, response (HyperwalletBankAccount in this case) payload will contain information about the account updated
-    // In case of failure, error (ErrorType) will contain HyperwalletErrors containing information about what caused the failure of account updating
+    // In case of failure, error (HyperwalletErrorType) will contain HyperwalletErrors containing information about what caused the failure of account updating
 })
 ```
 
@@ -144,7 +158,7 @@ Hyperwallet.shared.updateBankAccount(account: bankAccount, completion: { (respon
 Hyperwallet.shared.deactivateBankAccount(transferMethodToken: "trm-12345", notes: "deactivate bank account", completion: { (result, error) in
     // Code to handle successful response or error
     // In case of successful creation, response (HyperwalletStatusTransition in this case) will contain information about the status transition
-    // In case of failure, error (ErrorType) will contain HyperwalletErrors containing information about what caused the failure of account deactivation
+    // In case of failure, error (HyperwalletErrorType) will contain HyperwalletErrors containing information about what caused the failure of account deactivation
 })
 ```
 
@@ -155,7 +169,7 @@ bankAccountPagination.status = .activated
 bankAccountPagination.sortBy = .ascendantCreatedOn
 
 Hyperwallet.shared.listBankAccounts(pagination: bankAccountPagination) { (result, error) in 
-    // In case of failure, error (ErrorType) will contain HyperwalletErrors containing information about what caused the failure 
+    // In case of failure, error (HyperwalletErrorType) will contain HyperwalletErrors containing information about what caused the failure 
     guard error == nil else {
         print(error?.getHyperwalletErrors()?.errorList?)
         return
@@ -181,7 +195,7 @@ let bankCard = HyperwalletBankCard.Builder(transferMethodCountry: "US", transfer
 Hyperwallet.shared.createBankCard(account: bankCard, completion: { (result, error) in
     // Code to handle successful response or error
     // In case of successful creation, response (HyperwalletBankCard in this case) will contain information about the user’s bank card
-    // In case of failure, error (ErrorType) will contain HyperwalletErrors containing information about what caused the failure of bank card creation
+    // In case of failure, error (HyperwalletErrorType) will contain HyperwalletErrors containing information about what caused the failure of bank card creation
 })
 ```
 
@@ -189,7 +203,7 @@ Hyperwallet.shared.createBankCard(account: bankCard, completion: { (result, erro
 ```swift
 Hyperwallet.shared.getBankCard(transferMethodToken: "123123", completion: { (result, error) in
     // In case of successful, response (HyperwalletBankCard? in this case) will contain information about the user’s bank card or nil if not exist.
-    // In case of failure, error (ErrorType) will contain HyperwalletErrors containing information about what caused the failure 
+    // In case of failure, error (HyperwalletErrorType) will contain HyperwalletErrors containing information about what caused the failure 
 })
 ```
 
@@ -203,7 +217,7 @@ let bankCard = HyperwalletBankCard
 Hyperwallet.shared.updateBankCard(account: bankCard, completion: { (result, error) in
     // Code to handle successful response or error
     // In case of successful creation, response (HyperwalletBankCard in this case) will contain information about the user’s bank card
-    // In case of failure, error (ErrorType) will contain HyperwalletErrors containing information about what caused the failure of bank card updating
+    // In case of failure, error (HyperwalletErrorType) will contain HyperwalletErrors containing information about what caused the failure of bank card updating
 })
 ```
 
@@ -212,7 +226,7 @@ Hyperwallet.shared.updateBankCard(account: bankCard, completion: { (result, erro
 Hyperwallet.shared.deactivateBankCard(transferMethodToken: "trm-12345", notes: "deactivate bank card", completion: { (result, error) in
     // Code to handle successful response or error
     // In case of successful creation, response (HyperwalletStatusTransition in this case) will contain information about the status transition
-    // In case of failure, error (ErrorType) will contain HyperwalletErrors containing information about what caused the failure of bank card deactivation
+    // In case of failure, error (HyperwalletErrorType) will contain HyperwalletErrors containing information about what caused the failure of bank card deactivation
 })
 ```
 
@@ -223,7 +237,7 @@ bankCardPagination.status = .activated
 bankCardPagination.sortBy = .ascendantCreatedOn
 
 Hyperwallet.shared.listBankCards(pagination: bankCardPagination) { (result, error) in
-    // In case of failure, error (ErrorType) will contain HyperwalletErrors containing information about what caused the failure 
+    // In case of failure, error (HyperwalletErrorType) will contain HyperwalletErrors containing information about what caused the failure 
     guard error == nil else {
         print(error?.getHyperwalletErrors()?.errorList?)
         return
@@ -247,7 +261,7 @@ let payPalAccount = HyperwalletPayPalAccount.Builder(transferMethodCountry: "US"
 Hyperwallet.shared.createPayPalAccount(account: payPalAccount, completion: { (result, error) in
     // Code to handle successful response or error
     // In case of successful creation, response (HyperwalletPayPalAccount in this case) will contain information about the user’s PayPal account
-    // In case of failure, error (ErrorType) will contain HyperwalletErrors containing information about what caused the failure of PayPal account creation
+    // In case of failure, error (HyperwalletErrorType) will contain HyperwalletErrors containing information about what caused the failure of PayPal account creation
 })
 ```
 
@@ -255,7 +269,7 @@ Hyperwallet.shared.createPayPalAccount(account: payPalAccount, completion: { (re
 ```swift
 Hyperwallet.shared.getPayPalAccount(transferMethodToken: "123123", completion: { (result, error) in
     // In case of successful, response (HyperwalletPayPalAccount? in this case) will contain information about the user’s PayPal account or nil if not exist.
-    // In case of failure, error (ErrorType) will contain HyperwalletErrors containing information about what caused the failure 
+    // In case of failure, error (HyperwalletErrorType) will contain HyperwalletErrors containing information about what caused the failure 
 })
 ```
 
@@ -268,7 +282,7 @@ let payPalAccount = HyperwalletPayPalAccount.Builder(token: "trm-12345")
 Hyperwallet.shared.updatePayPalAccount(account: payPalAccount, completion: { (result, error) in
     // Code to handle successful response or error
     // In case of successful creation, response (HyperwalletPayPalAccount in this case) will contain information about the user’s PayPal account
-    // In case of failure, error (ErrorType) will contain HyperwalletErrors containing information about what caused the failure of PayPal account updating
+    // In case of failure, error (HyperwalletErrorType) will contain HyperwalletErrors containing information about what caused the failure of PayPal account updating
 })
 ```
 
@@ -277,7 +291,7 @@ Hyperwallet.shared.updatePayPalAccount(account: payPalAccount, completion: { (re
 Hyperwallet.shared.deactivatePayPalAccount(transferMethodToken: "trm-12345", notes: "deactivate PayPal account", completion: { (result, error) in
     // Code to handle successful response or error
     // In case of successful creation, response (HyperwalletStatusTransition in this case) will contain information about the status transition
-    // In case of failure, error (ErrorType) will contain HyperwalletErrors containing information about what caused the failure of PayPal account deactivation
+    // In case of failure, error (HyperwalletErrorType) will contain HyperwalletErrors containing information about what caused the failure of PayPal account deactivation
 })
 ```
 
@@ -288,7 +302,7 @@ payPalPagination.status = .activated
 payPalPagination.sortBy = .ascendantCreatedOn
 
 Hyperwallet.shared.listPayPalAccount(pagination: payPalPagination) { (result, error) in
-    // In case of failure, error (ErrorType) will contain HyperwalletErrors containing information about what caused the failure 
+    // In case of failure, error (HyperwalletErrorType) will contain HyperwalletErrors containing information about what caused the failure 
     guard error == nil else {
         print(error?.getHyperwalletErrors()?.errorList?)
         return
@@ -309,7 +323,7 @@ let transferMethodPagination = HyperwalletTransferMethodPagination()
 transferMethodPagination.sortBy = .ascendantCreatedOn
 
 Hyperwallet.shared.listTransferMethods(pagination: transferMethodPagination) { (result, error) in
-    // In case of failure, error (ErrorType) will contain HyperwalletErrors containing information about what caused the failure 
+    // In case of failure, error (HyperwalletErrorType) will contain HyperwalletErrors containing information about what caused the failure 
     guard error == nil else {
         print(error?.getHyperwalletErrors()?.errorList?)
         return

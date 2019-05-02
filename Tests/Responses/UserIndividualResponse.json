@@ -1,0 +1,39 @@
+{
+ "token": "YourUserToken",
+ "status": "ACTIVATED",
+ "verificationStatus": "NOT_REQUIRED",
+ "createdOn": "2019-04-30T00:01:53",
+ "clientUserId": "myAppUserId01",
+ "profileType": "INDIVIDUAL",
+ "firstName": "Stan",
+ "middleName": "Albert",
+ "lastName": "Fung",
+ "dateOfBirth": "1980-01-01",
+ "gender": "MALE",
+ "phoneNumber": "000-000000",
+ "mobileNumber": "000-000-0000",
+ "email": "user01@myApp.com",
+ "governmentId": "0000000000",
+ "addressLine1": "abc",
+ "addressLine2": "def",
+ "city": "Phoenix",
+ "stateProvince": "AZ",
+ "country": "US",
+ "postalCode": "12345",
+ "language": "en",
+ "timeZone": "PST",
+ "countryOfBirth": "US",
+ "driversLicenseId": "000123",
+ "governmentIdType": "PASSPORT",
+ "passportId": "00000",
+ "employerId": "001",
+ "programToken": "prg-00000000-0000-0000-0000-000000000000",
+ "links": [
+   {
+     "params": {
+       "rel": "self"
+     },
+     "href": "https://localhost/rest/v3/users/usr-00000000-0000-0000-0000-000000000000"
+   }
+ ]
+}
