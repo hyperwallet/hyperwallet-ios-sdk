@@ -26,7 +26,6 @@ before_install:
   # Update the brew and build dependencies tools
   - brew outdated carthage || brew upgrade carthage
   - carthage bootstrap --verbose --no-use-binaries --platform iOS --cache-builds
-  - gem install slather
   # Force to update the Swiftlint to the last stable version
   - brew outdated swiftlint || brew upgrade swiftlint
   # Print the booted emulator
@@ -39,10 +38,10 @@ script: |
   # Define the destination emulator
   destination="platform=$platform,OS=$ios_version,name=$ios_device"
   # Build and test Framework in Debug
-  xcodebuild build test analyze -project "$PROJECT" \
+  xcodebuild -enableCodeCoverage YES clean build test -project "$PROJECT" \
     -scheme "$scheme" \
     -destination "$destination" \
-    -configuration Debug ONLY_ACTIVE_ARCH=NO ENABLE_TESTABILITY=YES
+    -configuration Debug ONLY_ACTIVE_ARCH=NO ENABLE_TESTABILITY=YES CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
   # Lint - Add `--strict` to fail for warning and violation
   swiftlint lint --reporter json
 
