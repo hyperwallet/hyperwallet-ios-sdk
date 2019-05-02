@@ -1,0 +1,17 @@
+{
+    "token": "trm-123456789",
+    "type": "PAYPAL_ACCOUNT",
+    "status": "ACTIVATED",
+    "createdOn": "2019-01-09T22:50:14",
+    "transferMethodCountry": "US",
+    "transferMethodCurrency": "USD",
+    "email": "test@paypal.com",
+    "links": [
+        {
+            "params": {
+                "rel": "self"
+            },
+            "href": "https://localhost/rest/v3/users/usr-123456789/paypal-accounts/trm-123456789"
+        }
+    ]
+}

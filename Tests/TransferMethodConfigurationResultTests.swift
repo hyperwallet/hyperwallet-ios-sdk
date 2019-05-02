@@ -94,9 +94,9 @@ class TransferMethodConfigurationResultTests: XCTestCase {
             XCTFail("The PAPER_CHECK has not been found")
         }
 
-        let transferMethodFilterByPaypalAccount = transferMethodTypes.filter { $0 == "PAYPAL_ACCOUNT" }
-        if let paypalAccount = transferMethodFilterByPaypalAccount.first {
-            XCTAssertEqual(paypalAccount, "PAYPAL_ACCOUNT", "Invalid transferMethod")
+        let transferMethodFilterByPayPalAccount = transferMethodTypes.filter { $0 == "PAYPAL_ACCOUNT" }
+        if let payPalAccount = transferMethodFilterByPayPalAccount.first {
+            XCTAssertEqual(payPalAccount, "PAYPAL_ACCOUNT", "Invalid transferMethod")
         } else {
             XCTFail("The PAYPAL_ACCOUNT has not been found")
         }
