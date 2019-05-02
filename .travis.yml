@@ -26,6 +26,7 @@ before_install:
   # Update the brew and build dependencies tools
   - brew outdated carthage || brew upgrade carthage
   - carthage bootstrap --verbose --no-use-binaries --platform iOS --cache-builds
+  - gem install slather
   # Force to update the Swiftlint to the last stable version
   - brew outdated swiftlint || brew upgrade swiftlint
   # Print the booted emulator
@@ -44,3 +45,5 @@ script: |
     -configuration Debug ONLY_ACTIVE_ARCH=NO ENABLE_TESTABILITY=YES
   # Lint - Add `--strict` to fail for warning and violation
   swiftlint lint --reporter json
+
+after_success: slather
