@@ -46,10 +46,12 @@ public class HyperwalletBankCard: HyperwalletTransferMethod {
         /// - Parameters:
         ///   - transferMethodCountry: The bank card country.
         ///   - transferMethodCurrency: The bank card currency.
-        public init(transferMethodCountry: String, transferMethodCurrency: String) {
+        ///   - transferMethodProfileType: The method profile type
+        public init(transferMethodCountry: String, transferMethodCurrency: String, transferMethodProfileType: String) {
             storage[TransferMethodField.type.rawValue] = AnyCodable(value: TransferMethodType.bankCard.rawValue)
             storage[TransferMethodField.transferMethodCountry.rawValue] = AnyCodable(value: transferMethodCountry)
             storage[TransferMethodField.transferMethodCurrency.rawValue] = AnyCodable(value: transferMethodCurrency)
+            storage[TransferMethodField.profileType.rawValue] = AnyCodable(value: transferMethodProfileType)
         }
 
         /// Builds a new instance of the `HyperwalletBankCard`.
