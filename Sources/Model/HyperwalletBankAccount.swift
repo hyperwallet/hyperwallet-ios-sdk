@@ -64,10 +64,12 @@ public final class HyperwalletBankAccount: HyperwalletTransferMethod {
         /// - Parameters:
         ///   - transferMethodCountry: The bank account country.
         ///   - transferMethodCurrency: The bank account currency.
-        public init(transferMethodCountry: String, transferMethodCurrency: String) {
+        ///   - transferMethodProfileType: The method profile type
+        public init(transferMethodCountry: String, transferMethodCurrency: String, transferMethodProfileType: String) {
             storage[TransferMethodField.type.rawValue] = AnyCodable(value: TransferMethodType.bankAccount.rawValue)
             storage[TransferMethodField.transferMethodCountry.rawValue] = AnyCodable(value: transferMethodCountry)
             storage[TransferMethodField.transferMethodCurrency.rawValue] = AnyCodable(value: transferMethodCurrency)
+            storage[TransferMethodField.profileType.rawValue] = AnyCodable(value: transferMethodProfileType)
         }
 
         /// Sets the bank account number, IBAN or equivalent. If you are providing an IBAN, the first two
