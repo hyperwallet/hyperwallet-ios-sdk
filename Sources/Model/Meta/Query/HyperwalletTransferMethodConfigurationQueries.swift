@@ -56,6 +56,7 @@ public struct HyperwalletTransferMethodConfigurationFieldQuery: GraphQlQuery {
                     category
                     dataType
                     isRequired
+                    isEditable
                     label
                     maxLength
                     minLength

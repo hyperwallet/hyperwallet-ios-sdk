@@ -28,6 +28,7 @@
                             "category": "ACCOUNT",
                             "dataType": "NUMBER",
                             "isRequired": true,
+                            "isEditable": true,
                             "label": "Routing Number",
                             "maxLength": 9,
                             "minLength": 9,
