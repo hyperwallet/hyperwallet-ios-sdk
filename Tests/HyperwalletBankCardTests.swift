@@ -27,7 +27,8 @@ class HyperwalletBankCardTests: XCTestCase {
 
         // When
         let bankCard = HyperwalletBankCard.Builder(transferMethodCountry: "US",
-                                                   transferMethodCurrency: "USD")
+                                                   transferMethodCurrency: "USD",
+                                                   transferMethodProfileType: "INDIVIDUAL")
             .cardNumber("4216701111100114")
             .dateOfExpiry("2022-12")
             .cvv("123")
@@ -60,7 +61,8 @@ class HyperwalletBankCardTests: XCTestCase {
 
         // When
         let bankCard = HyperwalletBankCard.Builder(transferMethodCountry: "US",
-                                                   transferMethodCurrency: "USD")
+                                                   transferMethodCurrency: "USD",
+                                                   transferMethodProfileType: "INDIVIDUAL")
             .cardNumber("")
             .dateOfExpiry("2018-12")
             .cvv("")
