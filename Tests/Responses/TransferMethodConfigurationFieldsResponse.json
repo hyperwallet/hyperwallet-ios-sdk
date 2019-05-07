@@ -35,6 +35,7 @@
                             "name": "branchId",
                             "placeholder": "",
                             "regularExpression": "^[0-9]{9}$",
+                            "value": "1234",
                             "validationMessage": {
                                 "length": "The exact length of this field is 9.",
                                 "pattern": "abaCode is invalid format.",
