@@ -62,6 +62,8 @@ public struct HyperwalletField: Codable {
     public let regularExpression: String?
     /// The validation message
     public let validationMessage: HyperwalletValidationMessage?
+    /// The field value
+    public let value: String?
 }
 
 /// Representation of the transfer method configuration field data type
