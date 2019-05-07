@@ -221,6 +221,7 @@ class TransferMethodConfigurationResultTests: XCTestCase {
             XCTAssertEqual(branchId.category, "ACCOUNT", "Invalid category")
             XCTAssertEqual(branchId.dataType, "NUMBER", "Invalid dataType")
             XCTAssertEqual(branchId.isRequired, true, "Should not be required")
+            XCTAssertEqual(branchId.isEditable, true, "Should not be required")
             XCTAssertEqual(branchId.label, "Routing Number", "Invalid label")
             XCTAssertEqual(branchId.placeholder, "", "Invalid placeholder")
             XCTAssertEqual(branchId.regularExpression, "^[0-9]{9}$", "Invalid regularExpression")
