@@ -112,7 +112,9 @@ Hyperwallet.shared.getUser { (user, error) in
 ### Create Bank Account
 
 ```swift
-let bankAccount = HyperwalletBankAccount.Builder(transferMethodCountry: "US", transferMethodCurrency: "USD")
+let bankAccount = HyperwalletBankAccount.Builder(transferMethodCountry: "US",   
+                                                 transferMethodCurrency: "USD",
+                                                 transferMethodProfileType: "INDIVIDUAL")
 .bankAccountId("12345")
 .branchId("123456")
 .bankAccountPurpose(.checking)
@@ -186,7 +188,9 @@ Hyperwallet.shared.listBankAccounts(pagination: bankAccountPagination) { (result
 
 ### Create Bank Card
 ```swift
-let bankCard = HyperwalletBankCard.Builder(transferMethodCountry: "US", transferMethodCurrency: "USD")
+let bankCard = HyperwalletBankCard.Builder(transferMethodCountry: "US",
+                                           transferMethodCurrency: "USD",
+                                           transferMethodProfileType: "INDIVIDUAL")
 .cardNumber("1234123412341234")
 .dateOfExpiry("2022-12")
 .cvv("123")

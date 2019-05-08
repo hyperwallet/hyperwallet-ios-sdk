@@ -79,6 +79,15 @@ public class HyperwalletBankCard: HyperwalletTransferMethod {
             return self
         }
 
+        /// Sets transfer method profile type (INDIVIDUAL or BUSINESS)
+        ///
+        /// - Parameter profileType: profile type (INDIVIDUAL or BUSINESS)
+        /// - Returns: a self `HyperwalletBankAccount.Builder` instance.
+        public func profileType(_ profileType: String) -> Builder {
+            storage[TransferMethodField.profileType.rawValue] = AnyCodable(value: profileType)
+            return self
+        }
+
         /// Sets the expiration date.
         ///
         /// - Parameter dateOfExpiry: the expiration date for the card (YYYY-MM).

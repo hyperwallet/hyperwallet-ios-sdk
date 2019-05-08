@@ -118,6 +118,15 @@ public final class HyperwalletBankAccount: HyperwalletTransferMethod {
             return self
         }
 
+        /// Sets transfer method profile type (INDIVIDUAL or BUSINESS)
+        ///
+        /// - Parameter profileType: profile type (INDIVIDUAL or BUSINESS)
+        /// - Returns: a self `HyperwalletBankAccount.Builder` instance.
+        public func profileType(_ profileType: String) -> Builder {
+            storage[TransferMethodField.profileType.rawValue] = AnyCodable(value: profileType)
+            return self
+        }
+
         /// Builds a new instance of the `HyperwalletBankAccount`.
         ///
         /// - Returns: a new instance of the `HyperwalletBankAccount`.
