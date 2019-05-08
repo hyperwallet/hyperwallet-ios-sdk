@@ -63,6 +63,7 @@ public struct HyperwalletTransferMethodConfigurationFieldQuery: GraphQlQuery {
                     name
                     placeholder
                     regularExpression
+                    value
                     fieldSelectionOptions {
                         label
                         value
