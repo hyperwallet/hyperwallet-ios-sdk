@@ -29,12 +29,12 @@ class HyperwalletBankAccountTests: XCTestCase {
         let bankAccount = HyperwalletBankAccount
             .Builder(transferMethodCountry: "US",
                      transferMethodCurrency: "USD",
-                     transferMethodProfileType: "INDIVIDUAL")
-            .bankAccountId("12345")
-            .branchId("123456")
-            .bankId("0010")
-            .bankAccountRelationship(.self)
-            .bankAccountPurpose(.checking)
+                     transferMethodProfileType: "INDIVIDUAL",
+                     transferMethodBankAccountId: "12345",
+                     transferMethodBankId: "0010",
+                     transferMethodPurpose: .checking,
+                     transferMethodRelationship: .self,
+                     transferMethodBranchId: "123456")
             .build()
 
         Hyperwallet.shared.createBankAccount(account: bankAccount, completion: { (result, error) in
@@ -65,10 +65,12 @@ class HyperwalletBankAccountTests: XCTestCase {
         // When
         let bankAccount = HyperwalletBankAccount.Builder(transferMethodCountry: "US",
                                                          transferMethodCurrency: "USD",
-                                                         transferMethodProfileType: "INDIVIDUAL")
-                                                .bankAccountId("12345")
-                                                .branchId("123456")
-                                                .bankAccountPurpose(.checking)
+                                                         transferMethodProfileType: "INDIVIDUAL",
+                                                         transferMethodBankAccountId: "123456",
+                                                         transferMethodBankId: "",
+                                                         transferMethodPurpose: .checking,
+                                                         transferMethodRelationship: .self,
+                                                         transferMethodBranchId: "123456")
             .build()
 
         Hyperwallet.shared.createBankAccount(account: bankAccount, completion: { (result, error) in

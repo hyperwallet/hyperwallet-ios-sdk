@@ -47,11 +47,22 @@ public class HyperwalletBankCard: HyperwalletTransferMethod {
         ///   - transferMethodCountry: The bank card country.
         ///   - transferMethodCurrency: The bank card currency.
         ///   - transferMethodProfileType: The method profile type
-        public init(transferMethodCountry: String, transferMethodCurrency: String, transferMethodProfileType: String) {
+        ///   - transferMethodCardNumber: The 16-digit card number
+        ///   - transferMethodDateOfExpiry: the expiration date for the card (YYYY-MM)
+        ///   - transferMethodCvv: the card security code which is embossed or printed on the card
+        public init(transferMethodCountry: String,
+                    transferMethodCurrency: String,
+                    transferMethodProfileType: String,
+                    transferMethodCardNumber: String,
+                    transferMethodDateOfExpiry: String,
+                    transferMethodCvv: String) {
             storage[TransferMethodField.type.rawValue] = AnyCodable(value: TransferMethodType.bankCard.rawValue)
             storage[TransferMethodField.transferMethodCountry.rawValue] = AnyCodable(value: transferMethodCountry)
             storage[TransferMethodField.transferMethodCurrency.rawValue] = AnyCodable(value: transferMethodCurrency)
             storage[TransferMethodField.profileType.rawValue] = AnyCodable(value: transferMethodProfileType)
+            storage[TransferMethodField.cardNumber.rawValue] = AnyCodable(value: transferMethodCardNumber)
+            storage[TransferMethodField.dateOfExpiry.rawValue] = AnyCodable(value: transferMethodDateOfExpiry)
+            storage[TransferMethodField.cvv.rawValue] = AnyCodable(value: transferMethodCvv)
         }
 
         /// Builds a new instance of the `HyperwalletBankCard`.

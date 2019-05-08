@@ -28,10 +28,10 @@ class HyperwalletBankCardTests: XCTestCase {
         // When
         let bankCard = HyperwalletBankCard.Builder(transferMethodCountry: "US",
                                                    transferMethodCurrency: "USD",
-                                                   transferMethodProfileType: "INDIVIDUAL")
-            .cardNumber("4216701111100114")
-            .dateOfExpiry("2022-12")
-            .cvv("123")
+                                                   transferMethodProfileType: "INDIVIDUAL",
+                                                   transferMethodCardNumber: "4216701111100114",
+                                                   transferMethodDateOfExpiry: "2022-12",
+                                                   transferMethodCvv: "123")
             .build()
 
         Hyperwallet.shared.createBankCard(account: bankCard, completion: { (result, error) in
@@ -62,10 +62,10 @@ class HyperwalletBankCardTests: XCTestCase {
         // When
         let bankCard = HyperwalletBankCard.Builder(transferMethodCountry: "US",
                                                    transferMethodCurrency: "USD",
-                                                   transferMethodProfileType: "INDIVIDUAL")
-            .cardNumber("")
-            .dateOfExpiry("2018-12")
-            .cvv("")
+                                                   transferMethodProfileType: "INDIVIDUAL",
+                                                   transferMethodCardNumber: "",
+                                                   transferMethodDateOfExpiry: "2018-12",
+                                                   transferMethodCvv: "")
             .build()
 
         Hyperwallet.shared.createBankCard(account: bankCard, completion: { (result, error) in

@@ -65,11 +65,28 @@ public final class HyperwalletBankAccount: HyperwalletTransferMethod {
         ///   - transferMethodCountry: The bank account country.
         ///   - transferMethodCurrency: The bank account currency.
         ///   - transferMethodProfileType: The method profile type
-        public init(transferMethodCountry: String, transferMethodCurrency: String, transferMethodProfileType: String) {
+        ///   - transferMethodBankAccountId: The bank account number, IBAN or equivalent.
+        ///   - transferMethodBankId: the bank code or equivalent (e.g. BIC/SWIFT code)
+        ///   - transferMethodPurpose: The `PurposeType`
+        ///   - transferMethodRelationship: The `RelationshipType`
+        ///   - transferMethodBranchId: The branch code, transit number, routing number or equivalent.
+        public init(transferMethodCountry: String,
+                    transferMethodCurrency: String,
+                    transferMethodProfileType: String,
+                    transferMethodBankAccountId: String,
+                    transferMethodBankId: String,
+                    transferMethodPurpose: PurposeType,
+                    transferMethodRelationship: RelationshipType,
+                    transferMethodBranchId: String) {
             storage[TransferMethodField.type.rawValue] = AnyCodable(value: TransferMethodType.bankAccount.rawValue)
             storage[TransferMethodField.transferMethodCountry.rawValue] = AnyCodable(value: transferMethodCountry)
             storage[TransferMethodField.transferMethodCurrency.rawValue] = AnyCodable(value: transferMethodCurrency)
             storage[TransferMethodField.profileType.rawValue] = AnyCodable(value: transferMethodProfileType)
+            storage[TransferMethodField.bankAccountId.rawValue] = AnyCodable(value: transferMethodBankAccountId)
+            storage[TransferMethodField.bankId.rawValue] = AnyCodable(value: transferMethodBankId)
+            storage[TransferMethodField.bankAccountPurpose.rawValue] = AnyCodable(value: transferMethodPurpose.rawValue)
+            storage[TransferMethodField.bankAccountRelationship.rawValue] = AnyCodable(value: transferMethodRelationship.rawValue)
+            storage[TransferMethodField.branchId.rawValue] = AnyCodable(value: transferMethodBranchId)
         }
 
         /// Sets the bank account number, IBAN or equivalent. If you are providing an IBAN, the first two
