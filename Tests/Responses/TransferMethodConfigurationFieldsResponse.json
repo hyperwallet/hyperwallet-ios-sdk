@@ -46,6 +46,7 @@
                             "category": "ACCOUNT",
                             "dataType": "NUMBER",
                             "isRequired": true,
+                            "isEditable": true,
                             "label": "Account Number",
                             "maxLength": 17,
                             "minLength": 4,
