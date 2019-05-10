@@ -1,0 +1,9 @@
+{
+    "errors": [
+        {
+            "message": "You have left the email field empty",
+            "fieldName": "email",
+            "code": "MISSING_FIELD"
+        }
+    ]
+}

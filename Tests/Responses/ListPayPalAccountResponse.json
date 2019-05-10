@@ -1,0 +1,32 @@
+{
+    "count": 1,
+    "offset": 0,
+    "limit": 10,
+    "data": [
+        {
+            "token": "trm-123456789",
+            "type": "PAYPAL_ACCOUNT",
+            "status": "ACTIVATED",
+            "createdOn": "2019-04-30T18:20:44",
+            "transferMethodCountry": "US",
+            "transferMethodCurrency": "USD",
+            "email": "test@paypal.com",
+            "links": [
+                {
+                    "params": {
+                        "rel": "self"
+                    },
+                    "href": "https://localhost/rest/v3/users/usr-123456789/paypal-accounts/trm-123456789"
+                }
+            ]
+        }
+    ],
+    "links": [
+        {
+            "params": {
+                "rel": "self"
+            },
+            "href": "https://localhost/rest/v3/users/usr-123456789/paypal-accounts?offset=0&limit=10"
+        }
+    ]
+}

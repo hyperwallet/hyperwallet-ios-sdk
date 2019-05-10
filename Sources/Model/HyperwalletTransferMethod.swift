@@ -64,6 +64,7 @@ public class HyperwalletTransferMethod: Codable {
     /// - cardType: The bank card type.
     /// - cvv: The card security code which is embossed or printed on the card.
     /// - dateOfExpiry: The expiration date for the card (YYYY-MM).
+    /// - email: The email address associated with the PayPal account.
     public enum TransferMethodField: String {
         /// Common transfer method fields
         case createdOn
@@ -107,6 +108,9 @@ public class HyperwalletTransferMethod: Codable {
         case cardType
         case cvv
         case dateOfExpiry
+
+        // PayPal account related fields
+        case email
     }
 
     internal init(data: [String: AnyCodable]) {
@@ -115,11 +119,13 @@ public class HyperwalletTransferMethod: Codable {
 
     /// Representation of the transfer method's type
     ///
-    /// - bankAccount:  When the transfer method is Bank Account
-    /// - bankCard:     When the transfer method is Bank Card
+    /// - bankAccount:   When the transfer method is Bank Account
+    /// - bankCard:      When the transfer method is Bank Card
+    /// - payPalAccount: When the transfer method is PayPal Account
     public enum TransferMethodType: String {
         case bankAccount = "BANK_ACCOUNT"
         case bankCard = "BANK_CARD"
+        case payPalAccount = "PAYPAL_ACCOUNT"
     }
 
     /// Creates a new instance of the `HyperwalletTransferMethod`

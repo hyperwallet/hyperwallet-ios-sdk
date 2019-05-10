@@ -25,7 +25,9 @@ class ConfigurationTests: XCTestCase {
     func testIsTokenExpired_true() {
         let expiryOn = Double((Date().addingTimeInterval(0.1).timeIntervalSince1970).rounded())
         let configuration = getConfiguration(expiryOn)
-        XCTAssertTrue(configuration.isTokenExpired(), "Token should be expired")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            XCTAssertTrue(configuration.isTokenExpired(), "Token should be expired")
+        }
     }
 
     func testIsTokenExpired_false() {

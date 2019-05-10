@@ -94,9 +94,9 @@ class TransferMethodConfigurationResultTests: XCTestCase {
             XCTFail("The PAPER_CHECK has not been found")
         }
 
-        let transferMethodFilterByPaypalAccount = transferMethodTypes.filter { $0 == "PAYPAL_ACCOUNT" }
-        if let paypalAccount = transferMethodFilterByPaypalAccount.first {
-            XCTAssertEqual(paypalAccount, "PAYPAL_ACCOUNT", "Invalid transferMethod")
+        let transferMethodFilterByPayPalAccount = transferMethodTypes.filter { $0 == "PAYPAL_ACCOUNT" }
+        if let payPalAccount = transferMethodFilterByPayPalAccount.first {
+            XCTAssertEqual(payPalAccount, "PAYPAL_ACCOUNT", "Invalid transferMethod")
         } else {
             XCTFail("The PAYPAL_ACCOUNT has not been found")
         }
@@ -194,12 +194,13 @@ class TransferMethodConfigurationResultTests: XCTestCase {
         let fields = transferMethodConfigurationFieldsResult.fields()
         XCTAssertEqual(fields.count, 3, "The amount of elements is different from the expected value")
         // Assert Field bankAccountPurpose
-        let fieldsFilterByBankAccountPurpose = fields.filter { (field) in  field.name == "bankAccountPurpose" }
+        let fieldsFilterByBankAccountPurpose = fields.filter { $0.name == "bankAccountPurpose" }
         if let bankAccountPurpose = fieldsFilterByBankAccountPurpose.first {
             XCTAssertEqual(bankAccountPurpose.name, "bankAccountPurpose", "Invalid name")
             XCTAssertEqual(bankAccountPurpose.category, "ACCOUNT", "Invalid category")
             XCTAssertEqual(bankAccountPurpose.dataType, "SELECTION", "Invalid dataType")
             XCTAssertEqual(bankAccountPurpose.isRequired, true, "Should be required")
+            XCTAssertNil(bankAccountPurpose.isEditable, "Should be nil")
             XCTAssertEqual(bankAccountPurpose.label, "Account Type", "Invalid label")
             XCTAssertEqual(bankAccountPurpose.placeholder, "", "Invalid placeholder")
             XCTAssertEqual(bankAccountPurpose.fieldSelectionOptions?.count, 2, "Invalid size")
@@ -215,12 +216,14 @@ class TransferMethodConfigurationResultTests: XCTestCase {
         }
 
         // Assert Field branchId
-        let fieldsFilterByBranchId = fields.filter { (field) in  field.name == "branchId" }
+        let fieldsFilterByBranchId = fields.filter { $0.name == "branchId" }
         if let branchId = fieldsFilterByBranchId.first {
             XCTAssertEqual(branchId.name, "branchId", "Invalid name")
             XCTAssertEqual(branchId.category, "ACCOUNT", "Invalid category")
             XCTAssertEqual(branchId.dataType, "NUMBER", "Invalid dataType")
-            XCTAssertEqual(branchId.isRequired, true, "Should not be required")
+            XCTAssertEqual(branchId.isRequired, true, "Should be required")
+            XCTAssertEqual(branchId.isEditable, true, "Should be editable")
+            XCTAssertEqual(branchId.value, "1234", "Should not be required")
             XCTAssertEqual(branchId.label, "Routing Number", "Invalid label")
             XCTAssertEqual(branchId.placeholder, "", "Invalid placeholder")
             XCTAssertEqual(branchId.regularExpression, "^[0-9]{9}$", "Invalid regularExpression")
@@ -236,6 +239,31 @@ class TransferMethodConfigurationResultTests: XCTestCase {
             XCTAssertEqual(branchId.validationMessage?.pattern, "abaCode is invalid format.", "Invalid message")
         } else {
             XCTFail("The field name bankId has not been found")
+        }
+
+        // Assert Field bankAccountId
+        let fieldsFilterByBankAccountId = fields.filter { $0.name == "bankAccountId" }
+        if let branchId = fieldsFilterByBankAccountId.first {
+            XCTAssertEqual(branchId.name, "bankAccountId", "Invalid name")
+            XCTAssertEqual(branchId.category, "ACCOUNT", "Invalid category")
+            XCTAssertEqual(branchId.dataType, "NUMBER", "Invalid dataType")
+            XCTAssertEqual(branchId.isRequired, true, "Should be required")
+            XCTAssertEqual(branchId.isEditable, true, "Should be editable")
+            XCTAssertEqual(branchId.regularExpression, "^(?![0-]+$)[0-9-]{4,17}$", "Invalid regularExpression")
+            XCTAssertEqual(branchId.maxLength, 17, "The maxLength should not be nil")
+            XCTAssertEqual(branchId.minLength, 4, "The minLength should not be nil")
+            XCTAssertNotNil(branchId.validationMessage, "Validation Messages should not be nil")
+            XCTAssertEqual(branchId.validationMessage?.length,
+                           "The minimum length of this field is 4 and maximum length is 17.",
+                           "Invalid message")
+            XCTAssertEqual(branchId.validationMessage?.empty,
+                           "You must provide a value for this field",
+                           "Invalid message")
+            XCTAssertEqual(branchId.validationMessage?.pattern,
+                           "accountNumber is invalid format.",
+                           "Invalid message")
+        } else {
+            XCTFail("The field name bankAccountId has not been found")
         }
     }
 

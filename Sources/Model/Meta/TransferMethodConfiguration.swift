@@ -46,6 +46,8 @@ public struct HyperwalletField: Codable {
     public let fieldSelectionOptions: [HyperwalletFieldSelectionOption]?
     /// Indicate if the field is mandatory, or nil if none exists
     public let isRequired: Bool?
+    /// Indicate if the field is editable, or nil if none exists
+    public let isEditable: Bool?
     /// The field label
     public let label: String?
     /// The field maximum length, or nil if none exists
@@ -60,6 +62,8 @@ public struct HyperwalletField: Codable {
     public let regularExpression: String?
     /// The validation message
     public let validationMessage: HyperwalletValidationMessage?
+    /// The field value
+    public let value: String?
 }
 
 /// Representation of the transfer method configuration field data type
