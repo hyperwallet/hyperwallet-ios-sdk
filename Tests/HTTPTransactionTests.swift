@@ -163,9 +163,7 @@ class HTTPTransactionTests: XCTestCase {
         transaction.performGraphQl(request, completionHandler: completionHandler)
 
         // Then
-        XCTAssertNotNil(response?.count)
-        XCTAssertNotNil(response?.nodes)
-        XCTAssertEqual(response?.nodes?.count, 2)
+        XCTAssertNotNil(response)
         XCTAssertNil(hyperwalletError)
     }
 

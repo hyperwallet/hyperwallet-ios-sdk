@@ -48,7 +48,7 @@ final class HTTPTransaction {
             perform(transactionType: .graphQl,
                     httpMethod: .post,
                     payload: payload,
-                    completionHandler: HTTPTransaction.graphQlHandler(payload, handler))
+                    completionHandler: HTTPTransaction.graphQlHandler(handler))
     }
 
     /// Performs the HTTP `Rest` request .
@@ -140,26 +140,20 @@ final class HTTPTransaction {
             }
     }
 
-    private static func graphQlHandler<Request, Response>(_ payload: Request,
-                                                          _ completionHandler: @escaping (_ response: Response?,
+    private static func graphQlHandler<Response>(_ completionHandler:
+        @escaping (_ response: Response?,
         _ error: HyperwalletErrorType?) -> Void)
         -> (GraphQlResult<Response>?, HyperwalletErrorType?) -> Void
-        where Request: GraphQlQuery, Response: Decodable {
+        where Response: Decodable {
             return { (result, error) in
                 if let error = error {
                     completionHandler(nil, error)
                 }
                 if let result = result {
-                    var configurationData: Response?
                     if let graphQlErrors = result.errors, !graphQlErrors.isEmpty {
                         _ = ErrorTypeHelper.graphQlErrors(errors: graphQlErrors)
                     }
-
-                    if let data = result.data,
-                        let configuration = data[payload.configurationType] {
-                        configurationData = configuration
-                    }
-                    completionHandler(configurationData, nil)
+                    completionHandler(result.data, nil)
                 }
             }
     }

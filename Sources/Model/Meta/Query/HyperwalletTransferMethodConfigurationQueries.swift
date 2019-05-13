@@ -19,64 +19,89 @@
 import Foundation
 
 /// The `HyperwalletTransferMethodConfigurationFieldQuery` struct defines and builds a query to retrieve the fields
-/// required to create a transfer method (Bank Account, Bank Card, PayPay Account, Prepaid Card, Paper Check)
+/// required to create a transfer method (Bank Account, Bank Card, PayPal Account, Prepaid Card, Paper Check)
 /// with the Hyperwallet platform.
 public struct HyperwalletTransferMethodConfigurationFieldQuery: GraphQlQuery {
-    let configurationType = "transferMethodConfigurations"
     private var country: String
     private var currency: String
     private var transferMethodType: String
     private var profile: String
     private var query = """
-    query {
-        %@ (
-        idToken: "%@",
-        country : %@,
-        currency : %@,
-        transferMethodType : %@,
-        profile : %@) {
-            nodes {
-                countries
-                currencies
-                transferMethodType
-                profile
-                fees {
+        query QueryCreateTransferMethod(
+            $idToken: String =  "%@",
+            $profileType: Profile = %@
+            $country: Country = %@
+            $currency: Currency = %@
+            $transferMethodType: TransferMethodType = %@
+
+        ){
+            transferMethodUIConfigurations (idToken: $idToken,
+                profileType: $profileType
+                country: $country,
+                currency: $currency,
+                transferMethodType: $transferMethodType) {
                     nodes {
-                        transferMethodType
                         country
                         currency
-                        feeRateType
-                        value
-                        minimum
-                        maximum
+                        transferMethodType
+                        profile
+                        fieldGroups {
+                            nodes {
+                                group
+                                fields {
+                                    dataType
+                                    isRequired
+                                    isEditable
+                                    name
+                                    label
+                                    placeholder
+                                    value
+                                    regularExpression
+                                    fieldSelectionOptions {
+                                        label
+                                        value
+                                    }
+                                    validationMessage {
+                                        length
+                                        pattern
+                                        empty
+                                    }
+                                }
+                            }
+                        }
                     }
-                }
-                processingTime
-                fields {
-                    category
-                    dataType
-                    isRequired
-                    isEditable
-                    label
-                    maxLength
-                    minLength
+                },
+          countries (idToken: $idToken,
+                     code: $country){
+              nodes {
+                code
+                name
+                iso3
+                currencies (code:$currency){
+                  nodes {
+                    code
                     name
-                    placeholder
-                    regularExpression
-                    value
-                    fieldSelectionOptions {
-                        label
-                        value
+                    transferMethodTypes (code:$transferMethodType){
+                      nodes {
+                        code
+                        name
+                        processingTime
+                        fees {
+                          nodes {
+                            currency
+                            feeRateType
+                            value
+                            minimum
+                            maximum
+                          }
+                        }
+                      }
                     }
-                    validationMessage {
-                        length
-                        pattern
-                        empty
-                    }
+                  }
                 }
+              }
             }
-        }
-    }
+         }
     """
 
     /// Create a new `HyperwalletTransferMethodConfigurationQuery` from the country, currency, transferMethodType
@@ -98,7 +123,7 @@ public struct HyperwalletTransferMethodConfigurationFieldQuery: GraphQlQuery {
     }
 
     public func toGraphQl(userToken: String) -> String {
-        return String(format: query, configurationType, userToken, country, currency, transferMethodType, profile)
+        return String(format: query, userToken, profile, country, currency, transferMethodType)
     }
 }
 
@@ -106,31 +131,37 @@ public struct HyperwalletTransferMethodConfigurationFieldQuery: GraphQlQuery {
 /// that is required to construct a `HyperwalletTransferMethodConfigurationFieldQuery`.
 ///
 /// In addition to the key set, the query will also retrieve the processing time and fees associated with each
-/// country, currency, transfer method type, and profile tuple.
+/// country, currency and transfer method type tuple.
 public struct HyperwalletTransferMethodConfigurationKeysQuery: GraphQlQuery {
-    let configurationType = "transferMethodConfigurations"
     private var limit: Int = 0
     private var query = """
     query {
-        %@ (idToken: "%@", limit:%d) {
-        count
-        nodes {
-            countries
-            currencies
-            transferMethodType
-            profile
-            fees {
-                nodes {
-                    transferMethodType
-                    country
-                    currency
-                    feeRateType
-                    value
-                    minimum
-                    maximum
+        countries (idToken: "%@") {
+            nodes {
+                code
+                name
+                currencies {
+                    nodes {
+                        code
+                        name
+                        transferMethodTypes {
+                            nodes {
+                                code
+                                name
+                                processingTime
+                                fees {
+                                    nodes {
+                                      currency
+                                      value
+                                      feeRateType
+                                      maximum
+                                      minimum
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
-            }
-            processingTime
             }
         }
     }
@@ -138,12 +169,12 @@ public struct HyperwalletTransferMethodConfigurationKeysQuery: GraphQlQuery {
 
     //// Create a new `HyperwalletTransferMethodConfigurationKeysQuery` instance
     ///
-    /// - Parameter limit: The maximum number of records that will be returned per page. 
+    /// - Parameter limit: The maximum number of records that will be returned per page.
     public init(limit: Int = 0) {
         self.limit = limit
     }
 
     public func toGraphQl(userToken: String) -> String {
-        return String(format: query, configurationType, userToken, limit)
+        return String(format: query, userToken, limit)
     }
 }

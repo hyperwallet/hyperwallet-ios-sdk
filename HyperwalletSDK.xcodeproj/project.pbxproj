@@ -32,16 +32,14 @@
 		DB1A03E0225D3DD80080C8D6 /* HTTPTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1A03D3225D3DD80080C8D6 /* HTTPTransaction.swift */; };
 		DB1A03E2225D3DD80080C8D6 /* HyperwalletError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1A03D5225D3DD80080C8D6 /* HyperwalletError.swift */; };
 		DB1A03E3225D3DD80080C8D6 /* Hyperwallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1A03D6225D3DD80080C8D6 /* Hyperwallet.swift */; };
-		DB1A03FC225D3DE40080C8D6 /* HyperwalletTransferMethodConfigurationFieldResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1A03E6225D3DE40080C8D6 /* HyperwalletTransferMethodConfigurationFieldResult.swift */; };
-		DB1A03FD225D3DE40080C8D6 /* HyperwalletTransferMethodConfigurationTransactionResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1A03E7225D3DE40080C8D6 /* HyperwalletTransferMethodConfigurationTransactionResult.swift */; };
+		DB1A03FC225D3DE40080C8D6 /* HyperwalletTransferMethodConfigurationField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1A03E6225D3DE40080C8D6 /* HyperwalletTransferMethodConfigurationField.swift */; };
 		DB1A03FE225D3DE40080C8D6 /* TransferMethodConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1A03E8225D3DE40080C8D6 /* TransferMethodConfiguration.swift */; };
-		DB1A03FF225D3DE40080C8D6 /* HyperwalletTransferMethodConfigurationKeyResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1A03E9225D3DE40080C8D6 /* HyperwalletTransferMethodConfigurationKeyResult.swift */; };
-		DB1A0400225D3DE40080C8D6 /* TransferMethodConfigurationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1A03EA225D3DE40080C8D6 /* TransferMethodConfigurationResult.swift */; };
+		DB1A03FF225D3DE40080C8D6 /* HyperwalletTransferMethodConfigurationKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1A03E9225D3DE40080C8D6 /* HyperwalletTransferMethodConfigurationKey.swift */; };
 		DB1A0401225D3DE40080C8D6 /* HyperwalletTransferMethodConfigurationQueries.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1A03EC225D3DE40080C8D6 /* HyperwalletTransferMethodConfigurationQueries.swift */; };
 		DB1A0402225D3DE40080C8D6 /* GraphQlQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1A03ED225D3DE40080C8D6 /* GraphQlQuery.swift */; };
 		DB1A0403225D3DE40080C8D6 /* GraphQlResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1A03EE225D3DE40080C8D6 /* GraphQlResult.swift */; };
 		DB1A0404225D3DE40080C8D6 /* GraphQlError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1A03F0225D3DE40080C8D6 /* GraphQlError.swift */; };
-		DB1A0405225D3DE40080C8D6 /* GraphQlData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1A03F1225D3DE40080C8D6 /* GraphQlData.swift */; };
+		DB1A0405225D3DE40080C8D6 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1A03F1225D3DE40080C8D6 /* Connection.swift */; };
 		DB1A0406225D3DE40080C8D6 /* HyperwalletBankAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1A03F2225D3DE40080C8D6 /* HyperwalletBankAccount.swift */; };
 		DB1A0407225D3DE40080C8D6 /* HyperwalletTransferMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1A03F3225D3DE40080C8D6 /* HyperwalletTransferMethod.swift */; };
 		DB1A0408225D3DE40080C8D6 /* HyperwalletTransferMethodPagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1A03F5225D3DE40080C8D6 /* HyperwalletTransferMethodPagination.swift */; };
@@ -130,16 +128,14 @@
 		DB1A03D3225D3DD80080C8D6 /* HTTPTransaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPTransaction.swift; sourceTree = "<group>"; };
 		DB1A03D5225D3DD80080C8D6 /* HyperwalletError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HyperwalletError.swift; sourceTree = "<group>"; };
 		DB1A03D6225D3DD80080C8D6 /* Hyperwallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hyperwallet.swift; sourceTree = "<group>"; };
-		DB1A03E6225D3DE40080C8D6 /* HyperwalletTransferMethodConfigurationFieldResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HyperwalletTransferMethodConfigurationFieldResult.swift; sourceTree = "<group>"; };
-		DB1A03E7225D3DE40080C8D6 /* HyperwalletTransferMethodConfigurationTransactionResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HyperwalletTransferMethodConfigurationTransactionResult.swift; sourceTree = "<group>"; };
+		DB1A03E6225D3DE40080C8D6 /* HyperwalletTransferMethodConfigurationField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HyperwalletTransferMethodConfigurationField.swift; sourceTree = "<group>"; };
 		DB1A03E8225D3DE40080C8D6 /* TransferMethodConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransferMethodConfiguration.swift; sourceTree = "<group>"; };
-		DB1A03E9225D3DE40080C8D6 /* HyperwalletTransferMethodConfigurationKeyResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HyperwalletTransferMethodConfigurationKeyResult.swift; sourceTree = "<group>"; };
-		DB1A03EA225D3DE40080C8D6 /* TransferMethodConfigurationResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransferMethodConfigurationResult.swift; sourceTree = "<group>"; };
+		DB1A03E9225D3DE40080C8D6 /* HyperwalletTransferMethodConfigurationKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HyperwalletTransferMethodConfigurationKey.swift; sourceTree = "<group>"; };
 		DB1A03EC225D3DE40080C8D6 /* HyperwalletTransferMethodConfigurationQueries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HyperwalletTransferMethodConfigurationQueries.swift; sourceTree = "<group>"; };
 		DB1A03ED225D3DE40080C8D6 /* GraphQlQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphQlQuery.swift; sourceTree = "<group>"; };
 		DB1A03EE225D3DE40080C8D6 /* GraphQlResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphQlResult.swift; sourceTree = "<group>"; };
 		DB1A03F0225D3DE40080C8D6 /* GraphQlError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphQlError.swift; sourceTree = "<group>"; };
-		DB1A03F1225D3DE40080C8D6 /* GraphQlData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphQlData.swift; sourceTree = "<group>"; };
+		DB1A03F1225D3DE40080C8D6 /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		DB1A03F2225D3DE40080C8D6 /* HyperwalletBankAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HyperwalletBankAccount.swift; sourceTree = "<group>"; };
 		DB1A03F3225D3DE40080C8D6 /* HyperwalletTransferMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HyperwalletTransferMethod.swift; sourceTree = "<group>"; };
 		DB1A03F5225D3DE40080C8D6 /* HyperwalletTransferMethodPagination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HyperwalletTransferMethodPagination.swift; sourceTree = "<group>"; };
@@ -303,14 +299,12 @@
 			isa = PBXGroup;
 			children = (
 				DB1A03EB225D3DE40080C8D6 /* Query */,
-				DB1A03F1225D3DE40080C8D6 /* GraphQlData.swift */,
+				DB1A03F1225D3DE40080C8D6 /* Connection.swift */,
 				DB1A03F0225D3DE40080C8D6 /* GraphQlError.swift */,
 				DB1A03EE225D3DE40080C8D6 /* GraphQlResult.swift */,
-				DB1A03E6225D3DE40080C8D6 /* HyperwalletTransferMethodConfigurationFieldResult.swift */,
-				DB1A03E9225D3DE40080C8D6 /* HyperwalletTransferMethodConfigurationKeyResult.swift */,
-				DB1A03E7225D3DE40080C8D6 /* HyperwalletTransferMethodConfigurationTransactionResult.swift */,
+				DB1A03E6225D3DE40080C8D6 /* HyperwalletTransferMethodConfigurationField.swift */,
+				DB1A03E9225D3DE40080C8D6 /* HyperwalletTransferMethodConfigurationKey.swift */,
 				DB1A03E8225D3DE40080C8D6 /* TransferMethodConfiguration.swift */,
-				DB1A03EA225D3DE40080C8D6 /* TransferMethodConfigurationResult.swift */,
 			);
 			path = Meta;
 			sourceTree = "<group>";
@@ -570,9 +564,8 @@
 				DB1A03DD225D3DD80080C8D6 /* HTTPClientProtocol.swift in Sources */,
 				DB1A03DC225D3DD80080C8D6 /* Configuration.swift in Sources */,
 				DB1A03E2225D3DD80080C8D6 /* HyperwalletError.swift in Sources */,
-				DB1A0400225D3DE40080C8D6 /* TransferMethodConfigurationResult.swift in Sources */,
 				DB1A040A225D3DE40080C8D6 /* HyperwalletPageList.swift in Sources */,
-				DB1A0405225D3DE40080C8D6 /* GraphQlData.swift in Sources */,
+				DB1A0405225D3DE40080C8D6 /* Connection.swift in Sources */,
 				DB1A0404225D3DE40080C8D6 /* GraphQlError.swift in Sources */,
 				07C00B032277D25700E0930C /* HyperwalletPayPalAccountPagination.swift in Sources */,
 				DB1A03DA225D3DD80080C8D6 /* HyperwalletAuthenticationTokenProvider.swift in Sources */,
@@ -580,12 +573,11 @@
 				DB1A0407225D3DE40080C8D6 /* HyperwalletTransferMethod.swift in Sources */,
 				DB1A03D8225D3DD80080C8D6 /* TransactionType.swift in Sources */,
 				DB1A03D7225D3DD80080C8D6 /* AnyCodable.swift in Sources */,
-				DB1A03FF225D3DE40080C8D6 /* HyperwalletTransferMethodConfigurationKeyResult.swift in Sources */,
+				DB1A03FF225D3DE40080C8D6 /* HyperwalletTransferMethodConfigurationKey.swift in Sources */,
 				DB1A03DB225D3DD80080C8D6 /* HTTPMethod.swift in Sources */,
-				DB1A03FC225D3DE40080C8D6 /* HyperwalletTransferMethodConfigurationFieldResult.swift in Sources */,
+				DB1A03FC225D3DE40080C8D6 /* HyperwalletTransferMethodConfigurationField.swift in Sources */,
 				9807B74522642BEA0028A280 /* OSLog.swift in Sources */,
 				DB1A03E3225D3DD80080C8D6 /* Hyperwallet.swift in Sources */,
-				DB1A03FD225D3DE40080C8D6 /* HyperwalletTransferMethodConfigurationTransactionResult.swift in Sources */,
 				DB1A040B225D3DE40080C8D6 /* HyperwalletBankCardPagination.swift in Sources */,
 				DB1A03E0225D3DD80080C8D6 /* HTTPTransaction.swift in Sources */,
 				DB1A040D225D3DE40080C8D6 /* HyperwalletStatusTransition.swift in Sources */,
