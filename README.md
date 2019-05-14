@@ -368,7 +368,7 @@ Hyperwallet.shared.retrieveTransferMethodConfigurationKeys(request: keysQuery) {
     
     // Get transfer method types based on the first country code and its first currency code
     if let countryCode = countries?.first?.code, let currencyCode = currencies?.first?.code {
-        transferMethodTypes = result.transferMethodTypes(country: countryCode, currency: currencyCode)
+        transferMethodTypes = result.transferMethodTypes(countryCode: countryCode, currencyCode: currencyCode)
     }
                                
     print(countries)
