@@ -79,7 +79,6 @@
 		DBCA37B1225D6D1700CD4137 /* TransferMethodConfigurationGraphQlResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = DBCA37A4225D6D1600CD4137 /* TransferMethodConfigurationGraphQlResponse.json */; };
 		DBCA37B2225D6D1700CD4137 /* BankCardErrorResponseWithInvalidCardNumber.json in Resources */ = {isa = PBXBuildFile; fileRef = DBCA37A5225D6D1700CD4137 /* BankCardErrorResponseWithInvalidCardNumber.json */; };
 		DBCA37B4225D6D1700CD4137 /* StatusTransitionMockedResponseInvalidTransition.json in Resources */ = {isa = PBXBuildFile; fileRef = DBCA37A7225D6D1700CD4137 /* StatusTransitionMockedResponseInvalidTransition.json */; };
-		DBCA37B5225D6D1700CD4137 /* TransferMethodConfigurationEmptyResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = DBCA37A8225D6D1700CD4137 /* TransferMethodConfigurationEmptyResponse.json */; };
 		DBCA37B6225D6D1700CD4137 /* TransferMethodConfigurationFieldsResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = DBCA37A9225D6D1700CD4137 /* TransferMethodConfigurationFieldsResponse.json */; };
 		DBCA37B7225D6D1700CD4137 /* BankAccountErrorResponseWithMissingBankId.json in Resources */ = {isa = PBXBuildFile; fileRef = DBCA37AA225D6D1700CD4137 /* BankAccountErrorResponseWithMissingBankId.json */; };
 		DBCA37B8225D6D1700CD4137 /* TransferMethodConfigurationKeysWithoutFeeResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = DBCA37AB225D6D1700CD4137 /* TransferMethodConfigurationKeysWithoutFeeResponse.json */; };
@@ -176,7 +175,6 @@
 		DBCA37A5225D6D1700CD4137 /* BankCardErrorResponseWithInvalidCardNumber.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BankCardErrorResponseWithInvalidCardNumber.json; sourceTree = "<group>"; };
 		DBCA37A6225D6D1700CD4137 /* ListBankCardResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ListBankCardResponse.json; sourceTree = "<group>"; };
 		DBCA37A7225D6D1700CD4137 /* StatusTransitionMockedResponseInvalidTransition.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StatusTransitionMockedResponseInvalidTransition.json; sourceTree = "<group>"; };
-		DBCA37A8225D6D1700CD4137 /* TransferMethodConfigurationEmptyResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TransferMethodConfigurationEmptyResponse.json; sourceTree = "<group>"; };
 		DBCA37A9225D6D1700CD4137 /* TransferMethodConfigurationFieldsResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TransferMethodConfigurationFieldsResponse.json; sourceTree = "<group>"; };
 		DBCA37AA225D6D1700CD4137 /* BankAccountErrorResponseWithMissingBankId.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BankAccountErrorResponseWithMissingBankId.json; sourceTree = "<group>"; };
 		DBCA37AB225D6D1700CD4137 /* TransferMethodConfigurationKeysWithoutFeeResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TransferMethodConfigurationKeysWithoutFeeResponse.json; sourceTree = "<group>"; };
@@ -375,7 +373,6 @@
 				07C00B092277D5CB00E0930C /* PayPalAccountResponseWithMissingEmail.json */,
 				DBCA37A7225D6D1700CD4137 /* StatusTransitionMockedResponseInvalidTransition.json */,
 				DBCA37A3225D6D1600CD4137 /* StatusTransitionMockedResponseSuccess.json */,
-				DBCA37A8225D6D1700CD4137 /* TransferMethodConfigurationEmptyResponse.json */,
 				DBCA37A9225D6D1700CD4137 /* TransferMethodConfigurationFieldsResponse.json */,
 				DBCA37A4225D6D1600CD4137 /* TransferMethodConfigurationGraphQlResponse.json */,
 				DBCA37AD225D6D1700CD4137 /* TransferMethodConfigurationKeysResponse.json */,
@@ -505,7 +502,6 @@
 				DBCA37B0225D6D1700CD4137 /* StatusTransitionMockedResponseSuccess.json in Resources */,
 				DBCA37C0225D6E3A00CD4137 /* TransferMethodMockedSuccessResponse.json in Resources */,
 				DBCA37BC225D6DD900CD4137 /* BankCardErrorResponseWithMissingCardNumber.json in Resources */,
-				DBCA37B5225D6D1700CD4137 /* TransferMethodConfigurationEmptyResponse.json in Resources */,
 				DB764E91227833E10053BB91 /* UserBusinessResponse.json in Resources */,
 				DBCA37B9225D6D1700CD4137 /* BankCardErrorResponseWithInvalidBranchId.json in Resources */,
 				07C00B0B2277D5DC00E0930C /* PayPalAccountResponseWithMissingEmail.json in Resources */,

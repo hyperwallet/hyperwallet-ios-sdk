@@ -18,7 +18,7 @@
 
 import Foundation
 
-/// The `HyperwalletTransferMethodConfigurationKeyResult` protocol for processing the transfer method configuration
+/// The `HyperwalletTransferMethodConfigurationKey` protocol for processing the transfer method configuration
 /// key result from the Hyperwallet platform.
 public protocol HyperwalletTransferMethodConfigurationKey {
     /// Returns the list of countries
@@ -75,8 +75,6 @@ final class TransferMethodConfigurationKeyResult: HyperwalletTransferMethodConfi
     ///   - currency: the 3 letter ISO 4217-1 currency code
     /// - Returns: a list of transfer method types
     func transferMethodTypes(country: String, currency: String) -> [HyperwalletTransferMethodType]? {
-        return hyperwalletCountries?.first(where: { $0.code == country })?
-            .currencies?.nodes?.first(where: { $0.code == currency })?
-            .transferMethodTypes?.nodes
+        return currencies(from: country)?.first(where: { $0.code == currency })?.transferMethodTypes?.nodes
     }
 }

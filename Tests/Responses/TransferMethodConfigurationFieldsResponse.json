@@ -1,88 +1,221 @@
 {
     "data": {
-        "transferMethodConfigurations": {
+        "transferMethodUIConfigurations": {
             "nodes": [
                 {
-                    "countries": [
-                        "US"
-                    ],
-                    "currencies": [
-                        "USD"
-                    ],
+                    "country": "US",
+                    "currency": "USD",
                     "transferMethodType": "BANK_ACCOUNT",
                     "profile": "INDIVIDUAL",
-                    "processingTime": "1-3 Business days",
-                    "fees": {
+                    "fieldGroups": {
                         "nodes": [
                             {
-                                "transferMethodType": "BANK_ACCOUNT",
-                                "country": "US",
-                                "currency": "USD",
-                                "feeRateType": "FLAT",
-                                "value": "3.00"
+                                "group": "IDENTIFICATION",
+                                "fields": [
+                                    {
+                                        "dataType": "TEXT",
+                                        "isRequired": true,
+                                        "isEditable": true,
+                                        "name": "firstName",
+                                        "label": "First Name",
+                                        "placeholder": "",
+                                        "value": "Neil",
+                                        "regularExpression": "^[\\sa-zA-Z0-9\\-.,'\\u00C0-\\u00FF\\u0100-\\u017F\\u0180-\\u024F]{1,50}$",
+                                        "validationMessage": {
+                                            "length": "",
+                                            "pattern": "is invalid length or format.",
+                                            "empty": "You must provide a value for this field"
+                                        }
+                                    },
+                                    {
+                                        "dataType": "TEXT",
+                                        "isRequired": false,
+                                        "isEditable": true,
+                                        "name": "middleName",
+                                        "label": "Middle Name",
+                                        "placeholder": "",
+                                        "regularExpression": "^[\\sa-zA-Z0-9\\-.,'\\u00C0-\\u00FF\\u0100-\\u017F\\u0180-\\u024F]{1,50}$",
+                                        "validationMessage": {
+                                            "length": "",
+                                            "pattern": "is invalid length or format.",
+                                            "empty": "You must provide a value for this field"
+                                        }
+                                    },
+                                    {
+                                        "dataType": "TEXT",
+                                        "isRequired": true,
+                                        "isEditable": true,
+                                        "name": "lastName",
+                                        "label": "Last Name",
+                                        "placeholder": "",
+                                        "value": "Louis",
+                                        "regularExpression": "^[\\sa-zA-Z0-9\\-.,'\\u00C0-\\u00FF\\u0100-\\u017F\\u0180-\\u024F]{1,50}$",
+                                        "validationMessage": {
+                                            "length": "",
+                                            "pattern": "is invalid length or format.",
+                                            "empty": "You must provide a value for this field"
+                                        }
+                                    },
+                                    {
+                                        "dataType": "PHONE",
+                                        "isRequired": false,
+                                        "isEditable": true,
+                                        "name": "phoneNumber",
+                                        "label": "Phone Number",
+                                        "placeholder": "",
+                                        "value": "+1 604 6666666",
+                                        "regularExpression": "^(?=.{7,17}$)[\\+]{0,1}[0-9\\(\\)\\ \\.\\-]{1,}$",
+                                        "validationMessage": {
+                                            "length": "",
+                                            "pattern": "is invalid length or format.",
+                                            "empty": "You must provide a value for this field"
+                                        }
+                                    },
+                                    {
+                                        "dataType": "PHONE",
+                                        "isRequired": false,
+                                        "isEditable": true,
+                                        "name": "mobileNumber",
+                                        "label": "Mobile Number",
+                                        "placeholder": "",
+                                        "value": "604 666 6666",
+                                        "regularExpression": "^(?=.{7,17}$)[\\+]{0,1}[0-9\\(\\)\\ \\.\\-]{1,}$",
+                                        "validationMessage": {
+                                            "length": "",
+                                            "pattern": "is invalid length or format.",
+                                            "empty": "You must provide a value for this field"
+                                        }
+                                    },
+                                    {
+                                        "dataType": "DATE",
+                                        "isRequired": false,
+                                        "isEditable": true,
+                                        "name": "dateOfBirth",
+                                        "label": "Date of Birth",
+                                        "placeholder": "",
+                                        "value": "1980-01-01",
+                                        "validationMessage": {
+                                            "length": "",
+                                            "pattern": "is invalid length or format.",
+                                            "empty": "You must provide a value for this field"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "group": "BUSINESS_INFORMATION",
+                                "fields": [
+                                    {
+                                        "dataType": "NUMBER",
+                                        "isRequired": true,
+                                        "isEditable": true,
+                                        "maxLength": 9,
+                                        "minLength": 9,
+                                        "name": "branchId",
+                                        "label": "Routing Number",
+                                        "placeholder": "",
+                                        "regularExpression": "^[0-9]{9}$",
+                                        "validationMessage": {
+                                            "length": "The exact length of this field is 9.",
+                                            "pattern": "is invalid length or format.",
+                                            "empty": "You must provide a value for this field"
+                                        }
+                                    },
+                                    {
+                                        "dataType": "NUMBER",
+                                        "isRequired": true,
+                                        "isEditable": true,
+                                        "maxLength": 17,
+                                        "minLength": 4,
+                                        "name": "bankAccountId",
+                                        "label": "Account Number",
+                                        "placeholder": "",
+                                        "regularExpression": "^(?![0-]+$)[0-9-]{4,17}$",
+                                        "validationMessage": {
+                                            "length": "The minimum length of this field is 4 and maximum length is 17.",
+                                            "pattern": "is invalid length or format.",
+                                            "empty": "You must provide a value for this field"
+                                        }
+                                    },
+                                    {
+                                        "dataType": "SELECTION",
+                                        "isRequired": true,
+                                        "isEditable": true,
+                                        "name": "bankAccountPurpose",
+                                        "label": "Account Type",
+                                        "placeholder": "",
+                                        "fieldSelectionOptions": [
+                                            {
+                                                "label": "CHECKING",
+                                                "value": "CHECKING"
+                                            },
+                                            {
+                                                "label": "SAVINGS",
+                                                "value": "SAVINGS"
+                                            }
+                                        ],
+                                        "validationMessage": {
+                                            "length": "",
+                                            "pattern": "is invalid length or format.",
+                                            "empty": "You must provide a value for this field"
+                                        }
+                                    },
+                                    {
+                                        "dataType": "SELECTION",
+                                        "isRequired": true,
+                                        "isEditable": true,
+                                        "name": "bankAccountRelationship",
+                                        "label": "Relationship",
+                                        "placeholder": "",
+                                        "fieldSelectionOptions": [
+                                            {
+                                                "label": "Own company",
+                                                "value": "OWN_COMPANY"
+                                            }
+                                        ],
+                                        "validationMessage": {
+                                            "length": "",
+                                            "pattern": "is invalid length or format.",
+                                            "empty": "You must provide a value for this field"
+                                        }
+                                    }
+                                ]
                             }
                         ]
-                    },
-                    "fields": [
-                        {
-                            "category": "ACCOUNT",
-                            "dataType": "NUMBER",
-                            "isRequired": true,
-                            "isEditable": true,
-                            "label": "Routing Number",
-                            "maxLength": 9,
-                            "minLength": 9,
-                            "name": "branchId",
-                            "placeholder": "",
-                            "regularExpression": "^[0-9]{9}$",
-                            "value": "1234",
-                            "validationMessage": {
-                                "length": "The exact length of this field is 9.",
-                                "pattern": "abaCode is invalid format.",
-                                "empty": "You must provide a value for this field"
-                            }
-                        },
-                        {
-                            "category": "ACCOUNT",
-                            "dataType": "NUMBER",
-                            "isRequired": true,
-                            "isEditable": true,
-                            "label": "Account Number",
-                            "maxLength": 17,
-                            "minLength": 4,
-                            "name": "bankAccountId",
-                            "placeholder": "",
-                            "regularExpression": "^(?![0-]+$)[0-9-]{4,17}$",
-                            "validationMessage": {
-                                "length": "The minimum length of this field is 4 and maximum length is 17.",
-                                "pattern": "accountNumber is invalid format.",
-                                "empty": "You must provide a value for this field"
-                            }
-                        },
-                        {
-                            "category": "ACCOUNT",
-                            "dataType": "SELECTION",
-                            "isRequired": true,
-                            "label": "Account Type",
-                            "name": "bankAccountPurpose",
-                            "placeholder": "",
-                            "fieldSelectionOptions": [
-                                {
-                                    "label": "CHECKING",
-                                    "value": "CHECKING"
-                                },
-                                {
-                                    "label": "SAVINGS",
-                                    "value": "SAVINGS"
+                    }
+                }
+            ]
+        },
+        "countries": {
+            "nodes": [
+                {
+                    "code": "US",
+                    "name": "UNITED STATES",
+                    "iso3": "USA",
+                    "currencies": {
+                        "nodes": [
+                            {
+                                "code": "USD",
+                                "name": "USD",
+                                "transferMethodTypes": {
+                                    "nodes": [
+                                        {
+                                            "code": "BANK_ACCOUNT",
+                                            "name": "Bank Account",
+                                            "fees": {
+                                                "nodes": [
+                                                    {
+                                                        "feeRateType": "FLAT",
+                                                        "value": "2.00"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    ]
                                 }
-                            ],
-                            "validationMessage": {
-                                "length": "",
-                                "pattern": "accountType is invalid format.",
-                                "empty": "You must provide a value for this field"
                             }
-                        }
-                    ]
+                        ]
+                    }
                 }
             ]
         }

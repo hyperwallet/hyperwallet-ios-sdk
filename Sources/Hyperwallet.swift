@@ -436,7 +436,7 @@ public final class Hyperwallet {
     /// token returned from
     /// `HyperwalletAuthenticationTokenProvider.retrieveAuthenticationToken(_ : @escaping CompletionHandler)`.
     ///
-    /// The `completion: @escaping (HyperwalletTransferMethodConfigurationFieldResult?, HyperwalletErrorType?) -> Void`
+    /// The `completion: @escaping (HyperwalletTransferMethodConfigurationField?, HyperwalletErrorType?) -> Void`
     /// that is passed in to this method invocation will receive the successful
     /// response(HyperwalletTransferMethodConfigurationField) or error(HyperwalletErrorType) from processing the
     /// request.
@@ -461,7 +461,7 @@ public final class Hyperwallet {
     ///
     /// The `completion: @escaping (HyperwalletTransferMethodConfigurationKey?, HyperwalletErrorType?) -> Void`
     /// that is passed in to this method invocation will receive the successful
-    /// response(HyperwalletTransferMethodConfigurationKeyResult) or error(HyperwalletErrorType) from processing the
+    /// response(HyperwalletTransferMethodConfigurationKey) or error(HyperwalletErrorType) from processing the
     /// request.
     ///
     /// This function will request a new authentication token via `HyperwalletAuthenticationTokenProvider`
@@ -555,10 +555,8 @@ public final class Hyperwallet {
         (TransferMethodConfigurationFieldResult?, HyperwalletErrorType?) -> Void))
         -> (TransferMethodConfigurationField?, HyperwalletErrorType?) -> Void {
             return { (response, error) in
-                var result: TransferMethodConfigurationFieldResult?
-
-                result = TransferMethodConfigurationFieldResult(response?.transferMethodUIConfigurations?.nodes,
-                                                                response?.countries?.nodes?.first)
+                let result = TransferMethodConfigurationFieldResult(response?.transferMethodUIConfigurations?.nodes,
+                                                                    response?.countries?.nodes?.first)
                 completionHandler(result, error)
             }
     }

@@ -56,6 +56,8 @@ public struct HyperwalletTransferMethodConfigurationFieldQuery: GraphQlQuery {
                                     label
                                     placeholder
                                     value
+                                    maxLength
+                                    minLength
                                     regularExpression
                                     fieldSelectionOptions {
                                         label
@@ -88,7 +90,6 @@ public struct HyperwalletTransferMethodConfigurationFieldQuery: GraphQlQuery {
                         processingTime
                         fees {
                           nodes {
-                            currency
                             feeRateType
                             value
                             minimum
@@ -151,7 +152,6 @@ public struct HyperwalletTransferMethodConfigurationKeysQuery: GraphQlQuery {
                                 processingTime
                                 fees {
                                     nodes {
-                                      currency
                                       value
                                       feeRateType
                                       maximum

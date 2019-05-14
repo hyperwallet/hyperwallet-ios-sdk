@@ -18,14 +18,22 @@
 
 import Foundation
 
-/// TODO Add comment
+/// Representation of a `HyperwalletCountry` node
+///
+/// - code: The 2 letter ISO 3166-1 country code
+/// - name: The country name
+/// - currencies: The `HyperwalletCurrency` nodes that connect to this country node
 public struct HyperwalletCountry: Codable {
     public let code: String
     public let name: String
     public let currencies: Connection<HyperwalletCurrency>?
 }
 
-/// TODO Add comment
+/// Representation of a `HyperwalletCurrency` node
+///
+/// - code: The 3 letter ISO 4217-1 currency code
+/// - name: The currency name
+/// - currencies: The `HyperwalletTransferMethodType` nodes that connect to this currency node
 public struct HyperwalletCurrency: Codable {
     public let code: String
     public let name: String

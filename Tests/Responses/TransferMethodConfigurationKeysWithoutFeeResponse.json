@@ -1,41 +1,55 @@
 {
-    "data":{
-        "transferMethodConfigurations":{
-            "nodes":[
+    "errors": [
+        {
+            "message": "Could not find associated fees.",
+            "locations": [
                 {
-                    "countries":[
-                        "CA"
-                    ],
-                    "currencies":[
-                        "USD"
-                    ],
-                    "transferMethodType":"BANK_ACCOUNT",
-                    "profile":"INDIVIDUAL",
-                    "fees":null,
-                    "processingTime":"1-3 Business days"
+                    "line": 15,
+                    "column": 33
+                }
+            ],
+            "path": [
+                "countries",
+                "nodes",
+                2,
+                "currencies",
+                "nodes",
+                1,
+                "transferMethodTypes",
+                "nodes",
+                0,
+                "fees"
+            ],
+            "extensions": {
+                "errorType": "DataFetchingException",
+                "timestamp": "2019-05-14 07:22:32"
+            }
+        }
+    ],
+    "data": {
+        "countries": {
+            "nodes": [
+                {
+                    "code": "HR",
+                    "name": "CROATIA (local name: Hrvatska)",
+                    "currencies": {
+                        "nodes": [
+                            {
+                                "code": "HRK",
+                                "name": "HRK",
+                                "transferMethodTypes": {
+                                    "nodes": [
+                                        {
+                                            "code": "BANK_ACCOUNT",
+                                            "name": "Bank Account"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
                 }
             ]
         }
-    },
-    "errors":[
-        {
-            "message":"Could not find associated fees.",
-            "locations":[
-                {
-                    "line":9,
-                    "column":4
-                }
-            ],
-            "path":[
-                "transferMethodConfigurations",
-                "nodes",
-                4,
-                "fees"
-            ],
-            "extensions":{
-                "errorType":"DataFetchingException",
-                "timestamp":"2019-03-05 12:11:54"
-            }
-        }
-    ]
+    }
 }
