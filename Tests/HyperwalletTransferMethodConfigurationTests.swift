@@ -42,10 +42,10 @@ class HyperwalletTransferMethodConfigurationTests: XCTestCase {
         XCTAssertEqual(graphQlResponse?.countries()?.count, 4, "countries()` should be 4")
         XCTAssertEqual(graphQlResponse?.currencies(from: "CA")?.count, 2, "currencies(...)` should be 2")
         XCTAssertEqual(graphQlResponse?.transferMethodTypes(country: "CA", currency: "CAD")?
-            .count, 2, "transferMethodTypes(...)` should be 2")
+                                       .count, 2, "`transferMethodTypes(...)` should be 2")
         fees = graphQlResponse?.transferMethodTypes(country: "CA", currency: "CAD")?
-            .first(where: { $0.code == "BANK_ACCOUNT" })
-            .flatMap { $0.fees?.nodes }
+                               .first(where: { $0.code == "BANK_ACCOUNT" })
+                               .flatMap { $0.fees?.nodes }
         flatFee = fees?.first
         percentFee = fees?.last
 
@@ -83,14 +83,14 @@ class HyperwalletTransferMethodConfigurationTests: XCTestCase {
         // Then
         XCTAssertNil(errorResponse, "Error response should be nil" )
         fees = graphQlResponse?.transferMethodTypes(country: "HR", currency: "HRK")?
-            .first(where: { $0.code == "BANK_ACCOUNT" })
-            .flatMap { $0.fees?.nodes }
+                               .first(where: { $0.code == "BANK_ACCOUNT" })
+                               .flatMap { $0.fees?.nodes }
 
         XCTAssertNil(fees, "Fees should be nil" )
-        XCTAssertEqual(graphQlResponse?.countries()?.count, 1, "countries()` should be 1")
+        XCTAssertEqual(graphQlResponse?.countries()?.count, 1, "`countries()` should be 1")
         XCTAssertEqual(graphQlResponse?.currencies(from: "HR")?.count, 1, "currencies(...)` should be 1")
         XCTAssertEqual(graphQlResponse?.transferMethodTypes(country: "HR", currency: "HRK")?
-            .count, 1, "transferMethodTypes(...)` should be 1")
+                                       .count, 1, "transferMethodTypes(...)` should be 1")
     }
 
         func testRetrieveTransferMethodConfigurationFields_success() {
@@ -131,8 +131,8 @@ class HyperwalletTransferMethodConfigurationTests: XCTestCase {
     private func setUpTransferMethodConfigurationKeysRequest(_ responseFile: String,
                                                              _ error: NSError? = nil) -> StubRequest {
         let data = HyperwalletTestHelper.getDataFromJson(responseFile)
-        return HyperwalletTestHelper
-            .buildPostResquest(baseUrl: HyperwalletTestHelper.graphQlURL,
-                               HyperwalletTestHelper.setUpMockedResponse(payload: data, error: error))
+        return HyperwalletTestHelper.buildPostResquest(baseUrl: HyperwalletTestHelper.graphQlURL,
+                                                       HyperwalletTestHelper.setUpMockedResponse(payload: data,
+                                                                                                 error: error))
     }
 }
