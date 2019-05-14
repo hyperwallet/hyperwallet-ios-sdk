@@ -358,18 +358,21 @@ Hyperwallet.shared.retrieveTransferMethodConfigurationKeys(request: keysQuery) {
 
     guard let result = result else { return }
     // Get countries
-    let countryCodes = result.countries()
+    let countries = result.countries()
     
-    // Get currencies based on the first country
-    let transferMethodCurrencies = result.currencies(from: countryCodes.first)
+    // Get currencies based on the first available country code
+    var currencies: [HyperwalletCurrency]?
+    if let countries = result.countries(), !countries.isEmpty {
+        currencies = result.currencies(from: countries.first!.code)
+    }
     
-    // Get transfer method types based on the country, currency and profile type
-    let transferMethodTypes = result.transferMethodTypes(country: countryCodes.first,
-                                                         currency: transferMethodCurrencies.first,
-                                                         profileType: "INDIVIDUAL") // Could be INDIVIDUAL or BUSINESS
+    // Get transfer method types based on the first country code and its first currency code
+    if let countryCode = countries?.first?.code, let currencyCode = currencies?.first?.code {
+        transferMethodTypes = result.transferMethodTypes(country: countryCode, currency: currencyCode)
+    }
                                
-    print(countryCodes)
-    print(transferMethodCurrencies)
+    print(countries)
+    print(currencies)
     print(transferMethodTypes)
 }
 ```
@@ -390,7 +393,8 @@ Hyperwallet.shared.retrieveTransferMethodConfigurationFields(request: fieldQuery
 
     guard let result = result else { return }
     
-    print(result.fields())
+    print(result.transferMethodType()))
+    print(result.fieldGroups()?.fields))
 }
 ```
 
