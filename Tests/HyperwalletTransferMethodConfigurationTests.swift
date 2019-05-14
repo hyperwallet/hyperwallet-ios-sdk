@@ -41,9 +41,9 @@ class HyperwalletTransferMethodConfigurationTests: XCTestCase {
         XCTAssertNil(errorResponse, "The `errorResponse` should be nil")
         XCTAssertEqual(graphQlResponse?.countries()?.count, 4, "countries()` should be 4")
         XCTAssertEqual(graphQlResponse?.currencies(from: "CA")?.count, 2, "currencies(...)` should be 2")
-        XCTAssertEqual(graphQlResponse?.transferMethodTypes(country: "CA", currency: "CAD")?
+        XCTAssertEqual(graphQlResponse?.transferMethodTypes(countryCode: "CA", currencyCode: "CAD")?
                                        .count, 2, "`transferMethodTypes(...)` should be 2")
-        fees = graphQlResponse?.transferMethodTypes(country: "CA", currency: "CAD")?
+        fees = graphQlResponse?.transferMethodTypes(countryCode: "CA", currencyCode: "CAD")?
                                .first(where: { $0.code == "BANK_ACCOUNT" })
                                .flatMap { $0.fees?.nodes }
         flatFee = fees?.first
@@ -82,14 +82,14 @@ class HyperwalletTransferMethodConfigurationTests: XCTestCase {
 
         // Then
         XCTAssertNil(errorResponse, "Error response should be nil" )
-        fees = graphQlResponse?.transferMethodTypes(country: "HR", currency: "HRK")?
+        fees = graphQlResponse?.transferMethodTypes(countryCode: "HR", currencyCode: "HRK")?
                                .first(where: { $0.code == "BANK_ACCOUNT" })
                                .flatMap { $0.fees?.nodes }
 
         XCTAssertNil(fees, "Fees should be nil" )
         XCTAssertEqual(graphQlResponse?.countries()?.count, 1, "`countries()` should be 1")
         XCTAssertEqual(graphQlResponse?.currencies(from: "HR")?.count, 1, "currencies(...)` should be 1")
-        XCTAssertEqual(graphQlResponse?.transferMethodTypes(country: "HR", currency: "HRK")?
+        XCTAssertEqual(graphQlResponse?.transferMethodTypes(countryCode: "HR", currencyCode: "HRK")?
                                        .count, 1, "transferMethodTypes(...)` should be 1")
     }
 

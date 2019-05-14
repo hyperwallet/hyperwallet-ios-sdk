@@ -33,8 +33,8 @@ class TransferMethodConfigurationResultTests: XCTestCase {
     func testPerformanceTransferMethods() {
         self.measure {
             let country = keyResult.countries()?.first
-            _ = keyResult.transferMethodTypes(country: country?.code ?? "",
-                                              currency: country?.currencies?.nodes?.first?.code ?? "")
+            _ = keyResult.transferMethodTypes(countryCode: country?.code ?? "",
+                                              currencyCode: country?.currencies?.nodes?.first?.code ?? "")
         }
     }
 
@@ -44,14 +44,14 @@ class TransferMethodConfigurationResultTests: XCTestCase {
     }
 
     func testTransferMethods_countryUSCurrencyUSDIndividual_success() {
-        let transferMethodTypes = keyResult.transferMethodTypes(country: "US", currency: "USD")
+        let transferMethodTypes = keyResult.transferMethodTypes(countryCode: "US", currencyCode: "USD")
         XCTAssertEqual(transferMethodTypes?.count, 3)
         XCTAssertNotNil(transferMethodTypes?.first { $0.code == "BANK_ACCOUNT" })
         XCTAssertNotNil(transferMethodTypes?.first { $0.code == "PAYPAL_ACCOUNT" })
     }
 
     func testTransferMethodKeyResults_countryUS_currencyUSD_Individual_success() {
-        let transferMethodTypes = keyResult.transferMethodTypes(country: "US", currency: "USD")
+        let transferMethodTypes = keyResult.transferMethodTypes(countryCode: "US", currencyCode: "USD")
 
         XCTAssertEqual(transferMethodTypes?.count, 3)
 
@@ -72,7 +72,7 @@ class TransferMethodConfigurationResultTests: XCTestCase {
     }
 
     func testTransferMethods_countryCACurrencyCADIndividual_success() {
-        let transferMethodTypes = keyResult.transferMethodTypes(country: "CA", currency: "CAD")
+        let transferMethodTypes = keyResult.transferMethodTypes(countryCode: "CA", currencyCode: "CAD")
         XCTAssertEqual(transferMethodTypes?.count, 2)
         XCTAssertNotNil(transferMethodTypes?.first { $0.code == "BANK_ACCOUNT" })
         XCTAssertNotNil(transferMethodTypes?.last { $0.code == "PAYPAL_ACCOUNT" })
@@ -87,7 +87,7 @@ class TransferMethodConfigurationResultTests: XCTestCase {
     }
 
     func testFees_success() {
-        let keyFees = keyResult.transferMethodTypes(country: "CA", currency: "CAD")?.first?.fees?.nodes
+        let keyFees = keyResult.transferMethodTypes(countryCode: "CA", currencyCode: "CAD")?.first?.fees?.nodes
         let fieldFees = fieldResult.transferMethodType()?.fees?.nodes
 
         XCTAssertNotNil(keyFees)
@@ -97,7 +97,7 @@ class TransferMethodConfigurationResultTests: XCTestCase {
     }
 
     func testFees_empty() {
-        let keyFees = keyResult.transferMethodTypes(country: "HR", currency: "HRK")?.first?.fees?.nodes
+        let keyFees = keyResult.transferMethodTypes(countryCode: "HR", currencyCode: "HRK")?.first?.fees?.nodes
         XCTAssertNil(keyFees)
     }
 
