@@ -14,6 +14,7 @@ class HyperwalletTransferMethodConfigurationTests: XCTestCase {
         }
     }
 
+    //swiftlint:disable function_body_length
     func testRetrieveTransferMethodConfigurationKeys_success() {
         // Given
         let request = setUpTransferMethodConfigurationKeysRequest("TransferMethodConfigurationKeysResponse")
@@ -26,6 +27,9 @@ class HyperwalletTransferMethodConfigurationTests: XCTestCase {
         var fees: [HyperwalletFee]?
         var flatFee: HyperwalletFee?
         var percentFee: HyperwalletFee?
+        var bankAccountProcessingTime: String?
+        var payPalAccountProcessingTime: String?
+
         // When
         let keysQuery = HyperwalletTransferMethodConfigurationKeysQuery()
 
@@ -57,6 +61,18 @@ class HyperwalletTransferMethodConfigurationTests: XCTestCase {
         XCTAssertEqual(percentFee?.feeRateType, "PERCENT")
         XCTAssertEqual(percentFee?.minimum, "0.05")
         XCTAssertEqual(percentFee?.maximum, "1.00")
+
+        bankAccountProcessingTime = graphQlResponse?.transferMethodTypes(countryCode: "CA", currencyCode: "CAD")?
+            .first(where: { $0.code == "BANK_ACCOUNT" })
+            .flatMap { $0.processingTime }
+        XCTAssertNotNil(bankAccountProcessingTime)
+        XCTAssertEqual(bankAccountProcessingTime, "1 - 3 business days")
+
+        payPalAccountProcessingTime = graphQlResponse?.transferMethodTypes(countryCode: "CA", currencyCode: "CAD")?
+            .first(where: { $0.code == "PAYPAL_ACCOUNT" })
+            .flatMap { $0.processingTime }
+        XCTAssertNotNil(payPalAccountProcessingTime)
+        XCTAssertEqual(payPalAccountProcessingTime, "IMMEDIATE")
     }
 
     func testRetrieveTransferMethodConfigurationKeys_withoutFees() {

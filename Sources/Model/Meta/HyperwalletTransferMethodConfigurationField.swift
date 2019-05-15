@@ -41,7 +41,7 @@ final class TransferMethodConfigurationFieldResult: HyperwalletTransferMethodCon
     ///
     /// - Parameters:
     ///   - transferMethodUIConfigurations: the GraphQL `[TransferMethodUIConfiguration]`
-    ///   - transferMethodTypes: the GraphQL `HyperwalletTransferMethodType`
+    ///   - country: the GraphQL `HyperwalletCountry`
     init(_ transferMethodUIConfigurations: [TransferMethodConfiguration]?, _ country: HyperwalletCountry?) {
         self.transferMethodUIConfigurations = transferMethodUIConfigurations
         self.country = country
