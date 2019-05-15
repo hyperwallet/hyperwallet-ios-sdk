@@ -19,11 +19,13 @@
                                                 "nodes": [
                                                     {
                                                         "value": "2.20",
-                                                        "feeRateType": "FLAT"
+                                                        "feeRateType": "FLAT",
+                                                        "currency": "CAD"
                                                     },
                                                     {
                                                         "value":"8.9",
                                                         "feeRateType":"PERCENT",
+                                                        "currency": "CAD",
                                                         "minimum":"0.05",
                                                         "maximum":"1.00"
                                                     }
@@ -37,7 +39,8 @@
                                                 "nodes": [
                                                     {
                                                         "value": "0.25",
-                                                        "feeRateType": "FLAT"
+                                                        "feeRateType": "FLAT",
+                                                        "currency": "CAD"
                                                     }
                                                 ]
                                             }
@@ -57,7 +60,8 @@
                                                 "nodes": [
                                                     {
                                                         "value": "2.00",
-                                                        "feeRateType": "FLAT"
+                                                        "feeRateType": "FLAT",
+                                                        "currency": "USD"
                                                     }
                                                 ]
                                             }
@@ -69,7 +73,8 @@
                                                 "nodes": [
                                                     {
                                                         "value": "0.25",
-                                                        "feeRateType": "FLAT"
+                                                        "feeRateType": "FLAT",
+                                                        "currency": "USD"
                                                     }
                                                 ]
                                             }
@@ -97,7 +102,8 @@
                                                 "nodes": [
                                                     {
                                                         "value": "1.50",
-                                                        "feeRateType": "FLAT"
+                                                        "feeRateType": "FLAT",
+                                                        "currency": "EUR"
                                                     }
                                                 ]
                                             }
@@ -137,7 +143,8 @@
                                                 "nodes": [
                                                     {
                                                         "value": "1.50",
-                                                        "feeRateType": "FLAT"
+                                                        "feeRateType": "FLAT",
+                                                        "currency": "EUR"
                                                     }
                                                 ]
                                             }
@@ -177,7 +184,8 @@
                                                 "nodes": [
                                                     {
                                                         "value": "0.25",
-                                                        "feeRateType": "FLAT"
+                                                        "feeRateType": "FLAT",
+                                                        "currency": "CAD"
                                                     }
                                                 ]
                                             }
@@ -197,7 +205,8 @@
                                                 "nodes": [
                                                     {
                                                         "value": "2.00",
-                                                        "feeRateType": "FLAT"
+                                                        "feeRateType": "FLAT",
+                                                        "currency": "USD"
                                                     }
                                                 ]
                                             }
@@ -209,7 +218,8 @@
                                                 "nodes": [
                                                     {
                                                         "value": "1.75",
-                                                        "feeRateType": "FLAT"
+                                                        "feeRateType": "FLAT",
+                                                        "currency": "USD"
                                                     }
                                                 ]
                                             }
@@ -221,7 +231,8 @@
                                                 "nodes": [
                                                     {
                                                         "value": "0.25",
-                                                        "feeRateType": "FLAT"
+                                                        "feeRateType": "FLAT",
+                                                        "currency": "USD"
                                                     }
                                                 ]
                                             }

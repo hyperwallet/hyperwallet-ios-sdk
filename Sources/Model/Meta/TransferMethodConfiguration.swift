@@ -73,6 +73,8 @@ public struct HyperwalletFee: Codable, Hashable {
     public let feeRateType: String
     /// The fee value
     public var value: String
+    /// The fee currency
+    public var currency: String?
     /// The minimum fee, or nil if none exists
     public let minimum: String?
     /// The maximum fee, or nil if none exists

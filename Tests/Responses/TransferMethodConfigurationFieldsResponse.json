@@ -206,7 +206,8 @@
                                                 "nodes": [
                                                     {
                                                         "feeRateType": "FLAT",
-                                                        "value": "2.00"
+                                                        "value": "2.00",
+                                                        "currency": "USD"
                                                     }
                                                 ]
                                             }
