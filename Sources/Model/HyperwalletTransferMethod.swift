@@ -78,29 +78,40 @@ public class HyperwalletTransferMethod: Codable {
         case addressLine1
         case addressLine2
         case bankAccountId
-        case bankAccountRelationship
         case bankAccountPurpose
-        case bankName
+        case bankAccountRelationship
         case bankId
-        case branchName
+        case bankName
         case branchId
+        case branchName
         case businessContactRole
         case businessName
         case businessRegistrationCountry
         case businessRegistrationId
         case businessRegistrationStateProvince
         case businessType
-        case country
         case city
+        case country
+        case countryOfBirth
+        case countryOfNationality
         case dateOfBirth
+        case driversLicenseId
+        case employerId
         case firstName
+        case gender
         case governmentId
+        case governmentIdType
+        case intermediaryBankAccountId
+        case intermediaryBankId
         case lastName
+        case middleName
         case mobileNumber
+        case passportId
         case phoneNumber
         case postalCode
         case profileType
         case stateProvince
+        case wireInstructions
 
         /// Bank Card related fields
         case cardBrand
