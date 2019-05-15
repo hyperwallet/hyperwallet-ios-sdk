@@ -323,7 +323,7 @@ public final class HyperwalletBankAccount: HyperwalletTransferMethod {
         /// - Parameter gender: The bank account holder's gender.
         /// - Returns: a self `HyperwalletBankAccount.Builder` instance.
         public func gender(_ gender: Gender) -> Builder {
-            storage[TransferMethodField.gender.rawValue] = AnyCodable(value: gender)
+            storage[TransferMethodField.gender.rawValue] = AnyCodable(value: gender.rawValue)
             return self
         }
 
@@ -341,7 +341,7 @@ public final class HyperwalletBankAccount: HyperwalletTransferMethod {
         /// - Parameter governmentIdType: The bank account holder's government ID type.
         /// - Returns: a self `HyperwalletBankAccount.Builder` instance.
         public func governmentIdType(_ governmentIdType: GovernmentIdType) -> Builder {
-            storage[TransferMethodField.governmentIdType.rawValue] = AnyCodable(value: governmentIdType)
+            storage[TransferMethodField.governmentIdType.rawValue] = AnyCodable(value: governmentIdType.rawValue)
             return self
         }
 
