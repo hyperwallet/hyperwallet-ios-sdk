@@ -29,7 +29,7 @@ class HyperwalletBankAccountTests: XCTestCase {
         let bankAccount = HyperwalletBankAccount
             .Builder(transferMethodCountry: "US",
                      transferMethodCurrency: "USD",
-                     transferMethodProfileType: .individual)
+                     transferMethodProfileType: "INDIVIDUAL")
             .bankAccountId("12345")
             .branchId("123456")
             .bankId("0010")
@@ -65,7 +65,7 @@ class HyperwalletBankAccountTests: XCTestCase {
         // When
         let bankAccount = HyperwalletBankAccount.Builder(transferMethodCountry: "US",
                                                          transferMethodCurrency: "USD",
-                                                         transferMethodProfileType: .individual)
+                                                         transferMethodProfileType: "INDIVIDUAL")
                                                 .bankAccountId("12345")
                                                 .branchId("123456")
                                                 .bankAccountPurpose(.checking)

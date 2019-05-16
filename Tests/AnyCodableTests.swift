@@ -8,7 +8,7 @@ class AnyCodableTests: XCTestCase {
         let bankAccount = HyperwalletBankAccount
             .Builder(transferMethodCountry: "US",
                      transferMethodCurrency: "USD",
-                     transferMethodProfileType: .individual)
+                     transferMethodProfileType: "INDIVIDUAL")
                      .bankAccountId("12345")
                      .branchId("123456")
                      .bankAccountPurpose(.checking)

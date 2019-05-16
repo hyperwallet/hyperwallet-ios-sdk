@@ -111,12 +111,12 @@ public final class HyperwalletBankAccount: HyperwalletTransferMethod {
         /// - Parameters:
         ///   - transferMethodCountry: The bank account country.
         ///   - transferMethodCurrency: The bank account currency.
-        ///   - transferMethodProfileType: The bank account holder's profile type 'ProfileType'
-        public init(transferMethodCountry: String, transferMethodCurrency: String, transferMethodProfileType: ProfileType) {
+        ///   - transferMethodProfileType: The bank account holder's profile type, e.g. INDIVIDUAL or BUSINESS
+        public init(transferMethodCountry: String, transferMethodCurrency: String, transferMethodProfileType: String) {
             storage[TransferMethodField.type.rawValue] = AnyCodable(value: TransferMethodType.bankAccount.rawValue)
             storage[TransferMethodField.transferMethodCountry.rawValue] = AnyCodable(value: transferMethodCountry)
             storage[TransferMethodField.transferMethodCurrency.rawValue] = AnyCodable(value: transferMethodCurrency)
-            storage[TransferMethodField.profileType.rawValue] = AnyCodable(value: transferMethodProfileType.rawValue)
+            storage[TransferMethodField.profileType.rawValue] = AnyCodable(value: transferMethodProfileType)
         }
 
         /// Sets the bank account holder's street address.
@@ -419,10 +419,10 @@ public final class HyperwalletBankAccount: HyperwalletTransferMethod {
 
         /// Sets the bank account holder's profile type.
         ///
-        /// - Parameter profileType: The bank account holder's profile type.
+        /// - Parameter profileType: The bank account holder's profile type, e.g. INDIVIDUAL or BUSINESS
         /// - Returns: a self `HyperwalletBankAccount.Builder` instance.
-        public func profileType(_ profileType: ProfileType) -> Builder {
-            storage[TransferMethodField.profileType.rawValue] = AnyCodable(value: profileType.rawValue)
+        public func profileType(_ profileType: String) -> Builder {
+            storage[TransferMethodField.profileType.rawValue] = AnyCodable(value: profileType)
             return self
         }
 
