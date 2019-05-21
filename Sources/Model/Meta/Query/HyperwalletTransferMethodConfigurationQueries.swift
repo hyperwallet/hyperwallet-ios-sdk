@@ -56,6 +56,8 @@ public struct HyperwalletTransferMethodConfigurationFieldQuery: GraphQlQuery {
                                     label
                                     placeholder
                                     value
+                                    maxLength
+                                    minLength
                                     regularExpression
                                     fieldSelectionOptions {
                                         label

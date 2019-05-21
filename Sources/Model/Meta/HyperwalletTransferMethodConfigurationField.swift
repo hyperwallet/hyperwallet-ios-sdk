@@ -18,13 +18,13 @@
 
 import Foundation
 
-/// The `HyperwalletTransferMethodConfigurationFieldResult` protocol for processing the transfer method
+/// The `HyperwalletTransferMethodConfigurationField` protocol for processing the transfer method
 /// configuration field result from the Hyperwallet platform.
 public protocol HyperwalletTransferMethodConfigurationField {
     /// Returns a list of `HyperwalletField`
     ///
     /// - Returns: a list of `HyperwalletFieldGroup`
-    func fields() -> [HyperwalletFieldGroup]?
+    func fieldGroups() -> [HyperwalletFieldGroup]?
 
     /// Returns the list of transfer method types based on the parameters
     ///
@@ -41,14 +41,13 @@ final class TransferMethodConfigurationFieldResult: HyperwalletTransferMethodCon
     ///
     /// - Parameters:
     ///   - transferMethodUIConfigurations: the GraphQL `[TransferMethodUIConfiguration]`
-    ///   - transferMethodTypes: the GraphQL `HyperwalletTransferMethodType`
-    init(_ transferMethodUIConfigurations: [TransferMethodConfiguration]?,
-         _ country: HyperwalletCountry?) {
+    ///   - country: the GraphQL `HyperwalletCountry`
+    init(_ transferMethodUIConfigurations: [TransferMethodConfiguration]?, _ country: HyperwalletCountry?) {
         self.transferMethodUIConfigurations = transferMethodUIConfigurations
         self.country = country
     }
 
-    func fields() -> [HyperwalletFieldGroup]? {
+    func fieldGroups() -> [HyperwalletFieldGroup]? {
         return transferMethodUIConfigurations?.first?.fieldGroups?.nodes
     }
 
