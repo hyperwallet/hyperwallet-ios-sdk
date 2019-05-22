@@ -3,7 +3,7 @@ import Hippolyte
 import XCTest
 
 // swiftlint:disable force_cast
-class HyperwalletBankAccountTests: XCTestCase {
+class HyperwalletBankAccountIndividualTests: XCTestCase {
     override func setUp() {
         Hyperwallet.setup(HyperwalletTestHelper.authenticationProvider)
     }
@@ -14,10 +14,10 @@ class HyperwalletBankAccountTests: XCTestCase {
         }
     }
 
-    func testCreateBankAccount_success() {
+    func testCreateBankAccount_individual_success() {
         // Given
         let expectation = self.expectation(description: "Create bank account completed")
-        let response = HyperwalletTestHelper.okHTTPResponse(for: "BankAccountResponse")
+        let response = HyperwalletTestHelper.okHTTPResponse(for: "BankAccountIndividualResponse")
         let url = String(format: "%@/bank-accounts", HyperwalletTestHelper.userRestURL)
         let request = HyperwalletTestHelper.buildPostResquest(baseUrl: url, response)
         HyperwalletTestHelper.setUpMockServer(request: request)
@@ -88,7 +88,7 @@ class HyperwalletBankAccountTests: XCTestCase {
     func testGetBankAccount_success() {
         // Given
         let expectation = self.expectation(description: "Get bank account completed")
-        let response = HyperwalletTestHelper.okHTTPResponse(for: "BankAccountResponse")
+        let response = HyperwalletTestHelper.okHTTPResponse(for: "BankAccountIndividualResponse")
         let url = String(format: "%@/bank-accounts/trm-12345", HyperwalletTestHelper.userRestURL)
         let request = HyperwalletTestHelper.buildGetRequest(baseUrl: url, response)
         HyperwalletTestHelper.setUpMockServer(request: request)
@@ -113,7 +113,7 @@ class HyperwalletBankAccountTests: XCTestCase {
     func testUpdateBankAccount_success() {
         // Given
         let expectation = self.expectation(description: "Update bank account completed")
-        let response = HyperwalletTestHelper.okHTTPResponse(for: "BankAccountResponse")
+        let response = HyperwalletTestHelper.okHTTPResponse(for: "BankAccountIndividualResponse")
         let url = String(format: "%@/bank-accounts/trm-12345", HyperwalletTestHelper.userRestURL)
         let request = HyperwalletTestHelper.buildPutRequest(baseUrl: url, response)
         HyperwalletTestHelper.setUpMockServer(request: request)

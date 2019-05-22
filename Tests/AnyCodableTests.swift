@@ -25,7 +25,7 @@ class AnyCodableTests: XCTestCase {
 
     func testDecode() {
         // Given
-        let jsonBody = HyperwalletTestHelper.getDataFromJson("BankAccountResponse")
+        let jsonBody = HyperwalletTestHelper.getDataFromJson("BankAccountIndividualResponse")
 
         // When
         let decoder = JSONDecoder()

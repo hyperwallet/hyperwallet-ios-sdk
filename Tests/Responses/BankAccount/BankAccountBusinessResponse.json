@@ -1,0 +1,49 @@
+{
+    "token": "trm-61231a80-a31f-4c44-b4b5-ece158036647",
+    "type": "BANK_ACCOUNT",
+    "status": "ACTIVATED",
+    "verificationStatus": "NOT_REQUIRED",
+    "createdOn": "2019-05-22T11:30:39",
+    "transferMethodCountry": "US",
+    "transferMethodCurrency": "USD",
+    "bankName": "US BANK NA                          ",
+    "bankId": "102000021",
+    "branchId": "102000021",
+    "bankAccountId": "7861012345",
+    "bankAccountRelationship": "OWN_COMPANY",
+    "bankAccountPurpose": "CHECKING",
+    "profileType": "BUSINESS",
+    "businessType": "CORPORATION",
+    "businessName": "aA1-.,'&+/:;!ÀĀƀ",
+    "businessRegistrationId": "123455511",
+    "businessRegistrationStateProvince": "BC",
+    "businessRegistrationCountry": "CA",
+    "businessContactRole": "OWNER",
+    "businessOperatingName": "AZaz09お元ですか你好ผซอéüõäÄÜÖ-ßḑņžÇĞÿĀſƀɏɐʯʰͰϿЀӿꙀꚗ",
+    "firstName": "Shyang",
+    "middleName": "Alma",
+    "lastName": "Koong",
+    "dateOfBirth": "2001-01-01",
+    "countryOfBirth": "US",
+    "countryOfNationality": "FR",
+    "gender": "FEMALE",
+    "phoneNumber": "604-345-1777",
+    "mobileNumber": "604-345-1888",
+    "governmentId": "999000999",
+    "passportId": "123456789",
+    "driversLicenseId": "234234243",
+    "employerId": "123456789",
+    "addressLine1": "0t6Rpkg8eG&",
+    "city": "Test City",
+    "stateProvince": "WA",
+    "country": "US",
+    "postalCode": "12345",
+    "links": [
+        {
+            "params": {
+                "rel": "self"
+            },
+            "href": "https://qamaster-hyperwallet.aws.paylution.net/rest/v3/users/usr-1297a088-230c-4487-a5b6-48eb9a1cd1b9/bank-accounts/trm-61231a80-a31f-4c44-b4b5-ece158036647"
+        }
+    ]
+}
