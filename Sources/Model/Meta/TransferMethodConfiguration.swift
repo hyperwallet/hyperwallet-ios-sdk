@@ -18,52 +18,26 @@
 
 import Foundation
 
-/// Representation of the transfer method configuration
-struct TransferMethodConfiguration: Codable {
-    /// The list of countries
-    let countries: [String]
-    /// The list of currencies
-    let currencies: [String]
-    /// The `Connection<HyperwalletFee>`, or nil if none exists
-    let fees: Connection<HyperwalletFee>?
-    /// The list of `HyperwalletField`, or nil if none exists
-    let fields: [HyperwalletField]?
-    /// The processing time, or nil if none exists
-    let processingTime: String?
-    /// The profile type
-    let profile: String
-    /// The transfer method type
-    let transferMethodType: String
+/// Representation of a `HyperwalletCountry` node
+///
+/// - code: The 2 letter ISO 3166-1 country code
+/// - name: The country name
+/// - currencies: The `HyperwalletCurrency` nodes that connect to this country node
+public struct HyperwalletCountry: Codable {
+    public let code: String
+    public let name: String
+    public let currencies: Connection<HyperwalletCurrency>?
 }
 
-/// Representation of the transfer method configuration field
-public struct HyperwalletField: Codable {
-    /// The category, or nil if none exists
-    public let category: String?
-    /// The field data type, or nil if none exists
-    public let dataType: HyperwalletDataType.RawValue?
-    /// The list of selection option, or nil if none exists
-    public let fieldSelectionOptions: [HyperwalletFieldSelectionOption]?
-    /// Indicate if the field is mandatory, or nil if none exists
-    public let isRequired: Bool?
-    /// Indicate if the field is editable, or nil if none exists
-    public let isEditable: Bool?
-    /// The field label
-    public let label: String?
-    /// The field maximum length, or nil if none exists
-    public let maxLength: Int?
-    /// The field minimum length, or nil if none exists
-    public let minLength: Int?
-    /// The field name, or nil if none exists
-    public let name: String?
-    /// The field placeholder, or nil if none exists
-    public let placeholder: String?
-    /// The regular expression to validate the field value, or nil if none exists
-    public let regularExpression: String?
-    /// The validation message
-    public let validationMessage: HyperwalletValidationMessage?
-    /// The field value
-    public let value: String?
+/// Representation of a `HyperwalletCurrency` node
+///
+/// - code: The 3 letter ISO 4217-1 currency code
+/// - name: The currency name
+/// - currencies: The `HyperwalletTransferMethodType` nodes that connect to this currency node
+public struct HyperwalletCurrency: Codable {
+    public let code: String
+    public let name: String
+    public let transferMethodTypes: Connection<HyperwalletTransferMethodType>?
 }
 
 /// Representation of the transfer method configuration field data type
@@ -93,6 +67,54 @@ public enum HyperwalletDataType: String, Codable {
     case file = "FILE"
 }
 
+/// Representation of the fee
+public struct HyperwalletFee: Codable, Hashable {
+    /// The fee rate type (FLAT or PERCENT)
+    public let feeRateType: String
+    /// The fee value
+    public var value: String
+    /// The fee currency
+    public var currency: String?
+    /// The minimum fee, or nil if none exists
+    public let minimum: String?
+    /// The maximum fee, or nil if none exists
+    public let maximum: String?
+}
+
+/// Representation of the transfer method configuration field
+public struct HyperwalletField: Codable {
+    /// The field data type, or nil if none exists
+    public let dataType: HyperwalletDataType.RawValue?
+    /// The list of selection option, or nil if none exists
+    public let fieldSelectionOptions: [HyperwalletFieldSelectionOption]?
+    /// Indicate if the field is mandatory, or nil if none exists
+    public let isRequired: Bool?
+    /// Indicate if the field is editable, or nil if none exists
+    public let isEditable: Bool?
+    /// The field label
+    public let label: String?
+    /// The field maximum length, or nil if none exists
+    public let maxLength: Int?
+    /// The field minimum length, or nil if none exists
+    public let minLength: Int?
+    /// The field name, or nil if none exists
+    public let name: String?
+    /// The field placeholder, or nil if none exists
+    public let placeholder: String?
+    /// The regular expression to validate the field value, or nil if none exists
+    public let regularExpression: String?
+    /// The validation message
+    public let validationMessage: HyperwalletValidationMessage?
+    /// The field value
+    public let value: String?
+}
+
+/// Representation of list of HyperwalletField and the group to which it belongs
+public struct HyperwalletFieldGroup: Codable {
+    public let group: String?
+    public let fields: [HyperwalletField]?
+}
+
 /// Representation of the transfer method configuration field selection option
 public struct HyperwalletFieldSelectionOption: Codable {
     /// The label
@@ -101,22 +123,11 @@ public struct HyperwalletFieldSelectionOption: Codable {
     public let value: String
 }
 
-/// Representation of the fee
-public struct HyperwalletFee: Codable, Hashable {
-    /// The transfer method type
-    public let transferMethodType: String
-    /// The country
-    public let country: String
-    /// The currency
-    public let currency: String
-    /// The fee rate type (FLAT or PERCENT)
-    public let feeRateType: String
-    /// The fee value
-    public var value: String
-    /// The minimum fee, or nil if none exists
-    public let minimum: String?
-    /// The maximum fee, or nil if none exists
-    public let maximum: String?
+public struct HyperwalletTransferMethodType: Codable {
+    public let code: String?
+    public let name: String?
+    public let fees: Connection<HyperwalletFee>?
+    public let processingTime: String?
 }
 
 /// Representation of the transfer method configuration field validation message
@@ -127,4 +138,27 @@ public struct HyperwalletValidationMessage: Codable {
     public let pattern: String?
     /// The validation message empty, or nil if none exists
     public let empty: String?
+}
+
+struct TransferMethodConfigurationField: Codable {
+    var countries: Connection<HyperwalletCountry>?
+    var transferMethodUIConfigurations: Connection<TransferMethodConfiguration>?
+}
+
+struct TransferMethodConfigurationKey: Codable {
+    let countries: Connection<HyperwalletCountry>
+}
+
+/// Representation of the transfer method configuration
+public struct TransferMethodConfiguration: Codable {
+    /// The country
+    let country: String?
+    /// The currency
+    let currency: String?
+    /// The transfer method type
+    let transferMethodType: String?
+    /// The profile type
+    let profile: String?
+    /// The `HyperwalletFieldGroup`, or nil if none exists
+    let fieldGroups: Connection<HyperwalletFieldGroup>?
 }
