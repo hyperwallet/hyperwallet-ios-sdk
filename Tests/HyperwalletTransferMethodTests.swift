@@ -55,7 +55,7 @@ class HyperwalletTransferMethodTests: XCTestCase {
         // check the bank card
         let bankCard = transferMethods?.data.first { ($0.getField(fieldName: .type) as? String ?? "")  == "BANK_CARD" }
         XCTAssertEqual(bankCard?.getField(fieldName: .type) as? String, "BANK_CARD")
-        XCTAssertEqual(bankCard?.getField(fieldName: .token) as? String, "trm-4fda1df4-b173-4b55-9eca-a5c0cbf7a48a")
+        XCTAssertEqual(bankCard?.getField(fieldName: .token) as? String, "trm-00002")
         XCTAssertEqual(bankCard?.getField(fieldName: .cardNumber) as? String, "************1358")
         XCTAssertEqual(bankCard?.getField(fieldName: .dateOfExpiry) as? String, "2022-12")
         XCTAssertEqual(bankCard?.getField(fieldName: .cardType) as? String, "DEBIT")
@@ -69,7 +69,7 @@ class HyperwalletTransferMethodTests: XCTestCase {
             ($0.getField(fieldName: .type) as? String ?? "")  == "BANK_ACCOUNT"
         }
         XCTAssertEqual(bankAccount?.getField(fieldName: .type) as? String, "BANK_ACCOUNT")
-        XCTAssertEqual(bankAccount?.getField(fieldName: .token) as? String, "trm-fc13bc5a-7366-425c-837f-7ac1a1d175cc")
+        XCTAssertEqual(bankAccount?.getField(fieldName: .token) as? String, "trm-00001")
         XCTAssertEqual(bankAccount?.getField(fieldName: .bankAccountId) as? String, "25589087")
         XCTAssertEqual(bankAccount?.getField(fieldName: .status) as? String, "ACTIVATED")
         XCTAssertEqual(bankAccount?.getField(fieldName: .createdOn) as? String, "2018-12-15T00:30:12")

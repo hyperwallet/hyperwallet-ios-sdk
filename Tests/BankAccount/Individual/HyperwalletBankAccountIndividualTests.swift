@@ -266,7 +266,7 @@ class HyperwalletBankAccountIndividualTests: XCTestCase {
 
         let bankAccount = bankAccountList?.data.first
         XCTAssertEqual(bankAccount?.getField(fieldName: .type) as? String, "BANK_ACCOUNT")
-        XCTAssertEqual(bankAccount?.getField(fieldName: .token) as? String, "trm-46971726-202e-43d8-833e-70fc70f8f224")
+        XCTAssertEqual(bankAccount?.getField(fieldName: .token) as? String, "trm-12345")
         XCTAssertEqual(bankAccount?.getField(fieldName: .bankAccountId) as? String, "54629074")
         XCTAssertEqual(bankAccount?.getField(fieldName: .dateOfBirth) as? String, "1980-01-01")
     }

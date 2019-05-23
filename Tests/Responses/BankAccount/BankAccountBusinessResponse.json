@@ -1,5 +1,5 @@
 {
-    "token": "trm-61231a80-a31f-4c44-b4b5-ece158036647",
+    "token": "trm-000",
     "type": "BANK_ACCOUNT",
     "status": "ACTIVATED",
     "verificationStatus": "NOT_REQUIRED",
@@ -43,7 +43,7 @@
             "params": {
                 "rel": "self"
             },
-            "href": "https://qamaster-hyperwallet.aws.paylution.net/rest/v3/users/usr-1297a088-230c-4487-a5b6-48eb9a1cd1b9/bank-accounts/trm-61231a80-a31f-4c44-b4b5-ece158036647"
+            "href": "https://localhost/rest/v3/users/usr-0000/bank-accounts/trm-0000"
         }
     ]
 }

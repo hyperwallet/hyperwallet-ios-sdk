@@ -33,7 +33,7 @@ class AnyCodableTests: XCTestCase {
 
         // Then
         XCTAssertNotNil(bankAccount)
-        XCTAssertEqual(bankAccount.getField(fieldName: .token) as! String, "trm-56b976c5-26b2-42fa-87cf-14b3366673c6")
+        XCTAssertEqual(bankAccount.getField(fieldName: .token) as! String, "trm-12345")
         let links = bankAccount.getFields()["links"]!.value as! [Any]
         XCTAssertNotNil(links)
         XCTAssertNotNil(links.first)
