@@ -12,12 +12,15 @@
     "profileType":"INDIVIDUAL",
     "firstName":"Some",
     "lastName":"Guy",
-    "dateOfBirth":"1991-01-01",
-    "addressLine1":"575 Market Street",
+    "middleName": "Good",
+    "dateOfBirth": "1991-01-01",
+    "addressLine1": "575 Market Street",
     "city":"San Francisco",
     "stateProvince":"CA",
     "country":"US",
     "postalCode":"94105",
+    "phoneNumber": "604-345-1777",
+    "mobileNumber": "604-345-1888",
     "links":[
         {
             "params":{

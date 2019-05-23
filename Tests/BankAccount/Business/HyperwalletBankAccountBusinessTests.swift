@@ -27,7 +27,7 @@ class HyperwalletBankAccountBusinessTests: XCTestCase {
 
         let relationship = HyperwalletBankAccount.RelationshipType.ownCompany
         let purpose = HyperwalletBankAccount.PurposeType.checking
-        
+
         // When
         let bankAccount = HyperwalletBankAccount
             .Builder(transferMethodCountry: "US",
