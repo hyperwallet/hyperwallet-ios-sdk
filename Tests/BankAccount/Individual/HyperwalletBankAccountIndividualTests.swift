@@ -25,30 +25,8 @@ class HyperwalletBankAccountIndividualTests: XCTestCase {
         var bankAccountResponse: HyperwalletBankAccount?
         var errorResponse: HyperwalletErrorType?
 
-        let relationship: HyperwalletBankAccount.RelationshipType = .self
-        let purpose = HyperwalletBankAccount.PurposeType.checking
-
         // When
-        let bankAccount = HyperwalletBankAccount
-            .Builder(transferMethodCountry: "US",
-                     transferMethodCurrency: "USD",
-                     transferMethodProfileType: "INDIVIDUAL")
-            .bankAccountId("12345")
-            .branchId("123456")
-            .bankAccountRelationship(relationship)
-            .bankAccountPurpose(purpose)
-            .firstName("Some")
-            .middleName("Good")
-            .lastName("Guy")
-            .phoneNumber("604-345-1777")
-            .mobileNumber("604-345-1888")
-            .dateOfBirth("1991-01-01")
-            .addressLine1("575 Market Street")
-            .city("San Francisco")
-            .stateProvince("CA")
-            .country("US")
-            .postalCode("94105")
-            .build()
+        let bankAccount = buildBankAccount()
 
         Hyperwallet.shared.createBankAccount(account: bankAccount, completion: { (result, error) in
             bankAccountResponse = result
@@ -60,22 +38,8 @@ class HyperwalletBankAccountIndividualTests: XCTestCase {
         // Then
         XCTAssertNotNil(bankAccount)
         XCTAssertNil(errorResponse, "The `errorResponse` should be nil")
-        XCTAssertNotNil(bankAccountResponse?.getFields())
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .bankAccountId) as! String, "675825206")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .branchId) as! String, "026009593")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .bankAccountRelationship) as! String, relationship.rawValue)
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .bankAccountPurpose) as! String, purpose.rawValue)
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .firstName) as! String, "Some")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .middleName) as! String, "Good")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .lastName) as! String, "Guy")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .phoneNumber) as! String, "604-345-1777")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .mobileNumber) as! String, "604-345-1888")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .dateOfBirth) as! String, "1991-01-01")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .addressLine1) as! String, "575 Market Street")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .city) as! String, "San Francisco")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .stateProvince) as! String, "CA")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .country) as! String, "US")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .postalCode) as! String, "94105")
+
+        verifyResponse(bankAccountResponse)
     }
 
     func testCreateBankAccount_missingMandatoryField_returnBadRequest() {
@@ -323,5 +287,56 @@ class HyperwalletBankAccountIndividualTests: XCTestCase {
         // Then
         XCTAssertNil(errorResponse, "The `errorResponse` should be nil")
         XCTAssertNil(bankAccountList, "The `bankAccountList` should be nil")
+    }
+
+    func buildBankAccount() -> HyperwalletBankAccount {
+        return HyperwalletBankAccount
+            .Builder(transferMethodCountry: "US",
+                     transferMethodCurrency: "USD",
+                     transferMethodProfileType: "INDIVIDUAL")
+            .bankAccountId("12345")
+            .branchId("123456")
+            .bankAccountRelationship(.self)
+            .bankAccountPurpose(.checking)
+            .firstName("Some")
+            .middleName("Good")
+            .lastName("Guy")
+            .phoneNumber("604-345-1777")
+            .mobileNumber("604-345-1888")
+            .dateOfBirth("1991-01-01")
+            .addressLine1("575 Market Street")
+            .city("San Francisco")
+            .stateProvince("CA")
+            .country("US")
+            .postalCode("94105")
+            .build()
+    }
+
+    func verifyResponse(_ bankAccountResponse: HyperwalletBankAccount?) {
+        XCTAssertNotNil(bankAccountResponse?.getFields())
+        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .bankAccountId) as! String, "675825206")
+        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .branchId) as! String, "026009593")
+
+        let relationship: HyperwalletBankAccount.RelationshipType = .self
+        let responseRelationship = bankAccountResponse?.getField(fieldName: .bankAccountRelationship) as! String
+
+        XCTAssertEqual(responseRelationship, relationship.rawValue)
+
+        let purpose = HyperwalletBankAccount.PurposeType.checking
+        let responsePurpose = bankAccountResponse?.getField(fieldName: .bankAccountPurpose) as! String
+
+        XCTAssertEqual(responsePurpose, purpose.rawValue)
+
+        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .firstName) as! String, "Some")
+        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .middleName) as! String, "Good")
+        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .lastName) as! String, "Guy")
+        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .phoneNumber) as! String, "604-345-1777")
+        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .mobileNumber) as! String, "604-345-1888")
+        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .dateOfBirth) as! String, "1991-01-01")
+        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .addressLine1) as! String, "575 Market Street")
+        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .city) as! String, "San Francisco")
+        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .stateProvince) as! String, "CA")
+        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .country) as! String, "US")
+        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .postalCode) as! String, "94105")
     }
 }

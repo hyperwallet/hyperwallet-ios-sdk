@@ -223,14 +223,16 @@ public final class HyperwalletBankAccount: HyperwalletTransferMethod {
         ///
         /// - Parameter businessRegistrationCountry: The country where the bank account holder's business is registered.
         /// - Returns: a self `HyperwalletBankAccount.Builder` instance.
-        public func businessRegistrationCountry(_ businessRegistrationCountry: String) -> Builder {
-            storage[TransferMethodField.businessRegistrationCountry.rawValue] = AnyCodable(value: businessRegistrationCountry)
+        public func businessRegistrationCountry(_ country: String) -> Builder {
+            storage[TransferMethodField.businessRegistrationCountry.rawValue] = AnyCodable(value: country)
             return self
         }
 
-        /// Sets the bank account holder's business registration number or identifier, as assigned by the relevant government body.
+        /// Sets the bank account holder's business registration number or identifier,
+        /// as assigned by the relevant government body.
         ///
-        /// - Parameter businessRegistrationId: The bank account holder's business registration number or identifier, as assigned by the relevant government body.
+        /// - Parameter businessRegistrationId: The bank account holder's business
+        ///   registration number or identifier, as assigned by the relevant government body.
         /// - Returns: a self `HyperwalletBankAccount.Builder` instance.
         public func businessRegistrationId(_ businessRegistrationId: String) -> Builder {
             storage[TransferMethodField.businessRegistrationId.rawValue] = AnyCodable(value: businessRegistrationId)
@@ -239,10 +241,11 @@ public final class HyperwalletBankAccount: HyperwalletTransferMethod {
 
         /// Sets the state, province or region where the bank account holder's business is registered.
         ///
-        /// - Parameter businessRegistrationStateProvince: The state, province or region where the bank account holder's business is registered.
+        /// - Parameter businessRegistrationStateProvince: The state, province or region
+        ///   where the bank account holder's business is registered.
         /// - Returns: a self `HyperwalletBankAccount.Builder` instance.
-        public func businessRegistrationStateProvince(_ businessRegistrationStateProvince: String) -> Builder {
-            storage[TransferMethodField.businessRegistrationStateProvince.rawValue] = AnyCodable(value: businessRegistrationStateProvince)
+        public func businessRegistrationStateProvince(_ stateProvince: String) -> Builder {
+            storage[TransferMethodField.businessRegistrationStateProvince.rawValue] = AnyCodable(value: stateProvince)
             return self
         }
 
@@ -349,8 +352,8 @@ public final class HyperwalletBankAccount: HyperwalletTransferMethod {
         ///
         /// - Parameter intermediaryBankAccountId: The account number at the intermediary bank.
         /// - Returns: a self `HyperwalletBankAccount.Builder` instance.
-        public func intermediaryBankAccountId(_ intermediaryBankAccountId: String) -> Builder {
-            storage[TransferMethodField.intermediaryBankAccountId.rawValue] = AnyCodable(value: intermediaryBankAccountId)
+        public func intermediaryBankAccountId(_ accountId: String) -> Builder {
+            storage[TransferMethodField.intermediaryBankAccountId.rawValue] = AnyCodable(value: accountId)
             return self
         }
 
