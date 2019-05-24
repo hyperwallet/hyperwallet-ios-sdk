@@ -26,7 +26,7 @@ class HyperwalletBankAccountIndividualTests: XCTestCase {
         var errorResponse: HyperwalletErrorType?
 
         // When
-        let bankAccount = buildBankAccount()
+        let bankAccount = buildIndividualBankAccount()
 
         Hyperwallet.shared.createBankAccount(account: bankAccount, completion: { (result, error) in
             bankAccountResponse = result
@@ -39,7 +39,35 @@ class HyperwalletBankAccountIndividualTests: XCTestCase {
         XCTAssertNotNil(bankAccount)
         XCTAssertNil(errorResponse, "The `errorResponse` should be nil")
 
-        verifyResponse(bankAccountResponse)
+        verifyIndividualResponse(bankAccountResponse)
+    }
+
+    func testCreateBankAccount_business_success() {
+        // Given
+        let expectation = self.expectation(description: "Create bank account completed")
+        let response = HyperwalletTestHelper.okHTTPResponse(for: "BankAccountBusinessResponse")
+        let url = String(format: "%@/bank-accounts", HyperwalletTestHelper.userRestURL)
+        let request = HyperwalletTestHelper.buildPostResquest(baseUrl: url, response)
+        HyperwalletTestHelper.setUpMockServer(request: request)
+
+        var bankAccountResponse: HyperwalletBankAccount?
+        var errorResponse: HyperwalletErrorType?
+
+        // When
+        let bankAccount = buildBusinessBankAccount()
+
+        Hyperwallet.shared.createBankAccount(account: bankAccount, completion: { (result, error) in
+            bankAccountResponse = result
+            errorResponse = error
+            expectation.fulfill()
+        })
+        wait(for: [expectation], timeout: 1)
+
+        // Then
+        XCTAssertNotNil(bankAccount)
+        XCTAssertNil(errorResponse, "The `errorResponse` should be nil")
+
+        verifyBusinessResponse(bankAccountResponse)
     }
 
     func testCreateBankAccount_missingMandatoryField_returnBadRequest() {
@@ -289,18 +317,30 @@ class HyperwalletBankAccountIndividualTests: XCTestCase {
         XCTAssertNil(bankAccountList, "The `bankAccountList` should be nil")
     }
 
-    func buildBankAccount() -> HyperwalletBankAccount {
+    private func buildIndividualBankAccount() -> HyperwalletBankAccount {
         return HyperwalletBankAccount
             .Builder(transferMethodCountry: "US",
                      transferMethodCurrency: "USD",
                      transferMethodProfileType: "INDIVIDUAL")
             .bankAccountId("12345")
             .branchId("123456")
+            .branchName("XYZ")
+            .bankId("123")
+            .bankName("ABC")
             .bankAccountRelationship(.self)
             .bankAccountPurpose(.checking)
+            .intermediaryBankAccountId("123")
+            .intermediaryBankId("12675")
+            .passportId("112323")
             .firstName("Some")
             .middleName("Good")
             .lastName("Guy")
+            .countryOfBirth("US")
+            .gender(.male)
+            .driversLicenseId("1234")
+            .employerId("1234")
+            .governmentId("12898")
+            .governmentIdType(.passport)
             .phoneNumber("604-345-1777")
             .mobileNumber("604-345-1888")
             .dateOfBirth("1991-01-01")
@@ -312,7 +352,60 @@ class HyperwalletBankAccountIndividualTests: XCTestCase {
             .build()
     }
 
-    func verifyResponse(_ bankAccountResponse: HyperwalletBankAccount?) {
+    func buildBusinessBankAccount() -> HyperwalletBankAccount {
+        return HyperwalletBankAccount
+            .Builder(transferMethodCountry: "US",
+                     transferMethodCurrency: "USD",
+                     transferMethodProfileType: "BUSINESS")
+            .bankAccountId("7861012345")
+            .branchId("102000021")
+            .bankAccountRelationship(.ownCompany)
+            .bankAccountPurpose(.checking)
+            .businessContactRole(.owner)
+            .businessRegistrationCountry("US")
+            .businessRegistrationId("1234")
+            .businessRegistrationStateProvince("WA")
+            .businessType(.corporation)
+            .businessName("US BANK NA")
+            .phoneNumber("604-345-1777")
+            .mobileNumber("604-345-1888")
+            .country("US")
+            .stateProvince("WA")
+            .addressLine1("1234, Broadway")
+            .city("Test City")
+            .postalCode("12345")
+            .build()
+    }
+
+    func verifyBusinessResponse(_ bankAccountResponse: HyperwalletBankAccount?) {
+        XCTAssertNotNil(bankAccountResponse?.getFields())
+        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .transferMethodCountry) as! String, "US")
+        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .transferMethodCurrency) as! String, "USD")
+        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .profileType) as! String, "BUSINESS")
+        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .bankAccountId) as! String, "7861012345")
+        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .branchId) as! String, "102000021")
+
+        let relationship = HyperwalletBankAccount.RelationshipType.ownCompany
+        let responseRelationship = bankAccountResponse?.getField(fieldName: .bankAccountRelationship) as! String
+
+        XCTAssertEqual(responseRelationship, relationship.rawValue)
+
+        let purpose = HyperwalletBankAccount.PurposeType.checking
+        let responsePurpose = bankAccountResponse?.getField(fieldName: .bankAccountPurpose) as! String
+
+        XCTAssertEqual(responsePurpose, purpose.rawValue)
+
+        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .businessName) as! String, "US BANK NA")
+        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .phoneNumber) as! String, "604-345-1777")
+        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .mobileNumber) as! String, "604-345-1888")
+        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .country) as! String, "US")
+        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .stateProvince) as! String, "WA")
+        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .addressLine1) as! String, "1234, Broadway")
+        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .city) as! String, "Test City")
+        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .postalCode) as! String, "12345")
+    }
+
+    private func verifyIndividualResponse(_ bankAccountResponse: HyperwalletBankAccount?) {
         XCTAssertNotNil(bankAccountResponse?.getFields())
         XCTAssertEqual(bankAccountResponse?.getField(fieldName: .bankAccountId) as! String, "675825206")
         XCTAssertEqual(bankAccountResponse?.getField(fieldName: .branchId) as! String, "026009593")
