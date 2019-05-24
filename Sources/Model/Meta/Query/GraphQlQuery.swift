@@ -20,9 +20,6 @@ import Foundation
 
 /// The `GraphQlQuery` protocol for creating a GraphQL query with the Hyperwallet platform.
 protocol GraphQlQuery: Encodable {
-    /// The configuration type
-    var configurationType: String { get }
-
     /// Returns a formatted query string that can be posted to the Hyperwallet platforms GraphQL schema.
     ///
     /// - Parameter userToken: the unique identifier for the User that the query pertains to

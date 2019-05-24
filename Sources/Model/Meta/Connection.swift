@@ -18,27 +18,8 @@
 
 import Foundation
 
-/// The `HyperwalletTransferMethodConfigurationKeyResult` protocol for processing the transfer method configuration
-/// key result from the Hyperwallet platform.
-public protocol HyperwalletTransferMethodConfigurationKeyResult:
-HyperwalletTransferMethodConfigurationTransactionResult {
-    /// Returns the list of countries
-    ///
-    /// - Returns: a list of countries
-    func countries() -> [String]
-
-    /// Returns the list of currencies based on the country
-    ///
-    /// - Parameter country: the 2 letter ISO 3166-1 country code
-    /// - Returns: a list of currencies
-    func currencies(from country: String) -> [String]
-
-    /// Returns the list of transfer method types based on the parameters
-    ///
-    /// - Parameters:
-    ///   - country: the 2 letter ISO 3166-1 country code
-    ///   - currency: the 3 letter ISO 4217-1 currency code
-    ///   - profileType: the `TransferMethodType`
-    /// - Returns: a list of transfer method types
-    func transferMethodTypes(country: String, currency: String, profileType: String) -> [String]
+/// Representation of the GraphQL's Connection type
+public struct Connection<T: Codable>: Codable {
+    // Array of Connection type
+    public let nodes: [T]?
 }

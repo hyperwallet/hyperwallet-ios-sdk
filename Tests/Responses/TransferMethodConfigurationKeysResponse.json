@@ -1,135 +1,251 @@
 {
-    "data":{
-        "transferMethodConfigurations":{
-            "nodes":[
+    "data": {
+        "countries": {
+            "nodes": [
                 {
-                    "countries":[
-                        "CA", "US"
-                    ],
-                    "currencies":[
-                        "USD", "CAD"
-                    ],
-                    "transferMethodType":"BANK_ACCOUNT",
-                    "profile":"INDIVIDUAL",
-                    "fees":{
-                        "nodes":[
+                    "code": "CA",
+                    "name": "CANADA",
+                    "currencies": {
+                        "nodes": [
                             {
-                                "transferMethodType":"BANK_ACCOUNT",
-                                "country":"CA",
-                                "currency":"USD",
-                                "feeRateType":"PERCENT",
-                                "value":"4.9",
-                                "minimum":"0.05",
-                                "maximum":"1.00"
+                                "code": "CAD",
+                                "name": "CAD",
+                                "transferMethodTypes": {
+                                    "nodes": [
+                                        {
+                                            "code": "BANK_ACCOUNT",
+                                            "name": "Bank Account",
+                                            "processingTime": "1 - 3 business days",
+                                            "fees": {
+                                                "nodes": [
+                                                    {
+                                                        "value": "2.20",
+                                                        "feeRateType": "FLAT",
+                                                        "currency": "CAD"
+                                                    },
+                                                    {
+                                                        "value":"8.9",
+                                                        "feeRateType":"PERCENT",
+                                                        "currency": "CAD",
+                                                        "minimum":"0.05",
+                                                        "maximum":"1.00"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "code": "PAYPAL_ACCOUNT",
+                                            "name": "PayPal Account",
+                                            "processingTime": "IMMEDIATE",
+                                            "fees": {
+                                                "nodes": [
+                                                    {
+                                                        "value": "0.25",
+                                                        "feeRateType": "FLAT",
+                                                        "currency": "CAD"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    ]
+                                }
                             },
                             {
-                                "transferMethodType":"BANK_ACCOUNT",
-                                "country":"CA",
-                                "currency":"CAD",
-                                "feeRateType":"PERCENT",
-                                "value":"4.9",
-                                "minimum":"0.05",
-                                "maximum":"1.00"
+                                "code": "USD",
+                                "name": "USD",
+                                "transferMethodTypes": {
+                                    "nodes": [
+                                        {
+                                            "code": "BANK_ACCOUNT",
+                                            "name": "Bank Account",
+                                            "fees": {
+                                                "nodes": [
+                                                    {
+                                                        "value": "2.00",
+                                                        "feeRateType": "FLAT",
+                                                        "currency": "USD"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "code": "PAYPAL_ACCOUNT",
+                                            "name": "PayPal Account",
+                                            "fees": {
+                                                "nodes": [
+                                                    {
+                                                        "value": "0.25",
+                                                        "feeRateType": "FLAT",
+                                                        "currency": "USD"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "code": "HR",
+                    "name": "CROATIA (local name: Hrvatska)",
+                    "currencies": {
+                        "nodes": [
+                            {
+                                "code": "EUR",
+                                "name": "EUR",
+                                "transferMethodTypes": {
+                                    "nodes": [
+                                        {
+                                            "code": "BANK_ACCOUNT",
+                                            "name": "Bank Account",
+                                            "fees": {
+                                                "nodes": [
+                                                    {
+                                                        "value": "1.50",
+                                                        "feeRateType": "FLAT",
+                                                        "currency": "EUR"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    ]
+                                }
                             },
                             {
-                                "transferMethodType":"BANK_ACCOUNT",
-                                "country":"US",
-                                "currency":"USD",
-                                "feeRateType":"PERCENT",
-                                "value":"4.9",
-                                "minimum":"0.05",
-                                "maximum":"1.00"
+                                "code": "HRK",
+                                "name": "HRK",
+                                "transferMethodTypes": {
+                                    "nodes": [
+                                        {
+                                            "code": "BANK_ACCOUNT",
+                                            "name": "Bank Account"
+                                        }
+                                    ]
+                                }
                             }
                         ]
-                    },
-                    "processingTime":"1-3 Business days"
+                    }
                 },
                 {
-                    "countries":[
-                        "US"
-                    ],
-                    "currencies":[
-                        "USD"
-                    ],
-                    "transferMethodType":"PAPER_CHECK",
-                    "profile":"INDIVIDUAL",
-                    "fees":{
-                        "nodes":[
+                    "code": "GB",
+                    "name": "UNITED KINGDOM",
+                    "currencies": {
+                        "nodes": [
                             {
-                                "transferMethodType":"PAPER_CHECK",
-                                "country":"US",
-                                "currency":"USD",
-                                "feeRateType":"PERCENT",
-                                "value":"8.9",
-                                "minimum":"0.05",
-                                "maximum":"1.00"
-                            }
-                        ]
-                    },
-                    "processingTime":"1-3 Business days"
-                },
-                {
-                    "countries":[
-                        "US"
-                    ],
-                    "currencies":[
-                        "USD"
-                    ],
-                    "transferMethodType":"BANK_CARD",
-                    "profile":"BUSINESS",
-                    "fees":{
-                        "nodes":[
+                                "code": "EUR",
+                                "name": "EUR",
+                                "transferMethodTypes": {
+                                    "nodes": [
+                                        {
+                                            "code": "BANK_ACCOUNT",
+                                            "name": "Bank Account",
+                                            "fees": {
+                                                "nodes": [
+                                                    {
+                                                        "value": "1.50",
+                                                        "feeRateType": "FLAT",
+                                                        "currency": "EUR"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    ]
+                                }
+                            },
                             {
-                                "transferMethodType":"BANK_CARD",
-                                "country":"US",
-                                "currency":"USD",
-                                "feeRateType":"PERCENT",
-                                "value":"8.9",
-                                "minimum":"0.05",
-                                "maximum":"1.00"
+                                "code": "HRK",
+                                "name": "HRK",
+                                "transferMethodTypes": {
+                                    "nodes": [
+                                        {
+                                            "code": "BANK_ACCOUNT",
+                                            "name": "Bank Account"
+                                        }
+                                    ]
+                                }
                             }
                         ]
-                    },
-                    "processingTime":"1-3 Business days"
+                    }
                 },
                 {
-                    "countries":[
-                        "DE", "FR", "BR", "CA"
-                    ],
-                    "currencies":[
-                        "USD"
-                    ],
-                    "transferMethodType":"WIRE_ACCOUNT",
-                    "profile":"INDIVIDUAL",
-                    "fees":{
-                        "nodes":[
+                    "code": "US",
+                    "name": "UNITED STATES",
+                    "currencies": {
+                        "nodes": [
                             {
-                                "transferMethodType":"WIRE_ACCOUNT",
-                                "country":"US",
-                                "currency":"USD",
-                                "feeRateType":"PERCENT",
-                                "value":"8.9",
-                                "minimum":"0.05",
-                                "maximum":"1.00"
+                                "code": "CAD",
+                                "name": "CAD",
+                                "transferMethodTypes": {
+                                    "nodes": [
+                                        {
+                                            "code": "PAYPAL_ACCOUNT",
+                                            "name": "PayPal Account",
+                                            "fees": {
+                                                "nodes": [
+                                                    {
+                                                        "value": "0.25",
+                                                        "feeRateType": "FLAT",
+                                                        "currency": "CAD"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "code": "USD",
+                                "name": "USD",
+                                "transferMethodTypes": {
+                                    "nodes": [
+                                        {
+                                            "code": "BANK_ACCOUNT",
+                                            "name": "Bank Account",
+                                            "fees": {
+                                                "nodes": [
+                                                    {
+                                                        "value": "2.00",
+                                                        "feeRateType": "FLAT",
+                                                        "currency": "USD"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "code": "BANK_CARD",
+                                            "name": "Debit Card",
+                                            "fees": {
+                                                "nodes": [
+                                                    {
+                                                        "value": "1.75",
+                                                        "feeRateType": "FLAT",
+                                                        "currency": "USD"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "code": "PAYPAL_ACCOUNT",
+                                            "name": "PayPal Account",
+                                            "fees": {
+                                                "nodes": [
+                                                    {
+                                                        "value": "0.25",
+                                                        "feeRateType": "FLAT",
+                                                        "currency": "USD"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    ]
+                                }
                             }
                         ]
-                    },
-                    "processingTime":"1-3 Business days"
-                },
-                {
-                    "countries":[
-                        "US"
-                    ],
-                    "currencies":[
-                        "USD"
-                    ],
-                    "transferMethodType":"PAYPAL_ACCOUNT",
-                    "profile":"INDIVIDUAL"
+                    }
                 }
             ]
         }
-    },
-    "errors":[
-
-    ]
+    }
 }

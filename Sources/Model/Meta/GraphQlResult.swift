@@ -19,6 +19,6 @@
 import Foundation
 
 struct GraphQlResult<T: Codable>: Codable {
-    let data: [String: T]?
+    let data: T?
     let errors: [GraphQlError]?
 }

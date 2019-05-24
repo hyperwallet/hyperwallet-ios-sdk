@@ -16,7 +16,7 @@ class HTTPTransactionTests: XCTestCase {
         let configuration = HTTPTransaction.urlSessionConfiguration
         let header = configuration.httpAdditionalHeaders
 
-        XCTAssertEqual(configuration.timeoutIntervalForRequest, 5.0)
+        XCTAssertEqual(configuration.timeoutIntervalForRequest, 10.0)
         XCTAssertEqual(header?["Content-Type"] as? String, "application/json")
         XCTAssertTrue((header?["Accept-Language"] as? String ?? "").contains("en"))
         let userAgent = header?["User-Agent"] as? String
@@ -163,9 +163,7 @@ class HTTPTransactionTests: XCTestCase {
         transaction.performGraphQl(request, completionHandler: completionHandler)
 
         // Then
-        XCTAssertNotNil(response?.count)
-        XCTAssertNotNil(response?.nodes)
-        XCTAssertEqual(response?.nodes?.count, 2)
+        XCTAssertNotNil(response)
         XCTAssertNil(hyperwalletError)
     }
 

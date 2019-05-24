@@ -436,9 +436,9 @@ public final class Hyperwallet {
     /// token returned from
     /// `HyperwalletAuthenticationTokenProvider.retrieveAuthenticationToken(_ : @escaping CompletionHandler)`.
     ///
-    /// The `completion: @escaping (HyperwalletTransferMethodConfigurationFieldResult?, HyperwalletErrorType?) -> Void`
+    /// The `completion: @escaping (HyperwalletTransferMethodConfigurationField?, HyperwalletErrorType?) -> Void`
     /// that is passed in to this method invocation will receive the successful
-    /// response(HyperwalletTransferMethodConfigurationFieldResult) or error(HyperwalletErrorType) from processing the
+    /// response(HyperwalletTransferMethodConfigurationField) or error(HyperwalletErrorType) from processing the
     /// request.
     ///
     /// This function will request a new authentication token via `HyperwalletAuthenticationTokenProvider`
@@ -450,18 +450,18 @@ public final class Hyperwallet {
     ///   - completion: the callback handler of responses from the Hyperwallet platform
     public func retrieveTransferMethodConfigurationFields(
         request: HyperwalletTransferMethodConfigurationFieldQuery,
-        completion: @escaping (HyperwalletTransferMethodConfigurationFieldResult?, HyperwalletErrorType?) -> Void) {
+        completion: @escaping (HyperwalletTransferMethodConfigurationField?, HyperwalletErrorType?) -> Void) {
         httpTransaction.performGraphQl(request,
-                                       completionHandler: transferMethodConfigurationResponseHandler(completion))
+                                       completionHandler: transferMethodConfigurationFieldResponseHandler(completion))
     }
 
     /// Returns the transfer method configuration key set, processing times, and fees for the User that is associated
     /// with the authentication token returned from
     /// `HyperwalletAuthenticationTokenProvider.retrieveAuthenticationToken(_ : @escaping CompletionHandler)`.
     ///
-    /// The `completion: @escaping (HyperwalletTransferMethodConfigurationKeyResult?, HyperwalletErrorType?) -> Void`
+    /// The `completion: @escaping (HyperwalletTransferMethodConfigurationKey?, HyperwalletErrorType?) -> Void`
     /// that is passed in to this method invocation will receive the successful
-    /// response(HyperwalletTransferMethodConfigurationKeyResult) or error(HyperwalletErrorType) from processing the
+    /// response(HyperwalletTransferMethodConfigurationKey) or error(HyperwalletErrorType) from processing the
     /// request.
     ///
     /// This function will request a new authentication token via `HyperwalletAuthenticationTokenProvider`
@@ -472,9 +472,9 @@ public final class Hyperwallet {
     ///   - completion: the callback handler of responses from the Hyperwallet platform
     public func retrieveTransferMethodConfigurationKeys(
         request: HyperwalletTransferMethodConfigurationKeysQuery,
-        completion: @escaping (HyperwalletTransferMethodConfigurationKeyResult?, HyperwalletErrorType?) -> Void) {
+        completion: @escaping (HyperwalletTransferMethodConfigurationKey?, HyperwalletErrorType?) -> Void) {
         httpTransaction.performGraphQl(request,
-                                       completionHandler: transferMethodConfigurationResponseHandler(completion))
+                                       completionHandler: transferMethodConfigurationKeyResponseHandler(completion))
     }
 
     /// Updates the `HyperwalletBankAccount` for the User associated with the authentication token returned from
@@ -551,16 +551,21 @@ public final class Hyperwallet {
                                     completionHandler: completion)
     }
 
-    private func transferMethodConfigurationResponseHandler(_ completionHandler: @escaping (
-        (TransferMethodConfigurationResult?, HyperwalletErrorType?) -> Void))
-        -> (Connection<TransferMethodConfiguration>?, HyperwalletErrorType?) -> Void {
+    private func transferMethodConfigurationFieldResponseHandler(_ completionHandler: @escaping (
+        (TransferMethodConfigurationFieldResult?, HyperwalletErrorType?) -> Void))
+        -> (TransferMethodConfigurationField?, HyperwalletErrorType?) -> Void {
             return { (response, error) in
-                var result: TransferMethodConfigurationResult?
-
-                if let response = response {
-                    result = TransferMethodConfigurationResult(response: response)
-                }
+                let result = TransferMethodConfigurationFieldResult(response?.transferMethodUIConfigurations?.nodes,
+                                                                    response?.countries?.nodes?.first)
                 completionHandler(result, error)
+            }
+    }
+
+    private func transferMethodConfigurationKeyResponseHandler(_ completionHandler: @escaping (
+        (TransferMethodConfigurationKeyResult?, HyperwalletErrorType?) -> Void))
+        -> (TransferMethodConfigurationKey?, HyperwalletErrorType?) -> Void {
+            return { (response, error) in
+                completionHandler(TransferMethodConfigurationKeyResult(response?.countries.nodes), error)
             }
     }
 }
