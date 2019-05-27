@@ -18,30 +18,26 @@
 
 import Foundation
 
-/// Representation of subset content from a dataset
-public struct HyperwalletPageList<ListType: Decodable>: Decodable {
-    /// The amount of the dataset
-    public let count: Int
-    /// The `ListType` items
-    public let data: [ListType]
-    /// The maximum number of records that will be returned per page
-    public let limit: Int
-    /// The links
-    public let links: [HyperwalletPageLink]
-    /// The number of records to skip.
-    public let offset: Int
-}
+/// Representation of the bank account query parameters.
+public class HyperwalletBankAccountQueryParam: HyperwalletTransferMethodQueryParam {
+    /// The bank account type.
+    public var type: QueryType?
 
-/// Representation of the page link
-public struct HyperwalletPageLink: Decodable {
-    /// The URL of the link
-    public let href: URL
-    /// The `HyperwalletPageParameter`
-    public let params: HyperwalletPageParameter
-}
+    /// Represents the Bank Account types.
+    public enum QueryType: String {
+        case bankAccount = "BANK_ACCOUNT"
+        case wireAccount = "WIRE_ACCOUNT"
+    }
 
-/// Representation of the relationship between the current document and the linked document
-public struct HyperwalletPageParameter: Decodable {
-    /// The relationship
-    public let rel: String
+    enum QueryParam: String {
+        case type
+    }
+
+    override public func toQuery() -> [String: String] {
+        var query = super.toQuery()
+        if let type = type {
+            query[QueryParam.type.rawValue] = type.rawValue
+        }
+        return query
+    }
 }

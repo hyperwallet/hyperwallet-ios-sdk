@@ -18,25 +18,10 @@
 
 import Foundation
 
-/// Representation of the common pagination fields
-public class HyperwalletPagination {
-    /// The maximum number of records that will be returned per page
-    public var limit: Int
-    /// The number of records to skip. If no filters are applied, records will be skipped from the beginning
-    /// (based on default sort criteria). Default value is 0. Range is from 0 to {n-1} where n = number of
-    /// matching records for the query.
-    public var offset: Int
-
-    /// Creates a new instance of `HyperwalletPagination`]
-    public init() {
-        limit = 10
-        offset = 0
-    }
-
-    /// Builds the `HyperwalletTransferMethodPagination`'s URL Queries
-    ///
-    /// - Returns: Returns the URL Query's dictionary.
-    public func toQuery() -> [String: String] {
-        return ["offset": "\(offset)", "limit": "\(limit)"]
-    }
+extension Date {
+    static let iso8601: ISO8601DateFormatter = {
+        let formatter = ISO8601DateFormatter()
+        formatter.formatOptions.remove(ISO8601DateFormatter.Options.withTimeZone)
+        return formatter
+    }()
 }

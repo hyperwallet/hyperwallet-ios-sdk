@@ -24,11 +24,11 @@ custom_categories:
       - HyperwalletStatusTransition
       - HyperwalletBankCard
       - HyperwalletBankAccount
-      - HyperwalletTransferMethodPagination
-      - HyperwalletPagination
+      - HyperwalletTransferMethodQueryParam
+      - HyperwalletQueryParam
       - HyperwalletPageList
-      - HyperwalletBankCardPagination
-      - HyperwalletBankAccountPagination
+      - HyperwalletBankCardQueryParam
+      - HyperwalletBankAccountQueryParam
       - HyperwalletTransferMethodConfigurationFieldQuery
       - HyperwalletTransferMethodConfigurationKeysQuery
       - HyperwalletTransferMethodConfigurationResult

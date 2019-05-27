@@ -18,14 +18,15 @@
 
 import Foundation
 
-/// Representation of the PayPal accoun t pagination fields.
-public class HyperwalletPayPalAccountPagination: HyperwalletTransferMethodPagination {
-    /// Builds the `HyperwalletPayPalAccountPagination`'s URL Queries.
-    ///
-    /// - Returns: Returns the URL Query's dictionary.
+/// Representation of the bank card query parameters.
+public class HyperwalletBankCardQueryParam: HyperwalletTransferMethodQueryParam {
+    enum QueryParam: String {
+        case type
+    }
+
     override public func toQuery() -> [String: String] {
         var query = super.toQuery()
-        query["type"] = "PAYPAL_ACCOUNT"
+        query[QueryParam.type.rawValue] = "BANK_CARD"
         return query
     }
 }

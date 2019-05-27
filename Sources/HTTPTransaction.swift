@@ -57,13 +57,13 @@ final class HTTPTransaction {
     /// - Parameters: httpMethod - The HTTP verb should be performed the request.
     /// - Parameters: urlPath - The URL path.
     /// - Parameters: payload - The payload will contain GraphQl query.
-    /// - Parameters: pagination - The criteria to build the URL query.
+    /// - Parameters: queryParam - The criteria to build the URL query.
     /// - Parameters: completionHandler - The completionHandler should be performed at the end of request
     ///  with the data or `HyperwalletError`.
     func performRest<Request, Response>(httpMethod: HTTPMethod,
                                         urlPath: String,
                                         payload: Request,
-                                        pagination: HyperwalletPagination? = nil,
+                                        queryParam: HyperwalletQueryParam? = nil,
                                         completionHandler handler: @escaping (_ response: Response?,
                                                                               _ error: HyperwalletErrorType?) -> Void)
         where Request: Encodable, Response: Decodable {
@@ -71,7 +71,7 @@ final class HTTPTransaction {
                     httpMethod: httpMethod,
                     urlPath: urlPath,
                     payload: payload,
-                    urlQuery: pagination?.toQuery(),
+                    urlQuery: queryParam?.toQuery(),
                     completionHandler: handler)
     }
 

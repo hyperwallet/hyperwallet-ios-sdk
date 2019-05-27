@@ -256,13 +256,11 @@ class HyperwalletPayPalAccountTests: XCTestCase {
         var errorResponse: HyperwalletErrorType?
 
         // When
-        let payPalAccountPagination = HyperwalletPayPalAccountPagination()
-        payPalAccountPagination.status = .activated
-        payPalAccountPagination.createdAfter = HyperwalletPayPalAccountPagination
-                                                .iso8601
-                                                .date(from: "2018-12-15T00:30:11")
+        let payPalAccountQueryParam = HyperwalletPayPalAccountQueryParam()
+        payPalAccountQueryParam.status = .activated
+        payPalAccountQueryParam.createdAfter = Date.iso8601.date(from: "2018-12-15T00:30:11")
 
-        Hyperwallet.shared.listPayPalAccounts(pagination: payPalAccountPagination) { (result, error) in
+        Hyperwallet.shared.listPayPalAccounts(queryParam: payPalAccountQueryParam) { (result, error) in
             payPalAccountList = result
             errorResponse = error
             expectation.fulfill()
@@ -295,11 +293,11 @@ class HyperwalletPayPalAccountTests: XCTestCase {
         var errorResponse: HyperwalletErrorType?
 
         // When
-        let payPalAccountPagination = HyperwalletPayPalAccountPagination()
-        payPalAccountPagination.status = .deActivated
+        let payPalAccountQueryParam = HyperwalletPayPalAccountQueryParam()
+        payPalAccountQueryParam.status = .deActivated
 
         // When
-        Hyperwallet.shared.listPayPalAccounts(pagination: payPalAccountPagination) { (result, error) in
+        Hyperwallet.shared.listPayPalAccounts(queryParam: payPalAccountQueryParam) { (result, error) in
             payPalAccountList = result
             errorResponse = error
             expectation.fulfill()

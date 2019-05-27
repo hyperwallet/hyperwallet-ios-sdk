@@ -18,14 +18,33 @@
 
 import Foundation
 
-/// Representation of the bank card pagination fields.
-public class HyperwalletBankCardPagination: HyperwalletTransferMethodPagination {
-    /// Builds the `HyperwalletBankCardPagination`'s URL Queries.
+/// Representation of the common query parameters.
+public class HyperwalletQueryParam {
+    /// The maximum number of records that will be returned per page
+    public var limit: Int
+    /// The number of records to skip. If no filters are applied, records will be skipped from the beginning
+    /// (based on default sort criteria). Default value is 0. Range is from 0 to {n-1} where n = number of
+    /// matching records for the query.
+    public var offset: Int
+
+    /// Creates a new instance of `HyperwalletQueryParam`]
+    public init() {
+        limit = 10
+        offset = 0
+    }
+
+    enum QueryParam: String {
+        case limit
+        case offset
+    }
+
+    /// Builds the URL Queries
     ///
     /// - Returns: Returns the URL Query's dictionary.
-    override public func toQuery() -> [String: String] {
-        var query = super.toQuery()
-        query["type"] = "BANK_CARD"
-        return query
+    func toQuery() -> [String: String] {
+        return [
+            QueryParam.offset.rawValue: "\(offset)",
+            QueryParam.limit.rawValue: "\(limit)"
+        ]
     }
 }

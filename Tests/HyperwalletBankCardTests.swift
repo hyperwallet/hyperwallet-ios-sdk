@@ -238,13 +238,13 @@ class HyperwalletBankCardTests: XCTestCase {
         var errorResponse: HyperwalletErrorType?
 
         // When
-        let bankCardPagination = HyperwalletBankCardPagination()
-        bankCardPagination.status = .deActivated
-        bankCardPagination.sortBy = .ascendantCreatedOn
-        bankCardPagination.createdAfter = HyperwalletBankCardPagination.iso8601.date(from: "2018-12-15T00:30:11")
-        bankCardPagination.createdBefore = HyperwalletBankCardPagination.iso8601.date(from: "2018-12-18T00:30:11")
+        let bankCardQueryParam = HyperwalletBankCardQueryParam()
+        bankCardQueryParam.status = .deActivated
+        bankCardQueryParam.sortBy = .ascendantCreatedOn
+        bankCardQueryParam.createdAfter = Date.iso8601.date(from: "2018-12-15T00:30:11")
+        bankCardQueryParam.createdBefore = Date.iso8601.date(from: "2018-12-18T00:30:11")
 
-        Hyperwallet.shared.listBankCards(pagination: bankCardPagination) { (result, error) in
+        Hyperwallet.shared.listBankCards(queryParam: bankCardQueryParam) { (result, error) in
             bankCardList = result
             errorResponse = error
             expectation.fulfill()
@@ -280,12 +280,12 @@ class HyperwalletBankCardTests: XCTestCase {
         var errorResponse: HyperwalletErrorType?
 
         // When
-        let bankCardPagination = HyperwalletBankCardPagination()
-        bankCardPagination.status = .activated
-        bankCardPagination.sortBy = .ascendantCreatedOn
-        bankCardPagination.createdAfter = HyperwalletBankCardPagination.iso8601.date(from: "2019-01-01T00:30:11")
+        let bankCardQueryParam = HyperwalletBankCardQueryParam()
+        bankCardQueryParam.status = .activated
+        bankCardQueryParam.sortBy = .ascendantCreatedOn
+        bankCardQueryParam.createdAfter = Date.iso8601.date(from: "2019-01-01T00:30:11")
 
-        Hyperwallet.shared.listBankCards(pagination: bankCardPagination) { (result, error) in
+        Hyperwallet.shared.listBankCards(queryParam: bankCardQueryParam) { (result, error) in
             bankCardList = result
             errorResponse = error
             expectation.fulfill()

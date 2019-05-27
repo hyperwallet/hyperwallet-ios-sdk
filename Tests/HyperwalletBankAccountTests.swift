@@ -259,14 +259,14 @@ class HyperwalletBankAccountIndividualTests: XCTestCase {
         var errorResponse: HyperwalletErrorType?
 
          // When
-        let bankAccountPagination = HyperwalletBankAccountPagination()
-        bankAccountPagination.status = .deActivated
-        bankAccountPagination.type = .bankAccount
-        bankAccountPagination.sortBy = .ascendantCreatedOn
-        bankAccountPagination.createdAfter = HyperwalletBankAccountPagination.iso8601.date(from: "2018-12-15T00:30:11")
-        bankAccountPagination.createdBefore = HyperwalletBankAccountPagination.iso8601.date(from: "2018-12-18T00:30:11")
+        let bankAccountQueryParam = HyperwalletBankAccountQueryParam()
+        bankAccountQueryParam.status = .deActivated
+        bankAccountQueryParam.type = .bankAccount
+        bankAccountQueryParam.sortBy = .ascendantCreatedOn
+        bankAccountQueryParam.createdAfter = Date.iso8601.date(from: "2018-12-15T00:30:11")
+        bankAccountQueryParam.createdBefore = Date.iso8601.date(from: "2018-12-18T00:30:11")
 
-        Hyperwallet.shared.listBankAccounts(pagination: bankAccountPagination) { (result, error) in
+        Hyperwallet.shared.listBankAccounts(queryParam: bankAccountQueryParam) { (result, error) in
             bankAccountList = result
             errorResponse = error
             expectation.fulfill()
@@ -300,12 +300,12 @@ class HyperwalletBankAccountIndividualTests: XCTestCase {
 
         var bankAccountList: HyperwalletPageList<HyperwalletBankAccount>?
         var errorResponse: HyperwalletErrorType?
-        let bankAccountPagination = HyperwalletBankAccountPagination()
-        bankAccountPagination.status = .activated
-        bankAccountPagination.type = .wireAccount
+        let bankAccountQueryParam = HyperwalletBankAccountQueryParam()
+        bankAccountQueryParam.status = .activated
+        bankAccountQueryParam.type = .wireAccount
 
         // When
-        Hyperwallet.shared.listBankAccounts(pagination: bankAccountPagination) { (result, error) in
+        Hyperwallet.shared.listBankAccounts(queryParam: bankAccountQueryParam) { (result, error) in
             bankAccountList = result
             errorResponse = error
             expectation.fulfill()

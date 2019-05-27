@@ -18,27 +18,15 @@
 
 import Foundation
 
-/// Representation of the bank account pagination fields.
-public class HyperwalletBankAccountPagination: HyperwalletTransferMethodPagination {
-    /// The bank account type.
-    public var `type`: QueryType?
-
-    /// Represents the Bank Account types.
-    public enum QueryType: String {
-        case bankAccount = "BANK_ACCOUNT"
-        case wireAccount = "WIRE_ACCOUNT"
+/// Representation of the PayPal account query parameters.
+public class HyperwalletPayPalAccountQueryParam: HyperwalletTransferMethodQueryParam {
+    enum QueryParam: String {
+        case type
     }
 
-    /// Builds the `HyperwalletBankAccountPagination`'s URL Queries.
-    ///
-    /// - Returns: Returns the URL Query's dictionary.
     override public func toQuery() -> [String: String] {
         var query = super.toQuery()
-
-        if `type` != nil {
-            query["type"] = `type`?.rawValue
-        }
-
+        query[QueryParam.type.rawValue] = "PAYPAL_ACCOUNT"
         return query
     }
 }
