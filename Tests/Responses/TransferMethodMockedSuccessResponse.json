@@ -4,7 +4,7 @@
     "limit":10,
     "data":[
         {
-            "token":"trm-fc13bc5a-7366-425c-837f-7ac1a1d175cc",
+            "token":"trm-00001",
             "type":"BANK_ACCOUNT",
             "status":"ACTIVATED",
             "verificationStatus":"NOT_REQUIRED",
@@ -36,12 +36,12 @@
                     "params":{
                         "rel":"self"
                     },
-                    "href":"https://qamaster.aws.paylution.net/rest/v3/users/usr-7e713de4-34e9-4e10-93cc-1f085b2d8397/transfer-methods/trm-fc13bc5a-7366-425c-837f-7ac1a1d175cc"
+                    "href":"https://localhost/rest/v3/users/usr-0000/transfer-methods/trm-00001"
                 }
             ]
         },
         {
-            "token":"trm-4fda1df4-b173-4b55-9eca-a5c0cbf7a48a",
+            "token":"trm-00002",
             "type":"BANK_CARD",
             "status":"ACTIVATED",
             "createdOn":"2018-12-15T00:30:17",
@@ -56,7 +56,7 @@
                     "params":{
                         "rel":"self"
                     },
-                    "href":"https://qamaster.aws.paylution.net/rest/v3/users/usr-7e713de4-34e9-4e10-93cc-1f085b2d8397/transfer-methods/trm-4fda1df4-b173-4b55-9eca-a5c0cbf7a48a"
+                    "href":"https://localhost/rest/v3/users/usr-0000/transfer-methods/trm-00002"
                 }
             ]
         }
@@ -66,19 +66,19 @@
             "params":{
                 "rel":"self"
             },
-            "href":"https://qamaster.aws.paylution.net/rest/v3/users/usr-7e713de4-34e9-4e10-93cc-1f085b2d8397/transfer-methods?offset=0&limit=10&createdBefore=2018-12-18T00%3A30%3A11.000Z&sortBy=+createdOn&createdAfter=2018-12-15T00%3A30%3A11.000Z"
+            "href":"https://localhost/rest/v3/users/usr-0000/transfer-methods?offset=0&limit=10&createdBefore=2018-12-18T00%3A30%3A11.000Z&sortBy=+createdOn&createdAfter=2018-12-15T00%3A30%3A11.000Z"
         },
         {
             "params":{
                 "rel":"next"
             },
-            "href":"https://qamaster.aws.paylution.net/rest/v3/users/usr-7e713de4-34e9-4e10-93cc-1f085b2d8397/transfer-methods?offset=10&limit=10&createdBefore=2018-12-18T00%3A30%3A11.000Z&sortBy=+createdOn&createdAfter=2018-12-15T00%3A30%3A11.000Z"
+            "href":"https://localhost/rest/v3/users/usr-0000/transfer-methods?offset=10&limit=10&createdBefore=2018-12-18T00%3A30%3A11.000Z&sortBy=+createdOn&createdAfter=2018-12-15T00%3A30%3A11.000Z"
         },
         {
             "params":{
                 "rel":"last"
             },
-            "href":"https://qamaster.aws.paylution.net/rest/v3/users/usr-7e713de4-34e9-4e10-93cc-1f085b2d8397/transfer-methods?offset=299&limit=10&createdBefore=2018-12-18T00%3A30%3A11.000Z&sortBy=+createdOn&createdAfter=2018-12-15T00%3A30%3A11.000Z"
+            "href":"https://localhost/rest/v3/users/usr-0000/transfer-methods?offset=299&limit=10&createdBefore=2018-12-18T00%3A30%3A11.000Z&sortBy=+createdOn&createdAfter=2018-12-15T00%3A30%3A11.000Z"
         }
     ]
 }

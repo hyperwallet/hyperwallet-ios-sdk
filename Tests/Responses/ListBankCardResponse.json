@@ -4,7 +4,7 @@
     "limit":10,
     "data":[
         {
-            "token":"trm-0191c54a-29a6-49f3-a560-ffd66ce45c63",
+            "token":"trm-12345",
             "type":"BANK_CARD",
             "status":"DE_ACTIVATED",
             "createdOn":"2018-12-15T00:00:51",
@@ -19,12 +19,12 @@
                     "params":{
                         "rel":"self"
                     },
-                    "href":"https://qamaster.aws.paylution.net/rest/v3/users/usr-7e713de4-34e9-4e10-93cc-1f085b2d8397/bank-cards/trm-0191c54a-29a6-49f3-a560-ffd66ce45c63"
+                    "href":"https://localhost/rest/v3/users/usr-0000/bank-cards/trm-12345"
                 }
             ]
         },
         {
-            "token":"trm-52a43c28-f3ed-4306-9eff-c005fca6054a",
+            "token":"trm-23456",
             "type":"BANK_CARD",
             "status":"DE_ACTIVATED",
             "createdOn":"2018-12-16T06:35:08",
@@ -39,12 +39,12 @@
                     "params":{
                         "rel":"self"
                     },
-                    "href":"https://qamaster.aws.paylution.net/rest/v3/users/usr-7e713de4-34e9-4e10-93cc-1f085b2d8397/bank-cards/trm-52a43c28-f3ed-4306-9eff-c005fca6054a"
+                    "href":"https://localhost/rest/v3/users/usr-0000/bank-cards/trm-23456"
                 }
             ]
         },
         {
-            "token":"trm-41936c2b-68df-4c2e-ad8e-7c555324e421",
+            "token":"trm-34567",
             "type":"BANK_CARD",
             "status":"DE_ACTIVATED",
             "createdOn":"2018-12-16T07:03:39",
@@ -59,12 +59,12 @@
                     "params":{
                         "rel":"self"
                     },
-                    "href":"https://qamaster.aws.paylution.net/rest/v3/users/usr-7e713de4-34e9-4e10-93cc-1f085b2d8397/bank-cards/trm-41936c2b-68df-4c2e-ad8e-7c555324e421"
+                    "href":"https://localhost/rest/v3/users/usr-0000/bank-cards/trm-34567"
                 }
             ]
         },
         {
-            "token":"trm-102cc2c3-901d-431f-88ce-488a8f9f828c",
+            "token":"trm-45678",
             "type":"BANK_CARD",
             "status":"DE_ACTIVATED",
             "createdOn":"2018-12-16T07:08:34",
@@ -79,12 +79,12 @@
                     "params":{
                         "rel":"self"
                     },
-                    "href":"https://qamaster.aws.paylution.net/rest/v3/users/usr-7e713de4-34e9-4e10-93cc-1f085b2d8397/bank-cards/trm-102cc2c3-901d-431f-88ce-488a8f9f828c"
+                    "href":"https://localhost/rest/v3/users/usr-0000/bank-cards/trm-45678"
                 }
             ]
         },
         {
-            "token":"trm-9735f885-1c48-4099-85fc-e4fe0c6a3392",
+            "token":"trm-56789",
             "type":"BANK_CARD",
             "status":"DE_ACTIVATED",
             "createdOn":"2018-12-17T21:58:55",
@@ -99,12 +99,12 @@
                     "params":{
                         "rel":"self"
                     },
-                    "href":"https://qamaster.aws.paylution.net/rest/v3/users/usr-7e713de4-34e9-4e10-93cc-1f085b2d8397/bank-cards/trm-9735f885-1c48-4099-85fc-e4fe0c6a3392"
+                    "href":"https://localhost/rest/v3/users/usr-0000/bank-cards/trm-56789"
                 }
             ]
         },
         {
-            "token":"trm-a681feca-6fd8-4f20-9231-d8cc9c0adced",
+            "token":"trm-67890",
             "type":"BANK_CARD",
             "status":"DE_ACTIVATED",
             "createdOn":"2018-12-17T23:05:48",
@@ -119,12 +119,12 @@
                     "params":{
                         "rel":"self"
                     },
-                    "href":"https://qamaster.aws.paylution.net/rest/v3/users/usr-7e713de4-34e9-4e10-93cc-1f085b2d8397/bank-cards/trm-a681feca-6fd8-4f20-9231-d8cc9c0adced"
+                    "href":"https://localhost/rest/v3/users/usr-0000/bank-cards/trm-67890"
                 }
             ]
         },
         {
-            "token":"trm-42a45975-981d-4bc7-974e-829378e59660",
+            "token":"trm-00001",
             "type":"BANK_CARD",
             "status":"DE_ACTIVATED",
             "createdOn":"2018-12-17T23:06:14",
@@ -139,12 +139,12 @@
                     "params":{
                         "rel":"self"
                     },
-                    "href":"https://qamaster.aws.paylution.net/rest/v3/users/usr-7e713de4-34e9-4e10-93cc-1f085b2d8397/bank-cards/trm-42a45975-981d-4bc7-974e-829378e59660"
+                    "href":"https://localhost/rest/v3/users/usr-0000/bank-cards/trm-00001"
                 }
             ]
         },
         {
-            "token":"trm-07f59dce-1dec-4043-8660-ab3d3d121bf5",
+            "token":"trm-00002",
             "type":"BANK_CARD",
             "status":"DE_ACTIVATED",
             "createdOn":"2018-12-17T23:06:55",
@@ -159,12 +159,12 @@
                     "params":{
                         "rel":"self"
                     },
-                    "href":"https://qamaster.aws.paylution.net/rest/v3/users/usr-7e713de4-34e9-4e10-93cc-1f085b2d8397/bank-cards/trm-07f59dce-1dec-4043-8660-ab3d3d121bf5"
+                    "href":"https://localhost/rest/v3/users/usr-0000/bank-cards/trm-00002"
                 }
             ]
         },
         {
-            "token":"trm-691eecf9-3ad4-432b-8ad4-fd394aa200dc",
+            "token":"trm-00003",
             "type":"BANK_CARD",
             "status":"DE_ACTIVATED",
             "createdOn":"2018-12-17T23:41:20",
@@ -179,12 +179,12 @@
                     "params":{
                         "rel":"self"
                     },
-                    "href":"https://qamaster.aws.paylution.net/rest/v3/users/usr-7e713de4-34e9-4e10-93cc-1f085b2d8397/bank-cards/trm-691eecf9-3ad4-432b-8ad4-fd394aa200dc"
+                    "href":"https://localhost/rest/v3/users/usr-0000/bank-cards/trm-00003"
                 }
             ]
         },
         {
-            "token":"trm-bfe6f73e-56c4-4299-ad2b-7275887d2742",
+            "token":"trm-00004",
             "type":"BANK_CARD",
             "status":"DE_ACTIVATED",
             "createdOn":"2018-12-17T23:41:59",
@@ -199,7 +199,7 @@
                     "params":{
                         "rel":"self"
                     },
-                    "href":"https://qamaster.aws.paylution.net/rest/v3/users/usr-7e713de4-34e9-4e10-93cc-1f085b2d8397/bank-cards/trm-bfe6f73e-56c4-4299-ad2b-7275887d2742"
+                    "href":"https://localhost/rest/v3/users/usr-0000/bank-cards/trm-00004"
                 }
             ]
         }
@@ -209,19 +209,19 @@
             "params":{
                 "rel":"self"
             },
-            "href":"https://qamaster.aws.paylution.net/rest/v3/users/usr-7e713de4-34e9-4e10-93cc-1f085b2d8397/bank-cards?offset=0&limit=10&sortBy=+createdOn&status=DE_ACTIVATED"
+            "href":"https://localhost/rest/v3/users/usr-0000/bank-cards?offset=0&limit=10&sortBy=+createdOn&status=DE_ACTIVATED"
         },
         {
             "params":{
                 "rel":"next"
             },
-            "href":"https://qamaster.aws.paylution.net/rest/v3/users/usr-7e713de4-34e9-4e10-93cc-1f085b2d8397/bank-cards?offset=10&limit=10&sortBy=+createdOn&status=DE_ACTIVATED"
+            "href":"https://localhost/rest/v3/users/usr-0000/bank-cards?offset=10&limit=10&sortBy=+createdOn&status=DE_ACTIVATED"
         },
         {
             "params":{
                 "rel":"last"
             },
-            "href":"https://qamaster.aws.paylution.net/rest/v3/users/usr-7e713de4-34e9-4e10-93cc-1f085b2d8397/bank-cards?offset=11&limit=10&sortBy=+createdOn&status=DE_ACTIVATED"
+            "href":"https://localhost/rest/v3/users/usr-0000/bank-cards?offset=11&limit=10&sortBy=+createdOn&status=DE_ACTIVATED"
         }
     ]
 }
