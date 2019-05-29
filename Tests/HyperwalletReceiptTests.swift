@@ -48,14 +48,14 @@ class HyperwalletReceiptTests: XCTestCase {
             XCTAssertEqual(userReceipt.type.rawValue, "PAYMENT")
             XCTAssertEqual(userReceipt.createdOn, "2019-05-27T15:42:07")
             XCTAssertEqual(userReceipt.entry.rawValue, "CREDIT")
-            XCTAssertEqual(userReceipt.sourceToken, "act-b1f6dc28-e534-45f4-a661-3523f051f77a")
-            XCTAssertEqual(userReceipt.destinationToken, "usr-b4e8ec34-52d8-4a81-9566-bdde1bd745b6")
+            XCTAssertEqual(userReceipt.sourceToken, "act-12345")
+            XCTAssertEqual(userReceipt.destinationToken, "usr-12345")
             XCTAssertEqual(userReceipt.amount, "5000.00")
             XCTAssertEqual(userReceipt.fee, "0.00")
             XCTAssertEqual(userReceipt.currency, "USD")
             if let details = userReceipt.details {
                 XCTAssertEqual(details.clientPaymentId, "trans-0001")
-                XCTAssertEqual(details.payeeName, "kevin Puckett")
+                XCTAssertEqual(details.payeeName, "Vasya Pupkin")
             } else {
                 assertionFailure("The receipt details should be not nil")
             }
