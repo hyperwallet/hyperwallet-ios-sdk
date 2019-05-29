@@ -17,7 +17,7 @@ class HyperwalletReceiptTests: XCTestCase {
         // Given
         let expectation = self.expectation(description: "List User Receipts completed")
         let response = HyperwalletTestHelper.okHTTPResponse(for: "ListUserReceiptResponse")
-        let url = String(format: "%@/receipts?+", HyperwalletTestHelper.userRestURL)
+        let url = String(format: "%@/receipts", HyperwalletTestHelper.userRestURL)
         let request = HyperwalletTestHelper.buildGetRequestRegexMatcher(pattern: url, response)
         HyperwalletTestHelper.setUpMockServer(request: request)
 
@@ -25,13 +25,13 @@ class HyperwalletReceiptTests: XCTestCase {
         var errorResponse: HyperwalletErrorType?
 
         // When
-        let receipttQueryParam = HyperwalletReceiptQueryParam()
-        receipttQueryParam.createdAfter = ISO8601DateFormatter.ignoreTimeZone.date(from: "2018-12-01T00:00:00")
-        receipttQueryParam.createdBefore = ISO8601DateFormatter.ignoreTimeZone.date(from: "2020-12-31T00:00:00")
-        receipttQueryParam.currency = "USD"
-        receipttQueryParam.sortBy = HyperwalletReceiptQueryParam.QuerySortable.descendantAmount
+        let receiptQueryParam = HyperwalletReceiptQueryParam()
+        receiptQueryParam.createdAfter = ISO8601DateFormatter.ignoreTimeZone.date(from: "2018-12-01T00:00:00")
+        receiptQueryParam.createdBefore = ISO8601DateFormatter.ignoreTimeZone.date(from: "2020-12-31T00:00:00")
+        receiptQueryParam.currency = "USD"
+        receiptQueryParam.sortBy = HyperwalletReceiptQueryParam.QuerySortable.descendantAmount
 
-        Hyperwallet.shared.listUserReceipts(queryParam: receipttQueryParam) { (result, error) in
+        Hyperwallet.shared.listUserReceipts(queryParam: receiptQueryParam) { (result, error) in
             userReceiptList = result
             errorResponse = error
             expectation.fulfill()
