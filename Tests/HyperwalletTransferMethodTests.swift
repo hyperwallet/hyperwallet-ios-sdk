@@ -27,9 +27,9 @@ class HyperwalletTransferMethodTests: XCTestCase {
 
         let transferMethodQueryParam = HyperwalletTransferMethodQueryParam()
         transferMethodQueryParam.sortBy = .ascendantCreatedOn
-        transferMethodQueryParam.createdAfter = Date.iso8601.date(
+        transferMethodQueryParam.createdAfter = ISO8601DateFormatter.ignoreTimeZone.date(
             from: "2018-12-15T00:30:11")
-        transferMethodQueryParam.createdBefore = Date.iso8601.date(
+        transferMethodQueryParam.createdBefore = ISO8601DateFormatter.ignoreTimeZone.date(
             from: "2018-12-18T00:30:11")
 
         // When
@@ -94,7 +94,7 @@ class HyperwalletTransferMethodTests: XCTestCase {
 
         let transferMethodQueryParam = HyperwalletTransferMethodQueryParam()
         transferMethodQueryParam.sortBy = .ascendantCreatedOn
-        transferMethodQueryParam.createdAfter = Date.iso8601.date(from: "2019-01-01T00:30:11")
+        transferMethodQueryParam.createdAfter = ISO8601DateFormatter.ignoreTimeZone.date(from: "2019-01-01T00:30:11")
 
         // When
         Hyperwallet.shared.listTransferMethods(queryParam: transferMethodQueryParam) { (result, error) in

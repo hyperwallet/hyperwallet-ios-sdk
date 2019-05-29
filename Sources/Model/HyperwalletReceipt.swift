@@ -20,31 +20,31 @@ import Foundation
 
 /// Representation of the Hyperwallet's receipt.
 ///
-/// - journalId: The journal entry number for the transaction.
-/// - type: The transaction type.
-/// - createdOn: The datetime the transaction was created on in ISO 8601 format 'YYYY-MM-DDThh:mm:ss' (UTC timezone)
-/// - entry: The type of transaction.
-/// - sourceToken: A token identifying the source of funds.
-/// - destinationToken: A token identifying where the funds were sent.
 /// - amount: The gross amount of the transaction.
-/// - fee: The fee amount.
+/// - createdOn: The datetime the transaction was created on in ISO 8601 format 'YYYY-MM-DDThh:mm:ss' (UTC timezone)
 /// - currency: The 3-letter currency code for the transaction.
-/// - foreignExchangeRate: The foreign exchange rate.
-/// - foreignExchangeCurrency: The 3-letter currency code for the foreign exchange.
+/// - destinationToken: A token identifying where the funds were sent.
 /// - details: Details of the transaction.
+/// - entry: The type of transaction.
+/// - fee: The fee amount.
+/// - foreignExchangeCurrency: The 3-letter currency code for the foreign exchange.
+/// - foreignExchangeRate: The foreign exchange rate.
+/// - journalId: The journal entry number for the transaction.
+/// - sourceToken: A token identifying the source of funds.
+/// - type: The transaction type.
 public struct HyperwalletReceipt: Decodable {
-    public let journalId: String
-    public let type: HyperwalletReceiptType
-    public let createdOn: String
-    public let entry: HyperwalletEntryType
-    public let sourceToken: String
-    public let destinationToken: String
     public let amount: String
-    public let fee: String?
+    public let createdOn: String
     public let currency: String
-    public let foreignExchangeRate: String?
-    public let foreignExchangeCurrency: String?
+    public let destinationToken: String
     public let details: HyperwalletReceiptDetails?
+    public let entry: HyperwalletEntryType
+    public let fee: String?
+    public let foreignExchangeCurrency: String?
+    public let foreignExchangeRate: String?
+    public let journalId: String
+    public let sourceToken: String
+    public let type: HyperwalletReceiptType
 
     /// The transaction type.
     public enum HyperwalletReceiptType: String, Decodable {
@@ -64,8 +64,8 @@ public struct HyperwalletReceipt: Decodable {
         case transferFee = "TRANSFER_FEE"
         // Generic payment types
         case adjustment = "ADJUSTMENT"
-        case foreignExchange = "FOREIGN_EXCHANGE"
         case deposit = "DEPOSIT"
+        case foreignExchange = "FOREIGN_EXCHANGE"
         case manualAdjustment = "MANUAL_ADJUSTMENT"
         case paymentExpiration = "PAYMENT_EXPIRATION"
         // Bank account-specific types
@@ -140,8 +140,8 @@ public struct HyperwalletReceipt: Decodable {
 
     /// The entry type.
     public enum HyperwalletEntryType: String, Decodable {
-        case debit = "DEBIT"
         case credit = "CREDIT"
+        case debit = "DEBIT"
     }
 
     /// Details of the transaction.

@@ -263,8 +263,8 @@ class HyperwalletBankAccountIndividualTests: XCTestCase {
         bankAccountQueryParam.status = .deActivated
         bankAccountQueryParam.type = .bankAccount
         bankAccountQueryParam.sortBy = .ascendantCreatedOn
-        bankAccountQueryParam.createdAfter = Date.iso8601.date(from: "2018-12-15T00:30:11")
-        bankAccountQueryParam.createdBefore = Date.iso8601.date(from: "2018-12-18T00:30:11")
+        bankAccountQueryParam.createdAfter = ISO8601DateFormatter.ignoreTimeZone.date(from: "2018-12-15T00:30:11")
+        bankAccountQueryParam.createdBefore = ISO8601DateFormatter.ignoreTimeZone.date(from: "2018-12-18T00:30:11")
 
         Hyperwallet.shared.listBankAccounts(queryParam: bankAccountQueryParam) { (result, error) in
             bankAccountList = result

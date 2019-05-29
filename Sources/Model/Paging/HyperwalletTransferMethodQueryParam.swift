@@ -65,10 +65,10 @@ public class HyperwalletTransferMethodQueryParam: HyperwalletQueryParam {
     override public func toQuery() -> [String: String] {
         var query = super.toQuery()
         if let date = createdAfter {
-            query[QueryParam.createdAfter.rawValue] = Date.iso8601.string(from: date)
+            query[QueryParam.createdAfter.rawValue] = ISO8601DateFormatter.ignoreTimeZone.string(from: date)
         }
         if let date = createdBefore {
-            query[QueryParam.createdBefore.rawValue] = Date.iso8601.string(from: date)
+            query[QueryParam.createdBefore.rawValue] = ISO8601DateFormatter.ignoreTimeZone.string(from: date)
         }
         if let status = status {
             query[QueryParam.status.rawValue] = status.rawValue

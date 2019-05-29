@@ -26,8 +26,8 @@ class HyperwalletReceiptTests: XCTestCase {
 
         // When
         let receipttQueryParam = HyperwalletReceiptQueryParam()
-        receipttQueryParam.createdAfter = Date.iso8601.date(from: "2018-12-01T00:00:00")
-        receipttQueryParam.createdBefore = Date.iso8601.date(from: "2020-12-31T00:00:00")
+        receipttQueryParam.createdAfter = ISO8601DateFormatter.ignoreTimeZone.date(from: "2018-12-01T00:00:00")
+        receipttQueryParam.createdBefore = ISO8601DateFormatter.ignoreTimeZone.date(from: "2020-12-31T00:00:00")
         receipttQueryParam.currency = "USD"
         receipttQueryParam.sortBy = HyperwalletReceiptQueryParam.QuerySortable.descendantAmount
 
