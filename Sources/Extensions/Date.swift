@@ -18,7 +18,10 @@
 
 import Foundation
 
-extension Date {
+/// Date extension.
+public extension Date {
+    /// The thread-safe date formatter to work with ISO8601 date representations.
+    ///  The time zone is ignored.
     static let iso8601: ISO8601DateFormatter = {
         let formatter = ISO8601DateFormatter()
         formatter.formatOptions.remove(ISO8601DateFormatter.Options.withTimeZone)
