@@ -18,10 +18,10 @@
 
 import Foundation
 
-/// Representation of the bank account pagination fields.
-public class HyperwalletBankAccountPagination: HyperwalletTransferMethodPagination {
+/// Representation of the bank account query parameters.
+public class HyperwalletBankAccountQueryParam: HyperwalletTransferMethodQueryParam {
     /// The bank account type.
-    public var `type`: QueryType?
+    public var type: QueryType?
 
     /// Represents the Bank Account types.
     public enum QueryType: String {
@@ -29,16 +29,15 @@ public class HyperwalletBankAccountPagination: HyperwalletTransferMethodPaginati
         case wireAccount = "WIRE_ACCOUNT"
     }
 
-    /// Builds the `HyperwalletBankAccountPagination`'s URL Queries.
-    ///
-    /// - Returns: Returns the URL Query's dictionary.
+    enum QueryParam: String {
+        case type
+    }
+
     override public func toQuery() -> [String: String] {
         var query = super.toQuery()
-
-        if `type` != nil {
-            query["type"] = `type`?.rawValue
+        if let type = type {
+            query[QueryParam.type.rawValue] = type.rawValue
         }
-
         return query
     }
 }

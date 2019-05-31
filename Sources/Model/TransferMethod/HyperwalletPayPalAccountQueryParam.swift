@@ -18,10 +18,15 @@
 
 import Foundation
 
-protocol HTTPClientProtocol {
-    typealias ResultHandler = (Data?, URLResponse?, Error?) -> Void
+/// Representation of the PayPal account query parameters.
+public class HyperwalletPayPalAccountQueryParam: HyperwalletTransferMethodQueryParam {
+    enum QueryParam: String {
+        case type
+    }
 
-    func perform(with request: URLRequest, completionHandler: @escaping ResultHandler)
-
-    func invalidateSession()
+    override public func toQuery() -> [String: String] {
+        var query = super.toQuery()
+        query[QueryParam.type.rawValue] = "PAYPAL_ACCOUNT"
+        return query
+    }
 }

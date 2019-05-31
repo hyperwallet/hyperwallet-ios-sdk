@@ -18,6 +18,14 @@
 
 import Foundation
 
+protocol HTTPClientProtocol {
+    typealias ResultHandler = (Data?, URLResponse?, Error?) -> Void
+
+    func perform(with request: URLRequest, completionHandler: @escaping ResultHandler)
+
+    func invalidateSession()
+}
+
 struct HTTPClient: HTTPClientProtocol {
     private let session: URLSession
 
