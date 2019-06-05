@@ -3,4 +3,4 @@ xcodeproj: HyperwalletSDK.xcodeproj
 scheme: HyperwalletSDK
 ignore:
   - Tests/*
-  - Sources/Model/HyperwalletUser.swift
+  - Sources/Model/User/HyperwalletUser.swift

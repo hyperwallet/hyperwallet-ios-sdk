@@ -18,8 +18,8 @@
 
 import Foundation
 
-/// Representation of the common pagination fields
-public class HyperwalletPagination {
+/// Representation of the common query parameters.
+public class HyperwalletQueryParam {
     /// The maximum number of records that will be returned per page
     public var limit: Int
     /// The number of records to skip. If no filters are applied, records will be skipped from the beginning
@@ -27,16 +27,24 @@ public class HyperwalletPagination {
     /// matching records for the query.
     public var offset: Int
 
-    /// Creates a new instance of `HyperwalletPagination`]
+    /// Creates a new instance of `HyperwalletQueryParam`]
     public init() {
         limit = 10
         offset = 0
     }
 
-    /// Builds the `HyperwalletTransferMethodPagination`'s URL Queries
+    enum QueryParam: String {
+        case limit
+        case offset
+    }
+
+    /// Builds the URL Queries
     ///
     /// - Returns: Returns the URL Query's dictionary.
-    public func toQuery() -> [String: String] {
-        return ["offset": "\(offset)", "limit": "\(limit)"]
+    func toQuery() -> [String: String] {
+        return [
+            QueryParam.offset.rawValue: "\(offset)",
+            QueryParam.limit.rawValue: "\(limit)"
+        ]
     }
 }

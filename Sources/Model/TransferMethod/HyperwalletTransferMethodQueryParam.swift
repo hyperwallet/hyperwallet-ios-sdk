@@ -18,8 +18,8 @@
 
 import Foundation
 
-/// Representation of the common transfer method's pagination fields.
-public class HyperwalletTransferMethodPagination: HyperwalletPagination {
+/// Representation of the common transfer method's query parameters.
+public class HyperwalletTransferMethodQueryParam: HyperwalletQueryParam {
     /// Returns transfer methods created after this datetime.
     public var createdAfter: Date?
     /// Returns transfer methods created before this datetime.
@@ -28,6 +28,13 @@ public class HyperwalletTransferMethodPagination: HyperwalletPagination {
     public var sortBy: QuerySortable?
     /// Returns transfer methods with this account status.
     public var status: QueryStatus?
+
+    enum QueryParam: String {
+        case createdAfter
+        case createdBefore
+        case sortBy
+        case status
+    }
 
     /// Representation of the transfer method status
     ///
@@ -55,47 +62,20 @@ public class HyperwalletTransferMethodPagination: HyperwalletPagination {
         case descendantStatus = "-status"
     }
 
-    /// Builds the `HyperwalletTransferMethodPagination`'s URL Queries
-    ///
-    /// - Returns: Returns a dictionary of URL Query
     override public func toQuery() -> [String: String] {
         var query = super.toQuery()
-
         if let date = createdAfter {
-            query["createdAfter"] = HyperwalletTransferMethodPagination.iso8601.string(from: date)
+            query[QueryParam.createdAfter.rawValue] = ISO8601DateFormatter.ignoreTimeZone.string(from: date)
         }
-
         if let date = createdBefore {
-            query["createdBefore"] = HyperwalletTransferMethodPagination.iso8601.string(from: date)
+            query[QueryParam.createdBefore.rawValue] = ISO8601DateFormatter.ignoreTimeZone.string(from: date)
         }
-
-        if status != nil {
-            query["status"] = status?.rawValue
+        if let status = status {
+            query[QueryParam.status.rawValue] = status.rawValue
         }
-
-        if sortBy != nil {
-            query["sortBy"] = sortBy?.rawValue
+        if let sortBy = sortBy {
+            query[QueryParam.sortBy.rawValue] = sortBy.rawValue
         }
-
         return query
     }
-
-    /// Returns DateFormatter based at ISO860-1
-    ///
-    /// Example to convert Date to String:
-    ///     let date = Date()
-    ///     let dateFormatted = iso8601.string(from: date)
-    ///     print(dateFormatted) // 2019-01-23T03:04:13.959Z
-    ///
-    /// Example to convert Date to String:
-    ///     let value = "2019-01-23T03:04:13.959Z"
-    ///     let date = iso8601.date(from: value)
-    public static let iso8601: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.calendar = Calendar(identifier: .iso8601)
-        formatter.locale = Locale(identifier: "en_US_POSIX")
-        formatter.timeZone = TimeZone(secondsFromGMT: 0)
-        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
-        return formatter
-    }()
 }

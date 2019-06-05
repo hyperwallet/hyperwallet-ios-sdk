@@ -35,7 +35,7 @@ public struct HyperwalletPageList<ListType: Decodable>: Decodable {
 /// Representation of the page link
 public struct HyperwalletPageLink: Decodable {
     /// The URL of the link
-    public let href: String
+    public let href: URL
     /// The `HyperwalletPageParameter`
     public let params: HyperwalletPageParameter
 }

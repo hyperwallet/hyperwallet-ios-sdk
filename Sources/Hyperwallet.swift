@@ -290,7 +290,7 @@ public final class Hyperwallet {
     /// or nil if non exist.
     ///
     /// The ordering and filtering of `HyperwalletBankAccount`s will be based on the criteria specified within
-    /// the `HyperwalletBankAccountPagination` object, if it is not nil. Otherwise the default ordering and
+    /// the `HyperwalletBankAccountQueryParam` object, if it is not nil. Otherwise the default ordering and
     /// filtering will be applied:
     ///
     /// * Offset: 0
@@ -310,15 +310,15 @@ public final class Hyperwallet {
     /// if the current one is expired or is about to expire.
     ///
     /// - Parameters:
-    ///   - pagination: the ordering and filtering criteria
+    ///   - queryParam: the ordering and filtering criteria
     ///   - completion: the callback handler of responses from the Hyperwallet platform
-    public func listBankAccounts(pagination: HyperwalletBankAccountPagination? = nil,
+    public func listBankAccounts(queryParam: HyperwalletBankAccountQueryParam? = nil,
                                  completion: @escaping (HyperwalletPageList<HyperwalletBankAccount>?,
         HyperwalletErrorType?) -> Void) {
         httpTransaction.performRest(httpMethod: .get,
                                     urlPath: "users/%@/bank-accounts",
                                     payload: "",
-                                    pagination: pagination,
+                                    queryParam: queryParam,
                                     completionHandler: completion)
     }
 
@@ -327,7 +327,7 @@ public final class Hyperwallet {
     /// or nil if non exist.
     ///
     /// The ordering and filtering of `HyperwalletBankCard` will be based on the criteria specified within the
-    /// `HyperwalletBankAccountPagination` object, if it is not nil. Otherwise the default ordering and
+    /// `HyperwalletBankAccountQueryParam` object, if it is not nil. Otherwise the default ordering and
     /// filtering will be applied.
     ///
     /// * Offset: 0
@@ -346,15 +346,15 @@ public final class Hyperwallet {
     /// if the current one is expired or is about to expire.
     ///
     /// - Parameters:
-    ///   - pagination: the ordering and filtering criteria
+    ///   - queryParam: the ordering and filtering criteria
     ///   - completion: the callback handler of responses from the Hyperwallet platform
-    public func listBankCards(pagination: HyperwalletBankCardPagination? = nil,
+    public func listBankCards(queryParam: HyperwalletBankCardQueryParam? = nil,
                               completion: @escaping (HyperwalletPageList<HyperwalletBankCard>?,
                                                      HyperwalletErrorType?) -> Void) {
         httpTransaction.performRest(httpMethod: .get,
                                     urlPath: "users/%@/bank-cards",
                                     payload: "",
-                                    pagination: pagination,
+                                    queryParam: queryParam,
                                     completionHandler: completion)
     }
 
@@ -363,7 +363,7 @@ public final class Hyperwallet {
     /// or nil if non exist.
     ///
     /// The ordering and filtering of `HyperwalletPayPalAccount` will be based on the criteria specified within the
-    /// `HyperwalletPayPalAccountPagination` object, if it is not nil. Otherwise the default ordering and
+    /// `HyperwalletPayPalAccountQueryParam` object, if it is not nil. Otherwise the default ordering and
     /// filtering will be applied.
     ///
     /// * Offset: 0
@@ -382,15 +382,15 @@ public final class Hyperwallet {
     /// if the current one is expired or is about to expire.
     ///
     /// - Parameters:
-    ///   - pagination: the ordering and filtering criteria
+    ///   - queryParam: the ordering and filtering criteria
     ///   - completion: the callback handler of responses from the Hyperwallet platform
-    public func listPayPalAccounts(pagination: HyperwalletPayPalAccountPagination? = nil,
+    public func listPayPalAccounts(queryParam: HyperwalletPayPalAccountQueryParam? = nil,
                                    completion: @escaping (HyperwalletPageList<HyperwalletPayPalAccount>?,
                                                           HyperwalletErrorType?) -> Void) {
         httpTransaction.performRest(httpMethod: .get,
                                     urlPath: "users/%@/paypal-accounts",
                                     payload: "",
-                                    pagination: pagination,
+                                    queryParam: queryParam,
                                     completionHandler: completion)
     }
 
@@ -400,7 +400,7 @@ public final class Hyperwallet {
     /// or nil if non exist.
     ///
     /// The ordering and filtering of `HyperwalletBankCard` will be based on the criteria specified within the
-    /// `HyperwalletBankAccountPagination` object, if it is not nil. Otherwise the default ordering and
+    /// `HyperwalletBankAccountQueryParam` object, if it is not nil. Otherwise the default ordering and
     /// filtering will be applied.
     ///
     /// * Offset: 0
@@ -420,15 +420,50 @@ public final class Hyperwallet {
     /// if the current one is expired or is about to expire.
     ///
     /// - Parameters:
-    ///   - pagination: the ordering and filtering criteria
+    ///   - queryParam: the ordering and filtering criteria
     ///   - completion: the callback handler of responses from the Hyperwallet platform
-    public func listTransferMethods(pagination: HyperwalletTransferMethodPagination? = nil,
+    public func listTransferMethods(queryParam: HyperwalletTransferMethodQueryParam? = nil,
                                     completion: @escaping (HyperwalletPageList<HyperwalletTransferMethod>?,
         HyperwalletErrorType?) -> Void) {
         httpTransaction.performRest(httpMethod: .get,
                                     urlPath: "users/%@/transfer-methods",
                                     payload: "",
-                                    pagination: pagination,
+                                    queryParam: queryParam,
+                                    completionHandler: completion)
+    }
+
+    /// Returns the list of receipts for the User associated with the authentication token.
+    ///
+    /// The ordering and filtering of `HyperwalletReceipt` will be based on the criteria specified within the
+    /// `HyperwalletReceiptQueryParam` object, if it is not nil. Otherwise the default ordering and
+    /// filtering will be applied.
+    ///
+    /// * Offset: 0
+    /// * Limit: 10
+    /// * Created Before: N/A
+    /// * Created After: N/A
+    /// * Currency: All
+    /// * Sort By: Created On
+    ///
+    /// The `completion: @escaping (HyperwalletPageList<HyperwalletReceipt>?, HyperwalletErrorType?) -> Void`
+    /// that is passed in to this method invocation will receive the successful
+    /// response(HyperwalletPageList<HyperwalletReceipt>?) or error(HyperwalletErrorType) from processing
+    /// the request.
+    ///
+    /// This function will request a new authentication token via `HyperwalletAuthenticationTokenProvider`
+    /// if the current one is expired or is about to expire.
+    ///
+    /// - Parameters:
+    ///   - queryParam: the ordering and filtering criteria
+    ///   - completion: the callback handler of responses from the Hyperwallet platform
+
+    public func listUserReceipts(queryParam: HyperwalletReceiptQueryParam? = nil,
+                                 completion: @escaping (HyperwalletPageList<HyperwalletReceipt>?,
+        HyperwalletErrorType?) -> Void) {
+        httpTransaction.performRest(httpMethod: .get,
+                                    urlPath: "users/%@/receipts",
+                                    payload: "",
+                                    queryParam: queryParam,
                                     completionHandler: completion)
     }
 

@@ -167,11 +167,11 @@ Hyperwallet.shared.deactivateBankAccount(transferMethodToken: "trm-12345", notes
 
 ### List Bank Account
 ```swift
-let bankAccountPagination = HyperwalletBankAccountPagination()
-bankAccountPagination.status = .activated
-bankAccountPagination.sortBy = .ascendantCreatedOn
+let bankAccountQueryParam = HyperwalletBankAccountQueryParam()
+bankAccountQueryParam.status = .activated
+bankAccountQueryParam.sortBy = .ascendantCreatedOn
 
-Hyperwallet.shared.listBankAccounts(pagination: bankAccountPagination) { (result, error) in 
+Hyperwallet.shared.listBankAccounts(queryParam: bankAccountQueryParam) { (result, error) in 
     // In case of failure, error (HyperwalletErrorType) will contain HyperwalletErrors containing information about what caused the failure 
     guard error == nil else {
         print(error?.getHyperwalletErrors()?.errorList?)
@@ -237,11 +237,11 @@ Hyperwallet.shared.deactivateBankCard(transferMethodToken: "trm-12345", notes: "
 
 ### List Bank Card
 ```swift
-let bankCardPagination = HyperwalletBankCardPagination()
-bankCardPagination.status = .activated
-bankCardPagination.sortBy = .ascendantCreatedOn
+let bankCardQueryParam = HyperwalletBankCardQueryParam()
+bankCardQueryParam.status = .activated
+bankCardQueryParam.sortBy = .ascendantCreatedOn
 
-Hyperwallet.shared.listBankCards(pagination: bankCardPagination) { (result, error) in
+Hyperwallet.shared.listBankCards(queryParam: bankCardQueryParam) { (result, error) in
     // In case of failure, error (HyperwalletErrorType) will contain HyperwalletErrors containing information about what caused the failure 
     guard error == nil else {
         print(error?.getHyperwalletErrors()?.errorList?)
@@ -302,11 +302,11 @@ Hyperwallet.shared.deactivatePayPalAccount(transferMethodToken: "trm-12345", not
 
 ### List PayPal Account
 ```swift
-let payPalPagination = HyperwalletPayPalAccountPagination()
-payPalPagination.status = .activated
-payPalPagination.sortBy = .ascendantCreatedOn
+let payPalQueryParam = HyperwalletPayPalAccountQueryParam()
+payPalQueryParam.status = .activated
+payPalQueryParam.sortBy = .ascendantCreatedOn
 
-Hyperwallet.shared.listPayPalAccount(pagination: payPalPagination) { (result, error) in
+Hyperwallet.shared.listPayPalAccount(queryParam: payPalQueryParam) { (result, error) in
     // In case of failure, error (HyperwalletErrorType) will contain HyperwalletErrors containing information about what caused the failure 
     guard error == nil else {
         print(error?.getHyperwalletErrors()?.errorList?)
@@ -324,10 +324,10 @@ Hyperwallet.shared.listPayPalAccount(pagination: payPalPagination) { (result, er
 
 ### List Transfer Methods
 ```swift
-let transferMethodPagination = HyperwalletTransferMethodPagination()
-transferMethodPagination.sortBy = .ascendantCreatedOn
+let transferMethodQueryParam = HyperwalletTransferMethodQueryParam()
+transferMethodQueryParam.sortBy = .ascendantCreatedOn
 
-Hyperwallet.shared.listTransferMethods(pagination: transferMethodPagination) { (result, error) in
+Hyperwallet.shared.listTransferMethods(queryParam: transferMethodQueryParam) { (result, error) in
     // In case of failure, error (HyperwalletErrorType) will contain HyperwalletErrors containing information about what caused the failure 
     guard error == nil else {
         print(error?.getHyperwalletErrors()?.errorList?)

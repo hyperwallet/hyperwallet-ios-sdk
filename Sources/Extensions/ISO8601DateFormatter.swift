@@ -18,14 +18,13 @@
 
 import Foundation
 
-/// Representation of the bank card pagination fields.
-public class HyperwalletBankCardPagination: HyperwalletTransferMethodPagination {
-    /// Builds the `HyperwalletBankCardPagination`'s URL Queries.
-    ///
-    /// - Returns: Returns the URL Query's dictionary.
-    override public func toQuery() -> [String: String] {
-        var query = super.toQuery()
-        query["type"] = "BANK_CARD"
-        return query
-    }
+/// Date extension.
+public extension ISO8601DateFormatter {
+    /// The thread-safe date formatter to work with ISO8601 date representations.
+    ///  The time zone is ignored.
+    static let ignoreTimeZone: ISO8601DateFormatter = {
+        let formatter = ISO8601DateFormatter()
+        formatter.formatOptions.remove(ISO8601DateFormatter.Options.withTimeZone)
+        return formatter
+    }()
 }
