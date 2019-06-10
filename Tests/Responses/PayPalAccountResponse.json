@@ -6,6 +6,7 @@
     "transferMethodCountry": "US",
     "transferMethodCurrency": "USD",
     "email": "test@paypal.com",
+    "profileType":"INDIVIDUAL",
     "links": [
         {
             "params": {

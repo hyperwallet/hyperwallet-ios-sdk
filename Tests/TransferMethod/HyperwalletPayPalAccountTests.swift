@@ -27,7 +27,9 @@ class HyperwalletPayPalAccountTests: XCTestCase {
 
         // When
         let payPalAccount = HyperwalletPayPalAccount
-            .Builder(transferMethodCountry: "US", transferMethodCurrency: "USD")
+            .Builder(transferMethodCountry: "US",
+                     transferMethodCurrency: "USD",
+                     transferMethodProfileType: "INDIVIDUAL")
             .email("test@paypal.com")
             .build()
 
@@ -58,7 +60,8 @@ class HyperwalletPayPalAccountTests: XCTestCase {
 
         // When
         let payPalAccount = HyperwalletPayPalAccount.Builder(transferMethodCountry: "US",
-                                                             transferMethodCurrency: "USD")
+                                                             transferMethodCurrency: "USD",
+                                                             transferMethodProfileType: "INDIVIDUAL")
                                                     .build()
 
         Hyperwallet.shared.createPayPalAccount(account: payPalAccount, completion: { (result, error) in
@@ -88,7 +91,8 @@ class HyperwalletPayPalAccountTests: XCTestCase {
 
         // When
         let payPalAccount = HyperwalletPayPalAccount.Builder(transferMethodCountry: "US",
-                                                             transferMethodCurrency: "USD")
+                                                             transferMethodCurrency: "USD",
+                                                             transferMethodProfileType: "INDIVIDUAL")
                                                     .email("notProfileEmail@paypal.com")
                                                     .build()
 
