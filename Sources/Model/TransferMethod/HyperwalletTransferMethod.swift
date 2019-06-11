@@ -102,7 +102,14 @@ public class HyperwalletTransferMethod: Codable {
         case governmentId
         case governmentIdType
         case intermediaryBankAccountId
+        case intermediaryBankAddressLine1
+        case intermediaryBankAddressLine2
+        case intermediaryBankCity
+        case intermediaryBankCountry
         case intermediaryBankId
+        case intermediaryBankName
+        case intermediaryBankPostalCode
+        case intermediaryBankStateProvince
         case lastName
         case middleName
         case mobileNumber
