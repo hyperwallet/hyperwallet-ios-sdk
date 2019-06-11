@@ -501,6 +501,15 @@ public final class HyperwalletBankAccount: HyperwalletTransferMethod {
             return self
         }
 
+        /// Sets the type of transfer method, e.g. BANK_ACCOUNT or WIRE_ACCOUNT.
+        ///
+        /// - Parameter type: The type of transfer method, e.g. BANK_ACCOUNT or WIRE_ACCOUNT.
+        /// - Returns: a self `HyperwalletBankAccount.Builder` instance.
+        public func type(_ type: String) -> Builder {
+            storage[TransferMethodField.type.rawValue] = AnyCodable(value: type)
+            return self
+        }
+
         /// Sets wire transfer instructions.
         ///
         /// - Parameter wireInstructions: Wire transfer instructions.
