@@ -25,8 +25,8 @@
 		641EBE9C2292DA3300D718F4 /* AuthenticationTokenIndividualResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 641EBE9A2292DA3300D718F4 /* AuthenticationTokenIndividualResponse.json */; };
 		641EBE9D2292DA3300D718F4 /* AuthenticationTokenBusinessResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 641EBE9B2292DA3300D718F4 /* AuthenticationTokenBusinessResponse.json */; };
 		641EBE9E2292E2B600D718F4 /* BankAccountBusinessResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 641EBE8E228DC45300D718F4 /* BankAccountBusinessResponse.json */; };
-		644A69BE22AFF6670058E77E /* WireAccountBusinessResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 644A69BC22AFF6670058E77E /* WireAccountBusinessResponse.json */; };
-		644A69C022B009E70058E77E /* WireAccountIndividualResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 644A69BD22AFF6670058E77E /* WireAccountIndividualResponse.json */; };
+		644A69C122B0F7640058E77E /* WireAccountBusinessResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 644A69BC22AFF6670058E77E /* WireAccountBusinessResponse.json */; };
+		644A69C322B0FB830058E77E /* WireAccountIndividualResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 644A69C222B0FB830058E77E /* WireAccountIndividualResponse.json */; };
 		9807B74522642BEA0028A280 /* OSLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9807B74422642BEA0028A280 /* OSLog.swift */; };
 		980C15DB2273BF91004C60D6 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = 980C15DA2273BF91004C60D6 /* CHANGELOG.md */; };
 		980C15F12273D1FA004C60D6 /* ListBankCardResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = DBCA37A6225D6D1700CD4137 /* ListBankCardResponse.json */; };
@@ -129,7 +129,7 @@
 		641EBE9A2292DA3300D718F4 /* AuthenticationTokenIndividualResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AuthenticationTokenIndividualResponse.json; sourceTree = "<group>"; };
 		641EBE9B2292DA3300D718F4 /* AuthenticationTokenBusinessResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AuthenticationTokenBusinessResponse.json; sourceTree = "<group>"; };
 		644A69BC22AFF6670058E77E /* WireAccountBusinessResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = WireAccountBusinessResponse.json; sourceTree = "<group>"; };
-		644A69BD22AFF6670058E77E /* WireAccountIndividualResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = WireAccountIndividualResponse.json; sourceTree = "<group>"; };
+		644A69C222B0FB830058E77E /* WireAccountIndividualResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = WireAccountIndividualResponse.json; sourceTree = "<group>"; };
 		9807B74422642BEA0028A280 /* OSLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OSLog.swift; sourceTree = "<group>"; };
 		980C15DA2273BF91004C60D6 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		98101DBA2238A2F000BA04CA /* HyperwalletSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HyperwalletSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -231,7 +231,7 @@
 				641EBE8E228DC45300D718F4 /* BankAccountBusinessResponse.json */,
 				DBCA37A1225D6D1600CD4137 /* BankAccountIndividualResponse.json */,
 				644A69BC22AFF6670058E77E /* WireAccountBusinessResponse.json */,
-				644A69BD22AFF6670058E77E /* WireAccountIndividualResponse.json */,
+				644A69C222B0FB830058E77E /* WireAccountIndividualResponse.json */,
 			);
 			path = BankAccount;
 			sourceTree = "<group>";
@@ -596,7 +596,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB866F272261EE28003C41F6 /* HyperwalletSDK.podspec in Resources */,
-				644A69BE22AFF6670058E77E /* WireAccountBusinessResponse.json in Resources */,
 				980C15DB2273BF91004C60D6 /* CHANGELOG.md in Resources */,
 				DB866F282261EE28003C41F6 /* Cartfile.private in Resources */,
 				DB866F2A2261EE28003C41F6 /* README.md in Resources */,
@@ -627,12 +626,13 @@
 				DBCA37AF225D6D1700CD4137 /* ListBankAccountResponse.json in Resources */,
 				2B5433FE229EF11F00F900D2 /* ListUserReceiptResponse.json in Resources */,
 				DBCA37B6225D6D1700CD4137 /* TransferMethodConfigurationFieldsResponse.json in Resources */,
+				644A69C322B0FB830058E77E /* WireAccountIndividualResponse.json in Resources */,
 				DB3151CF22780AA300FC9F8E /* UserIndividualResponse.json in Resources */,
 				DBCA37B8225D6D1700CD4137 /* TransferMethodConfigurationKeysWithoutFeeResponse.json in Resources */,
 				DBCA37B7225D6D1700CD4137 /* BankAccountErrorResponseWithMissingBankId.json in Resources */,
 				DBCA37AE225D6D1700CD4137 /* BankAccountIndividualResponse.json in Resources */,
+				644A69C122B0F7640058E77E /* WireAccountBusinessResponse.json in Resources */,
 				DBCA37B2225D6D1700CD4137 /* BankCardErrorResponseWithInvalidCardNumber.json in Resources */,
-				644A69C022B009E70058E77E /* WireAccountIndividualResponse.json in Resources */,
 				641EBE9E2292E2B600D718F4 /* BankAccountBusinessResponse.json in Resources */,
 				DBCA37B1225D6D1700CD4137 /* TransferMethodConfigurationGraphQlResponse.json in Resources */,
 				DBCA37B4225D6D1700CD4137 /* StatusTransitionMockedResponseInvalidTransition.json in Resources */,
