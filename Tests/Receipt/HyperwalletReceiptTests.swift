@@ -13,6 +13,7 @@ class HyperwalletReceiptTests: XCTestCase {
         }
     }
 
+    //swiftlint:disable function_body_length
     func testListUserReceipts_success() {
         // Given
         let expectation = self.expectation(description: "List User Receipts completed")
@@ -41,7 +42,7 @@ class HyperwalletReceiptTests: XCTestCase {
         // Then
         XCTAssertNil(errorResponse, "The `errorResponse` should be nil")
         XCTAssertNotNil(userReceiptList, "The `payPalAccountList` should not be nil")
-        XCTAssertEqual(userReceiptList?.count, 3, "The `count` should be 3")
+        XCTAssertEqual(userReceiptList?.count, 4, "The `count` should be 4")
         XCTAssertNotNil(userReceiptList?.data, "The `data` should be not nil")
         XCTAssertNotNil(userReceiptList?.links, "The `links` should be not nil")
         XCTAssertNotNil(userReceiptList?.links.first?.params.rel)
@@ -63,7 +64,10 @@ class HyperwalletReceiptTests: XCTestCase {
                 assertionFailure("The receipt details should be not nil")
             }
         } else {
-            assertionFailure("The first receipt in the list should be not nil")
+            assertionFailure("The receipt details should be not nil")
         }
+
+        let lastReceipt = userReceiptList?.data.last!
+        XCTAssertEqual(lastReceipt?.type.rawValue, "UNKNOWN_RECEIPT_TYPE")
     }
 }
