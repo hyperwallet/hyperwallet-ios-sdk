@@ -63,7 +63,7 @@ final class HTTPTransaction {
     func performRest<Request, Response>(httpMethod: HTTPMethod,
                                         urlPath: String,
                                         payload: Request,
-                                        queryParam: HyperwalletQueryParam? = nil,
+                                        queryParam: QueryParam? = nil,
                                         completionHandler handler: @escaping (_ response: Response?,
                                                                               _ error: HyperwalletErrorType?) -> Void)
         where Request: Encodable, Response: Decodable {
