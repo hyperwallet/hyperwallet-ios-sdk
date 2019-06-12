@@ -456,12 +456,46 @@ public final class Hyperwallet {
     /// - Parameters:
     ///   - queryParam: the ordering and filtering criteria
     ///   - completion: the callback handler of responses from the Hyperwallet platform
-
     public func listUserReceipts(queryParam: HyperwalletReceiptQueryParam? = nil,
                                  completion: @escaping (HyperwalletPageList<HyperwalletReceipt>?,
         HyperwalletErrorType?) -> Void) {
         httpTransaction.performRest(httpMethod: .get,
                                     urlPath: "users/%@/receipts",
+                                    payload: "",
+                                    queryParam: queryParam,
+                                    completionHandler: completion)
+    }
+
+    /// Returns the list of receipts for the User associated with the Prepaid card token.
+    ///
+    /// The ordering and filtering of `HyperwalletReceipt` will be based on the criteria specified within the
+    /// `HyperwalletReceiptQueryParam` object, if it is not nil. Otherwise the default ordering and
+    /// filtering will be applied.
+    ///
+    /// * Offset: 0
+    /// * Limit: 10
+    /// * Created Before: N/A
+    /// * Created After: N/A
+    /// * Currency: All
+    /// * Sort By: Created On
+    ///
+    /// The `completion: @escaping (HyperwalletPageList<HyperwalletReceipt>?, HyperwalletErrorType?) -> Void`
+    /// that is passed in to this method invocation will receive the successful
+    /// response(HyperwalletPageList<HyperwalletReceipt>?) or error(HyperwalletErrorType) from processing
+    /// the request.
+    ///
+    /// This function will request a new authentication token via `HyperwalletAuthenticationTokenProvider`
+    /// if the current one is expired or is about to expire.
+    ///
+    /// - Parameters:
+    ///   - queryParam: the ordering and filtering criteria
+    ///   - completion: the callback handler of responses from the Hyperwallet platform
+    public func listPrepaidCardReceipts(prepaidCardToken: String,
+                                        queryParam: HyperwalletReceiptQueryParam? = nil,
+                                        completion: @escaping (HyperwalletPageList<HyperwalletReceipt>?,
+        HyperwalletErrorType?) -> Void) {
+        httpTransaction.performRest(httpMethod: .get,
+                                    urlPath: "users/%@/prepaid-cards/\(prepaidCardToken)/receipts",
                                     payload: "",
                                     queryParam: queryParam,
                                     completionHandler: completion)

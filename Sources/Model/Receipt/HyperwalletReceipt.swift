@@ -43,7 +43,7 @@ public struct HyperwalletReceipt: Decodable {
     public let foreignExchangeCurrency: String?
     public let foreignExchangeRate: String?
     public let journalId: String
-    public let sourceToken: String
+    public let sourceToken: String?
     public let type: HyperwalletReceiptType
 
     /// The transaction type.

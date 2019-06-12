@@ -239,8 +239,8 @@ class HyperwalletBankCardTests: XCTestCase {
 
         // When
         let bankCardQueryParam = HyperwalletBankCardQueryParam()
-        bankCardQueryParam.status = .deActivated
-        bankCardQueryParam.sortBy = .ascendantCreatedOn
+        bankCardQueryParam.status = HyperwalletBankCardQueryParam.QueryStatus.deActivated
+        bankCardQueryParam.sortBy = HyperwalletBankCardQueryParam.QuerySortable.ascendantCreatedOn.rawValue
         bankCardQueryParam.createdAfter = ISO8601DateFormatter.ignoreTimeZone.date(from: "2018-12-15T00:30:11")
         bankCardQueryParam.createdBefore = ISO8601DateFormatter.ignoreTimeZone.date(from: "2018-12-18T00:30:11")
 
@@ -281,8 +281,8 @@ class HyperwalletBankCardTests: XCTestCase {
 
         // When
         let bankCardQueryParam = HyperwalletBankCardQueryParam()
-        bankCardQueryParam.status = .activated
-        bankCardQueryParam.sortBy = .ascendantCreatedOn
+        bankCardQueryParam.status = HyperwalletBankCardQueryParam.QueryStatus.activated
+        bankCardQueryParam.sortBy = HyperwalletBankCardQueryParam.QuerySortable.ascendantCreatedOn.rawValue
         bankCardQueryParam.createdAfter = ISO8601DateFormatter.ignoreTimeZone.date(from: "2019-01-01T00:30:11")
 
         Hyperwallet.shared.listBankCards(queryParam: bankCardQueryParam) { (result, error) in
