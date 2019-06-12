@@ -45,10 +45,12 @@ public final class HyperwalletPayPalAccount: HyperwalletTransferMethod {
         /// - Parameters:
         ///   - transferMethodCountry: The PayPal account country.
         ///   - transferMethodCurrency: The PayPal account currency.
-        public init(transferMethodCountry: String, transferMethodCurrency: String) {
+        ///   - transferMethodProfileType: The bank account holder's profile type, e.g. INDIVIDUAL or BUSINESS
+        public init(transferMethodCountry: String, transferMethodCurrency: String, transferMethodProfileType: String) {
             storage[TransferMethodField.type.rawValue] = AnyCodable(value: TransferMethodType.payPalAccount.rawValue)
             storage[TransferMethodField.transferMethodCountry.rawValue] = AnyCodable(value: transferMethodCountry)
             storage[TransferMethodField.transferMethodCurrency.rawValue] = AnyCodable(value: transferMethodCurrency)
+            storage[TransferMethodField.profileType.rawValue] = AnyCodable(value: transferMethodProfileType)
         }
 
         /// Sets the email address
@@ -57,6 +59,15 @@ public final class HyperwalletPayPalAccount: HyperwalletTransferMethod {
         /// - Returns: a self `HyperwalletPayPalAccount.Builder` instance.
         public func email(_ email: String) -> Builder {
             storage[TransferMethodField.email.rawValue] = AnyCodable(value: email)
+            return self
+        }
+
+        /// Sets the bank account holder's profile type.
+        ///
+        /// - Parameter profileType: The bank account holder's profile type, e.g. INDIVIDUAL or BUSINESS
+        /// - Returns: a self `HyperwalletBankAccount.Builder` instance.
+        public func profileType(_ profileType: String) -> Builder {
+            storage[TransferMethodField.profileType.rawValue] = AnyCodable(value: profileType)
             return self
         }
 
