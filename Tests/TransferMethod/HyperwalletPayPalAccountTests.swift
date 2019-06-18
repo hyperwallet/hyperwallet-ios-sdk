@@ -134,6 +134,7 @@ class HyperwalletPayPalAccountTests: XCTestCase {
         XCTAssertNil(errorResponse, "The `errorResponse` should be nil")
         XCTAssertNotNil(payPalAccountResponse?.getFields())
         XCTAssertEqual(payPalAccountResponse?.getField(fieldName: .email) as? String, "test@paypal.com")
+        XCTAssertEqual(payPalAccountResponse?.getField(fieldName: .profileType) as? String, "INDIVIDUAL")
     }
 
     func testUpdatePayPalAccount_success() {
@@ -148,7 +149,11 @@ class HyperwalletPayPalAccountTests: XCTestCase {
         var errorResponse: HyperwalletErrorType?
 
         // When
-        let payPalAccount = HyperwalletPayPalAccount.Builder(token: "trm-12345").email("test@paypal.com").build()
+        let payPalAccount = HyperwalletPayPalAccount
+            .Builder(token: "trm-12345")
+            .email("test@paypal.com")
+            .profileType("INDIVIDUAL")
+            .build()
 
         Hyperwallet.shared.updatePayPalAccount(account: payPalAccount, completion: { (result, error) in
             payPalAccountResponse = result
