@@ -85,14 +85,14 @@ class HTTPTransactionTests: XCTestCase {
         let limit = urlValueComponents?.queryItems?.first { $0.name == "limit" }
         XCTAssertNotNil(limit, "The limit should be part of the URL")
         XCTAssertEqual(limit?.value, "80", "The limit should be 80")
-        let limitKey = HyperwalletQueryParam.QueryParam.limit.rawValue
+        let limitKey = QueryParam.QueryParam.limit.rawValue
         XCTAssertNotNil(queryParamsDictionary?[limitKey], "The limit should be part of the URL")
         XCTAssertEqual(queryParamsDictionary?[limitKey], "80", "The limit should be 80")
 
         let offset = urlValueComponents?.queryItems?.first { $0.name == "offset" }
         XCTAssertNotNil(offset, "The offset should be part of the URL")
         XCTAssertEqual(offset?.value, "0", "The offset should be 0")
-        let offsetKey = HyperwalletQueryParam.QueryParam.offset.rawValue
+        let offsetKey = QueryParam.QueryParam.offset.rawValue
         XCTAssertNotNil(queryParamsDictionary?[offsetKey], "The offset should be part of the URL")
         XCTAssertEqual(queryParamsDictionary?[offsetKey], "0", "The offset should be 0")
 

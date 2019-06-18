@@ -19,21 +19,12 @@
 import Foundation
 
 /// Representation of the user receipts QueryParam fields.
-public class HyperwalletReceiptQueryParam: HyperwalletQueryParam {
-    /// Returns user receipts created after this datetime.
-    public var createdAfter: Date?
-    /// Returns user receipts created before this datetime.
-    public var createdBefore: Date?
+public class HyperwalletReceiptQueryParam: QueryParam {
     /// A value that identifies the user receipts currency.
     public var currency: String?
-    /// The user receipts attribute to sort the result set by.
-    public var sortBy: QuerySortable?
 
     enum QueryParam: String {
-        case createdAfter
-        case createdBefore
         case currency
-        case sortBy
     }
 
     /// Representation of the field's sortable
@@ -60,17 +51,8 @@ public class HyperwalletReceiptQueryParam: HyperwalletQueryParam {
 
     override func toQuery() -> [String: String] {
         var query = super.toQuery()
-        if let date = createdAfter {
-            query[QueryParam.createdAfter.rawValue] = ISO8601DateFormatter.ignoreTimeZone.string(from: date)
-        }
-        if let date = createdBefore {
-            query[QueryParam.createdBefore.rawValue] = ISO8601DateFormatter.ignoreTimeZone.string(from: date)
-        }
         if let currency = currency {
             query[QueryParam.currency.rawValue] = currency
-        }
-        if let sortBy = sortBy {
-            query[QueryParam.sortBy.rawValue] = sortBy.rawValue
         }
         return query
     }

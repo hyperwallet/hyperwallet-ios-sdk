@@ -36,14 +36,14 @@ public struct HyperwalletReceipt: Decodable {
     public let amount: String
     public let createdOn: String
     public let currency: String
-    public let destinationToken: String
+    public let destinationToken: String?
     public let details: HyperwalletReceiptDetails?
     public let entry: HyperwalletEntryType
     public let fee: String?
     public let foreignExchangeCurrency: String?
     public let foreignExchangeRate: String?
     public let journalId: String
-    public let sourceToken: String
+    public let sourceToken: String?
     public let type: HyperwalletReceiptType
 
     /// The transaction type.
@@ -136,6 +136,7 @@ public struct HyperwalletReceipt: Decodable {
         case transferToWire = "TRANSFER_TO_WIRE"
         case wireTransferFee = "WIRE_TRANSFER_FEE"
         case wireTransferReturn = "WIRE_TRANSFER_RETURN"
+        case unknown = "UNKNOWN_RECEIPT_TYPE"
     }
 
     /// The entry type.
@@ -220,5 +221,16 @@ public struct HyperwalletReceipt: Decodable {
     public enum BankAccountPurposeType: String, Decodable {
         case checking = "CHECKING"
         case savings = "SAVINGS"
+    }
+}
+
+extension HyperwalletReceipt.HyperwalletReceiptType {
+    
+    /// A safe initializer for creating a HyperwalletReceiptType object
+    ///
+    /// - Parameter decoder: The decoder to read data from.
+    public init(from decoder: Decoder) throws {
+        self = try HyperwalletReceipt.HyperwalletReceiptType(rawValue: decoder
+            .singleValueContainer().decode(RawValue.self)) ?? .unknown
     }
 }

@@ -19,20 +19,11 @@
 import Foundation
 
 /// Representation of the common transfer method's query parameters.
-public class HyperwalletTransferMethodQueryParam: HyperwalletQueryParam {
-    /// Returns transfer methods created after this datetime.
-    public var createdAfter: Date?
-    /// Returns transfer methods created before this datetime.
-    public var createdBefore: Date?
-    /// The transfer methods attribute to sort the result set by.
-    public var sortBy: QuerySortable?
+public class HyperwalletTransferMethodQueryParam: QueryParam {
     /// Returns transfer methods with this account status.
     public var status: QueryStatus?
 
     enum QueryParam: String {
-        case createdAfter
-        case createdBefore
-        case sortBy
         case status
     }
 
@@ -74,7 +65,7 @@ public class HyperwalletTransferMethodQueryParam: HyperwalletQueryParam {
             query[QueryParam.status.rawValue] = status.rawValue
         }
         if let sortBy = sortBy {
-            query[QueryParam.sortBy.rawValue] = sortBy.rawValue
+            query[QueryParam.sortBy.rawValue] = sortBy
         }
         return query
     }
