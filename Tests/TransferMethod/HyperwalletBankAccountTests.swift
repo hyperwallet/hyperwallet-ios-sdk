@@ -140,7 +140,8 @@ class HyperwalletBankAccountIndividualTests: XCTestCase {
         // When
         let bankAccount = HyperwalletBankAccount.Builder(transferMethodCountry: "US",
                                                          transferMethodCurrency: "USD",
-                                                         transferMethodProfileType: "INDIVIDUAL")
+                                                         transferMethodProfileType: "INDIVIDUAL",
+                                                         transferMethodType: "BANK_ACCOUNT")
             .bankAccountId("12345")
             .branchId("123456")
             .bankAccountPurpose(.checking)
@@ -379,7 +380,8 @@ private extension HyperwalletBankAccountIndividualTests {
         return HyperwalletBankAccount
             .Builder(transferMethodCountry: "US",
                      transferMethodCurrency: "USD",
-                     transferMethodProfileType: "INDIVIDUAL")
+                     transferMethodProfileType: "INDIVIDUAL",
+                     transferMethodType: "BANK_ACCOUNT")
             .bankAccountId("12345")
             .branchId("123456")
             .branchName("XYZ")
@@ -414,7 +416,8 @@ private extension HyperwalletBankAccountIndividualTests {
         return HyperwalletBankAccount
             .Builder(transferMethodCountry: "US",
                      transferMethodCurrency: "USD",
-                     transferMethodProfileType: "BUSINESS")
+                     transferMethodProfileType: "BUSINESS",
+                     transferMethodType: "BANK_ACCOUNT")
             .bankAccountId("7861012345")
             .branchId("102000021")
             .bankAccountRelationship(.ownCompany)
@@ -439,8 +442,8 @@ private extension HyperwalletBankAccountIndividualTests {
         return HyperwalletBankAccount
             .Builder(transferMethodCountry: "US",
                      transferMethodCurrency: "USD",
-                     transferMethodProfileType: "INDIVIDUAL")
-            .type(HyperwalletTransferMethod.TransferMethodType.wireAccount.rawValue)
+                     transferMethodProfileType: "INDIVIDUAL",
+                     transferMethodType: "WIRE_ACCOUNT")
             .bankAccountId("675825207")
             .branchId("026009593")
             .bankAccountRelationship(.self)
@@ -472,8 +475,8 @@ private extension HyperwalletBankAccountIndividualTests {
         return HyperwalletBankAccount
             .Builder(transferMethodCountry: "US",
                      transferMethodCurrency: "USD",
-                     transferMethodProfileType: "BUSINESS")
-            .type("WIRE_ACCOUNT")
+                     transferMethodProfileType: "BUSINESS",
+                     transferMethodType: "WIRE_ACCOUNT")
             .bankId("13254687")
             .bankName("US BANK NA")
             .branchId("026009593")
@@ -515,15 +518,8 @@ private extension HyperwalletBankAccountIndividualTests {
         XCTAssertEqual(bankAccountResponse?.getField(fieldName: .bankAccountId) as! String, "7861012345")
         XCTAssertEqual(bankAccountResponse?.getField(fieldName: .branchId) as! String, "102000021")
 
-        let relationship = HyperwalletBankAccount.RelationshipType.ownCompany
-        let responseRelationship = bankAccountResponse?.getField(fieldName: .bankAccountRelationship) as! String
-
-        XCTAssertEqual(responseRelationship, relationship.rawValue)
-
-        let purpose = HyperwalletBankAccount.PurposeType.checking
-        let responsePurpose = bankAccountResponse?.getField(fieldName: .bankAccountPurpose) as! String
-
-        XCTAssertEqual(responsePurpose, purpose.rawValue)
+        verifyRelationship(.ownCompany, in: bankAccountResponse)
+        verifyPurpose(.checking, in: bankAccountResponse)
 
         XCTAssertEqual(bankAccountResponse?.getField(fieldName: .businessName) as! String, "US BANK NA")
         XCTAssertEqual(bankAccountResponse?.getField(fieldName: .phoneNumber) as! String, "604-345-1777")
@@ -540,15 +536,8 @@ private extension HyperwalletBankAccountIndividualTests {
         XCTAssertEqual(bankAccountResponse?.getField(fieldName: .bankAccountId) as! String, "675825206")
         XCTAssertEqual(bankAccountResponse?.getField(fieldName: .branchId) as! String, "026009593")
 
-        let relationship: HyperwalletBankAccount.RelationshipType = .self
-        let responseRelationship = bankAccountResponse?.getField(fieldName: .bankAccountRelationship) as! String
-
-        XCTAssertEqual(responseRelationship, relationship.rawValue)
-
-        let purpose = HyperwalletBankAccount.PurposeType.checking
-        let responsePurpose = bankAccountResponse?.getField(fieldName: .bankAccountPurpose) as! String
-
-        XCTAssertEqual(responsePurpose, purpose.rawValue)
+        verifyRelationship(.self, in: bankAccountResponse)
+        verifyPurpose(.checking, in: bankAccountResponse)
 
         XCTAssertEqual(bankAccountResponse?.getField(fieldName: .firstName) as! String, "Some")
         XCTAssertEqual(bankAccountResponse?.getField(fieldName: .middleName) as! String, "Good")
@@ -568,15 +557,8 @@ private extension HyperwalletBankAccountIndividualTests {
         XCTAssertEqual(wireAccountResponse?.getField(fieldName: .bankAccountId) as! String, "675825207")
         XCTAssertEqual(wireAccountResponse?.getField(fieldName: .branchId) as! String, "026009593")
 
-        let relationship: HyperwalletBankAccount.RelationshipType = .self
-        let responseRelationship = wireAccountResponse?.getField(fieldName: .bankAccountRelationship) as! String
-
-        XCTAssertEqual(responseRelationship, relationship.rawValue)
-
-        let purpose = HyperwalletBankAccount.PurposeType.checking
-        let responsePurpose = wireAccountResponse?.getField(fieldName: .bankAccountPurpose) as! String
-
-        XCTAssertEqual(responsePurpose, purpose.rawValue)
+        verifyRelationship(.self, in: wireAccountResponse)
+        verifyPurpose(.checking, in: wireAccountResponse)
 
         XCTAssertEqual(wireAccountResponse?.getField(fieldName: .firstName) as! String, "Tommy")
         XCTAssertEqual(wireAccountResponse?.getField(fieldName: .lastName) as! String, "Gray")
@@ -596,7 +578,8 @@ private extension HyperwalletBankAccountIndividualTests {
         XCTAssertEqual(wireAccountResponse?.getField(fieldName: .intermediaryBankCity) as! String, "New York")
         XCTAssertEqual(wireAccountResponse?.getField(fieldName: .intermediaryBankCountry) as! String, "US")
         XCTAssertEqual(wireAccountResponse?.getField(fieldName: .intermediaryBankId) as! String, "12345678901")
-        XCTAssertEqual(wireAccountResponse?.getField(fieldName: .intermediaryBankName) as! String, "Intermediary Big Bank")
+        XCTAssertEqual(wireAccountResponse?.getField(fieldName: .intermediaryBankName) as! String,
+                       "Intermediary Big Bank")
         XCTAssertEqual(wireAccountResponse?.getField(fieldName: .intermediaryBankPostalCode) as! String, "134679")
         XCTAssertEqual(wireAccountResponse?.getField(fieldName: .intermediaryBankStateProvince) as! String, "PA")
         XCTAssertEqual(wireAccountResponse?.getField(fieldName: .wireInstructions) as! String, "This is instruction")
@@ -612,20 +595,9 @@ private extension HyperwalletBankAccountIndividualTests {
         XCTAssertEqual(bankAccountResponse?.getField(fieldName: .bankId) as! String, "13254687")
         XCTAssertEqual(bankAccountResponse?.getField(fieldName: .branchId) as! String, "026009593")
 
-        let relationship = HyperwalletBankAccount.RelationshipType.ownCompany
-        let responseRelationship = bankAccountResponse?.getField(fieldName: .bankAccountRelationship) as! String
-
-        XCTAssertEqual(responseRelationship, relationship.rawValue)
-
-        let purpose = HyperwalletBankAccount.PurposeType.checking
-        let responsePurpose = bankAccountResponse?.getField(fieldName: .bankAccountPurpose) as! String
-
-        XCTAssertEqual(responsePurpose, purpose.rawValue)
-
-        let role = HyperwalletBankAccount.BusinessContactRole.owner
-        let responseRole = bankAccountResponse?.getField(fieldName: .businessContactRole) as! String
-
-        XCTAssertEqual(responseRole, role.rawValue)
+        verifyRelationship(.ownCompany, in: bankAccountResponse)
+        verifyPurpose(.checking, in: bankAccountResponse)
+        verifyRole(.owner, in: bankAccountResponse)
 
         XCTAssertEqual(bankAccountResponse?.getField(fieldName: .businessName) as! String, "Some company")
         XCTAssertEqual(bankAccountResponse?.getField(fieldName: .businessRegistrationId) as! String, "123455511")
@@ -638,16 +610,36 @@ private extension HyperwalletBankAccountIndividualTests {
         XCTAssertEqual(bankAccountResponse?.getField(fieldName: .addressLine1) as! String, "1234, Broadway")
         XCTAssertEqual(bankAccountResponse?.getField(fieldName: .city) as! String, "Test City")
         XCTAssertEqual(bankAccountResponse?.getField(fieldName: .postalCode) as! String, "12345")
-
         XCTAssertEqual(bankAccountResponse?.getField(fieldName: .intermediaryBankAccountId) as! String, "246810")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .intermediaryBankAddressLine1) as! String, "5 Market Street")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .intermediaryBankAddressLine2) as! String, "75 Market Street")
+        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .intermediaryBankAddressLine1) as! String,
+                       "5 Market Street")
+        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .intermediaryBankAddressLine2) as! String,
+                       "75 Market Street")
         XCTAssertEqual(bankAccountResponse?.getField(fieldName: .intermediaryBankCity) as! String, "New York")
         XCTAssertEqual(bankAccountResponse?.getField(fieldName: .intermediaryBankCountry) as! String, "US")
         XCTAssertEqual(bankAccountResponse?.getField(fieldName: .intermediaryBankId) as! String, "12345678901")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .intermediaryBankName) as! String, "Intermediary Big Bank")
+        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .intermediaryBankName) as! String,
+                       "Intermediary Big Bank")
         XCTAssertEqual(bankAccountResponse?.getField(fieldName: .intermediaryBankPostalCode) as! String, "134679")
         XCTAssertEqual(bankAccountResponse?.getField(fieldName: .intermediaryBankStateProvince) as! String, "PA")
         XCTAssertEqual(bankAccountResponse?.getField(fieldName: .wireInstructions) as! String, "This is instruction")
+    }
+
+    func verifyRelationship(_ relationship: HyperwalletBankAccount.RelationshipType,
+                            in bankAccountResponse: HyperwalletBankAccount?) {
+        let responseRelationship = bankAccountResponse?.getField(fieldName: .bankAccountRelationship) as! String
+        XCTAssertEqual(responseRelationship, relationship.rawValue)
+    }
+
+    func verifyPurpose(_ purpose: HyperwalletBankAccount.PurposeType,
+                       in bankAccountResponse: HyperwalletBankAccount?) {
+        let responsePurpose = bankAccountResponse?.getField(fieldName: .bankAccountPurpose) as! String
+        XCTAssertEqual(responsePurpose, purpose.rawValue)
+    }
+
+    func verifyRole(_ role: HyperwalletBankAccount.BusinessContactRole,
+                    in bankAccountResponse: HyperwalletBankAccount?) {
+        let responseRole = bankAccountResponse?.getField(fieldName: .businessContactRole) as! String
+        XCTAssertEqual(responseRole, role.rawValue)
     }
 }
