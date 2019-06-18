@@ -1,5 +1,5 @@
 {
-    "count" : 3,
+    "count" : 4,
     "offset" : 0,
     "limit" : 10,
     "data" : [ {
@@ -44,7 +44,21 @@
             "clientPaymentId" : "trans-02",
             "payeeName" : "Vasya Pupkin"
         }
-    } ],
+    }, {
+        "journalId" : "51660667",
+        "type" : "UNKNOWN_TYPE",
+        "createdOn" : "2019-05-27T16:01:10",
+        "entry" : "CREDIT",
+        "sourceToken" : "act-13579",
+        "destinationToken" : "usr-97531",
+        "amount" : "11.00",
+        "fee" : "0.00",
+        "currency" : "USD",
+        "details" : {
+            "clientPaymentId" : "trans-02",
+            "payeeName" : "Vasya Pupkin"
+        }
+    }],
     "links" : [ {
         "params" : {
             "rel" : "self"
