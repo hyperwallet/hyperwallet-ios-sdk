@@ -102,7 +102,14 @@ public class HyperwalletTransferMethod: Codable {
         case governmentId
         case governmentIdType
         case intermediaryBankAccountId
+        case intermediaryBankAddressLine1
+        case intermediaryBankAddressLine2
+        case intermediaryBankCity
+        case intermediaryBankCountry
         case intermediaryBankId
+        case intermediaryBankName
+        case intermediaryBankPostalCode
+        case intermediaryBankStateProvince
         case lastName
         case middleName
         case mobileNumber
@@ -133,10 +140,12 @@ public class HyperwalletTransferMethod: Codable {
     /// - bankAccount:   When the transfer method is Bank Account
     /// - bankCard:      When the transfer method is Bank Card
     /// - payPalAccount: When the transfer method is PayPal Account
+    /// - wireAccount:   When the transfer method is Wire Account
     public enum TransferMethodType: String {
         case bankAccount = "BANK_ACCOUNT"
         case bankCard = "BANK_CARD"
         case payPalAccount = "PAYPAL_ACCOUNT"
+        case wireAccount = "WIRE_ACCOUNT"
     }
 
     /// Creates a new instance of the `HyperwalletTransferMethod`

@@ -112,8 +112,12 @@ public final class HyperwalletBankAccount: HyperwalletTransferMethod {
         ///   - transferMethodCountry: The bank account country.
         ///   - transferMethodCurrency: The bank account currency.
         ///   - transferMethodProfileType: The bank account holder's profile type, e.g. INDIVIDUAL or BUSINESS
-        public init(transferMethodCountry: String, transferMethodCurrency: String, transferMethodProfileType: String) {
-            storage[TransferMethodField.type.rawValue] = AnyCodable(value: TransferMethodType.bankAccount.rawValue)
+        ///   - transferMethodType: The bank account type, e.g. BANK_ACCOUNT or WIRE_ACCOUNT
+        public init(transferMethodCountry: String,
+                    transferMethodCurrency: String,
+                    transferMethodProfileType: String,
+                    transferMethodType: String) {
+            storage[TransferMethodField.type.rawValue] = AnyCodable(value: transferMethodType)
             storage[TransferMethodField.transferMethodCountry.rawValue] = AnyCodable(value: transferMethodCountry)
             storage[TransferMethodField.transferMethodCurrency.rawValue] = AnyCodable(value: transferMethodCurrency)
             storage[TransferMethodField.profileType.rawValue] = AnyCodable(value: transferMethodProfileType)
@@ -357,12 +361,75 @@ public final class HyperwalletBankAccount: HyperwalletTransferMethod {
             return self
         }
 
+        /// Sets the intermediary bank street address.
+        ///
+        /// - Parameter intermediaryBankAddressLine1: The intermediary bank street address.
+        /// - Returns: a self `HyperwalletBankAccount.Builder` instance.
+        public func intermediaryBankAddressLine1(_ addressLine1: String) -> Builder {
+            storage[TransferMethodField.intermediaryBankAddressLine1.rawValue] = AnyCodable(value: addressLine1)
+            return self
+        }
+
+        /// Sets the intermediary bank street address, second line.
+        ///
+        /// - Parameter intermediaryBankAddressLine2: The intermediary bank street address, second line.
+        /// - Returns: a self `HyperwalletBankAccount.Builder` instance.
+        public func intermediaryBankAddressLine2(_ addressLine2: String) -> Builder {
+            storage[TransferMethodField.intermediaryBankAddressLine2.rawValue] = AnyCodable(value: addressLine2)
+            return self
+        }
+
+        /// Sets the intermediary bank city.
+        ///
+        /// - Parameter intermediaryBankCity: The intermediary bank city.
+        /// - Returns: a self `HyperwalletBankAccount.Builder` instance.
+        public func intermediaryBankCity(_ city: String) -> Builder {
+            storage[TransferMethodField.intermediaryBankCity.rawValue] = AnyCodable(value: city)
+            return self
+        }
+
+        /// Sets the intermediary bank country.
+        ///
+        /// - Parameter intermediaryBankCountry: The intermediary bank country.
+        /// - Returns: a self `HyperwalletBankAccount.Builder` instance.
+        public func intermediaryBankCountry(_ country: String) -> Builder {
+            storage[TransferMethodField.intermediaryBankCountry.rawValue] = AnyCodable(value: country)
+            return self
+        }
+
         /// Sets the intermediary bank's 11-character SWIFT code.
         ///
         /// - Parameter intermediaryBankId: The intermediary bank's 11-character SWIFT code.
         /// - Returns: a self `HyperwalletBankAccount.Builder` instance.
         public func intermediaryBankId(_ intermediaryBankId: String) -> Builder {
             storage[TransferMethodField.intermediaryBankId.rawValue] = AnyCodable(value: intermediaryBankId)
+            return self
+        }
+
+        /// Sets the intermediary bank name.
+        ///
+        /// - Parameter intermediaryBankName: The intermediary bank name.
+        /// - Returns: a self `HyperwalletBankAccount.Builder` instance.
+        public func intermediaryBankName(_ name: String) -> Builder {
+            storage[TransferMethodField.intermediaryBankName.rawValue] = AnyCodable(value: name)
+            return self
+        }
+
+        /// Sets the intermediary bank postal code.
+        ///
+        /// - Parameter intermediaryBankPostalCode: The intermediary bank postal code.
+        /// - Returns: a self `HyperwalletBankAccount.Builder` instance.
+        public func intermediaryBankPostalCode(_ postalCode: String) -> Builder {
+            storage[TransferMethodField.intermediaryBankPostalCode.rawValue] = AnyCodable(value: postalCode)
+            return self
+        }
+
+        /// Sets the intermediary bank state, province or region.
+        ///
+        /// - Parameter intermediaryBankStateProvince: The intermediary bank state, province or region.
+        /// - Returns: a self `HyperwalletBankAccount.Builder` instance.
+        public func intermediaryBankStateProvince(_ stateProvince: String) -> Builder {
+            storage[TransferMethodField.intermediaryBankStateProvince.rawValue] = AnyCodable(value: stateProvince)
             return self
         }
 
@@ -435,6 +502,15 @@ public final class HyperwalletBankAccount: HyperwalletTransferMethod {
         /// - Returns: a self `HyperwalletBankAccount.Builder` instance.
         public func stateProvince(_ stateProvince: String) -> Builder {
             storage[TransferMethodField.stateProvince.rawValue] = AnyCodable(value: stateProvince)
+            return self
+        }
+
+        /// Sets the type of transfer method, e.g. BANK_ACCOUNT or WIRE_ACCOUNT.
+        ///
+        /// - Parameter type: The type of transfer method, e.g. BANK_ACCOUNT or WIRE_ACCOUNT.
+        /// - Returns: a self `HyperwalletBankAccount.Builder` instance.
+        public func type(_ type: String) -> Builder {
+            storage[TransferMethodField.type.rawValue] = AnyCodable(value: type)
             return self
         }
 
