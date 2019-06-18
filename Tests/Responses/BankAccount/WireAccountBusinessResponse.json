@@ -29,6 +29,7 @@
     "mobileNumber": "604-345-1888",
     "governmentId": "999000999",
     "addressLine1": "1234, Broadway",
+    "addressLine2": "57 Market Street",
     "city": "Test City",
     "stateProvince": "WA",
     "country": "US",

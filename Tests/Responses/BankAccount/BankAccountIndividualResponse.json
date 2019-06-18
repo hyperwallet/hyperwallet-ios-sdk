@@ -15,6 +15,7 @@
     "middleName": "Good",
     "dateOfBirth": "1991-01-01",
     "addressLine1": "575 Market Street",
+    "addressLine2": "57 Market Street",
     "city":"San Francisco",
     "stateProvince":"CA",
     "country":"US",

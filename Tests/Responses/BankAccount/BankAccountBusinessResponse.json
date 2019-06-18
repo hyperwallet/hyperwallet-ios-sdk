@@ -34,6 +34,7 @@
     "driversLicenseId": "234234243",
     "employerId": "123456789",
     "addressLine1": "1234, Broadway",
+    "addressLine2": "57 Market Street",
     "city": "Test City",
     "stateProvince": "WA",
     "country": "US",
