@@ -28,6 +28,7 @@
 		641EBE9E2292E2B600D718F4 /* BankAccountBusinessResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 641EBE8E228DC45300D718F4 /* BankAccountBusinessResponse.json */; };
 		644A69C122B0F7640058E77E /* WireAccountBusinessResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 644A69BC22AFF6670058E77E /* WireAccountBusinessResponse.json */; };
 		644A69C322B0FB830058E77E /* WireAccountIndividualResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 644A69C222B0FB830058E77E /* WireAccountIndividualResponse.json */; };
+		64D2493522BCB4A000561C14 /* HyperwalletTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D2493422BCB4A000561C14 /* HyperwalletTransfer.swift */; };
 		9807B74522642BEA0028A280 /* OSLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9807B74422642BEA0028A280 /* OSLog.swift */; };
 		980C15DB2273BF91004C60D6 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = 980C15DA2273BF91004C60D6 /* CHANGELOG.md */; };
 		980C15F12273D1FA004C60D6 /* ListBankCardResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = DBCA37A6225D6D1700CD4137 /* ListBankCardResponse.json */; };
@@ -132,6 +133,7 @@
 		641EBE9B2292DA3300D718F4 /* AuthenticationTokenBusinessResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AuthenticationTokenBusinessResponse.json; sourceTree = "<group>"; };
 		644A69BC22AFF6670058E77E /* WireAccountBusinessResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = WireAccountBusinessResponse.json; sourceTree = "<group>"; };
 		644A69C222B0FB830058E77E /* WireAccountIndividualResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = WireAccountIndividualResponse.json; sourceTree = "<group>"; };
+		64D2493422BCB4A000561C14 /* HyperwalletTransfer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperwalletTransfer.swift; sourceTree = "<group>"; };
 		9807B74422642BEA0028A280 /* OSLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OSLog.swift; sourceTree = "<group>"; };
 		980C15DA2273BF91004C60D6 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		98101DBA2238A2F000BA04CA /* HyperwalletSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HyperwalletSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -245,6 +247,14 @@
 				641EBE9B2292DA3300D718F4 /* AuthenticationTokenBusinessResponse.json */,
 			);
 			path = AuthenticationTokens;
+			sourceTree = "<group>";
+		};
+		64D2493322BCB45B00561C14 /* Transfer */ = {
+			isa = PBXGroup;
+			children = (
+				64D2493422BCB4A000561C14 /* HyperwalletTransfer.swift */,
+			);
+			path = Transfer;
 			sourceTree = "<group>";
 		};
 		9807B74322642BEA0028A280 /* Extensions */ = {
@@ -401,6 +411,7 @@
 				DB1A03F4225D3DE40080C8D6 /* Paging */,
 				98DF1D41229F41130080FFA5 /* Receipt */,
 				98DF1D3F229F40FC0080FFA5 /* StatusTransition */,
+				64D2493322BCB45B00561C14 /* Transfer */,
 				98DF1D3E229F40B00080FFA5 /* TransferMethod */,
 				98DF1D40229F410A0080FFA5 /* User */,
 			);
@@ -673,6 +684,7 @@
 			files = (
 				4A77C703229BD74A00DA644D /* HyperwalletReceipt.swift in Sources */,
 				DB0AFDF32277725600ABEFFD /* HyperwalletUser.swift in Sources */,
+				64D2493522BCB4A000561C14 /* HyperwalletTransfer.swift in Sources */,
 				DB1A03DF225D3DD80080C8D6 /* AuthenticationTokenDecoder.swift in Sources */,
 				DB1A0406225D3DE40080C8D6 /* HyperwalletBankAccount.swift in Sources */,
 				DB1A0401225D3DE40080C8D6 /* HyperwalletTransferMethodConfigurationQueries.swift in Sources */,
