@@ -140,6 +140,27 @@ public final class Hyperwallet {
                                     completionHandler: completion)
     }
 
+    /// Creates a `HyperwalletTransfer` for the User associated with the authentication token returned from
+    /// `HyperwalletAuthenticationTokenProvider.retrieveAuthenticationToken(_ : @escaping CompletionHandler)`.
+    ///
+    /// The `completion: @escaping (HyperwalletTransfer?, HyperwalletErrorType?) -> Void` that is passed in to this
+    /// method invocation will receive the successful response(HyperwalletTransfer) or error(HyperwalletErrorType)
+    /// from processing the request.
+    ///
+    /// This function will request a new authentication token via `HyperwalletAuthenticationTokenProvider`
+    /// if the current one is expired or is about to expire.
+    ///
+    /// - Parameters:
+    ///   - transfer: the `HyperwalletTransfer` to be created
+    ///   - completion: the callback handler of responses from the Hyperwallet platform
+    public func createTransfer(transfer: HyperwalletTransfer,
+                               completion: @escaping (HyperwalletTransfer?, HyperwalletErrorType?) -> Void) {
+        httpTransaction.performRest(httpMethod: .post,
+                                    urlPath: "transfers",
+                                    payload: transfer,
+                                    completionHandler: completion)
+    }
+
     /// Deactivates the `HyperwalletBankAccount` linked to the transfer method token specified. The
     /// `HyperwalletBankAccount` being deactivated must belong to the User that is associated with the
     /// authentication token returned from
