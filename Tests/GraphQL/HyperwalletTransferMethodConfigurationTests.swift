@@ -147,7 +147,7 @@ class HyperwalletTransferMethodConfigurationTests: XCTestCase {
     private func setUpTransferMethodConfigurationKeysRequest(_ responseFile: String,
                                                              _ error: NSError? = nil) -> StubRequest {
         let data = HyperwalletTestHelper.getDataFromJson(responseFile)
-        return HyperwalletTestHelper.buildPostResquest(baseUrl: HyperwalletTestHelper.graphQlURL,
+        return HyperwalletTestHelper.buildPostRequest(baseUrl: HyperwalletTestHelper.graphQlURL,
                                                        HyperwalletTestHelper.setUpMockedResponse(payload: data,
                                                                                                  error: error))
     }

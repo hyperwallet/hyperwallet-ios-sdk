@@ -8,12 +8,12 @@ class HyperwalletTestHelper {
     static let authenticationProvider = AuthenticationProviderMock(authorizationData: authenticationToken)
     static let contentType = "Content-Type"
     static let graphQlURL = "https://localhost/graphql"
-    static let restURL = "https://localhost/rest/v3/"
-    static let userPath = "users/YourUserToken"
+    static let restURL = "https://localhost/rest/v3"
+    static let userPath = "/users/YourUserToken"
     static let userRestURL = "\(restURL)\(userPath)"
 
     // MARK: Build Requests
-    static func buildPostResquest(baseUrl: String, _ response: StubResponse) -> StubRequest {
+    static func buildPostRequest(baseUrl: String, _ response: StubResponse) -> StubRequest {
         return StubRequest.Builder()
             .stubRequest(withMethod: .POST, url: URL(string: baseUrl)!)
             .addHeader(withKey: contentType, value: applicationJson)

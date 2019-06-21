@@ -20,7 +20,7 @@ import Foundation
 
 public struct HyperwalletTransfer: Codable {
     public struct HyperwalletForeignExchange: Codable {
-        let desgtinationAmount: String
+        let destinationAmount: String
         let destinationCurrency: String
         let rate: String
         let sourceAmount: String

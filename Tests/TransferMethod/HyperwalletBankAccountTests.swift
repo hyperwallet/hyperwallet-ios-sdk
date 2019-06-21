@@ -19,7 +19,7 @@ class HyperwalletBankAccountIndividualTests: XCTestCase {
         let expectation = self.expectation(description: "Create bank account completed")
         let response = HyperwalletTestHelper.okHTTPResponse(for: "BankAccountIndividualResponse")
         let url = String(format: "%@/bank-accounts", HyperwalletTestHelper.userRestURL)
-        let request = HyperwalletTestHelper.buildPostResquest(baseUrl: url, response)
+        let request = HyperwalletTestHelper.buildPostRequest(baseUrl: url, response)
         HyperwalletTestHelper.setUpMockServer(request: request)
 
         var bankAccountResponse: HyperwalletBankAccount?
@@ -47,7 +47,7 @@ class HyperwalletBankAccountIndividualTests: XCTestCase {
         let expectation = self.expectation(description: "Create wire account completed")
         let response = HyperwalletTestHelper.okHTTPResponse(for: "WireAccountIndividualResponse")
         let url = String(format: "%@/bank-accounts", HyperwalletTestHelper.userRestURL)
-        let request = HyperwalletTestHelper.buildPostResquest(baseUrl: url, response)
+        let request = HyperwalletTestHelper.buildPostRequest(baseUrl: url, response)
         HyperwalletTestHelper.setUpMockServer(request: request)
 
         var wireAccountResponse: HyperwalletBankAccount?
@@ -75,7 +75,7 @@ class HyperwalletBankAccountIndividualTests: XCTestCase {
         let expectation = self.expectation(description: "Create bank account completed")
         let response = HyperwalletTestHelper.okHTTPResponse(for: "BankAccountBusinessResponse")
         let url = String(format: "%@/bank-accounts", HyperwalletTestHelper.userRestURL)
-        let request = HyperwalletTestHelper.buildPostResquest(baseUrl: url, response)
+        let request = HyperwalletTestHelper.buildPostRequest(baseUrl: url, response)
         HyperwalletTestHelper.setUpMockServer(request: request)
 
         var bankAccountResponse: HyperwalletBankAccount?
@@ -103,7 +103,7 @@ class HyperwalletBankAccountIndividualTests: XCTestCase {
         let expectation = self.expectation(description: "Create wire account completed")
         let response = HyperwalletTestHelper.okHTTPResponse(for: "WireAccountBusinessResponse")
         let url = String(format: "%@/bank-accounts", HyperwalletTestHelper.userRestURL)
-        let request = HyperwalletTestHelper.buildPostResquest(baseUrl: url, response)
+        let request = HyperwalletTestHelper.buildPostRequest(baseUrl: url, response)
         HyperwalletTestHelper.setUpMockServer(request: request)
 
         var wireAccountResponse: HyperwalletBankAccount?
@@ -131,7 +131,7 @@ class HyperwalletBankAccountIndividualTests: XCTestCase {
         let expectation = self.expectation(description: "Create bank account failed")
         let response = HyperwalletTestHelper.badRequestHTTPResponse(for: "BankAccountErrorResponseWithMissingBankId")
         let url = String(format: "%@/bank-accounts", HyperwalletTestHelper.userRestURL)
-        let request = HyperwalletTestHelper.buildPostResquest(baseUrl: url, response)
+        let request = HyperwalletTestHelper.buildPostRequest(baseUrl: url, response)
         HyperwalletTestHelper.setUpMockServer(request: request)
 
         var bankAccountResponse: HyperwalletBankAccount?
@@ -253,7 +253,7 @@ class HyperwalletBankAccountIndividualTests: XCTestCase {
         let expectation = self.expectation(description: "Deactivate bank account completed")
         let response = HyperwalletTestHelper.okHTTPResponse(for: "StatusTransitionMockedResponseSuccess")
         let url = String(format: "%@/bank-accounts/trm-12345/status-transitions", HyperwalletTestHelper.userRestURL)
-        let request = HyperwalletTestHelper.buildPostResquest(baseUrl: url, response)
+        let request = HyperwalletTestHelper.buildPostRequest(baseUrl: url, response)
         HyperwalletTestHelper.setUpMockServer(request: request)
 
         var statusTransitionResponse: HyperwalletStatusTransition?
@@ -281,7 +281,7 @@ class HyperwalletBankAccountIndividualTests: XCTestCase {
         let response = HyperwalletTestHelper
             .badRequestHTTPResponse(for: "StatusTransitionMockedResponseInvalidTransition")
         let url = String(format: "%@/bank-accounts/trm-12345/status-transitions", HyperwalletTestHelper.userRestURL)
-        let request = HyperwalletTestHelper.buildPostResquest(baseUrl: url, response)
+        let request = HyperwalletTestHelper.buildPostRequest(baseUrl: url, response)
         HyperwalletTestHelper.setUpMockServer(request: request)
 
         var statusTransitionResponse: HyperwalletStatusTransition?
