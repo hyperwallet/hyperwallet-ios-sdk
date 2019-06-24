@@ -1,0 +1,42 @@
+{
+    "data" : [ {
+        "journalId": "CC002F14A570",
+        "type": "DEPOSIT",
+        "createdOn": "2019-05-27T16:01:10",
+        "entry": "CREDIT",
+        "destinationToken": "trm-a4b44375",
+        "amount": "18.05",
+        "currency": "USD",
+        "details": {
+            "cardNumber": "************7917"
+        }
+    }, {
+        "journalId": "CC002F14A571",
+        "type": "TRANSFER_TO_BANK_ACCOUNT",
+        "createdOn": "2019-05-27T15:57:49",
+        "entry": "DEBIT",
+        "destinationToken" : "trm-987654",
+        "amount": "10.25",
+        "currency": "USD",
+        "details": {
+            "cardNumber": "************7917"
+        }
+    }, {
+        "journalId": "CC002F14A572",
+        "type": "PAYMENT",
+        "createdOn": "2017-11-01T17:12:19",
+        "entry": "CREDIT",
+        "destinationToken": "trm-97a31",
+        "amount": "11.00",
+        "currency": "USD",
+        "details": {
+            "cardNumber": "************7917"
+        }
+    } ],
+    "links": [ {
+        "params": {
+            "rel": "self"
+        },
+        "href": "https://localhost:8181/rest/v3/users/usr-112233/prepaid-cards/trm-213141/receipts"
+    } ]
+}

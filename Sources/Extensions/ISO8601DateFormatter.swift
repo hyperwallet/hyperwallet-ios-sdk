@@ -18,30 +18,13 @@
 
 import Foundation
 
-/// Representation of subset content from a dataset
-public struct HyperwalletPageList<ListType: Decodable>: Decodable {
-    /// The amount of the dataset
-    public let count: Int?
-    /// The `ListType` items
-    public let data: [ListType]
-    /// The maximum number of records that will be returned per page
-    public let limit: Int?
-    /// The links
-    public let links: [HyperwalletPageLink]
-    /// The number of records to skip.
-    public let offset: Int?
-}
-
-/// Representation of the page link
-public struct HyperwalletPageLink: Decodable {
-    /// The URL of the link
-    public let href: URL
-    /// The `HyperwalletPageParameter`
-    public let params: HyperwalletPageParameter
-}
-
-/// Representation of the relationship between the current document and the linked document
-public struct HyperwalletPageParameter: Decodable {
-    /// The relationship
-    public let rel: String
+/// Date extension.
+public extension ISO8601DateFormatter {
+    /// The thread-safe date formatter to work with ISO8601 date representations.
+    ///  The time zone is ignored.
+    static let ignoreTimeZone: ISO8601DateFormatter = {
+        let formatter = ISO8601DateFormatter()
+        formatter.formatOptions.remove(ISO8601DateFormatter.Options.withTimeZone)
+        return formatter
+    }()
 }

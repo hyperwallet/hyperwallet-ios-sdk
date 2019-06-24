@@ -16,7 +16,7 @@ class HTTPTransactionTests: XCTestCase {
         let configuration = HTTPTransaction.urlSessionConfiguration
         let header = configuration.httpAdditionalHeaders
 
-        XCTAssertEqual(configuration.timeoutIntervalForRequest, 5.0)
+        XCTAssertEqual(configuration.timeoutIntervalForRequest, 10.0)
         XCTAssertEqual(header?["Content-Type"] as? String, "application/json")
         XCTAssertTrue((header?["Accept-Language"] as? String ?? "").contains("en"))
         let userAgent = header?["User-Agent"] as? String
@@ -57,27 +57,26 @@ class HTTPTransactionTests: XCTestCase {
         XCTAssertNotNil(configuration.authorization, "The authorization has not been initialized")
     }
 
+    // swiftlint:disable function_body_length
     func testPerformRest_successURLRequest() {
         // Given
-        let pagination = HyperwalletBankAccountPagination()
-        pagination.limit = 80
-        pagination.status = .activated
-        pagination.type = .bankAccount
-        var paginationQueryDictionary: [String: String]?
+        let queryParam = HyperwalletBankAccountQueryParam()
+        queryParam.limit = 80
+        queryParam.status = .activated
+        queryParam.type = .bankAccount
+        var queryParamsDictionary: [String: String]?
         var urlValueComponents: URLComponents?
-
         // When
         let completionHandler = { (data: [String: String]?, error: HyperwalletErrorType?) -> Void in }
         transaction.performRest(httpMethod: .get,
                                 urlPath: "users/%@/bank-accounts",
                                 payload: "",
-                                pagination: pagination,
+                                queryParam: queryParam,
                                 completionHandler: completionHandler)
-
         // Then
         XCTAssertNotNil(httpClientMock.request, "The request should not be nil")
         urlValueComponents = URLComponents(url: httpClientMock.request!.url!, resolvingAgainstBaseURL: false)
-        paginationQueryDictionary = pagination.toQuery()
+        queryParamsDictionary = queryParam.toQuery()
 
         XCTAssertEqual(urlValueComponents?.scheme, "https")
         XCTAssertEqual(urlValueComponents?.host, "localhost")
@@ -86,26 +85,30 @@ class HTTPTransactionTests: XCTestCase {
         let limit = urlValueComponents?.queryItems?.first { $0.name == "limit" }
         XCTAssertNotNil(limit, "The limit should be part of the URL")
         XCTAssertEqual(limit?.value, "80", "The limit should be 80")
-        XCTAssertNotNil(paginationQueryDictionary?["limit"], "The limit should be part of the URL")
-        XCTAssertEqual(paginationQueryDictionary?["limit"], "80", "The limit should be 80")
+        let limitKey = QueryParam.QueryParam.limit.rawValue
+        XCTAssertNotNil(queryParamsDictionary?[limitKey], "The limit should be part of the URL")
+        XCTAssertEqual(queryParamsDictionary?[limitKey], "80", "The limit should be 80")
 
         let offset = urlValueComponents?.queryItems?.first { $0.name == "offset" }
         XCTAssertNotNil(offset, "The offset should be part of the URL")
         XCTAssertEqual(offset?.value, "0", "The offset should be 0")
-        XCTAssertNotNil(paginationQueryDictionary?["offset"], "The limit should be part of the URL")
-        XCTAssertEqual(paginationQueryDictionary?["offset"], "0", "The limit should be 0")
+        let offsetKey = QueryParam.QueryParam.offset.rawValue
+        XCTAssertNotNil(queryParamsDictionary?[offsetKey], "The offset should be part of the URL")
+        XCTAssertEqual(queryParamsDictionary?[offsetKey], "0", "The offset should be 0")
 
         let status = urlValueComponents?.queryItems?.first { $0.name == "status" }
         XCTAssertNotNil(status, "The status should be part of the URL")
         XCTAssertEqual(status?.value, "ACTIVATED", "The status should be ACTIVATED")
-        XCTAssertNotNil(paginationQueryDictionary?["status"], "The limit should be part of the URL")
-        XCTAssertEqual(paginationQueryDictionary?["status"], "ACTIVATED", "The status should be ACTIVATED")
+        let statusKey = HyperwalletTransferMethodQueryParam.QueryParam.status.rawValue
+        XCTAssertNotNil(queryParamsDictionary?[statusKey], "The status should be part of the URL")
+        XCTAssertEqual(queryParamsDictionary?[statusKey], "ACTIVATED", "The status should be ACTIVATED")
 
-        let typeKey = urlValueComponents?.queryItems?.first { $0.name == "type" }
-        XCTAssertNotNil(typeKey, "The type should be part of the URL")
-        XCTAssertEqual(typeKey?.value, "BANK_ACCOUNT", "The type should be BANK_ACCOUNT")
-        XCTAssertNotNil(paginationQueryDictionary?["type"], "The limit should be part of the URL")
-        XCTAssertEqual(paginationQueryDictionary?["type"], "BANK_ACCOUNT", "The type should be BANK_ACCOUNT")
+        let type = urlValueComponents?.queryItems?.first { $0.name == "type" }
+        XCTAssertNotNil(type, "The type should be part of the URL")
+        XCTAssertEqual(type?.value, "BANK_ACCOUNT", "The type should be BANK_ACCOUNT")
+        let typeKey = HyperwalletBankAccountQueryParam.QueryParam.type.rawValue
+        XCTAssertNotNil(queryParamsDictionary?[typeKey], "The type should be part of the URL")
+        XCTAssertEqual(queryParamsDictionary?[typeKey], "BANK_ACCOUNT", "The type should be BANK_ACCOUNT")
     }
 
     func testPerformGraphQl_validToken() {
@@ -163,9 +166,7 @@ class HTTPTransactionTests: XCTestCase {
         transaction.performGraphQl(request, completionHandler: completionHandler)
 
         // Then
-        XCTAssertNotNil(response?.count)
-        XCTAssertNotNil(response?.nodes)
-        XCTAssertEqual(response?.nodes?.count, 2)
+        XCTAssertNotNil(response)
         XCTAssertNil(hyperwalletError)
     }
 

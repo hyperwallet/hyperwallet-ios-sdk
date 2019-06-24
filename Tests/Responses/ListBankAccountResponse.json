@@ -4,7 +4,7 @@
     "limit":10,
     "data":[
         {
-            "token":"trm-46971726-202e-43d8-833e-70fc70f8f224",
+            "token":"trm-12345",
             "type":"BANK_ACCOUNT",
             "status":"DE_ACTIVATED",
             "verificationStatus":"NOT_REQUIRED",
@@ -36,12 +36,12 @@
                     "params":{
                         "rel":"self"
                     },
-                    "href":"https://qamaster.aws.paylution.net/rest/v3/users/usr-7e713de4-34e9-4e10-93cc-1f085b2d8397/bank-accounts/trm-46971726-202e-43d8-833e-70fc70f8f224"
+                    "href":"https://localhost/rest/v3/users/usr-0000/bank-accounts/trm-12345"
                 }
             ]
         },
         {
-            "token":"trm-b31acf94-fec6-44a3-a486-d7485d34142b",
+            "token":"trm-12345",
             "type":"BANK_ACCOUNT",
             "status":"DE_ACTIVATED",
             "verificationStatus":"NOT_REQUIRED",
@@ -73,7 +73,7 @@
                     "params":{
                         "rel":"self"
                     },
-                    "href":"https://qamaster.aws.paylution.net/rest/v3/users/usr-7e713de4-34e9-4e10-93cc-1f085b2d8397/bank-accounts/trm-b31acf94-fec6-44a3-a486-d7485d34142b"
+                    "href":"https://localhost/rest/v3/users/usr-0000/bank-accounts/trm-12345"
                 }
             ]
         }

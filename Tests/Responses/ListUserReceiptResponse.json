@@ -1,0 +1,68 @@
+{
+    "count" : 4,
+    "offset" : 0,
+    "limit" : 10,
+    "data" : [ {
+        "journalId" : "51660665",
+        "type" : "PAYMENT",
+        "createdOn" : "2019-05-27T15:42:07",
+        "entry" : "CREDIT",
+        "sourceToken" : "act-12345",
+        "destinationToken" : "usr-12345",
+        "amount" : "5000.00",
+        "fee" : "0.00",
+        "currency" : "USD",
+        "details" : {
+            "clientPaymentId" : "trans-0001",
+            "payeeName" : "Vasya Pupkin"
+        }
+    }, {
+        "journalId" : "51660666",
+        "type" : "TRANSFER_TO_BANK_ACCOUNT",
+        "createdOn" : "2019-05-27T15:57:49",
+        "entry" : "DEBIT",
+        "sourceToken" : "usr-54321",
+        "destinationToken" : "trm-987654",
+        "amount" : "10.25",
+        "fee" : "0.25",
+        "currency" : "USD",
+        "details" : {
+            "payeeName" : "Vasya Pupkin",
+            "bankAccountId" : "jen@sample.net"
+        }
+    }, {
+        "journalId" : "51660667",
+        "type" : "PAYMENT",
+        "createdOn" : "2019-05-27T16:01:10",
+        "entry" : "CREDIT",
+        "sourceToken" : "act-13579",
+        "destinationToken" : "usr-97531",
+        "amount" : "11.00",
+        "fee" : "0.00",
+        "currency" : "USD",
+        "details" : {
+            "clientPaymentId" : "trans-02",
+            "payeeName" : "Vasya Pupkin"
+        }
+    }, {
+        "journalId" : "51660667",
+        "type" : "UNKNOWN_TYPE",
+        "createdOn" : "2019-05-27T16:01:10",
+        "entry" : "CREDIT",
+        "sourceToken" : "act-13579",
+        "destinationToken" : "usr-97531",
+        "amount" : "11.00",
+        "fee" : "0.00",
+        "currency" : "USD",
+        "details" : {
+            "clientPaymentId" : "trans-02",
+            "payeeName" : "Vasya Pupkin"
+        }
+    }],
+    "links" : [ {
+        "params" : {
+            "rel" : "self"
+        },
+        "href" : "https://localhost:8181/rest/v3/users/usr-112233/receipts?offset=0&limit=10"
+    } ]
+}
