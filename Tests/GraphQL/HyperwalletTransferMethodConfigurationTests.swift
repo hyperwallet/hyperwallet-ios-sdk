@@ -148,7 +148,7 @@ class HyperwalletTransferMethodConfigurationTests: XCTestCase {
                                                              _ error: NSError? = nil) -> StubRequest {
         let data = HyperwalletTestHelper.getDataFromJson(responseFile)
         return HyperwalletTestHelper.buildPostRequest(baseUrl: HyperwalletTestHelper.graphQlURL,
-                                                       HyperwalletTestHelper.setUpMockedResponse(payload: data,
-                                                                                                 error: error))
+                                                      HyperwalletTestHelper.setUpMockedResponse(payload: data,
+                                                                                                error: error))
     }
 }

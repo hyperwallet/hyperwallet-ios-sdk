@@ -305,6 +305,24 @@ public final class Hyperwallet {
                                     completionHandler: completion)
     }
 
+    /// Returns the `HyperwalletTransfer` linked to the transfer method token specified, or nil if none exists.
+    ///
+    /// The `completion: @escaping (HyperwalletTransfer?, HyperwalletErrorType?) -> Void` that is passed in to this
+    /// method invocation will receive the successful response(HyperwalletTransfer) or error(HyperwalletErrorType)
+    /// from processing the request.
+    ///
+    /// - Parameters:
+    ///   - transferMethodToken: the Hyperwallet specific unique identifier for the `HyperwalletTransfer`
+    ///                          being requested
+    ///   - completion: the callback handler of responses from the Hyperwallet platform
+    public func getTransfer(transferMethodToken: String,
+                            completion: @escaping (HyperwalletTransfer?, HyperwalletErrorType?) -> Void) {
+        httpTransaction.performRest(httpMethod: .get,
+                                    urlPath: "transfers/\(transferMethodToken)",
+                                    payload: "",
+                                    completionHandler: completion)
+    }
+
     /// Returns the list of `HyperwalletBankAccount`s for the User associated with the authentication token
     /// returned from
     /// `HyperwalletAuthenticationTokenProvider.retrieveAuthenticationToken(_ : @escaping CompletionHandler)`,
