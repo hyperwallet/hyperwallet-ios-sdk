@@ -44,6 +44,47 @@ class HyperwalletTransferTests: XCTestCase {
 
         verifyCreateTransferResponse(transferResponse)
     }
+
+    func testCreateTransfer_invalidDestinationToken_returnBadRequest() {
+        // Given
+        let expectation = self.expectation(description: "Create transfer failed")
+        let response = HyperwalletTestHelper
+            .badRequestHTTPResponse(for: "CreateTransferResponseInvalidDestinationToken")
+        let url = String(format: "%@/transfers", HyperwalletTestHelper.restURL)
+        let request = HyperwalletTestHelper.buildPostRequest(baseUrl: url, response)
+        HyperwalletTestHelper.setUpMockServer(request: request)
+
+        var transferResponse: HyperwalletTransfer?
+        var errorResponse: HyperwalletErrorType?
+
+        // When
+        let transferRequest = HyperwalletTransfer(clientTransferId: "6712348070812",
+                                                  destinationAmount: "62.29",
+                                                  destinationCurrency: "USD",
+                                                  destinationToken: "trm-invaqlid-token",
+                                                  sourceToken: "usr-123456")
+
+        Hyperwallet.shared.createTransfer(transfer: transferRequest, completion: { (result, error) in
+            transferResponse = result
+            errorResponse = error
+            expectation.fulfill()
+        })
+        wait(for: [expectation], timeout: 1)
+
+        // Then
+        guard transferResponse == nil else {
+            XCTAssertTrue(false, "The `transferResponse` should be nil")
+            return
+        }
+
+        guard let error = errorResponse else {
+            XCTAssertTrue(false, "The `errorResponse` should not be nil")
+            return
+        }
+
+        XCTAssertEqual(error.getHttpCode(), 400)
+        XCTAssertEqual(error.getHyperwalletErrors()?.errorList?.first?.code, "INVALID_DESTINATION_TOKEN")
+    }
 }
 
 private extension HyperwalletTransferTests {
