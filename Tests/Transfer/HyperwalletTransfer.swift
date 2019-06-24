@@ -42,7 +42,7 @@ class HyperwalletTransferTests: XCTestCase {
         XCTAssertNotNil(transferResponse, "The `transferResponse` should not be nil")
         XCTAssertNil(errorResponse, "The `errorResponse` should be nil")
 
-        verifyCreateTransferResponse(transferResponse)
+        verifyTransferResponse(transferResponse)
     }
 
     func testCreateTransfer_invalidDestinationToken_returnBadRequest() {
@@ -85,10 +85,37 @@ class HyperwalletTransferTests: XCTestCase {
         XCTAssertEqual(error.getHttpCode(), 400)
         XCTAssertEqual(error.getHyperwalletErrors()?.errorList?.first?.code, "INVALID_DESTINATION_TOKEN")
     }
+
+    func testGetPayPalAccount_success() {
+        // Given
+        let expectation = self.expectation(description: "Get transfer completed")
+        let response = HyperwalletTestHelper.okHTTPResponse(for: "CreateTransferResponse")
+        let url = String(format: "%@/transfers/trf-123456", HyperwalletTestHelper.restURL)
+        let request = HyperwalletTestHelper.buildGetRequest(baseUrl: url, response)
+        HyperwalletTestHelper.setUpMockServer(request: request)
+
+        var transferResponse: HyperwalletTransfer?
+        var errorResponse: HyperwalletErrorType?
+
+        // When
+        Hyperwallet.shared.getTransfer(transferMethodToken: "trf-123456", completion: { (result, error) in
+            transferResponse = result
+            errorResponse = error
+            expectation.fulfill()
+        })
+        wait(for: [expectation], timeout: 1)
+
+        // Then
+        XCTAssertNotNil(transferResponse, "The `transferResponse` should not be nil")
+        XCTAssertNil(errorResponse, "The `errorResponse` should be nil")
+
+        verifyTransferResponse(transferResponse)
+        XCTAssertEqual(transferResponse?.token, "trf-123456")
+    }
 }
 
 private extension HyperwalletTransferTests {
-    func verifyCreateTransferResponse(_ response: HyperwalletTransfer?) {
+    func verifyTransferResponse(_ response: HyperwalletTransfer?) {
         if let response = response {
             //Mandatory fields
             XCTAssertEqual(response.clientTransferId, "6712348070812")
