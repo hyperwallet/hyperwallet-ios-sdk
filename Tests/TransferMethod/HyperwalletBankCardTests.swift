@@ -45,7 +45,7 @@ class HyperwalletBankCardTests: XCTestCase {
         XCTAssertNil(errorResponse, "The `errorResponse` should be nil")
         XCTAssertNotNil(bankCard)
         XCTAssertNotNil(bankCardResponse?.getFields())
-        XCTAssertEqual(bankCardResponse?.getField(fieldName: .token) as! String, "trm-123")
+        XCTAssertEqual(bankCardResponse?.token, "trm-123")
     }
 
     func testCreateBankCard_missingMandatoryField_returnBadRequest() {
@@ -262,8 +262,8 @@ class HyperwalletBankCardTests: XCTestCase {
         XCTAssertNotNil(linkNext?.href)
 
         let bankCard = bankCardList?.data.first
-        XCTAssertEqual(bankCard?.getField(fieldName: .type) as? String, "BANK_CARD")
-        XCTAssertEqual(bankCard?.getField(fieldName: .token) as? String, "trm-12345")
+        XCTAssertEqual(bankCard?.type as? String, "BANK_CARD")
+        XCTAssertEqual(bankCard?.token, "trm-12345")
         XCTAssertEqual(bankCard?.getField(fieldName: .cardNumber) as? String, "************0199")
         XCTAssertEqual(bankCard?.getField(fieldName: .dateOfExpiry) as? String, "2022-12")
     }

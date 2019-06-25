@@ -286,7 +286,7 @@ class HyperwalletPayPalAccountTests: XCTestCase {
         XCTAssertNotNil(payPalAccountList?.links.first?.params.rel)
 
         let payPalAccount = payPalAccountList?.data.first
-        XCTAssertEqual(payPalAccount?.getField(fieldName: .token) as? String, "trm-123456789")
+        XCTAssertEqual(payPalAccount?.token, "trm-123456789")
         XCTAssertEqual(payPalAccount?.getField(fieldName: .email) as? String, "test@paypal.com")
     }
 

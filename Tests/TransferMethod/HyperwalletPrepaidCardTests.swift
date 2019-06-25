@@ -47,16 +47,21 @@ class HyperwalletPrepaidCardTests: XCTestCase {
         XCTAssertNotNil(prepaidCardList?.links, "The `links` should be not nil")
 
         let firstPrepaidCard = prepaidCardList?.data.first
-        XCTAssertEqual(firstPrepaidCard?.getField(fieldName: .type) as? String, "PREPAID_CARD")
-        XCTAssertEqual(firstPrepaidCard?.getField(fieldName: .token) as? String, "trm-123")
-        XCTAssertEqual(firstPrepaidCard?.getField(fieldName: .cardNumber) as? String, "************6198")
-        XCTAssertEqual(firstPrepaidCard?.getField(fieldName: .dateOfExpiry) as? String, "2023-06")
+        XCTAssertEqual(firstPrepaidCard?.type, "PREPAID_CARD")
+        XCTAssertEqual(firstPrepaidCard?.token, "trm-123")
+        XCTAssertEqual(firstPrepaidCard?.cardNumber, "************6198")
+        XCTAssertEqual(firstPrepaidCard?.dateOfExpiry, "2023-06")
+        XCTAssertEqual(firstPrepaidCard?.cardPackage, "L1")
+        XCTAssertEqual(firstPrepaidCard?.createdOn, "2019-06-20T21:21:43")
 
         let lastPrepaidCard = prepaidCardList?.data.last
         XCTAssertEqual(lastPrepaidCard?.getField(fieldName: .type) as? String, "PREPAID_CARD")
         XCTAssertEqual(lastPrepaidCard?.getField(fieldName: .token) as? String, "trm-456")
         XCTAssertEqual(lastPrepaidCard?.getField(fieldName: .cardNumber) as? String, "************2345")
         XCTAssertEqual(lastPrepaidCard?.getField(fieldName: .dateOfExpiry) as? String, "2023-06")
+        XCTAssertEqual(lastPrepaidCard?.dateOfExpiry, "2023-06")
+        XCTAssertEqual(lastPrepaidCard?.cardPackage, "L1")
+        XCTAssertEqual(lastPrepaidCard?.createdOn, "2019-06-20T22:21:43")
     }
 
     func testListPrepaidCards_emptyResult() {
