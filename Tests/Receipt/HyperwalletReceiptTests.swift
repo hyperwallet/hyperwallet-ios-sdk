@@ -103,7 +103,7 @@ class HyperwalletReceiptTests: XCTestCase {
         }
         XCTAssertNoThrow(prepaidCardReceiptList!, "The `payPalAccountList` should not be nil")
         XCTAssertNotNil(prepaidCardReceiptList!.data, "The `data` should be not nil")
-        XCTAssertEqual(prepaidCardReceiptList!.data.count, 4, "The `data.count` should be 3")
+        XCTAssertEqual(prepaidCardReceiptList!.data.count, 4, "The `data.count` should be 4")
         XCTAssertNotNil(prepaidCardReceiptList!.links, "The `links` should be not nil")
         XCTAssertNotNil(prepaidCardReceiptList!.links.first?.params.rel)
         XCTAssertEqual(prepaidCardReceiptList!.data[2],
