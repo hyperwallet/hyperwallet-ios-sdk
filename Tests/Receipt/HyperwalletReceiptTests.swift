@@ -108,7 +108,7 @@ class HyperwalletReceiptTests: XCTestCase {
         XCTAssertNotNil(prepaidCardReceiptList!.links.first?.params.rel)
         XCTAssertEqual(prepaidCardReceiptList!.data[2],
                        prepaidCardReceiptList!.data[3],
-                       "These two prepaid car receipts should be equal")
+                       "These two prepaid card receipts should be equal")
         if let prepaidCardReceipt = prepaidCardReceiptList?.data.first {
             XCTAssertEqual(prepaidCardReceipt.journalId, "CC002F14A570")
             XCTAssertEqual(prepaidCardReceipt.type.rawValue, "DEPOSIT")
