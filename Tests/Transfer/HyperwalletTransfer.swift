@@ -112,6 +112,39 @@ class HyperwalletTransferTests: XCTestCase {
         verifyTransferResponse(transferResponse)
         XCTAssertEqual(transferResponse?.token, "trf-123456")
     }
+
+    func testCommitTransfer_success() {
+        //Given
+        let expectation = self.expectation(description: "Commit transfer completed")
+        let response = HyperwalletTestHelper.okHTTPResponse(for: "CommitTransferResponse")
+        let url = String(format: "%@/transfers/trf-123456/status-transitions", HyperwalletTestHelper.restURL)
+        let request = HyperwalletTestHelper.buildPostRequest(baseUrl: url, response)
+        HyperwalletTestHelper.setUpMockServer(request: request)
+
+        var statusTransitionResponse: HyperwalletStatusTransition?
+        var errorResponse: HyperwalletErrorType?
+
+        //When
+        Hyperwallet.shared.commitTransfer(transferMethodToken: "trf-123456", completion: { (result, error) in
+            statusTransitionResponse = result
+            errorResponse = error
+            expectation.fulfill()
+        })
+        wait(for: [expectation], timeout: 1)
+
+        //Then
+        guard errorResponse == nil else {
+            XCTAssertTrue(false, "The `errorResponse` should be nil")
+            return
+        }
+
+        guard let statusResponse = statusTransitionResponse else {
+            XCTAssertTrue(false, "The `statusResponse` should not be nil")
+            return
+        }
+
+        verifyStatusTransitionResponse(statusResponse)
+    }
 }
 
 private extension HyperwalletTransferTests {
@@ -139,5 +172,12 @@ private extension HyperwalletTransferTests {
         } else {
             assertionFailure("The transfer should be not nil")
         }
+    }
+
+    func verifyStatusTransitionResponse(_ response: HyperwalletStatusTransition) {
+        XCTAssertEqual(response.token, "sts-123456")
+        XCTAssertEqual(response.transition.rawValue, HyperwalletStatusTransition.Status.scheduled.rawValue)
+        XCTAssertEqual(response.fromStatus.rawValue, HyperwalletStatusTransition.Status.quoted.rawValue)
+        XCTAssertEqual(response.toStatus.rawValue, HyperwalletStatusTransition.Status.scheduled.rawValue)
     }
 }
