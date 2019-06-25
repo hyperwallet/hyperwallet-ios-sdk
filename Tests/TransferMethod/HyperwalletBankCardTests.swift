@@ -253,7 +253,7 @@ class HyperwalletBankCardTests: XCTestCase {
 
         // Then
         XCTAssertNil(errorResponse, "The `errorResponse` should be nil")
-        XCTAssertNotNil(bankCardList, "The `bankAccountList` should not be nil")
+        XCTAssertNotNil(bankCardList, "The `bankCardList` should not be nil")
         XCTAssertEqual(bankCardList?.count, 21, "The `count` should be 21")
         XCTAssertNotNil(bankCardList?.data, "The `data` should be not nil")
 
@@ -294,6 +294,6 @@ class HyperwalletBankCardTests: XCTestCase {
 
         // Then
         XCTAssertNil(errorResponse, "The `errorResponse` should be nil")
-        XCTAssertNil(bankCardList, "The `bankAccountList` should be nil")
+        XCTAssertNil(bankCardList, "The `bankCardList` should be nil")
     }
 }

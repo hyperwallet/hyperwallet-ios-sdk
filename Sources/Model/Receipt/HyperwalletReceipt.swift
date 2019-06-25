@@ -225,7 +225,6 @@ public struct HyperwalletReceipt: Decodable {
 }
 
 extension HyperwalletReceipt.HyperwalletReceiptType {
-    
     /// A safe initializer for creating a HyperwalletReceiptType object
     ///
     /// - Parameter decoder: The decoder to read data from.

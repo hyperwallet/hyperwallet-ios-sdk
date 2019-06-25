@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		0733FE092277C191000FB92A /* HyperwalletPayPalAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0733FE082277C191000FB92A /* HyperwalletPayPalAccount.swift */; };
 		0733FE2C2277C7F1000FB92A /* HyperwalletPayPalAccountTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0733FE2A2277C743000FB92A /* HyperwalletPayPalAccountTests.swift */; };
+		07B1FE6022C29BCD00F461D0 /* HyperwalletPrepaidCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B1FE5F22C29BCD00F461D0 /* HyperwalletPrepaidCard.swift */; };
+		07B1FE6222C2A11F00F461D0 /* HyperwalletPrepaidCardQueryParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B1FE6122C2A11F00F461D0 /* HyperwalletPrepaidCardQueryParam.swift */; };
+		07B1FE6522C2C57000F461D0 /* ListPrepaidCardResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 07B1FE6322C2C56800F461D0 /* ListPrepaidCardResponse.json */; };
+		07B1FE6822C2C71200F461D0 /* HyperwalletPrepaidCardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B1FE6622C2C67500F461D0 /* HyperwalletPrepaidCardTests.swift */; };
 		07C00B032277D25700E0930C /* HyperwalletPayPalAccountQueryParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C00B022277D25700E0930C /* HyperwalletPayPalAccountQueryParam.swift */; };
 		07C00B082277D54700E0930C /* PayPalAccountResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 07C00B062277D30000E0930C /* PayPalAccountResponse.json */; };
 		07C00B0B2277D5DC00E0930C /* PayPalAccountResponseWithMissingEmail.json in Resources */ = {isa = PBXBuildFile; fileRef = 07C00B092277D5CB00E0930C /* PayPalAccountResponseWithMissingEmail.json */; };
@@ -113,6 +117,10 @@
 /* Begin PBXFileReference section */
 		0733FE082277C191000FB92A /* HyperwalletPayPalAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperwalletPayPalAccount.swift; sourceTree = "<group>"; };
 		0733FE2A2277C743000FB92A /* HyperwalletPayPalAccountTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperwalletPayPalAccountTests.swift; sourceTree = "<group>"; };
+		07B1FE5F22C29BCD00F461D0 /* HyperwalletPrepaidCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperwalletPrepaidCard.swift; sourceTree = "<group>"; };
+		07B1FE6122C2A11F00F461D0 /* HyperwalletPrepaidCardQueryParam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperwalletPrepaidCardQueryParam.swift; sourceTree = "<group>"; };
+		07B1FE6322C2C56800F461D0 /* ListPrepaidCardResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ListPrepaidCardResponse.json; sourceTree = "<group>"; };
+		07B1FE6622C2C67500F461D0 /* HyperwalletPrepaidCardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperwalletPrepaidCardTests.swift; sourceTree = "<group>"; };
 		07C00B022277D25700E0930C /* HyperwalletPayPalAccountQueryParam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperwalletPayPalAccountQueryParam.swift; sourceTree = "<group>"; };
 		07C00B062277D30000E0930C /* PayPalAccountResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = PayPalAccountResponse.json; sourceTree = "<group>"; };
 		07C00B092277D5CB00E0930C /* PayPalAccountResponseWithMissingEmail.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = PayPalAccountResponseWithMissingEmail.json; sourceTree = "<group>"; };
@@ -328,6 +336,8 @@
 				07C00B022277D25700E0930C /* HyperwalletPayPalAccountQueryParam.swift */,
 				DB1A03F3225D3DE40080C8D6 /* HyperwalletTransferMethod.swift */,
 				DB1A03F5225D3DE40080C8D6 /* HyperwalletTransferMethodQueryParam.swift */,
+				07B1FE5F22C29BCD00F461D0 /* HyperwalletPrepaidCard.swift */,
+				07B1FE6122C2A11F00F461D0 /* HyperwalletPrepaidCardQueryParam.swift */,
 			);
 			path = TransferMethod;
 			sourceTree = "<group>";
@@ -363,6 +373,7 @@
 				641324DA22954D4F00512816 /* HyperwalletBankAccountTests.swift */,
 				DBCA3771225D6A8D00CD4137 /* HyperwalletBankCardTests.swift */,
 				0733FE2A2277C743000FB92A /* HyperwalletPayPalAccountTests.swift */,
+				07B1FE6622C2C67500F461D0 /* HyperwalletPrepaidCardTests.swift */,
 				DBCA3773225D6A8D00CD4137 /* HyperwalletTransferMethodTests.swift */,
 			);
 			path = TransferMethod;
@@ -478,6 +489,7 @@
 				DBCA37A2225D6D1600CD4137 /* ListBankAccountResponse.json */,
 				DBCA37A6225D6D1700CD4137 /* ListBankCardResponse.json */,
 				07C00B542278EFB200E0930C /* ListPayPalAccountResponse.json */,
+				07B1FE6322C2C56800F461D0 /* ListPrepaidCardResponse.json */,
 				2B5433F8229EDDED00F900D2 /* ListUserReceiptResponse.json */,
 				4A41069B22B10FAF00A930AC /* ListPrepaidCardReceiptResponse.json */,
 				07C00B062277D30000E0930C /* PayPalAccountResponse.json */,
@@ -617,6 +629,7 @@
 				DBCA37BC225D6DD900CD4137 /* BankCardErrorResponseWithMissingCardNumber.json in Resources */,
 				DB764E91227833E10053BB91 /* UserBusinessResponse.json in Resources */,
 				DBCA37B9225D6D1700CD4137 /* BankCardErrorResponseWithInvalidBranchId.json in Resources */,
+				07B1FE6522C2C57000F461D0 /* ListPrepaidCardResponse.json in Resources */,
 				07C00B0B2277D5DC00E0930C /* PayPalAccountResponseWithMissingEmail.json in Resources */,
 				07C00B59227A120F00E0930C /* PayPalAccountResponseNotProfileEmail.json in Resources */,
 				07C00B082277D54700E0930C /* PayPalAccountResponse.json in Resources */,
@@ -699,10 +712,12 @@
 				DB1A040B225D3DE40080C8D6 /* HyperwalletBankCardQueryParam.swift in Sources */,
 				DB1A03E0225D3DD80080C8D6 /* HTTPTransaction.swift in Sources */,
 				DB1A040D225D3DE40080C8D6 /* HyperwalletStatusTransition.swift in Sources */,
+				07B1FE6222C2A11F00F461D0 /* HyperwalletPrepaidCardQueryParam.swift in Sources */,
 				DB1A040E225D3DE40080C8D6 /* HyperwalletBankCard.swift in Sources */,
 				DB1A0409225D3DE40080C8D6 /* QueryParam.swift in Sources */,
 				DB1A0408225D3DE40080C8D6 /* HyperwalletTransferMethodQueryParam.swift in Sources */,
 				DB1A03FE225D3DE40080C8D6 /* TransferMethodConfiguration.swift in Sources */,
+				07B1FE6022C29BCD00F461D0 /* HyperwalletPrepaidCard.swift in Sources */,
 				0733FE092277C191000FB92A /* HyperwalletPayPalAccount.swift in Sources */,
 				DB1A03D9225D3DD80080C8D6 /* HTTPClient.swift in Sources */,
 			);
@@ -721,6 +736,7 @@
 				0733FE2C2277C7F1000FB92A /* HyperwalletPayPalAccountTests.swift in Sources */,
 				DB1A0422225D571B0080C8D6 /* AuthenticationTokenGeneratorMock.swift in Sources */,
 				DBCA3775225D6A8D00CD4137 /* HyperwalletTransferMethodConfigurationTests.swift in Sources */,
+				07B1FE6822C2C71200F461D0 /* HyperwalletPrepaidCardTests.swift in Sources */,
 				DB0AFDF62277869500ABEFFD /* HyperwalletUserTests.swift in Sources */,
 				DB1A0414225D4D8B0080C8D6 /* ConfigurationTests.swift in Sources */,
 				DB1A0416225D4D8B0080C8D6 /* AuthenticationTokenDecoderTests.swift in Sources */,
