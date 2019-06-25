@@ -32,7 +32,7 @@ import Foundation
 /// - journalId: The journal entry number for the transaction.
 /// - sourceToken: A token identifying the source of funds.
 /// - type: The transaction type.
-public struct HyperwalletReceipt: Decodable {
+public struct HyperwalletReceipt: Decodable, Equatable {
     public let amount: String
     public let createdOn: String
     public let currency: String
@@ -45,6 +45,12 @@ public struct HyperwalletReceipt: Decodable {
     public let journalId: String
     public let sourceToken: String?
     public let type: HyperwalletReceiptType
+
+    public static func == (lhs: HyperwalletReceipt, rhs: HyperwalletReceipt) -> Bool {
+        return lhs.journalId == rhs.journalId &&
+            rhs.entry == lhs.entry &&
+            rhs.type == lhs.type
+    }
 
     /// The transaction type.
     public enum HyperwalletReceiptType: String, Decodable {
@@ -225,7 +231,6 @@ public struct HyperwalletReceipt: Decodable {
 }
 
 extension HyperwalletReceipt.HyperwalletReceiptType {
-    
     /// A safe initializer for creating a HyperwalletReceiptType object
     ///
     /// - Parameter decoder: The decoder to read data from.

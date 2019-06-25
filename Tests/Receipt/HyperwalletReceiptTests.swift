@@ -103,19 +103,21 @@ class HyperwalletReceiptTests: XCTestCase {
         }
         XCTAssertNoThrow(prepaidCardReceiptList!, "The `payPalAccountList` should not be nil")
         XCTAssertNotNil(prepaidCardReceiptList!.data, "The `data` should be not nil")
-        XCTAssertEqual(prepaidCardReceiptList!.data.count, 3, "The `data.count` should be 3")
+        XCTAssertEqual(prepaidCardReceiptList!.data.count, 4, "The `data.count` should be 3")
         XCTAssertNotNil(prepaidCardReceiptList!.links, "The `links` should be not nil")
         XCTAssertNotNil(prepaidCardReceiptList!.links.first?.params.rel)
-
-        if let userReceipt = prepaidCardReceiptList?.data.first {
-            XCTAssertEqual(userReceipt.journalId, "CC002F14A570")
-            XCTAssertEqual(userReceipt.type.rawValue, "DEPOSIT")
-            XCTAssertEqual(userReceipt.createdOn, "2019-05-27T16:01:10")
-            XCTAssertEqual(userReceipt.entry.rawValue, "CREDIT")
-            XCTAssertEqual(userReceipt.destinationToken, "trm-a4b44375")
-            XCTAssertEqual(userReceipt.amount, "18.05")
-            XCTAssertEqual(userReceipt.currency, "USD")
-            if let details = userReceipt.details {
+        XCTAssertEqual(prepaidCardReceiptList!.data[2],
+                       prepaidCardReceiptList!.data[3],
+                       "These two prepaid car receipts should be equal")
+        if let prepaidCardReceipt = prepaidCardReceiptList?.data.first {
+            XCTAssertEqual(prepaidCardReceipt.journalId, "CC002F14A570")
+            XCTAssertEqual(prepaidCardReceipt.type.rawValue, "DEPOSIT")
+            XCTAssertEqual(prepaidCardReceipt.createdOn, "2019-05-27T16:01:10")
+            XCTAssertEqual(prepaidCardReceipt.entry.rawValue, "CREDIT")
+            XCTAssertEqual(prepaidCardReceipt.destinationToken, "trm-a4b44375")
+            XCTAssertEqual(prepaidCardReceipt.amount, "18.05")
+            XCTAssertEqual(prepaidCardReceipt.currency, "USD")
+            if let details = prepaidCardReceipt.details {
                 XCTAssertEqual(details.cardNumber, "************7917")
             } else {
                 assertionFailure("The receipt details should be not nil")
