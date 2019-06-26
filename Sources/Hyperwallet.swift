@@ -248,7 +248,7 @@ public final class Hyperwallet {
                                     completionHandler: completion)
     }
 
-    /// Commits the `HyperwalletTransfer` linked to the transfer method token specified.
+    /// Schedules the `HyperwalletTransfer` linked to the transfer method token specified.
     ///
     /// The `completion: @escaping (HyperwalletStatusTransition?, HyperwalletErrorType?) -> Void` that is passed in to
     /// this method invocation will receive the successful response(HyperwalletStatusTransition) or
@@ -262,9 +262,9 @@ public final class Hyperwallet {
     ///                    being commited
     ///   - notes: a note regarding the status change
     ///   - completion: the callback handler of responses from the Hyperwallet platform
-    public func commitTransfer(transferToken: String,
-                               notes: String? = nil,
-                               completion: @escaping (HyperwalletStatusTransition?, HyperwalletErrorType?) -> Void) {
+    public func scheduleTransfer(transferToken: String,
+                                 notes: String? = nil,
+                                 completion: @escaping (HyperwalletStatusTransition?, HyperwalletErrorType?) -> Void) {
         let statusTransition = HyperwalletStatusTransition(transition: .scheduled)
         statusTransition.notes = notes
         httpTransaction.performRest(httpMethod: .post,
