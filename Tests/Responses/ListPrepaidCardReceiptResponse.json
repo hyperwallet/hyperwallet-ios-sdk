@@ -32,7 +32,19 @@
         "details": {
             "cardNumber": "************7917"
         }
-    } ],
+    }, {
+        "journalId": "CC002F14A572",
+        "type": "PAYMENT",
+        "createdOn": "2017-11-01T17:12:19",
+        "entry": "CREDIT",
+        "destinationToken": "trm-97a31",
+        "amount": "11.00",
+        "currency": "USD",
+        "details": {
+            "cardNumber": "************7917"
+        }
+    }
+    ],
     "links": [ {
         "params": {
             "rel": "self"
