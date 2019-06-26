@@ -337,13 +337,13 @@ public final class Hyperwallet {
     /// from processing the request.
     ///
     /// - Parameters:
-    ///   - transferMethodToken: the Hyperwallet specific unique identifier for the `HyperwalletTransfer`
-    ///                          being requested
+    ///   - transferToken: the Hyperwallet specific unique identifier for the `HyperwalletTransfer`
+    ///                    being requested
     ///   - completion: the callback handler of responses from the Hyperwallet platform
-    public func getTransfer(transferMethodToken: String,
+    public func getTransfer(transferToken: String,
                             completion: @escaping (HyperwalletTransfer?, HyperwalletErrorType?) -> Void) {
         httpTransaction.performRest(httpMethod: .get,
-                                    urlPath: "transfers/\(transferMethodToken)",
+                                    urlPath: "transfers/\(transferToken)",
                                     payload: "",
                                     completionHandler: completion)
     }

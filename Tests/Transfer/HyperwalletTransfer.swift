@@ -82,11 +82,13 @@ class HyperwalletTransferTests: XCTestCase {
             return
         }
 
-        XCTAssertEqual(error.getHttpCode(), 400)
-        XCTAssertEqual(error.getHyperwalletErrors()?.errorList?.first?.code, "INVALID_DESTINATION_TOKEN")
+        XCTAssertEqual(error.getHttpCode(), 400, "The `httpCode` should be 400")
+        XCTAssertEqual(error.getHyperwalletErrors()?.errorList?.first?.code,
+                       "INVALID_DESTINATION_TOKEN",
+                       "The `errorCode` should be `INVALID_DESTINATION_TOKEN`")
     }
 
-    func testGetPayPalAccount_success() {
+    func testGetTransfer_success() {
         // Given
         let expectation = self.expectation(description: "Get transfer completed")
         let response = HyperwalletTestHelper.okHTTPResponse(for: "CreateTransferResponse")
@@ -98,7 +100,7 @@ class HyperwalletTransferTests: XCTestCase {
         var errorResponse: HyperwalletErrorType?
 
         // When
-        Hyperwallet.shared.getTransfer(transferMethodToken: "trf-123456", completion: { (result, error) in
+        Hyperwallet.shared.getTransfer(transferToken: "trf-123456", completion: { (result, error) in
             transferResponse = result
             errorResponse = error
             expectation.fulfill()
@@ -151,21 +153,21 @@ private extension HyperwalletTransferTests {
     func verifyTransferResponse(_ response: HyperwalletTransfer?) {
         if let response = response {
             //Mandatory fields
-            XCTAssertEqual(response.clientTransferId, "6712348070812")
-            XCTAssertEqual(response.destinationAmount, "62.29")
-            XCTAssertEqual(response.destinationCurrency, "USD")
-            XCTAssertEqual(response.destinationToken, "trm-123456")
-            XCTAssertEqual(response.sourceToken, "usr-123456")
+            XCTAssertEqual(response.clientTransferId, "6712348070812", "The `clientTransferId` should be 6712348070812")
+            XCTAssertEqual(response.destinationAmount, "62.29", "The `destinationAmount` should be 62.29")
+            XCTAssertEqual(response.destinationCurrency, "USD", "The `destinationCurrency` should be USD")
+            XCTAssertEqual(response.destinationToken, "trm-123456", "The `destinationToken` should be trm-123456")
+            XCTAssertEqual(response.sourceToken, "usr-123456", "The `sourceToken` should be usr-123456")
             //Optional fields
-            XCTAssertEqual(response.sourceAmount, "80")
-            XCTAssertEqual(response.sourceCurrency, "CAD")
+            XCTAssertEqual(response.sourceAmount, "80", "The `sourceAmount` should be 80")
+            XCTAssertEqual(response.sourceCurrency, "CAD", "The `sourceCurrency` should be CAD")
 
             if let foreignExchange = response.foreignExchanges?.first {
-                XCTAssertEqual(foreignExchange.sourceCurrency, "CAD")
-                XCTAssertEqual(foreignExchange.sourceAmount, "100.00")
-                XCTAssertEqual(foreignExchange.destinationAmount, "63.49")
-                XCTAssertEqual(foreignExchange.destinationCurrency, "USD")
-                XCTAssertEqual(foreignExchange.rate, "0.79")
+                XCTAssertEqual(foreignExchange.sourceCurrency, "CAD", "The `sourceCurrency` should be CAD")
+                XCTAssertEqual(foreignExchange.sourceAmount, "100.00", "The `sourceAmount` should be 100.00")
+                XCTAssertEqual(foreignExchange.destinationAmount, "63.49", "The `destinationAmount` should be 63.49")
+                XCTAssertEqual(foreignExchange.destinationCurrency, "USD", "The `destinationCurrency` should be USD")
+                XCTAssertEqual(foreignExchange.rate, "0.79", "The `rate` should be 0.79")
             } else {
             assertionFailure("The foreignExchange should be not nil")
             }
