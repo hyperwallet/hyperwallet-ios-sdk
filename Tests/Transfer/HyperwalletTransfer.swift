@@ -88,7 +88,7 @@ class HyperwalletTransferTests: XCTestCase {
                        "The `errorCode` should be `INVALID_DESTINATION_TOKEN`")
     }
 
-    func testGetPayPalAccount_success() {
+    func testGetTransfer_success() {
         // Given
         let expectation = self.expectation(description: "Get transfer completed")
         let response = HyperwalletTestHelper.okHTTPResponse(for: "CreateTransferResponse")
@@ -100,7 +100,7 @@ class HyperwalletTransferTests: XCTestCase {
         var errorResponse: HyperwalletErrorType?
 
         // When
-        Hyperwallet.shared.getTransfer(transferMethodToken: "trf-123456", completion: { (result, error) in
+        Hyperwallet.shared.getTransfer(transferToken: "trf-123456", completion: { (result, error) in
             transferResponse = result
             errorResponse = error
             expectation.fulfill()
