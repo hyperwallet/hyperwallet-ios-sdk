@@ -151,11 +151,7 @@ class HyperwalletTransferTests: XCTestCase {
         wait(for: [expectation], timeout: 1)
 
         //Then
-        guard errorResponse == nil else {
-            XCTAssertTrue(false, "The `errorResponse` should be nil")
-            return
-        }
-
+        XCTAssertNil(errorResponse, "The `errorResponse` should be nil")
         verifyTransferListResponse(transferList)
     }
 }
@@ -197,40 +193,21 @@ private extension HyperwalletTransferTests {
     }
 
     func verifyTransferListResponse(_ response: HyperwalletPageList<HyperwalletTransfer>?) {
-        guard let list = response else {
-            XCTAssertTrue(false, "The `transferList` should not be nil")
-            return
-        }
-
-        XCTAssertEqual(list.data.count, 1, "The `count` should be 1")
-
-        guard let transfer = list.data.first else {
-            XCTAssertTrue(false, "The `transfer` should not be nil")
-            return
-        }
-
-        XCTAssertEqual(transfer.token, "trf-1234456", "The `token` should be trf-123456")
-        XCTAssertEqual(transfer.status?.rawValue,
-                       HyperwalletStatusTransition.Status.quoted.rawValue,
-                       "The `status` should be QUOTED")
-        XCTAssertEqual(transfer.clientTransferId, "6712348070812", "The `clientTransferId` should be 6712348070812")
-        XCTAssertEqual(transfer.sourceToken, "usr-123456", "The `sourceToken` should be usr-123456")
-        XCTAssertEqual(transfer.sourceAmount, "90.13", "The `sourceAmount` should be 90.13")
-        XCTAssertEqual(transfer.sourceCurrency, "CAD", "The `sourceCurrency` should be CAD")
-        XCTAssertEqual(transfer.destinationToken, "trm-123456", "The `destinationToken` should be trm-123456")
-        XCTAssertEqual(transfer.destinationAmount, "70", "The `destinationAmount` should be 70")
-        XCTAssertEqual(transfer.destinationCurrency, "USD", "The `destinationCurrency` should be USD")
-        XCTAssertEqual(transfer.notes, "Partial-Balance Transfer", "The `notes` should be Partial-Balance Transfer")
-        XCTAssertEqual(transfer.memo, "TransferClientId56387", "The `memo` should be TransferClientId56387")
-
-        guard let foreignExchange = transfer.foreignExchanges?.first else {
-           XCTAssertTrue(false, "The `foreignExchange` should not be nil")
-            return
-        }
-        XCTAssertEqual(foreignExchange.sourceCurrency, "CAD", "The `sourceCurrency` should be CAD")
-        XCTAssertEqual(foreignExchange.sourceAmount, "90.13", "The `sourceAmount` should be 90.13")
-        XCTAssertEqual(foreignExchange.destinationAmount, "71.20", "The `destinationAmount` should be 71.20")
-        XCTAssertEqual(foreignExchange.destinationCurrency, "USD", "The `destinationCurrency` should be USD")
-        XCTAssertEqual(foreignExchange.rate, "0.79", "The `rate` should be 0.79")
+        XCTAssertNotNil(response, "The `response` should not be nil")
+        XCTAssertEqual(response?.data.count, 2, "The `count` should be 2")
+        
+        let transfer = response?.data.first
+        XCTAssertNotNil(transfer, "The `transfer` should not be nil")
+        XCTAssertEqual(transfer?.token, "trf-123456", "The `token` should be trf-123456")
+        XCTAssertEqual(transfer?.status?.rawValue,
+                       HyperwalletStatusTransition.Status.expired.rawValue,
+                       "The `status` should be EXPIRED")
+        XCTAssertEqual(transfer?.clientTransferId, "67123480708101213", "The `clientTransferId` should be 67123480708101213")
+        XCTAssertEqual(transfer?.sourceToken, "usr-123456", "The `sourceToken` should be usr-123456")
+        XCTAssertEqual(transfer?.sourceAmount, "5.00", "The `sourceAmount` should be 5.00")
+        XCTAssertEqual(transfer?.sourceCurrency, "USD", "The `sourceCurrency` should be USD")
+        XCTAssertEqual(transfer?.destinationToken, "trm-123456", "The `destinationToken` should be trm-123456")
+        XCTAssertEqual(transfer?.destinationAmount, "3.00", "The `destinationAmount` should be 3.00")
+        XCTAssertEqual(transfer?.destinationCurrency, "USD", "The `destinationCurrency` should be USD")
     }
 }
