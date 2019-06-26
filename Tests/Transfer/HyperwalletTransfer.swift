@@ -127,7 +127,7 @@ class HyperwalletTransferTests: XCTestCase {
         var errorResponse: HyperwalletErrorType?
 
         //When
-        Hyperwallet.shared.commitTransfer(transferMethodToken: "trf-123456", completion: { (result, error) in
+        Hyperwallet.shared.commitTransfer(transferToken: "trf-123456", completion: { (result, error) in
             statusTransitionResponse = result
             errorResponse = error
             expectation.fulfill()
@@ -177,9 +177,15 @@ private extension HyperwalletTransferTests {
     }
 
     func verifyStatusTransitionResponse(_ response: HyperwalletStatusTransition) {
-        XCTAssertEqual(response.token, "sts-123456")
-        XCTAssertEqual(response.transition.rawValue, HyperwalletStatusTransition.Status.scheduled.rawValue)
-        XCTAssertEqual(response.fromStatus.rawValue, HyperwalletStatusTransition.Status.quoted.rawValue)
-        XCTAssertEqual(response.toStatus.rawValue, HyperwalletStatusTransition.Status.scheduled.rawValue)
+        XCTAssertEqual(response.token, "sts-123456", "The `token` should be sts-123456")
+        XCTAssertEqual(response.transition.rawValue,
+                       HyperwalletStatusTransition.Status.scheduled.rawValue,
+                       "The `transition` should be SCHEDULED")
+        XCTAssertEqual(response.fromStatus.rawValue,
+                       HyperwalletStatusTransition.Status.quoted.rawValue,
+                       "The `fromStatus` should be QUOTED")
+        XCTAssertEqual(response.toStatus.rawValue,
+                       HyperwalletStatusTransition.Status.scheduled.rawValue,
+                       "The `toStatus` should be SCHEDULED")
     }
 }

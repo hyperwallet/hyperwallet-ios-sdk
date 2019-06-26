@@ -258,17 +258,17 @@ public final class Hyperwallet {
     /// if the current one is expired or is about to expire.
     ///
     /// - Parameters:
-    ///   - transferMethodToken: the Hyperwallet specific unique identifier for the `HyperwalletTransfer`
-    ///                          being commited
+    ///   - transferToken: the Hyperwallet specific unique identifier for the `HyperwalletTransfer`
+    ///                    being commited
     ///   - notes: a note regarding the status change
     ///   - completion: the callback handler of responses from the Hyperwallet platform
-    public func commitTransfer(transferMethodToken: String,
+    public func commitTransfer(transferToken: String,
                                notes: String? = nil,
                                completion: @escaping (HyperwalletStatusTransition?, HyperwalletErrorType?) -> Void) {
         let statusTransition = HyperwalletStatusTransition(transition: .scheduled)
         statusTransition.notes = notes
         httpTransaction.performRest(httpMethod: .post,
-                                    urlPath: "transfers/\(transferMethodToken)/status-transitions",
+                                    urlPath: "transfers/\(transferToken)/status-transitions",
                                     payload: statusTransition,
                                     completionHandler: completion)
     }
