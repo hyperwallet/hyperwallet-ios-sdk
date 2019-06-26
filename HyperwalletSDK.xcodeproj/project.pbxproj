@@ -29,6 +29,7 @@
 		64278CAF22C0CE0D00B8736B /* CreateTransferResponseInvalidDestinationToken.json in Resources */ = {isa = PBXBuildFile; fileRef = 64278CAE22C0CE0D00B8736B /* CreateTransferResponseInvalidDestinationToken.json */; };
 		64278CB122C2561A00B8736B /* CommitTransferResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 64278CB022C2561A00B8736B /* CommitTransferResponse.json */; };
 		64278CB522C3C12200B8736B /* HyperwalletTransferQueryParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64278CB422C3C12200B8736B /* HyperwalletTransferQueryParam.swift */; };
+		64278CB922C3C8EF00B8736B /* ListTransferResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 64278CB822C3C8EF00B8736B /* ListTransferResponse.json */; };
 		644A69C122B0F7640058E77E /* WireAccountBusinessResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 644A69BC22AFF6670058E77E /* WireAccountBusinessResponse.json */; };
 		644A69C322B0FB830058E77E /* WireAccountIndividualResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 644A69C222B0FB830058E77E /* WireAccountIndividualResponse.json */; };
 		64D2493522BCB4A000561C14 /* HyperwalletTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D2493422BCB4A000561C14 /* HyperwalletTransfer.swift */; };
@@ -139,6 +140,7 @@
 		64278CAE22C0CE0D00B8736B /* CreateTransferResponseInvalidDestinationToken.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CreateTransferResponseInvalidDestinationToken.json; sourceTree = "<group>"; };
 		64278CB022C2561A00B8736B /* CommitTransferResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CommitTransferResponse.json; sourceTree = "<group>"; };
 		64278CB422C3C12200B8736B /* HyperwalletTransferQueryParam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperwalletTransferQueryParam.swift; sourceTree = "<group>"; };
+		64278CB822C3C8EF00B8736B /* ListTransferResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ListTransferResponse.json; sourceTree = "<group>"; };
 		644A69BC22AFF6670058E77E /* WireAccountBusinessResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = WireAccountBusinessResponse.json; sourceTree = "<group>"; };
 		644A69C222B0FB830058E77E /* WireAccountIndividualResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = WireAccountIndividualResponse.json; sourceTree = "<group>"; };
 		64D2493422BCB4A000561C14 /* HyperwalletTransfer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperwalletTransfer.swift; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 				64278CB022C2561A00B8736B /* CommitTransferResponse.json */,
 				64D2493E22BD0FA300561C14 /* CreateTransferResponse.json */,
 				64278CAE22C0CE0D00B8736B /* CreateTransferResponseInvalidDestinationToken.json */,
+				64278CB822C3C8EF00B8736B /* ListTransferResponse.json */,
 			);
 			path = Transfer;
 			sourceTree = "<group>";
@@ -682,6 +685,7 @@
 				DBCA37AE225D6D1700CD4137 /* BankAccountIndividualResponse.json in Resources */,
 				644A69C122B0F7640058E77E /* WireAccountBusinessResponse.json in Resources */,
 				DBCA37B2225D6D1700CD4137 /* BankCardErrorResponseWithInvalidCardNumber.json in Resources */,
+				64278CB922C3C8EF00B8736B /* ListTransferResponse.json in Resources */,
 				641EBE9E2292E2B600D718F4 /* BankAccountBusinessResponse.json in Resources */,
 				DBCA37B1225D6D1700CD4137 /* TransferMethodConfigurationGraphQlResponse.json in Resources */,
 				DBCA37B4225D6D1700CD4137 /* StatusTransitionMockedResponseInvalidTransition.json in Resources */,

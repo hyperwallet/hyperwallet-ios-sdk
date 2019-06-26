@@ -147,6 +147,34 @@ class HyperwalletTransferTests: XCTestCase {
 
         verifyStatusTransitionResponse(statusResponse)
     }
+
+    func testListTransfer_success() {
+        //Given
+        let expectation = self.expectation(description: "List Transfers completed")
+        let response = HyperwalletTestHelper.okHTTPResponse(for: "ListTransferResponse")
+        let url = String(format: "%@/transfers", HyperwalletTestHelper.restURL)
+        let request = HyperwalletTestHelper.buildGetRequest(baseUrl: url, response)
+        HyperwalletTestHelper.setUpMockServer(request: request)
+
+        var transferList: HyperwalletPageList<HyperwalletTransfer>?
+        var errorResponse: HyperwalletErrorType?
+
+        //When
+        Hyperwallet.shared.listTransfers { (result, error) in
+            transferList = result
+            errorResponse = error
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 1)
+
+        //Then
+        guard errorResponse == nil else {
+            XCTAssertTrue(false, "The `errorResponse` should be nil")
+            return
+        }
+
+        verifyTransferListResponse(transferList)
+    }
 }
 
 private extension HyperwalletTransferTests {
@@ -169,7 +197,7 @@ private extension HyperwalletTransferTests {
                 XCTAssertEqual(foreignExchange.destinationCurrency, "USD", "The `destinationCurrency` should be USD")
                 XCTAssertEqual(foreignExchange.rate, "0.79", "The `rate` should be 0.79")
             } else {
-            assertionFailure("The foreignExchange should be not nil")
+                assertionFailure("The foreignExchange should be not nil")
             }
         } else {
             assertionFailure("The transfer should be not nil")
@@ -187,5 +215,43 @@ private extension HyperwalletTransferTests {
         XCTAssertEqual(response.toStatus.rawValue,
                        HyperwalletStatusTransition.Status.scheduled.rawValue,
                        "The `toStatus` should be SCHEDULED")
+    }
+
+    func verifyTransferListResponse(_ response: HyperwalletPageList<HyperwalletTransfer>?) {
+        guard let list = response else {
+            XCTAssertTrue(false, "The `transferList` should not be nil")
+            return
+        }
+
+        XCTAssertEqual(list.data.count, 1, "The `count` should be 1")
+
+        guard let transfer = list.data.first else {
+            XCTAssertTrue(false, "The `transfer` should not be nil")
+            return
+        }
+
+        XCTAssertEqual(transfer.token, "trf-1234456", "The `token` should be trf-123456")
+        XCTAssertEqual(transfer.status?.rawValue,
+                       HyperwalletStatusTransition.Status.quoted.rawValue,
+                       "The `status` should be QUOTED")
+        XCTAssertEqual(transfer.clientTransferId, "6712348070812", "The `clientTransferId` should be 6712348070812")
+        XCTAssertEqual(transfer.sourceToken, "usr-123456", "The `sourceToken` should be usr-123456")
+        XCTAssertEqual(transfer.sourceAmount, "90.13", "The `sourceAmount` should be 90.13")
+        XCTAssertEqual(transfer.sourceCurrency, "CAD", "The `sourceCurrency` should be CAD")
+        XCTAssertEqual(transfer.destinationToken, "trm-123456", "The `destinationToken` should be trm-123456")
+        XCTAssertEqual(transfer.destinationAmount, "70", "The `destinationAmount` should be 70")
+        XCTAssertEqual(transfer.destinationCurrency, "USD", "The `destinationCurrency` should be USD")
+        XCTAssertEqual(transfer.notes, "Partial-Balance Transfer", "The `notes` should be Partial-Balance Transfer")
+        XCTAssertEqual(transfer.memo, "TransferClientId56387", "The `memo` should be TransferClientId56387")
+
+        guard let foreignExchange = transfer.foreignExchanges?.first else {
+           XCTAssertTrue(false, "The `foreignExchange` should not be nil")
+            return
+        }
+        XCTAssertEqual(foreignExchange.sourceCurrency, "CAD", "The `sourceCurrency` should be CAD")
+        XCTAssertEqual(foreignExchange.sourceAmount, "90.13", "The `sourceAmount` should be 90.13")
+        XCTAssertEqual(foreignExchange.destinationAmount, "71.20", "The `destinationAmount` should be 71.20")
+        XCTAssertEqual(foreignExchange.destinationCurrency, "USD", "The `destinationCurrency` should be USD")
+        XCTAssertEqual(foreignExchange.rate, "0.79", "The `rate` should be 0.79")
     }
 }
