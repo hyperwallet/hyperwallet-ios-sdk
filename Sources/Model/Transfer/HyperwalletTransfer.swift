@@ -18,14 +18,29 @@
 
 import Foundation
 
+public struct HyperwalletForeignExchange: Codable {
+    let destinationAmount: String
+    let destinationCurrency: String
+    let rate: String
+    let sourceAmount: String
+    let sourceCurrency: String
+}
+
 public struct HyperwalletTransfer: Codable {
-    public struct HyperwalletForeignExchange: Codable {
-        let destinationAmount: String
-        let destinationCurrency: String
-        let rate: String
-        let sourceAmount: String
-        let sourceCurrency: String
-    }
+    public let clientTransferId: String
+    public let createdOn: String?
+    public let destinationAmount: String?
+    public let destinationCurrency: String?
+    public let destinationToken: String
+    public let expiresOn: String?
+    public let foreignExchanges: [HyperwalletForeignExchange]?
+    public let memo: String?
+    public let notes: String?
+    public let sourceAmount: String?
+    public let sourceCurrency: String?
+    public let sourceToken: String
+    public let status: HyperwalletTransferStatus?
+    public let token: String?
 
     public enum HyperwalletTransferStatus: String, Codable {
         case cancelled              = "CANCELLED"
@@ -38,34 +53,6 @@ public struct HyperwalletTransfer: Codable {
         case scheduled              = "SCHEDULED"
         case verificationRequired   = "VERIFICATION_REQUIRED"
     }
-
-    public let clientTransferId: String
-
-    public let createdOn: String?
-
-    public let destinationAmount: String
-
-    public let destinationCurrency: String
-
-    public let destinationToken: String
-
-    public let expiresOn: String?
-
-    public let foreignExchanges: [HyperwalletForeignExchange]?
-
-    public let memo: String?
-
-    public let notes: String?
-
-    public let sourceAmount: String?
-
-    public let sourceCurrency: String?
-
-    public let sourceToken: String
-
-    public let status: HyperwalletTransferStatus?
-
-    public let token: String?
 
     /// Creates a new instance of the `HyperwalletTransfer` based on the parameters to create
     /// transfer.
@@ -96,8 +83,8 @@ public struct HyperwalletTransfer: Codable {
     ///   - token: The unique, auto-generated transfer identifier. Max 64 characters, prefixed with `trf-`.
     public init(clientTransferId: String,
                 createdOn: String? = nil,
-                destinationAmount: String,
-                destinationCurrency: String,
+                destinationAmount: String? = nil,
+                destinationCurrency: String? = nil,
                 destinationToken: String,
                 expiresOn: String? = nil,
                 foreignExchanges: [HyperwalletForeignExchange]? = nil,
