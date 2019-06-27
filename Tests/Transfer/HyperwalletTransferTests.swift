@@ -28,8 +28,12 @@ class HyperwalletTransferTests: XCTestCase {
         let transferRequest = HyperwalletTransfer.Builder(clientTransferId: "6712348070812",
                                                           sourceToken: "usr-123456",
                                                           destinationToken: "trm-invaqlid-token")
+            .sourceAmount("10")
+            .sourceCurrency("CAD")
             .destinationAmount("62.29")
             .destinationCurrency("USD")
+            .memo("TransferClientId56387")
+            .notes("Partial-Balance Transfer")
             .build()
 
         Hyperwallet.shared.createTransfer(transfer: transferRequest, completion: { (result, error) in
@@ -42,6 +46,8 @@ class HyperwalletTransferTests: XCTestCase {
         // Then
         XCTAssertNotNil(transferResponse, "The `transferResponse` should not be nil")
         XCTAssertNil(errorResponse, "The `errorResponse` should be nil")
+        XCTAssertEqual(transferResponse?.memo, "TransferClientId56387")
+        XCTAssertEqual(transferResponse?.notes, "Partial-Balance Transfer")
 
         verifyCreateTransferResponse(transferResponse)
     }
