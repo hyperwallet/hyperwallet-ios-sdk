@@ -30,16 +30,16 @@ public struct HyperwalletTransfer: Codable {
     public let clientTransferId: String
     public let createdOn: String?
     public let destinationAmount: String?
-    public let destinationFeeAmount: String?
     public let destinationCurrency: String?
+    public let destinationFeeAmount: String?
     public let destinationToken: String
     public let expiresOn: String?
     public let foreignExchanges: [HyperwalletForeignExchange]?
     public let memo: String?
     public let notes: String?
     public let sourceAmount: String?
-    public let sourceFeeAmount: String?
     public let sourceCurrency: String?
+    public let sourceFeeAmount: String?
     public let sourceToken: String
     public let status: HyperwalletTransferStatus?
     public let token: String?
@@ -59,37 +59,37 @@ public struct HyperwalletTransfer: Codable {
     private init(clientTransferId: String,
                  createdOn: String? = nil,
                  destinationAmount: String? = nil,
-                 destinationFeeAmount: String? = nil,
                  destinationCurrency: String? = nil,
+                 destinationFeeAmount: String? = nil,
                  destinationToken: String,
                  expiresOn: String? = nil,
                  foreignExchanges: [HyperwalletForeignExchange]? = nil,
                  memo: String? = nil,
                  notes: String? = nil,
                  sourceAmount: String? = nil,
-                 sourceFeeAmount: String? = nil,
                  sourceCurrency: String? = nil,
+                 sourceFeeAmount: String? = nil,
                  sourceToken: String,
                  status: HyperwalletTransferStatus? = nil,
                  token: String? = nil) {
         self.clientTransferId = clientTransferId
         self.createdOn = createdOn
         self.destinationAmount = destinationAmount
-        self.destinationFeeAmount = destinationFeeAmount
         self.destinationCurrency = destinationCurrency
+        self.destinationFeeAmount = destinationFeeAmount
         self.destinationToken = destinationToken
         self.expiresOn = expiresOn
         self.foreignExchanges = foreignExchanges
         self.memo = memo
         self.notes = notes
         self.sourceAmount = sourceAmount
-        self.sourceFeeAmount = sourceFeeAmount
         self.sourceCurrency = sourceCurrency
+        self.sourceFeeAmount = sourceFeeAmount
         self.sourceToken = sourceToken
         self.status = status
         self.token = token
     }
-    
+
     /// A helper class to build the `HyperwalletTransfer` instance.
     public class Builder {
         private let clientTransferId: String
@@ -182,21 +182,14 @@ public struct HyperwalletTransfer: Codable {
         /// - Returns: a new instance of the `HyperwalletTransfer`.
         public func build() -> HyperwalletTransfer {
             return HyperwalletTransfer(clientTransferId: clientTransferId,
-                                       createdOn: nil,
                                        destinationAmount: destinationAmount,
-                                       destinationFeeAmount: nil,
                                        destinationCurrency: destinationCurrency,
                                        destinationToken: destinationToken,
-                                       expiresOn: nil,
-                                       foreignExchanges: nil,
                                        memo: memo,
                                        notes: notes,
                                        sourceAmount: sourceAmount,
-                                       sourceFeeAmount: nil,
                                        sourceCurrency: sourceCurrency,
-                                       sourceToken: sourceToken,
-                                       status: nil,
-                                       token: nil)
+                                       sourceToken: sourceToken)
         }
     }
 }
