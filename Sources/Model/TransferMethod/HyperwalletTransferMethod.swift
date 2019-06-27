@@ -132,6 +132,7 @@ public class HyperwalletTransferMethod: Codable {
 
         // prepaid card related fields
         case cardPackage
+        case userToken
     }
 
     internal init(data: [String: AnyCodable]) {

@@ -52,6 +52,11 @@ public final class HyperwalletPrepaidCard: HyperwalletTransferMethod {
         return getField(fieldName: .dateOfExpiry) as? String
     }
 
+    /// The prepaid card's user token (instant issue cards only)
+    public var userToken: String? {
+        return getField(fieldName: .userToken) as? String
+    }
+
     /// A helper class to build the `HyperwalletPrepaidCard` instance.
     public final class Builder {
         private var storage = [String: AnyCodable]()
