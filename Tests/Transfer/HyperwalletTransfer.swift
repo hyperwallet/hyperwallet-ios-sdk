@@ -17,19 +17,20 @@ class HyperwalletTransferTests: XCTestCase {
         // Given
         let expectation = self.expectation(description: "Create transfer completed")
         let response = HyperwalletTestHelper.okHTTPResponse(for: "CreateTransferResponse")
-        let url = String(format: "%@/transfers", HyperwalletTestHelper.restURL)
+        let url = String(format: "%@transfers", HyperwalletTestHelper.restURL)
         let request = HyperwalletTestHelper.buildPostRequest(baseUrl: url, response)
         HyperwalletTestHelper.setUpMockServer(request: request)
 
         var transferResponse: HyperwalletTransfer?
         var errorResponse: HyperwalletErrorType?
 
-        // When
-        let transferRequest = HyperwalletTransfer(clientTransferId: "6712348070812",
-                                                  destinationAmount: "62.29",
-                                                  destinationCurrency: "USD",
-                                                  destinationToken: "trm-123456",
-                                                  sourceToken: "usr-123456")
+        //When
+        let transferRequest = HyperwalletTransfer.Builder(clientTransferId: "6712348070812",
+                                                          sourceToken: "usr-123456",
+                                                          destinationToken: "trm-invaqlid-token")
+            .destinationAmount("62.29")
+            .destinationCurrency("USD")
+            .build()
 
         Hyperwallet.shared.createTransfer(transfer: transferRequest, completion: { (result, error) in
             transferResponse = result
@@ -50,7 +51,7 @@ class HyperwalletTransferTests: XCTestCase {
         let expectation = self.expectation(description: "Create transfer failed")
         let response = HyperwalletTestHelper
             .badRequestHTTPResponse(for: "CreateTransferResponseInvalidDestinationToken")
-        let url = String(format: "%@/transfers", HyperwalletTestHelper.restURL)
+        let url = String(format: "%@transfers", HyperwalletTestHelper.restURL)
         let request = HyperwalletTestHelper.buildPostRequest(baseUrl: url, response)
         HyperwalletTestHelper.setUpMockServer(request: request)
 
@@ -58,11 +59,12 @@ class HyperwalletTransferTests: XCTestCase {
         var errorResponse: HyperwalletErrorType?
 
         // When
-        let transferRequest = HyperwalletTransfer(clientTransferId: "6712348070812",
-                                                  destinationAmount: "62.29",
-                                                  destinationCurrency: "USD",
-                                                  destinationToken: "trm-invaqlid-token",
-                                                  sourceToken: "usr-123456")
+        let transferRequest = HyperwalletTransfer.Builder(clientTransferId: "6712348070812",
+                                                          sourceToken: "usr-123456",
+                                                          destinationToken: "trm-invaqlid-token")
+            .destinationAmount("62.29")
+            .destinationCurrency("USD")
+            .build()
 
         Hyperwallet.shared.createTransfer(transfer: transferRequest, completion: { (result, error) in
             transferResponse = result
@@ -109,7 +111,7 @@ private extension HyperwalletTransferTests {
                 XCTAssertEqual(foreignExchange.destinationCurrency, "USD", "The `destinationCurrency` should be USD")
                 XCTAssertEqual(foreignExchange.rate, "0.79", "The `rate` should be 0.79")
             } else {
-            assertionFailure("The foreignExchange should be not nil")
+                assertionFailure("The foreignExchange should be not nil")
             }
         } else {
             assertionFailure("The transfer should be not nil")
