@@ -19,17 +19,18 @@
 import Foundation
 
 public struct HyperwalletForeignExchange: Codable {
-    let destinationAmount: String
-    let destinationCurrency: String
-    let rate: String
-    let sourceAmount: String
-    let sourceCurrency: String
+    let destinationAmount: String?
+    let destinationCurrency: String?
+    let rate: String?
+    let sourceAmount: String?
+    let sourceCurrency: String?
 }
 
 public struct HyperwalletTransfer: Codable {
     public let clientTransferId: String
     public let createdOn: String?
     public let destinationAmount: String?
+    public let destinationFeeAmount: String?
     public let destinationCurrency: String?
     public let destinationToken: String
     public let expiresOn: String?
@@ -37,6 +38,7 @@ public struct HyperwalletTransfer: Codable {
     public let memo: String?
     public let notes: String?
     public let sourceAmount: String?
+    public let sourceFeeAmount: String?
     public let sourceCurrency: String?
     public let sourceToken: String
     public let status: HyperwalletTransferStatus?
@@ -54,50 +56,26 @@ public struct HyperwalletTransfer: Codable {
         case verificationRequired   = "VERIFICATION_REQUIRED"
     }
 
-    /// Creates a new instance of the `HyperwalletTransfer` based on the parameters to create
-    /// transfer.
-    ///
-    /// - Parameters:
-    ///   - clientTransferId: A client defined transfer identifier.
-    ///     This is the unique ID assigned to the transfer on your system. Max 50 characters.
-    ///   - createdOn: The datetime the status changed in `ISO 8601` format (YYYY-MM-DDThh:mm:ss).
-    ///     Note that the timezone used is UTC, therefore there is no time offset.
-    ///   - destinationAmount: The payment amount in the specified currency loaded into your merchant account.
-    ///   - destinationCurrency: The currency of the payment amount loaded into your merchant account
-    ///     in `ISO 4217` format.
-    ///   - destinationToken: A token identifying where the funds have been sent.
-    ///     It is your merchant account token prefixed with `act-`.
-    ///   - expiresOn: The date and time which the created transfer expires.
-    ///     The REST API user (Payer) has 120 seconds from the creation time to complete the transfer,
-    ///     otherwise the created transfer expires and payer needs to re-initiate the transfer. (YYYY-MMDDThh:mm:ss).
-    ///   - foreignExchanges: An array of foreign exchange transactions.
-    ///     A transfer could have more than one foreign exchange transaction.
-    ///   - memo: An internal memo for the SpendBack transfer (will not be visible to the user making the payment).
-    ///   - notes: A description for the SpendBack transfer.
-    ///   - sourceAmount: The payment amount in the specified currency that is debited from the sourceToken.
-    ///   - sourceCurrency: The currency of the payment amount debited from the sourceToken in in `ISO 4217` format.
-    ///     Required if more than one currency option is available for partial balance transfers.
-    ///   - sourceToken: A token identifying the source of funds.
-    ///     It can be a prepaid card token prefixed with `trm-` or user token prefixed with `usr-`.
-    ///   - status: The transfer status. The only possible value returned is: `QUOTED`.
-    ///   - token: The unique, auto-generated transfer identifier. Max 64 characters, prefixed with `trf-`.
-    public init(clientTransferId: String,
-                createdOn: String? = nil,
-                destinationAmount: String? = nil,
-                destinationCurrency: String? = nil,
-                destinationToken: String,
-                expiresOn: String? = nil,
-                foreignExchanges: [HyperwalletForeignExchange]? = nil,
-                memo: String? = nil,
-                notes: String? = nil,
-                sourceAmount: String? = nil,
-                sourceCurrency: String? = nil,
-                sourceToken: String,
-                status: HyperwalletTransferStatus? = nil,
-                token: String? = nil) {
+    private init(clientTransferId: String,
+                 createdOn: String? = nil,
+                 destinationAmount: String? = nil,
+                 destinationFeeAmount: String? = nil,
+                 destinationCurrency: String? = nil,
+                 destinationToken: String,
+                 expiresOn: String? = nil,
+                 foreignExchanges: [HyperwalletForeignExchange]? = nil,
+                 memo: String? = nil,
+                 notes: String? = nil,
+                 sourceAmount: String? = nil,
+                 sourceFeeAmount: String? = nil,
+                 sourceCurrency: String? = nil,
+                 sourceToken: String,
+                 status: HyperwalletTransferStatus? = nil,
+                 token: String? = nil) {
         self.clientTransferId = clientTransferId
         self.createdOn = createdOn
         self.destinationAmount = destinationAmount
+        self.destinationFeeAmount = destinationFeeAmount
         self.destinationCurrency = destinationCurrency
         self.destinationToken = destinationToken
         self.expiresOn = expiresOn
@@ -105,9 +83,120 @@ public struct HyperwalletTransfer: Codable {
         self.memo = memo
         self.notes = notes
         self.sourceAmount = sourceAmount
+        self.sourceFeeAmount = sourceFeeAmount
         self.sourceCurrency = sourceCurrency
         self.sourceToken = sourceToken
         self.status = status
         self.token = token
+    }
+    
+    /// A helper class to build the `HyperwalletTransfer` instance.
+    public class Builder {
+        private let clientTransferId: String
+        private var destinationAmount: String?
+        private var destinationCurrency: String?
+        private let destinationToken: String
+        private var memo: String?
+        private var notes: String?
+        private var sourceAmount: String?
+        private var sourceCurrency: String?
+        private let sourceToken: String
+
+        /// Creates a new instance of the `HyperwalletTransfer.Builder` based on the required parameters to create
+        /// a transfer.
+        ///
+        /// - Parameters:
+        ///   - clientTransferId: A client defined transfer identifier.
+        ///     This is the unique ID assigned to the transfer on your system. Max 50 characters.
+        ///   - sourceToken: A token identifying the source of funds.
+        ///     It can be a prepaid card token prefixed with `trm-` or user token prefixed with `usr-`.
+        ///   - destinationToken: A token identifying where the funds have been sent.
+        ///     It is your merchant account token prefixed with `act-`.
+        public init(clientTransferId: String, sourceToken: String, destinationToken: String) {
+            self.clientTransferId = clientTransferId
+            self.sourceToken = sourceToken
+            self.destinationToken = destinationToken
+        }
+
+        /// Sets the transfer destination amount.
+        ///
+        /// - Parameter destinationAmount: The payment amount in the specified currency loaded into
+        ///                                your merchant account.
+        /// - Returns: a self `HyperwalletTransfer.Builder` instance.
+        public func destinationAmount(_ destinationAmount: String?) -> Builder {
+            self.destinationAmount = destinationAmount
+            return self
+        }
+
+        /// Sets the transfer destination currency.
+        ///
+        /// - Parameter destinationCurrency: The currency of the payment amount loaded into your merchant
+        ///                                  account in ISO 4217 format.
+        /// - Returns: a self `HyperwalletTransfer.Builder` instance.
+        public func destinationCurrency(_ destinationCurrency: String?) -> Builder {
+            self.destinationCurrency = destinationCurrency
+            return self
+        }
+
+        /// Sets the transfer memo.
+        ///
+        /// - Parameter memo: An internal memo for the SpendBack transfer (will not be visible to
+        ///                                  the user making the payment).
+        /// - Returns: a self `HyperwalletTransfer.Builder` instance.
+        public func memo(_ memo: String?) -> Builder {
+            self.memo = memo
+            return self
+        }
+
+        /// Sets the transfer notes.
+        ///
+        /// - Parameter notes: A description for the SpendBack transfer.
+        /// - Returns: a self `HyperwalletTransfer.Builder` instance.
+        public func notes(_ notes: String?) -> Builder {
+            self.notes = notes
+            return self
+        }
+
+        /// Sets the transfer source amount.
+        ///
+        /// - Parameter sourceAmount: The payment amount in the specified currency that is debited
+        ///                           from the sourceToken.
+        /// - Returns: a self `HyperwalletTransfer.Builder` instance.
+        public func sourceAmount(_ sourceAmount: String?) -> Builder {
+            self.sourceAmount = sourceAmount
+            return self
+        }
+
+        /// Sets the transfer source currency.
+        ///
+        /// - Parameter sourceCurrency: The currency of the payment amount debited from the sourceToken
+        ///                             in ISO 4217 format.
+        /// - Returns: a self `HyperwalletTransfer.Builder` instance.
+        public func sourceCurrency(_ sourceCurrency: String?) -> Builder {
+            self.sourceCurrency = sourceCurrency
+            return self
+        }
+
+        // Builds a new instance of the `HyperwalletTransfer`.
+        ///
+        /// - Returns: a new instance of the `HyperwalletTransfer`.
+        public func build() -> HyperwalletTransfer {
+            return HyperwalletTransfer(clientTransferId: clientTransferId,
+                                       createdOn: nil,
+                                       destinationAmount: destinationAmount,
+                                       destinationFeeAmount: nil,
+                                       destinationCurrency: destinationCurrency,
+                                       destinationToken: destinationToken,
+                                       expiresOn: nil,
+                                       foreignExchanges: nil,
+                                       memo: memo,
+                                       notes: notes,
+                                       sourceAmount: sourceAmount,
+                                       sourceFeeAmount: nil,
+                                       sourceCurrency: sourceCurrency,
+                                       sourceToken: sourceToken,
+                                       status: nil,
+                                       token: nil)
+        }
     }
 }
