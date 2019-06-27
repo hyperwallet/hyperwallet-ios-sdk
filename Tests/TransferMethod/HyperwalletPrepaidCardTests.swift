@@ -47,21 +47,24 @@ class HyperwalletPrepaidCardTests: XCTestCase {
         XCTAssertNotNil(prepaidCardList?.links, "The `links` should be not nil")
 
         let firstPrepaidCard = prepaidCardList?.data.first
-        XCTAssertEqual(firstPrepaidCard?.type, "PREPAID_CARD")
-        XCTAssertEqual(firstPrepaidCard?.token, "trm-123")
-        XCTAssertEqual(firstPrepaidCard?.cardNumber, "************6198")
-        XCTAssertEqual(firstPrepaidCard?.dateOfExpiry, "2023-06")
-        XCTAssertEqual(firstPrepaidCard?.cardPackage, "L1")
-        XCTAssertEqual(firstPrepaidCard?.createdOn, "2019-06-20T21:21:43")
+        XCTAssertEqual(firstPrepaidCard?.type, "PREPAID_CARD", "The type should be PREPAID_CARD")
+        XCTAssertEqual(firstPrepaidCard?.token, "trm-123", "The token should be trm-123")
+        XCTAssertEqual(firstPrepaidCard?.cardNumber, "************6198", "The cardNumber should be ************6198")
+        XCTAssertEqual(firstPrepaidCard?.dateOfExpiry, "2023-06", "The dateOfExpiry should be 2023-06")
+        XCTAssertEqual(firstPrepaidCard?.cardPackage, "L1", "The cardPackage should be L1")
+        XCTAssertEqual(firstPrepaidCard?.createdOn,
+                       "2019-06-20T21:21:43",
+                       "The createdOn should be 2019-06-20T21:21:43")
 
         let lastPrepaidCard = prepaidCardList?.data.last
-        XCTAssertEqual(lastPrepaidCard?.getField(fieldName: .type) as? String, "PREPAID_CARD")
-        XCTAssertEqual(lastPrepaidCard?.getField(fieldName: .token) as? String, "trm-456")
-        XCTAssertEqual(lastPrepaidCard?.getField(fieldName: .cardNumber) as? String, "************2345")
-        XCTAssertEqual(lastPrepaidCard?.getField(fieldName: .dateOfExpiry) as? String, "2023-06")
-        XCTAssertEqual(lastPrepaidCard?.dateOfExpiry, "2023-06")
-        XCTAssertEqual(lastPrepaidCard?.cardPackage, "L1")
-        XCTAssertEqual(lastPrepaidCard?.createdOn, "2019-06-20T22:21:43")
+        XCTAssertEqual(lastPrepaidCard?.type, "PREPAID_CARD", "The type should be PREPAID_CARD")
+        XCTAssertEqual(lastPrepaidCard?.token, "trm-456", "The token should be trm-456")
+        XCTAssertEqual(lastPrepaidCard?.cardNumber, "************2345", "The cardNumber should be ************2345")
+        XCTAssertEqual(lastPrepaidCard?.dateOfExpiry, "2023-06", "The dateOfExpiry should be 2023-06")
+        XCTAssertEqual(lastPrepaidCard?.cardPackage, "L1", "The cardPackage should be L1")
+        XCTAssertEqual(lastPrepaidCard?.createdOn,
+                       "2019-06-20T22:21:43",
+                       "The createdOn should be 2019-06-20T21:21:43")
     }
 
     func testListPrepaidCards_emptyResult() {

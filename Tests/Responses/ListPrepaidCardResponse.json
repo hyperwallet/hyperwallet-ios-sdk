@@ -21,7 +21,7 @@
                     "params": {
                         "rel": "self"
                     },
-                    "href": "https://qamaster-hyperwallet.aws.paylution.net/rest/v3/users/usr-123/prepaid-cards/trm-123"
+                    "href": "https://localhost/rest/v3/users/usr-123/prepaid-cards/trm-123"
                 }
             ]
         },
@@ -43,7 +43,7 @@
                     "params": {
                         "rel": "self"
                     },
-                    "href": "https://qamaster-hyperwallet.aws.paylution.net/rest/v3/users/usr-123/prepaid-cards/trm-456"
+                    "href": "https://localhost/rest/v3/users/usr-123/prepaid-cards/trm-456"
                 }
             ]
         }
@@ -53,7 +53,7 @@
             "params": {
                 "rel": "self"
             },
-            "href": "https://qamaster-hyperwallet.aws.paylution.net/rest/v3/users/usr-123/prepaid-cards?offset=0&limit=10&sortBy=-createdOn&createdAfter=2019-05-31T20%3A59%3A58"
+            "href": "https://localhost/rest/v3/users/usr-123/prepaid-cards?offset=0&limit=10&sortBy=-createdOn&createdAfter=2019-05-31T20%3A59%3A58"
         }
     ]
 }
