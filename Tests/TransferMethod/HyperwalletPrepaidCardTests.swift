@@ -13,6 +13,7 @@ class HyperwalletPrepaidCardTests: XCTestCase {
         }
     }
 
+    //swiftlint:disable function_body_length
     func testListPrepaidCards_success() {
         // Given
         let expectation = self.expectation(description: "List prepaid cards completed")
@@ -49,6 +50,10 @@ class HyperwalletPrepaidCardTests: XCTestCase {
         let firstPrepaidCard = prepaidCardList?.data.first
         XCTAssertEqual(firstPrepaidCard?.type, "PREPAID_CARD", "The type should be PREPAID_CARD")
         XCTAssertEqual(firstPrepaidCard?.token, "trm-123", "The token should be trm-123")
+        XCTAssertEqual(firstPrepaidCard?.status, "DEACTIVATED", "The status should be DEACTIVATED")
+        XCTAssertEqual(firstPrepaidCard?.transferMethodCountry, "CA", "The country code should be CA")
+        XCTAssertEqual(firstPrepaidCard?.transferMethodCurrency, "USD", "The currency code should be USD")
+
         XCTAssertEqual(firstPrepaidCard?.cardNumber, "************6198", "The cardNumber should be ************6198")
         XCTAssertEqual(firstPrepaidCard?.dateOfExpiry, "2023-06", "The dateOfExpiry should be 2023-06")
         XCTAssertEqual(firstPrepaidCard?.cardPackage, "L1", "The cardPackage should be L1")
