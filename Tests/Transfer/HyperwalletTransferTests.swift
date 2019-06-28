@@ -92,7 +92,7 @@ class HyperwalletTransferTests: XCTestCase {
         // Given
         let expectation = self.expectation(description: "Get transfer completed")
         let response = HyperwalletTestHelper.okHTTPResponse(for: "CreateTransferResponse")
-        let url = String(format: "%@/transfers/trf-123456", HyperwalletTestHelper.restURL)
+        let url = String(format: "%@transfers/trf-123456", HyperwalletTestHelper.restURL)
         let request = HyperwalletTestHelper.buildGetRequest(baseUrl: url, response)
         HyperwalletTestHelper.setUpMockServer(request: request)
 
@@ -118,7 +118,7 @@ class HyperwalletTransferTests: XCTestCase {
         //Given
         let expectation = self.expectation(description: "Schedule transfer completed")
         let response = HyperwalletTestHelper.okHTTPResponse(for: "ScheduleTransferResponse")
-        let url = String(format: "%@/transfers/trf-123456/status-transitions", HyperwalletTestHelper.restURL)
+        let url = String(format: "%@transfers/trf-123456/status-transitions", HyperwalletTestHelper.restURL)
         let request = HyperwalletTestHelper.buildPostRequest(baseUrl: url, response)
         HyperwalletTestHelper.setUpMockServer(request: request)
 
