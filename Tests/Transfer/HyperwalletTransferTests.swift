@@ -17,19 +17,24 @@ class HyperwalletTransferTests: XCTestCase {
         // Given
         let expectation = self.expectation(description: "Create transfer completed")
         let response = HyperwalletTestHelper.okHTTPResponse(for: "CreateTransferResponse")
-        let url = String(format: "%@/transfers", HyperwalletTestHelper.restURL)
+        let url = String(format: "%@transfers", HyperwalletTestHelper.restURL)
         let request = HyperwalletTestHelper.buildPostRequest(baseUrl: url, response)
         HyperwalletTestHelper.setUpMockServer(request: request)
 
         var transferResponse: HyperwalletTransfer?
         var errorResponse: HyperwalletErrorType?
 
-        // When
-        let transferRequest = HyperwalletTransfer(clientTransferId: "6712348070812",
-                                                  destinationAmount: "62.29",
-                                                  destinationCurrency: "USD",
-                                                  destinationToken: "trm-123456",
-                                                  sourceToken: "usr-123456")
+        //When
+        let transferRequest = HyperwalletTransfer.Builder(clientTransferId: "6712348070812",
+                                                          sourceToken: "usr-123456",
+                                                          destinationToken: "trm-invaqlid-token")
+            .sourceAmount("10")
+            .sourceCurrency("CAD")
+            .destinationAmount("62.29")
+            .destinationCurrency("USD")
+            .memo("TransferClientId56387")
+            .notes("Partial-Balance Transfer")
+            .build()
 
         Hyperwallet.shared.createTransfer(transfer: transferRequest, completion: { (result, error) in
             transferResponse = result
@@ -41,6 +46,8 @@ class HyperwalletTransferTests: XCTestCase {
         // Then
         XCTAssertNotNil(transferResponse, "The `transferResponse` should not be nil")
         XCTAssertNil(errorResponse, "The `errorResponse` should be nil")
+        XCTAssertEqual(transferResponse?.memo, "TransferClientId56387")
+        XCTAssertEqual(transferResponse?.notes, "Partial-Balance Transfer")
 
         verifyTransferResponse(transferResponse)
     }
@@ -50,7 +57,7 @@ class HyperwalletTransferTests: XCTestCase {
         let expectation = self.expectation(description: "Create transfer failed")
         let response = HyperwalletTestHelper
             .badRequestHTTPResponse(for: "CreateTransferResponseInvalidDestinationToken")
-        let url = String(format: "%@/transfers", HyperwalletTestHelper.restURL)
+        let url = String(format: "%@transfers", HyperwalletTestHelper.restURL)
         let request = HyperwalletTestHelper.buildPostRequest(baseUrl: url, response)
         HyperwalletTestHelper.setUpMockServer(request: request)
 
@@ -58,11 +65,12 @@ class HyperwalletTransferTests: XCTestCase {
         var errorResponse: HyperwalletErrorType?
 
         // When
-        let transferRequest = HyperwalletTransfer(clientTransferId: "6712348070812",
-                                                  destinationAmount: "62.29",
-                                                  destinationCurrency: "USD",
-                                                  destinationToken: "trm-invaqlid-token",
-                                                  sourceToken: "usr-123456")
+        let transferRequest = HyperwalletTransfer.Builder(clientTransferId: "6712348070812",
+                                                          sourceToken: "usr-123456",
+                                                          destinationToken: "trm-invaqlid-token")
+            .destinationAmount("62.29")
+            .destinationCurrency("USD")
+            .build()
 
         Hyperwallet.shared.createTransfer(transfer: transferRequest, completion: { (result, error) in
             transferResponse = result
