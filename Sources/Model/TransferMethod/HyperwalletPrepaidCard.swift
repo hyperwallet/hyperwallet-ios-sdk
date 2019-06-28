@@ -90,6 +90,15 @@ public final class HyperwalletPrepaidCard: HyperwalletTransferMethod {
             return self
         }
 
+        /// Sets userToken for an instant issue card
+        ///
+        /// - Parameter userToken: The unique, auto-generated user identifier. Max 64 characters, prefixed with "usr-".
+        /// - Returns: a self `HyperwalletPrepaidCard.Builder` instance.
+        public func userToken(_ userToken: String) -> Builder {
+            storage[TransferMethodField.userToken.rawValue] = AnyCodable(value: userToken)
+            return self
+        }
+
         /// Builds a new instance of the `HyperwalletPrepaidCard`.
         ///
         /// - Returns: a new instance of the `HyperwalletPrepaidCard`.
