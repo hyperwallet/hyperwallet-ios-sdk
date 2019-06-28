@@ -57,32 +57,36 @@ public final class HyperwalletStatusTransition: Codable {
     /// - pendingTaxVerification: The status is pending tax verification.
     /// - pendingTransactionVerification: The status is pending transaction verification.
     /// - pendingTransferMethodAction: The status is pending transfer method action.
+    /// - quoted: The status is quoted
     /// - recalled: The status is recall.
     /// - returned: The status is return.
     /// - scheduled: The status is schedule.
     /// - suspended: The status is suspend.
     /// - unsuspended: The status is not suspended.
     /// - verified: The status is verified.
+    /// - verificationRequired: The status is verification required
     public enum Status: String, Codable {
-        case activated = "ACTIVATED"
-        case cancelled = "CANCELLED"
-        case completed = "COMPLETED"
-        case deactivated = "DE_ACTIVATED"
-        case expired = "EXPIRED"
-        case failed = "FAILED"
-        case inProgress = "IN_PROGRESS"
-        case invalid = "INVALID"
-        case lostOrStolen = "LOST_OR_STOLEN"
-        case pendingAccountActivation = "PENDING_ACCOUNT_ACTIVATION"
-        case pendingIdVerification = "PENDING_ID_VERIFICATION"
-        case pendingTaxVerification = "PENDING_TAX_VERIFICATION"
-        case pendingTransactionVerification = "PENDING_TRANSACTION_VERIFICATION"
-        case pendingTransferMethodAction = "PENDING_TRANSACTION_METHOD_ACTION"
-        case recalled = "RECALLED"
-        case returned = "RETURNED"
-        case scheduled = "SCHEDULED"
-        case suspended = "SUSPENDED"
-        case unsuspended = "UNSUSPENDED"
-        case verified = "VERIFIED"
+        case activated                          = "ACTIVATED"
+        case cancelled                          = "CANCELLED"
+        case completed                          = "COMPLETED"
+        case deactivated                        = "DE_ACTIVATED"
+        case expired                            = "EXPIRED"
+        case failed                             = "FAILED"
+        case inProgress                         = "IN_PROGRESS"
+        case invalid                            = "INVALID"
+        case lostOrStolen                       = "LOST_OR_STOLEN"
+        case pendingAccountActivation           = "PENDING_ACCOUNT_ACTIVATION"
+        case pendingIdVerification              = "PENDING_ID_VERIFICATION"
+        case pendingTaxVerification             = "PENDING_TAX_VERIFICATION"
+        case pendingTransactionVerification     = "PENDING_TRANSACTION_VERIFICATION"
+        case pendingTransferMethodAction        = "PENDING_TRANSACTION_METHOD_ACTION"
+        case quoted                             = "QUOTED"
+        case recalled                           = "RECALLED"
+        case returned                           = "RETURNED"
+        case scheduled                          = "SCHEDULED"
+        case suspended                          = "SUSPENDED"
+        case unsuspended                        = "UNSUSPENDED"
+        case verificationRequired               = "VERIFICATION_REQUIRED"
+        case verified                           = "VERIFIED"
     }
 }
