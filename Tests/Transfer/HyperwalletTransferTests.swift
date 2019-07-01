@@ -24,12 +24,17 @@ class HyperwalletTransferTests: XCTestCase {
         var transferResponse: HyperwalletTransfer?
         var errorResponse: HyperwalletErrorType?
 
-        // When
-        let transferRequest = HyperwalletTransfer(clientTransferId: "6712348070812",
-                                                  destinationAmount: "62.29",
-                                                  destinationCurrency: "USD",
-                                                  destinationToken: "trm-123456",
-                                                  sourceToken: "usr-123456")
+        //When
+        let transferRequest = HyperwalletTransfer.Builder(clientTransferId: "6712348070812",
+                                                          sourceToken: "usr-123456",
+                                                          destinationToken: "trm-invaqlid-token")
+            .sourceAmount("10")
+            .sourceCurrency("CAD")
+            .destinationAmount("62.29")
+            .destinationCurrency("USD")
+            .memo("TransferClientId56387")
+            .notes("Partial-Balance Transfer")
+            .build()
 
         Hyperwallet.shared.createTransfer(transfer: transferRequest, completion: { (result, error) in
             transferResponse = result
@@ -41,6 +46,8 @@ class HyperwalletTransferTests: XCTestCase {
         // Then
         XCTAssertNotNil(transferResponse, "The `transferResponse` should not be nil")
         XCTAssertNil(errorResponse, "The `errorResponse` should be nil")
+        XCTAssertEqual(transferResponse?.memo, "TransferClientId56387")
+        XCTAssertEqual(transferResponse?.notes, "Partial-Balance Transfer")
 
         verifyTransferResponse(transferResponse)
     }
@@ -58,11 +65,12 @@ class HyperwalletTransferTests: XCTestCase {
         var errorResponse: HyperwalletErrorType?
 
         // When
-        let transferRequest = HyperwalletTransfer(clientTransferId: "6712348070812",
-                                                  destinationAmount: "62.29",
-                                                  destinationCurrency: "USD",
-                                                  destinationToken: "trm-invaqlid-token",
-                                                  sourceToken: "usr-123456")
+        let transferRequest = HyperwalletTransfer.Builder(clientTransferId: "6712348070812",
+                                                          sourceToken: "usr-123456",
+                                                          destinationToken: "trm-invaqlid-token")
+            .destinationAmount("62.29")
+            .destinationCurrency("USD")
+            .build()
 
         Hyperwallet.shared.createTransfer(transfer: transferRequest, completion: { (result, error) in
             transferResponse = result
@@ -163,8 +171,8 @@ private extension HyperwalletTransferTests {
         XCTAssertEqual(response?.clientTransferId, "6712348070812", "The `clientTransferId` should be 6712348070812")
         XCTAssertEqual(response?.destinationAmount, "62.29", "The `destinationAmount` should be 62.29")
         XCTAssertEqual(response?.destinationCurrency, "USD", "The `destinationCurrency` should be USD")
-        XCTAssertEqual(response?.destinationToken, "trm-123456", "The `destinationToken` should be trm - 123456")
-        XCTAssertEqual(response?.sourceToken, "usr-123456", "The `sourceToken` should be usr - 123456")
+        XCTAssertEqual(response?.destinationToken, "trm-123456", "The `destinationToken` should be trm-123456")
+        XCTAssertEqual(response?.sourceToken, "usr-123456", "The `sourceToken` should be usr-123456")
         //Optional fields
         XCTAssertEqual(response?.sourceAmount, "80", "The `sourceAmount` should be 80")
         XCTAssertEqual(response?.sourceCurrency, "CAD", "The `sourceCurrency` should be CAD")
@@ -195,7 +203,7 @@ private extension HyperwalletTransferTests {
     func verifyTransferListResponse(_ response: HyperwalletPageList<HyperwalletTransfer>?) {
         XCTAssertNotNil(response, "The `response` should not be nil")
         XCTAssertEqual(response?.data.count, 2, "The `count` should be 2")
-        
+
         let transfer = response?.data.first
         XCTAssertNotNil(transfer, "The `transfer` should not be nil")
         XCTAssertEqual(transfer?.token, "trf-123456", "The `token` should be trf-123456")
