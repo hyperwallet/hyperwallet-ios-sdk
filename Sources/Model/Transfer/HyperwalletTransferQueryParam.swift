@@ -18,7 +18,7 @@
 
 import Foundation
 
-/// Representstion of the user transfers QueryParams fields.
+/// Representation of the user transfers QueryParams fields.
 public class HyperwalletTransferQueryParam: QueryParam {
     /// A value that identifies the client transfer id.
     var clientTransferId: String?

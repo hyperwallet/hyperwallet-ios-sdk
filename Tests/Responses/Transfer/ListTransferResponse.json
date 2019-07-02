@@ -1,5 +1,5 @@
 {
-    "count": 23,
+    "count": 2,
     "offset": 0,
     "limit": 10,
     "data": [
@@ -38,18 +38,6 @@
                 "rel": "self"
             },
             "href": "https://localhost/rest/v3/transfers/?offset=0&limit=10&sourceToken=usr-123456"
-        },
-        {
-            "params": {
-                "rel": "next"
-            },
-            "href": "https://localhost/rest/v3/transfers/?offset=10&limit=10&sourceToken=usr-123456"
-        },
-        {
-            "params": {
-                "rel": "last"
-            },
-            "href": "https://localhost/rest/v3/transfers/?offset=13&limit=10&sourceToken=usr-123456"
         }
     ]
 }
