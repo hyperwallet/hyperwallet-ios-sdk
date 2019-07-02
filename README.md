@@ -348,7 +348,7 @@ Hyperwallet.shared.listTransferMethods(queryParam: transferMethodQueryParam) { (
 let transfer = HyperwalletTransfer.Builder(clientTransferId: "6712348070812",
                                            sourceToken: "source-token",
                                            destinationToken: "destination-token")
-    .sourceAmount("10")
+    .sourceAmount("100")
     .sourceCurrency("CAD")
     .destinationAmount("62.29")
     .destinationCurrency("USD")

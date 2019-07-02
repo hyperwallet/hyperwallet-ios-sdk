@@ -28,7 +28,7 @@ class HyperwalletTransferTests: XCTestCase {
         let transferRequest = HyperwalletTransfer.Builder(clientTransferId: "6712348070812",
                                                           sourceToken: "usr-123456",
                                                           destinationToken: "trm-invalid-token")
-            .sourceAmount("10")
+            .sourceAmount("80")
             .sourceCurrency("CAD")
             .destinationAmount("62.29")
             .destinationCurrency("USD")
