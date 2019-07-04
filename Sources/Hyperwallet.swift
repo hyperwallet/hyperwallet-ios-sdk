@@ -432,6 +432,43 @@ public final class Hyperwallet {
                                     completionHandler: completion)
     }
 
+    /// Returns the `HyperwalletPrepaidCard`
+    /// for the User associated with the authentication token returned from
+    /// `HyperwalletAuthenticationTokenProvider.retrieveAuthenticationToken(_ : @escaping CompletionHandler)`,
+    /// or nil if non exist.
+    ///
+    /// The ordering and filtering of `HyperwalletPrepaidCard` will be based on the criteria specified within the
+    /// `HyperwalletPrepaidCardQueryParm` object, if it is not nil. Otherwise the default ordering and
+    /// filtering will be applied.
+    ///
+    /// * Offset: 0
+    /// * Limit: 10
+    /// * Created Before: N/A
+    /// * Created After: N/A
+    /// * Status: All
+    /// * Sort By: Created On
+    ///
+    /// The `completion: @escaping (HyperwalletPageList<HyperwalletPrepaidCard>?, HyperwalletErrorType?) -> Void`
+    /// that is passed in to this method invocation will receive the successful
+    /// response(HyperwalletPageList<HyperwalletPrepaidCard>?) or error(HyperwalletErrorType) from processing
+    /// the request.
+    ///
+    /// This function will request a new authentication token via `HyperwalletAuthenticationTokenProvider`
+    /// if the current one is expired or is about to expire.
+    ///
+    /// - Parameters:
+    ///   - queryParam: the ordering and filtering criteria
+    ///   - completion: the callback handler of responses from the Hyperwallet platform
+    public func listPrepaidCards(queryParam: HyperwalletPrepaidCardQueryParm? = nil,
+                                 completion: @escaping (HyperwalletPageList<HyperwalletPrepaidCard>?,
+        HyperwalletErrorType?) -> Void) {
+        httpTransaction.performRest(httpMethod: .get,
+                                    urlPath: "users/%@/prepaid-cards",
+                                    payload: "",
+                                    queryParam: queryParam,
+                                    completionHandler: completion)
+    }
+
     /// Returns the list of receipts for the User associated with the authentication token.
     ///
     /// The ordering and filtering of `HyperwalletReceipt` will be based on the criteria specified within the
