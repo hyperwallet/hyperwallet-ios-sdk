@@ -20,31 +20,12 @@ import Foundation
 
 /// Representation of the bank card query parameters.
 public class HyperwalletBankCardQueryParam: HyperwalletTransferMethodQueryParam {
-    /// Returns bank card with this account status.
-    public var status: QueryStatus?
-
     enum QueryParam: String {
         case type
     }
 
-    /// Representation of the bank card status
-    ///
-    /// - activated: Filter by activated bank cards
-    /// - deActivated: Filter by deActivated bank cards
-    /// - invalid: Filter only invalid bank cards
-    /// - verified: Filter only verified bank cards
-    public enum QueryStatus: String {
-        case activated = "ACTIVATED"
-        case deActivated = "DE_ACTIVATED"
-        case invalid = "INVALID"
-        case verified = "VERIFIED"
-    }
-
     override public func toQuery() -> [String: String] {
         var query = super.toQuery()
-        if let status = status {
-            query[QueryParam.status.rawValue] = status.rawValue
-        }
 
         query[QueryParam.type.rawValue] = "BANK_CARD"
         return query

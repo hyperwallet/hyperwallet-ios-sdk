@@ -20,8 +20,30 @@ import Foundation
 
 /// Representation of the common transfer method's query parameters.
 public class HyperwalletTransferMethodQueryParam: QueryParam {
+    /// Returns transfer method with this status.
+    public var status: QueryStatus?
+
     enum QueryParam: String {
         case status
+    }
+
+    /// Representation of the transfer method status
+    ///
+    /// - activated: Filter by activated bank accounts
+    /// - deActivated: Filter by deActivated transfer methods
+    /// - invalid: Filter only invalid bank accounts
+    /// - lostOrStolen: Filter only lostOrStolen prepaid cards
+    /// - preActivated: Filter by preActivated prepaid cards
+    /// - suspended: Filter only suspended prepaid cards
+    /// - verified: Filter only verified bank accounts
+    public enum QueryStatus: String {
+        case activated = "ACTIVATED"
+        case deActivated = "DE_ACTIVATED"
+        case invalid = "INVALID"
+        case lostOrStolen = "LOST_OR_STOLEN"
+        case preActivated = "PRE_ACTIVATED"
+        case suspended = "SUSPENDED"
+        case verified = "VERIFIED"
     }
 
     /// Representation of the field's sortable
@@ -45,6 +67,10 @@ public class HyperwalletTransferMethodQueryParam: QueryParam {
 
         if let date = createdBefore {
             query[QueryParam.createdBefore.rawValue] = ISO8601DateFormatter.ignoreTimeZone.string(from: date)
+        }
+
+        if let status = status {
+            query[QueryParam.status.rawValue] = status.rawValue
         }
 
         if let sortBy = sortBy {

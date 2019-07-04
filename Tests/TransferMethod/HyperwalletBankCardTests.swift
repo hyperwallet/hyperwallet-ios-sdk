@@ -262,7 +262,7 @@ class HyperwalletBankCardTests: XCTestCase {
         XCTAssertNotNil(linkNext?.href)
 
         let bankCard = bankCardList?.data.first
-        XCTAssertEqual(bankCard?.type as? String, "BANK_CARD")
+        XCTAssertEqual(bankCard?.type, "BANK_CARD")
         XCTAssertEqual(bankCard?.token, "trm-12345")
         XCTAssertEqual(bankCard?.getField(fieldName: .cardNumber) as? String, "************0199")
         XCTAssertEqual(bankCard?.getField(fieldName: .dateOfExpiry) as? String, "2022-12")
