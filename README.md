@@ -322,6 +322,28 @@ Hyperwallet.shared.listPayPalAccount(queryParam: payPalQueryParam) { (result, er
 }
 ```
 
+### List Prepaid Cards
+```swift
+let prepaidCardQueryParam = HyperwalletPrepaidCardQueryParam()
+prepaidCardQueryParam.status = .activated
+prepaidCardQueryParam.sortBy = .ascendantCreatedOn
+
+Hyperwallet.shared.listPrepaidCards(queryParam: prepaidCardQueryParam) { (result, error) in
+    // In case of failure, error (HyperwalletErrorType) will contain HyperwalletErrors containing information about what caused the failure 
+    guard error == nil else {
+        print(error?.getHyperwalletErrors()?.errorList?)
+        return
+    }
+    
+    // In case of successful, response (HyperwalletPageList<HyperwalletPrepaidCard>? in this case) will contain information about or nil if not exist.
+    if let prepaidCards = result?.data {
+        for prepaidCard in prepaidCards {
+            print(prepaidCard.token)
+        }
+    }
+}
+```
+
 ### List Transfer Methods
 ```swift
 let transferMethodQueryParam = HyperwalletTransferMethodQueryParam()
