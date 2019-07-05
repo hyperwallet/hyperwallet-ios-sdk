@@ -13,7 +13,7 @@ class HyperwalletTestHelper {
     static let userRestURL = "\(restURL)\(userPath)"
 
     // MARK: Build Requests
-    static func buildPostResquest(baseUrl: String, _ response: StubResponse) -> StubRequest {
+    static func buildPostRequest(baseUrl: String, _ response: StubResponse) -> StubRequest {
         return StubRequest.Builder()
             .stubRequest(withMethod: .POST, url: URL(string: baseUrl)!)
             .addHeader(withKey: contentType, value: applicationJson)
