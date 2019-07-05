@@ -27,8 +27,8 @@ class HyperwalletTransferTests: XCTestCase {
         //When
         let transferRequest = HyperwalletTransfer.Builder(clientTransferId: "6712348070812",
                                                           sourceToken: "usr-123456",
-                                                          destinationToken: "trm-invaqlid-token")
-            .sourceAmount("10")
+                                                          destinationToken: "trm-invalid-token")
+            .sourceAmount("80")
             .sourceCurrency("CAD")
             .destinationAmount("62.29")
             .destinationCurrency("USD")
@@ -67,7 +67,7 @@ class HyperwalletTransferTests: XCTestCase {
         // When
         let transferRequest = HyperwalletTransfer.Builder(clientTransferId: "6712348070812",
                                                           sourceToken: "usr-123456",
-                                                          destinationToken: "trm-invaqlid-token")
+                                                          destinationToken: "trm-invalid-token")
             .destinationAmount("62.29")
             .destinationCurrency("USD")
             .build()
@@ -138,6 +138,54 @@ class HyperwalletTransferTests: XCTestCase {
         XCTAssertNotNil(statusTransitionResponse, "The `statusTransitionResponse` should not be nil")
         verifyStatusTransitionResponse(statusTransitionResponse)
     }
+
+    func testListTransfers_success() {
+        //Given
+        let expectation = self.expectation(description: "List Transfers completed")
+        let response = HyperwalletTestHelper.okHTTPResponse(for: "ListTransferResponse")
+        let url = String(format: "%@transfers", HyperwalletTestHelper.restURL)
+        let request = HyperwalletTestHelper.buildGetRequest(baseUrl: url, response)
+        HyperwalletTestHelper.setUpMockServer(request: request)
+
+        var transfersList: HyperwalletPageList<HyperwalletTransfer>?
+        var errorResponse: HyperwalletErrorType?
+
+        //When
+        Hyperwallet.shared.listTransfers { (result, error) in
+            transfersList = result
+            errorResponse = error
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 1)
+
+        //Then
+        XCTAssertNil(errorResponse, "The `errorResponse` should be nil")
+        verifyTransfersListResponse(transfersList)
+    }
+
+    func testListTransfers_emptyResult() {
+        // Given
+        let expectation = self.expectation(description: "List transfers completed")
+        let response = HyperwalletTestHelper.noContentHTTPResponse()
+        let url = String(format: "%@transfers+", HyperwalletTestHelper.restURL)
+        let request = HyperwalletTestHelper.buildGetRequestRegexMatcher(pattern: url, response)
+        HyperwalletTestHelper.setUpMockServer(request: request)
+
+        var transfersList: HyperwalletPageList<HyperwalletTransfer>?
+        var errorResponse: HyperwalletErrorType?
+
+        //When
+        Hyperwallet.shared.listTransfers { (result, error) in
+            transfersList = result
+            errorResponse = error
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 1)
+
+        // Then
+        XCTAssertNil(errorResponse, "The `errorResponse` should be nil")
+        XCTAssertNil(transfersList, "The `transfersList` should be nil")
+    }
 }
 
 private extension HyperwalletTransferTests {
@@ -174,5 +222,26 @@ private extension HyperwalletTransferTests {
         XCTAssertEqual(response?.toStatus.rawValue,
                        HyperwalletStatusTransition.Status.scheduled.rawValue,
                        "The `toStatus` should be SCHEDULED")
+    }
+
+    func verifyTransfersListResponse(_ response: HyperwalletPageList<HyperwalletTransfer>?) {
+        XCTAssertNotNil(response, "The `response` should not be nil")
+        XCTAssertEqual(response?.data.count, 2, "The `count` should be 2")
+
+        let transfer = response?.data.first
+        XCTAssertNotNil(transfer, "The `transfer` should not be nil")
+        XCTAssertEqual(transfer?.token, "trf-123456", "The `token` should be trf-123456")
+        XCTAssertEqual(transfer?.status?.rawValue,
+                       HyperwalletStatusTransition.Status.expired.rawValue,
+                       "The `status` should be EXPIRED")
+        XCTAssertEqual(transfer?.clientTransferId,
+                       "67123480708101213",
+                       "The `clientTransferId` should be 67123480708101213")
+        XCTAssertEqual(transfer?.sourceToken, "usr-123456", "The `sourceToken` should be usr-123456")
+        XCTAssertEqual(transfer?.sourceAmount, "5.00", "The `sourceAmount` should be 5.00")
+        XCTAssertEqual(transfer?.sourceCurrency, "USD", "The `sourceCurrency` should be USD")
+        XCTAssertEqual(transfer?.destinationToken, "trm-123456", "The `destinationToken` should be trm-123456")
+        XCTAssertEqual(transfer?.destinationAmount, "3.00", "The `destinationAmount` should be 3.00")
+        XCTAssertEqual(transfer?.destinationCurrency, "USD", "The `destinationCurrency` should be USD")
     }
 }

@@ -1,0 +1,43 @@
+{
+    "count": 2,
+    "offset": 0,
+    "limit": 10,
+    "data": [
+        {
+            "token": "trf-123456",
+            "status": "EXPIRED",
+            "createdOn": "2019-06-13T22:18:18",
+            "clientTransferId": "67123480708101213",
+            "sourceToken": "usr-123456",
+            "sourceAmount": "5.00",
+            "sourceCurrency": "USD",
+            "destinationToken": "trm-123456",
+            "destinationAmount": "3.00",
+            "destinationFeeAmount": "2.00",
+            "destinationCurrency": "USD",
+            "expiresOn": "2019-06-13T22:20:18"
+        },
+        {
+            "token": "trf-123457",
+            "status": "EXPIRED",
+            "createdOn": "2019-06-14T21:40:11",
+            "clientTransferId": "67123480708101213",
+            "sourceToken": "usr-123456",
+            "sourceAmount": "127.00",
+            "sourceCurrency": "USD",
+            "destinationToken": "trm-123456",
+            "destinationAmount": "125.00",
+            "destinationFeeAmount": "2.00",
+            "destinationCurrency": "USD",
+            "expiresOn": "2019-06-14T21:42:11"
+        }
+    ],
+    "links": [
+        {
+            "params": {
+                "rel": "self"
+            },
+            "href": "https://localhost/rest/v3/transfers/?offset=0&limit=10&sourceToken=usr-123456"
+        }
+    ]
+}

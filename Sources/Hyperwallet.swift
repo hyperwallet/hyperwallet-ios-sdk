@@ -565,6 +565,41 @@ public final class Hyperwallet {
                                     completionHandler: completion)
     }
 
+    /// Returns the list of transfers for the User associated with the authentication token.
+    ///
+    /// The ordering and filtering of `HyperwalletTransfer` will be based on the criteria specified within the
+    /// `HyperwalletTransferQueryParam` object, if it is not nil. Otherwise the default ordering and
+    /// filtering will be applied.
+    ///
+    /// * Offset: 0
+    /// * Limit: 10
+    /// * Created Before: N/A
+    /// * Created After: N/A
+    /// * clientTransferId: N/A
+    /// * destinationToken: N/A
+    /// * sourceToken: N/A
+    ///
+    /// The `completion: @escaping (HyperwalletPageList<HyperwalletTransfer>?, HyperwalletErrorType?) -> Void`
+    /// that is passed in to this method invocation will receive the successful
+    /// response(HyperwalletPageList<HyperwalletTransfer>?) or error(HyperwalletErrorType) from processing
+    /// the request.
+    ///
+    /// This function will request a new authentication token via `HyperwalletAuthenticationTokenProvider`
+    /// if the current one is expired or is about to expire.
+    ///
+    /// - Parameters:
+    ///   - queryParam: the ordering and filtering criteria
+    ///   - completion: the callback handler of responses from the Hyperwallet platform
+    public func listTransfers(queryParam: HyperwalletTransferQueryParam? = nil,
+                              completion: @escaping (HyperwalletPageList<HyperwalletTransfer>?,
+        HyperwalletErrorType?) -> Void) {
+        httpTransaction.performRest(httpMethod: .get,
+                                    urlPath: "transfers",
+                                    payload: "",
+                                    queryParam: queryParam,
+                                    completionHandler: completion)
+    }
+
     /// Returns the transfer method configuration field set for the User that is associated with the authentication
     /// token returned from
     /// `HyperwalletAuthenticationTokenProvider.retrieveAuthenticationToken(_ : @escaping CompletionHandler)`.

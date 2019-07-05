@@ -107,11 +107,12 @@ public struct HyperwalletTransfer: Codable {
         ///
         /// - Parameters:
         ///   - clientTransferId: A client defined transfer identifier.
-        ///     This is the unique ID assigned to the transfer on your system. Max 50 characters.
+        ///                       This is the unique ID assigned to the transfer on your system.
+        ///                       Max 50 characters.
         ///   - sourceToken: A token identifying the source of funds.
-        ///     It can be a prepaid card token prefixed with `trm-` or user token prefixed with `usr-`.
+        ///                  It can be a prepaid card token prefixed with `trm-` or user token prefixed with `usr-`.
         ///   - destinationToken: A token identifying where the funds have been sent.
-        ///     It is your merchant account token prefixed with `act-`.
+        ///                       It is your merchant account token prefixed with `act-`.
         public init(clientTransferId: String, sourceToken: String, destinationToken: String) {
             self.clientTransferId = clientTransferId
             self.sourceToken = sourceToken
@@ -141,7 +142,7 @@ public struct HyperwalletTransfer: Codable {
         /// Sets the transfer memo.
         ///
         /// - Parameter memo: An internal memo for the SpendBack transfer (will not be visible to
-        ///                                  the user making the payment).
+        ///                   the user making the payment).
         /// - Returns: a self `HyperwalletTransfer.Builder` instance.
         public func memo(_ memo: String?) -> Builder {
             self.memo = memo
