@@ -143,15 +143,19 @@ class HyperwalletTransferTests: XCTestCase {
         //Given
         let expectation = self.expectation(description: "List Transfers completed")
         let response = HyperwalletTestHelper.okHTTPResponse(for: "ListTransferResponse")
-        let url = String(format: "%@transfers", HyperwalletTestHelper.restURL)
-        let request = HyperwalletTestHelper.buildGetRequest(baseUrl: url, response)
+        let url = String(format: "%@transfers?+", HyperwalletTestHelper.restURL)
+        let request = HyperwalletTestHelper.buildGetRequestRegexMatcher(pattern: url, response)
         HyperwalletTestHelper.setUpMockServer(request: request)
 
         var transfersList: HyperwalletPageList<HyperwalletTransfer>?
         var errorResponse: HyperwalletErrorType?
+        let transferQueryParam = HyperwalletTransferQueryParam()
+        transferQueryParam.clientTransferId = "67123480708101213"
+        transferQueryParam.sourceToken = "usr-123456"
+        transferQueryParam.destinationToken = "trm-123456"
 
         //When
-        Hyperwallet.shared.listTransfers { (result, error) in
+        Hyperwallet.shared.listTransfers(queryParam: transferQueryParam) { (result, error) in
             transfersList = result
             errorResponse = error
             expectation.fulfill()
