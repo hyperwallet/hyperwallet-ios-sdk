@@ -43,7 +43,7 @@ public class HyperwalletBankCard: HyperwalletTransferMethod {
         return getField(fieldName: .dateOfExpiry) as? String
     }
 
-    /// The bank account holder's profile type, e.g. INDIVIDUAL or BUSINESS.
+    /// The method profile type, e.g. INDIVIDUAL or BUSINESS.
     public var profileType: String? {
         return getField(fieldName: .profileType) as? String
     }
@@ -53,12 +53,12 @@ public class HyperwalletBankCard: HyperwalletTransferMethod {
         return getField(fieldName: .token) as? String
     }
 
-    /// The bank account country.
+    /// The bank card country.
     public var transferMethodCountry: String? {
         return getField(fieldName: .transferMethodCountry) as? String
     }
 
-    /// The bank account currency.
+    /// The bank card currency.
     public var transferMethodCurrency: String? {
         return getField(fieldName: .transferMethodCurrency) as? String
     }

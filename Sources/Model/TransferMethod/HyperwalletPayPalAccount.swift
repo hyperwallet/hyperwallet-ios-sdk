@@ -27,6 +27,36 @@ public final class HyperwalletPayPalAccount: HyperwalletTransferMethod {
         try super.init(from: decoder)
     }
 
+    /// The email address.
+    public var email: String? {
+        return getField(fieldName: .email) as? String
+    }
+
+    /// The bank account holder's profile type, e.g. INDIVIDUAL or BUSINESS.
+    public var profileType: String? {
+        return getField(fieldName: .profileType) as? String
+    }
+
+    /// The token: The unique, auto-generated user identifier. Max 64 characters, prefixed with "usr-".
+    public var token: String? {
+        return getField(fieldName: .token) as? String
+    }
+
+    /// The PayPal account country.
+    public var transferMethodCountry: String? {
+        return getField(fieldName: .transferMethodCountry) as? String
+    }
+
+    /// The PayPal account currency.
+    public var transferMethodCurrency: String? {
+        return getField(fieldName: .transferMethodCurrency) as? String
+    }
+
+    /// The account type, e.g. PAYPAL_ACCOUNT
+    public var type: String? {
+        return getField(fieldName: .type) as? String
+    }
+
     /// A helper class to build the `HyperwalletPayPalAccount` instance.
     public final class Builder {
         private var storage = [String: AnyCodable]()
