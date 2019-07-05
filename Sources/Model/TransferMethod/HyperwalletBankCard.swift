@@ -28,6 +28,46 @@ public class HyperwalletBankCard: HyperwalletTransferMethod {
         try super.init(from: decoder)
     }
 
+    /// The card number
+    public var cardNumber: String? {
+        return getField(fieldName: .cardNumber) as? String
+    }
+
+    /// The card security code which is embossed or printed on the card.
+    public var cvv: String? {
+        return getField(fieldName: .cvv) as? String
+    }
+
+    /// The expiration date.
+    public var dateOfExpiry: String? {
+        return getField(fieldName: .dateOfExpiry) as? String
+    }
+
+    /// The bank account holder's profile type, e.g. INDIVIDUAL or BUSINESS.
+    public var profileType: String? {
+        return getField(fieldName: .profileType) as? String
+    }
+
+    /// The token: The unique, auto-generated user identifier. Max 64 characters, prefixed with "usr-".
+    public var token: String? {
+        return getField(fieldName: .token) as? String
+    }
+
+    /// The bank account country.
+    public var transferMethodCountry: String? {
+        return getField(fieldName: .transferMethodCountry) as? String
+    }
+
+    /// The bank account currency.
+    public var transferMethodCurrency: String? {
+        return getField(fieldName: .transferMethodCurrency) as? String
+    }
+
+    /// The account type, e.g. BANK_CARD
+    public var type: String? {
+        return getField(fieldName: .type) as? String
+    }
+
     /// A helper class to build the `HyperwalletBankCard` instance.
     public final class Builder {
         private var storage = [String: AnyCodable]()
