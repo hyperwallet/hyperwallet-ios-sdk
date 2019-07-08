@@ -19,7 +19,7 @@ We also provide an out-of-the-box  [Hyperwallet iOS UI SDK](https://github.com/h
 * Set Up your server to manage the user's authentication process on the Hyperwallet platform. See the  [Authentication](#Authentication) section for more information.
 * iOS 10.0+
 * Xcode 10.2+
-* Swift 4.2
+* Swift 5.0
 
 ## Installation
 Use [Carthage](https://github.com/Carthage/Carthage) or [CocoaPods](https://cocoapods.org/) to integrate to HyperwalletSDK.
