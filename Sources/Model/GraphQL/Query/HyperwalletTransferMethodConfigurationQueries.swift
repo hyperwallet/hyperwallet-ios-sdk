@@ -127,6 +127,13 @@ public struct HyperwalletTransferMethodConfigurationFieldQuery: GraphQlQuery, Ha
     public func toGraphQl(userToken: String) -> String {
         return String(format: query, userToken, profile, country, currency, transferMethodType)
     }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(country)
+        hasher.combine(currency)
+        hasher.combine(transferMethodType)
+        hasher.combine(profile)
+    }
 }
 
 /// The 'HyperwalletTransferMethodConfigurationKeysQuery' struct defines and builds a query to retrieve the key set
