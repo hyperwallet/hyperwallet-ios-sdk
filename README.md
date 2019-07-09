@@ -344,6 +344,52 @@ Hyperwallet.shared.listPrepaidCards(queryParam: prepaidCardQueryParam) { (result
 }
 ```
 
+### List Prepaid Card Receipts
+```swift
+let receiptQueryParam = HyperwalletReceiptQueryParam()
+receiptQueryParam.createdAfter = ISO8601DateFormatter.ignoreTimeZone.date(from: "2016-12-01T00:00:00")
+
+Hyperwallet.shared.listPrepaidCardReceipts(prepaidCardToken: prepaidCardToken,
+                                           queryParam: receiptQueryParam,
+                                           completion: { (result, error) in
+    // In case of failure, error (HyperwalletErrorType) will contain HyperwalletErrors containing information about what caused the failure 
+    guard error == nil else {
+        print(error?.getHyperwalletErrors()?.errorList?)
+        return
+    }
+    
+    // In case of successful, response (HyperwalletPageList<HyperwalletReceipt>? in this case) will contain information about or nil if not exist.
+    if let receipts = result?.data {
+        for receipt in receipts {
+            print(receipt.destinationToken ?? "")
+        }
+    }
+}
+```
+
+### List User Receipts
+```swift
+let receiptQueryParam = HyperwalletReceiptQueryParam()
+receiptQueryParam.createdAfter = ISO8601DateFormatter.ignoreTimeZone.date(from: "2018-12-01T00:00:00")
+receiptQueryParam.currency = "USD"
+receiptQueryParam.sortBy = HyperwalletReceiptQueryParam.QuerySortable.descendantAmount.rawValue
+
+Hyperwallet.shared.listUserReceipts(queryParam: receiptQueryParam) { (result, error) in
+    // In case of failure, error (HyperwalletErrorType) will contain HyperwalletErrors containing information about what caused the failure 
+    guard error == nil else {
+        print(error?.getHyperwalletErrors()?.errorList?)
+        return
+        }
+
+    // In case of successful, response (HyperwalletPageList<HyperwalletReceipt>? in this case) will contain information about or nil if not exist.
+    if let receipts = result?.data {
+        for receipt in receipts {
+            print(receipt.destinationToken ?? "")
+        }
+    }
+}
+```
+
 ### List Transfer Methods
 ```swift
 let transferMethodQueryParam = HyperwalletTransferMethodQueryParam()
