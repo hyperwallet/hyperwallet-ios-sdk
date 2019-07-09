@@ -319,11 +319,6 @@ public final class HyperwalletBankAccount: HyperwalletTransferMethod {
         return getField(fieldName: .postalCode) as? String
     }
 
-    /// The bank account holder's profile type, e.g. INDIVIDUAL or BUSINESS.
-    public var profileType: String? {
-        return getField(fieldName: .profileType) as? String
-    }
-
     /// The bank account holder's state, province or region.
     public var stateProvince: String? {
         return getField(fieldName: .stateProvince) as? String

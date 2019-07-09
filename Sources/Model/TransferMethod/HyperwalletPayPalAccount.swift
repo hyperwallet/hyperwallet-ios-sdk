@@ -32,11 +32,6 @@ public final class HyperwalletPayPalAccount: HyperwalletTransferMethod {
         return getField(fieldName: .email) as? String
     }
 
-    /// The bank account holder's profile type, e.g. INDIVIDUAL or BUSINESS.
-    public var profileType: String? {
-        return getField(fieldName: .profileType) as? String
-    }
-
     /// A helper class to build the `HyperwalletPayPalAccount` instance.
     public final class Builder {
         private var storage = [String: AnyCodable]()

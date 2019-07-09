@@ -213,14 +213,14 @@ public class HyperwalletTransferMethod: Codable {
         }
     }
 
-    /// The transfer method's token
-    public var token: String? {
-        return getField(fieldName: .token) as? String
+    /// The transfer method's created time
+    public var createdOn: String? {
+        return getField(fieldName: .createdOn) as? String
     }
 
-    /// The transfer method's type
-    public var type: String? {
-        return getField(fieldName: .type) as? String
+    /// The transfer method holder's profile type, e.g. INDIVIDUAL or BUSINESS.
+    public var profileType: String? {
+        return getField(fieldName: .profileType) as? String
     }
 
     /// The transfer method's status
@@ -228,9 +228,9 @@ public class HyperwalletTransferMethod: Codable {
         return getField(fieldName: .status) as? String
     }
 
-    /// The transfer method's created time
-    public var createdOn: String? {
-        return getField(fieldName: .createdOn) as? String
+    /// The transfer method's token
+    public var token: String? {
+        return getField(fieldName: .token) as? String
     }
 
     /// The transfer method's country
@@ -241,5 +241,10 @@ public class HyperwalletTransferMethod: Codable {
     /// The transfer method's currency
     public var transferMethodCurrency: String? {
         return getField(fieldName: .transferMethodCurrency) as? String
+    }
+
+    /// The transfer method's type
+    public var type: String? {
+        return getField(fieldName: .type) as? String
     }
 }

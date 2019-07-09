@@ -53,11 +53,6 @@ public class HyperwalletBankCard: HyperwalletTransferMethod {
         return getField(fieldName: .dateOfExpiry) as? String
     }
 
-    /// The method profile type, e.g. INDIVIDUAL or BUSINESS.
-    public var profileType: String? {
-        return getField(fieldName: .profileType) as? String
-    }
-
     /// A helper class to build the `HyperwalletBankCard` instance.
     public final class Builder {
         private var storage = [String: AnyCodable]()
