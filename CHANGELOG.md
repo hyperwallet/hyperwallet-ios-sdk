@@ -13,3 +13,11 @@ Changelog
 -------------------
 * Added PayPal as a Transfer method
 * Added support to get User object
+
+1.0.0-beta03
+-------------------
+- Enhancements to Add Transfer Method
+- Added support to list 
+ * Prepaid Cards
+ * Prepaid Card Receipts
+ * User Receipts
