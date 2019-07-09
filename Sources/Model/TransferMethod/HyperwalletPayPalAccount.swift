@@ -52,11 +52,6 @@ public final class HyperwalletPayPalAccount: HyperwalletTransferMethod {
         return getField(fieldName: .transferMethodCurrency) as? String
     }
 
-    /// The account type, e.g. PAYPAL_ACCOUNT
-    public var type: String? {
-        return getField(fieldName: .type) as? String
-    }
-
     /// A helper class to build the `HyperwalletPayPalAccount` instance.
     public final class Builder {
         private var storage = [String: AnyCodable]()

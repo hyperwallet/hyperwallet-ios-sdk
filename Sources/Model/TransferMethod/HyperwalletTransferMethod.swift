@@ -189,6 +189,11 @@ public class HyperwalletTransferMethod: Codable {
         return self.storage
     }
 
+    /// The account type, e.g. "BANK_ACCOUNT", "BANK_CARD", "PAYPAL_ACCOUNT" or "WIRE_ACCOUNT"
+    public var type: String? {
+        return getField(fieldName: .type) as? String
+    }
+
     private struct CodingKeys: CodingKey {
         var intValue: Int?
         var stringValue: String

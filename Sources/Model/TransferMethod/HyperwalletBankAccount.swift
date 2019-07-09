@@ -201,6 +201,11 @@ public final class HyperwalletBankAccount: HyperwalletTransferMethod {
         return getField(fieldName: .countryOfBirth) as? String
     }
 
+    /// The date of bank account creation.
+    public var createdOn: String? {
+        return getField(fieldName: .createdOn) as? String
+    }
+
     /// The bank account holder's date of birth (All users must be at least 13 years old).
     public var dateOfBirth: String? {
         return getField(fieldName: .dateOfBirth) as? String
@@ -329,6 +334,11 @@ public final class HyperwalletBankAccount: HyperwalletTransferMethod {
         return getField(fieldName: .stateProvince) as? String
     }
 
+    /// The bank account status.
+    public var status: String? {
+        return getField(fieldName: .status) as? String
+    }
+
     /// The token: The unique, auto-generated user identifier. Max 64 characters, prefixed with "usr-".
     public var token: String? {
         return getField(fieldName: .token) as? String
@@ -342,11 +352,6 @@ public final class HyperwalletBankAccount: HyperwalletTransferMethod {
     /// The bank account currency.
     public var transferMethodCurrency: String? {
         return getField(fieldName: .transferMethodCurrency) as? String
-    }
-
-    /// The bank account type, e.g. BANK_ACCOUNT or WIRE_ACCOUNT
-    public var type: String? {
-        return getField(fieldName: .type) as? String
     }
 
     /// The wire transfer instructions
