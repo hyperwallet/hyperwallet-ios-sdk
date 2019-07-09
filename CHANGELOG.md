@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.0.0-beta01
+[1.0.0-beta01](https://github.com/hyperwallet/hyperwallet-ios-sdk/releases/tag/1.0.0-beta01)
 -------------------
 - Initial beta release of Hyperwallet Core SDK for iOS. This beta release has the following functionality:
 * Create Bank Account and Bank Card for United States (USD)
@@ -9,15 +9,15 @@ Changelog
 * List Accounts
 * Deactivate (Remove) Accounts
 
-1.0.0-beta02
+[1.0.0-beta02](https://github.com/hyperwallet/hyperwallet-ios-sdk/releases/tag/1.0.0-beta02)
 -------------------
 * Added PayPal as a Transfer method
 * Added support to get User object
 
-1.0.0-beta03
+[1.0.0-beta03](https://github.com/hyperwallet/hyperwallet-ios-sdk/releases/tag/1.0.0-beta03)
 -------------------
 - Enhancements to Add Transfer Method
 - Added support to list 
- * Prepaid Cards
- * Prepaid Card Receipts
- * User Receipts
+* Prepaid Cards
+* Prepaid Card Receipts
+* User Receipts
