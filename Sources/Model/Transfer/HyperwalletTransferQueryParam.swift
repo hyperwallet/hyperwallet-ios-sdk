@@ -18,16 +18,32 @@
 
 import Foundation
 
-/// Representation of the bank card query parameters.
-public class HyperwalletBankCardQueryParam: HyperwalletTransferMethodQueryParam {
+/// Representation of the user transfers QueryParams fields.
+public class HyperwalletTransferQueryParam: QueryParam {
+    /// A value that identifies the client transfer id.
+    var clientTransferId: String?
+    /// A value that identifies the destination token.
+    var destinationToken: String?
+    /// A value that identifies the source token.
+    var sourceToken: String?
+
     enum QueryParam: String {
-        case type
+        case clientTransferId
+        case destinationToken
+        case sourceToken
     }
 
-    override public func toQuery() -> [String: String] {
+    override func toQuery() -> [String: String] {
         var query = super.toQuery()
-
-        query[QueryParam.type.rawValue] = "BANK_CARD"
+        if let clientTransferId = clientTransferId {
+            query[QueryParam.clientTransferId.rawValue] = clientTransferId
+        }
+        if let destinationToken = destinationToken {
+            query[QueryParam.destinationToken.rawValue] = destinationToken
+        }
+        if let sourceToken = sourceToken {
+            query[QueryParam.sourceToken.rawValue] = sourceToken
+        }
         return query
     }
 }

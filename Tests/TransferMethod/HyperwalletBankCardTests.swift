@@ -19,7 +19,7 @@ class HyperwalletBankCardTests: XCTestCase {
         let expectation = self.expectation(description: "Create bank card completed")
         let response = HyperwalletTestHelper.okHTTPResponse(for: "BankCardResponse")
         let url = String(format: "%@/bank-cards", HyperwalletTestHelper.userRestURL)
-        let request = HyperwalletTestHelper.buildPostResquest(baseUrl: url, response)
+        let request = HyperwalletTestHelper.buildPostRequest(baseUrl: url, response)
         HyperwalletTestHelper.setUpMockServer(request: request)
 
         var bankCardResponse: HyperwalletBankCard?
@@ -53,7 +53,7 @@ class HyperwalletBankCardTests: XCTestCase {
         let expectation = self.expectation(description: "Create bank card failed")
         let response = HyperwalletTestHelper.badRequestHTTPResponse(for: "BankCardErrorResponseWithMissingCardNumber")
         let url = String(format: "%@/bank-cards", HyperwalletTestHelper.userRestURL)
-        let request = HyperwalletTestHelper.buildPostResquest(baseUrl: url, response)
+        let request = HyperwalletTestHelper.buildPostRequest(baseUrl: url, response)
         HyperwalletTestHelper.setUpMockServer(request: request)
 
         var bankCardResponse: HyperwalletBankCard?
@@ -175,7 +175,7 @@ class HyperwalletBankCardTests: XCTestCase {
         let expectation = self.expectation(description: "Deactivate bank card completed")
         let response = HyperwalletTestHelper .okHTTPResponse(for: "StatusTransitionMockedResponseSuccess")
         let url = String(format: "%@/bank-cards/trm-12345/status-transitions", HyperwalletTestHelper.userRestURL)
-        let request = HyperwalletTestHelper.buildPostResquest(baseUrl: url, response)
+        let request = HyperwalletTestHelper.buildPostRequest(baseUrl: url, response)
         HyperwalletTestHelper.setUpMockServer(request: request)
 
         var statusTransitionResponse: HyperwalletStatusTransition?
@@ -203,7 +203,7 @@ class HyperwalletBankCardTests: XCTestCase {
         let response = HyperwalletTestHelper
             .badRequestHTTPResponse(for: "StatusTransitionMockedResponseInvalidTransition")
         let url = String(format: "%@/bank-cards/trm-12345/status-transitions", HyperwalletTestHelper.userRestURL)
-        let request = HyperwalletTestHelper.buildPostResquest(baseUrl: url, response)
+        let request = HyperwalletTestHelper.buildPostRequest(baseUrl: url, response)
         HyperwalletTestHelper.setUpMockServer(request: request)
 
         var statusTransitionResponse: HyperwalletStatusTransition?
@@ -253,7 +253,7 @@ class HyperwalletBankCardTests: XCTestCase {
 
         // Then
         XCTAssertNil(errorResponse, "The `errorResponse` should be nil")
-        XCTAssertNotNil(bankCardList, "The `bankAccountList` should not be nil")
+        XCTAssertNotNil(bankCardList, "The `bankCardList` should not be nil")
         XCTAssertEqual(bankCardList?.count, 21, "The `count` should be 21")
         XCTAssertNotNil(bankCardList?.data, "The `data` should be not nil")
 
@@ -294,6 +294,6 @@ class HyperwalletBankCardTests: XCTestCase {
 
         // Then
         XCTAssertNil(errorResponse, "The `errorResponse` should be nil")
-        XCTAssertNil(bankCardList, "The `bankAccountList` should be nil")
+        XCTAssertNil(bankCardList, "The `bankCardList` should be nil")
     }
 }

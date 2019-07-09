@@ -18,6 +18,79 @@
 
 import Foundation
 
+/// Details of the transaction.
+///
+/// - bankAccountId: The bank account number, IBAN or equivalent
+/// - bankAccountPurpose: The bank account type, e.g. CHECKING or SAVINGS
+/// - bankId: The bank code, BIC/SWIFT or equivalent
+/// - bankName: The bank name
+/// - branchAddressLine1: The branch address, first line
+/// - branchAddressLine2: The branch address, second line
+/// - branchCity: The branch city
+/// - branchCountry: The 2-letter country code of the branch
+/// - branchId: The branch code or equivalent
+/// - branchName: The branch name
+/// - branchPostalCode: The branch postal code
+/// - branchStateProvince: The branch state or province
+/// - cardExpiryDate: The card expiry date in YYYY-MM format
+/// - cardHolderName: The card holder's full name
+/// - cardNumber: The card number
+/// - charityName: The name of the charity that is receiving the donation
+/// - checkNumber: The paper check number
+/// - clientPaymentId: The client-assigned transaction identifier
+/// - memo: An internal note added by a client operator
+/// - notes: A description for the receipt
+/// - payeeAddressLine1: The payee's address first line
+/// - payeeAddressLine2: The payee's address, second line
+/// - payeeCity: The payee's city
+/// - payeeCountry: The payee's 2-letter country code
+/// - payeeEmail: The payee's email address on record
+/// - payeeName: The payee's full name
+/// - payeePostalCode: The payee's postal code, ZIP code or equivalent
+/// - payeeStateProvince: The payee's state or province
+/// - payerName: The payer's full name
+/// - paymentExpiryDate: The payment expiry date in YYYY-MM-DD format
+/// - returnOrRecallReason: The reason for returning or recalling the payment
+/// - securityAnswer: The answer to the securityQuestion
+/// - securityQuestion: A security question
+/// - website: The URL of the client website where the virtual incentive was accrued
+public struct HyperwalletReceiptDetails: Decodable {
+    public let bankAccountId: String?
+    public let bankAccountPurpose: HyperwalletReceipt.BankAccountPurposeType?
+    public let bankId: String?
+    public let bankName: String?
+    public let branchAddressLine1: String?
+    public let branchAddressLine2: String?
+    public let branchCity: String?
+    public let branchCountry: String?
+    public let branchId: String?
+    public let branchName: String?
+    public let branchPostalCode: String?
+    public let branchStateProvince: String?
+    public let cardExpiryDate: String?
+    public let cardHolderName: String?
+    public let cardNumber: String?
+    public let charityName: String?
+    public let checkNumber: String?
+    public let clientPaymentId: String?
+    public let memo: String?
+    public let notes: String?
+    public let payeeAddressLine1: String?
+    public let payeeAddressLine2: String?
+    public let payeeCity: String?
+    public let payeeCountry: String?
+    public let payeeEmail: String?
+    public let payeeName: String?
+    public let payeePostalCode: String?
+    public let payeeStateProvince: String?
+    public let payerName: String?
+    public let paymentExpiryDate: String?
+    public let returnOrRecallReason: String?
+    public let securityAnswer: String?
+    public let securityQuestion: String?
+    public let website: String?
+}
+
 /// Representation of the Hyperwallet's receipt.
 ///
 /// - amount: The gross amount of the transaction.
@@ -149,79 +222,6 @@ public struct HyperwalletReceipt: Decodable, Equatable {
     public enum HyperwalletEntryType: String, Decodable {
         case credit = "CREDIT"
         case debit = "DEBIT"
-    }
-
-    /// Details of the transaction.
-    ///
-    /// - bankAccountId: The bank account number, IBAN or equivalent
-    /// - bankAccountPurpose: The bank account type, e.g. CHECKING or SAVINGS
-    /// - bankId: The bank code, BIC/SWIFT or equivalent
-    /// - bankName: The bank name
-    /// - branchAddressLine1: The branch address, first line
-    /// - branchAddressLine2: The branch address, second line
-    /// - branchCity: The branch city
-    /// - branchCountry: The 2-letter country code of the branch
-    /// - branchId: The branch code or equivalent
-    /// - branchName: The branch name
-    /// - branchPostalCode: The branch postal code
-    /// - branchStateProvince: The branch state or province
-    /// - cardExpiryDate: The card expiry date in YYYY-MM format
-    /// - cardHolderName: The card holder's full name
-    /// - cardNumber: The card number
-    /// - charityName: The name of the charity that is receiving the donation
-    /// - checkNumber: The paper check number
-    /// - clientPaymentId: The client-assigned transaction identifier
-    /// - memo: An internal note added by a client operator
-    /// - notes: A description for the receipt
-    /// - payeeAddressLine1: The payee's address first line
-    /// - payeeAddressLine2: The payee's address, second line
-    /// - payeeCity: The payee's city
-    /// - payeeCountry: The payee's 2-letter country code
-    /// - payeeEmail: The payee's email address on record
-    /// - payeeName: The payee's full name
-    /// - payeePostalCode: The payee's postal code, ZIP code or equivalent
-    /// - payeeStateProvince: The payee's state or province
-    /// - payerName: The payer's full name
-    /// - paymentExpiryDate: The payment expiry date in YYYY-MM-DD format
-    /// - returnOrRecallReason: The reason for returning or recalling the payment
-    /// - securityAnswer: The answer to the securityQuestion
-    /// - securityQuestion: A security question
-    /// - website: The URL of the client website where the virtual incentive was accrued
-    public struct HyperwalletReceiptDetails: Decodable {
-        public let bankAccountId: String?
-        public let bankAccountPurpose: BankAccountPurposeType?
-        public let bankId: String?
-        public let bankName: String?
-        public let branchAddressLine1: String?
-        public let branchAddressLine2: String?
-        public let branchCity: String?
-        public let branchCountry: String?
-        public let branchId: String?
-        public let branchName: String?
-        public let branchPostalCode: String?
-        public let branchStateProvince: String?
-        public let cardExpiryDate: String?
-        public let cardHolderName: String?
-        public let cardNumber: String?
-        public let charityName: String?
-        public let checkNumber: String?
-        public let clientPaymentId: String?
-        public let memo: String?
-        public let notes: String?
-        public let payeeAddressLine1: String?
-        public let payeeAddressLine2: String?
-        public let payeeCity: String?
-        public let payeeCountry: String?
-        public let payeeEmail: String?
-        public let payeeName: String?
-        public let payeePostalCode: String?
-        public let payeeStateProvince: String?
-        public let payerName: String?
-        public let paymentExpiryDate: String?
-        public let returnOrRecallReason: String?
-        public let securityAnswer: String?
-        public let securityQuestion: String?
-        public let website: String?
     }
 
     public enum BankAccountPurposeType: String, Decodable {

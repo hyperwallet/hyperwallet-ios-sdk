@@ -129,6 +129,10 @@ public class HyperwalletTransferMethod: Codable {
 
         // PayPal account related fields
         case email
+
+        // prepaid card related fields
+        case cardPackage
+        case userToken
     }
 
     internal init(data: [String: AnyCodable]) {
@@ -141,11 +145,13 @@ public class HyperwalletTransferMethod: Codable {
     /// - bankCard:      When the transfer method is Bank Card
     /// - payPalAccount: When the transfer method is PayPal Account
     /// - wireAccount:   When the transfer method is Wire Account
+    /// - prepaidCard:   When the transfer method is Prepaid Card
     public enum TransferMethodType: String {
         case bankAccount = "BANK_ACCOUNT"
         case bankCard = "BANK_CARD"
         case payPalAccount = "PAYPAL_ACCOUNT"
         case wireAccount = "WIRE_ACCOUNT"
+        case prepaidCard = "PREPAID_CARD"
     }
 
     /// Creates a new instance of the `HyperwalletTransferMethod`
@@ -189,11 +195,6 @@ public class HyperwalletTransferMethod: Codable {
         return self.storage
     }
 
-    /// The account type, e.g. "BANK_ACCOUNT", "BANK_CARD", "PAYPAL_ACCOUNT" or "WIRE_ACCOUNT"
-    public var type: String? {
-        return getField(fieldName: .type) as? String
-    }
-
     private struct CodingKeys: CodingKey {
         var intValue: Int?
         var stringValue: String
@@ -210,5 +211,35 @@ public class HyperwalletTransferMethod: Codable {
         static func make(key: String) -> CodingKeys {
             return CodingKeys(stringValue: key)!
         }
+    }
+
+    /// The transfer method's token
+    public var token: String? {
+        return getField(fieldName: .token) as? String
+    }
+
+    /// The transfer method's type
+    public var type: String? {
+        return getField(fieldName: .type) as? String
+    }
+
+    /// The transfer method's status
+    public var status: String? {
+        return getField(fieldName: .status) as? String
+    }
+
+    /// The transfer method's created time
+    public var createdOn: String? {
+        return getField(fieldName: .createdOn) as? String
+    }
+
+    /// The transfer method's country
+    public var transferMethodCountry: String? {
+        return getField(fieldName: .transferMethodCountry) as? String
+    }
+
+    /// The transfer method's currency
+    public var transferMethodCurrency: String? {
+        return getField(fieldName: .transferMethodCurrency) as? String
     }
 }

@@ -37,21 +37,6 @@ public final class HyperwalletPayPalAccount: HyperwalletTransferMethod {
         return getField(fieldName: .profileType) as? String
     }
 
-    /// The token: The unique, auto-generated user identifier. Max 64 characters, prefixed with "usr-".
-    public var token: String? {
-        return getField(fieldName: .token) as? String
-    }
-
-    /// The PayPal account country.
-    public var transferMethodCountry: String? {
-        return getField(fieldName: .transferMethodCountry) as? String
-    }
-
-    /// The PayPal account currency.
-    public var transferMethodCurrency: String? {
-        return getField(fieldName: .transferMethodCurrency) as? String
-    }
-
     /// A helper class to build the `HyperwalletPayPalAccount` instance.
     public final class Builder {
         private var storage = [String: AnyCodable]()

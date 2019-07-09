@@ -1,0 +1,59 @@
+{
+    "count": 2,
+    "offset": 0,
+    "limit": 10,
+    "data": [
+        {
+            "token": "trm-123",
+            "type": "PREPAID_CARD",
+            "status": "DEACTIVATED",
+            "verificationStatus": "NOT_REQUIRED",
+            "createdOn": "2019-06-20T21:21:43",
+            "transferMethodCountry": "CA",
+            "transferMethodCurrency": "USD",
+            "cardType": "VIRTUAL",
+            "cardPackage": "L1",
+            "cardNumber": "************6198",
+            "cardBrand": "VISA",
+            "dateOfExpiry": "2023-06",
+            "links": [
+                {
+                    "params": {
+                        "rel": "self"
+                    },
+                    "href": "https://localhost/rest/v3/users/usr-123/prepaid-cards/trm-123"
+                }
+            ]
+        },
+        {
+            "token": "trm-456",
+            "type": "PREPAID_CARD",
+            "status": "DEACTIVATED",
+            "verificationStatus": "NOT_REQUIRED",
+            "createdOn": "2019-06-20T22:21:43",
+            "transferMethodCountry": "CA",
+            "transferMethodCurrency": "USD",
+            "cardType": "VIRTUAL",
+            "cardPackage": "L1",
+            "cardNumber": "************2345",
+            "cardBrand": "MASTERCARD",
+            "dateOfExpiry": "2023-06",
+            "links": [
+                {
+                    "params": {
+                        "rel": "self"
+                    },
+                    "href": "https://localhost/rest/v3/users/usr-123/prepaid-cards/trm-456"
+                }
+            ]
+        }
+    ],
+    "links": [
+        {
+            "params": {
+                "rel": "self"
+            },
+            "href": "https://localhost/rest/v3/users/usr-123/prepaid-cards?offset=0&limit=10&sortBy=-createdOn&createdAfter=2019-05-31T20%3A59%3A58"
+        }
+    ]
+}

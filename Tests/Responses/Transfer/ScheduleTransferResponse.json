@@ -1,0 +1,16 @@
+{
+    "token": "sts-123456",
+    "changedOn": "2019-05-01T00:01:50",
+    "transition": "SCHEDULED",
+    "fromStatus": "QUOTED",
+    "toStatus": "SCHEDULED",
+    "notes": "Completing the Partial-Balance Transfer",
+    "links": [
+        {
+            "params": {
+                "rel": "self"
+            },
+            "href": "https://hyperwallet/rest/v3/transfers/trf-123456/status-transitions/sts-123456"
+        }
+    ]
+}

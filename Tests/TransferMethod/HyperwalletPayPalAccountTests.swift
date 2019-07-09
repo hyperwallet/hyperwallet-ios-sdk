@@ -19,7 +19,7 @@ class HyperwalletPayPalAccountTests: XCTestCase {
         let expectation = self.expectation(description: "Create PayPal account completed")
         let response = HyperwalletTestHelper.okHTTPResponse(for: "PayPalAccountResponse")
         let url = String(format: "%@/paypal-accounts", HyperwalletTestHelper.userRestURL)
-        let request = HyperwalletTestHelper.buildPostResquest(baseUrl: url, response)
+        let request = HyperwalletTestHelper.buildPostRequest(baseUrl: url, response)
         HyperwalletTestHelper.setUpMockServer(request: request)
 
         var payPalAccountResponse: HyperwalletPayPalAccount?
@@ -52,7 +52,7 @@ class HyperwalletPayPalAccountTests: XCTestCase {
         let expectation = self.expectation(description: "Create PayPal account failed")
         let response = HyperwalletTestHelper.badRequestHTTPResponse(for: "PayPalAccountResponseWithMissingEmail")
         let url = String(format: "%@/paypal-accounts", HyperwalletTestHelper.userRestURL)
-        let request = HyperwalletTestHelper.buildPostResquest(baseUrl: url, response)
+        let request = HyperwalletTestHelper.buildPostRequest(baseUrl: url, response)
         HyperwalletTestHelper.setUpMockServer(request: request)
 
         var payPalAccountResponse: HyperwalletPayPalAccount?
@@ -83,7 +83,7 @@ class HyperwalletPayPalAccountTests: XCTestCase {
         let expectation = self.expectation(description: "Create PayPal account failed")
         let response = HyperwalletTestHelper.badRequestHTTPResponse(for: "PayPalAccountResponseNotProfileEmail")
         let url = String(format: "%@/paypal-accounts", HyperwalletTestHelper.userRestURL)
-        let request = HyperwalletTestHelper.buildPostResquest(baseUrl: url, response)
+        let request = HyperwalletTestHelper.buildPostRequest(baseUrl: url, response)
         HyperwalletTestHelper.setUpMockServer(request: request)
 
         var payPalAccountResponse: HyperwalletPayPalAccount?
@@ -202,7 +202,7 @@ class HyperwalletPayPalAccountTests: XCTestCase {
         let expectation = self.expectation(description: "Deactivate PayPal account completed")
         let response = HyperwalletTestHelper.okHTTPResponse(for: "StatusTransitionMockedResponseSuccess")
         let url = String(format: "%@/paypal-accounts/trm-12345/status-transitions", HyperwalletTestHelper.userRestURL)
-        let request = HyperwalletTestHelper.buildPostResquest(baseUrl: url, response)
+        let request = HyperwalletTestHelper.buildPostRequest(baseUrl: url, response)
         HyperwalletTestHelper.setUpMockServer(request: request)
 
         var statusTransitionResponse: HyperwalletStatusTransition?
@@ -230,7 +230,7 @@ class HyperwalletPayPalAccountTests: XCTestCase {
         let response = HyperwalletTestHelper
             .badRequestHTTPResponse(for: "StatusTransitionMockedResponseInvalidTransition")
         let url = String(format: "%@/paypal-accounts/trm-12345/status-transitions", HyperwalletTestHelper.userRestURL)
-        let request = HyperwalletTestHelper.buildPostResquest(baseUrl: url, response)
+        let request = HyperwalletTestHelper.buildPostRequest(baseUrl: url, response)
         HyperwalletTestHelper.setUpMockServer(request: request)
 
         var statusTransitionResponse: HyperwalletStatusTransition?

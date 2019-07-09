@@ -58,26 +58,6 @@ public class HyperwalletBankCard: HyperwalletTransferMethod {
         return getField(fieldName: .profileType) as? String
     }
 
-    /// The method status.
-    public var status: String? {
-        return getField(fieldName: .status) as? String
-    }
-
-    /// The token: The unique, auto-generated user identifier. Max 64 characters, prefixed with "usr-".
-    public var token: String? {
-        return getField(fieldName: .token) as? String
-    }
-
-    /// The bank card country.
-    public var transferMethodCountry: String? {
-        return getField(fieldName: .transferMethodCountry) as? String
-    }
-
-    /// The bank card currency.
-    public var transferMethodCurrency: String? {
-        return getField(fieldName: .transferMethodCurrency) as? String
-    }
-
     /// A helper class to build the `HyperwalletBankCard` instance.
     public final class Builder {
         private var storage = [String: AnyCodable]()
