@@ -178,8 +178,16 @@ public class HyperwalletTransferMethod: Codable {
     ///
     /// - Parameter fieldName: The `TransferMethodField` type
     /// - Returns: Returns the field value, or nil if none exists.
-    public func getField(fieldName: TransferMethodField) -> Any? {
+    private func getField(fieldName: TransferMethodField) -> Any? {
         return self.storage[fieldName.rawValue]?.value
+    }
+
+    /// Gets the field value
+    ///
+    /// - Parameter fieldName: The `TransferMethodField` type raw value
+    /// - Returns: Returns the field value, or nil if none exists.
+    public func getField(fieldName: String) -> Any? {
+        return self.storage[fieldName]?.value
     }
 
     /// Sets the field value based on the key

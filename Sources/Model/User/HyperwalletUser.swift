@@ -447,8 +447,16 @@ public struct HyperwalletUser: Codable {
     ///
     /// - Parameter fieldName: The `UserField` type
     /// - Returns: Returns the field value, or nil if none exists.
-    public func getField(_ fieldName: UserField) -> Any? {
+    private func getField(_ fieldName: UserField) -> Any? {
         return storage[fieldName.rawValue]?.value
+    }
+
+    /// Gets the field value
+    ///
+    /// - Parameter fieldName: The `UserField` type raw value
+    /// - Returns: Returns the field value, or nil if none exists.
+    public func getField(fieldName: String) -> Any? {
+        return self.storage[fieldName]?.value
     }
 
     /// A helper class to build the `HyperwalletUser` instance.

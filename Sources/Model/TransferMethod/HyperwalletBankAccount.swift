@@ -95,23 +95,23 @@ public final class HyperwalletBankAccount: HyperwalletTransferMethod {
 
     /// The bank account holder's street address.
     public var addressLine1: String? {
-        return getField(fieldName: .addressLine1) as? String
+        return getField(fieldName: TransferMethodField.addressLine1.rawValue) as? String
     }
 
     /// The bank account holder's address, second line.
     public var addressLine2: String? {
-        return getField(fieldName: .addressLine2) as? String
+        return getField(fieldName: TransferMethodField.addressLine2.rawValue) as? String
     }
 
     /// The bank account number, IBAN or equivalent. If you are providing an IBAN, the first two
     /// letters of the IBAN must match the `transferMethodCountry`
     public var bankAccountId: String? {
-        return getField(fieldName: .bankAccountId) as? String
+        return getField(fieldName: TransferMethodField.bankAccountId.rawValue) as? String
     }
 
     /// The purpose of the bank account (e.g. checking, savings, etc).
     public var bankAccountPurpose: PurposeType? {
-        guard let purpose = getField(fieldName: .bankAccountPurpose) as? String else {
+        guard let purpose = getField(fieldName: TransferMethodField.bankAccountPurpose.rawValue) as? String else {
             return nil
         }
 
@@ -120,7 +120,7 @@ public final class HyperwalletBankAccount: HyperwalletTransferMethod {
 
     /// The user's relationship with the bank account holder.
     public var bankAccountRelationship: RelationshipType? {
-        guard let relationship = getField(fieldName: .bankAccountRelationship) as? String else {
+        guard let relationship = getField(fieldName: TransferMethodField.bankAccountRelationship.rawValue) as? String else {
             return nil
         }
 
@@ -129,27 +129,27 @@ public final class HyperwalletBankAccount: HyperwalletTransferMethod {
 
     /// The bank code or equivalent (e.g. BIC/SWIFT code).
     public var bankId: String? {
-        return getField(fieldName: .bankId) as? String
+        return getField(fieldName: TransferMethodField.bankId.rawValue) as? String
     }
 
     /// The bank name.
     public var bankName: String? {
-        return getField(fieldName: .bankName) as? String
+        return getField(fieldName: TransferMethodField.bankName.rawValue) as? String
     }
 
     /// The branch code, transit number, routing number or equivalent.
     public var branchId: String? {
-        return getField(fieldName: .branchId) as? String
+        return getField(fieldName: TransferMethodField.branchId.rawValue) as? String
     }
 
     /// The branch name.
     public var branchName: String? {
-        return getField(fieldName: .branchName) as? String
+        return getField(fieldName: TransferMethodField.branchName.rawValue) as? String
     }
 
     /// The bank account holder's role in the organization.
     public var businessContactRole: BusinessContactRole? {
-        guard let role = getField(fieldName: .businessContactRole) as? String else {
+        guard let role = getField(fieldName: TransferMethodField.businessContactRole.rawValue) as? String else {
             return nil
         }
 
@@ -158,28 +158,28 @@ public final class HyperwalletBankAccount: HyperwalletTransferMethod {
 
     /// The name of the bank account holder's business.
     public var businessName: String? {
-        return getField(fieldName: .businessName) as? String
+        return getField(fieldName: TransferMethodField.businessName.rawValue) as? String
     }
 
     /// The country where the bank account holder's business is registered.
     public var businessRegistrationCountry: String? {
-        return getField(fieldName: .businessRegistrationCountry) as? String
+        return getField(fieldName: TransferMethodField.businessRegistrationCountry.rawValue) as? String
     }
 
     /// The bank account holder's business registration number or identifier,
     /// as assigned by the relevant government body.
     public var businessRegistrationId: String? {
-        return getField(fieldName: .businessRegistrationId) as? String
+        return getField(fieldName: TransferMethodField.businessRegistrationId.rawValue) as? String
     }
 
     /// The state, province or region where the bank account holder's business is registered.
     public var businessRegistrationStateProvince: String? {
-        return getField(fieldName: .businessRegistrationStateProvince) as? String
+        return getField(fieldName: TransferMethodField.businessRegistrationStateProvince.rawValue) as? String
     }
 
     /// The bank account holder's business type.
     public var businessType: BusinessType? {
-        guard let type = getField(fieldName: .businessType) as? String else {
+        guard let type = getField(fieldName: TransferMethodField.businessType.rawValue) as? String else {
             return nil
         }
 
@@ -188,42 +188,42 @@ public final class HyperwalletBankAccount: HyperwalletTransferMethod {
 
     /// The bank account holder's city.
     public var city: String? {
-        return getField(fieldName: .city) as? String
+        return getField(fieldName: TransferMethodField.city.rawValue) as? String
     }
 
     /// The bank account holder's country.
     public var country: String? {
-        return getField(fieldName: .country) as? String
+        return getField(fieldName: TransferMethodField.country.rawValue) as? String
     }
 
     /// The bank account holder's birth country.
     public var countryOfBirth: String? {
-        return getField(fieldName: .countryOfBirth) as? String
+        return getField(fieldName: TransferMethodField.countryOfBirth.rawValue) as? String
     }
 
     /// The bank account holder's date of birth (All users must be at least 13 years old).
     public var dateOfBirth: String? {
-        return getField(fieldName: .dateOfBirth) as? String
+        return getField(fieldName: TransferMethodField.dateOfBirth.rawValue) as? String
     }
 
     /// The bank account holder's driver's license number.
     public var driversLicenseId: String? {
-        return getField(fieldName: .driversLicenseId) as? String
+        return getField(fieldName: TransferMethodField.driversLicenseId.rawValue) as? String
     }
 
     /// The bank account holder's employer identifier, generally used for tax purposes.
     public var employerId: String? {
-        return getField(fieldName: .employerId) as? String
+        return getField(fieldName: TransferMethodField.employerId.rawValue) as? String
     }
 
     /// The bank account holder's first name.
     public var firstName: String? {
-        return getField(fieldName: .firstName) as? String
+        return getField(fieldName: TransferMethodField.firstName.rawValue) as? String
     }
 
     /// The bank account holder's gender.
     public var gender: Gender? {
-        guard let type = getField(fieldName: .gender) as? String else {
+        guard let type = getField(fieldName: TransferMethodField.gender.rawValue) as? String else {
             return nil
         }
 
@@ -232,12 +232,12 @@ public final class HyperwalletBankAccount: HyperwalletTransferMethod {
 
     /// The bank account holder's government ID number, such as a Social Security Number.
     public var governmentId: String? {
-        return getField(fieldName: .governmentId) as? String
+        return getField(fieldName: TransferMethodField.governmentId.rawValue) as? String
     }
 
     /// The bank account holder's government ID type.
     public var governmentIdType: GovernmentIdType? {
-        guard let type = getField(fieldName: .governmentIdType) as? String else {
+        guard let type = getField(fieldName: TransferMethodField.governmentIdType.rawValue) as? String else {
             return nil
         }
 
@@ -246,87 +246,87 @@ public final class HyperwalletBankAccount: HyperwalletTransferMethod {
 
     /// The account number at the intermediary bank.
     public var intermediaryBankAccountId: String? {
-        return getField(fieldName: .intermediaryBankAccountId) as? String
+        return getField(fieldName: TransferMethodField.intermediaryBankAccountId.rawValue) as? String
     }
 
     /// The intermediary bank street address.
     public var intermediaryBankAddressLine1: String? {
-        return getField(fieldName: .intermediaryBankAddressLine1) as? String
+        return getField(fieldName: TransferMethodField.intermediaryBankAddressLine1.rawValue) as? String
     }
 
     /// The intermediary bank street address, second line.
     public var intermediaryBankAddressLine2: String? {
-        return getField(fieldName: .intermediaryBankAddressLine2) as? String
+        return getField(fieldName: TransferMethodField.intermediaryBankAddressLine2.rawValue) as? String
     }
 
     /// The intermediary bank city.
     public var intermediaryBankCity: String? {
-        return getField(fieldName: .intermediaryBankCity) as? String
+        return getField(fieldName: TransferMethodField.intermediaryBankCity.rawValue) as? String
     }
 
     /// The intermediary bank country.
     public var intermediaryBankCountry: String? {
-        return getField(fieldName: .intermediaryBankCountry) as? String
+        return getField(fieldName: TransferMethodField.intermediaryBankCountry.rawValue) as? String
     }
 
     /// The intermediary bank's 11-character SWIFT code.
     public var intermediaryBankId: String? {
-        return getField(fieldName: .intermediaryBankId) as? String
+        return getField(fieldName: TransferMethodField.intermediaryBankId.rawValue) as? String
     }
 
     /// The intermediary bank name.
     public var intermediaryBankName: String? {
-        return getField(fieldName: .intermediaryBankName) as? String
+        return getField(fieldName: TransferMethodField.intermediaryBankName.rawValue) as? String
     }
 
     /// The intermediary bank postal code.
     public var intermediaryBankPostalCode: String? {
-        return getField(fieldName: .intermediaryBankPostalCode) as? String
+        return getField(fieldName: TransferMethodField.intermediaryBankPostalCode.rawValue) as? String
     }
 
     /// The intermediary bank state, province or region.
     public var intermediaryBankStateProvince: String? {
-        return getField(fieldName: .intermediaryBankStateProvince) as? String
+        return getField(fieldName: TransferMethodField.intermediaryBankStateProvince.rawValue) as? String
     }
 
     /// The bank account holder's last name.
     public var lastName: String? {
-        return getField(fieldName: .lastName) as? String
+        return getField(fieldName: TransferMethodField.lastName.rawValue) as? String
     }
 
     /// The bank account holder's middle name.
     public var middleName: String? {
-        return getField(fieldName: .middleName) as? String
+        return getField(fieldName: TransferMethodField.middleName.rawValue) as? String
     }
 
     /// The bank account holder's cell phone number.
     public var mobileNumber: String? {
-        return getField(fieldName: .mobileNumber) as? String
+        return getField(fieldName: TransferMethodField.mobileNumber.rawValue) as? String
     }
 
     /// The bank account holder's passport number.
     public var passportId: String? {
-        return getField(fieldName: .passportId) as? String
+        return getField(fieldName: TransferMethodField.passportId.rawValue) as? String
     }
 
     /// The bank account holder's phone number.
     public var phoneNumber: String? {
-        return getField(fieldName: .phoneNumber) as? String
+        return getField(fieldName: TransferMethodField.phoneNumber.rawValue) as? String
     }
 
     /// The bank account holder's postal code.
     public var postalCode: String? {
-        return getField(fieldName: .postalCode) as? String
+        return getField(fieldName: TransferMethodField.postalCode.rawValue) as? String
     }
 
     /// The bank account holder's state, province or region.
     public var stateProvince: String? {
-        return getField(fieldName: .stateProvince) as? String
+        return getField(fieldName: TransferMethodField.stateProvince.rawValue) as? String
     }
 
     /// The wire transfer instructions
     public var wireInstructions: String? {
-        return getField(fieldName: .wireInstructions) as? String
+        return getField(fieldName: TransferMethodField.wireInstructions.rawValue) as? String
     }
 
     /// A helper class to build the `HyperwalletBankAccount` instance.
