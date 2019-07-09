@@ -19,7 +19,7 @@ We also provide an out-of-the-box  [Hyperwallet iOS UI SDK](https://github.com/h
 * Set Up your server to manage the user's authentication process on the Hyperwallet platform. See the  [Authentication](#Authentication) section for more information.
 * iOS 10.0+
 * Xcode 10.2+
-* Swift 4.2
+* Swift 5.0
 
 ## Installation
 Use [Carthage](https://github.com/Carthage/Carthage) or [CocoaPods](https://cocoapods.org/) to integrate to HyperwalletSDK.
@@ -344,6 +344,52 @@ Hyperwallet.shared.listPrepaidCards(queryParam: prepaidCardQueryParam) { (result
 }
 ```
 
+### List Prepaid Card Receipts
+```swift
+let receiptQueryParam = HyperwalletReceiptQueryParam()
+receiptQueryParam.createdAfter = ISO8601DateFormatter.ignoreTimeZone.date(from: "2016-12-01T00:00:00")
+
+Hyperwallet.shared.listPrepaidCardReceipts(prepaidCardToken: prepaidCardToken,
+                                           queryParam: receiptQueryParam,
+                                           completion: { (result, error) in
+    // In case of failure, error (HyperwalletErrorType) will contain HyperwalletErrors containing information about what caused the failure 
+    guard error == nil else {
+        print(error?.getHyperwalletErrors()?.errorList?)
+        return
+    }
+    
+    // In case of successful, response (HyperwalletPageList<HyperwalletReceipt>? in this case) will contain information about or nil if not exist.
+    if let receipts = result?.data {
+        for receipt in receipts {
+            print(receipt.destinationToken ?? "")
+        }
+    }
+}
+```
+
+### List User Receipts
+```swift
+let receiptQueryParam = HyperwalletReceiptQueryParam()
+receiptQueryParam.createdAfter = ISO8601DateFormatter.ignoreTimeZone.date(from: "2018-12-01T00:00:00")
+receiptQueryParam.currency = "USD"
+receiptQueryParam.sortBy = HyperwalletReceiptQueryParam.QuerySortable.descendantAmount.rawValue
+
+Hyperwallet.shared.listUserReceipts(queryParam: receiptQueryParam) { (result, error) in
+    // In case of failure, error (HyperwalletErrorType) will contain HyperwalletErrors containing information about what caused the failure 
+    guard error == nil else {
+        print(error?.getHyperwalletErrors()?.errorList?)
+        return
+        }
+
+    // In case of successful, response (HyperwalletPageList<HyperwalletReceipt>? in this case) will contain information about or nil if not exist.
+    if let receipts = result?.data {
+        for receipt in receipts {
+            print(receipt.destinationToken ?? "")
+        }
+    }
+}
+```
+
 ### List Transfer Methods
 ```swift
 let transferMethodQueryParam = HyperwalletTransferMethodQueryParam()
@@ -363,6 +409,61 @@ Hyperwallet.shared.listTransferMethods(queryParam: transferMethodQueryParam) { (
         }
     }
 }
+```
+
+### Create  Transfer
+```swift
+let transfer = HyperwalletTransfer.Builder(clientTransferId: "6712348070812",
+                                           sourceToken: "source-token",
+                                           destinationToken: "destination-token")
+    .sourceAmount("100")
+    .sourceCurrency("CAD")
+    .destinationAmount("62.29")
+    .destinationCurrency("USD")
+    .memo("TransferClientId56387")
+    .notes("Partial-Balance Transfer")
+    .build()
+
+Hyperwallet.shared.createTransfer(transfer: transfer, completion: { (result, error) in
+    //Code to handle successful response or error
+    //In case of successfull creation, response (HyperwalletTransfer in this case) will contain information about the transfer 
+    //in case of failure, error (HyperwalletErrorType) will contain HyperwalletErrors containing information about what caused the failure of transfer creation
+})
+```
+
+### Schedule Transfer
+```swift
+Hyperwallet.shared.scheduleTransfer(transferToken: "trf-123456", completion: { (result, error) in
+    //Code to handle successful response or error
+    // In case of successful scheduling, response (HyperwalletStatusTransition in this case) will contain information about the status transition 
+    //in case of failure, error (HyperwalletErrorType) will contain HyperwalletErrors containing information about what caused the failure of transfer creation
+})
+```
+
+### Get Transfer
+```swift
+Hyperwallet.shared.getTransfer(transferToken: "trf-123456", completion: { (result, error) in
+    // In case of successful, response (HyperwalletTransfer? in this case) will contain information about the transfer or nil if not exist.
+    // In case of failure, error (HyperwalletErrorType) will contain HyperwalletErrors containing information about what caused the failure 
+})
+```
+
+### List Transfers
+```swift
+Hyperwallet.shared.listTransfers { (result, error) in
+    // In case of failure, error (HyperwalletErrorType) will contain HyperwalletErrors containing information about what caused the failure 
+    guard error == nil else {
+        print(error?.getHyperwalletErrors()?.errorList?)
+        return
+    }
+
+    // In case of successful, response (HyperwalletPageList<HyperwalletTransfer>? in this case) will contain information about or nil if not exist.
+    if let transfers = result?.data {
+        for transfer in transfers {
+            print(transfer.getField(fieldName: .token) ?? "")
+        }
+    }
+})
 ```
 
 ## Transfer Method Configurations 

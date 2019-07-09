@@ -20,32 +20,12 @@ import Foundation
 
 /// Representation of the PayPal account query parameters.
 public class HyperwalletPayPalAccountQueryParam: HyperwalletTransferMethodQueryParam {
-    /// Returns paypal account with this account status.
-    public var status: QueryStatus?
-
     enum QueryParam: String {
         case type
     }
 
-    /// Representation of the transfer method status
-    ///
-    /// - activated: Filter by activated transfer methods
-    /// - deActivated: Filter by deActivated transfer methods
-    /// - invalid: Filter only invalid transfer methods
-    /// - verified: Filter only verified transfer methods
-    public enum QueryStatus: String {
-        case activated = "ACTIVATED"
-        case deActivated = "DE_ACTIVATED"
-        case invalid = "INVALID"
-        case verified = "VERIFIED"
-    }
-
     override public func toQuery() -> [String: String] {
         var query = super.toQuery()
-
-        if let status = status {
-            query[QueryParam.status.rawValue] = status.rawValue
-        }
 
         query[QueryParam.type.rawValue] = "PAYPAL_ACCOUNT"
         return query
