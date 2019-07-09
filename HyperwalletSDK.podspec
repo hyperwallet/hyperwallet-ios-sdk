@@ -10,7 +10,7 @@ Pod::Spec.new do |spec|
     spec.source                = { :git => 'https://github.com/hyperwallet/hyperwallet-ios-sdk.git', :tag => "#{spec.version}" }
     spec.source_files          = 'Sources/**/*.swift'
     spec.requires_arc          = true
-    spec.swift_version         = '4.2'
+    spec.swift_version         = '5.0'
 
     spec.test_spec 'Tests' do |test_spec|
         test_spec.source_files = 'Tests/**/*.swift'
