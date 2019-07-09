@@ -348,7 +348,6 @@ Hyperwallet.shared.listPrepaidCards(queryParam: prepaidCardQueryParam) { (result
 ```swift
 let receiptQueryParam = HyperwalletReceiptQueryParam()
 receiptQueryParam.createdAfter = ISO8601DateFormatter.ignoreTimeZone.date(from: "2016-12-01T00:00:00")
-receiptQueryParam.createdBefore = ISO8601DateFormatter.ignoreTimeZone.date(from: "2020-12-31T00:00:00")
 
 Hyperwallet.shared.listPrepaidCardReceipts(prepaidCardToken: prepaidCardToken,
                                            queryParam: receiptQueryParam,
@@ -372,7 +371,6 @@ Hyperwallet.shared.listPrepaidCardReceipts(prepaidCardToken: prepaidCardToken,
 ```swift
 let receiptQueryParam = HyperwalletReceiptQueryParam()
 receiptQueryParam.createdAfter = ISO8601DateFormatter.ignoreTimeZone.date(from: "2018-12-01T00:00:00")
-receiptQueryParam.createdBefore = ISO8601DateFormatter.ignoreTimeZone.date(from: "2020-12-31T00:00:00")
 receiptQueryParam.currency = "USD"
 receiptQueryParam.sortBy = HyperwalletReceiptQueryParam.QuerySortable.descendantAmount.rawValue
 
