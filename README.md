@@ -414,7 +414,7 @@ Hyperwallet.shared.listTransfers { (result, error) in
     // In case of successful, response (HyperwalletPageList<HyperwalletTransfer>? in this case) will contain information about or nil if not exist.
     if let transfers = result?.data {
         for transfer in transfers {
-            print(transfer.getField(fieldName: .token) ?? "")
+            print(transfer.token ?? "")
         }
     }
 })
