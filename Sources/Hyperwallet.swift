@@ -140,6 +140,27 @@ public final class Hyperwallet {
                                     completionHandler: completion)
     }
 
+    /// Creates a `HyperwalletTransfer` for the User associated with the authentication token returned from
+    /// `HyperwalletAuthenticationTokenProvider.retrieveAuthenticationToken(_ : @escaping CompletionHandler)`.
+    ///
+    /// The `completion: @escaping (HyperwalletTransfer?, HyperwalletErrorType?) -> Void` that is passed in to this
+    /// method invocation will receive the successful response(HyperwalletTransfer) or error(HyperwalletErrorType)
+    /// from processing the request.
+    ///
+    /// This function will request a new authentication token via `HyperwalletAuthenticationTokenProvider`
+    /// if the current one is expired or is about to expire.
+    ///
+    /// - Parameters:
+    ///   - transfer: the `HyperwalletTransfer` to be created
+    ///   - completion: the callback handler of responses from the Hyperwallet platform
+    public func createTransfer(transfer: HyperwalletTransfer,
+                               completion: @escaping (HyperwalletTransfer?, HyperwalletErrorType?) -> Void) {
+        httpTransaction.performRest(httpMethod: .post,
+                                    urlPath: "transfers",
+                                    payload: transfer,
+                                    completionHandler: completion)
+    }
+
     /// Deactivates the `HyperwalletBankAccount` linked to the transfer method token specified. The
     /// `HyperwalletBankAccount` being deactivated must belong to the User that is associated with the
     /// authentication token returned from
@@ -227,6 +248,31 @@ public final class Hyperwallet {
                                     completionHandler: completion)
     }
 
+    /// Schedules the `HyperwalletTransfer` linked to the transfer method token specified.
+    ///
+    /// The `completion: @escaping (HyperwalletStatusTransition?, HyperwalletErrorType?) -> Void` that is passed in to
+    /// this method invocation will receive the successful response(HyperwalletStatusTransition) or
+    /// error(HyperwalletErrorType) from processing the request.
+    ///
+    /// This function will request a new authentication token via `HyperwalletAuthenticationTokenProvider`
+    /// if the current one is expired or is about to expire.
+    ///
+    /// - Parameters:
+    ///   - transferToken: the Hyperwallet specific unique identifier for the `HyperwalletTransfer`
+    ///                    being commited
+    ///   - notes: a note regarding the status change
+    ///   - completion: the callback handler of responses from the Hyperwallet platform
+    public func scheduleTransfer(transferToken: String,
+                                 notes: String? = nil,
+                                 completion: @escaping (HyperwalletStatusTransition?, HyperwalletErrorType?) -> Void) {
+        let statusTransition = HyperwalletStatusTransition(transition: .scheduled)
+        statusTransition.notes = notes
+        httpTransaction.performRest(httpMethod: .post,
+                                    urlPath: "transfers/\(transferToken)/status-transitions",
+                                    payload: statusTransition,
+                                    completionHandler: completion)
+    }
+
     /// Returns the `HyperwalletBankAccount` linked to the transfer method token specified, or nil if none exists.
     ///
     /// The `completion: @escaping (HyperwalletBankAccount?, HyperwalletErrorType?) -> Void` that is passed in to this
@@ -284,13 +330,31 @@ public final class Hyperwallet {
                                     completionHandler: completion)
     }
 
+    /// Returns the `HyperwalletTransfer` linked to the transfer method token specified, or nil if none exists.
+    ///
+    /// The `completion: @escaping (HyperwalletTransfer?, HyperwalletErrorType?) -> Void` that is passed in to this
+    /// method invocation will receive the successful response(HyperwalletTransfer) or error(HyperwalletErrorType)
+    /// from processing the request.
+    ///
+    /// - Parameters:
+    ///   - transferToken: the Hyperwallet specific unique identifier for the `HyperwalletTransfer`
+    ///                    being requested
+    ///   - completion: the callback handler of responses from the Hyperwallet platform
+    public func getTransfer(transferToken: String,
+                            completion: @escaping (HyperwalletTransfer?, HyperwalletErrorType?) -> Void) {
+        httpTransaction.performRest(httpMethod: .get,
+                                    urlPath: "transfers/\(transferToken)",
+                                    payload: "",
+                                    completionHandler: completion)
+    }
+
     /// Returns the list of `HyperwalletBankAccount`s for the User associated with the authentication token
     /// returned from
     /// `HyperwalletAuthenticationTokenProvider.retrieveAuthenticationToken(_ : @escaping CompletionHandler)`,
     /// or nil if non exist.
     ///
     /// The ordering and filtering of `HyperwalletBankAccount`s will be based on the criteria specified within
-    /// the `HyperwalletBankAccountPagination` object, if it is not nil. Otherwise the default ordering and
+    /// the `HyperwalletBankAccountQueryParam` object, if it is not nil. Otherwise the default ordering and
     /// filtering will be applied:
     ///
     /// * Offset: 0
@@ -310,15 +374,15 @@ public final class Hyperwallet {
     /// if the current one is expired or is about to expire.
     ///
     /// - Parameters:
-    ///   - pagination: the ordering and filtering criteria
+    ///   - queryParam: the ordering and filtering criteria
     ///   - completion: the callback handler of responses from the Hyperwallet platform
-    public func listBankAccounts(pagination: HyperwalletBankAccountPagination? = nil,
+    public func listBankAccounts(queryParam: HyperwalletBankAccountQueryParam? = nil,
                                  completion: @escaping (HyperwalletPageList<HyperwalletBankAccount>?,
         HyperwalletErrorType?) -> Void) {
         httpTransaction.performRest(httpMethod: .get,
                                     urlPath: "users/%@/bank-accounts",
                                     payload: "",
-                                    pagination: pagination,
+                                    queryParam: queryParam,
                                     completionHandler: completion)
     }
 
@@ -327,7 +391,7 @@ public final class Hyperwallet {
     /// or nil if non exist.
     ///
     /// The ordering and filtering of `HyperwalletBankCard` will be based on the criteria specified within the
-    /// `HyperwalletBankAccountPagination` object, if it is not nil. Otherwise the default ordering and
+    /// `HyperwalletBankAccountQueryParam` object, if it is not nil. Otherwise the default ordering and
     /// filtering will be applied.
     ///
     /// * Offset: 0
@@ -346,15 +410,15 @@ public final class Hyperwallet {
     /// if the current one is expired or is about to expire.
     ///
     /// - Parameters:
-    ///   - pagination: the ordering and filtering criteria
+    ///   - queryParam: the ordering and filtering criteria
     ///   - completion: the callback handler of responses from the Hyperwallet platform
-    public func listBankCards(pagination: HyperwalletBankCardPagination? = nil,
+    public func listBankCards(queryParam: HyperwalletBankCardQueryParam? = nil,
                               completion: @escaping (HyperwalletPageList<HyperwalletBankCard>?,
                                                      HyperwalletErrorType?) -> Void) {
         httpTransaction.performRest(httpMethod: .get,
                                     urlPath: "users/%@/bank-cards",
                                     payload: "",
-                                    pagination: pagination,
+                                    queryParam: queryParam,
                                     completionHandler: completion)
     }
 
@@ -363,7 +427,7 @@ public final class Hyperwallet {
     /// or nil if non exist.
     ///
     /// The ordering and filtering of `HyperwalletPayPalAccount` will be based on the criteria specified within the
-    /// `HyperwalletPayPalAccountPagination` object, if it is not nil. Otherwise the default ordering and
+    /// `HyperwalletPayPalAccountQueryParam` object, if it is not nil. Otherwise the default ordering and
     /// filtering will be applied.
     ///
     /// * Offset: 0
@@ -382,15 +446,15 @@ public final class Hyperwallet {
     /// if the current one is expired or is about to expire.
     ///
     /// - Parameters:
-    ///   - pagination: the ordering and filtering criteria
+    ///   - queryParam: the ordering and filtering criteria
     ///   - completion: the callback handler of responses from the Hyperwallet platform
-    public func listPayPalAccounts(pagination: HyperwalletPayPalAccountPagination? = nil,
+    public func listPayPalAccounts(queryParam: HyperwalletPayPalAccountQueryParam? = nil,
                                    completion: @escaping (HyperwalletPageList<HyperwalletPayPalAccount>?,
                                                           HyperwalletErrorType?) -> Void) {
         httpTransaction.performRest(httpMethod: .get,
                                     urlPath: "users/%@/paypal-accounts",
                                     payload: "",
-                                    pagination: pagination,
+                                    queryParam: queryParam,
                                     completionHandler: completion)
     }
 
@@ -400,7 +464,7 @@ public final class Hyperwallet {
     /// or nil if non exist.
     ///
     /// The ordering and filtering of `HyperwalletBankCard` will be based on the criteria specified within the
-    /// `HyperwalletBankAccountPagination` object, if it is not nil. Otherwise the default ordering and
+    /// `HyperwalletBankAccountQueryParam` object, if it is not nil. Otherwise the default ordering and
     /// filtering will be applied.
     ///
     /// * Offset: 0
@@ -420,15 +484,153 @@ public final class Hyperwallet {
     /// if the current one is expired or is about to expire.
     ///
     /// - Parameters:
-    ///   - pagination: the ordering and filtering criteria
+    ///   - queryParam: the ordering and filtering criteria
     ///   - completion: the callback handler of responses from the Hyperwallet platform
-    public func listTransferMethods(pagination: HyperwalletTransferMethodPagination? = nil,
+    public func listTransferMethods(queryParam: HyperwalletTransferMethodQueryParam? = nil,
                                     completion: @escaping (HyperwalletPageList<HyperwalletTransferMethod>?,
         HyperwalletErrorType?) -> Void) {
         httpTransaction.performRest(httpMethod: .get,
                                     urlPath: "users/%@/transfer-methods",
                                     payload: "",
-                                    pagination: pagination,
+                                    queryParam: queryParam,
+                                    completionHandler: completion)
+    }
+
+    /// Returns the `HyperwalletPrepaidCard`
+    /// for the User associated with the authentication token returned from
+    /// `HyperwalletAuthenticationTokenProvider.retrieveAuthenticationToken(_ : @escaping CompletionHandler)`,
+    /// or nil if non exist.
+    ///
+    /// The ordering and filtering of `HyperwalletPrepaidCard` will be based on the criteria specified within the
+    /// `HyperwalletPrepaidCardQueryParm` object, if it is not nil. Otherwise the default ordering and
+    /// filtering will be applied.
+    ///
+    /// * Offset: 0
+    /// * Limit: 10
+    /// * Created Before: N/A
+    /// * Created After: N/A
+    /// * Status: All
+    /// * Sort By: Created On
+    ///
+    /// The `completion: @escaping (HyperwalletPageList<HyperwalletPrepaidCard>?, HyperwalletErrorType?) -> Void`
+    /// that is passed in to this method invocation will receive the successful
+    /// response(HyperwalletPageList<HyperwalletPrepaidCard>?) or error(HyperwalletErrorType) from processing
+    /// the request.
+    ///
+    /// This function will request a new authentication token via `HyperwalletAuthenticationTokenProvider`
+    /// if the current one is expired or is about to expire.
+    ///
+    /// - Parameters:
+    ///   - queryParam: the ordering and filtering criteria
+    ///   - completion: the callback handler of responses from the Hyperwallet platform
+    public func listPrepaidCards(queryParam: HyperwalletPrepaidCardQueryParm? = nil,
+                                 completion: @escaping (HyperwalletPageList<HyperwalletPrepaidCard>?,
+        HyperwalletErrorType?) -> Void) {
+        httpTransaction.performRest(httpMethod: .get,
+                                    urlPath: "users/%@/prepaid-cards",
+                                    payload: "",
+                                    queryParam: queryParam,
+                                    completionHandler: completion)
+    }
+
+    /// Returns the list of receipts for the User associated with the authentication token.
+    ///
+    /// The ordering and filtering of `HyperwalletReceipt` will be based on the criteria specified within the
+    /// `HyperwalletReceiptQueryParam` object, if it is not nil. Otherwise the default ordering and
+    /// filtering will be applied.
+    ///
+    /// * Offset: 0
+    /// * Limit: 10
+    /// * Created Before: N/A
+    /// * Created After: N/A
+    /// * Currency: All
+    /// * Sort By: Created On
+    ///
+    /// The `completion: @escaping (HyperwalletPageList<HyperwalletReceipt>?, HyperwalletErrorType?) -> Void`
+    /// that is passed in to this method invocation will receive the successful
+    /// response(HyperwalletPageList<HyperwalletReceipt>?) or error(HyperwalletErrorType) from processing
+    /// the request.
+    ///
+    /// This function will request a new authentication token via `HyperwalletAuthenticationTokenProvider`
+    /// if the current one is expired or is about to expire.
+    ///
+    /// - Parameters:
+    ///   - queryParam: the ordering and filtering criteria
+    ///   - completion: the callback handler of responses from the Hyperwallet platform
+    public func listUserReceipts(queryParam: HyperwalletReceiptQueryParam? = nil,
+                                 completion: @escaping (HyperwalletPageList<HyperwalletReceipt>?,
+        HyperwalletErrorType?) -> Void) {
+        httpTransaction.performRest(httpMethod: .get,
+                                    urlPath: "users/%@/receipts",
+                                    payload: "",
+                                    queryParam: queryParam,
+                                    completionHandler: completion)
+    }
+
+    // Returns the list of receipts for the User associated with the Prepaid card token.
+    ///
+    /// The filtering of `HyperwalletReceipt` will be based on the criteria specified within the
+    /// `HyperwalletReceiptQueryParam` object. CreatedAfter needs to be provided to get the receipts.
+    /// Receipts are returned sorted in ascending order of creation date
+    ///
+    /// * Created Before: N/A
+    /// * Created After: “Some Date”
+    /// * Currency: All
+    ///
+    /// The `completion: @escaping (HyperwalletPageList<HyperwalletReceipt>?, HyperwalletErrorType?) -> Void`
+    /// that is passed in to this method invocation will receive the successful
+    /// response(HyperwalletPageList<HyperwalletReceipt>?) or error(HyperwalletErrorType) from processing
+    /// the request.
+    ///
+    /// This function will request a new authentication token via `HyperwalletAuthenticationTokenProvider`
+    /// if the current one is expired or is about to expire.
+    ///
+    /// - Parameters:
+    ///   - queryParam: the ordering and filtering criteria
+    ///   - completion: the callback handler of responses from the Hyperwallet platform
+    public func listPrepaidCardReceipts(prepaidCardToken: String,
+                                        queryParam: HyperwalletReceiptQueryParam? = nil,
+                                        completion: @escaping (HyperwalletPageList<HyperwalletReceipt>?,
+        HyperwalletErrorType?) -> Void) {
+        httpTransaction.performRest(httpMethod: .get,
+                                    urlPath: "users/%@/prepaid-cards/\(prepaidCardToken)/receipts",
+                                    payload: "",
+                                    queryParam: queryParam,
+                                    completionHandler: completion)
+    }
+
+    /// Returns the list of transfers for the User associated with the authentication token.
+    ///
+    /// The ordering and filtering of `HyperwalletTransfer` will be based on the criteria specified within the
+    /// `HyperwalletTransferQueryParam` object, if it is not nil. Otherwise the default ordering and
+    /// filtering will be applied.
+    ///
+    /// * Offset: 0
+    /// * Limit: 10
+    /// * Created Before: N/A
+    /// * Created After: N/A
+    /// * clientTransferId: N/A
+    /// * destinationToken: N/A
+    /// * sourceToken: N/A
+    ///
+    /// The `completion: @escaping (HyperwalletPageList<HyperwalletTransfer>?, HyperwalletErrorType?) -> Void`
+    /// that is passed in to this method invocation will receive the successful
+    /// response(HyperwalletPageList<HyperwalletTransfer>?) or error(HyperwalletErrorType) from processing
+    /// the request.
+    ///
+    /// This function will request a new authentication token via `HyperwalletAuthenticationTokenProvider`
+    /// if the current one is expired or is about to expire.
+    ///
+    /// - Parameters:
+    ///   - queryParam: the ordering and filtering criteria
+    ///   - completion: the callback handler of responses from the Hyperwallet platform
+    public func listTransfers(queryParam: HyperwalletTransferQueryParam? = nil,
+                              completion: @escaping (HyperwalletPageList<HyperwalletTransfer>?,
+        HyperwalletErrorType?) -> Void) {
+        httpTransaction.performRest(httpMethod: .get,
+                                    urlPath: "transfers",
+                                    payload: "",
+                                    queryParam: queryParam,
                                     completionHandler: completion)
     }
 
@@ -436,9 +638,9 @@ public final class Hyperwallet {
     /// token returned from
     /// `HyperwalletAuthenticationTokenProvider.retrieveAuthenticationToken(_ : @escaping CompletionHandler)`.
     ///
-    /// The `completion: @escaping (HyperwalletTransferMethodConfigurationFieldResult?, HyperwalletErrorType?) -> Void`
+    /// The `completion: @escaping (HyperwalletTransferMethodConfigurationField?, HyperwalletErrorType?) -> Void`
     /// that is passed in to this method invocation will receive the successful
-    /// response(HyperwalletTransferMethodConfigurationFieldResult) or error(HyperwalletErrorType) from processing the
+    /// response(HyperwalletTransferMethodConfigurationField) or error(HyperwalletErrorType) from processing the
     /// request.
     ///
     /// This function will request a new authentication token via `HyperwalletAuthenticationTokenProvider`
@@ -450,18 +652,18 @@ public final class Hyperwallet {
     ///   - completion: the callback handler of responses from the Hyperwallet platform
     public func retrieveTransferMethodConfigurationFields(
         request: HyperwalletTransferMethodConfigurationFieldQuery,
-        completion: @escaping (HyperwalletTransferMethodConfigurationFieldResult?, HyperwalletErrorType?) -> Void) {
+        completion: @escaping (HyperwalletTransferMethodConfigurationField?, HyperwalletErrorType?) -> Void) {
         httpTransaction.performGraphQl(request,
-                                       completionHandler: transferMethodConfigurationResponseHandler(completion))
+                                       completionHandler: transferMethodConfigurationFieldResponseHandler(completion))
     }
 
     /// Returns the transfer method configuration key set, processing times, and fees for the User that is associated
     /// with the authentication token returned from
     /// `HyperwalletAuthenticationTokenProvider.retrieveAuthenticationToken(_ : @escaping CompletionHandler)`.
     ///
-    /// The `completion: @escaping (HyperwalletTransferMethodConfigurationKeyResult?, HyperwalletErrorType?) -> Void`
+    /// The `completion: @escaping (HyperwalletTransferMethodConfigurationKey?, HyperwalletErrorType?) -> Void`
     /// that is passed in to this method invocation will receive the successful
-    /// response(HyperwalletTransferMethodConfigurationKeyResult) or error(HyperwalletErrorType) from processing the
+    /// response(HyperwalletTransferMethodConfigurationKey) or error(HyperwalletErrorType) from processing the
     /// request.
     ///
     /// This function will request a new authentication token via `HyperwalletAuthenticationTokenProvider`
@@ -472,9 +674,9 @@ public final class Hyperwallet {
     ///   - completion: the callback handler of responses from the Hyperwallet platform
     public func retrieveTransferMethodConfigurationKeys(
         request: HyperwalletTransferMethodConfigurationKeysQuery,
-        completion: @escaping (HyperwalletTransferMethodConfigurationKeyResult?, HyperwalletErrorType?) -> Void) {
+        completion: @escaping (HyperwalletTransferMethodConfigurationKey?, HyperwalletErrorType?) -> Void) {
         httpTransaction.performGraphQl(request,
-                                       completionHandler: transferMethodConfigurationResponseHandler(completion))
+                                       completionHandler: transferMethodConfigurationKeyResponseHandler(completion))
     }
 
     /// Updates the `HyperwalletBankAccount` for the User associated with the authentication token returned from
@@ -551,16 +753,21 @@ public final class Hyperwallet {
                                     completionHandler: completion)
     }
 
-    private func transferMethodConfigurationResponseHandler(_ completionHandler: @escaping (
-        (TransferMethodConfigurationResult?, HyperwalletErrorType?) -> Void))
-        -> (Connection<TransferMethodConfiguration>?, HyperwalletErrorType?) -> Void {
+    private func transferMethodConfigurationFieldResponseHandler(_ completionHandler: @escaping (
+        (TransferMethodConfigurationFieldResult?, HyperwalletErrorType?) -> Void))
+        -> (TransferMethodConfigurationField?, HyperwalletErrorType?) -> Void {
             return { (response, error) in
-                var result: TransferMethodConfigurationResult?
-
-                if let response = response {
-                    result = TransferMethodConfigurationResult(response: response)
-                }
+                let result = TransferMethodConfigurationFieldResult(response?.transferMethodUIConfigurations?.nodes,
+                                                                    response?.countries?.nodes?.first)
                 completionHandler(result, error)
+            }
+    }
+
+    private func transferMethodConfigurationKeyResponseHandler(_ completionHandler: @escaping (
+        (TransferMethodConfigurationKeyResult?, HyperwalletErrorType?) -> Void))
+        -> (TransferMethodConfigurationKey?, HyperwalletErrorType?) -> Void {
+            return { (response, error) in
+                completionHandler(TransferMethodConfigurationKeyResult(response?.countries.nodes), error)
             }
     }
 }

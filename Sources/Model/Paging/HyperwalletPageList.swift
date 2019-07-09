@@ -21,21 +21,21 @@ import Foundation
 /// Representation of subset content from a dataset
 public struct HyperwalletPageList<ListType: Decodable>: Decodable {
     /// The amount of the dataset
-    public let count: Int
+    public let count: Int?
     /// The `ListType` items
     public let data: [ListType]
     /// The maximum number of records that will be returned per page
-    public let limit: Int
+    public let limit: Int?
     /// The links
     public let links: [HyperwalletPageLink]
     /// The number of records to skip.
-    public let offset: Int
+    public let offset: Int?
 }
 
 /// Representation of the page link
 public struct HyperwalletPageLink: Decodable {
     /// The URL of the link
-    public let href: String
+    public let href: URL
     /// The `HyperwalletPageParameter`
     public let params: HyperwalletPageParameter
 }

@@ -1,0 +1,50 @@
+{
+    "token": "trm-000",
+    "type": "BANK_ACCOUNT",
+    "status": "ACTIVATED",
+    "verificationStatus": "NOT_REQUIRED",
+    "createdOn": "2019-05-22T11:30:39",
+    "transferMethodCountry": "US",
+    "transferMethodCurrency": "USD",
+    "bankName": "US BANK NA",
+    "bankId": "102000021",
+    "branchId": "102000021",
+    "bankAccountId": "7861012345",
+    "bankAccountRelationship": "OWN_COMPANY",
+    "bankAccountPurpose": "CHECKING",
+    "profileType": "BUSINESS",
+    "businessType": "CORPORATION",
+    "businessName": "US BANK NA",
+    "businessRegistrationId": "123455511",
+    "businessRegistrationStateProvince": "BC",
+    "businessRegistrationCountry": "CA",
+    "businessContactRole": "OWNER",
+    "businessOperatingName": "AZaz09お元ですか你好ผซอéüõäÄÜÖ-ßḑņžÇĞÿĀſƀɏɐʯʰͰϿЀӿꙀꚗ",
+    "firstName": "Shyang",
+    "middleName": "Alma",
+    "lastName": "Koong",
+    "dateOfBirth": "2001-01-01",
+    "countryOfBirth": "US",
+    "countryOfNationality": "FR",
+    "gender": "FEMALE",
+    "phoneNumber": "604-345-1777",
+    "mobileNumber": "604-345-1888",
+    "governmentId": "999000999",
+    "passportId": "123456789",
+    "driversLicenseId": "234234243",
+    "employerId": "123456789",
+    "addressLine1": "1234, Broadway",
+    "addressLine2": "57 Market Street",
+    "city": "Test City",
+    "stateProvince": "WA",
+    "country": "US",
+    "postalCode": "12345",
+    "links": [
+        {
+            "params": {
+                "rel": "self"
+            },
+            "href": "https://localhost/rest/v3/users/usr-0000/bank-accounts/trm-0000"
+        }
+    ]
+}
