@@ -573,8 +573,6 @@ public final class Hyperwallet {
     /// `HyperwalletReceiptQueryParam` object, if it is not nil. Otherwise the default ordering and
     /// filtering will be applied.
     ///
-    /// * Offset: 0
-    /// * Limit: 10
     /// * Created Before: N/A
     /// * Created After: N/A
     /// * Currency: All
