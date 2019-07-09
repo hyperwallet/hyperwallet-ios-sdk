@@ -120,7 +120,9 @@ public final class HyperwalletBankAccount: HyperwalletTransferMethod {
 
     /// The user's relationship with the bank account holder.
     public var bankAccountRelationship: RelationshipType? {
-        guard let relationship = getField(fieldName: TransferMethodField.bankAccountRelationship.rawValue) as? String else {
+        let relationshiFieldName = TransferMethodField.bankAccountRelationship.rawValue
+
+        guard let relationship = getField(fieldName: relationshiFieldName) as? String else {
             return nil
         }
 
