@@ -60,10 +60,10 @@ class HyperwalletTransferMethodTests: XCTestCase {
         XCTAssertEqual(bankCard?.status, "ACTIVATED")
         XCTAssertEqual(bankCard?.transferMethodCountry, "US")
         XCTAssertEqual(bankCard?.transferMethodCurrency, "USD")
-        XCTAssertEqual(bankCard?.getField(fieldName: .cardNumber) as? String, "************1358")
-        XCTAssertEqual(bankCard?.getField(fieldName: .dateOfExpiry) as? String, "2022-12")
-        XCTAssertEqual(bankCard?.getField(fieldName: .cardType) as? String, "DEBIT")
-        XCTAssertEqual(bankCard?.getField(fieldName: .cardBrand) as? String, "VISA")
+        XCTAssertEqual(bankCard?.getField(fieldName: .cardNumber), "************1358")
+        XCTAssertEqual(bankCard?.getField(fieldName: .dateOfExpiry), "2022-12")
+        XCTAssertEqual(bankCard?.getField(fieldName: .cardType), "DEBIT")
+        XCTAssertEqual(bankCard?.getField(fieldName: .cardBrand), "VISA")
 
         // check the bank account
         let bankAccount = transferMethods?.data.first { ($0.type ?? "")  == "BANK_ACCOUNT" }
@@ -74,11 +74,11 @@ class HyperwalletTransferMethodTests: XCTestCase {
         XCTAssertEqual(bankAccount?.createdOn, "2018-12-15T00:30:12")
         XCTAssertEqual(bankAccount?.transferMethodCountry, "US")
         XCTAssertEqual(bankAccount?.transferMethodCurrency, "USD")
-        XCTAssertEqual(bankAccount?.getField(fieldName: .bankAccountId) as? String, "25589087")
-        XCTAssertEqual(bankAccount?.getField(fieldName: .bankId) as? String, "021000021")
-        XCTAssertEqual(bankAccount?.getField(fieldName: .branchId) as? String, "021000021")
-        XCTAssertEqual(bankAccount?.getField(fieldName: .bankAccountRelationship) as? String ?? "", "SELF")
-        XCTAssertEqual(bankAccount?.getField(fieldName: .bankAccountPurpose) as? String ?? "", "CHECKING")
+        XCTAssertEqual(bankAccount?.getField(fieldName: .bankAccountId), "25589087")
+        XCTAssertEqual(bankAccount?.getField(fieldName: .bankId), "021000021")
+        XCTAssertEqual(bankAccount?.getField(fieldName: .branchId), "021000021")
+        XCTAssertEqual(bankAccount?.getField(fieldName: .bankAccountRelationship), "SELF")
+        XCTAssertEqual(bankAccount?.getField(fieldName: .bankAccountPurpose), "CHECKING")
     }
 
     func testListTransferMethods_emptyResult() {
