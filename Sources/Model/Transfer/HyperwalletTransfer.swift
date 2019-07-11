@@ -19,11 +19,11 @@
 import Foundation
 
 public struct HyperwalletForeignExchange: Codable {
-    let destinationAmount: String?
-    let destinationCurrency: String?
-    let rate: String?
-    let sourceAmount: String?
-    let sourceCurrency: String?
+    public let destinationAmount: String?
+    public let destinationCurrency: String?
+    public let rate: String?
+    public let sourceAmount: String?
+    public let sourceCurrency: String?
 }
 
 public struct HyperwalletTransfer: Codable {
