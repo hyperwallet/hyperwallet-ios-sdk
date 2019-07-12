@@ -524,6 +524,7 @@ private extension HyperwalletBankAccountIndividualTests {
 
         verifyRelationship(.ownCompany, in: bankAccountResponse)
         verifyPurpose(.checking, in: bankAccountResponse)
+        verifyBusinessType(.corporation, in: bankAccountResponse)
 
         XCTAssertEqual(bankAccountResponse?.businessName, "US BANK NA")
         XCTAssertEqual(bankAccountResponse?.phoneNumber, "604-345-1777")
@@ -545,6 +546,8 @@ private extension HyperwalletBankAccountIndividualTests {
 
         verifyRelationship(.self, in: bankAccountResponse)
         verifyPurpose(.checking, in: bankAccountResponse)
+        verifyGender(.male, in: bankAccountResponse)
+        verifyGovernmentIdType(.passport, in: bankAccountResponse)
 
         XCTAssertEqual(bankAccountResponse?.firstName, "Some")
         XCTAssertEqual(bankAccountResponse?.middleName, "Good")
@@ -560,6 +563,13 @@ private extension HyperwalletBankAccountIndividualTests {
         XCTAssertEqual(bankAccountResponse?.postalCode, "94105")
         XCTAssertEqual(bankAccountResponse?.profileType, "INDIVIDUAL")
         XCTAssertEqual(bankAccountResponse?.type, "BANK_ACCOUNT")
+        XCTAssertEqual(bankAccountResponse?.bankName, "ABC")
+        XCTAssertEqual(bankAccountResponse?.branchName, "XYZ")
+        XCTAssertEqual(bankAccountResponse?.countryOfBirth, "US")
+        XCTAssertEqual(bankAccountResponse?.driversLicenseId, "1234")
+        XCTAssertEqual(bankAccountResponse?.employerId, "1234")
+        XCTAssertEqual(bankAccountResponse?.governmentId, "12898")
+        XCTAssertEqual(bankAccountResponse?.passportId, "112323")
     }
 
     func verifyIndividualWireResponse(_ wireAccountResponse: HyperwalletBankAccount?) {
@@ -639,6 +649,7 @@ private extension HyperwalletBankAccountIndividualTests {
         XCTAssertEqual(bankAccountResponse?.wireInstructions, "This is instruction")
         XCTAssertEqual(bankAccountResponse?.profileType, "BUSINESS")
         XCTAssertEqual(bankAccountResponse?.type, "WIRE_ACCOUNT")
+        XCTAssertEqual(bankAccountResponse?.bankName, "Bank of America NA")
     }
 
     func verifyRelationship(_ relationship: HyperwalletBankAccount.RelationshipType,
@@ -657,5 +668,23 @@ private extension HyperwalletBankAccountIndividualTests {
                     in bankAccountResponse: HyperwalletBankAccount?) {
         let responseRole = bankAccountResponse?.businessContactRole?.rawValue
         XCTAssertEqual(responseRole, role.rawValue)
+    }
+
+    func verifyBusinessType(_ type: HyperwalletBankAccount.BusinessType,
+                            in bankAccountResponse: HyperwalletBankAccount?) {
+        let responseBusinessType = bankAccountResponse?.businessType?.rawValue
+        XCTAssertEqual(responseBusinessType, type.rawValue)
+    }
+
+    func verifyGender(_ gender: HyperwalletBankAccount.Gender,
+                      in bankAccountResponse: HyperwalletBankAccount?) {
+        let responseGender = bankAccountResponse?.gender?.rawValue
+        XCTAssertEqual(responseGender, gender.rawValue)
+    }
+
+    func verifyGovernmentIdType(_ governmentIdType: HyperwalletBankAccount.GovernmentIdType,
+                                in bankAccountResponse: HyperwalletBankAccount?) {
+        let responseGovernmentIdType = bankAccountResponse?.governmentIdType?.rawValue
+        XCTAssertEqual(responseGovernmentIdType, governmentIdType.rawValue)
     }
 }

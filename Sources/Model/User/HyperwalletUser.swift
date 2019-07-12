@@ -200,42 +200,42 @@ public struct HyperwalletUser: Codable {
 
     /// The user's street address.
     public var addressLine1: String? {
-        return getField(.addressLine1) as? String
+        return getField(UserField.addressLine1.rawValue)
     }
 
     /// The user's address, second line.
     public var addressLine2: String? {
-        return getField(.addressLine2) as? String
+        return getField(UserField.addressLine2.rawValue)
     }
 
     /// The business contact's street address.
     public var businessContactAddressLine1: String? {
-        return getField(.businessContactAddressLine1) as? String
+        return getField(UserField.businessContactAddressLine1.rawValue)
     }
 
     /// The business contact's address, second line.
     public var businessContactAddressLine2: String? {
-        return getField(.businessContactAddressLine2) as? String
+        return getField(UserField.businessContactAddressLine2.rawValue)
     }
 
     /// The business contact's city.
     public var businessContactCity: String? {
-        return getField(.businessContactCity) as? String
+        return getField(UserField.businessContactCity.rawValue)
     }
 
     /// The business contact's country,
     public var businessContactCountry: String? {
-        return getField(.businessContactCountry) as? String
+        return getField(UserField.businessContactCountry.rawValue)
     }
 
     /// The business contact's postal code.
     public var businessContactPostalCode: String? {
-        return getField(.businessContactPostalCode) as? String
+        return getField(UserField.businessContactPostalCode.rawValue)
     }
 
     /// The user's role in the organization
     public var businessContactRole: BusinessContactRole? {
-        guard let value = getField(.businessContactRole) as? String else {
+        guard let value = getField(UserField.businessContactRole.rawValue) else {
             return nil
         }
         return BusinessContactRole(rawValue: value)
@@ -243,37 +243,37 @@ public struct HyperwalletUser: Codable {
 
     /// The business contact's state, province or region.
     public var businessContactStateProvince: String? {
-        return getField(.businessContactStateProvince) as? String
+        return getField(UserField.businessContactStateProvince.rawValue)
     }
 
     /// The business name.
     public var businessName: String? {
-        return getField(.businessName) as? String
+        return getField(UserField.businessName.rawValue)
     }
 
     /// The business' operating name.
     public var businessOperatingName: String? {
-        return getField(.businessOperatingName) as? String
+        return getField(UserField.businessOperatingName.rawValue)
     }
 
     /// The country where the business is registered.
     public var businessRegistrationCountry: String? {
-        return getField(.businessRegistrationCountry) as? String
+        return getField(UserField.businessRegistrationCountry.rawValue)
     }
 
     /// The business registration number or identifier assigned by a government body.
     public var businessRegistrationId: String? {
-        return getField(.businessRegistrationId) as? String
+        return getField(UserField.businessRegistrationId.rawValue)
     }
 
     /// The state, province or region where the business is registered.
     public var businessRegistrationStateProvince: String? {
-        return getField(.businessRegistrationStateProvince) as? String
+        return getField(UserField.businessRegistrationStateProvince.rawValue)
     }
 
     /// The business type
     public var businessType: BusinessType? {
-        guard let value = getField(.businessType) as? String else {
+        guard let value = getField(UserField.businessType.rawValue) else {
             return nil
         }
         return BusinessType(rawValue: value)
@@ -281,64 +281,64 @@ public struct HyperwalletUser: Codable {
 
     /// The user's city.
     public var city: String? {
-        return getField(.city) as? String
+        return getField(UserField.city.rawValue)
     }
 
     /// A client-defined identifier for the user. This is the unique ID assigned to the user on your system.
     public var clientUserId: String? {
-        return getField(.clientUserId) as? String
+        return getField(UserField.clientUserId.rawValue)
     }
 
     /// The user's country.
     public var country: String? {
-        return getField(.country) as? String
+        return getField(UserField.country.rawValue)
     }
 
     /// The user's birth country.
     public var countryOfBirth: String? {
-        return getField(.countryOfBirth) as? String
+        return getField(UserField.countryOfBirth.rawValue)
     }
 
     /// The user's country of citizenship or nationality.
     public var countryOfNationality: String? {
-        return getField(.countryOfNationality) as? String
+        return getField(UserField.countryOfNationality.rawValue)
     }
 
     /// The datetime the user account was created on in ISO 8601 format (YYYY-MM-DDThh:mm:ss). Note that the timezone
     /// used is UTC, therefore no time offset is returned.
     public var createdOn: String? {
-        return getField(.createdOn) as? String
+        return getField(UserField.createdOn.rawValue)
     }
 
     /// The user's date of birth (All users must be at least 13 years old).
     public var dateOfBirth: String? {
-        return getField(.dateOfBirth) as? String
+        return getField(UserField.dateOfBirth.rawValue)
     }
 
     /// The user's driver's license number.
     public var driversLicenseId: String? {
-        return getField(.driversLicenseId) as? String
+        return getField(UserField.driversLicenseId.rawValue)
     }
 
     /// The contact email address for the user account. This must be unique for your program, so you cannot have two
     /// users belonging to the same program with the same email address.
     public var email: String? {
-        return getField(.email) as? String
+        return getField(UserField.email.rawValue)
     }
 
     /// The user's employer identifier, generally used for tax purposes.
     public var employerId: String? {
-        return getField(.employerId) as? String
+        return getField(UserField.employerId.rawValue)
     }
 
     /// The user's first name.
     public var firstName: String? {
-        return getField(.firstName) as? String
+        return getField(UserField.firstName.rawValue)
     }
 
     /// The user's gender.
     public var gender: Gender? {
-        guard let value = getField(.gender) as? String else {
+        guard let value = getField(UserField.gender.rawValue) else {
             return nil
         }
         return Gender(rawValue: value)
@@ -346,52 +346,52 @@ public struct HyperwalletUser: Codable {
 
     /// The user's government ID number, such as a Social Security Number.
     public var governmentId: String? {
-        return getField(.governmentId) as? String
+        return getField(UserField.governmentId.rawValue)
     }
 
     /// The user's government ID type.
     public var governmentIdType: String? {
-        return getField(.governmentIdType) as? String
+        return getField(UserField.governmentIdType.rawValue)
     }
 
     /// The preferred language for the user's account. Defaults to English if not provided.
     public var language: String? {
-        return getField(.language) as? String
+        return getField(UserField.language.rawValue)
     }
 
     /// The user's last name.
     public var lastName: String? {
-        return getField(.lastName) as? String
+        return getField(UserField.lastName.rawValue)
     }
 
     /// The user's middle name.
     public var middleName: String? {
-        return getField(.middleName) as? String
+        return getField(UserField.middleName.rawValue)
     }
 
     /// The user's cell phone number.
     public var mobileNumber: String? {
-        return getField(.mobileNumber) as? String
+        return getField(UserField.mobileNumber.rawValue)
     }
 
     /// The user's passport number.
     public var passportId: String? {
-        return getField(.passportId) as? String
+        return getField(UserField.passportId.rawValue)
     }
 
     /// The user's phone number.
     public var phoneNumber: String? {
-        return getField(.phoneNumber) as? String
+        return getField(UserField.phoneNumber.rawValue)
     }
 
     /// The user's postal code.
     public var postalCode: String? {
-        return getField(.postalCode) as? String
+        return getField(UserField.postalCode.rawValue)
     }
 
     /// The user's profile type. See `ProfileType`
     public var profileType: ProfileType? {
-        guard let value = getField(.profileType) as? String else {
+        guard let value = getField(UserField.profileType.rawValue) else {
             return nil
         }
         return ProfileType(rawValue: value)
@@ -399,17 +399,17 @@ public struct HyperwalletUser: Codable {
 
     /// The unique identifier for the program to which the user will belong.
     public var programToken: String? {
-        return getField(.programToken) as? String
+        return getField(UserField.programToken.rawValue)
     }
 
     /// The user's state, province or region.
     public var stateProvince: String? {
-        return getField(.stateProvince) as? String
+        return getField(UserField.stateProvince.rawValue)
     }
 
     /// The user account status.
     public var status: Status? {
-        guard let value = getField(.status) as? String else {
+        guard let value = getField(UserField.status.rawValue) else {
             return nil
         }
         return Status(rawValue: value)
@@ -417,18 +417,18 @@ public struct HyperwalletUser: Codable {
 
     /// The local time of a region or a country. e.g. GMT, PST, ...
     public var timeZone: String? {
-        return getField(.timeZone) as? String
+        return getField(UserField.timeZone.rawValue)
     }
 
     /// The unique, auto-generated user identifier. Max 64 characters, prefixed with "usr-".
     public var token: String? {
-        return getField(.token) as? String
+        return getField(UserField.token.rawValue)
     }
 
     /// The user's verification status. A user may be required to verify their identity after a certain
     /// threshold of payments is reached.
     public var verificationStatus: VerificationStatus? {
-        guard let value = getField(.verificationStatus) as? String else {
+        guard let value = getField(UserField.verificationStatus.rawValue) else {
             return nil
         }
         return VerificationStatus(rawValue: value)
@@ -445,10 +445,10 @@ public struct HyperwalletUser: Codable {
 
     /// Gets the field value
     ///
-    /// - Parameter fieldName: The `UserField` type
+    /// - Parameter fieldName: The `UserField` type raw value
     /// - Returns: Returns the field value, or nil if none exists.
-    public func getField(_ fieldName: UserField) -> Any? {
-        return storage[fieldName.rawValue]?.value
+    public func getField(_ fieldName: String) -> String? {
+        return self.storage[fieldName]?.value as? String
     }
 
     /// A helper class to build the `HyperwalletUser` instance.

@@ -60,10 +60,15 @@ class HyperwalletTransferMethodTests: XCTestCase {
         XCTAssertEqual(bankCard?.status, "ACTIVATED")
         XCTAssertEqual(bankCard?.transferMethodCountry, "US")
         XCTAssertEqual(bankCard?.transferMethodCurrency, "USD")
-        XCTAssertEqual(bankCard?.getField(fieldName: .cardNumber), "************1358")
-        XCTAssertEqual(bankCard?.getField(fieldName: .dateOfExpiry), "2022-12")
-        XCTAssertEqual(bankCard?.getField(fieldName: .cardType), "DEBIT")
-        XCTAssertEqual(bankCard?.getField(fieldName: .cardBrand), "VISA")
+
+        let cardFieldName = HyperwalletTransferMethod.TransferMethodField.cardNumber.rawValue
+        XCTAssertEqual(bankCard?.getField(cardFieldName), "************1358")
+        let cardEXpiryDateFieldName = HyperwalletTransferMethod.TransferMethodField.dateOfExpiry.rawValue
+        XCTAssertEqual(bankCard?.getField(cardEXpiryDateFieldName), "2022-12")
+        let cardTypeFieldName = HyperwalletTransferMethod.TransferMethodField.cardType.rawValue
+        XCTAssertEqual(bankCard?.getField(cardTypeFieldName), "DEBIT")
+        let cardBrandFieldName = HyperwalletTransferMethod.TransferMethodField.cardBrand.rawValue
+        XCTAssertEqual(bankCard?.getField(cardBrandFieldName), "VISA")
 
         // check the bank account
         let bankAccount = transferMethods?.data.first { ($0.type ?? "")  == "BANK_ACCOUNT" }
@@ -74,11 +79,16 @@ class HyperwalletTransferMethodTests: XCTestCase {
         XCTAssertEqual(bankAccount?.createdOn, "2018-12-15T00:30:12")
         XCTAssertEqual(bankAccount?.transferMethodCountry, "US")
         XCTAssertEqual(bankAccount?.transferMethodCurrency, "USD")
-        XCTAssertEqual(bankAccount?.getField(fieldName: .bankAccountId), "25589087")
-        XCTAssertEqual(bankAccount?.getField(fieldName: .bankId), "021000021")
-        XCTAssertEqual(bankAccount?.getField(fieldName: .branchId), "021000021")
-        XCTAssertEqual(bankAccount?.getField(fieldName: .bankAccountRelationship), "SELF")
-        XCTAssertEqual(bankAccount?.getField(fieldName: .bankAccountPurpose), "CHECKING")
+        let bankAccountIdFieldName = HyperwalletTransferMethod.TransferMethodField.bankAccountId.rawValue
+        XCTAssertEqual(bankAccount?.getField(bankAccountIdFieldName), "25589087")
+        let bankIdFieldName = HyperwalletTransferMethod.TransferMethodField.bankId.rawValue
+        XCTAssertEqual(bankAccount?.getField(bankIdFieldName), "021000021")
+        let branchIdFieldName = HyperwalletTransferMethod.TransferMethodField.branchId.rawValue
+        XCTAssertEqual(bankAccount?.getField(branchIdFieldName), "021000021")
+        let relationshipFieldName = HyperwalletTransferMethod.TransferMethodField.bankAccountRelationship.rawValue
+        XCTAssertEqual(bankAccount?.getField(relationshipFieldName), "SELF")
+        let purposeFieldName = HyperwalletTransferMethod.TransferMethodField.bankAccountPurpose.rawValue
+        XCTAssertEqual(bankAccount?.getField(purposeFieldName), "CHECKING")
     }
 
     func testListTransferMethods_emptyResult() {
