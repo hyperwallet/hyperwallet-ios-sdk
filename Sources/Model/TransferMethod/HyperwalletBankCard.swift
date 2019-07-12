@@ -28,6 +28,31 @@ public class HyperwalletBankCard: HyperwalletTransferMethod {
         try super.init(from: decoder)
     }
 
+    /// The card brand
+    public var cardBrand: String? {
+        return getField(fieldName: .cardBrand)
+    }
+
+    /// The card number
+    public var cardNumber: String? {
+        return getField(fieldName: .cardNumber)
+    }
+
+    /// The card type
+    public var cardType: String? {
+        return getField(fieldName: .cardType)
+    }
+
+    /// The card security code which is embossed or printed on the card.
+    public var cvv: String? {
+        return getField(fieldName: .cvv)
+    }
+
+    /// The expiration date.
+    public var dateOfExpiry: String? {
+        return getField(fieldName: .dateOfExpiry)
+    }
+
     /// A helper class to build the `HyperwalletBankCard` instance.
     public final class Builder {
         private var storage = [String: AnyCodable]()

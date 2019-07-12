@@ -44,7 +44,7 @@ class HyperwalletPayPalAccountTests: XCTestCase {
         XCTAssertNotNil(payPalAccount)
         XCTAssertNil(errorResponse, "The `errorResponse` should be nil")
         XCTAssertNotNil(payPalAccountResponse?.getFields())
-        XCTAssertEqual(payPalAccountResponse?.getField(fieldName: .email) as! String, "test@paypal.com")
+        XCTAssertEqual(payPalAccountResponse?.email, "test@paypal.com")
     }
 
     func testCreatePayPalAccount_missingMandatoryField_returnBadRequest() {
@@ -133,8 +133,8 @@ class HyperwalletPayPalAccountTests: XCTestCase {
         // Then
         XCTAssertNil(errorResponse, "The `errorResponse` should be nil")
         XCTAssertNotNil(payPalAccountResponse?.getFields())
-        XCTAssertEqual(payPalAccountResponse?.getField(fieldName: .email) as? String, "test@paypal.com")
-        XCTAssertEqual(payPalAccountResponse?.getField(fieldName: .profileType) as? String, "INDIVIDUAL")
+        XCTAssertEqual(payPalAccountResponse?.email, "test@paypal.com")
+        XCTAssertEqual(payPalAccountResponse?.profileType, "INDIVIDUAL")
     }
 
     func testUpdatePayPalAccount_success() {
@@ -165,7 +165,7 @@ class HyperwalletPayPalAccountTests: XCTestCase {
         // Then
         XCTAssertNil(errorResponse, "The `errorResponse` should be nil")
         XCTAssertNotNil(payPalAccountResponse?.getFields())
-        XCTAssertEqual(payPalAccountResponse?.getField(fieldName: .email) as! String, "test@paypal.com")
+        XCTAssertEqual(payPalAccountResponse?.email, "test@paypal.com")
     }
 
     func testUpdatePayPalAccount_invalidEmail() {
@@ -287,7 +287,7 @@ class HyperwalletPayPalAccountTests: XCTestCase {
 
         let payPalAccount = payPalAccountList?.data.first
         XCTAssertEqual(payPalAccount?.token, "trm-123456789")
-        XCTAssertEqual(payPalAccount?.getField(fieldName: .email) as? String, "test@paypal.com")
+        XCTAssertEqual(payPalAccount?.email, "test@paypal.com")
     }
 
     func testListPayPalAccounts_emptyResult() {

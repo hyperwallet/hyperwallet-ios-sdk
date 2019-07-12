@@ -105,7 +105,7 @@ class HyperwalletBankCardTests: XCTestCase {
         // Then
         XCTAssertNil(errorResponse, "The `errorResponse` should be nil")
         XCTAssertNotNil(bankCardResponse?.getFields())
-        XCTAssertEqual(bankCardResponse?.getField(fieldName: .cardBrand) as? String, "VISA")
+        XCTAssertEqual(bankCardResponse?.cardBrand, "VISA")
     }
 
     func testUpdateBankCard_success() {
@@ -135,7 +135,7 @@ class HyperwalletBankCardTests: XCTestCase {
         // Then
         XCTAssertNil(errorResponse, "The `errorResponse` should be nil")
         XCTAssertNotNil(bankCardResponse?.getFields())
-        XCTAssertEqual(bankCardResponse?.getField(fieldName: .dateOfExpiry) as! String, "2022-12")
+        XCTAssertEqual(bankCardResponse?.dateOfExpiry, "2022-12")
     }
 
     func testUpdateBankCard_invalidCardNumberLength() {
@@ -264,8 +264,8 @@ class HyperwalletBankCardTests: XCTestCase {
         let bankCard = bankCardList?.data.first
         XCTAssertEqual(bankCard?.type, "BANK_CARD")
         XCTAssertEqual(bankCard?.token, "trm-12345")
-        XCTAssertEqual(bankCard?.getField(fieldName: .cardNumber) as? String, "************0199")
-        XCTAssertEqual(bankCard?.getField(fieldName: .dateOfExpiry) as? String, "2022-12")
+        XCTAssertEqual(bankCard?.cardNumber, "************0199")
+        XCTAssertEqual(bankCard?.dateOfExpiry, "2022-12")
     }
 
     func testListBankCards_emptyResult() {
