@@ -767,7 +767,7 @@ public final class Hyperwallet {
         (TransferMethodConfigurationKeyResult?, HyperwalletErrorType?) -> Void))
         -> (TransferMethodConfigurationKey?, HyperwalletErrorType?) -> Void {
             return { (response, error) in
-                completionHandler(TransferMethodConfigurationKeyResult(response?.countries.nodes), error)
+                completionHandler(TransferMethodConfigurationKeyResult(response?.countries?.nodes), error)
             }
     }
 }
