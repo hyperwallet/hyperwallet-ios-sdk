@@ -29,7 +29,7 @@ public final class HyperwalletPayPalAccount: HyperwalletTransferMethod {
 
     /// The email address.
     public var email: String? {
-        return getField(fieldName: .email) as? String
+        return getField(TransferMethodField.email.rawValue)
     }
 
     /// A helper class to build the `HyperwalletPayPalAccount` instance.

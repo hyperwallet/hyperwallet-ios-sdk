@@ -176,10 +176,10 @@ public class HyperwalletTransferMethod: Codable {
 
     /// Gets the field value
     ///
-    /// - Parameter fieldName: The `TransferMethodField` type
+    /// - Parameter fieldName: The `TransferMethodField` type raw value
     /// - Returns: Returns the field value, or nil if none exists.
-    public func getField(fieldName: TransferMethodField) -> String? {
-        return self.storage[fieldName.rawValue]?.value as? String
+    public func getField(_ fieldName: String) -> String? {
+        return self.storage[fieldName]?.value as? String
     }
 
     /// Sets the field value based on the key
@@ -215,36 +215,36 @@ public class HyperwalletTransferMethod: Codable {
 
     /// The transfer method's created time
     public var createdOn: String? {
-        return getField(fieldName: .createdOn)
+        return getField(TransferMethodField.createdOn.rawValue)
     }
 
     /// The transfer method holder's profile type, e.g. INDIVIDUAL or BUSINESS.
     public var profileType: String? {
-        return getField(fieldName: .profileType)
+        return getField(TransferMethodField.profileType.rawValue)
     }
 
     /// The transfer method's status
     public var status: String? {
-        return getField(fieldName: .status)
+        return getField(TransferMethodField.status.rawValue)
     }
 
     /// The transfer method's token
     public var token: String? {
-        return getField(fieldName: .token)
+        return getField(TransferMethodField.token.rawValue)
     }
 
     /// The transfer method's country
     public var transferMethodCountry: String? {
-        return getField(fieldName: .transferMethodCountry)
+        return getField(TransferMethodField.transferMethodCountry.rawValue)
     }
 
     /// The transfer method's currency
     public var transferMethodCurrency: String? {
-        return getField(fieldName: .transferMethodCurrency)
+        return getField(TransferMethodField.transferMethodCurrency.rawValue)
     }
 
     /// The transfer method's type
     public var type: String? {
-        return getField(fieldName: .type)
+        return getField(TransferMethodField.type.rawValue)
     }
 }

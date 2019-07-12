@@ -30,27 +30,27 @@ public class HyperwalletBankCard: HyperwalletTransferMethod {
 
     /// The card brand
     public var cardBrand: String? {
-        return getField(fieldName: .cardBrand)
+        return getField(TransferMethodField.cardBrand.rawValue)
     }
 
     /// The card number
     public var cardNumber: String? {
-        return getField(fieldName: .cardNumber)
+        return getField(TransferMethodField.cardNumber.rawValue)
     }
 
     /// The card type
     public var cardType: String? {
-        return getField(fieldName: .cardType)
+        return getField(TransferMethodField.cardType.rawValue)
     }
 
     /// The card security code which is embossed or printed on the card.
     public var cvv: String? {
-        return getField(fieldName: .cvv)
+        return getField(TransferMethodField.cvv.rawValue)
     }
 
     /// The expiration date.
     public var dateOfExpiry: String? {
-        return getField(fieldName: .dateOfExpiry)
+        return getField(TransferMethodField.dateOfExpiry.rawValue)
     }
 
     /// A helper class to build the `HyperwalletBankCard` instance.
