@@ -246,7 +246,7 @@ Hyperwallet.shared.listBankAccounts(queryParam: bankAccountQueryParam) { (result
     // In case of successful, response (HyperwalletPageList<HyperwalletBankAccount>? in this case) will contain information about or nil if not exist.
     if let bankAccounts = result?.data {
         for bankAccount in bankAccounts {
-            print(bankAccount.getField(fieldName: .token) ?? "")
+            print(bankAccount.token ?? "")
         }
     }
 }
@@ -316,7 +316,7 @@ Hyperwallet.shared.listBankCards(queryParam: bankCardQueryParam) { (result, erro
     // In case of successful, response (HyperwalletPageList<HyperwalletBankCard>? in this case) will contain information about or nil if not exist.
     if let bankCards = result?.data {
         for bankCard in bankCards {
-            print(bankCard.getField(fieldName: .token) ?? "")
+            print(bankCard.token ?? "")
         }
     }
 }
@@ -405,7 +405,7 @@ Hyperwallet.shared.listTransferMethods(queryParam: transferMethodQueryParam) { (
     // In case of successful, response (HyperwalletPageList<HyperwalletTransferMethod>? in this case) will contain information about or nil if not exist.
     if let transferMethods = result?.data {
         for transferMethod in transferMethods {
-            print(transferMethod.getField(fieldName: .token) ?? "")
+            print(transferMethod.token ?? "")
         }
     }
 }
@@ -460,7 +460,7 @@ Hyperwallet.shared.listTransfers { (result, error) in
     // In case of successful, response (HyperwalletPageList<HyperwalletTransfer>? in this case) will contain information about or nil if not exist.
     if let transfers = result?.data {
         for transfer in transfers {
-            print(transfer.getField(fieldName: .token) ?? "")
+            print(transfer.token ?? "")
         }
     }
 })

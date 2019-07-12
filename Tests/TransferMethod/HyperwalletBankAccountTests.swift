@@ -183,7 +183,7 @@ class HyperwalletBankAccountIndividualTests: XCTestCase {
         // Then
         XCTAssertNil(errorResponse, "The `errorResponse` should be nil")
         XCTAssertNotNil(bankAccountResponse?.getFields())
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .bankAccountPurpose) as? String, "CHECKING")
+        XCTAssertEqual(bankAccountResponse?.bankAccountPurpose?.rawValue, "CHECKING")
     }
 
     func testUpdateBankAccount_success() {
@@ -213,7 +213,7 @@ class HyperwalletBankAccountIndividualTests: XCTestCase {
         // Then
         XCTAssertNil(errorResponse, "The `errorResponse` should be nil")
         XCTAssertNotNil(bankAccountResponse?.getFields())
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .branchId) as! String, "026009593")
+        XCTAssertEqual(bankAccountResponse?.branchId, "026009593")
     }
 
     func testUpdateBankAccount_invalidBranchIdLength() {
@@ -343,8 +343,8 @@ class HyperwalletBankAccountIndividualTests: XCTestCase {
         let bankAccount = bankAccountList?.data.first
         XCTAssertEqual(bankAccount?.type, "BANK_ACCOUNT")
         XCTAssertEqual(bankAccount?.token, "trm-12345")
-        XCTAssertEqual(bankAccount?.getField(fieldName: .bankAccountId) as? String, "54629074")
-        XCTAssertEqual(bankAccount?.getField(fieldName: .dateOfBirth) as? String, "1980-01-01")
+        XCTAssertEqual(bankAccount?.bankAccountId, "54629074")
+        XCTAssertEqual(bankAccount?.dateOfBirth, "1980-01-01")
     }
 
     func testListBankAccounts_emptyResult() {
@@ -518,83 +518,93 @@ private extension HyperwalletBankAccountIndividualTests {
         XCTAssertNotNil(bankAccountResponse?.getFields())
         XCTAssertEqual(bankAccountResponse?.transferMethodCountry, "US")
         XCTAssertEqual(bankAccountResponse?.transferMethodCurrency, "USD")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .profileType) as! String, "BUSINESS")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .bankAccountId) as! String, "7861012345")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .branchId) as! String, "102000021")
+        XCTAssertEqual(bankAccountResponse?.profileType, "BUSINESS")
+        XCTAssertEqual(bankAccountResponse?.bankAccountId, "7861012345")
+        XCTAssertEqual(bankAccountResponse?.branchId, "102000021")
 
         verifyRelationship(.ownCompany, in: bankAccountResponse)
         verifyPurpose(.checking, in: bankAccountResponse)
+        verifyBusinessType(.corporation, in: bankAccountResponse)
 
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .businessName) as! String, "US BANK NA")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .phoneNumber) as! String, "604-345-1777")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .mobileNumber) as! String, "604-345-1888")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .country) as! String, "US")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .stateProvince) as! String, "WA")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .addressLine1) as! String, "1234, Broadway")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .addressLine2) as! String, "57 Market Street")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .city) as! String, "Test City")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .postalCode) as! String, "12345")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .profileType) as! String, "BUSINESS")
+        XCTAssertEqual(bankAccountResponse?.businessName, "US BANK NA")
+        XCTAssertEqual(bankAccountResponse?.phoneNumber, "604-345-1777")
+        XCTAssertEqual(bankAccountResponse?.mobileNumber, "604-345-1888")
+        XCTAssertEqual(bankAccountResponse?.country, "US")
+        XCTAssertEqual(bankAccountResponse?.stateProvince, "WA")
+        XCTAssertEqual(bankAccountResponse?.addressLine1, "1234, Broadway")
+        XCTAssertEqual(bankAccountResponse?.addressLine2, "57 Market Street")
+        XCTAssertEqual(bankAccountResponse?.city, "Test City")
+        XCTAssertEqual(bankAccountResponse?.postalCode, "12345")
+        XCTAssertEqual(bankAccountResponse?.profileType, "BUSINESS")
         XCTAssertEqual(bankAccountResponse?.type, "BANK_ACCOUNT")
     }
 
     func verifyIndividualResponse(_ bankAccountResponse: HyperwalletBankAccount?) {
         XCTAssertNotNil(bankAccountResponse?.getFields())
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .bankAccountId) as! String, "675825206")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .branchId) as! String, "026009593")
+        XCTAssertEqual(bankAccountResponse?.bankAccountId, "675825206")
+        XCTAssertEqual(bankAccountResponse?.branchId, "026009593")
 
         verifyRelationship(.self, in: bankAccountResponse)
         verifyPurpose(.checking, in: bankAccountResponse)
+        verifyGender(.male, in: bankAccountResponse)
+        verifyGovernmentIdType(.passport, in: bankAccountResponse)
 
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .firstName) as! String, "Some")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .middleName) as! String, "Good")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .lastName) as! String, "Guy")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .phoneNumber) as! String, "604-345-1777")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .mobileNumber) as! String, "604-345-1888")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .dateOfBirth) as! String, "1991-01-01")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .addressLine1) as! String, "575 Market Street")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .addressLine2) as! String, "57 Market Street")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .city) as! String, "San Francisco")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .stateProvince) as! String, "CA")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .country) as! String, "US")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .postalCode) as! String, "94105")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .profileType) as! String, "INDIVIDUAL")
+        XCTAssertEqual(bankAccountResponse?.firstName, "Some")
+        XCTAssertEqual(bankAccountResponse?.middleName, "Good")
+        XCTAssertEqual(bankAccountResponse?.lastName, "Guy")
+        XCTAssertEqual(bankAccountResponse?.phoneNumber, "604-345-1777")
+        XCTAssertEqual(bankAccountResponse?.mobileNumber, "604-345-1888")
+        XCTAssertEqual(bankAccountResponse?.dateOfBirth, "1991-01-01")
+        XCTAssertEqual(bankAccountResponse?.addressLine1, "575 Market Street")
+        XCTAssertEqual(bankAccountResponse?.addressLine2, "57 Market Street")
+        XCTAssertEqual(bankAccountResponse?.city, "San Francisco")
+        XCTAssertEqual(bankAccountResponse?.stateProvince, "CA")
+        XCTAssertEqual(bankAccountResponse?.country, "US")
+        XCTAssertEqual(bankAccountResponse?.postalCode, "94105")
+        XCTAssertEqual(bankAccountResponse?.profileType, "INDIVIDUAL")
         XCTAssertEqual(bankAccountResponse?.type, "BANK_ACCOUNT")
+        XCTAssertEqual(bankAccountResponse?.bankName, "ABC")
+        XCTAssertEqual(bankAccountResponse?.branchName, "XYZ")
+        XCTAssertEqual(bankAccountResponse?.countryOfBirth, "US")
+        XCTAssertEqual(bankAccountResponse?.driversLicenseId, "1234")
+        XCTAssertEqual(bankAccountResponse?.employerId, "1234")
+        XCTAssertEqual(bankAccountResponse?.governmentId, "12898")
+        XCTAssertEqual(bankAccountResponse?.passportId, "112323")
     }
 
     func verifyIndividualWireResponse(_ wireAccountResponse: HyperwalletBankAccount?) {
         XCTAssertNotNil(wireAccountResponse?.getFields())
-        XCTAssertEqual(wireAccountResponse?.getField(fieldName: .bankAccountId) as! String, "675825207")
-        XCTAssertEqual(wireAccountResponse?.getField(fieldName: .branchId) as! String, "026009593")
+        XCTAssertEqual(wireAccountResponse?.bankAccountId, "675825207")
+        XCTAssertEqual(wireAccountResponse?.branchId, "026009593")
 
         verifyRelationship(.self, in: wireAccountResponse)
         verifyPurpose(.checking, in: wireAccountResponse)
 
-        XCTAssertEqual(wireAccountResponse?.getField(fieldName: .firstName) as! String, "Tommy")
-        XCTAssertEqual(wireAccountResponse?.getField(fieldName: .lastName) as! String, "Gray")
-        XCTAssertEqual(wireAccountResponse?.getField(fieldName: .phoneNumber) as! String, "604-345-1777")
-        XCTAssertEqual(wireAccountResponse?.getField(fieldName: .mobileNumber) as! String, "604-345-1888")
-        XCTAssertEqual(wireAccountResponse?.getField(fieldName: .dateOfBirth) as! String, "1991-01-01")
-        XCTAssertEqual(wireAccountResponse?.getField(fieldName: .addressLine1) as! String, "575 Market Street")
-        XCTAssertEqual(wireAccountResponse?.getField(fieldName: .addressLine2) as! String, "57 Market Street")
-        XCTAssertEqual(wireAccountResponse?.getField(fieldName: .city) as! String, "San Francisco")
-        XCTAssertEqual(wireAccountResponse?.getField(fieldName: .stateProvince) as! String, "CA")
-        XCTAssertEqual(wireAccountResponse?.getField(fieldName: .country) as! String, "US")
-        XCTAssertEqual(wireAccountResponse?.getField(fieldName: .postalCode) as! String, "94105")
-        XCTAssertEqual(wireAccountResponse?.getField(fieldName: .intermediaryBankAccountId) as! String, "246810")
-        XCTAssertEqual(wireAccountResponse?.getField(fieldName: .intermediaryBankAddressLine1) as! String,
+        XCTAssertEqual(wireAccountResponse?.firstName, "Tommy")
+        XCTAssertEqual(wireAccountResponse?.lastName, "Gray")
+        XCTAssertEqual(wireAccountResponse?.phoneNumber, "604-345-1777")
+        XCTAssertEqual(wireAccountResponse?.mobileNumber, "604-345-1888")
+        XCTAssertEqual(wireAccountResponse?.dateOfBirth, "1991-01-01")
+        XCTAssertEqual(wireAccountResponse?.addressLine1, "575 Market Street")
+        XCTAssertEqual(wireAccountResponse?.addressLine2, "57 Market Street")
+        XCTAssertEqual(wireAccountResponse?.city, "San Francisco")
+        XCTAssertEqual(wireAccountResponse?.stateProvince, "CA")
+        XCTAssertEqual(wireAccountResponse?.country, "US")
+        XCTAssertEqual(wireAccountResponse?.postalCode, "94105")
+        XCTAssertEqual(wireAccountResponse?.intermediaryBankAccountId, "246810")
+        XCTAssertEqual(wireAccountResponse?.intermediaryBankAddressLine1,
                        "5 Market Street")
-        XCTAssertEqual(wireAccountResponse?.getField(fieldName: .intermediaryBankAddressLine2) as! String,
+        XCTAssertEqual(wireAccountResponse?.intermediaryBankAddressLine2,
                        "75 Market Street")
-        XCTAssertEqual(wireAccountResponse?.getField(fieldName: .intermediaryBankCity) as! String, "New York")
-        XCTAssertEqual(wireAccountResponse?.getField(fieldName: .intermediaryBankCountry) as! String, "US")
-        XCTAssertEqual(wireAccountResponse?.getField(fieldName: .intermediaryBankId) as! String, "12345678901")
-        XCTAssertEqual(wireAccountResponse?.getField(fieldName: .intermediaryBankName) as! String,
+        XCTAssertEqual(wireAccountResponse?.intermediaryBankCity, "New York")
+        XCTAssertEqual(wireAccountResponse?.intermediaryBankCountry, "US")
+        XCTAssertEqual(wireAccountResponse?.intermediaryBankId, "12345678901")
+        XCTAssertEqual(wireAccountResponse?.intermediaryBankName,
                        "Intermediary Big Bank")
-        XCTAssertEqual(wireAccountResponse?.getField(fieldName: .intermediaryBankPostalCode) as! String, "134679")
-        XCTAssertEqual(wireAccountResponse?.getField(fieldName: .intermediaryBankStateProvince) as! String, "PA")
-        XCTAssertEqual(wireAccountResponse?.getField(fieldName: .wireInstructions) as! String, "This is instruction")
-        XCTAssertEqual(wireAccountResponse?.getField(fieldName: .profileType) as! String, "INDIVIDUAL")
+        XCTAssertEqual(wireAccountResponse?.intermediaryBankPostalCode, "134679")
+        XCTAssertEqual(wireAccountResponse?.intermediaryBankStateProvince, "PA")
+        XCTAssertEqual(wireAccountResponse?.wireInstructions, "This is instruction")
+        XCTAssertEqual(wireAccountResponse?.profileType, "INDIVIDUAL")
         XCTAssertEqual(wireAccountResponse?.type, "WIRE_ACCOUNT")
     }
 
@@ -602,60 +612,79 @@ private extension HyperwalletBankAccountIndividualTests {
         XCTAssertNotNil(bankAccountResponse?.getFields())
         XCTAssertEqual(bankAccountResponse?.transferMethodCountry, "US")
         XCTAssertEqual(bankAccountResponse?.transferMethodCurrency, "USD")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .profileType) as! String, "BUSINESS")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .bankAccountId) as! String, "675825208")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .branchId) as! String, "026009593")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .bankId) as! String, "13254687")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .branchId) as! String, "026009593")
+        XCTAssertEqual(bankAccountResponse?.profileType, "BUSINESS")
+        XCTAssertEqual(bankAccountResponse?.bankAccountId, "675825208")
+        XCTAssertEqual(bankAccountResponse?.branchId, "026009593")
+        XCTAssertEqual(bankAccountResponse?.bankId, "13254687")
+        XCTAssertEqual(bankAccountResponse?.branchId, "026009593")
 
         verifyRelationship(.ownCompany, in: bankAccountResponse)
         verifyPurpose(.checking, in: bankAccountResponse)
         verifyRole(.owner, in: bankAccountResponse)
 
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .businessName) as! String, "Some company")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .businessRegistrationId) as! String, "123455511")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .businessRegistrationCountry) as! String, "CA")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .businessRegistrationStateProvince) as! String, "BC")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .phoneNumber) as! String, "604-345-1777")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .mobileNumber) as! String, "604-345-1888")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .country) as! String, "US")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .stateProvince) as! String, "WA")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .addressLine1) as! String, "1234, Broadway")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .addressLine2) as! String, "57 Market Street")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .city) as! String, "Test City")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .postalCode) as! String, "12345")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .intermediaryBankAccountId) as! String, "246810")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .intermediaryBankAddressLine1) as! String,
+        XCTAssertEqual(bankAccountResponse?.businessName, "Some company")
+        XCTAssertEqual(bankAccountResponse?.businessRegistrationId, "123455511")
+        XCTAssertEqual(bankAccountResponse?.businessRegistrationCountry, "CA")
+        XCTAssertEqual(bankAccountResponse?.businessRegistrationStateProvince, "BC")
+        XCTAssertEqual(bankAccountResponse?.phoneNumber, "604-345-1777")
+        XCTAssertEqual(bankAccountResponse?.mobileNumber, "604-345-1888")
+        XCTAssertEqual(bankAccountResponse?.country, "US")
+        XCTAssertEqual(bankAccountResponse?.stateProvince, "WA")
+        XCTAssertEqual(bankAccountResponse?.addressLine1, "1234, Broadway")
+        XCTAssertEqual(bankAccountResponse?.addressLine2, "57 Market Street")
+        XCTAssertEqual(bankAccountResponse?.city, "Test City")
+        XCTAssertEqual(bankAccountResponse?.postalCode, "12345")
+        XCTAssertEqual(bankAccountResponse?.intermediaryBankAccountId, "246810")
+        XCTAssertEqual(bankAccountResponse?.intermediaryBankAddressLine1,
                        "5 Market Street")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .intermediaryBankAddressLine2) as! String,
+        XCTAssertEqual(bankAccountResponse?.intermediaryBankAddressLine2,
                        "75 Market Street")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .intermediaryBankCity) as! String, "New York")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .intermediaryBankCountry) as! String, "US")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .intermediaryBankId) as! String, "12345678901")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .intermediaryBankName) as! String,
+        XCTAssertEqual(bankAccountResponse?.intermediaryBankCity, "New York")
+        XCTAssertEqual(bankAccountResponse?.intermediaryBankCountry, "US")
+        XCTAssertEqual(bankAccountResponse?.intermediaryBankId, "12345678901")
+        XCTAssertEqual(bankAccountResponse?.intermediaryBankName,
                        "Intermediary Big Bank")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .intermediaryBankPostalCode) as! String, "134679")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .intermediaryBankStateProvince) as! String, "PA")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .wireInstructions) as! String, "This is instruction")
-        XCTAssertEqual(bankAccountResponse?.getField(fieldName: .profileType) as! String, "BUSINESS")
+        XCTAssertEqual(bankAccountResponse?.intermediaryBankPostalCode, "134679")
+        XCTAssertEqual(bankAccountResponse?.intermediaryBankStateProvince, "PA")
+        XCTAssertEqual(bankAccountResponse?.wireInstructions, "This is instruction")
+        XCTAssertEqual(bankAccountResponse?.profileType, "BUSINESS")
         XCTAssertEqual(bankAccountResponse?.type, "WIRE_ACCOUNT")
+        XCTAssertEqual(bankAccountResponse?.bankName, "Bank of America NA")
     }
 
     func verifyRelationship(_ relationship: HyperwalletBankAccount.RelationshipType,
                             in bankAccountResponse: HyperwalletBankAccount?) {
-        let responseRelationship = bankAccountResponse?.getField(fieldName: .bankAccountRelationship) as! String
+        let responseRelationship = bankAccountResponse?.bankAccountRelationship?.rawValue
         XCTAssertEqual(responseRelationship, relationship.rawValue)
     }
 
     func verifyPurpose(_ purpose: HyperwalletBankAccount.PurposeType,
                        in bankAccountResponse: HyperwalletBankAccount?) {
-        let responsePurpose = bankAccountResponse?.getField(fieldName: .bankAccountPurpose) as! String
+        let responsePurpose = bankAccountResponse?.bankAccountPurpose?.rawValue
         XCTAssertEqual(responsePurpose, purpose.rawValue)
     }
 
     func verifyRole(_ role: HyperwalletBankAccount.BusinessContactRole,
                     in bankAccountResponse: HyperwalletBankAccount?) {
-        let responseRole = bankAccountResponse?.getField(fieldName: .businessContactRole) as! String
+        let responseRole = bankAccountResponse?.businessContactRole?.rawValue
         XCTAssertEqual(responseRole, role.rawValue)
+    }
+
+    func verifyBusinessType(_ type: HyperwalletBankAccount.BusinessType,
+                            in bankAccountResponse: HyperwalletBankAccount?) {
+        let responseBusinessType = bankAccountResponse?.businessType?.rawValue
+        XCTAssertEqual(responseBusinessType, type.rawValue)
+    }
+
+    func verifyGender(_ gender: HyperwalletBankAccount.Gender,
+                      in bankAccountResponse: HyperwalletBankAccount?) {
+        let responseGender = bankAccountResponse?.gender?.rawValue
+        XCTAssertEqual(responseGender, gender.rawValue)
+    }
+
+    func verifyGovernmentIdType(_ governmentIdType: HyperwalletBankAccount.GovernmentIdType,
+                                in bankAccountResponse: HyperwalletBankAccount?) {
+        let responseGovernmentIdType = bankAccountResponse?.governmentIdType?.rawValue
+        XCTAssertEqual(responseGovernmentIdType, governmentIdType.rawValue)
     }
 }

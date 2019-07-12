@@ -176,10 +176,10 @@ public class HyperwalletTransferMethod: Codable {
 
     /// Gets the field value
     ///
-    /// - Parameter fieldName: The `TransferMethodField` type
+    /// - Parameter fieldName: The `TransferMethodField` type raw value
     /// - Returns: Returns the field value, or nil if none exists.
-    public func getField(fieldName: TransferMethodField) -> Any? {
-        return self.storage[fieldName.rawValue]?.value
+    public func getField(_ fieldName: String) -> String? {
+        return self.storage[fieldName]?.value as? String
     }
 
     /// Sets the field value based on the key
@@ -213,33 +213,38 @@ public class HyperwalletTransferMethod: Codable {
         }
     }
 
-    /// The transfer method's token
-    public var token: String? {
-        return getField(fieldName: .token) as? String
+    /// The transfer method's created time
+    public var createdOn: String? {
+        return getField(TransferMethodField.createdOn.rawValue)
     }
 
-    /// The transfer method's type
-    public var type: String? {
-        return getField(fieldName: .type) as? String
+    /// The transfer method holder's profile type, e.g. INDIVIDUAL or BUSINESS.
+    public var profileType: String? {
+        return getField(TransferMethodField.profileType.rawValue)
     }
 
     /// The transfer method's status
     public var status: String? {
-        return getField(fieldName: .status) as? String
+        return getField(TransferMethodField.status.rawValue)
     }
 
-    /// The transfer method's created time
-    public var createdOn: String? {
-        return getField(fieldName: .createdOn) as? String
+    /// The transfer method's token
+    public var token: String? {
+        return getField(TransferMethodField.token.rawValue)
     }
 
     /// The transfer method's country
     public var transferMethodCountry: String? {
-        return getField(fieldName: .transferMethodCountry) as? String
+        return getField(TransferMethodField.transferMethodCountry.rawValue)
     }
 
     /// The transfer method's currency
     public var transferMethodCurrency: String? {
-        return getField(fieldName: .transferMethodCurrency) as? String
+        return getField(TransferMethodField.transferMethodCurrency.rawValue)
+    }
+
+    /// The transfer method's type
+    public var type: String? {
+        return getField(TransferMethodField.type.rawValue)
     }
 }
