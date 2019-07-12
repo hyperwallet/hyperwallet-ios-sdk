@@ -567,18 +567,15 @@ public final class Hyperwallet {
                                     completionHandler: completion)
     }
 
-    /// Returns the list of receipts for the User associated with the Prepaid card token.
+    // Returns the list of receipts for the User associated with the Prepaid card token.
     ///
-    /// The ordering and filtering of `HyperwalletReceipt` will be based on the criteria specified within the
-    /// `HyperwalletReceiptQueryParam` object, if it is not nil. Otherwise the default ordering and
-    /// filtering will be applied.
+    /// The filtering of `HyperwalletReceipt` will be based on the criteria specified within the
+    /// `HyperwalletReceiptQueryParam` object. CreatedAfter needs to be provided to get the receipts.
+    /// Receipts are returned sorted in ascending order of creation date
     ///
-    /// * Offset: 0
-    /// * Limit: 10
     /// * Created Before: N/A
-    /// * Created After: N/A
+    /// * Created After: “Some Date”
     /// * Currency: All
-    /// * Sort By: Created On
     ///
     /// The `completion: @escaping (HyperwalletPageList<HyperwalletReceipt>?, HyperwalletErrorType?) -> Void`
     /// that is passed in to this method invocation will receive the successful
@@ -699,7 +696,7 @@ public final class Hyperwallet {
     /// - parameters: completion: the callback handler of responses from the Hyperwallet platform
     public func updateBankAccount(account: HyperwalletBankAccount,
                                   completion: @escaping (HyperwalletBankAccount?, HyperwalletErrorType?) -> Void) {
-        let token = account.getField(fieldName: .token) as? String ?? ""
+        let token = account.token ?? ""
         httpTransaction.performRest(httpMethod: .put,
                                     urlPath: "users/%@/bank-accounts/\(token)",
                                     payload: account,
@@ -724,7 +721,7 @@ public final class Hyperwallet {
     ///   - completion: the callback handler of responses from the Hyperwallet platform
     public func updateBankCard(account: HyperwalletBankCard,
                                completion: @escaping (HyperwalletBankCard?, HyperwalletErrorType?) -> Void) {
-        let token = account.getField(fieldName: .token) as? String ?? ""
+        let token = account.token ?? ""
         httpTransaction.performRest(httpMethod: .put,
                                     urlPath: "users/%@/bank-cards/\(token)",
                                     payload: account,
@@ -749,7 +746,7 @@ public final class Hyperwallet {
     ///   - completion: the callback handler of responses from the Hyperwallet platform
     public func updatePayPalAccount(account: HyperwalletPayPalAccount,
                                     completion: @escaping (HyperwalletPayPalAccount?, HyperwalletErrorType?) -> Void) {
-        let token = account.getField(fieldName: .token) as? String ?? ""
+        let token = account.token ?? ""
         httpTransaction.performRest(httpMethod: .put,
                                     urlPath: "users/%@/paypal-accounts/\(token)",
                                     payload: account,

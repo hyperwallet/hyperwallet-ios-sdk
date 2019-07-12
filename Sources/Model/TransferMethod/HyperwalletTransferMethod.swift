@@ -178,8 +178,8 @@ public class HyperwalletTransferMethod: Codable {
     ///
     /// - Parameter fieldName: The `TransferMethodField` type
     /// - Returns: Returns the field value, or nil if none exists.
-    public func getField(fieldName: TransferMethodField) -> Any? {
-        return self.storage[fieldName.rawValue]?.value
+    public func getField(fieldName: TransferMethodField) -> String? {
+        return self.storage[fieldName.rawValue]?.value as? String
     }
 
     /// Sets the field value based on the key
@@ -213,33 +213,38 @@ public class HyperwalletTransferMethod: Codable {
         }
     }
 
-    /// The transfer method's token
-    public var token: String? {
-        return getField(fieldName: .token) as? String
+    /// The transfer method's created time
+    public var createdOn: String? {
+        return getField(fieldName: .createdOn)
     }
 
-    /// The transfer method's type
-    public var type: String? {
-        return getField(fieldName: .type) as? String
+    /// The transfer method holder's profile type, e.g. INDIVIDUAL or BUSINESS.
+    public var profileType: String? {
+        return getField(fieldName: .profileType)
     }
 
     /// The transfer method's status
     public var status: String? {
-        return getField(fieldName: .status) as? String
+        return getField(fieldName: .status)
     }
 
-    /// The transfer method's created time
-    public var createdOn: String? {
-        return getField(fieldName: .createdOn) as? String
+    /// The transfer method's token
+    public var token: String? {
+        return getField(fieldName: .token)
     }
 
     /// The transfer method's country
     public var transferMethodCountry: String? {
-        return getField(fieldName: .transferMethodCountry) as? String
+        return getField(fieldName: .transferMethodCountry)
     }
 
     /// The transfer method's currency
     public var transferMethodCurrency: String? {
-        return getField(fieldName: .transferMethodCurrency) as? String
+        return getField(fieldName: .transferMethodCurrency)
+    }
+
+    /// The transfer method's type
+    public var type: String? {
+        return getField(fieldName: .type)
     }
 }
