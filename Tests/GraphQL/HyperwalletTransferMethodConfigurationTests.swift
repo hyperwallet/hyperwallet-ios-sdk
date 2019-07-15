@@ -17,7 +17,7 @@ class HyperwalletTransferMethodConfigurationTests: XCTestCase {
     //swiftlint:disable function_body_length
     func testRetrieveTransferMethodConfigurationKeys_success() {
         // Given
-        let request = setUpTransferMethodConfigurationKeysRequest("TransferMethodConfigurationKeysResponse")
+        let request = setUpTransferMethodConfigurationRequest("TransferMethodConfigurationKeysResponse")
         HyperwalletTestHelper.setUpMockServer(request: request)
 
         let expectation = self.expectation(description: "Retrieve transfer method configuration keys")
@@ -77,7 +77,7 @@ class HyperwalletTransferMethodConfigurationTests: XCTestCase {
 
     func testRetrieveTransferMethodConfigurationKeys_withoutFees() {
         // Given
-        let request = setUpTransferMethodConfigurationKeysRequest("TransferMethodConfigurationKeysWithoutFeeResponse")
+        let request = setUpTransferMethodConfigurationRequest("TransferMethodConfigurationKeysWithoutFeeResponse")
         HyperwalletTestHelper.setUpMockServer(request: request)
 
         let expectation = self.expectation(description: "Retrieve transfer method configuration keys")
@@ -109,43 +109,43 @@ class HyperwalletTransferMethodConfigurationTests: XCTestCase {
                                        .count, 1, "transferMethodTypes(...)` should be 1")
     }
 
-        func testRetrieveTransferMethodConfigurationFields_success() {
-            // Given
-            let request = setUpTransferMethodConfigurationKeysRequest("TransferMethodConfigurationFieldsResponse")
-            HyperwalletTestHelper.setUpMockServer(request: request)
+    func testRetrieveTransferMethodConfigurationFields_success() {
+        // Given
+        let request = setUpTransferMethodConfigurationRequest("TransferMethodConfigurationFieldsResponse")
+        HyperwalletTestHelper.setUpMockServer(request: request)
 
-            let expectation = self.expectation(description: "Retrieve transfer method configuration fields")
+        let expectation = self.expectation(description: "Retrieve transfer method configuration fields")
 
-            var graphQlResponse: HyperwalletTransferMethodConfigurationField?
-            var errorResponse: HyperwalletErrorType?
-            // When
-            let fieldQuery = HyperwalletTransferMethodConfigurationFieldQuery(country: "AR",
-                                                                              currency: "ARS",
-                                                                              transferMethodType: "BANK_ACCOUNT",
-                                                                              profile: "INDIVIDUAL")
+        var graphQlResponse: HyperwalletTransferMethodConfigurationField?
+        var errorResponse: HyperwalletErrorType?
+        // When
+        let fieldQuery = HyperwalletTransferMethodConfigurationFieldQuery(country: "AR",
+                                                                          currency: "ARS",
+                                                                          transferMethodType: "BANK_ACCOUNT",
+                                                                          profile: "INDIVIDUAL")
 
-            Hyperwallet.shared.retrieveTransferMethodConfigurationFields(request: fieldQuery,
-                                                                         completion: { (result, error) in
-                                                                         graphQlResponse = result
-                                                                         errorResponse = error
-                                                                         expectation.fulfill()
-            })
+        Hyperwallet.shared.retrieveTransferMethodConfigurationFields(request: fieldQuery,
+                                                                     completion: { (result, error) in
+                                                                     graphQlResponse = result
+                                                                     errorResponse = error
+                                                                     expectation.fulfill()
+        })
 
-            wait(for: [expectation], timeout: 1)
+        wait(for: [expectation], timeout: 1)
 
-            // Then
-            XCTAssertNil(errorResponse, "The `errorResponse` should be nil")
-            XCTAssertNotNil(graphQlResponse)
-            XCTAssertEqual(graphQlResponse?.fieldGroups()?.count, 2, "`fieldGroups()` should be 2")
-            let fees = graphQlResponse?.transferMethodType()?.fees?.nodes
-            XCTAssertNotNil(fees)
-            XCTAssertEqual(fees?.count, 1)
-            XCTAssertEqual(fees?.first?.feeRateType, "FLAT")
-            XCTAssertEqual(fees?.first?.value, "2.00")
-        }
+        // Then
+        XCTAssertNil(errorResponse, "The `errorResponse` should be nil")
+        XCTAssertNotNil(graphQlResponse)
+        XCTAssertEqual(graphQlResponse?.fieldGroups()?.count, 2, "`fieldGroups()` should be 2")
+        let fees = graphQlResponse?.transferMethodType()?.fees?.nodes
+        XCTAssertNotNil(fees)
+        XCTAssertEqual(fees?.count, 1)
+        XCTAssertEqual(fees?.first?.feeRateType, "FLAT")
+        XCTAssertEqual(fees?.first?.value, "2.00")
+    }
 
-    private func setUpTransferMethodConfigurationKeysRequest(_ responseFile: String,
-                                                             _ error: NSError? = nil) -> StubRequest {
+    private func setUpTransferMethodConfigurationRequest(_ responseFile: String,
+                                                         _ error: NSError? = nil) -> StubRequest {
         let data = HyperwalletTestHelper.getDataFromJson(responseFile)
         return HyperwalletTestHelper.buildPostRequest(baseUrl: HyperwalletTestHelper.graphQlURL,
                                                       HyperwalletTestHelper.setUpMockedResponse(payload: data,
