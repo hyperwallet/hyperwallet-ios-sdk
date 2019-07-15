@@ -84,6 +84,7 @@
 		DB2A3B092261D2DC0049F891 /* HyperwalletSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = DB2A3B082261D2DC0049F891 /* HyperwalletSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DB2A3B0E2261D4260049F891 /* Hippolyte.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB2A3B0D2261D4260049F891 /* Hippolyte.framework */; };
 		DB3151CF22780AA300FC9F8E /* UserIndividualResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = DB3151CE22780AA300FC9F8E /* UserIndividualResponse.json */; };
+		DB45190F22DD00A00022BD1F /* HyperwalletTransferMethodConfigurationFieldQueryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB45190E22DD00A00022BD1F /* HyperwalletTransferMethodConfigurationFieldQueryTests.swift */; };
 		DB764E91227833E10053BB91 /* UserBusinessResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = DB764E8F22782D890053BB91 /* UserBusinessResponse.json */; };
 		DB866F262261EE28003C41F6 /* Cartfile.resolved in Resources */ = {isa = PBXBuildFile; fileRef = DB866F212261EE28003C41F6 /* Cartfile.resolved */; };
 		DB866F272261EE28003C41F6 /* HyperwalletSDK.podspec in Resources */ = {isa = PBXBuildFile; fileRef = DB866F222261EE28003C41F6 /* HyperwalletSDK.podspec */; };
@@ -201,6 +202,7 @@
 		DB2A3B082261D2DC0049F891 /* HyperwalletSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HyperwalletSDK.h; sourceTree = "<group>"; };
 		DB2A3B0D2261D4260049F891 /* Hippolyte.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Hippolyte.framework; path = Carthage/Build/iOS/Hippolyte.framework; sourceTree = "<group>"; };
 		DB3151CE22780AA300FC9F8E /* UserIndividualResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = UserIndividualResponse.json; sourceTree = "<group>"; };
+		DB45190E22DD00A00022BD1F /* HyperwalletTransferMethodConfigurationFieldQueryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperwalletTransferMethodConfigurationFieldQueryTests.swift; sourceTree = "<group>"; };
 		DB764E8F22782D890053BB91 /* UserBusinessResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = UserBusinessResponse.json; sourceTree = "<group>"; };
 		DB866F212261EE28003C41F6 /* Cartfile.resolved */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile.resolved; sourceTree = "<group>"; };
 		DB866F222261EE28003C41F6 /* HyperwalletSDK.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HyperwalletSDK.podspec; sourceTree = "<group>"; };
@@ -441,6 +443,7 @@
 		98DF1D45229F41E70080FFA5 /* GraphQL */ = {
 			isa = PBXGroup;
 			children = (
+				DB45190D22DD00890022BD1F /* Query */,
 				DBCA376E225D6A8D00CD4137 /* HyperwalletTransferMethodConfigurationTests.swift */,
 				DBCA376F225D6A8D00CD4137 /* TransferMethodConfigurationFieldResultTests.swift */,
 				07E5FCB6228C9ECA008C5B15 /* TransferMethodConfigurationKeyResultTests.swift */,
@@ -503,6 +506,14 @@
 				DB1A041C225D4E0D0080C8D6 /* HyperwalletTestHelper.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		DB45190D22DD00890022BD1F /* Query */ = {
+			isa = PBXGroup;
+			children = (
+				DB45190E22DD00A00022BD1F /* HyperwalletTransferMethodConfigurationFieldQueryTests.swift */,
+			);
+			path = Query;
 			sourceTree = "<group>";
 		};
 		DB866F202261EE14003C41F6 /* Deployment */ = {
@@ -780,6 +791,7 @@
 			files = (
 				DB1A0415225D4D8B0080C8D6 /* HTTPTransactionTests.swift in Sources */,
 				DB1A041D225D4E0D0080C8D6 /* HyperwalletTestHelper.swift in Sources */,
+				DB45190F22DD00A00022BD1F /* HyperwalletTransferMethodConfigurationFieldQueryTests.swift in Sources */,
 				64D2493C22BD011600561C14 /* HyperwalletTransferTests.swift in Sources */,
 				DBCA3779225D6A8D00CD4137 /* HyperwalletErrorTests.swift in Sources */,
 				07E5FCB7228C9ECA008C5B15 /* TransferMethodConfigurationKeyResultTests.swift in Sources */,
