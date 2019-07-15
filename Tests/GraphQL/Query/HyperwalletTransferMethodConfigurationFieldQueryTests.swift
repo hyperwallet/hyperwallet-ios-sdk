@@ -32,5 +32,6 @@ class HyperwalletTransferMethodConfigurationFieldQueryTests: XCTestCase {
                                                                                profile: "INDIVIDUAL")
 
         XCTAssertNotEqual(usUsdFieldQuery, usCadFieldQuery)
+        XCTAssertNotEqual(usUsdFieldQuery.hashValue, usCadFieldQuery.hashValue)
     }
 }
