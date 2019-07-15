@@ -2,7 +2,6 @@ import Hippolyte
 @testable import HyperwalletSDK
 import XCTest
 
-// swiftlint:disable force_cast
 class HyperwalletPayPalAccountTests: XCTestCase {
     override func setUp() {
         Hyperwallet.setup(HyperwalletTestHelper.authenticationProvider)

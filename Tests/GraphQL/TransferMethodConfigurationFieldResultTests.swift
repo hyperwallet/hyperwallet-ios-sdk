@@ -25,7 +25,7 @@ class TransferMethodConfigurationFieldResultTests: XCTestCase {
         XCTAssertEqual(processingTime, "1 - 3 business days", "Type should be 1 - 3 business days")
     }
 
-    func testFieldGroupds_success() {
+    func testFieldGroups_success() {
         XCTAssertEqual(fieldResult.fieldGroups()?.count, 2, "The amount of groups is different from the expected value")
         XCTAssertEqual(fieldResult.fieldGroups()?.first?.group, "IDENTIFICATION")
         XCTAssertEqual(fieldResult.fieldGroups()?.last?.group, "BUSINESS_INFORMATION")
