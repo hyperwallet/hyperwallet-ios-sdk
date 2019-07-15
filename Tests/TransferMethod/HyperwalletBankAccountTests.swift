@@ -337,10 +337,10 @@ class HyperwalletBankAccountIndividualTests: XCTestCase {
         XCTAssertNotNil(bankAccountList?.data, "The `data` should be not nil")
 
         XCTAssertNotNil(bankAccountList?.links, "The `links` should be not nil")
-        let linkNext = bankAccountList?.links.first { $0.params.rel == "next" }
+        let linkNext = bankAccountList?.links?.first { $0.params?.rel == "next" }
         XCTAssertNotNil(linkNext?.href)
 
-        let bankAccount = bankAccountList?.data.first
+        let bankAccount = bankAccountList?.data?.first
         XCTAssertEqual(bankAccount?.type, "BANK_ACCOUNT")
         XCTAssertEqual(bankAccount?.token, "trm-12345")
         XCTAssertEqual(bankAccount?.bankAccountId, "54629074")
