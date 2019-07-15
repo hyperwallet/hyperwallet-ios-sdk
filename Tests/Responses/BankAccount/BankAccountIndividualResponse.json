@@ -6,9 +6,11 @@
     "transferMethodCountry":"US",
     "transferMethodCurrency":"USD",
     "branchId":"026009593",
+    "branchName": "XYZ",
     "bankAccountId":"675825206",
     "bankAccountRelationship":"SELF",
     "bankAccountPurpose":"CHECKING",
+    "bankName": "ABC",
     "profileType":"INDIVIDUAL",
     "firstName":"Some",
     "lastName":"Guy",
@@ -22,6 +24,13 @@
     "postalCode":"94105",
     "phoneNumber": "604-345-1777",
     "mobileNumber": "604-345-1888",
+    "countryOfBirth": "US",
+    "driversLicenseId": "1234",
+    "employerId": "1234",
+    "governmentId": "12898",
+    "governmentIdType": "PASSPORT",
+    "gender": "MALE",
+    "passportId": "112323",
     "links":[
         {
             "params":{
