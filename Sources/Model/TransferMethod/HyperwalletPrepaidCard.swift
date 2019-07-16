@@ -32,6 +32,11 @@ public final class HyperwalletPrepaidCard: HyperwalletTransferMethod {
         return getField(TransferMethodField.cardType.rawValue)
     }
 
+    /// The prepaid card's cvv
+    public var cvv: String? {
+        return getField(TransferMethodField.cvv.rawValue)
+    }
+
     /// The prepaid card's package
     public var cardPackage: String? {
         return getField(TransferMethodField.cardPackage.rawValue)
