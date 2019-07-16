@@ -202,7 +202,16 @@
                                         {
                                             "code": "BANK_ACCOUNT",
                                             "name": "Bank Account",
-                                            "processingTime": "1 - 3 business days",
+                                            "processingTimes": {
+                                                "nodes": [
+                                                    {
+                                                        "value": "1-3 business days",
+                                                        "country": "US",
+                                                        "currency": "USD",
+                                                        "transferMethodType": "BANK_ACCOUNT"
+                                                    }
+                                                ]
+                                            },
                                             "fees": {
                                                 "nodes": [
                                                     {
