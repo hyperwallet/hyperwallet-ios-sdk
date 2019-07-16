@@ -226,7 +226,7 @@ final class HTTPTransaction {
             guard error == nil else {
                 completionHandler(nil, ErrorTypeHelper.authenticationError(
                     message: "Error occured while retrieving authentication token",
-                    for: error!)
+                    for: HyperwalletAuthenticationErrorType.unexpected(error?.localizedDescription ?? ""))
                 )
                 return
             }
