@@ -217,22 +217,22 @@ private extension HyperwalletTransferTests {
 
     func verifyStatusTransitionResponse(_ response: HyperwalletStatusTransition?) {
         XCTAssertEqual(response?.token, "sts-123456", "The `token` should be sts-123456")
-        XCTAssertEqual(response?.transition.rawValue,
+        XCTAssertEqual(response?.transition?.rawValue,
                        HyperwalletStatusTransition.Status.scheduled.rawValue,
                        "The `transition` should be SCHEDULED")
-        XCTAssertEqual(response?.fromStatus.rawValue,
+        XCTAssertEqual(response?.fromStatus?.rawValue,
                        HyperwalletStatusTransition.Status.quoted.rawValue,
                        "The `fromStatus` should be QUOTED")
-        XCTAssertEqual(response?.toStatus.rawValue,
+        XCTAssertEqual(response?.toStatus?.rawValue,
                        HyperwalletStatusTransition.Status.scheduled.rawValue,
                        "The `toStatus` should be SCHEDULED")
     }
 
     func verifyTransfersListResponse(_ response: HyperwalletPageList<HyperwalletTransfer>?) {
         XCTAssertNotNil(response, "The `response` should not be nil")
-        XCTAssertEqual(response?.data.count, 2, "The `count` should be 2")
+        XCTAssertEqual(response?.data?.count, 2, "The `count` should be 2")
 
-        let transfer = response?.data.first
+        let transfer = response?.data?.first
         XCTAssertNotNil(transfer, "The `transfer` should not be nil")
         XCTAssertEqual(transfer?.token, "trf-123456", "The `token` should be trf-123456")
         XCTAssertEqual(transfer?.status?.rawValue,

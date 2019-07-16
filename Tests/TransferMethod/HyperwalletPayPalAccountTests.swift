@@ -2,7 +2,6 @@ import Hippolyte
 @testable import HyperwalletSDK
 import XCTest
 
-// swiftlint:disable force_cast
 class HyperwalletPayPalAccountTests: XCTestCase {
     override func setUp() {
         Hyperwallet.setup(HyperwalletTestHelper.authenticationProvider)
@@ -283,9 +282,9 @@ class HyperwalletPayPalAccountTests: XCTestCase {
         XCTAssertNotNil(payPalAccountList?.data, "The `data` should be not nil")
 
         XCTAssertNotNil(payPalAccountList?.links, "The `links` should be not nil")
-        XCTAssertNotNil(payPalAccountList?.links.first?.params.rel)
+        XCTAssertNotNil(payPalAccountList?.links?.first?.params?.rel)
 
-        let payPalAccount = payPalAccountList?.data.first
+        let payPalAccount = payPalAccountList?.data?.first
         XCTAssertEqual(payPalAccount?.token, "trm-123456789")
         XCTAssertEqual(payPalAccount?.email, "test@paypal.com")
     }
