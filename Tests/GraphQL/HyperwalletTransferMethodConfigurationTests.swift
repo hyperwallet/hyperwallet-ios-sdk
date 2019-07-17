@@ -65,7 +65,7 @@ class HyperwalletTransferMethodConfigurationTests: XCTestCase {
         bankAccountProcessingTime = graphQlResponse?.transferMethodTypes(countryCode: "CA", currencyCode: "CAD")?
             .first(where: { $0.code == "BANK_ACCOUNT" })
             .flatMap { $0.processingTimes?.nodes?.first }
-        XCTAssertNotNil(bankAccountProcessingTime, "The procebankAccountProcessingTimessingTime should not be nil")
+        XCTAssertNotNil(bankAccountProcessingTime, "The bankAccountProcessingTime should not be nil")
         XCTAssertEqual(bankAccountProcessingTime!.value,
                        "1-3 business days",
                        "Type should be 1-3 business days")
@@ -82,7 +82,7 @@ class HyperwalletTransferMethodConfigurationTests: XCTestCase {
         payPalAccountProcessingTime = graphQlResponse?.transferMethodTypes(countryCode: "CA", currencyCode: "CAD")?
             .first(where: { $0.code == "PAYPAL_ACCOUNT" })
             .flatMap { $0.processingTimes?.nodes?.first }
-        XCTAssertNotNil(payPalAccountProcessingTime, "The procebankAccountProcessingTimessingTime should not be nil")
+        XCTAssertNotNil(payPalAccountProcessingTime, "The payPalAccountProcessingTime should not be nil")
         XCTAssertEqual(payPalAccountProcessingTime!.value,
                        "IMMEDIATE",
                        "The value should be IMMEDIATE")
