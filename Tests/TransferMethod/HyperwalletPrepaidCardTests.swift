@@ -48,7 +48,6 @@ class HyperwalletPrepaidCardTests: XCTestCase {
         XCTAssertNotNil(prepaidCardList?.links, "The `links` should be not nil")
 
         let firstPrepaidCard = prepaidCardList?.data?.first
-        firstPrepaidCard?.setField(key: HyperwalletTransferMethod.TransferMethodField.cvv.rawValue, value: "234")
         XCTAssertEqual(firstPrepaidCard?.type, "PREPAID_CARD", "The type should be PREPAID_CARD")
         XCTAssertEqual(firstPrepaidCard?.token, "trm-123", "The token should be trm-123")
         XCTAssertEqual(firstPrepaidCard?.status, "DEACTIVATED", "The status should be DEACTIVATED")
@@ -56,8 +55,6 @@ class HyperwalletPrepaidCardTests: XCTestCase {
         XCTAssertEqual(firstPrepaidCard?.transferMethodCurrency, "USD", "The currency code should be USD")
 
         XCTAssertEqual(firstPrepaidCard?.cardNumber, "************6198", "The cardNumber should be ************6198")
-        XCTAssertEqual(firstPrepaidCard?.cardType, "VIRTUAL")
-        XCTAssertEqual(firstPrepaidCard?.cvv, "234")
         XCTAssertEqual(firstPrepaidCard?.dateOfExpiry, "2023-06", "The dateOfExpiry should be 2023-06")
         XCTAssertEqual(firstPrepaidCard?.cardPackage, "L1", "The cardPackage should be L1")
         XCTAssertEqual(firstPrepaidCard?.createdOn,
