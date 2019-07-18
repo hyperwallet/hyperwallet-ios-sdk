@@ -27,8 +27,8 @@ class HyperwalletTransferMethodConfigurationTests: XCTestCase {
         var fees: [HyperwalletFee]?
         var flatFee: HyperwalletFee?
         var percentFee: HyperwalletFee?
-        var bankAccountProcessingTime: String?
-        var payPalAccountProcessingTime: String?
+        var bankAccountProcessingTime: HyperwalletProcessingTime?
+        var payPalAccountProcessingTime: HyperwalletProcessingTime?
 
         // When
         let keysQuery = HyperwalletTransferMethodConfigurationKeysQuery()
@@ -64,15 +64,37 @@ class HyperwalletTransferMethodConfigurationTests: XCTestCase {
 
         bankAccountProcessingTime = graphQlResponse?.transferMethodTypes(countryCode: "CA", currencyCode: "CAD")?
             .first(where: { $0.code == "BANK_ACCOUNT" })
-            .flatMap { $0.processingTime }
-        XCTAssertNotNil(bankAccountProcessingTime)
-        XCTAssertEqual(bankAccountProcessingTime, "1 - 3 business days")
+            .flatMap { $0.processingTimes?.nodes?.first }
+        XCTAssertNotNil(bankAccountProcessingTime, "The bankAccountProcessingTime should not be nil")
+        XCTAssertEqual(bankAccountProcessingTime!.value,
+                       "1-3 business days",
+                       "Type should be 1-3 business days")
+        XCTAssertEqual(bankAccountProcessingTime!.country,
+                       "CA",
+                       "The country should be CA")
+        XCTAssertEqual(bankAccountProcessingTime!.currency,
+                       "CAD",
+                       "The currency should be CAD")
+        XCTAssertEqual(bankAccountProcessingTime!.transferMethodType,
+                       "BANK_ACCOUNT",
+                       "The transferMethodType should be BANK_ACCOUNT")
 
         payPalAccountProcessingTime = graphQlResponse?.transferMethodTypes(countryCode: "CA", currencyCode: "CAD")?
             .first(where: { $0.code == "PAYPAL_ACCOUNT" })
-            .flatMap { $0.processingTime }
-        XCTAssertNotNil(payPalAccountProcessingTime)
-        XCTAssertEqual(payPalAccountProcessingTime, "IMMEDIATE")
+            .flatMap { $0.processingTimes?.nodes?.first }
+        XCTAssertNotNil(payPalAccountProcessingTime, "The payPalAccountProcessingTime should not be nil")
+        XCTAssertEqual(payPalAccountProcessingTime!.value,
+                       "IMMEDIATE",
+                       "The value should be IMMEDIATE")
+        XCTAssertEqual(payPalAccountProcessingTime!.country,
+                       "CA",
+                       "The country should be CA")
+        XCTAssertEqual(payPalAccountProcessingTime!.currency,
+                       "CAD",
+                       "The currency should be CAD")
+        XCTAssertEqual(payPalAccountProcessingTime!.transferMethodType,
+                       "PAYPAL_ACCOUNT",
+                       "The transferMethodType should be PAYPAL_ACCOUNT")
     }
 
     func testRetrieveTransferMethodConfigurationKeys_withoutFees() {

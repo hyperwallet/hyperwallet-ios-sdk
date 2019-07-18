@@ -87,7 +87,14 @@ public struct HyperwalletTransferMethodConfigurationFieldQuery: GraphQlQuery, Ha
                       nodes {
                         code
                         name
-                        processingTime
+                        processingTimes {
+                          nodes {
+                            country
+                            currency
+                            transferMethodType
+                            value
+                          }
+                        }
                         fees {
                           nodes {
                             currency
@@ -157,7 +164,14 @@ public struct HyperwalletTransferMethodConfigurationKeysQuery: GraphQlQuery {
                             nodes {
                                 code
                                 name
-                                processingTime
+                                processingTimes {
+                                  nodes {
+                                    country
+                                    currency
+                                    transferMethodType
+                                    value
+                                  }
+                                }
                                 fees {
                                     nodes {
                                       currency
