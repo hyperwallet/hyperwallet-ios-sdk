@@ -123,11 +123,19 @@ public struct HyperwalletFieldSelectionOption: Codable {
     public let value: String?
 }
 
+/// Representation of the transfer method configuration field processing times
+public struct HyperwalletProcessingTime: Codable {
+    public let country: String?
+    public let currency: String?
+    public let transferMethodType: String?
+    public let value: String?
+}
+
 public struct HyperwalletTransferMethodType: Codable {
     public let code: String?
     public let name: String?
     public let fees: Connection<HyperwalletFee>?
-    public let processingTime: String?
+    public let processingTimes: Connection<HyperwalletProcessingTime>?
 }
 
 /// Representation of the transfer method configuration field validation message
