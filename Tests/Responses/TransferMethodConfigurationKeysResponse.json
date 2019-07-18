@@ -15,7 +15,16 @@
                                         {
                                             "code": "BANK_ACCOUNT",
                                             "name": "Bank Account",
-                                            "processingTime": "1 - 3 business days",
+                                            "processingTimes": {
+                                                "nodes": [
+                                                    {
+                                                        "value": "1-3 business days",
+                                                        "country": "CA",
+                                                        "currency": "CAD",
+                                                        "transferMethodType": "BANK_ACCOUNT"
+                                                    }
+                                                ]
+                                            },
                                             "fees": {
                                                 "nodes": [
                                                     {
@@ -36,7 +45,16 @@
                                         {
                                             "code": "PAYPAL_ACCOUNT",
                                             "name": "PayPal Account",
-                                            "processingTime": "IMMEDIATE",
+                                            "processingTimes": {
+                                                "nodes": [
+                                                    {
+                                                        "value": "IMMEDIATE",
+                                                        "country": "CA",
+                                                        "currency": "CAD",
+                                                        "transferMethodType": "PAYPAL_ACCOUNT"
+                                                    }
+                                                ]
+                                            },
                                             "fees": {
                                                 "nodes": [
                                                     {
