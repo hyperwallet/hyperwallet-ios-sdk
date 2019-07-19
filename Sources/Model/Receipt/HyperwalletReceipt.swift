@@ -168,11 +168,11 @@ public struct HyperwalletReceipt: Decodable, Equatable {
         case prepaidCardPinChangeFee = "PREPAID_CARD_PIN_CHANGE_FEE"
         case prepaidCardRefund = "PREPAID_CARD_REFUND"
         case prepaidCardReplacementFee = "PREPAID_CARD_REPLACEMENT_FEE"
-        case pPrepaidCardSale = "PREPAID_CARD_SALE"
+        case prepaidCardSale = "PREPAID_CARD_SALE"
         case prepaidCardSaleReversal = "PREPAID_CARD_SALE_REVERSAL"
         case prepaidCardUnload = "PREPAID_CARD_UNLOAD"
-        case transferToPrepaidCard = "TRANSFER_TO_PREPAID_CARD"
         case transferToDebitCard = "TRANSFER_TO_DEBIT_CARD"
+        case transferToPrepaidCard = "TRANSFER_TO_PREPAID_CARD"
         // Donation types
         case donation = "DONATION"
         case donationFee = "DONATION_FEE"
