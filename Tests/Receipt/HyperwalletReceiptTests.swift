@@ -103,7 +103,7 @@ class HyperwalletReceiptTests: XCTestCase {
         }
         XCTAssertNoThrow(prepaidCardReceiptList!, "The `payPalAccountList` should not be nil")
         XCTAssertNotNil(prepaidCardReceiptList!.data, "The `data` should be not nil")
-        XCTAssertEqual(prepaidCardReceiptList!.data.count, 4, "The `data.count` should be 4")
+        XCTAssertEqual(prepaidCardReceiptList!.data.count, 6, "The `data.count` should be 6")
         XCTAssertNotNil(prepaidCardReceiptList!.links, "The `links` should be not nil")
         XCTAssertNotNil(prepaidCardReceiptList!.links.first?.params.rel)
         XCTAssertEqual(prepaidCardReceiptList!.data[2],
@@ -125,5 +125,21 @@ class HyperwalletReceiptTests: XCTestCase {
         } else {
             assertionFailure("The first receipt in the list should be not nil")
         }
+        
+        let transferToDebitCardReceipt = prepaidCardReceiptList?.data[4]
+        
+        XCTAssertNotNil(transferToDebitCardReceipt, "transferToDebitCardReceipt should not be nil")
+        var receiptType = HyperwalletReceipt.HyperwalletReceiptType.transferToDebitCard.rawValue
+        XCTAssertEqual(transferToDebitCardReceipt?.type.rawValue,
+                       receiptType,
+                       "Type should be TRANSFER_TO_DEBIT_CARD")
+        
+        let transferToPayPalReceipt = prepaidCardReceiptList?.data[5]
+        
+        XCTAssertNotNil(transferToPayPalReceipt, "transferToPayPalReceipt should not be nil")
+        receiptType = HyperwalletReceipt.HyperwalletReceiptType.transferToPayPalAccount.rawValue
+        XCTAssertEqual(transferToPayPalReceipt?.type.rawValue,
+                       receiptType,
+                       "Type should be TRANSFER_TO_PAYPAL_ACCOUNT")
     }
 }
