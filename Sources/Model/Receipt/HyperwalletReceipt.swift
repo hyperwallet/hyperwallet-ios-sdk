@@ -172,6 +172,7 @@ public struct HyperwalletReceipt: Decodable, Equatable {
         case prepaidCardSaleReversal = "PREPAID_CARD_SALE_REVERSAL"
         case prepaidCardUnload = "PREPAID_CARD_UNLOAD"
         case transferToPrepaidCard = "TRANSFER_TO_PREPAID_CARD"
+        case transferToDebitCard = "TRANSFER_TO_DEBIT_CARD"
         // Donation types
         case donation = "DONATION"
         case donationFee = "DONATION_FEE"
@@ -215,6 +216,9 @@ public struct HyperwalletReceipt: Decodable, Equatable {
         case transferToWire = "TRANSFER_TO_WIRE"
         case wireTransferFee = "WIRE_TRANSFER_FEE"
         case wireTransferReturn = "WIRE_TRANSFER_RETURN"
+        // PatPal transfer types
+        case transferToPayPalAccount = "TRANSFER_TO_PAYPAL_ACCOUNT"
+        // Default - unknown transfer type
         case unknown = "UNKNOWN_RECEIPT_TYPE"
     }
 
