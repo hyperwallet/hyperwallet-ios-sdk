@@ -47,7 +47,7 @@ class HyperwalletPrepaidCardTests: XCTestCase {
 
         XCTAssertNotNil(prepaidCardList?.links, "The `links` should be not nil")
 
-        let firstPrepaidCard = prepaidCardList?.data.first
+        let firstPrepaidCard = prepaidCardList?.data?.first
         XCTAssertEqual(firstPrepaidCard?.type, "PREPAID_CARD", "The type should be PREPAID_CARD")
         XCTAssertEqual(firstPrepaidCard?.token, "trm-123", "The token should be trm-123")
         XCTAssertEqual(firstPrepaidCard?.status, "DEACTIVATED", "The status should be DEACTIVATED")
@@ -61,7 +61,7 @@ class HyperwalletPrepaidCardTests: XCTestCase {
                        "2019-06-20T21:21:43",
                        "The createdOn should be 2019-06-20T21:21:43")
 
-        let lastPrepaidCard = prepaidCardList?.data.last
+        let lastPrepaidCard = prepaidCardList?.data?.last
         XCTAssertEqual(lastPrepaidCard?.type, "PREPAID_CARD", "The type should be PREPAID_CARD")
         XCTAssertEqual(lastPrepaidCard?.token, "trm-456", "The token should be trm-456")
         XCTAssertEqual(lastPrepaidCard?.cardNumber, "************2345", "The cardNumber should be ************2345")

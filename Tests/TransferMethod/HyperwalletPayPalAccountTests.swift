@@ -282,9 +282,9 @@ class HyperwalletPayPalAccountTests: XCTestCase {
         XCTAssertNotNil(payPalAccountList?.data, "The `data` should be not nil")
 
         XCTAssertNotNil(payPalAccountList?.links, "The `links` should be not nil")
-        XCTAssertNotNil(payPalAccountList?.links.first?.params.rel)
+        XCTAssertNotNil(payPalAccountList?.links?.first?.params?.rel)
 
-        let payPalAccount = payPalAccountList?.data.first
+        let payPalAccount = payPalAccountList?.data?.first
         XCTAssertEqual(payPalAccount?.token, "trm-123456789")
         XCTAssertEqual(payPalAccount?.email, "test@paypal.com")
     }

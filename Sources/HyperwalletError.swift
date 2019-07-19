@@ -261,7 +261,7 @@ internal struct ErrorTypeHelper {
     static func graphQlErrors(errors: [GraphQlError]) -> HyperwalletErrorType {
         var hyperwalletErrors = [HyperwalletError]()
         for graphQlError in errors {
-            let hyperwalletError = HyperwalletError(message: graphQlError.message,
+            let hyperwalletError = HyperwalletError(message: graphQlError.message ?? "Unexpected Error",
                                                     code: graphQlError.extensions?.code ?? "UNEXPECTED_ERROR",
                                                     fieldName: nil,
                                                     relatedResources: nil)
@@ -269,7 +269,7 @@ internal struct ErrorTypeHelper {
             os_log("GraphQl response contains error: %s",
                    log: OSLog.graphQl,
                    type: .info,
-                   graphQlError.message)
+                   graphQlError.message ?? "Unexpected Error")
         }
         return HyperwalletErrorType.graphQlErrors(HyperwalletErrors(errorList: hyperwalletErrors))
     }
