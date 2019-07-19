@@ -45,13 +45,13 @@ class HyperwalletReceiptTests: XCTestCase {
         XCTAssertEqual(userReceiptList?.count, 4, "The `count` should be 4")
         XCTAssertNotNil(userReceiptList?.data, "The `data` should be not nil")
         XCTAssertNotNil(userReceiptList?.links, "The `links` should be not nil")
-        XCTAssertNotNil(userReceiptList?.links?.first?.params?.rel)
+        XCTAssertNotNil(userReceiptList?.links.first?.params.rel)
 
-        if let userReceipt = userReceiptList?.data?.first {
+        if let userReceipt = userReceiptList?.data.first {
             XCTAssertEqual(userReceipt.journalId, "51660665")
-            XCTAssertEqual(userReceipt.type?.rawValue, "PAYMENT")
+            XCTAssertEqual(userReceipt.type.rawValue, "PAYMENT")
             XCTAssertEqual(userReceipt.createdOn, "2019-05-27T15:42:07")
-            XCTAssertEqual(userReceipt.entry?.rawValue, "CREDIT")
+            XCTAssertEqual(userReceipt.entry.rawValue, "CREDIT")
             XCTAssertEqual(userReceipt.sourceToken, "act-12345")
             XCTAssertEqual(userReceipt.destinationToken, "usr-12345")
             XCTAssertEqual(userReceipt.amount, "5000.00")
@@ -67,8 +67,8 @@ class HyperwalletReceiptTests: XCTestCase {
             assertionFailure("The receipt details should be not nil")
         }
 
-        let lastReceipt = userReceiptList?.data?.last!
-        XCTAssertEqual(lastReceipt?.type?.rawValue, "UNKNOWN_RECEIPT_TYPE")
+        let lastReceipt = userReceiptList?.data.last!
+        XCTAssertEqual(lastReceipt?.type.rawValue, "UNKNOWN_RECEIPT_TYPE")
     }
 
     func testListPrepaidCardReceipts_success() {
@@ -103,17 +103,17 @@ class HyperwalletReceiptTests: XCTestCase {
         }
         XCTAssertNoThrow(prepaidCardReceiptList!, "The `payPalAccountList` should not be nil")
         XCTAssertNotNil(prepaidCardReceiptList!.data, "The `data` should be not nil")
-        XCTAssertEqual(prepaidCardReceiptList!.data?.count, 4, "The `data.count` should be 4")
+        XCTAssertEqual(prepaidCardReceiptList!.data.count, 4, "The `data.count` should be 4")
         XCTAssertNotNil(prepaidCardReceiptList!.links, "The `links` should be not nil")
-        XCTAssertNotNil(prepaidCardReceiptList!.links?.first?.params?.rel)
-        XCTAssertEqual(prepaidCardReceiptList!.data?[2],
-                       prepaidCardReceiptList!.data?[3],
+        XCTAssertNotNil(prepaidCardReceiptList!.links.first?.params.rel)
+        XCTAssertEqual(prepaidCardReceiptList!.data[2],
+                       prepaidCardReceiptList!.data[3],
                        "These two prepaid card receipts should be equal")
-        if let prepaidCardReceipt = prepaidCardReceiptList?.data?.first {
+        if let prepaidCardReceipt = prepaidCardReceiptList?.data.first {
             XCTAssertEqual(prepaidCardReceipt.journalId, "CC002F14A570")
-            XCTAssertEqual(prepaidCardReceipt.type?.rawValue, "DEPOSIT")
+            XCTAssertEqual(prepaidCardReceipt.type.rawValue, "DEPOSIT")
             XCTAssertEqual(prepaidCardReceipt.createdOn, "2019-05-27T16:01:10")
-            XCTAssertEqual(prepaidCardReceipt.entry?.rawValue, "CREDIT")
+            XCTAssertEqual(prepaidCardReceipt.entry.rawValue, "CREDIT")
             XCTAssertEqual(prepaidCardReceipt.destinationToken, "trm-a4b44375")
             XCTAssertEqual(prepaidCardReceipt.amount, "18.05")
             XCTAssertEqual(prepaidCardReceipt.currency, "USD")

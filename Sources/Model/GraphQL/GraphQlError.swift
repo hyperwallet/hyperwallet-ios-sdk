@@ -20,17 +20,17 @@ import Foundation
 
 struct GraphQlError: Codable {
     var extensions: Extension?
-    var locations: [Location]?
-    var message: String?
+    var locations: [Location]
+    var message: String
     var path: [AnyCodable]?
 }
 
 struct Location: Codable {
-    var column: Int?
-    var line: Int?
+    var column: Int
+    var line: Int
 }
 
 struct Extension: Codable {
     var code: String?
-    var timestamp: String?
+    var timestamp: String
 }

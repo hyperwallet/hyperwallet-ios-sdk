@@ -25,17 +25,17 @@ import Foundation
 public final class HyperwalletStatusTransition: Codable {
     /// The datetime the status changed in ISO 8601 format (YYYY-MM-DDThh:mm:ss). Note that the timezone used is UTC,
     /// therefore there is no time offset.
-    public var createdOn: String?
+    public var createdOn: String!
     /// The status before the transition.
-    public var fromStatus: Status?
+    public var fromStatus: Status!
     /// Comments regarding the status change.
     public var notes: String?
     /// The unique, auto-generated status transition identifier.
-    public var token: String?
+    public var token: String!
     /// The status after the transition.
-    public var toStatus: Status?
+    public var toStatus: Status!
     /// The new status of the resource.
-    public var transition: Status?
+    public var transition: Status
 
     public init(transition: Status) {
         self.transition = transition

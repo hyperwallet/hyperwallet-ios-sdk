@@ -49,11 +49,11 @@ class HyperwalletTransferMethodTests: XCTestCase {
 
         // Check the links
         XCTAssertNotNil(transferMethods?.links, "The `links` should be not nil")
-        let linkNext = transferMethods?.links?.first { $0.params?.rel == "next" }
+        let linkNext = transferMethods?.links.first { $0.params.rel == "next" }
         XCTAssertNotNil(linkNext?.href)
 
         // check the bank card
-        let bankCard = transferMethods?.data?.first { ($0.type ?? "")  == "BANK_CARD" }
+        let bankCard = transferMethods?.data.first { ($0.type ?? "")  == "BANK_CARD" }
 
         XCTAssertEqual(bankCard?.type, "BANK_CARD")
         XCTAssertEqual(bankCard?.token, "trm-00002")
@@ -71,7 +71,7 @@ class HyperwalletTransferMethodTests: XCTestCase {
         XCTAssertEqual(bankCard?.getField(cardBrandFieldName), "VISA")
 
         // check the bank account
-        let bankAccount = transferMethods?.data?.first { ($0.type ?? "")  == "BANK_ACCOUNT" }
+        let bankAccount = transferMethods?.data.first { ($0.type ?? "")  == "BANK_ACCOUNT" }
 
         XCTAssertEqual(bankAccount?.type, "BANK_ACCOUNT")
         XCTAssertEqual(bankAccount?.token, "trm-00001")

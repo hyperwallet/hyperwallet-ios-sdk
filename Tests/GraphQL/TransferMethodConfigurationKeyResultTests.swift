@@ -9,7 +9,7 @@ class TransferMethodConfigurationKeyResultTests: XCTestCase {
     override func setUp() {
         transferMethodConfigurationKey = hyperwalletGraphQlKey(data:
             HyperwalletTestHelper.getDataFromJson("TransferMethodConfigurationKeysResponse"))!
-        keyResult = TransferMethodConfigurationKeyResult(transferMethodConfigurationKey.countries?.nodes)
+        keyResult = TransferMethodConfigurationKeyResult(transferMethodConfigurationKey.countries.nodes)
     }
 
     func testPerformanceCountries() {
