@@ -36,8 +36,7 @@ import Foundation
     ///
     /// - Parameters:
     ///   - authenticationToken: a JWT token identifying a Hyperwallet User principal
-    ///   - error: an `HyperwalletAuthenticationErrorType` indicating the cause of the authentication
-    ///            token retrieval error
+    ///   - error: indicate the cause of the authentication token retrieval error
     typealias CompletionHandler = (_ authenticationToken: String?, _ error: Error?) -> Void
 
     /// Invoked when the Hyperwallet iOS Core SDK requires an authentication token.
