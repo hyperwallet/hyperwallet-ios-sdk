@@ -168,7 +168,6 @@ public struct HyperwalletReceipt: Decodable, Equatable {
         case prepaidCardPinChangeFee = "PREPAID_CARD_PIN_CHANGE_FEE"
         case prepaidCardRefund = "PREPAID_CARD_REFUND"
         case prepaidCardReplacementFee = "PREPAID_CARD_REPLACEMENT_FEE"
-        case prepaidCardSale = "PREPAID_CARD_SALE"
         case prepaidCardSaleReversal = "PREPAID_CARD_SALE_REVERSAL"
         case prepaidCardUnload = "PREPAID_CARD_UNLOAD"
         case transferToDebitCard = "TRANSFER_TO_DEBIT_CARD"
@@ -216,7 +215,8 @@ public struct HyperwalletReceipt: Decodable, Equatable {
         case transferToWire = "TRANSFER_TO_WIRE"
         case wireTransferFee = "WIRE_TRANSFER_FEE"
         case wireTransferReturn = "WIRE_TRANSFER_RETURN"
-        // PatPal transfer types
+        case prepaidCardSale = "PREPAID_CARD_SALE"
+        // PayPal transfer types
         case transferToPayPalAccount = "TRANSFER_TO_PAYPAL_ACCOUNT"
         // Default - unknown transfer type
         case unknown = "UNKNOWN_RECEIPT_TYPE"
