@@ -67,6 +67,22 @@ class HyperwalletReceiptTests: XCTestCase {
             assertionFailure("The receipt details should be not nil")
         }
 
+        let transferToDebitCardReceipt = userReceiptList?.data[3]
+
+        XCTAssertNotNil(transferToDebitCardReceipt, "transferToDebitCardReceipt should not be nil")
+        var receiptType = HyperwalletReceipt.HyperwalletReceiptType.transferToDebitCard.rawValue
+        XCTAssertEqual(transferToDebitCardReceipt?.type.rawValue,
+                       receiptType,
+                       "Type should be TRANSFER_TO_DEBIT_CARD")
+
+        let transferToPayPalReceipt = userReceiptList?.data[4]
+
+        XCTAssertNotNil(transferToPayPalReceipt, "transferToPayPalReceipt should not be nil")
+        receiptType = HyperwalletReceipt.HyperwalletReceiptType.transferToPayPalAccount.rawValue
+        XCTAssertEqual(transferToPayPalReceipt?.type.rawValue,
+                       receiptType,
+                       "Type should be TRANSFER_TO_PAYPAL_ACCOUNT")
+
         let lastReceipt = userReceiptList?.data.last!
         XCTAssertEqual(lastReceipt?.type.rawValue, "UNKNOWN_RECEIPT_TYPE")
     }
