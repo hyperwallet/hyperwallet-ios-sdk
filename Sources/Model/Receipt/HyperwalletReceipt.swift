@@ -106,18 +106,18 @@ public struct HyperwalletReceiptDetails: Decodable {
 /// - sourceToken: A token identifying the source of funds.
 /// - type: The transaction type.
 public struct HyperwalletReceipt: Decodable, Equatable {
-    public let amount: String
-    public let createdOn: String
-    public let currency: String
+    public let amount: String?
+    public let createdOn: String?
+    public let currency: String?
     public let destinationToken: String?
     public let details: HyperwalletReceiptDetails?
-    public let entry: HyperwalletEntryType
+    public let entry: HyperwalletEntryType?
     public let fee: String?
     public let foreignExchangeCurrency: String?
     public let foreignExchangeRate: String?
-    public let journalId: String
+    public let journalId: String?
     public let sourceToken: String?
-    public let type: HyperwalletReceiptType
+    public let type: HyperwalletReceiptType?
 
     public static func == (lhs: HyperwalletReceipt, rhs: HyperwalletReceipt) -> Bool {
         return lhs.journalId == rhs.journalId &&
