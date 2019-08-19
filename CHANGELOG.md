@@ -21,7 +21,7 @@ Changelog
     * List Prepaid Cards
     * List Prepaid Card Receipts
     * List User Receipts
-    
+
 [1.0.0-beta04](https://github.com/hyperwallet/hyperwallet-ios-sdk/releases/tag/1.0.0-beta04)
 -------------------
 - Added support to the following
