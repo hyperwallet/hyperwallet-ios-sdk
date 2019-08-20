@@ -24,8 +24,8 @@ import Foundation
 /// - name: The country name
 /// - currencies: The `HyperwalletCurrency` nodes that connect to this country node
 public struct HyperwalletCountry: Codable {
-    public let code: String
-    public let name: String
+    public let code: String?
+    public let name: String?
     public let currencies: Connection<HyperwalletCurrency>?
 }
 
@@ -35,8 +35,8 @@ public struct HyperwalletCountry: Codable {
 /// - name: The currency name
 /// - currencies: The `HyperwalletTransferMethodType` nodes that connect to this currency node
 public struct HyperwalletCurrency: Codable {
-    public let code: String
-    public let name: String
+    public let code: String?
+    public let name: String?
     public let transferMethodTypes: Connection<HyperwalletTransferMethodType>?
 }
 
@@ -70,9 +70,9 @@ public enum HyperwalletDataType: String, Codable {
 /// Representation of the fee
 public struct HyperwalletFee: Codable, Hashable {
     /// The fee rate type (FLAT or PERCENT)
-    public let feeRateType: String
+    public let feeRateType: String?
     /// The fee value
-    public var value: String
+    public var value: String?
     /// The fee currency
     public var currency: String?
     /// The minimum fee, or nil if none exists
@@ -118,16 +118,24 @@ public struct HyperwalletFieldGroup: Codable {
 /// Representation of the transfer method configuration field selection option
 public struct HyperwalletFieldSelectionOption: Codable {
     /// The label
-    public let label: String
+    public let label: String?
     /// The value
-    public let value: String
+    public let value: String?
+}
+
+/// Representation of the transfer method configuration field processing times
+public struct HyperwalletProcessingTime: Codable {
+    public let country: String?
+    public let currency: String?
+    public let transferMethodType: String?
+    public let value: String?
 }
 
 public struct HyperwalletTransferMethodType: Codable {
     public let code: String?
     public let name: String?
     public let fees: Connection<HyperwalletFee>?
-    public let processingTime: String?
+    public let processingTimes: Connection<HyperwalletProcessingTime>?
 }
 
 /// Representation of the transfer method configuration field validation message
@@ -146,7 +154,7 @@ struct TransferMethodConfigurationField: Codable {
 }
 
 struct TransferMethodConfigurationKey: Codable {
-    let countries: Connection<HyperwalletCountry>
+    let countries: Connection<HyperwalletCountry>?
 }
 
 /// Representation of the transfer method configuration

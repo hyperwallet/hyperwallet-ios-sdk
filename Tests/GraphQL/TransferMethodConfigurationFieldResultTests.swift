@@ -15,20 +15,37 @@ class TransferMethodConfigurationFieldResultTests: XCTestCase {
 
     func testFees_success() {
         let fieldFees = fieldResult.transferMethodType()?.fees?.nodes
-        XCTAssertNotNil(fieldFees)
+        XCTAssertNotNil(fieldFees, "The fieldFees should not be nil")
         XCTAssertEqual(fieldFees?.first?.feeRateType, "FLAT", "Type should be FLAT")
     }
 
     func testProcessingTime_success() {
-        let processingTime = fieldResult?.transferMethodType()?.processingTime
-        XCTAssertNotNil(processingTime)
-        XCTAssertEqual(processingTime, "1 - 3 business days", "Type should be 1 - 3 business days")
+        let processingTime = fieldResult?.transferMethodType()?.processingTimes?.nodes?.first
+        XCTAssertNotNil(processingTime, "The processingTime should not be nil")
+        XCTAssertEqual(processingTime!.value,
+                       "1-3 business days",
+                       "Type should be 1-3 business days")
+        XCTAssertEqual(processingTime!.country,
+                       "US",
+                       "The country should be US")
+        XCTAssertEqual(processingTime!.currency,
+                       "USD",
+                       "The currency should be USD")
+        XCTAssertEqual(processingTime!.transferMethodType,
+                       "BANK_ACCOUNT",
+                       "The transferMethodType should be BANK_ACCOUNT")
     }
 
-    func testFieldGroupds_success() {
-        XCTAssertEqual(fieldResult.fieldGroups()?.count, 2, "The amount of groups is different from the expected value")
-        XCTAssertEqual(fieldResult.fieldGroups()?.first?.group, "IDENTIFICATION")
-        XCTAssertEqual(fieldResult.fieldGroups()?.last?.group, "BUSINESS_INFORMATION")
+    func testFieldGroups_success() {
+        XCTAssertEqual(fieldResult.fieldGroups()?.count,
+                       2,
+                       "The amount of groups is different from the expected value")
+        XCTAssertEqual(fieldResult.fieldGroups()?.first?.group,
+                       "IDENTIFICATION",
+                       "First group should be IDENTIFICATION")
+        XCTAssertEqual(fieldResult.fieldGroups()?.last?.group,
+                       "BUSINESS_INFORMATION",
+                       "Last group should be BUSINESS_INFORMATION")
     }
 
     func testFields_success() {

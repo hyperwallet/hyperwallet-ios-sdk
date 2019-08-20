@@ -29,32 +29,32 @@ public final class HyperwalletPrepaidCard: HyperwalletTransferMethod {
 
     /// The prepaid card's type
     public var cardType: String? {
-        return getField(fieldName: .cardType) as? String
+        return getField(TransferMethodField.cardType.rawValue)
     }
 
     /// The prepaid card's package
     public var cardPackage: String? {
-        return getField(fieldName: .cardPackage) as? String
+        return getField(TransferMethodField.cardPackage.rawValue)
     }
 
     /// The prepaid card's number
     public var cardNumber: String? {
-        return getField(fieldName: .cardNumber) as? String
+        return getField(TransferMethodField.cardNumber.rawValue)
     }
 
     /// The prepaid card's brand
     public var cardBrand: String? {
-        return getField(fieldName: .cardBrand) as? String
+        return getField(TransferMethodField.cardBrand.rawValue)
     }
 
     /// The prepaid card's expiry date
     public var dateOfExpiry: String? {
-        return getField(fieldName: .dateOfExpiry) as? String
+        return getField(TransferMethodField.dateOfExpiry.rawValue)
     }
 
     /// The prepaid card's user token (instant issue cards only)
     public var userToken: String? {
-        return getField(fieldName: .userToken) as? String
+        return getField(TransferMethodField.userToken.rawValue)
     }
 
     /// A helper class to build the `HyperwalletPrepaidCard` instance.

@@ -696,7 +696,7 @@ public final class Hyperwallet {
     /// - parameters: completion: the callback handler of responses from the Hyperwallet platform
     public func updateBankAccount(account: HyperwalletBankAccount,
                                   completion: @escaping (HyperwalletBankAccount?, HyperwalletErrorType?) -> Void) {
-        let token = account.getField(fieldName: .token) as? String ?? ""
+        let token = account.token ?? ""
         httpTransaction.performRest(httpMethod: .put,
                                     urlPath: "users/%@/bank-accounts/\(token)",
                                     payload: account,
@@ -721,7 +721,7 @@ public final class Hyperwallet {
     ///   - completion: the callback handler of responses from the Hyperwallet platform
     public func updateBankCard(account: HyperwalletBankCard,
                                completion: @escaping (HyperwalletBankCard?, HyperwalletErrorType?) -> Void) {
-        let token = account.getField(fieldName: .token) as? String ?? ""
+        let token = account.token ?? ""
         httpTransaction.performRest(httpMethod: .put,
                                     urlPath: "users/%@/bank-cards/\(token)",
                                     payload: account,
@@ -746,7 +746,7 @@ public final class Hyperwallet {
     ///   - completion: the callback handler of responses from the Hyperwallet platform
     public func updatePayPalAccount(account: HyperwalletPayPalAccount,
                                     completion: @escaping (HyperwalletPayPalAccount?, HyperwalletErrorType?) -> Void) {
-        let token = account.getField(fieldName: .token) as? String ?? ""
+        let token = account.token ?? ""
         httpTransaction.performRest(httpMethod: .put,
                                     urlPath: "users/%@/paypal-accounts/\(token)",
                                     payload: account,
@@ -767,7 +767,7 @@ public final class Hyperwallet {
         (TransferMethodConfigurationKeyResult?, HyperwalletErrorType?) -> Void))
         -> (TransferMethodConfigurationKey?, HyperwalletErrorType?) -> Void {
             return { (response, error) in
-                completionHandler(TransferMethodConfigurationKeyResult(response?.countries.nodes), error)
+                completionHandler(TransferMethodConfigurationKeyResult(response?.countries?.nodes), error)
             }
     }
 }

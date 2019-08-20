@@ -106,18 +106,18 @@ public struct HyperwalletReceiptDetails: Decodable {
 /// - sourceToken: A token identifying the source of funds.
 /// - type: The transaction type.
 public struct HyperwalletReceipt: Decodable, Equatable {
-    public let amount: String
-    public let createdOn: String
-    public let currency: String
+    public let amount: String?
+    public let createdOn: String?
+    public let currency: String?
     public let destinationToken: String?
     public let details: HyperwalletReceiptDetails?
-    public let entry: HyperwalletEntryType
+    public let entry: HyperwalletEntryType?
     public let fee: String?
     public let foreignExchangeCurrency: String?
     public let foreignExchangeRate: String?
-    public let journalId: String
+    public let journalId: String?
     public let sourceToken: String?
-    public let type: HyperwalletReceiptType
+    public let type: HyperwalletReceiptType?
 
     public static func == (lhs: HyperwalletReceipt, rhs: HyperwalletReceipt) -> Bool {
         return lhs.journalId == rhs.journalId &&
@@ -168,9 +168,9 @@ public struct HyperwalletReceipt: Decodable, Equatable {
         case prepaidCardPinChangeFee = "PREPAID_CARD_PIN_CHANGE_FEE"
         case prepaidCardRefund = "PREPAID_CARD_REFUND"
         case prepaidCardReplacementFee = "PREPAID_CARD_REPLACEMENT_FEE"
-        case pPrepaidCardSale = "PREPAID_CARD_SALE"
         case prepaidCardSaleReversal = "PREPAID_CARD_SALE_REVERSAL"
         case prepaidCardUnload = "PREPAID_CARD_UNLOAD"
+        case transferToDebitCard = "TRANSFER_TO_DEBIT_CARD"
         case transferToPrepaidCard = "TRANSFER_TO_PREPAID_CARD"
         // Donation types
         case donation = "DONATION"
@@ -215,6 +215,10 @@ public struct HyperwalletReceipt: Decodable, Equatable {
         case transferToWire = "TRANSFER_TO_WIRE"
         case wireTransferFee = "WIRE_TRANSFER_FEE"
         case wireTransferReturn = "WIRE_TRANSFER_RETURN"
+        case prepaidCardSale = "PREPAID_CARD_SALE"
+        // PayPal transfer types
+        case transferToPayPalAccount = "TRANSFER_TO_PAYPAL_ACCOUNT"
+        // Default - unknown transfer type
         case unknown = "UNKNOWN_RECEIPT_TYPE"
     }
 

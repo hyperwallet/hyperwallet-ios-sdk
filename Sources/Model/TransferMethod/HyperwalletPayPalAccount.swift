@@ -27,6 +27,11 @@ public final class HyperwalletPayPalAccount: HyperwalletTransferMethod {
         try super.init(from: decoder)
     }
 
+    /// The email address.
+    public var email: String? {
+        return getField(TransferMethodField.email.rawValue)
+    }
+
     /// A helper class to build the `HyperwalletPayPalAccount` instance.
     public final class Builder {
         private var storage = [String: AnyCodable]()

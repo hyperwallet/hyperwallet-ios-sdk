@@ -21,7 +21,7 @@ import Foundation
 /// The `HyperwalletTransferMethodConfigurationFieldQuery` struct defines and builds a query to retrieve the fields
 /// required to create a transfer method (Bank Account, Bank Card, PayPal Account, Prepaid Card, Paper Check)
 /// with the Hyperwallet platform.
-public struct HyperwalletTransferMethodConfigurationFieldQuery: GraphQlQuery {
+public struct HyperwalletTransferMethodConfigurationFieldQuery: GraphQlQuery, Hashable {
     private var country: String
     private var currency: String
     private var transferMethodType: String
@@ -87,7 +87,14 @@ public struct HyperwalletTransferMethodConfigurationFieldQuery: GraphQlQuery {
                       nodes {
                         code
                         name
-                        processingTime
+                        processingTimes {
+                          nodes {
+                            country
+                            currency
+                            transferMethodType
+                            value
+                          }
+                        }
                         fees {
                           nodes {
                             currency
@@ -127,6 +134,13 @@ public struct HyperwalletTransferMethodConfigurationFieldQuery: GraphQlQuery {
     public func toGraphQl(userToken: String) -> String {
         return String(format: query, userToken, profile, country, currency, transferMethodType)
     }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(country)
+        hasher.combine(currency)
+        hasher.combine(transferMethodType)
+        hasher.combine(profile)
+    }
 }
 
 /// The 'HyperwalletTransferMethodConfigurationKeysQuery' struct defines and builds a query to retrieve the key set
@@ -150,7 +164,14 @@ public struct HyperwalletTransferMethodConfigurationKeysQuery: GraphQlQuery {
                             nodes {
                                 code
                                 name
-                                processingTime
+                                processingTimes {
+                                  nodes {
+                                    country
+                                    currency
+                                    transferMethodType
+                                    value
+                                  }
+                                }
                                 fees {
                                     nodes {
                                       currency
