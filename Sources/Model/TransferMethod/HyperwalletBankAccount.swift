@@ -19,7 +19,6 @@
 import Foundation
 
 /// Representation of the user's bank account
-@objcMembers
 public final class HyperwalletBankAccount: HyperwalletTransferMethod {
     override private init(data: [String: AnyCodable]) {
         super.init(data: data)

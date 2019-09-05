@@ -18,7 +18,6 @@
 
 import Foundation
 /// Representation of the user's Prepaid card account
-@objcMembers
 public final class HyperwalletPrepaidCard: HyperwalletTransferMethod {
     override private init(data: [String: AnyCodable]) {
         super.init(data: data)

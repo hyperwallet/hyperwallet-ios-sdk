@@ -19,8 +19,7 @@
 import Foundation
 
 /// Representation of the transfer method (bank account, bank card, PayPal account, prepaid card, paper check).
-@objcMembers
-public class HyperwalletTransferMethod: Codable {
+public class HyperwalletTransferMethod: NSObject, Codable {
     private var storage: [String: AnyCodable]
 
     /// Representation of the transfer method's field type
@@ -156,7 +155,7 @@ public class HyperwalletTransferMethod: Codable {
     }
 
     /// Creates a new instance of the `HyperwalletTransferMethod`
-    public init() {
+    override public init() {
         self.storage = [String: AnyCodable]()
     }
 
