@@ -25,9 +25,9 @@ class HyperwalletTransferTests: XCTestCase {
         var errorResponse: HyperwalletErrorType?
 
         //When
-        let transferRequest = HyperwalletTransfer.Transfer.Builder(clientTransferId: "6712348070812",
-                                                                   sourceToken: "usr-123456",
-                                                                   destinationToken: "trm-invalid-token")
+        let transferRequest = HyperwalletTransfer.Builder(clientTransferId: "6712348070812",
+                                                          sourceToken: "usr-123456",
+                                                          destinationToken: "trm-invalid-token")
             .sourceAmount("80")
             .sourceCurrency("CAD")
             .destinationAmount("62.29")
@@ -65,9 +65,9 @@ class HyperwalletTransferTests: XCTestCase {
         var errorResponse: HyperwalletErrorType?
 
         // When
-        let transferRequest = HyperwalletTransfer.Transfer.Builder(clientTransferId: "6712348070812",
-                                                                   sourceToken: "usr-123456",
-                                                                   destinationToken: "trm-invalid-token")
+        let transferRequest = HyperwalletTransfer.Builder(clientTransferId: "6712348070812",
+                                                          sourceToken: "usr-123456",
+                                                          destinationToken: "trm-invalid-token")
             .destinationAmount("62.29")
             .destinationCurrency("USD")
             .build()

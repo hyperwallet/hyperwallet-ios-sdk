@@ -178,6 +178,7 @@ public class HyperwalletTransferMethod: NSObject, Codable {
     ///
     /// - Parameter fieldName: The `TransferMethodField` type raw value
     /// - Returns: Returns the field value, or nil if none exists.
+    @objc
     public func getField(_ fieldName: String) -> String? {
         return self.storage[fieldName]?.value as? String
     }
