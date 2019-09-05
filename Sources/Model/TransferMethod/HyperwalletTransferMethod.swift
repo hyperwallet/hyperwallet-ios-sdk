@@ -214,37 +214,37 @@ public class HyperwalletTransferMethod: NSObject, Codable {
     }
 
     /// The transfer method's created time
-    public var createdOn: String? {
+    @objc public var createdOn: String? {
         return getField(TransferMethodField.createdOn.rawValue)
     }
 
     /// The transfer method holder's profile type, e.g. INDIVIDUAL or BUSINESS.
-    public var profileType: String? {
+    @objc public var profileType: String? {
         return getField(TransferMethodField.profileType.rawValue)
     }
 
     /// The transfer method's status
-    public var status: String? {
+    @objc public var status: String? {
         return getField(TransferMethodField.status.rawValue)
     }
 
     /// The transfer method's token
-    public var token: String? {
+    @objc public var token: String? {
         return getField(TransferMethodField.token.rawValue)
     }
 
     /// The transfer method's country
-    public var transferMethodCountry: String? {
+    @objc public var transferMethodCountry: String? {
         return getField(TransferMethodField.transferMethodCountry.rawValue)
     }
 
     /// The transfer method's currency
-    public var transferMethodCurrency: String? {
+    @objc public var transferMethodCurrency: String? {
         return getField(TransferMethodField.transferMethodCurrency.rawValue)
     }
 
     /// The transfer method's type
-    public var type: String? {
+    @objc public var type: String? {
         return getField(TransferMethodField.type.rawValue)
     }
 }

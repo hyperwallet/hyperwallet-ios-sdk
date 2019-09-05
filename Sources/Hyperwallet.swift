@@ -153,8 +153,8 @@ public final class Hyperwallet {
     /// - Parameters:
     ///   - transfer: the `HyperwalletTransfer` to be created
     ///   - completion: the callback handler of responses from the Hyperwallet platform
-    public func createTransfer(transfer: HyperwalletTransfer,
-                               completion: @escaping (HyperwalletTransfer?, HyperwalletErrorType?) -> Void) {
+    public func createTransfer(transfer: HyperwalletTransfer.Transfer,
+                               completion: @escaping (HyperwalletTransfer.Transfer?, HyperwalletErrorType?) -> Void) {
         httpTransaction.performRest(httpMethod: .post,
                                     urlPath: "transfers",
                                     payload: transfer,
@@ -341,7 +341,7 @@ public final class Hyperwallet {
     ///                    being requested
     ///   - completion: the callback handler of responses from the Hyperwallet platform
     public func getTransfer(transferToken: String,
-                            completion: @escaping (HyperwalletTransfer?, HyperwalletErrorType?) -> Void) {
+                            completion: @escaping (HyperwalletTransfer.Transfer?, HyperwalletErrorType?) -> Void) {
         httpTransaction.performRest(httpMethod: .get,
                                     urlPath: "transfers/\(transferToken)",
                                     payload: "",
@@ -625,7 +625,7 @@ public final class Hyperwallet {
     ///   - queryParam: the ordering and filtering criteria
     ///   - completion: the callback handler of responses from the Hyperwallet platform
     public func listTransfers(queryParam: HyperwalletTransferQueryParam? = nil,
-                              completion: @escaping (HyperwalletPageList<HyperwalletTransfer>?,
+                              completion: @escaping (HyperwalletPageList<HyperwalletTransfer.Transfer>?,
         HyperwalletErrorType?) -> Void) {
         httpTransaction.performRest(httpMethod: .get,
                                     urlPath: "transfers",
