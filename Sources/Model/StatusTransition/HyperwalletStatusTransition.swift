@@ -22,6 +22,7 @@ import Foundation
 ///
 /// The status transition describes a status change for an existing bank account, bank card, PayPal account,
 /// prepaid card, paper check or payment.
+@objcMembers
 public final class HyperwalletStatusTransition: NSObject, Codable {
     /// The datetime the status changed in ISO 8601 format (YYYY-MM-DDThh:mm:ss). Note that the timezone used is UTC,
     /// therefore there is no time offset.
@@ -65,28 +66,86 @@ public final class HyperwalletStatusTransition: NSObject, Codable {
     /// - unsuspended: The status is not suspended.
     /// - verified: The status is verified.
     /// - verificationRequired: The status is verification required
-    public enum Status: String, Codable {
-        case activated                          = "ACTIVATED"
-        case cancelled                          = "CANCELLED"
-        case completed                          = "COMPLETED"
-        case deactivated                        = "DE_ACTIVATED"
-        case expired                            = "EXPIRED"
-        case failed                             = "FAILED"
-        case inProgress                         = "IN_PROGRESS"
-        case invalid                            = "INVALID"
-        case lostOrStolen                       = "LOST_OR_STOLEN"
-        case pendingAccountActivation           = "PENDING_ACCOUNT_ACTIVATION"
-        case pendingIdVerification              = "PENDING_ID_VERIFICATION"
-        case pendingTaxVerification             = "PENDING_TAX_VERIFICATION"
-        case pendingTransactionVerification     = "PENDING_TRANSACTION_VERIFICATION"
-        case pendingTransferMethodAction        = "PENDING_TRANSACTION_METHOD_ACTION"
-        case quoted                             = "QUOTED"
-        case recalled                           = "RECALLED"
-        case returned                           = "RETURNED"
-        case scheduled                          = "SCHEDULED"
-        case suspended                          = "SUSPENDED"
-        case unsuspended                        = "UNSUSPENDED"
-        case verificationRequired               = "VERIFICATION_REQUIRED"
-        case verified                           = "VERIFIED"
+    @objc public enum Status: Int, Codable {
+        case activated
+        case cancelled
+        case completed
+        case deactivated
+        case expired
+        case failed
+        case inProgress
+        case invalid
+        case lostOrStolen
+        case pendingAccountActivation
+        case pendingIdVerification
+        case scheduled
+        case quoted
+
+        public typealias RawValue = String
+
+        public var rawValue: RawValue {
+            switch self {
+            case .activated:
+                return "ACTIVATED"
+            case .cancelled:
+                return "CANCELLED"
+            case .completed:
+                return "COMPLETED"
+            case .deactivated:
+                return "DE_ACTIVATED"
+            case .expired:
+                return "EXPIRED"
+            case .failed:
+                return "FAILED"
+            case .inProgress:
+                return "IN_PROGRESS"
+            case .invalid:
+                return "INVALID"
+            case .lostOrStolen:
+                return "LOST_OR_STOLEN"
+            case .pendingAccountActivation:
+                return "PENDING_ACCOUNT_ACTIVATION"
+            case .pendingIdVerification:
+                return "PENDING_ID_VERIFICATION"
+            case .scheduled:
+                return "SCHEDULED"
+            case .quoted:
+                return "QUOTED"
+            }
+        }
+
+        public init?(rawValue: RawValue) {
+            switch rawValue {
+            case "ACTIVATED":
+                self = .activated
+            case "CANCELLED":
+                self = .cancelled
+            case "COMPLETED":
+                self = .completed
+            case "DE_ACTIVATED":
+                self = .deactivated
+            case "EXPIRED":
+                self = .expired
+            case "FAILED":
+                self = .failed
+            case "IN_PROGRESS":
+                self = .inProgress
+            case "INVALID":
+                self = .invalid
+            case "LOST_OR_STOLEN":
+                self = .lostOrStolen
+            case "PENDING_ACCOUNT_ACTIVATION":
+                self = .pendingAccountActivation
+            case "PENDING_ID_VERIFICATION":
+                self = .pendingIdVerification
+            case "SCHEDULED":
+                self = .scheduled
+            case "QUOTED":
+                self = .quoted
+
+            default:
+                self = .activated
+            }
+        }
     }
 }

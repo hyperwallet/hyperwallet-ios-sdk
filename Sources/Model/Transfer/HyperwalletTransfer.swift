@@ -42,7 +42,7 @@ public class HyperwalletTransfer: NSObject {
         case scheduled              = "SCHEDULED"
         case verificationRequired   = "VERIFICATION_REQUIRED"
     }
-    public struct Transfer: Codable {
+    public class Transfer: NSObject, Codable {
         public let clientTransferId: String
         public let createdOn: String?
         public let destinationAmount: String?
@@ -96,7 +96,7 @@ public class HyperwalletTransfer: NSObject {
     }
 
     /// A helper class to build the `HyperwalletTransfer` instance.
-    public class Builder {
+    public class Builder: NSObject {
         private let clientTransferId: String
         private var destinationAmount: String?
         private var destinationCurrency: String?
