@@ -22,7 +22,7 @@ import Foundation
 ///
 /// The status transition describes a status change for an existing bank account, bank card, PayPal account,
 /// prepaid card, paper check or payment.
-public final class HyperwalletStatusTransition: Codable {
+public final class HyperwalletStatusTransition: NSObject, Codable {
     /// The datetime the status changed in ISO 8601 format (YYYY-MM-DDThh:mm:ss). Note that the timezone used is UTC,
     /// therefore there is no time offset.
     public var createdOn: String?

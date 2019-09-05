@@ -19,6 +19,7 @@
 import Foundation
 
 /// Representation of the user's bank card
+@objcMembers
 public class HyperwalletBankCard: HyperwalletTransferMethod {
     override private init(data: [String: AnyCodable]) {
         super.init(data: data)

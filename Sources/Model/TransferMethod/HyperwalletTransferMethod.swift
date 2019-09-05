@@ -19,6 +19,7 @@
 import Foundation
 
 /// Representation of the transfer method (bank account, bank card, PayPal account, prepaid card, paper check).
+@objcMembers
 public class HyperwalletTransferMethod: Codable {
     private var storage: [String: AnyCodable]
 
