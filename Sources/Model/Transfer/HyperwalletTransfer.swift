@@ -18,11 +18,7 @@
 
 import Foundation
 
-protocol HyperwalletForeignExchange: NSObject {
-    var foreignExchange: ForeignExchange { get }
-}
-
-public struct ForeignExchange: Codable {
+public struct HyperwalletForeignExchange: Codable {
     public let destinationAmount: String?
     public let destinationCurrency: String?
     public let rate: String?
@@ -30,7 +26,23 @@ public struct ForeignExchange: Codable {
     public let sourceCurrency: String?
 }
 
-public class HyperwalletTransfer: NSObject {
+public struct HyperwalletTransfer: Codable {
+    public let clientTransferId: String
+    public let createdOn: String?
+    public let destinationAmount: String?
+    public let destinationCurrency: String?
+    public let destinationFeeAmount: String?
+    public let destinationToken: String
+    public let expiresOn: String?
+    public let foreignExchanges: [HyperwalletForeignExchange]?
+    public let memo: String?
+    public let notes: String?
+    public let sourceAmount: String?
+    public let sourceCurrency: String?
+    public let sourceFeeAmount: String?
+    public let sourceToken: String
+    public let status: HyperwalletTransferStatus?
+    public let token: String?
     public enum HyperwalletTransferStatus: String, Codable {
         case cancelled              = "CANCELLED"
         case completed              = "COMPLETED"
@@ -42,40 +54,23 @@ public class HyperwalletTransfer: NSObject {
         case scheduled              = "SCHEDULED"
         case verificationRequired   = "VERIFICATION_REQUIRED"
     }
-    public class Transfer: NSObject, Codable {
-        public let clientTransferId: String
-        public let createdOn: String?
-        public let destinationAmount: String?
-        public let destinationCurrency: String?
-        public let destinationFeeAmount: String?
-        public let destinationToken: String
-        public let expiresOn: String?
-        public let foreignExchanges: [ForeignExchange]?
-        public let memo: String?
-        public let notes: String?
-        public let sourceAmount: String?
-        public let sourceCurrency: String?
-        public let sourceFeeAmount: String?
-        public let sourceToken: String
-        public let status: HyperwalletTransferStatus?
-        public let token: String?
 
-        fileprivate init(clientTransferId: String,
-                         createdOn: String? = nil,
-                         destinationAmount: String? = nil,
-                         destinationCurrency: String? = nil,
-                         destinationFeeAmount: String? = nil,
-                         destinationToken: String,
-                         expiresOn: String? = nil,
-                         foreignExchanges: [ForeignExchange]? = nil,
-                         memo: String? = nil,
-                         notes: String? = nil,
-                         sourceAmount: String? = nil,
-                         sourceCurrency: String? = nil,
-                         sourceFeeAmount: String? = nil,
-                         sourceToken: String,
-                         status: HyperwalletTransferStatus? = nil,
-                         token: String? = nil) {
+    private init(clientTransferId: String,
+                 createdOn: String? = nil,
+                 destinationAmount: String? = nil,
+                 destinationCurrency: String? = nil,
+                 destinationFeeAmount: String? = nil,
+                 destinationToken: String,
+                 expiresOn: String? = nil,
+                 foreignExchanges: [HyperwalletForeignExchange]? = nil,
+                 memo: String? = nil,
+                 notes: String? = nil,
+                 sourceAmount: String? = nil,
+                 sourceCurrency: String? = nil,
+                 sourceFeeAmount: String? = nil,
+                 sourceToken: String,
+                 status: HyperwalletTransferStatus? = nil,
+                 token: String? = nil) {
         self.clientTransferId = clientTransferId
         self.createdOn = createdOn
         self.destinationAmount = destinationAmount
@@ -92,10 +87,9 @@ public class HyperwalletTransfer: NSObject {
         self.sourceToken = sourceToken
         self.status = status
         self.token = token
-        }
     }
 
-    /// A helper class to build the `HyperwalletTransfer` instance.
+/// A helper class to build the `HyperwalletTransfer` instance.
     public class Builder: NSObject {
         private let clientTransferId: String
         private var destinationAmount: String?
@@ -186,16 +180,16 @@ public class HyperwalletTransfer: NSObject {
         // Builds a new instance of the `HyperwalletTransfer`.
         ///
         /// - Returns: a new instance of the `HyperwalletTransfer`.
-        public func build() -> HyperwalletTransfer.Transfer {
-            return HyperwalletTransfer.Transfer(clientTransferId: clientTransferId,
-                                                destinationAmount: destinationAmount,
-                                                destinationCurrency: destinationCurrency,
-                                                destinationToken: destinationToken,
-                                                memo: memo,
-                                                notes: notes,
-                                                sourceAmount: sourceAmount,
-                                                sourceCurrency: sourceCurrency,
-                                                sourceToken: sourceToken)
+        public func build() -> HyperwalletTransfer {
+            return HyperwalletTransfer(clientTransferId: clientTransferId,
+                                       destinationAmount: destinationAmount,
+                                       destinationCurrency: destinationCurrency,
+                                       destinationToken: destinationToken,
+                                       memo: memo,
+                                       notes: notes,
+                                       sourceAmount: sourceAmount,
+                                       sourceCurrency: sourceCurrency,
+                                       sourceToken: sourceToken)
         }
     }
 }

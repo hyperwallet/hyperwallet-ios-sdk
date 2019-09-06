@@ -21,7 +21,7 @@ class HyperwalletTransferTests: XCTestCase {
         let request = HyperwalletTestHelper.buildPostRequest(baseUrl: url, response)
         HyperwalletTestHelper.setUpMockServer(request: request)
 
-        var transferResponse: HyperwalletTransfer.Transfer?
+        var transferResponse: HyperwalletTransfer?
         var errorResponse: HyperwalletErrorType?
 
         //When
@@ -61,7 +61,7 @@ class HyperwalletTransferTests: XCTestCase {
         let request = HyperwalletTestHelper.buildPostRequest(baseUrl: url, response)
         HyperwalletTestHelper.setUpMockServer(request: request)
 
-        var transferResponse: HyperwalletTransfer.Transfer?
+        var transferResponse: HyperwalletTransfer?
         var errorResponse: HyperwalletErrorType?
 
         // When
@@ -96,7 +96,7 @@ class HyperwalletTransferTests: XCTestCase {
         let request = HyperwalletTestHelper.buildGetRequest(baseUrl: url, response)
         HyperwalletTestHelper.setUpMockServer(request: request)
 
-        var transferResponse: HyperwalletTransfer.Transfer?
+        var transferResponse: HyperwalletTransfer?
         var errorResponse: HyperwalletErrorType?
 
         // When
@@ -147,7 +147,7 @@ class HyperwalletTransferTests: XCTestCase {
         let request = HyperwalletTestHelper.buildGetRequestRegexMatcher(pattern: url, response)
         HyperwalletTestHelper.setUpMockServer(request: request)
 
-        var transfersList: HyperwalletPageList<HyperwalletTransfer.Transfer>?
+        var transfersList: HyperwalletPageList<HyperwalletTransfer>?
         var errorResponse: HyperwalletErrorType?
         let transferQueryParam = HyperwalletTransferQueryParam()
         transferQueryParam.clientTransferId = "67123480708101213"
@@ -175,7 +175,7 @@ class HyperwalletTransferTests: XCTestCase {
         let request = HyperwalletTestHelper.buildGetRequestRegexMatcher(pattern: url, response)
         HyperwalletTestHelper.setUpMockServer(request: request)
 
-        var transfersList: HyperwalletPageList<HyperwalletTransfer.Transfer>?
+        var transfersList: HyperwalletPageList<HyperwalletTransfer>?
         var errorResponse: HyperwalletErrorType?
 
         //When
@@ -193,7 +193,7 @@ class HyperwalletTransferTests: XCTestCase {
 }
 
 private extension HyperwalletTransferTests {
-    func verifyTransferResponse(_ response: HyperwalletTransfer.Transfer?) {
+    func verifyTransferResponse(_ response: HyperwalletTransfer?) {
         XCTAssertNotNil(response, "The `response` should be not nil")
         //Mandatory fields
         XCTAssertEqual(response?.clientTransferId, "6712348070812", "The `clientTransferId` should be 6712348070812")
@@ -228,7 +228,7 @@ private extension HyperwalletTransferTests {
                        "The `toStatus` should be SCHEDULED")
     }
 
-    func verifyTransfersListResponse(_ response: HyperwalletPageList<HyperwalletTransfer.Transfer>?) {
+    func verifyTransfersListResponse(_ response: HyperwalletPageList<HyperwalletTransfer>?) {
         XCTAssertNotNil(response, "The `response` should not be nil")
         XCTAssertEqual(response?.data?.count, 2, "The `count` should be 2")
 

@@ -22,7 +22,7 @@ import Foundation
 ///
 /// The status transition describes a status change for an existing bank account, bank card, PayPal account,
 /// prepaid card, paper check or payment.
-@objcMembers
+@objc
 public final class HyperwalletStatusTransition: NSObject, Codable {
     /// The datetime the status changed in ISO 8601 format (YYYY-MM-DDThh:mm:ss). Note that the timezone used is UTC,
     /// therefore there is no time offset.
@@ -66,7 +66,8 @@ public final class HyperwalletStatusTransition: NSObject, Codable {
     /// - unsuspended: The status is not suspended.
     /// - verified: The status is verified.
     /// - verificationRequired: The status is verification required
-    @objc public enum Status: Int, Codable {
+    @objc
+    public enum Status: Int, Codable {
         case activated
         case cancelled
         case completed
