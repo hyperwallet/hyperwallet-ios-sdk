@@ -54,7 +54,7 @@ import Foundation
 /// - securityAnswer: The answer to the securityQuestion
 /// - securityQuestion: A security question
 /// - website: The URL of the client website where the virtual incentive was accrued
-public class HyperwalletReceiptDetails: Decodable {
+public struct HyperwalletReceiptDetails: Decodable {
     public let bankAccountId: String?
     public let bankAccountPurpose: HyperwalletReceipt.BankAccountPurposeType?
     public let bankId: String?
@@ -105,7 +105,7 @@ public class HyperwalletReceiptDetails: Decodable {
 /// - journalId: The journal entry number for the transaction.
 /// - sourceToken: A token identifying the source of funds.
 /// - type: The transaction type.
-public class HyperwalletReceipt: Decodable, Equatable {
+public struct HyperwalletReceipt: Decodable, Equatable {
     public let amount: String?
     public let createdOn: String?
     public let currency: String?

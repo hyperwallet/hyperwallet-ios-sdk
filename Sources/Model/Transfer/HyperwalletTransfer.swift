@@ -43,6 +43,7 @@ public struct HyperwalletTransfer: Codable {
     public let sourceToken: String
     public let status: HyperwalletTransferStatus?
     public let token: String?
+
     public enum HyperwalletTransferStatus: String, Codable {
         case cancelled              = "CANCELLED"
         case completed              = "COMPLETED"
@@ -89,7 +90,7 @@ public struct HyperwalletTransfer: Codable {
         self.token = token
     }
 
-/// A helper class to build the `HyperwalletTransfer` instance.
+    /// A helper class to build the `HyperwalletTransfer` instance.
     public class Builder {
         private let clientTransferId: String
         private var destinationAmount: String?
