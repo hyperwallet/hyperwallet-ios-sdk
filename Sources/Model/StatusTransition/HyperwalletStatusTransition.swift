@@ -67,18 +67,57 @@ public final class HyperwalletStatusTransition: NSObject, Codable {
     /// - verified: The status is verified.
     /// - verificationRequired: The status is verification required
     public enum Status: String, Codable {
-        case activated
-        case cancelled
-        case completed
-        case deactivated
-        case expired
-        case failed
-        case inProgress
-        case invalid
-        case lostOrStolen
-        case pendingAccountActivation
-        case pendingIdVerification
-        case scheduled
-        case quoted
+        case activated                          = "ACTIVATED"
+        case cancelled                          = "CANCELLED"
+        case completed                          = "COMPLETED"
+        case deactivated                        = "DE_ACTIVATED"
+        case expired                            = "EXPIRED"
+        case failed                             = "FAILED"
+        case inProgress                         = "IN_PROGRESS"
+        case invalid                            = "INVALID"
+        case lostOrStolen                       = "LOST_OR_STOLEN"
+        case pendingAccountActivation           = "PENDING_ACCOUNT_ACTIVATION"
+        case pendingIdVerification              = "PENDING_ID_VERIFICATION"
+        case pendingTaxVerification             = "PENDING_TAX_VERIFICATION"
+        case pendingTransactionVerification     = "PENDING_TRANSACTION_VERIFICATION"
+        case pendingTransferMethodAction        = "PENDING_TRANSACTION_METHOD_ACTION"
+        case quoted                             = "QUOTED"
+        case recalled                           = "RECALLED"
+        case returned                           = "RETURNED"
+        case scheduled                          = "SCHEDULED"
+        case suspended                          = "SUSPENDED"
+        case unsuspended                        = "UNSUSPENDED"
+        case verificationRequired               = "VERIFICATION_REQUIRED"
+        case verified                           = "VERIFIED"
+    }
+
+    @objc
+    public func getCreatedOn() -> String? {
+        return createdOn
+    }
+
+    @objc
+    public func getFromStatus() -> String? {
+        return fromStatus?.rawValue
+    }
+
+    @objc
+    public func getNotes() -> String? {
+        return notes
+    }
+
+    @objc
+    public func getToken() -> String? {
+        return token
+    }
+
+    @objc
+    public func getToStatus() -> String? {
+        return toStatus?.rawValue
+    }
+
+    @objc
+    public func getTransition() -> String? {
+        return transition?.rawValue
     }
 }
