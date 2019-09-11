@@ -182,8 +182,7 @@ public final class Hyperwallet {
                                       notes: String? = nil,
                                       completion: @escaping (HyperwalletStatusTransition?,
                                                              HyperwalletErrorType?) -> Void) {
-        let statusTransition = HyperwalletStatusTransition(transition: .deactivated)
-        statusTransition.notes = notes
+        let statusTransition = HyperwalletStatusTransition.Builder(notes: notes, transition: .deactivated).build()
         httpTransaction.performRest(httpMethod: .post,
                                     urlPath: "users/%@/bank-accounts/\(transferMethodToken)/status-transitions",
                                     payload: statusTransition,
@@ -211,8 +210,7 @@ public final class Hyperwallet {
                                    notes: String? = nil,
                                    completion: @escaping (HyperwalletStatusTransition?,
                                                           HyperwalletErrorType?) -> Void) {
-        let statusTransition = HyperwalletStatusTransition(transition: .deactivated)
-        statusTransition.notes = notes
+        let statusTransition = HyperwalletStatusTransition.Builder(notes: notes, transition: .deactivated).build()
         httpTransaction.performRest(httpMethod: .post,
                                     urlPath: "users/%@/bank-cards/\(transferMethodToken)/status-transitions",
                                     payload: statusTransition,
@@ -240,8 +238,7 @@ public final class Hyperwallet {
                                         notes: String? = nil,
                                         completion: @escaping (HyperwalletStatusTransition?,
                                                                HyperwalletErrorType?) -> Void) {
-        let statusTransition = HyperwalletStatusTransition(transition: .deactivated)
-        statusTransition.notes = notes
+        let statusTransition = HyperwalletStatusTransition.Builder(notes: notes, transition: .deactivated).build()
         httpTransaction.performRest(httpMethod: .post,
                                     urlPath: "users/%@/paypal-accounts/\(transferMethodToken)/status-transitions",
                                     payload: statusTransition,
@@ -265,8 +262,7 @@ public final class Hyperwallet {
     public func scheduleTransfer(transferToken: String,
                                  notes: String? = nil,
                                  completion: @escaping (HyperwalletStatusTransition?, HyperwalletErrorType?) -> Void) {
-        let statusTransition = HyperwalletStatusTransition(transition: .scheduled)
-        statusTransition.notes = notes
+        let statusTransition = HyperwalletStatusTransition.Builder(notes: notes, transition: .scheduled).build()
         httpTransaction.performRest(httpMethod: .post,
                                     urlPath: "transfers/\(transferToken)/status-transitions",
                                     payload: statusTransition,

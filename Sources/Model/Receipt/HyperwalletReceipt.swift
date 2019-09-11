@@ -54,7 +54,6 @@ import Foundation
 /// - securityAnswer: The answer to the securityQuestion
 /// - securityQuestion: A security question
 /// - website: The URL of the client website where the virtual incentive was accrued
-@objcMembers
 public class HyperwalletReceiptDetails: Decodable {
     public let bankAccountId: String?
     public let bankAccountPurpose: HyperwalletReceipt.BankAccountPurposeType?
@@ -106,7 +105,6 @@ public class HyperwalletReceiptDetails: Decodable {
 /// - journalId: The journal entry number for the transaction.
 /// - sourceToken: A token identifying the source of funds.
 /// - type: The transaction type.
-@objcMembers
 public class HyperwalletReceipt: Decodable, Equatable {
     public let amount: String?
     public let createdOn: String?

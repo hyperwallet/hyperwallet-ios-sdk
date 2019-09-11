@@ -18,41 +18,15 @@
 
 import Foundation
 
-@objc
-public final class HyperwalletForeignExchange: NSObject, Codable {
+public struct HyperwalletForeignExchange: Codable {
     public let destinationAmount: String?
     public let destinationCurrency: String?
     public let rate: String?
     public let sourceAmount: String?
     public let sourceCurrency: String?
-
-    @objc
-    public func getDestinationAmount() -> String? {
-        return destinationAmount
-    }
-    @objc
-    public func getDestinationCurrency() -> String? {
-        return destinationCurrency
-    }
-
-    @objc
-    public func getRate() -> String? {
-        return rate
-    }
-
-    @objc
-    public func getSourceAmount() -> String? {
-        return sourceAmount
-    }
-
-    @objc
-    public func getSourceCurrency() -> String? {
-        return sourceCurrency
-    }
 }
 
-@objc
-public final class HyperwalletTransfer: NSObject, Codable {
+public struct HyperwalletTransfer: Codable {
     public let clientTransferId: String
     public let createdOn: String?
     public let destinationAmount: String?
@@ -115,88 +89,8 @@ public final class HyperwalletTransfer: NSObject, Codable {
         self.token = token
     }
 
-    @objc
-    public func getClientTransferId() -> String? {
-        return clientTransferId
-    }
-
-    @objc
-    public func getCreatedOn() -> String? {
-        return createdOn
-    }
-
-    @objc
-    public func getDestinationAmount() -> String? {
-        return destinationAmount
-    }
-
-    @objc
-    public func getDestinationCurrency() -> String? {
-        return destinationCurrency
-    }
-
-    @objc
-    public func getDestinationFeeAmount() -> String? {
-        return destinationFeeAmount
-    }
-
-    @objc
-    public func getDestinationToken() -> String? {
-        return destinationToken
-    }
-
-    @objc
-    public func getExpiresOn() -> String? {
-        return expiresOn
-    }
-
-    @objc
-    public func getForeignExchanges() -> [HyperwalletForeignExchange]? {
-        return foreignExchanges
-    }
-
-    @objc
-    public func getMemo() -> String? {
-        return memo
-    }
-
-    @objc
-    public func getNotes() -> String? {
-        return notes
-    }
-
-    @objc
-    public func getSourceAmount() -> String? {
-        return sourceAmount
-    }
-
-    @objc
-    public func getSourceCurrency() -> String? {
-        return sourceCurrency
-    }
-
-    @objc
-    public func getSourceFeeAmount() -> String? {
-        return sourceFeeAmount
-    }
-
-    @objc
-    public func getSourceToken() -> String? {
-        return sourceToken
-    }
-
-    @objc
-    public func getStatus() -> String? {
-        return status?.rawValue
-    }
-
-    @objc
-    public func getToken() -> String? {
-        return token
-    }
-
 /// A helper class to build the `HyperwalletTransfer` instance.
-    public class Builder: NSObject {
+    public class Builder {
         private let clientTransferId: String
         private var destinationAmount: String?
         private var destinationCurrency: String?

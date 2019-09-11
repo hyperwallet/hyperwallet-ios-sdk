@@ -28,7 +28,7 @@ public final class HyperwalletPayPalAccount: HyperwalletTransferMethod {
     }
 
     /// The email address.
-    public var email: String? {
+    @objc public var email: String? {
         return getField(TransferMethodField.email.rawValue)
     }
 
