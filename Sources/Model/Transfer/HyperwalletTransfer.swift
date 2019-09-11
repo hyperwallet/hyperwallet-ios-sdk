@@ -18,7 +18,8 @@
 
 import Foundation
 
-public struct HyperwalletForeignExchange: Codable {
+@objc
+public final class HyperwalletForeignExchange: NSObject, Codable {
     public let destinationAmount: String?
     public let destinationCurrency: String?
     public let rate: String?
@@ -26,7 +27,8 @@ public struct HyperwalletForeignExchange: Codable {
     public let sourceCurrency: String?
 }
 
-public struct HyperwalletTransfer: Codable {
+@objc
+public final class HyperwalletTransfer: NSObject, Codable {
     public let clientTransferId: String
     public let createdOn: String?
     public let destinationAmount: String?
