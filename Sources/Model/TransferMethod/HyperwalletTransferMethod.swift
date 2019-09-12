@@ -19,6 +19,7 @@
 import Foundation
 
 /// Representation of the transfer method (bank account, bank card, PayPal account, prepaid card, paper check).
+@objcMembers
 public class HyperwalletTransferMethod: NSObject, Codable {
     private var storage: [String: AnyCodable]
 
@@ -178,7 +179,6 @@ public class HyperwalletTransferMethod: NSObject, Codable {
     ///
     /// - Parameter fieldName: The `TransferMethodField` type raw value
     /// - Returns: Returns the field value, or nil if none exists.
-    @objc
     public func getField(_ fieldName: String) -> String? {
         return self.storage[fieldName]?.value as? String
     }
@@ -215,37 +215,37 @@ public class HyperwalletTransferMethod: NSObject, Codable {
     }
 
     /// The transfer method's created time
-    @objc public var createdOn: String? {
+    public var createdOn: String? {
         return getField(TransferMethodField.createdOn.rawValue)
     }
 
     /// The transfer method holder's profile type, e.g. INDIVIDUAL or BUSINESS.
-    @objc public var profileType: String? {
+    public var profileType: String? {
         return getField(TransferMethodField.profileType.rawValue)
     }
 
     /// The transfer method's status
-    @objc public var status: String? {
+    public var status: String? {
         return getField(TransferMethodField.status.rawValue)
     }
 
     /// The transfer method's token
-    @objc public var token: String? {
+    public var token: String? {
         return getField(TransferMethodField.token.rawValue)
     }
 
     /// The transfer method's country
-    @objc public var transferMethodCountry: String? {
+    public var transferMethodCountry: String? {
         return getField(TransferMethodField.transferMethodCountry.rawValue)
     }
 
     /// The transfer method's currency
-    @objc public var transferMethodCurrency: String? {
+    public var transferMethodCurrency: String? {
         return getField(TransferMethodField.transferMethodCurrency.rawValue)
     }
 
     /// The transfer method's type
-    @objc public var type: String? {
+    public var type: String? {
         return getField(TransferMethodField.type.rawValue)
     }
 }
