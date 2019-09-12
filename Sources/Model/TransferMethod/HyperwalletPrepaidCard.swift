@@ -18,6 +18,7 @@
 
 import Foundation
 /// Representation of the user's Prepaid card account
+@objcMembers
 public final class HyperwalletPrepaidCard: HyperwalletTransferMethod {
     override private init(data: [String: AnyCodable]) {
         super.init(data: data)
@@ -28,32 +29,32 @@ public final class HyperwalletPrepaidCard: HyperwalletTransferMethod {
     }
 
     /// The prepaid card's type
-    @objc public var cardType: String? {
+    public var cardType: String? {
         return getField(TransferMethodField.cardType.rawValue)
     }
 
     /// The prepaid card's package
-    @objc public var cardPackage: String? {
+    public var cardPackage: String? {
         return getField(TransferMethodField.cardPackage.rawValue)
     }
 
     /// The prepaid card's number
-    @objc public var cardNumber: String? {
+    public var cardNumber: String? {
         return getField(TransferMethodField.cardNumber.rawValue)
     }
 
     /// The prepaid card's brand
-    @objc public var cardBrand: String? {
+    public var cardBrand: String? {
         return getField(TransferMethodField.cardBrand.rawValue)
     }
 
     /// The prepaid card's expiry date
-    @objc public var dateOfExpiry: String? {
+    public var dateOfExpiry: String? {
         return getField(TransferMethodField.dateOfExpiry.rawValue)
     }
 
     /// The prepaid card's user token (instant issue cards only)
-    @objc public var userToken: String? {
+    public var userToken: String? {
         return getField(TransferMethodField.userToken.rawValue)
     }
 

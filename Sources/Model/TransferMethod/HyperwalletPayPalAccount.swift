@@ -18,6 +18,7 @@
 
 import Foundation
 /// Representation of the user's PayPal account
+@objcMembers
 public final class HyperwalletPayPalAccount: HyperwalletTransferMethod {
     override private init(data: [String: AnyCodable]) {
         super.init(data: data)
@@ -28,7 +29,7 @@ public final class HyperwalletPayPalAccount: HyperwalletTransferMethod {
     }
 
     /// The email address.
-    @objc public var email: String? {
+    public var email: String? {
         return getField(TransferMethodField.email.rawValue)
     }
 

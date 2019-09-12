@@ -19,6 +19,7 @@
 import Foundation
 
 /// Representation of the user's bank card
+@objcMembers
 public class HyperwalletBankCard: HyperwalletTransferMethod {
     override private init(data: [String: AnyCodable]) {
         super.init(data: data)
@@ -29,27 +30,27 @@ public class HyperwalletBankCard: HyperwalletTransferMethod {
     }
 
     /// The card brand
-    @objc public var cardBrand: String? {
+    public var cardBrand: String? {
         return getField(TransferMethodField.cardBrand.rawValue)
     }
 
     /// The card number
-    @objc public var cardNumber: String? {
+    public var cardNumber: String? {
         return getField(TransferMethodField.cardNumber.rawValue)
     }
 
     /// The card type
-    @objc public var cardType: String? {
+    public var cardType: String? {
         return getField(TransferMethodField.cardType.rawValue)
     }
 
     /// The card security code which is embossed or printed on the card.
-    @objc public var cvv: String? {
+    public var cvv: String? {
         return getField(TransferMethodField.cvv.rawValue)
     }
 
     /// The expiration date.
-    @objc public var dateOfExpiry: String? {
+    public var dateOfExpiry: String? {
         return getField(TransferMethodField.dateOfExpiry.rawValue)
     }
 

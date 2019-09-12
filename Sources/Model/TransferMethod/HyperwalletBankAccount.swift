@@ -19,6 +19,7 @@
 import Foundation
 
 /// Representation of the user's bank account
+@objcMembers
 public final class HyperwalletBankAccount: HyperwalletTransferMethod {
     override private init(data: [String: AnyCodable]) {
         super.init(data: data)
@@ -94,214 +95,214 @@ public final class HyperwalletBankAccount: HyperwalletTransferMethod {
     }
 
     /// The bank account holder's street address.
-    @objc public var addressLine1: String? {
+    public var addressLine1: String? {
         return getField(TransferMethodField.addressLine1.rawValue)
     }
 
     /// The bank account holder's address, second line.
-    @objc public var addressLine2: String? {
+    public var addressLine2: String? {
         return getField(TransferMethodField.addressLine2.rawValue)
     }
 
     /// The bank account number, IBAN or equivalent. If you are providing an IBAN, the first two
     /// letters of the IBAN must match the `transferMethodCountry`
-    @objc public var bankAccountId: String? {
+    public var bankAccountId: String? {
         return getField(TransferMethodField.bankAccountId.rawValue)
     }
 
     /// The purpose of the bank account (e.g. checking, savings, etc).
-    @objc public var bankAccountPurpose: String? {
+    public var bankAccountPurpose: String? {
         return getField(TransferMethodField.bankAccountPurpose.rawValue)
     }
 
     /// The user's relationship with the bank account holder.
-    @objc public var bankAccountRelationship: String? {
+    public var bankAccountRelationship: String? {
         return getField(TransferMethodField.bankAccountRelationship.rawValue)
     }
 
     /// The bank code or equivalent (e.g. BIC/SWIFT code).
-    @objc public var bankId: String? {
+    public var bankId: String? {
         return getField(TransferMethodField.bankId.rawValue)
     }
 
     /// The bank name.
-    @objc public var bankName: String? {
+    public var bankName: String? {
         return getField(TransferMethodField.bankName.rawValue)
     }
 
     /// The branch code, transit number, routing number or equivalent.
-    @objc public var branchId: String? {
+    public var branchId: String? {
         return getField(TransferMethodField.branchId.rawValue)
     }
 
     /// The branch name.
-    @objc public var branchName: String? {
+    public var branchName: String? {
         return getField(TransferMethodField.branchName.rawValue)
     }
 
     /// The bank account holder's role in the organization.
-    @objc public var businessContactRole: String? {
+    public var businessContactRole: String? {
         return getField(TransferMethodField.businessContactRole.rawValue)
     }
 
     /// The name of the bank account holder's business.
-    @objc public var businessName: String? {
+    public var businessName: String? {
         return getField(TransferMethodField.businessName.rawValue)
     }
 
     /// The country where the bank account holder's business is registered.
-    @objc public var businessRegistrationCountry: String? {
+    public var businessRegistrationCountry: String? {
         return getField(TransferMethodField.businessRegistrationCountry.rawValue)
     }
 
     /// The bank account holder's business registration number or identifier,
     /// as assigned by the relevant government body.
-    @objc public var businessRegistrationId: String? {
+    public var businessRegistrationId: String? {
         return getField(TransferMethodField.businessRegistrationId.rawValue)
     }
 
     /// The state, province or region where the bank account holder's business is registered.
-    @objc public var businessRegistrationStateProvince: String? {
+    public var businessRegistrationStateProvince: String? {
         return getField(TransferMethodField.businessRegistrationStateProvince.rawValue)
     }
 
     /// The bank account holder's business type.
-    @objc public var businessType: String? {
+    public var businessType: String? {
         return getField(TransferMethodField.businessType.rawValue)
     }
 
     /// The bank account holder's city.
-    @objc public var city: String? {
+    public var city: String? {
         return getField(TransferMethodField.city.rawValue)
     }
 
     /// The bank account holder's country.
-    @objc public var country: String? {
+    public var country: String? {
         return getField(TransferMethodField.country.rawValue)
     }
 
     /// The bank account holder's birth country.
-    @objc public var countryOfBirth: String? {
+    public var countryOfBirth: String? {
         return getField(TransferMethodField.countryOfBirth.rawValue)
     }
 
     /// The bank account holder's date of birth (All users must be at least 13 years old).
-    @objc public var dateOfBirth: String? {
+    public var dateOfBirth: String? {
         return getField(TransferMethodField.dateOfBirth.rawValue)
     }
 
     /// The bank account holder's driver's license number.
-    @objc public var driversLicenseId: String? {
+    public var driversLicenseId: String? {
         return getField(TransferMethodField.driversLicenseId.rawValue)
     }
 
     /// The bank account holder's employer identifier, generally used for tax purposes.
-    @objc public var employerId: String? {
+    public var employerId: String? {
         return getField(TransferMethodField.employerId.rawValue)
     }
 
     /// The bank account holder's first name.
-    @objc public var firstName: String? {
+    public var firstName: String? {
         return getField(TransferMethodField.firstName.rawValue)
     }
 
     /// The bank account holder's gender.
-    @objc public var gender: String? {
+    public var gender: String? {
         return getField(TransferMethodField.gender.rawValue)
     }
 
     /// The bank account holder's government ID number, such as a Social Security Number.
-    @objc public var governmentId: String? {
+    public var governmentId: String? {
         return getField(TransferMethodField.governmentId.rawValue)
     }
 
     /// The bank account holder's government ID type.
-    @objc public var governmentIdType: String? {
+    public var governmentIdType: String? {
         return getField(TransferMethodField.governmentIdType.rawValue)
     }
 
     /// The account number at the intermediary bank.
-    @objc public var intermediaryBankAccountId: String? {
+    public var intermediaryBankAccountId: String? {
         return getField(TransferMethodField.intermediaryBankAccountId.rawValue)
     }
 
     /// The intermediary bank street address.
-    @objc public var intermediaryBankAddressLine1: String? {
+    public var intermediaryBankAddressLine1: String? {
         return getField(TransferMethodField.intermediaryBankAddressLine1.rawValue)
     }
 
     /// The intermediary bank street address, second line.
-    @objc public var intermediaryBankAddressLine2: String? {
+    public var intermediaryBankAddressLine2: String? {
         return getField(TransferMethodField.intermediaryBankAddressLine2.rawValue)
     }
 
     /// The intermediary bank city.
-    @objc public var intermediaryBankCity: String? {
+    public var intermediaryBankCity: String? {
         return getField(TransferMethodField.intermediaryBankCity.rawValue)
     }
 
     /// The intermediary bank country.
-    @objc public var intermediaryBankCountry: String? {
+    public var intermediaryBankCountry: String? {
         return getField(TransferMethodField.intermediaryBankCountry.rawValue)
     }
 
     /// The intermediary bank's 11-character SWIFT code.
-    @objc public var intermediaryBankId: String? {
+    public var intermediaryBankId: String? {
         return getField(TransferMethodField.intermediaryBankId.rawValue)
     }
 
     /// The intermediary bank name.
-    @objc public var intermediaryBankName: String? {
+    public var intermediaryBankName: String? {
         return getField(TransferMethodField.intermediaryBankName.rawValue)
     }
 
     /// The intermediary bank postal code.
-    @objc public var intermediaryBankPostalCode: String? {
+    public var intermediaryBankPostalCode: String? {
         return getField(TransferMethodField.intermediaryBankPostalCode.rawValue)
     }
 
     /// The intermediary bank state, province or region.
-    @objc public var intermediaryBankStateProvince: String? {
+    public var intermediaryBankStateProvince: String? {
         return getField(TransferMethodField.intermediaryBankStateProvince.rawValue)
     }
 
     /// The bank account holder's last name.
-    @objc public var lastName: String? {
+    public var lastName: String? {
         return getField(TransferMethodField.lastName.rawValue)
     }
 
     /// The bank account holder's middle name.
-    @objc public var middleName: String? {
+    public var middleName: String? {
         return getField(TransferMethodField.middleName.rawValue)
     }
 
     /// The bank account holder's cell phone number.
-    @objc public var mobileNumber: String? {
+    public var mobileNumber: String? {
         return getField(TransferMethodField.mobileNumber.rawValue)
     }
 
     /// The bank account holder's passport number.
-    @objc public var passportId: String? {
+    public var passportId: String? {
         return getField(TransferMethodField.passportId.rawValue)
     }
 
     /// The bank account holder's phone number.
-    @objc public var phoneNumber: String? {
+    public var phoneNumber: String? {
         return getField(TransferMethodField.phoneNumber.rawValue)
     }
 
     /// The bank account holder's postal code.
-    @objc public var postalCode: String? {
+    public var postalCode: String? {
         return getField(TransferMethodField.postalCode.rawValue)
     }
 
     /// The bank account holder's state, province or region.
-    @objc public var stateProvince: String? {
+    public var stateProvince: String? {
         return getField(TransferMethodField.stateProvince.rawValue)
     }
 
     /// The wire transfer instructions
-    @objc public var wireInstructions: String? {
+    public var wireInstructions: String? {
         return getField(TransferMethodField.wireInstructions.rawValue)
     }
 
