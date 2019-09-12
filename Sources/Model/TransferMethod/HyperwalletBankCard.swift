@@ -44,11 +44,6 @@ public class HyperwalletBankCard: HyperwalletTransferMethod {
         return getField(TransferMethodField.cardType.rawValue)
     }
 
-    /// The card security code which is embossed or printed on the card.
-    public var cvv: String? {
-        return getField(TransferMethodField.cvv.rawValue)
-    }
-
     /// The expiration date.
     public var dateOfExpiry: String? {
         return getField(TransferMethodField.dateOfExpiry.rawValue)
