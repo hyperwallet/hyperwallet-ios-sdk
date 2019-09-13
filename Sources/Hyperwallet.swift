@@ -29,7 +29,7 @@ import Foundation
 /// instantiation an `HyperwalletAuthenticationTokenProvider` is set as a member variable to provide
 /// the `Hyperwallet` class with an authentication token upon request.
 @objcMembers
-public final class Hyperwallet {
+public final class Hyperwallet: NSObject {
     private var httpTransaction: HTTPTransaction!
     private static var instance: Hyperwallet?
 
