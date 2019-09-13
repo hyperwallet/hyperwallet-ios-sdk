@@ -75,6 +75,10 @@ public final class Hyperwallet: NSObject {
                                     completionHandler: completion)
     }
 
+    public func getUserObjectiveC(completion: @escaping (HyperwalletUser?, Error?) -> Void) {
+        return getUser(completion: completion)
+    }
+
     /// Creates a `HyperwalletBankAccount` for the User associated with the authentication token returned from
     /// `HyperwalletAuthenticationTokenProvider.retrieveAuthenticationToken(_ : @escaping CompletionHandler)`.
     ///
@@ -94,6 +98,11 @@ public final class Hyperwallet: NSObject {
                                     urlPath: "users/%@/bank-accounts",
                                     payload: account,
                                     completionHandler: completion)
+    }
+
+    public func createBankAccountObjectiveC(account: HyperwalletBankAccount,
+                                            completion: @escaping (HyperwalletBankAccount?, Error?) -> Void) {
+        return createBankAccount(account: account, completion: completion)
     }
 
     /// Creates a `HyperwalletBankCard` for the User associated with the authentication token returned from
