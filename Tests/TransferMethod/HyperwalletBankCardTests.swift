@@ -45,6 +45,10 @@ class HyperwalletBankCardTests: XCTestCase {
         XCTAssertNotNil(bankCard)
         XCTAssertNotNil(bankCardResponse?.getFields())
         XCTAssertEqual(bankCardResponse?.token, "trm-123")
+        XCTAssertEqual(bankCardResponse?.type, "BANK_CARD")
+        XCTAssertEqual(bankCardResponse?.cardNumber, "************0114")
+        XCTAssertEqual(bankCardResponse?.dateOfExpiry, "2022-12")
+        XCTAssertEqual(bankCardResponse?.cardType, "DEBIT")
     }
 
     func testCreateBankCard_missingMandatoryField_returnBadRequest() {
@@ -265,6 +269,7 @@ class HyperwalletBankCardTests: XCTestCase {
         XCTAssertEqual(bankCard?.token, "trm-12345")
         XCTAssertEqual(bankCard?.cardNumber, "************0199")
         XCTAssertEqual(bankCard?.dateOfExpiry, "2022-12")
+        XCTAssertEqual(bankCard?.cardType, "DEBIT")
     }
 
     func testListBankCards_emptyResult() {

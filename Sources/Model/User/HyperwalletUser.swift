@@ -19,7 +19,8 @@
 import UIKit
 
 /// Representation of the Hyperwallet's user.
-public struct HyperwalletUser: Codable {
+@objcMembers
+public class HyperwalletUser: NSObject, Codable {
     private var storage = [String: AnyCodable]()
 
     /// Representation of the user field type.
@@ -192,7 +193,7 @@ public struct HyperwalletUser: Codable {
         self.storage = data
     }
 
-    public init(from decoder: Decoder) throws {
+    public required init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         let data = try container.decode(Dictionary<String, AnyCodable>.self)
         self.storage = data

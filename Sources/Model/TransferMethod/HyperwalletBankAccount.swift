@@ -19,6 +19,7 @@
 import Foundation
 
 /// Representation of the user's bank account
+@objcMembers
 public final class HyperwalletBankAccount: HyperwalletTransferMethod {
     override private init(data: [String: AnyCodable]) {
         super.init(data: data)
@@ -110,23 +111,13 @@ public final class HyperwalletBankAccount: HyperwalletTransferMethod {
     }
 
     /// The purpose of the bank account (e.g. checking, savings, etc).
-    public var bankAccountPurpose: PurposeType? {
-        guard let purpose = getField(TransferMethodField.bankAccountPurpose.rawValue) else {
-            return nil
-        }
-
-        return PurposeType(rawValue: purpose)
+    public var bankAccountPurpose: String? {
+        return getField(TransferMethodField.bankAccountPurpose.rawValue)
     }
 
     /// The user's relationship with the bank account holder.
-    public var bankAccountRelationship: RelationshipType? {
-        let relationshipFieldName = TransferMethodField.bankAccountRelationship.rawValue
-
-        guard let relationship = getField(relationshipFieldName) else {
-            return nil
-        }
-
-        return RelationshipType(rawValue: relationship)
+    public var bankAccountRelationship: String? {
+        return getField(TransferMethodField.bankAccountRelationship.rawValue)
     }
 
     /// The bank code or equivalent (e.g. BIC/SWIFT code).
@@ -150,12 +141,8 @@ public final class HyperwalletBankAccount: HyperwalletTransferMethod {
     }
 
     /// The bank account holder's role in the organization.
-    public var businessContactRole: BusinessContactRole? {
-        guard let role = getField(TransferMethodField.businessContactRole.rawValue) else {
-            return nil
-        }
-
-        return BusinessContactRole(rawValue: role)
+    public var businessContactRole: String? {
+        return getField(TransferMethodField.businessContactRole.rawValue)
     }
 
     /// The name of the bank account holder's business.
@@ -180,12 +167,8 @@ public final class HyperwalletBankAccount: HyperwalletTransferMethod {
     }
 
     /// The bank account holder's business type.
-    public var businessType: BusinessType? {
-        guard let type = getField(TransferMethodField.businessType.rawValue) else {
-            return nil
-        }
-
-        return BusinessType(rawValue: type)
+    public var businessType: String? {
+        return getField(TransferMethodField.businessType.rawValue)
     }
 
     /// The bank account holder's city.
@@ -224,12 +207,8 @@ public final class HyperwalletBankAccount: HyperwalletTransferMethod {
     }
 
     /// The bank account holder's gender.
-    public var gender: Gender? {
-        guard let type = getField(TransferMethodField.gender.rawValue) else {
-            return nil
-        }
-
-        return Gender(rawValue: type)
+    public var gender: String? {
+        return getField(TransferMethodField.gender.rawValue)
     }
 
     /// The bank account holder's government ID number, such as a Social Security Number.
@@ -238,12 +217,8 @@ public final class HyperwalletBankAccount: HyperwalletTransferMethod {
     }
 
     /// The bank account holder's government ID type.
-    public var governmentIdType: GovernmentIdType? {
-        guard let type = getField(TransferMethodField.governmentIdType.rawValue) else {
-            return nil
-        }
-
-        return GovernmentIdType(rawValue: type)
+    public var governmentIdType: String? {
+        return getField(TransferMethodField.governmentIdType.rawValue)
     }
 
     /// The account number at the intermediary bank.

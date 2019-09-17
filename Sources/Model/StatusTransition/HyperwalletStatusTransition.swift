@@ -22,22 +22,32 @@ import Foundation
 ///
 /// The status transition describes a status change for an existing bank account, bank card, PayPal account,
 /// prepaid card, paper check or payment.
-public final class HyperwalletStatusTransition: Codable {
+public struct HyperwalletStatusTransition: Codable {
     /// The datetime the status changed in ISO 8601 format (YYYY-MM-DDThh:mm:ss). Note that the timezone used is UTC,
     /// therefore there is no time offset.
-    public var createdOn: String?
+    public let createdOn: String?
     /// The status before the transition.
-    public var fromStatus: Status?
+    public let fromStatus: Status?
     /// Comments regarding the status change.
-    public var notes: String?
+    public let notes: String?
     /// The unique, auto-generated status transition identifier.
-    public var token: String?
+    public let token: String?
     /// The status after the transition.
-    public var toStatus: Status?
+    public let toStatus: Status?
     /// The new status of the resource.
-    public var transition: Status?
+    public let transition: Status?
 
-    public init(transition: Status) {
+    private init(createdOn: String? = nil,
+                 fromStatus: Status? = nil,
+                 notes: String? = nil,
+                 token: String? = nil,
+                 toStatus: Status? = nil,
+                 transition: Status) {
+        self.createdOn = createdOn
+        self.fromStatus = fromStatus
+        self.notes = notes
+        self.token = token
+        self.toStatus = toStatus
         self.transition = transition
     }
 
@@ -88,5 +98,23 @@ public final class HyperwalletStatusTransition: Codable {
         case unsuspended                        = "UNSUSPENDED"
         case verificationRequired               = "VERIFICATION_REQUIRED"
         case verified                           = "VERIFIED"
+    }
+
+    /// A helper class to build the `HyperwalletStatusTransition` instance.
+    public class Builder {
+        private let notes: String?
+        private let transition: Status
+
+        public init(notes: String? = nil, transition: Status) {
+            self.notes = notes
+            self.transition = transition
+        }
+
+        // Builds a new instance of the `HyperwalletTransfer`.
+        ///
+        /// - Returns: a new instance of the `HyperwalletTransfer`.
+        public func build() -> HyperwalletStatusTransition {
+            return HyperwalletStatusTransition(notes: notes, transition: transition)
+        }
     }
 }
