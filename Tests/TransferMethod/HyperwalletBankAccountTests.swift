@@ -182,7 +182,7 @@ class HyperwalletBankAccountIndividualTests: XCTestCase {
         // Then
         XCTAssertNil(errorResponse, "The `errorResponse` should be nil")
         XCTAssertNotNil(bankAccountResponse?.getFields())
-        XCTAssertEqual(bankAccountResponse?.bankAccountPurpose?.rawValue, "CHECKING")
+        XCTAssertEqual(bankAccountResponse?.bankAccountPurpose, "CHECKING")
     }
 
     func testUpdateBankAccount_success() {
@@ -653,37 +653,31 @@ private extension HyperwalletBankAccountIndividualTests {
 
     func verifyRelationship(_ relationship: HyperwalletBankAccount.RelationshipType,
                             in bankAccountResponse: HyperwalletBankAccount?) {
-        let responseRelationship = bankAccountResponse?.bankAccountRelationship?.rawValue
-        XCTAssertEqual(responseRelationship, relationship.rawValue)
+        XCTAssertEqual(bankAccountResponse?.bankAccountRelationship, relationship.rawValue)
     }
 
     func verifyPurpose(_ purpose: HyperwalletBankAccount.PurposeType,
                        in bankAccountResponse: HyperwalletBankAccount?) {
-        let responsePurpose = bankAccountResponse?.bankAccountPurpose?.rawValue
-        XCTAssertEqual(responsePurpose, purpose.rawValue)
+        XCTAssertEqual(bankAccountResponse?.bankAccountPurpose, purpose.rawValue)
     }
 
     func verifyRole(_ role: HyperwalletBankAccount.BusinessContactRole,
                     in bankAccountResponse: HyperwalletBankAccount?) {
-        let responseRole = bankAccountResponse?.businessContactRole?.rawValue
-        XCTAssertEqual(responseRole, role.rawValue)
+        XCTAssertEqual(bankAccountResponse?.businessContactRole, role.rawValue)
     }
 
     func verifyBusinessType(_ type: HyperwalletBankAccount.BusinessType,
                             in bankAccountResponse: HyperwalletBankAccount?) {
-        let responseBusinessType = bankAccountResponse?.businessType?.rawValue
-        XCTAssertEqual(responseBusinessType, type.rawValue)
+        XCTAssertEqual(bankAccountResponse?.businessType, type.rawValue)
     }
 
     func verifyGender(_ gender: HyperwalletBankAccount.Gender,
                       in bankAccountResponse: HyperwalletBankAccount?) {
-        let responseGender = bankAccountResponse?.gender?.rawValue
-        XCTAssertEqual(responseGender, gender.rawValue)
+        XCTAssertEqual(bankAccountResponse?.gender, gender.rawValue)
     }
 
     func verifyGovernmentIdType(_ governmentIdType: HyperwalletBankAccount.GovernmentIdType,
                                 in bankAccountResponse: HyperwalletBankAccount?) {
-        let responseGovernmentIdType = bankAccountResponse?.governmentIdType?.rawValue
-        XCTAssertEqual(responseGovernmentIdType, governmentIdType.rawValue)
+        XCTAssertEqual(bankAccountResponse?.governmentIdType, governmentIdType.rawValue)
     }
 }

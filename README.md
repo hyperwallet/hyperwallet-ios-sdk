@@ -12,7 +12,7 @@ Welcome to Hyperwallet's iOS SDK. This library will help you create transfer met
 
 Note that this SDK is geared towards those who only require backend data, which means you will have to build your own UI.
 
-We also provide an out-of-the-box  [Hyperwallet iOS UI SDK](https://github.com/hyperwallet/hyperwallet-ios-ui-sdk-sandbox) for you if you decide not to build your own UI.
+We also provide an out-of-the-box  [Hyperwallet iOS UI SDK](https://github.com/hyperwallet/hyperwallet-ios-ui-sdk) for you if you decide not to build your own UI.
 
 ## Prerequisites
 * A Hyperwallet merchant account
@@ -26,13 +26,13 @@ Use [Carthage](https://github.com/Carthage/Carthage) or [CocoaPods](https://coco
 ### Carthage
 Specify it in your Cartfile:
 ```ogdl
-github "hyperwallet/hyperwallet-ios-sdk" "1.0.0-beta04"
+github "hyperwallet/hyperwallet-ios-sdk" "1.0.0-beta05"
 ```
 
 ### CocoaPods
 Specify it in your Podfile:
 ```ruby
-pod 'HyperwalletSDK', '~> 1.0.0-beta04'
+pod 'HyperwalletSDK', '~> 1.0.0-beta05'
 ```
 
 ## Initialization
@@ -57,7 +57,7 @@ An example implementation using the  `URLRequest` from Swift  Foundation :
 import Foundation
 import HyperwalletSDK
 
-public struct AuthenticationTokenProvider: HyperwalletAuthenticationTokenProvider {
+public class AuthenticationTokenProvider: HyperwalletAuthenticationTokenProvider {
     private let url = URL(string: "http://your/server/to/retrieve/authenticationToken")!
 
     public func retrieveAuthenticationToken(

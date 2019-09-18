@@ -23,7 +23,7 @@ import Foundation
 /// to authenticate the User to the Hyperwallet platform.
 ///
 /// Implementations of `HyperwalletAuthenticationTokenProvider` are expected to be non-blocking and thread safe.
-public protocol HyperwalletAuthenticationTokenProvider {
+@objc public protocol HyperwalletAuthenticationTokenProvider {
     /// A callback interface to handle the submission of an authentication token or an error message in case of failure.
     ///
     /// The authentication token is a JSON web token that contains as part of its claim set the principal that will
@@ -38,7 +38,7 @@ public protocol HyperwalletAuthenticationTokenProvider {
     ///   - authenticationToken: a JWT token identifying a Hyperwallet User principal
     ///   - error: an `HyperwalletAuthenticationErrorType` indicating the cause of the authentication
     ///            token retrieval error
-    typealias CompletionHandler = (_ authenticationToken: String?, _ error: HyperwalletAuthenticationErrorType?) -> Void
+    typealias CompletionHandler = (_ authenticationToken: String?, _ error: Error?) -> Void
 
     /// Invoked when the Hyperwallet iOS Core SDK requires an authentication token.
     ///
