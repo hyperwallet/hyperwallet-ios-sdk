@@ -22,7 +22,7 @@ before_install:
   xcrun simctl boot $ios_uid
 - xcrun simctl list
 - brew outdated carthage || brew upgrade carthage
-- carthage bootstrap --verbose --no-use-binaries --platform iOS --cache-builds
+- carthage update --platform iOS  --cache-builds
 - gem i slather
 - brew outdated swiftlint || brew upgrade swiftlint
 - xcrun simctl list | grep "(Booted)"
@@ -38,9 +38,11 @@ script: |
     -destination "$destination" \
     -configuration Debug ONLY_ACTIVE_ARCH=YES ENABLE_TESTABILITY=YES CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
   # Lint - Add `--strict` to fail for warning and violation
-  swiftlint lint --reporter json
+  swiftlint lint --strict --reporter json
 after_success: slather
 notifications:
   slack:
     rooms:
       secure: WrrqJ87SicYdLZoPb+8ooZrnnMM7A/KLFya2LIGDMqa3XCRGmvj45uodX9HrdokfqPFeSEW3wBcUvg5e8rXh+ZvsjZtiAHtyrDy+QuB3avsjHYCG/SI7esQn931BamGit0tMnxI/ia52EWBqRe3nbLlgNPkQRwCOPX1ApoSz00MsS1K1VppCdUgPyrVTw6mFMhjI658T8MTdwGvLVLGZl5QhVO0+lxIf1JKCsVyszDuLEEJp1zZylKSTuD05V/GrKPxjD3mkm1u3HbUb88RqYo71g4ZSy3fG4sMRG4XJi0xBb7/R4MZmZqzDbu1bWFiAh6bFAOp4u4haTIGHYk9a+AABj83XCQk6E0e5RZiv7J+9WjDHFCzmt6f+rkOv/A/ThDbUvJGTT7VSBLojCIjLKPpKAOIbOhaqnvWSJ7EktGaxvPSB/GAvFGqIvqSToFuaNkcQpFX3KGXQgQ5qDxOlfxOx5AvI8G0jDC9fmTqE6vVhYrW0c5sC5crnP1P5C3PHwEqC6vC6+4LO+kZX52qBR3nIRhlasgs6WyVBBiHdNRyLjK7G2oC3cQ1hFV+JxMkOrxIrujaQRGPNTZ8a2diFkgBqGaHJ272W4JPPduBA4kA6VjETpnp1nfRAuAEfbbeZhlBRr5ZwHmrdoUg71RwpT3KGgS0/ZiBIibVxYjlZp10=
+      on_success: always
+      on_failure: always
