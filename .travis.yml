@@ -47,3 +47,7 @@ script: |
   swiftlint lint --reporter json
 
 after_success: slather
+notifications:
+  slack: 'hyperwallet:8ekM6Q5fPlRdz8Okt1azyUFQ#team-jaspreet'
+    on_success: always
+    on_failure: always
