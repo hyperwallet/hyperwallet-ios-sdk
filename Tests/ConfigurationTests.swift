@@ -46,6 +46,8 @@ class ConfigurationTests: XCTestCase {
                              issuer: "prg-0438cadc-614c-11e5-af23-0faa28ca7c0f",
                              restUrl: "https://qamaster.aws.paylution.net/rest/v3/",
                              userToken: "usr-7e713de4-34e9-4e10-93cc-1f085b2d8397",
-                             authorization: nil)
+                             insightUrl: "https://live.qa.paypal.com:12436/v1/tracking/batch/events/",
+                             environment: "DEV",
+                             authorization: "")
     }
 }

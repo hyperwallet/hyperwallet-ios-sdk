@@ -23,11 +23,11 @@ public struct Configuration: Codable {
     let clientToken: String
     let expiresOn: Double
     let graphQlUrl: String
-    let issuer: String
+    public let issuer: String
     let restUrl: String
     public let userToken: String
-    let insightUrl: String
-    let environment: String
+    public let insightUrl: String
+    public let environment: String
     var authorization: String!
     private static let stalePeriod = 30.0 // 30 seconds
     private let createOnBootTime = ProcessInfo.processInfo.systemUptime

@@ -68,6 +68,8 @@ class TransactionTypeTests: XCTestCase {
                                           issuer: "",
                                           restUrl: "localhost/",
                                           userToken: "",
+                                          insightUrl: "",
+                                          environment: "",
                                           authorization: "")
 
         XCTAssertThrowsError(try transactionType.createRequest(configuration,
@@ -94,6 +96,8 @@ class TransactionTypeTests: XCTestCase {
                                           issuer: "",
                                           restUrl: "http://localhost/",
                                           userToken: "",
+                                          insightUrl: "",
+                                          environment: "",
                                           authorization: "")
 
         let urlPath = transactionType == .rest ? "users/%@/bank-account" : ""
@@ -140,6 +144,8 @@ class TransactionTypeTests: XCTestCase {
                                           issuer: "",
                                           restUrl: "http://localhost/",
                                           userToken: "",
+                                          insightUrl: "",
+                                          environment: "",
                                           authorization: "")
 
         let urlPath = transactionType == .graphQl ? "/graphql" : ""
