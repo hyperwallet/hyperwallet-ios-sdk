@@ -56,6 +56,37 @@ public final class Hyperwallet: NSObject {
         instance = Hyperwallet(provider)
     }
 
+    /// Creates a new instance of the Hyperwallet Core SDK interface object. If a previously created instance exists,
+    /// it will be replaced. Next it retrieves the authentication token from the and decodes the token in case of
+    /// successful response else returns error
+    ///
+    /// - Parameters:
+    ///   - provider: a provider of Hyperwallet authentication tokens.
+    ///   - completion: the callback handler of responses from the Hyperwallet platform
+    public class func setup(_ provider: HyperwalletAuthenticationTokenProvider,
+                            completion: @escaping (Configuration?, HyperwalletErrorType?) -> Void) {
+        setup(provider)
+        provider.retrieveAuthenticationToken { authenticationToken, error in
+            guard error == nil else {
+                completion(nil, ErrorTypeHelper.authenticationError(
+                    message: "Error occured while retrieving authentication token",
+                    for: error as? HyperwalletAuthenticationErrorType ?? HyperwalletAuthenticationErrorType
+                        .unexpected("Authentication token cannot be retrieved"))
+                )
+                return
+            }
+            do {
+                let configuration = try AuthenticationTokenDecoder.decode(from: authenticationToken)
+                completion(configuration, nil)
+            } catch let error as HyperwalletErrorType {
+                completion(nil, error)
+            } catch {
+                completion(nil, ErrorTypeHelper.authenticationError(for: HyperwalletAuthenticationErrorType
+                    .unexpected("Authentication token cannot be decoded")))
+            }
+        }
+    }
+
     /// Returns the `HyperwalletUser` for the User associated with the authentication token returned from
     /// `HyperwalletAuthenticationTokenProvider.retrieveAuthenticationToken(_ : @escaping CompletionHandler)` or nil
     /// if none exists.

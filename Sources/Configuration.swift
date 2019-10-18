@@ -18,14 +18,16 @@
 
 import Foundation
 
-internal struct Configuration: Codable {
+public struct Configuration: Codable {
     let createOn: Double
     let clientToken: String
     let expiresOn: Double
     let graphQlUrl: String
     let issuer: String
     let restUrl: String
-    let userToken: String
+    public let userToken: String
+    let insightUrl: String
+    let environment: String
     var authorization: String!
     private static let stalePeriod = 30.0 // 30 seconds
     private let createOnBootTime = ProcessInfo.processInfo.systemUptime
@@ -38,14 +40,16 @@ internal struct Configuration: Codable {
         case issuer = "iss"
         case userToken = "sub"
         case restUrl = "rest-uri"
+        case insightUrl = "insights-uri"
+        case environment = "environment"
     }
 
-    public func isTokenStale() -> Bool {
+    func isTokenStale() -> Bool {
         let tokenLifespan = expiresOn - createOn
         return ProcessInfo.processInfo.systemUptime - createOnBootTime >= tokenLifespan - Configuration.stalePeriod
     }
 
-    public func isTokenExpired() -> Bool {
+    func isTokenExpired() -> Bool {
         let tokenLifespan = expiresOn - createOn
         return ProcessInfo.processInfo.systemUptime - createOnBootTime >= tokenLifespan
     }
