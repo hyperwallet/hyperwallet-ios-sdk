@@ -29,6 +29,27 @@ class AuthenticationTokenDecoderTests: XCTestCase {
             XCTAssertFalse(configuration.issuer.isEmpty, "The issuer has not been initialized")
             XCTAssertNotNil(configuration.authorization, "The authorization has not been initialized")
             XCTAssertFalse(configuration.authorization!.isEmpty, "The authorization has not been initialized")
+            XCTAssertFalse(configuration.insightsUrl!.isEmpty, "The insightsUrl has not been initialized")
+            XCTAssertFalse(configuration.environment!.isEmpty, "The environment has not been initialized")
+        } catch {
+            XCTFail("should be unexpected error")
+        }
+    }
+
+    func testDecode_valid_configuration_without_optional_fields() {
+        do {
+            let authenticationToken = AuthenticationTokenGeneratorMock(hostName: "localhost").tokenWithoutOptionals
+            let configuration = try AuthenticationTokenDecoder.decode(from: authenticationToken)
+            XCTAssertNotNil(configuration.clientToken, "The clientToken has not been initialized")
+            XCTAssertGreaterThan(configuration.createOn, 0, "The createOn has not been initialized")
+            XCTAssertGreaterThan(configuration.expiresOn, 0, "The expiresOn has not been initialized")
+            XCTAssertFalse(configuration.graphQlUrl.isEmpty, "The graphQlUrl has not been initialized")
+            XCTAssertFalse(configuration.restUrl.isEmpty, "The restUrl has not been initialized")
+            XCTAssertFalse(configuration.issuer.isEmpty, "The issuer has not been initialized")
+            XCTAssertNotNil(configuration.authorization, "The authorization has not been initialized")
+            XCTAssertFalse(configuration.authorization!.isEmpty, "The authorization has not been initialized")
+            XCTAssertTrue(configuration.insightsUrl == nil, "The insightsUrl should be empty")
+            XCTAssertTrue(configuration.environment == nil, "The environment should be empty")
         } catch {
             XCTFail("should be unexpected error")
         }

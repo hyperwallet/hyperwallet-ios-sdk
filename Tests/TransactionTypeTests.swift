@@ -65,11 +65,11 @@ class TransactionTypeTests: XCTestCase {
                                           clientToken: "",
                                           expiresOn: 10,
                                           graphQlUrl: "",
+                                          restUrl: "",
+                                          environment: "localhost/",
+                                          insightsUrl: "",
                                           issuer: "",
-                                          restUrl: "localhost/",
                                           userToken: "",
-                                          insightUrl: "",
-                                          environment: "",
                                           authorization: "")
 
         XCTAssertThrowsError(try transactionType.createRequest(configuration,
@@ -93,11 +93,11 @@ class TransactionTypeTests: XCTestCase {
                                           clientToken: "",
                                           expiresOn: 0,
                                           graphQlUrl: "",
+                                          restUrl: "",
+                                          environment: "http://localhost/",
+                                          insightsUrl: "",
                                           issuer: "",
-                                          restUrl: "http://localhost/",
                                           userToken: "",
-                                          insightUrl: "",
-                                          environment: "",
                                           authorization: "")
 
         let urlPath = transactionType == .rest ? "users/%@/bank-account" : ""
@@ -141,11 +141,11 @@ class TransactionTypeTests: XCTestCase {
                                           clientToken: "",
                                           expiresOn: 0,
                                           graphQlUrl: "http://localhost/",
+                                          restUrl: "",
+                                          environment: "http://localhost/",
+                                          insightsUrl: "",
                                           issuer: "",
-                                          restUrl: "http://localhost/",
                                           userToken: "",
-                                          insightUrl: "",
-                                          environment: "",
                                           authorization: "")
 
         let urlPath = transactionType == .graphQl ? "/graphql" : ""

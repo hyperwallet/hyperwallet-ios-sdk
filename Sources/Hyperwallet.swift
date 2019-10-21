@@ -57,8 +57,8 @@ public final class Hyperwallet: NSObject {
     }
 
     /// Creates a new instance of the Hyperwallet Core SDK interface object. If a previously created instance exists,
-    /// it will be replaced. Next it retrieves the authentication token from the and decodes the token in case of
-    /// successful response else returns error
+    /// it will be replaced. Next it retrieves the authentication token from the provider and decodes the token in
+    /// case of successful response else returns error
     ///
     /// - Parameters:
     ///   - provider: a provider of Hyperwallet authentication tokens.
