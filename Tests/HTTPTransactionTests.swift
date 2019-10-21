@@ -85,55 +85,6 @@ class HTTPTransactionTests: XCTestCase {
         XCTAssertFalse((configuration?.environment!.isEmpty)!, "The environment has not been initialized")
     }
 
-    func testSetup_authenticationError() {
-        // Given
-        let expectation = XCTestExpectation(description: "Wait for async operation completion")
-        var configuration: Configuration?
-        var errorResponse: HyperwalletErrorType?
-        let authErrorResponse: HyperwalletAuthenticationErrorType? = HyperwalletAuthenticationErrorType
-            .unexpected("Authentication token cannot be retrieved")
-
-        let authenticationProvider = AuthenticationProviderMock(
-            authorizationData: HyperwalletTestHelper.authenticationToken,
-            error: authErrorResponse)
-
-        // When
-        Hyperwallet.setup(authenticationProvider, completion: { (result, error) in
-            configuration = result
-            errorResponse = error
-            expectation.fulfill()
-        })
-        wait(for: [expectation], timeout: 1)
-
-        // Then
-        XCTAssertNil(configuration)
-        XCTAssertNotNil(errorResponse)
-        XCTAssertTrue(errorResponse?.getAuthenticationError()?.message() == "Authentication token cannot be retrieved")
-    }
-
-    func testSetup_decodeError() {
-        // Given
-        let expectation = XCTestExpectation(description: "Wait for async operation completion")
-        var configuration: Configuration?
-        var errorResponse: HyperwalletErrorType?
-        // Set garbage token value
-        let authenticationProvider = AuthenticationProviderMock(authorizationData: "Garbage")
-
-        // When
-        Hyperwallet.setup(authenticationProvider, completion: { (result, error) in
-            configuration = result
-            errorResponse = error
-            expectation.fulfill()
-        })
-        wait(for: [expectation], timeout: 1)
-
-        // Then
-        XCTAssertNil(configuration)
-        XCTAssertNotNil(errorResponse)
-        XCTAssertTrue(errorResponse?.getHyperwalletErrors()?.errorList?.count == 1)
-        XCTAssertTrue(errorResponse?.getHyperwalletErrors()?.errorList?[0].message == "Invalid Authnetication token")
-    }
-
     // swiftlint:disable function_body_length
     func testPerformRest_successURLRequest() {
         // Given

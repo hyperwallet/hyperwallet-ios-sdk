@@ -66,25 +66,8 @@ public final class Hyperwallet: NSObject {
     public class func setup(_ provider: HyperwalletAuthenticationTokenProvider,
                             completion: @escaping (Configuration?, HyperwalletErrorType?) -> Void) {
         setup(provider)
-        provider.retrieveAuthenticationToken { authenticationToken, error in
-            guard error == nil else {
-                completion(nil, ErrorTypeHelper.authenticationError(
-                    message: "Error occured while retrieving authentication token",
-                    for: error as? HyperwalletAuthenticationErrorType ?? HyperwalletAuthenticationErrorType
-                        .unexpected("Authentication token cannot be retrieved"))
-                )
-                return
-            }
-            do {
-                let configuration = try AuthenticationTokenDecoder.decode(from: authenticationToken)
-                completion(configuration, nil)
-            } catch let error as HyperwalletErrorType {
-                completion(nil, error)
-            } catch {
-                completion(nil, ErrorTypeHelper.authenticationError(for: HyperwalletAuthenticationErrorType
-                    .unexpected("Authentication token cannot be decoded")))
-            }
-        }
+        //getConfiguration(provider, completion: completion)
+        provider.retrieveAuthenticationToken(completionHandler: configurationHandler(completion: completion))
     }
 
     /// Returns the `HyperwalletUser` for the User associated with the authentication token returned from
@@ -806,5 +789,28 @@ public final class Hyperwallet: NSObject {
             return { (response, error) in
                 completionHandler(TransferMethodConfigurationKeyResult(response?.countries?.nodes), error)
             }
+    }
+
+    private static func configurationHandler(completion: @escaping (Configuration?, HyperwalletErrorType?) -> Void)
+        -> (String?, Error?) -> Void {
+        return {(authenticationToken, error) in
+            guard error == nil else {
+                completion(nil, ErrorTypeHelper.authenticationError(
+                    message: "Error occured while retrieving authentication token",
+                    for: error as? HyperwalletAuthenticationErrorType ?? HyperwalletAuthenticationErrorType
+                        .unexpected("Authentication token cannot be retrieved"))
+                )
+                return
+            }
+            do {
+                let configuration = try AuthenticationTokenDecoder.decode(from: authenticationToken)
+                completion(configuration, nil)
+            } catch let error as HyperwalletErrorType {
+                completion(nil, error)
+            } catch {
+                completion(nil, ErrorTypeHelper.authenticationError(for: HyperwalletAuthenticationErrorType
+                    .unexpected("Authentication token cannot be decoded")))
+            }
+        }
     }
 }
