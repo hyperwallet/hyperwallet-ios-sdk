@@ -18,7 +18,7 @@ class AuthenticationTokenDecoderTests: XCTestCase {
         performDecodeThrowsParseError(authenticationToken)
     }
 
-    func testDecode_valid_configuration() {
+    func testDecode_validConfiguration() {
         do {
             let configuration = try AuthenticationTokenDecoder.decode(from: HyperwalletTestHelper.authenticationToken)
             XCTAssertNotNil(configuration.clientToken, "The clientToken has not been initialized")
@@ -36,9 +36,10 @@ class AuthenticationTokenDecoderTests: XCTestCase {
         }
     }
 
-    func testDecode_valid_configuration_without_optional_fields() {
+    func testDecode_validConfiguration_withoutInsightsProperties() {
         do {
-            let authenticationToken = AuthenticationTokenGeneratorMock(hostName: "localhost").tokenWithoutOptionals
+            let authenticationToken =
+                AuthenticationTokenGeneratorMock(hostName: "localhost").tokenWithoutInsightsProperties
             let configuration = try AuthenticationTokenDecoder.decode(from: authenticationToken)
             XCTAssertNotNil(configuration.clientToken, "The clientToken has not been initialized")
             XCTAssertGreaterThan(configuration.createOn, 0, "The createOn has not been initialized")
@@ -48,8 +49,8 @@ class AuthenticationTokenDecoderTests: XCTestCase {
             XCTAssertFalse(configuration.issuer.isEmpty, "The issuer has not been initialized")
             XCTAssertNotNil(configuration.authorization, "The authorization has not been initialized")
             XCTAssertFalse(configuration.authorization!.isEmpty, "The authorization has not been initialized")
-            XCTAssertTrue(configuration.insightsUrl == nil, "The insightsUrl should be empty")
-            XCTAssertTrue(configuration.environment == nil, "The environment should be empty")
+            XCTAssertNil(configuration.insightsUrl, "The insightsUrl should be empty")
+            XCTAssertNil(configuration.environment, "The environment should be empty")
         } catch {
             XCTFail("should be unexpected error")
         }

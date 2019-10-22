@@ -59,15 +59,15 @@ struct AuthenticationTokenGeneratorMock {
     }
 
     /// Returns the Authentication Token
-    var tokenWithoutOptionals: String {
+    var tokenWithoutInsightsProperties: String {
         let headerBase64 = Data(header.utf8).base64EncodedString()
-        let payloadBase64 = Data(payloadWithoutOptionals.utf8).base64EncodedString()
+        let payloadBase64 = Data(payloadWithoutInsightsProperties.utf8).base64EncodedString()
         let signatureBase64 = Data("fake Signature".utf8).base64EncodedString()
 
         return "\(headerBase64).\(payloadBase64).\(signatureBase64)"
     }
 
-    private var payloadWithoutOptionals: String {
+    private var payloadWithoutInsightsProperties: String {
         let currentDate = Date()
         let expireIn = buildFutureDate(baseDate: currentDate, minute: minuteExpireIn)
         return """

@@ -66,8 +66,8 @@ public final class Hyperwallet: NSObject {
     public class func setup(_ provider: HyperwalletAuthenticationTokenProvider,
                             completion: @escaping (Configuration?, HyperwalletErrorType?) -> Void) {
         setup(provider)
-        //getConfiguration(provider, completion: completion)
-        provider.retrieveAuthenticationToken(completionHandler: configurationHandler(completion: completion))
+        provider.retrieveAuthenticationToken(
+            completionHandler: retrieveAuthenticationTokenResponseHandler(completion: completion))
     }
 
     /// Returns the `HyperwalletUser` for the User associated with the authentication token returned from
@@ -791,7 +791,8 @@ public final class Hyperwallet: NSObject {
             }
     }
 
-    private static func configurationHandler(completion: @escaping (Configuration?, HyperwalletErrorType?) -> Void)
+    private static func retrieveAuthenticationTokenResponseHandler(
+        completion: @escaping (Configuration?, HyperwalletErrorType?) -> Void)
         -> (String?, Error?) -> Void {
         return {(authenticationToken, error) in
             guard error == nil else {
