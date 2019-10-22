@@ -56,7 +56,7 @@ class AuthenticationTokenDecoderTests: XCTestCase {
         }
     }
 
-    func performDecodeThrowsParseError(_ authenticationToken: String) {
+    private func performDecodeThrowsParseError(_ authenticationToken: String) {
         XCTAssertThrowsError(try AuthenticationTokenDecoder.decode(from: authenticationToken)) { error in
             XCTAssertNotNil(error as? HyperwalletErrorType)
             let errorType = error as? HyperwalletErrorType

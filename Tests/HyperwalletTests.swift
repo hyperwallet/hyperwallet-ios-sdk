@@ -3,7 +3,7 @@ import Hippolyte
 import XCTest
 
 class HyperwalletTests: XCTestCase {
-    func testSetup_withConfiguration_configReturned() {
+    func testSetup_withCompletion() {
         // Given
         let expectation = XCTestExpectation(description: "Wait for async operation completion")
         var configuration: Configuration?
@@ -18,20 +18,20 @@ class HyperwalletTests: XCTestCase {
         wait(for: [expectation], timeout: 1)
 
         // Then
-        XCTAssertNotNil(configuration)
-        XCTAssertNil(errorResponse)
+        XCTAssertNotNil(configuration, "A valid configuration was not returned")
+        XCTAssertNil(errorResponse, "No errors should be returned")
         XCTAssertNotNil(configuration?.clientToken, "The clientToken has not been initialized")
         XCTAssertGreaterThan(configuration!.expiresOn, 0, "The expiresOn has not been initialized")
-        XCTAssertFalse((configuration?.graphQlUrl.isEmpty)!, "The graphQlUrl has not been initialized")
-        XCTAssertFalse(configuration!.restUrl.isEmpty, "The restUrl has not been initialized")
-        XCTAssertFalse(configuration!.issuer.isEmpty, "The issuer has not been initialized")
+        XCTAssertNotNil(configuration?.graphQlUrl, "The graphQlUrl has not been initialized")
+        XCTAssertNotNil(configuration?.restUrl, "The restUrl has not been initialized")
+        XCTAssertNotNil(configuration?.issuer, "The issuer has not been initialized")
         XCTAssertNotNil(configuration?.authorization, "The authorization has not been initialized")
-        XCTAssertFalse((configuration?.authorization!.isEmpty)!, "The authorization has not been initialized")
-        XCTAssertFalse((configuration?.insightsUrl!.isEmpty)!, "The insightsUrl has not been initialized")
-        XCTAssertFalse((configuration?.environment!.isEmpty)!, "The environment has not been initialized")
+        XCTAssertNotNil(configuration?.authorization, "The authorization has not been initialized")
+        XCTAssertNotNil(configuration?.insightsUrl, "The insightsUrl has not been initialized")
+        XCTAssertNotNil(configuration?.environment, "The environment has not been initialized")
     }
 
-    func testSetup_authenticationError() {
+    func testSetup_withCompletion_authenticationError() {
         // Given
         let expectation = XCTestExpectation(description: "Wait for async operation completion")
         var configuration: Configuration?
@@ -52,12 +52,12 @@ class HyperwalletTests: XCTestCase {
         wait(for: [expectation], timeout: 1)
 
         // Then
-        XCTAssertNil(configuration)
-        XCTAssertNotNil(errorResponse)
+        XCTAssertNil(configuration, "Configuration should not be returned")
+        XCTAssertNotNil(errorResponse, "A valid error response should be returned")
         XCTAssertTrue(errorResponse?.getAuthenticationError()?.message() == "Authentication token cannot be retrieved")
     }
 
-    func testSetup_decodeError() {
+    func testSetup_withCompletion_decodeError() {
         // Given
         let expectation = XCTestExpectation(description: "Wait for async operation completion")
         var configuration: Configuration?
@@ -74,8 +74,8 @@ class HyperwalletTests: XCTestCase {
         wait(for: [expectation], timeout: 1)
 
         // Then
-        XCTAssertNil(configuration)
-        XCTAssertNotNil(errorResponse)
+        XCTAssertNil(configuration, "Configuration should not be returned")
+        XCTAssertNotNil(errorResponse, "A valid error response should be returned")
         XCTAssertTrue(errorResponse?.getHyperwalletErrors()?.errorList?.count == 1)
         XCTAssertTrue(errorResponse?.getHyperwalletErrors()?.errorList?[0].message == "Invalid Authnetication token")
     }
