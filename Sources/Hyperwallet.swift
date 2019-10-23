@@ -806,11 +806,10 @@ public final class Hyperwallet: NSObject {
             do {
                 let configuration = try AuthenticationTokenDecoder.decode(from: authenticationToken)
                 completion(configuration, nil)
-            } catch let error as HyperwalletErrorType {
-                completion(nil, error)
             } catch {
-                completion(nil, ErrorTypeHelper.authenticationError(for: HyperwalletAuthenticationErrorType
-                    .unexpected("Authentication token cannot be decoded")))
+                if let error = error as? HyperwalletErrorType {
+                    completion(nil, error)
+                }
             }
         }
     }
