@@ -33,9 +33,9 @@ class AuthenticationTokenDecoderTests: XCTestCase {
             XCTAssertFalse(configuration.restUrl.isEmpty, "The restUrl has not been initialized")
             XCTAssertFalse(configuration.issuer.isEmpty, "The issuer has not been initialized")
             XCTAssertNotNil(configuration.authorization, "The authorization has not been initialized")
-            XCTAssertFalse(configuration.authorization!.isEmpty, "The authorization has not been initialized")
-            XCTAssertFalse(configuration.insightsUrl!.isEmpty, "The insightsUrl has not been initialized")
-            XCTAssertFalse(configuration.environment!.isEmpty, "The environment has not been initialized")
+            XCTAssertNotNil(configuration.authorization, "The authorization has not been initialized")
+            XCTAssertNotNil(configuration.insightsUrl, "The insightsUrl has not been initialized")
+            XCTAssertNotNil(configuration.environment, "The environment has not been initialized")
         } catch {
             XCTFail("should be unexpected error")
         }
@@ -53,7 +53,7 @@ class AuthenticationTokenDecoderTests: XCTestCase {
             XCTAssertFalse(configuration.restUrl.isEmpty, "The restUrl has not been initialized")
             XCTAssertFalse(configuration.issuer.isEmpty, "The issuer has not been initialized")
             XCTAssertNotNil(configuration.authorization, "The authorization has not been initialized")
-            XCTAssertFalse(configuration.authorization!.isEmpty, "The authorization has not been initialized")
+            XCTAssertNotNil(configuration.authorization, "The authorization has not been initialized")
             XCTAssertNil(configuration.insightsUrl, "The insightsUrl should be empty")
             XCTAssertNil(configuration.environment, "The environment should be empty")
         } catch {
