@@ -23,7 +23,7 @@ import os.log
 final class HTTPTransaction {
     private let provider: HyperwalletAuthenticationTokenProvider
     private let httpClient: HTTPClientProtocol
-    private(set) var configuration: Configuration?
+    var configuration: Configuration?
 
     init(provider: HyperwalletAuthenticationTokenProvider,
          httpClient: HTTPClientProtocol = HTTPClient(configuration: HTTPTransaction.urlSessionConfiguration)) {

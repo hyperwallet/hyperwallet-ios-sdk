@@ -32,6 +32,7 @@ import Foundation
 public final class Hyperwallet: NSObject {
     private var httpTransaction: HTTPTransaction!
     private static var instance: Hyperwallet?
+    private var provider: HyperwalletAuthenticationTokenProvider?
 
     /// Returns the previously initialized instance of the Hyperwallet Core SDK interface object
     public static var shared: Hyperwallet {
@@ -42,6 +43,7 @@ public final class Hyperwallet: NSObject {
     }
 
     private init(_ provider: HyperwalletAuthenticationTokenProvider) {
+        self.provider = provider
         self.httpTransaction = HTTPTransaction(provider: provider)
     }
 
@@ -49,7 +51,7 @@ public final class Hyperwallet: NSObject {
     /// it will be replaced.
     ///
     /// - Parameter provider: a provider of Hyperwallet authentication tokens.
-    public class func setup(_ provider: HyperwalletAuthenticationTokenProvider) {
+    public static func setup(_ provider: HyperwalletAuthenticationTokenProvider) {
         if instance?.httpTransaction != nil {
             instance?.httpTransaction.invalidate()
         }
@@ -63,11 +65,23 @@ public final class Hyperwallet: NSObject {
     /// - Parameters:
     ///   - provider: a provider of Hyperwallet authentication tokens.
     ///   - completion: the callback handler of responses from the Hyperwallet platform
-    public class func setup(_ provider: HyperwalletAuthenticationTokenProvider,
-                            completion: @escaping (Configuration?, HyperwalletErrorType?) -> Void) {
+    public static func setup(_ provider: HyperwalletAuthenticationTokenProvider,
+                             completion: @escaping (Configuration?, HyperwalletErrorType?) -> Void) {
         setup(provider)
-        provider.retrieveAuthenticationToken(
-            completionHandler: retrieveAuthenticationTokenResponseHandler(completion: completion))
+        Hyperwallet.shared.getConfiguration(completion: completion)
+    }
+
+    /// Retrieves a configuration if one exists - else using the authentication token from the provider,
+    /// it tries to fetch the configuration object again and returns it else error
+    ///
+    /// - Parameter completion: the callback handler of responses from the Hyperwallet platform
+    public func getConfiguration(completion: @escaping (Configuration?, HyperwalletErrorType?) -> Void ) {
+        if let configuration = self.httpTransaction.configuration {
+            completion(configuration, nil)
+        } else {
+            provider?.retrieveAuthenticationToken(
+                completionHandler: retrieveAuthenticationTokenResponseHandler(completion: completion))
+        }
     }
 
     /// Returns the `HyperwalletUser` for the User associated with the authentication token returned from
@@ -791,7 +805,7 @@ public final class Hyperwallet: NSObject {
             }
     }
 
-    private static func retrieveAuthenticationTokenResponseHandler(
+    private func retrieveAuthenticationTokenResponseHandler(
         completion: @escaping (Configuration?, HyperwalletErrorType?) -> Void)
         -> (String?, Error?) -> Void {
         return {(authenticationToken, error) in
@@ -805,6 +819,7 @@ public final class Hyperwallet: NSObject {
             }
             do {
                 let configuration = try AuthenticationTokenDecoder.decode(from: authenticationToken)
+                self.httpTransaction.configuration = configuration
                 completion(configuration, nil)
             } catch {
                 if let error = error as? HyperwalletErrorType {
