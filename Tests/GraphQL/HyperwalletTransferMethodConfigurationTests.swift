@@ -164,6 +164,13 @@ class HyperwalletTransferMethodConfigurationTests: XCTestCase {
         XCTAssertEqual(fees?.count, 1)
         XCTAssertEqual(fees?.first?.feeRateType, "FLAT")
         XCTAssertEqual(fees?.first?.value, "2.00")
+        let mask = graphQlResponse?.fieldGroups()?
+            .first(where: { $0.group == "BUSINESS_INFORMATION" })?.fields?
+            .first(where: { $0.name == "bankAccountId" })?
+            .mask
+        XCTAssertNotNil(mask)
+        XCTAssertEqual(mask?.defaultPattern, "#####-####")
+        XCTAssertEqual(mask?.scrubRegex, "\\-")
     }
 
     private func setUpTransferMethodConfigurationRequest(_ responseFile: String,

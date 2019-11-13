@@ -135,6 +135,10 @@
                                             "length": "The minimum length of this field is 4 and maximum length is 17.",
                                             "pattern": "is invalid length or format.",
                                             "empty": "You must provide a value for this field"
+                                        },
+                                        "mask": {
+                                            "defaultPattern": "#####-####",
+                                            "scrubRegex": "\\-"
                                         }
                                     },
                                     {
