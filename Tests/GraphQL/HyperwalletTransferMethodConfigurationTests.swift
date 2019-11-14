@@ -177,6 +177,8 @@ class HyperwalletTransferMethodConfigurationTests: XCTestCase {
         XCTAssertEqual(branchIdMask?.conditionalPatterns?.count, 2)
         XCTAssertEqual(branchIdMask?.conditionalPatterns?.first?.pattern, "# ###### ##")
         XCTAssertEqual(branchIdMask?.conditionalPatterns?.first?.regex, "^4")
+        XCTAssertEqual(branchIdMask?.conditionalPatterns?.last?.pattern, "## #######")
+        XCTAssertEqual(branchIdMask?.conditionalPatterns?.last?.regex, "^5[1-5]")
         XCTAssertEqual(branchIdMask?.defaultPattern, "#####.###.#")
         XCTAssertEqual(branchIdMask?.scrubRegex, "\\s")
     }

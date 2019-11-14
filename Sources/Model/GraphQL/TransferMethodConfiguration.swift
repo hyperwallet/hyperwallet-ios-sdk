@@ -173,7 +173,7 @@ public struct TransferMethodConfiguration: Codable {
     let fieldGroups: Connection<HyperwalletFieldGroup>?
 }
 
-/// Representation of the transfer method configuration field HyperwalletMask
+/// Representation of the transfer method configuration field mask
 public struct HyperwalletMask: Codable {
     /// The conditional pattern, or nil if none exists
     public let conditionalPatterns: [ConditionalPattern]?
@@ -183,7 +183,7 @@ public struct HyperwalletMask: Codable {
     public let scrubRegex: String?
 }
 
-/// Representation of the transfer method configuration field ConditionalPattern
+/// Representation of the transfer method configuration field conditionalPattern
 public struct ConditionalPattern: Codable {
     /// The pattern
     public let pattern: String
