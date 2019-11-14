@@ -107,7 +107,7 @@ public struct HyperwalletField: Codable {
     public let validationMessage: HyperwalletValidationMessage?
     /// The field value
     public let value: String?
-    /// The hyperwallet mask, or nil if none exists
+    /// The mask, or nil if none exists
     public let mask: HyperwalletMask?
 }
 
