@@ -108,7 +108,7 @@ public struct HyperwalletField: Codable {
     /// The field value
     public let value: String?
     /// The mask, or nil if none exists
-    public let mask: HyperwalletFieldMask?
+    public let mask: HyperwalletMask?
 }
 
 /// Representation of list of HyperwalletField and the group to which it belongs
@@ -174,7 +174,7 @@ public struct TransferMethodConfiguration: Codable {
 }
 
 /// Representation of the transfer method configuration field mask
-public struct HyperwalletFieldMask: Codable {
+public struct HyperwalletMask: Codable {
     /// The conditional pattern, or nil if none exists
     public let conditionalPatterns: [HyperwalletConditionalPattern]?
     /// The default pattern
