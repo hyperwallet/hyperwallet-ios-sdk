@@ -183,7 +183,7 @@ public struct HyperwalletMask: Codable {
     public let scrubRegex: String?
 }
 
-/// Representation of the transfer method configuration field conditionalPattern
+/// Representation of the transfer method configuration field conditionalPatterns
 public struct ConditionalPattern: Codable {
     /// The pattern
     public let pattern: String
