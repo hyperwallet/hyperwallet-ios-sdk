@@ -10,7 +10,7 @@
                     "fieldGroups": {
                         "nodes": [
                             {
-                                "group": "IDENTIFICATION",
+                                "group": "ACCOUNT_HOLDER",
                                 "fields": [
                                     {
                                         "dataType": "TEXT",
@@ -103,7 +103,7 @@
                                 ]
                             },
                             {
-                                "group": "BUSINESS_INFORMATION",
+                                "group": "ACCOUNT_INFORMATION",
                                 "fields": [
                                     {
                                         "dataType": "NUMBER",

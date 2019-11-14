@@ -165,13 +165,13 @@ class HyperwalletTransferMethodConfigurationTests: XCTestCase {
         XCTAssertEqual(fees?.first?.feeRateType, "FLAT")
         XCTAssertEqual(fees?.first?.value, "2.00")
         let bankAccountIdMask = graphQlResponse?.fieldGroups()?
-            .first(where: { $0.group == "BUSINESS_INFORMATION" })?.fields?
+            .first(where: { $0.group == "ACCOUNT_INFORMATION" })?.fields?
             .first(where: { $0.name == "bankAccountId" })?.mask
         XCTAssertNotNil(bankAccountIdMask)
         XCTAssertEqual(bankAccountIdMask?.defaultPattern, "#####-####")
         XCTAssertEqual(bankAccountIdMask?.scrubRegex, "\\-")
         let branchIdMask = graphQlResponse?.fieldGroups()?
-            .first(where: { $0.group == "BUSINESS_INFORMATION" })?.fields?
+            .first(where: { $0.group == "ACCOUNT_INFORMATION" })?.fields?
             .first(where: { $0.name == "branchId" })?.mask
         XCTAssertNotNil(branchIdMask)
         XCTAssertEqual(branchIdMask?.conditionalPatterns?.count, 2)
