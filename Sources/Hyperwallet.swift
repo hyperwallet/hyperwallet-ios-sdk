@@ -76,7 +76,7 @@ public final class Hyperwallet: NSObject {
     ///
     /// - Parameter completion: the callback handler of responses from the Hyperwallet platform
     public func getConfiguration(completion: @escaping (Configuration?, HyperwalletErrorType?) -> Void ) {
-        if let configuration = self.httpTransaction.configuration {
+        if let configuration = httpTransaction.configuration {
             completion(configuration, nil)
         } else {
             provider?.retrieveAuthenticationToken(
