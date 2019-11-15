@@ -58,19 +58,6 @@ public final class Hyperwallet: NSObject {
         instance = Hyperwallet(provider)
     }
 
-    /// Creates a new instance of the Hyperwallet Core SDK interface object. If a previously created instance exists,
-    /// it will be replaced. Next it retrieves the authentication token from the provider and decodes the token in
-    /// case of successful response else returns error
-    ///
-    /// - Parameters:
-    ///   - provider: a provider of Hyperwallet authentication tokens.
-    ///   - completion: the callback handler of responses from the Hyperwallet platform
-    public static func setup(_ provider: HyperwalletAuthenticationTokenProvider,
-                             completion: @escaping (Configuration?, HyperwalletErrorType?) -> Void) {
-        setup(provider)
-        Hyperwallet.shared.getConfiguration(completion: completion)
-    }
-
     /// Retrieves a configuration if one exists - else using the authentication token from the provider,
     /// it tries to fetch the configuration object again and returns it else error
     ///
