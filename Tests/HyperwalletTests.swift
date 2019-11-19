@@ -3,7 +3,30 @@ import Hippolyte
 import XCTest
 
 class HyperwalletTests: XCTestCase {
-    func testSetup_getConfiguration() {
+    func testGetConfiguration_existingConfiguration() {
+        // Given
+        let expectation = XCTestExpectation(description: "Wait for async operation completion")
+        var configuration: Configuration?
+
+        // When
+        Hyperwallet.setup(HyperwalletTestHelper.authenticationProvider)
+        // Make sure that httpTransaction.configuration is populated
+        Hyperwallet.shared.getUser { (_, _) in
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 1)
+
+        Hyperwallet.shared.getConfiguration(completion: { (result, _) in
+            configuration = result
+            expectation.fulfill()
+        })
+
+        // Then
+        XCTAssertNotNil(configuration, "A valid configuration was not returned")
+    }
+
+    // This makes call to the provider to retrieve configuration
+    func testGetConfiguration_retrieveConfiguration() {
         // Given
         let expectation = XCTestExpectation(description: "Wait for async operation completion")
         var configuration: Configuration?
