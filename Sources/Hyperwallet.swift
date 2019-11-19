@@ -32,7 +32,7 @@ import Foundation
 public final class Hyperwallet: NSObject {
     private var httpTransaction: HTTPTransaction!
     private static var instance: Hyperwallet?
-    private var provider: HyperwalletAuthenticationTokenProvider?
+    private var provider: HyperwalletAuthenticationTokenProvider
 
     /// Returns the previously initialized instance of the Hyperwallet Core SDK interface object
     public static var shared: Hyperwallet {
@@ -66,7 +66,7 @@ public final class Hyperwallet: NSObject {
         if let configuration = httpTransaction.configuration {
             completion(configuration, nil)
         } else {
-            provider?.retrieveAuthenticationToken(
+            provider.retrieveAuthenticationToken(
                 completionHandler: retrieveAuthenticationTokenResponseHandler(completion: completion))
         }
     }
@@ -109,11 +109,6 @@ public final class Hyperwallet: NSObject {
                                     urlPath: "users/%@/bank-accounts",
                                     payload: account,
                                     completionHandler: completion)
-    }
-
-    public func createBankAccountObjectiveC(account: HyperwalletBankAccount,
-                                            completion: @escaping (HyperwalletBankAccount?, Error?) -> Void) {
-        return createBankAccount(account: account, completion: completion)
     }
 
     /// Creates a `HyperwalletBankCard` for the User associated with the authentication token returned from

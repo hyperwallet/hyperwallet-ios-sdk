@@ -69,30 +69,6 @@ class HyperwalletBankAccountIndividualTests: XCTestCase {
         verifyIndividualWireResponse(wireAccountResponse)
     }
 
-    func testCreateBankAccountObjectiveC_business_success() {
-        // Given
-        let expectation = self.expectation(description: "Create bank account completed")
-        let response = HyperwalletTestHelper.okHTTPResponse(for: "BankAccountBusinessResponse")
-        let url = String(format: "%@/bank-accounts", HyperwalletTestHelper.userRestURL)
-        let request = HyperwalletTestHelper.buildPostRequest(baseUrl: url, response)
-        HyperwalletTestHelper.setUpMockServer(request: request)
-
-        var bankAccountResponse: HyperwalletBankAccount?
-
-        // When
-        let bankAccount = buildBusinessBankAccount()
-
-        Hyperwallet.shared.createBankAccountObjectiveC(account: bankAccount, completion: { (result, _) in
-            bankAccountResponse = result
-            expectation.fulfill()
-        })
-        wait(for: [expectation], timeout: 1)
-
-        // Then
-        XCTAssertNotNil(bankAccount)
-        verifyBusinessResponse(bankAccountResponse)
-    }
-
     func testCreateBankAccount_business_success() {
         // Given
         let expectation = self.expectation(description: "Create bank account completed")
