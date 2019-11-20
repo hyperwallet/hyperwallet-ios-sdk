@@ -32,6 +32,7 @@ import Foundation
 public final class Hyperwallet: NSObject {
     private var httpTransaction: HTTPTransaction!
     private static var instance: Hyperwallet?
+    private var provider: HyperwalletAuthenticationTokenProvider
 
     /// Returns the previously initialized instance of the Hyperwallet Core SDK interface object
     public static var shared: Hyperwallet {
@@ -42,6 +43,7 @@ public final class Hyperwallet: NSObject {
     }
 
     private init(_ provider: HyperwalletAuthenticationTokenProvider) {
+        self.provider = provider
         self.httpTransaction = HTTPTransaction(provider: provider)
     }
 
@@ -49,25 +51,24 @@ public final class Hyperwallet: NSObject {
     /// it will be replaced.
     ///
     /// - Parameter provider: a provider of Hyperwallet authentication tokens.
-    public class func setup(_ provider: HyperwalletAuthenticationTokenProvider) {
+    public static func setup(_ provider: HyperwalletAuthenticationTokenProvider) {
         if instance?.httpTransaction != nil {
             instance?.httpTransaction.invalidate()
         }
         instance = Hyperwallet(provider)
     }
 
-    /// Creates a new instance of the Hyperwallet Core SDK interface object. If a previously created instance exists,
-    /// it will be replaced. Next it retrieves the authentication token from the provider and decodes the token in
-    /// case of successful response else returns error
+    /// Retrieves a configuration if one exists - else using the authentication token from the provider,
+    /// it tries to fetch the configuration object again and returns it else error
     ///
-    /// - Parameters:
-    ///   - provider: a provider of Hyperwallet authentication tokens.
-    ///   - completion: the callback handler of responses from the Hyperwallet platform
-    public class func setup(_ provider: HyperwalletAuthenticationTokenProvider,
-                            completion: @escaping (Configuration?, HyperwalletErrorType?) -> Void) {
-        setup(provider)
-        provider.retrieveAuthenticationToken(
-            completionHandler: retrieveAuthenticationTokenResponseHandler(completion: completion))
+    /// - Parameter completion: the callback handler of responses from the Hyperwallet platform
+    public func getConfiguration(completion: @escaping (Configuration?, HyperwalletErrorType?) -> Void ) {
+        if let configuration = httpTransaction.configuration {
+            completion(configuration, nil)
+        } else {
+            provider.retrieveAuthenticationToken(
+                completionHandler: retrieveAuthenticationTokenResponseHandler(completion: completion))
+        }
     }
 
     /// Returns the `HyperwalletUser` for the User associated with the authentication token returned from
@@ -108,11 +109,6 @@ public final class Hyperwallet: NSObject {
                                     urlPath: "users/%@/bank-accounts",
                                     payload: account,
                                     completionHandler: completion)
-    }
-
-    public func createBankAccountObjectiveC(account: HyperwalletBankAccount,
-                                            completion: @escaping (HyperwalletBankAccount?, Error?) -> Void) {
-        return createBankAccount(account: account, completion: completion)
     }
 
     /// Creates a `HyperwalletBankCard` for the User associated with the authentication token returned from
@@ -787,7 +783,7 @@ public final class Hyperwallet: NSObject {
             }
     }
 
-    private static func retrieveAuthenticationTokenResponseHandler(
+    private func retrieveAuthenticationTokenResponseHandler(
         completion: @escaping (Configuration?, HyperwalletErrorType?) -> Void)
         -> (String?, Error?) -> Void {
         return {(authenticationToken, error) in
@@ -801,6 +797,7 @@ public final class Hyperwallet: NSObject {
             }
             do {
                 let configuration = try AuthenticationTokenDecoder.decode(from: authenticationToken)
+                self.httpTransaction.configuration = configuration
                 completion(configuration, nil)
             } catch {
                 if let error = error as? HyperwalletErrorType {
