@@ -25,7 +25,7 @@ class ConfigurationTests: XCTestCase {
     func testIsTokenExpired_true() {
         let expiryOn = Double((Date().addingTimeInterval(0.1).timeIntervalSince1970).rounded())
         let configuration = getConfiguration(expiryOn)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 15) {
             XCTAssertTrue(configuration.isTokenExpired(), "Token should be expired")
         }
     }
@@ -40,12 +40,14 @@ class ConfigurationTests: XCTestCase {
 
     private func getConfiguration(_ expiryOn: Double) -> Configuration {
         return Configuration(createOn: issueTime,
-                             clientToken: "pgu-022a69d0-d651-11e5-a276-d47cee384cd5",
+                             clientToken: "client-token",
                              expiresOn: expiryOn,
-                             graphQlUrl: "https://qamaster.aws.paylution.net/graphql",
-                             issuer: "prg-0438cadc-614c-11e5-af23-0faa28ca7c0f",
-                             restUrl: "https://qamaster.aws.paylution.net/rest/v3/",
-                             userToken: "usr-7e713de4-34e9-4e10-93cc-1f085b2d8397",
-                             authorization: nil)
+                             graphQlUrl: "https://test/graphql",
+                             restUrl: "https://test/restUrl",
+                             environment: "DEV",
+                             insightsUrl: "https://test/insightsUrl",
+                             issuer: "issuer-token",
+                             userToken: "user-token",
+                             authorization: "")
     }
 }

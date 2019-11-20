@@ -56,6 +56,20 @@ public final class Hyperwallet: NSObject {
         instance = Hyperwallet(provider)
     }
 
+    /// Creates a new instance of the Hyperwallet Core SDK interface object. If a previously created instance exists,
+    /// it will be replaced. Next it retrieves the authentication token from the provider and decodes the token in
+    /// case of successful response else returns error
+    ///
+    /// - Parameters:
+    ///   - provider: a provider of Hyperwallet authentication tokens.
+    ///   - completion: the callback handler of responses from the Hyperwallet platform
+    public class func setup(_ provider: HyperwalletAuthenticationTokenProvider,
+                            completion: @escaping (Configuration?, HyperwalletErrorType?) -> Void) {
+        setup(provider)
+        provider.retrieveAuthenticationToken(
+            completionHandler: retrieveAuthenticationTokenResponseHandler(completion: completion))
+    }
+
     /// Returns the `HyperwalletUser` for the User associated with the authentication token returned from
     /// `HyperwalletAuthenticationTokenProvider.retrieveAuthenticationToken(_ : @escaping CompletionHandler)` or nil
     /// if none exists.
@@ -73,10 +87,6 @@ public final class Hyperwallet: NSObject {
                                     urlPath: "users/%@",
                                     payload: "",
                                     completionHandler: completion)
-    }
-
-    public func getUserObjectiveC(completion: @escaping (HyperwalletUser?, Error?) -> Void) {
-        return getUser(completion: completion)
     }
 
     /// Creates a `HyperwalletBankAccount` for the User associated with the authentication token returned from
@@ -775,5 +785,28 @@ public final class Hyperwallet: NSObject {
             return { (response, error) in
                 completionHandler(TransferMethodConfigurationKeyResult(response?.countries?.nodes), error)
             }
+    }
+
+    private static func retrieveAuthenticationTokenResponseHandler(
+        completion: @escaping (Configuration?, HyperwalletErrorType?) -> Void)
+        -> (String?, Error?) -> Void {
+        return {(authenticationToken, error) in
+            guard error == nil else {
+                completion(nil, ErrorTypeHelper.authenticationError(
+                    message: "Error occured while retrieving authentication token",
+                    for: error as? HyperwalletAuthenticationErrorType ?? HyperwalletAuthenticationErrorType
+                        .unexpected("Authentication token cannot be retrieved"))
+                )
+                return
+            }
+            do {
+                let configuration = try AuthenticationTokenDecoder.decode(from: authenticationToken)
+                completion(configuration, nil)
+            } catch {
+                if let error = error as? HyperwalletErrorType {
+                    completion(nil, error)
+                }
+            }
+        }
     }
 }
