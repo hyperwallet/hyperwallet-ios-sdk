@@ -3,14 +3,38 @@ import Hippolyte
 import XCTest
 
 class HyperwalletTests: XCTestCase {
-    func testSetup_withCompletion() {
+    func testGetConfiguration_existingConfiguration() {
+        // Given
+        let expectation = XCTestExpectation(description: "Wait for async operation completion")
+        var configuration: Configuration?
+
+        // When
+        Hyperwallet.setup(HyperwalletTestHelper.authenticationProvider)
+        // Make sure that httpTransaction.configuration is populated
+        Hyperwallet.shared.getUser { (_, _) in
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 1)
+
+        Hyperwallet.shared.getConfiguration(completion: { (result, _) in
+            configuration = result
+            expectation.fulfill()
+        })
+
+        // Then
+        XCTAssertNotNil(configuration, "A valid configuration was not returned")
+    }
+
+    // This makes call to the provider to retrieve configuration
+    func testGetConfiguration_retrieveConfiguration() {
         // Given
         let expectation = XCTestExpectation(description: "Wait for async operation completion")
         var configuration: Configuration?
         var errorResponse: HyperwalletErrorType?
 
         // When
-        Hyperwallet.setup(HyperwalletTestHelper.authenticationProvider, completion: { (result, error) in
+        Hyperwallet.setup(HyperwalletTestHelper.authenticationProvider)
+        Hyperwallet.shared.getConfiguration(completion: { (result, error) in
             configuration = result
             errorResponse = error
             expectation.fulfill()
@@ -31,7 +55,7 @@ class HyperwalletTests: XCTestCase {
         XCTAssertNotNil(configuration?.environment, "The environment has not been initialized")
     }
 
-    func testSetup_withCompletion_authenticationError() {
+    func testSetup_getConfiguration_authenticationError() {
         // Given
         let expectation = XCTestExpectation(description: "Wait for async operation completion")
         var configuration: Configuration?
@@ -44,7 +68,8 @@ class HyperwalletTests: XCTestCase {
             error: authErrorResponse)
 
         // When
-        Hyperwallet.setup(authenticationProvider, completion: { (result, error) in
+        Hyperwallet.setup(authenticationProvider)
+        Hyperwallet.shared.getConfiguration(completion: { (result, error) in
             configuration = result
             errorResponse = error
             expectation.fulfill()
@@ -57,7 +82,7 @@ class HyperwalletTests: XCTestCase {
         XCTAssertTrue(errorResponse?.getAuthenticationError()?.message() == "Authentication token cannot be retrieved")
     }
 
-    func testSetup_withCompletion_decodeError() {
+    func testSetup_getConfiguration_decodeError() {
         // Given
         let expectation = XCTestExpectation(description: "Wait for async operation completion")
         var configuration: Configuration?
@@ -66,7 +91,8 @@ class HyperwalletTests: XCTestCase {
         let authenticationProvider = AuthenticationProviderMock(authorizationData: "Garbage")
 
         // When
-        Hyperwallet.setup(authenticationProvider, completion: { (result, error) in
+        Hyperwallet.setup(authenticationProvider)
+        Hyperwallet.shared.getConfiguration(completion: { (result, error) in
             configuration = result
             errorResponse = error
             expectation.fulfill()

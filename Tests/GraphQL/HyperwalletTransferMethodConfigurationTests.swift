@@ -164,6 +164,23 @@ class HyperwalletTransferMethodConfigurationTests: XCTestCase {
         XCTAssertEqual(fees?.count, 1)
         XCTAssertEqual(fees?.first?.feeRateType, "FLAT")
         XCTAssertEqual(fees?.first?.value, "2.00")
+        let bankAccountIdMask = graphQlResponse?.fieldGroups()?
+            .first(where: { $0.group == "ACCOUNT_INFORMATION" })?.fields?
+            .first(where: { $0.name == "bankAccountId" })?.mask
+        XCTAssertNotNil(bankAccountIdMask)
+        XCTAssertEqual(bankAccountIdMask?.defaultPattern, "#####-####")
+        XCTAssertEqual(bankAccountIdMask?.scrubRegex, "\\-")
+        let branchIdMask = graphQlResponse?.fieldGroups()?
+            .first(where: { $0.group == "ACCOUNT_INFORMATION" })?.fields?
+            .first(where: { $0.name == "branchId" })?.mask
+        XCTAssertNotNil(branchIdMask)
+        XCTAssertEqual(branchIdMask?.conditionalPatterns?.count, 2)
+        XCTAssertEqual(branchIdMask?.conditionalPatterns?.first?.pattern, "# ###### ##")
+        XCTAssertEqual(branchIdMask?.conditionalPatterns?.first?.regex, "^4")
+        XCTAssertEqual(branchIdMask?.conditionalPatterns?.last?.pattern, "## #######")
+        XCTAssertEqual(branchIdMask?.conditionalPatterns?.last?.regex, "^5[1-5]")
+        XCTAssertEqual(branchIdMask?.defaultPattern, "#####.###.#")
+        XCTAssertEqual(branchIdMask?.scrubRegex, "\\s")
     }
 
     private func setUpTransferMethodConfigurationRequest(_ responseFile: String,

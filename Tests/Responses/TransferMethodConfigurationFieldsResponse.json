@@ -10,7 +10,7 @@
                     "fieldGroups": {
                         "nodes": [
                             {
-                                "group": "IDENTIFICATION",
+                                "group": "ACCOUNT_HOLDER",
                                 "fields": [
                                     {
                                         "dataType": "TEXT",
@@ -103,7 +103,7 @@
                                 ]
                             },
                             {
-                                "group": "BUSINESS_INFORMATION",
+                                "group": "ACCOUNT_INFORMATION",
                                 "fields": [
                                     {
                                         "dataType": "NUMBER",
@@ -119,6 +119,20 @@
                                             "length": "The exact length of this field is 9.",
                                             "pattern": "is invalid length or format.",
                                             "empty": "You must provide a value for this field"
+                                        },
+                                        "mask": {
+                                            "conditionalPatterns": [
+                                                {
+                                                    "pattern": "# ###### ##",
+                                                    "regex": "^4"
+                                                },
+                                                {
+                                                    "pattern": "## #######",
+                                                    "regex": "^5[1-5]"
+                                                }
+                                            ],
+                                            "defaultPattern": "#####.###.#",
+                                            "scrubRegex": "\\s"
                                         }
                                     },
                                     {
@@ -135,6 +149,10 @@
                                             "length": "The minimum length of this field is 4 and maximum length is 17.",
                                             "pattern": "is invalid length or format.",
                                             "empty": "You must provide a value for this field"
+                                        },
+                                        "mask": {
+                                            "defaultPattern": "#####-####",
+                                            "scrubRegex": "\\-"
                                         }
                                     },
                                     {
