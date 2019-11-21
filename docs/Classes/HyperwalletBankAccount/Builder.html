@@ -1,0 +1,2895 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Builder Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="../../js/jquery.min.js" defer></script>
+    <script src="../../js/jazzy.js" defer></script>
+    
+    <script src="../../js/lunr.min.js" defer></script>
+    <script src="../../js/typeahead.jquery.js" defer></script>
+    <script src="../../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+    <a name="//apple_ref/swift/Class/Builder" class="dashAnchor"></a>
+
+    <a title="Builder Class Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="../../index.html">
+          HyperwalletSDK 0.0.1 Docs
+        </a>
+         (52% documented)
+      </p>
+    
+      <p class="header-col--secondary">
+        <form role="search" action="../../search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/hyperwallet/hyperwallet-ios-core-sdk-sandbox">
+            <img class="header-icon" src="../../img/gh.png"/>
+            View on GitHub
+          </a>
+        </p>
+    
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="../../index.html">HyperwalletSDK Reference</a>
+      <img class="carat" src="../../img/carat.png" />
+      Builder Class Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../../Common.html">Common</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/Hyperwallet.html">Hyperwallet</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../../Models.html">Models</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/HyperwalletTransferMethod.html">HyperwalletTransferMethod</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/HyperwalletTransferMethod/TransferMethodField.html">– TransferMethodField</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/HyperwalletTransferMethod.html#/s:14HyperwalletSDK0A14TransferMethodC0cD4TypeO">– TransferMethodType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Structs/HyperwalletStatusTransition.html">HyperwalletStatusTransition</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Structs/HyperwalletStatusTransition.html#/s:14HyperwalletSDK0A16StatusTransitionV0C0O">– Status</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Structs/HyperwalletStatusTransition/Builder.html">– Builder</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/HyperwalletBankCard.html">HyperwalletBankCard</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/HyperwalletBankCard/Builder.html">– Builder</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/HyperwalletBankAccount.html">HyperwalletBankAccount</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/HyperwalletBankAccount.html#/s:14HyperwalletSDK0A11BankAccountC19BusinessContactRoleO">– BusinessContactRole</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/HyperwalletBankAccount.html#/s:14HyperwalletSDK0A11BankAccountC12BusinessTypeO">– BusinessType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/HyperwalletBankAccount.html#/s:14HyperwalletSDK0A11BankAccountC6GenderO">– Gender</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/HyperwalletBankAccount.html#/s:14HyperwalletSDK0A11BankAccountC16GovernmentIdTypeO">– GovernmentIdType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/HyperwalletBankAccount.html#/s:14HyperwalletSDK0A11BankAccountC11ProfileTypeO">– ProfileType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/HyperwalletBankAccount.html#/s:14HyperwalletSDK0A11BankAccountC11PurposeTypeO">– PurposeType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/HyperwalletBankAccount.html#/s:14HyperwalletSDK0A11BankAccountC16RelationshipTypeO">– RelationshipType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/HyperwalletBankAccount/Builder.html">– Builder</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/HyperwalletTransferMethodQueryParam.html">HyperwalletTransferMethodQueryParam</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/HyperwalletTransferMethodQueryParam.html#/s:14HyperwalletSDK0A24TransferMethodQueryParamC0E6StatusO">– QueryStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/HyperwalletTransferMethodQueryParam.html#/s:14HyperwalletSDK0A24TransferMethodQueryParamC0E8SortableO">– QuerySortable</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Structs/HyperwalletPageList.html">HyperwalletPageList</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/HyperwalletBankCardQueryParam.html">HyperwalletBankCardQueryParam</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/HyperwalletBankAccountQueryParam.html">HyperwalletBankAccountQueryParam</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/HyperwalletBankAccountQueryParam.html#/s:14HyperwalletSDK0A21BankAccountQueryParamC0E4TypeO">– QueryType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/HyperwalletBankAccountQueryParam.html#/s:14HyperwalletSDK0A21BankAccountQueryParamC0E6StatusO">– QueryStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Structs/HyperwalletTransferMethodConfigurationFieldQuery.html">HyperwalletTransferMethodConfigurationFieldQuery</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Structs/HyperwalletTransferMethodConfigurationKeysQuery.html">HyperwalletTransferMethodConfigurationKeysQuery</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Structs/HyperwalletFee.html">HyperwalletFee</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Structs/HyperwalletField.html">HyperwalletField</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Structs/HyperwalletFieldSelectionOption.html">HyperwalletFieldSelectionOption</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Structs/HyperwalletPageLink.html">HyperwalletPageLink</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Structs/HyperwalletPageParameter.html">HyperwalletPageParameter</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Structs/HyperwalletValidationMessage.html">HyperwalletValidationMessage</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Structs/TransferMethodConfiguration.html">TransferMethodConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Protocols/GraphQlQuery.html">GraphQlQuery</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../../Authentication%20Token%20Provider.html">Authentication Token Provider</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Protocols/HyperwalletAuthenticationTokenProvider.html">HyperwalletAuthenticationTokenProvider</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../../Helper.html">Helper</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Structs/AuthenticationTokenDecoder.html">AuthenticationTokenDecoder</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Helper.html#/s:14HyperwalletSDK10HTTPMethodO">HTTPMethod</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/HTTPTransaction.html">HTTPTransaction</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Enums/TransactionType.html">TransactionType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../../Errors.html">Errors</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Structs/HyperwalletError.html">HyperwalletError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Structs/HyperwalletErrors.html">HyperwalletErrors</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../../Other%20Guides.html">Other Guides</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../changelog.html">CHANGELOG</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../readme.html">README</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../../Other%20Classes.html">Other Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/HyperwalletPayPalAccount.html">HyperwalletPayPalAccount</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/HyperwalletPayPalAccount/Builder.html">– Builder</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/HyperwalletPayPalAccountQueryParam.html">HyperwalletPayPalAccountQueryParam</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/HyperwalletPrepaidCard.html">HyperwalletPrepaidCard</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/HyperwalletPrepaidCard/Builder.html">– Builder</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/HyperwalletPrepaidCardQueryParm.html">HyperwalletPrepaidCardQueryParm</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/HyperwalletReceiptQueryParam.html">HyperwalletReceiptQueryParam</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/HyperwalletReceiptQueryParam.html#/s:14HyperwalletSDK0A17ReceiptQueryParamC0D8SortableO">– QuerySortable</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/HyperwalletTransferQueryParam.html">HyperwalletTransferQueryParam</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/HyperwalletUser.html">HyperwalletUser</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/HyperwalletUser.html#/s:14HyperwalletSDK0A4UserC0C5FieldO">– UserField</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/HyperwalletUser.html#/s:14HyperwalletSDK0A4UserC12BusinessTypeO">– BusinessType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/HyperwalletUser.html#/s:14HyperwalletSDK0A4UserC19BusinessContactRoleO">– BusinessContactRole</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/HyperwalletUser.html#/s:14HyperwalletSDK0A4UserC6GenderO">– Gender</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/HyperwalletUser.html#/s:14HyperwalletSDK0A4UserC11ProfileTypeO">– ProfileType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/HyperwalletUser.html#/s:14HyperwalletSDK0A4UserC6StatusO">– Status</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/HyperwalletUser.html#/s:14HyperwalletSDK0A4UserC18VerificationStatusO">– VerificationStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/HyperwalletUser/Builder.html">– Builder</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/QueryParam.html">QueryParam</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/TransferMethodConfigurationKeyResult.html">TransferMethodConfigurationKeyResult</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../../Other%20Enums.html">Other Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Enums/HyperwalletAuthenticationErrorType.html">HyperwalletAuthenticationErrorType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Other%20Enums.html#/s:14HyperwalletSDK0A8DataTypeO">HyperwalletDataType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Other%20Enums.html#/s:14HyperwalletSDK0A10ErrorGroupO">HyperwalletErrorGroup</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Enums/HyperwalletErrorType.html">HyperwalletErrorType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../../Other%20Extensions.html">Other Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Extensions/ISO8601DateFormatter.html">ISO8601DateFormatter</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../../Other%20Protocols.html">Other Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Protocols/HyperwalletTransferMethodConfigurationField.html">HyperwalletTransferMethodConfigurationField</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Protocols/HyperwalletTransferMethodConfigurationKey.html">HyperwalletTransferMethodConfigurationKey</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../../Other%20Structs.html">Other Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Other%20Structs.html#/s:14HyperwalletSDK10ConnectionV">Connection</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Other%20Structs.html#/s:14HyperwalletSDK0A7CountryV">HyperwalletCountry</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Other%20Structs.html#/s:14HyperwalletSDK0A8CurrencyV">HyperwalletCurrency</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Other%20Structs.html#/s:14HyperwalletSDK0A10FieldGroupV">HyperwalletFieldGroup</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Other%20Structs.html#/s:14HyperwalletSDK0A14ProcessingTimeV">HyperwalletProcessingTime</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Structs/HyperwalletReceipt.html">HyperwalletReceipt</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Structs/HyperwalletReceipt/HyperwalletReceiptType.html">– HyperwalletReceiptType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Structs/HyperwalletReceipt.html#/s:14HyperwalletSDK0A7ReceiptV0A9EntryTypeO">– HyperwalletEntryType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Other%20Structs.html#/s:14HyperwalletSDK0A14ReceiptDetailsV">HyperwalletReceiptDetails</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content">
+            <h1>Builder</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="kt">Builder</span></code></pre>
+
+                </div>
+              </div>
+            <p>A helper class to build the <code><a href="../../Classes/HyperwalletBankAccount.html">HyperwalletBankAccount</a></code> instance.</p>
+
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-content">
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A11BankAccountC7BuilderC5tokenAESS_tcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(token:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A11BankAccountC7BuilderC5tokenAESS_tcfc">init(token:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates a new instance of the <code>HyperwalletBankAccount.Builder</code> based on the required parameter to update
+Bank account.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">token</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>token</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The unique, auto-generated user identifier. Max 64 characters, prefixed with <q>usr-</q>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/hyperwallet/hyperwallet-ios-core-sdk-sandbox/Model/TransferMethod/HyperwalletBankAccount.swift#L317-L319">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A11BankAccountC7BuilderC21transferMethodCountry0fG8Currency0fG11ProfileType0fgK0AESS_S3Stcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(transferMethodCountry:transferMethodCurrency:transferMethodProfileType:transferMethodType:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A11BankAccountC7BuilderC21transferMethodCountry0fG8Currency0fG11ProfileType0fgK0AESS_S3Stcfc">init(transferMethodCountry:transferMethodCurrency:transferMethodProfileType:transferMethodType:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates a new instance of the <code>HyperwalletBankAccount.Builder</code> based on the required parameters to create
+Bank account.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">transferMethodCountry</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+            <span class="nv">transferMethodCurrency</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+            <span class="nv">transferMethodProfileType</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+            <span class="nv">transferMethodType</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>transferMethodCountry</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The bank account country.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>transferMethodCurrency</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The bank account currency.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>transferMethodProfileType</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The bank account holder&rsquo;s profile type, e.g. INDIVIDUAL or BUSINESS</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>transferMethodType</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The bank account type, e.g. BANK_ACCOUNT or WIRE_ACCOUNT</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/hyperwallet/hyperwallet-ios-core-sdk-sandbox/Model/TransferMethod/HyperwalletBankAccount.swift#L329-L337">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A11BankAccountC7BuilderC12addressLine1yAESSF"></a>
+                    <a name="//apple_ref/swift/Method/addressLine1(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A11BankAccountC7BuilderC12addressLine1yAESSF">addressLine1(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the bank account holder&rsquo;s street address.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">addressLine1</span><span class="p">(</span><span class="n">_</span> <span class="nv">addressLine1</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Builder</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>addressLine1</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The bank account holder&rsquo;s street address.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a self <code>HyperwalletBankAccount.Builder</code> instance.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/hyperwallet/hyperwallet-ios-core-sdk-sandbox/Model/TransferMethod/HyperwalletBankAccount.swift#L343-L346">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A11BankAccountC7BuilderC12addressLine2yAESSF"></a>
+                    <a name="//apple_ref/swift/Method/addressLine2(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A11BankAccountC7BuilderC12addressLine2yAESSF">addressLine2(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the bank account holder&rsquo;s address, second line.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">addressLine2</span><span class="p">(</span><span class="n">_</span> <span class="nv">addressLine2</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Builder</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>addressLine2</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The bank account holder&rsquo;s address, second line.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a self <code>HyperwalletBankAccount.Builder</code> instance.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/hyperwallet/hyperwallet-ios-core-sdk-sandbox/Model/TransferMethod/HyperwalletBankAccount.swift#L352-L355">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A11BankAccountC7BuilderC04bankD2IdyAESSF"></a>
+                    <a name="//apple_ref/swift/Method/bankAccountId(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A11BankAccountC7BuilderC04bankD2IdyAESSF">bankAccountId(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the bank account number, IBAN or equivalent. If you are providing an IBAN, the first two
+letters of the IBAN must match the <code>transferMethodCountry</code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">bankAccountId</span><span class="p">(</span><span class="n">_</span> <span class="nv">bankAccountId</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Builder</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>bankAccountId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The bank account number, IBAN or equivalent.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a self <code>HyperwalletBankAccount.Builder</code> instance.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/hyperwallet/hyperwallet-ios-core-sdk-sandbox/Model/TransferMethod/HyperwalletBankAccount.swift#L362-L365">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A11BankAccountC7BuilderC04bankD7PurposeyAeC0G4TypeOF"></a>
+                    <a name="//apple_ref/swift/Method/bankAccountPurpose(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A11BankAccountC7BuilderC04bankD7PurposeyAeC0G4TypeOF">bankAccountPurpose(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the purpose of the bank account (e.g. checking, savings, etc).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">bankAccountPurpose</span><span class="p">(</span><span class="n">_</span> <span class="nv">purpose</span><span class="p">:</span> <span class="kt"><a href="../../Classes/HyperwalletBankAccount.html#/s:14HyperwalletSDK0A11BankAccountC11PurposeTypeO">PurposeType</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Builder</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>purpose</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The <code><a href="../../Classes/HyperwalletBankAccount.html#/s:14HyperwalletSDK0A11BankAccountC11PurposeTypeO">PurposeType</a></code></p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a self <code>HyperwalletBankAccount.Builder</code> instance.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/hyperwallet/hyperwallet-ios-core-sdk-sandbox/Model/TransferMethod/HyperwalletBankAccount.swift#L371-L374">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A11BankAccountC7BuilderC04bankD12RelationshipyAeC0G4TypeOF"></a>
+                    <a name="//apple_ref/swift/Method/bankAccountRelationship(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A11BankAccountC7BuilderC04bankD12RelationshipyAeC0G4TypeOF">bankAccountRelationship(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the user&rsquo;s relationship with the bank account holder.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">bankAccountRelationship</span><span class="p">(</span><span class="n">_</span> <span class="nv">relationship</span><span class="p">:</span> <span class="kt"><a href="../../Classes/HyperwalletBankAccount.html#/s:14HyperwalletSDK0A11BankAccountC16RelationshipTypeO">RelationshipType</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Builder</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>relationship</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The <code><a href="../../Classes/HyperwalletBankAccount.html#/s:14HyperwalletSDK0A11BankAccountC16RelationshipTypeO">RelationshipType</a></code></p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a self <code>HyperwalletBankAccount.Builder</code> instance.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/hyperwallet/hyperwallet-ios-core-sdk-sandbox/Model/TransferMethod/HyperwalletBankAccount.swift#L380-L383">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A11BankAccountC7BuilderC6bankIdyAESSF"></a>
+                    <a name="//apple_ref/swift/Method/bankId(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A11BankAccountC7BuilderC6bankIdyAESSF">bankId(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the bank code or equivalent (e.g. BIC/SWIFT code).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">bankId</span><span class="p">(</span><span class="n">_</span> <span class="nv">bankId</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Builder</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>bankId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The bank code or equivalent (e.g. BIC/SWIFT code)</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a self <code>HyperwalletBankAccount.Builder</code> instance.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/hyperwallet/hyperwallet-ios-core-sdk-sandbox/Model/TransferMethod/HyperwalletBankAccount.swift#L389-L392">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A11BankAccountC7BuilderC8bankNameyAESSF"></a>
+                    <a name="//apple_ref/swift/Method/bankName(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A11BankAccountC7BuilderC8bankNameyAESSF">bankName(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the bank name.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">bankName</span><span class="p">(</span><span class="n">_</span> <span class="nv">bankName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Builder</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>bankName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The bank name</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a self <code>HyperwalletBankAccount.Builder</code> instance.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/hyperwallet/hyperwallet-ios-core-sdk-sandbox/Model/TransferMethod/HyperwalletBankAccount.swift#L398-L401">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A11BankAccountC7BuilderC8branchIdyAESSF"></a>
+                    <a name="//apple_ref/swift/Method/branchId(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A11BankAccountC7BuilderC8branchIdyAESSF">branchId(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the branch code, transit number, routing number or equivalent.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">branchId</span><span class="p">(</span><span class="n">_</span> <span class="nv">branchId</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Builder</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>branchId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The branch code, transit number, routing number or equivalent.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a self <code>HyperwalletBankAccount.Builder</code> instance.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/hyperwallet/hyperwallet-ios-core-sdk-sandbox/Model/TransferMethod/HyperwalletBankAccount.swift#L407-L410">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A11BankAccountC7BuilderC10branchNameyAESSF"></a>
+                    <a name="//apple_ref/swift/Method/branchName(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A11BankAccountC7BuilderC10branchNameyAESSF">branchName(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the branch name.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">branchName</span><span class="p">(</span><span class="n">_</span> <span class="nv">branchName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Builder</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>branchName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The branch name.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a self <code>HyperwalletBankAccount.Builder</code> instance.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/hyperwallet/hyperwallet-ios-core-sdk-sandbox/Model/TransferMethod/HyperwalletBankAccount.swift#L416-L419">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A11BankAccountC7BuilderC19businessContactRoleyAeC08BusinessgH0OF"></a>
+                    <a name="//apple_ref/swift/Method/businessContactRole(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A11BankAccountC7BuilderC19businessContactRoleyAeC08BusinessgH0OF">businessContactRole(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the bank account holder&rsquo;s role in the organization.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">businessContactRole</span><span class="p">(</span><span class="n">_</span> <span class="nv">businessContactRole</span><span class="p">:</span> <span class="kt"><a href="../../Classes/HyperwalletBankAccount.html#/s:14HyperwalletSDK0A11BankAccountC19BusinessContactRoleO">BusinessContactRole</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Builder</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>businessContactRole</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The bank account holder&rsquo;s role in the organization.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a self <code>HyperwalletBankAccount.Builder</code> instance.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/hyperwallet/hyperwallet-ios-core-sdk-sandbox/Model/TransferMethod/HyperwalletBankAccount.swift#L425-L428">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A11BankAccountC7BuilderC12businessNameyAESSF"></a>
+                    <a name="//apple_ref/swift/Method/businessName(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A11BankAccountC7BuilderC12businessNameyAESSF">businessName(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the name of the bank account holder&rsquo;s business.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">businessName</span><span class="p">(</span><span class="n">_</span> <span class="nv">businessName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Builder</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>businessName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The name of the bank account holder&rsquo;s business.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a self <code>HyperwalletBankAccount.Builder</code> instance.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/hyperwallet/hyperwallet-ios-core-sdk-sandbox/Model/TransferMethod/HyperwalletBankAccount.swift#L434-L437">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A11BankAccountC7BuilderC27businessRegistrationCountryyAESSF"></a>
+                    <a name="//apple_ref/swift/Method/businessRegistrationCountry(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A11BankAccountC7BuilderC27businessRegistrationCountryyAESSF">businessRegistrationCountry(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the country where the bank account holder&rsquo;s business is registered.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">businessRegistrationCountry</span><span class="p">(</span><span class="n">_</span> <span class="nv">country</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Builder</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>businessRegistrationCountry</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The country where the bank account holder&rsquo;s business is registered.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a self <code>HyperwalletBankAccount.Builder</code> instance.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/hyperwallet/hyperwallet-ios-core-sdk-sandbox/Model/TransferMethod/HyperwalletBankAccount.swift#L443-L446">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A11BankAccountC7BuilderC22businessRegistrationIdyAESSF"></a>
+                    <a name="//apple_ref/swift/Method/businessRegistrationId(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A11BankAccountC7BuilderC22businessRegistrationIdyAESSF">businessRegistrationId(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the bank account holder&rsquo;s business registration number or identifier,
+as assigned by the relevant government body.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">businessRegistrationId</span><span class="p">(</span><span class="n">_</span> <span class="nv">businessRegistrationId</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Builder</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>businessRegistrationId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The bank account holder&rsquo;s business
+registration number or identifier, as assigned by the relevant government body.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a self <code>HyperwalletBankAccount.Builder</code> instance.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/hyperwallet/hyperwallet-ios-core-sdk-sandbox/Model/TransferMethod/HyperwalletBankAccount.swift#L454-L457">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A11BankAccountC7BuilderC33businessRegistrationStateProvinceyAESSF"></a>
+                    <a name="//apple_ref/swift/Method/businessRegistrationStateProvince(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A11BankAccountC7BuilderC33businessRegistrationStateProvinceyAESSF">businessRegistrationStateProvince(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the state, province or region where the bank account holder&rsquo;s business is registered.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">businessRegistrationStateProvince</span><span class="p">(</span><span class="n">_</span> <span class="nv">stateProvince</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Builder</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>businessRegistrationStateProvince</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The state, province or region
+where the bank account holder&rsquo;s business is registered.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a self <code>HyperwalletBankAccount.Builder</code> instance.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/hyperwallet/hyperwallet-ios-core-sdk-sandbox/Model/TransferMethod/HyperwalletBankAccount.swift#L464-L467">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A11BankAccountC7BuilderC12businessTypeyAeC08BusinessG0OF"></a>
+                    <a name="//apple_ref/swift/Method/businessType(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A11BankAccountC7BuilderC12businessTypeyAeC08BusinessG0OF">businessType(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the bank account holder&rsquo;s business type.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">businessType</span><span class="p">(</span><span class="n">_</span> <span class="nv">businessType</span><span class="p">:</span> <span class="kt"><a href="../../Classes/HyperwalletBankAccount.html#/s:14HyperwalletSDK0A11BankAccountC12BusinessTypeO">BusinessType</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Builder</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>businessType</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The bank account holder&rsquo;s business type.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a self <code>HyperwalletBankAccount.Builder</code> instance.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/hyperwallet/hyperwallet-ios-core-sdk-sandbox/Model/TransferMethod/HyperwalletBankAccount.swift#L473-L476">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A11BankAccountC7BuilderC4cityyAESSF"></a>
+                    <a name="//apple_ref/swift/Method/city(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A11BankAccountC7BuilderC4cityyAESSF">city(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the bank account holder&rsquo;s city.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">city</span><span class="p">(</span><span class="n">_</span> <span class="nv">city</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Builder</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>city</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The bank account holder&rsquo;s city.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a self <code>HyperwalletBankAccount.Builder</code> instance.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/hyperwallet/hyperwallet-ios-core-sdk-sandbox/Model/TransferMethod/HyperwalletBankAccount.swift#L482-L485">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A11BankAccountC7BuilderC7countryyAESSF"></a>
+                    <a name="//apple_ref/swift/Method/country(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A11BankAccountC7BuilderC7countryyAESSF">country(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the bank account holder&rsquo;s country.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">country</span><span class="p">(</span><span class="n">_</span> <span class="nv">country</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Builder</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>country</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The bank account holder&rsquo;s country.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a self <code>HyperwalletBankAccount.Builder</code> instance.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/hyperwallet/hyperwallet-ios-core-sdk-sandbox/Model/TransferMethod/HyperwalletBankAccount.swift#L491-L494">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A11BankAccountC7BuilderC14countryOfBirthyAESSF"></a>
+                    <a name="//apple_ref/swift/Method/countryOfBirth(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A11BankAccountC7BuilderC14countryOfBirthyAESSF">countryOfBirth(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the bank account holder&rsquo;s birth country.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">countryOfBirth</span><span class="p">(</span><span class="n">_</span> <span class="nv">countryOfBirth</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Builder</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>countryOfBirth</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The bank account holder&rsquo;s birth country.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a self <code>HyperwalletBankAccount.Builder</code> instance.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/hyperwallet/hyperwallet-ios-core-sdk-sandbox/Model/TransferMethod/HyperwalletBankAccount.swift#L500-L503">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A11BankAccountC7BuilderC11dateOfBirthyAESSF"></a>
+                    <a name="//apple_ref/swift/Method/dateOfBirth(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A11BankAccountC7BuilderC11dateOfBirthyAESSF">dateOfBirth(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the bank account holder&rsquo;s date of birth (All users must be at least 13 years old).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">dateOfBirth</span><span class="p">(</span><span class="n">_</span> <span class="nv">dateOfBirth</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Builder</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>dateOfBirth</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The bank account holder&rsquo;s date of birth</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a self <code>HyperwalletBankAccount.Builder</code> instance.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/hyperwallet/hyperwallet-ios-core-sdk-sandbox/Model/TransferMethod/HyperwalletBankAccount.swift#L509-L512">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A11BankAccountC7BuilderC16driversLicenseIdyAESSF"></a>
+                    <a name="//apple_ref/swift/Method/driversLicenseId(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A11BankAccountC7BuilderC16driversLicenseIdyAESSF">driversLicenseId(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the bank account holder&rsquo;s driver&rsquo;s license number.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">driversLicenseId</span><span class="p">(</span><span class="n">_</span> <span class="nv">driversLicenseId</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Builder</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>driversLicenseId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The bank account holder&rsquo;s driver&rsquo;s license number.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a self <code>HyperwalletBankAccount.Builder</code> instance.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/hyperwallet/hyperwallet-ios-core-sdk-sandbox/Model/TransferMethod/HyperwalletBankAccount.swift#L518-L521">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A11BankAccountC7BuilderC10employerIdyAESSF"></a>
+                    <a name="//apple_ref/swift/Method/employerId(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A11BankAccountC7BuilderC10employerIdyAESSF">employerId(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the bank account holder&rsquo;s employer identifier, generally used for tax purposes.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">employerId</span><span class="p">(</span><span class="n">_</span> <span class="nv">employerId</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Builder</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>employerId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The bank account holder&rsquo;s employer identifier, generally used for tax purposes.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a self <code>HyperwalletBankAccount.Builder</code> instance.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/hyperwallet/hyperwallet-ios-core-sdk-sandbox/Model/TransferMethod/HyperwalletBankAccount.swift#L527-L530">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A11BankAccountC7BuilderC9firstNameyAESSF"></a>
+                    <a name="//apple_ref/swift/Method/firstName(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A11BankAccountC7BuilderC9firstNameyAESSF">firstName(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the bank account holder&rsquo;s first name.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">firstName</span><span class="p">(</span><span class="n">_</span> <span class="nv">firstName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Builder</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>firstName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The bank account holder&rsquo;s first name.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a self <code>HyperwalletBankAccount.Builder</code> instance.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/hyperwallet/hyperwallet-ios-core-sdk-sandbox/Model/TransferMethod/HyperwalletBankAccount.swift#L536-L539">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A11BankAccountC7BuilderC6genderyAeC6GenderOF"></a>
+                    <a name="//apple_ref/swift/Method/gender(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A11BankAccountC7BuilderC6genderyAeC6GenderOF">gender(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the bank account holder&rsquo;s gender.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">gender</span><span class="p">(</span><span class="n">_</span> <span class="nv">gender</span><span class="p">:</span> <span class="kt"><a href="../../Classes/HyperwalletBankAccount.html#/s:14HyperwalletSDK0A11BankAccountC6GenderO">Gender</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Builder</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>gender</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The bank account holder&rsquo;s gender.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a self <code>HyperwalletBankAccount.Builder</code> instance.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/hyperwallet/hyperwallet-ios-core-sdk-sandbox/Model/TransferMethod/HyperwalletBankAccount.swift#L545-L548">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A11BankAccountC7BuilderC12governmentIdyAESSF"></a>
+                    <a name="//apple_ref/swift/Method/governmentId(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A11BankAccountC7BuilderC12governmentIdyAESSF">governmentId(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the bank account holder&rsquo;s government ID number, such as a Social Security Number.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">governmentId</span><span class="p">(</span><span class="n">_</span> <span class="nv">governmentId</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Builder</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>governmentId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The bank account holder&rsquo;s government ID number, such as a Social Security Number.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a self <code>HyperwalletBankAccount.Builder</code> instance.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/hyperwallet/hyperwallet-ios-core-sdk-sandbox/Model/TransferMethod/HyperwalletBankAccount.swift#L554-L557">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A11BankAccountC7BuilderC16governmentIdTypeyAeC010GovernmentgH0OF"></a>
+                    <a name="//apple_ref/swift/Method/governmentIdType(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A11BankAccountC7BuilderC16governmentIdTypeyAeC010GovernmentgH0OF">governmentIdType(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the bank account holder&rsquo;s government ID type.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">governmentIdType</span><span class="p">(</span><span class="n">_</span> <span class="nv">governmentIdType</span><span class="p">:</span> <span class="kt"><a href="../../Classes/HyperwalletBankAccount.html#/s:14HyperwalletSDK0A11BankAccountC16GovernmentIdTypeO">GovernmentIdType</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Builder</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>governmentIdType</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The bank account holder&rsquo;s government ID type.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a self <code>HyperwalletBankAccount.Builder</code> instance.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/hyperwallet/hyperwallet-ios-core-sdk-sandbox/Model/TransferMethod/HyperwalletBankAccount.swift#L563-L566">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A11BankAccountC7BuilderC012intermediarycD2IdyAESSF"></a>
+                    <a name="//apple_ref/swift/Method/intermediaryBankAccountId(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A11BankAccountC7BuilderC012intermediarycD2IdyAESSF">intermediaryBankAccountId(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the account number at the intermediary bank.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">intermediaryBankAccountId</span><span class="p">(</span><span class="n">_</span> <span class="nv">accountId</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Builder</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>intermediaryBankAccountId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The account number at the intermediary bank.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a self <code>HyperwalletBankAccount.Builder</code> instance.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/hyperwallet/hyperwallet-ios-core-sdk-sandbox/Model/TransferMethod/HyperwalletBankAccount.swift#L572-L575">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A11BankAccountC7BuilderC012intermediaryC12AddressLine1yAESSF"></a>
+                    <a name="//apple_ref/swift/Method/intermediaryBankAddressLine1(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A11BankAccountC7BuilderC012intermediaryC12AddressLine1yAESSF">intermediaryBankAddressLine1(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the intermediary bank street address.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">intermediaryBankAddressLine1</span><span class="p">(</span><span class="n">_</span> <span class="nv">addressLine1</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Builder</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>intermediaryBankAddressLine1</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The intermediary bank street address.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a self <code>HyperwalletBankAccount.Builder</code> instance.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/hyperwallet/hyperwallet-ios-core-sdk-sandbox/Model/TransferMethod/HyperwalletBankAccount.swift#L581-L584">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A11BankAccountC7BuilderC012intermediaryC12AddressLine2yAESSF"></a>
+                    <a name="//apple_ref/swift/Method/intermediaryBankAddressLine2(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A11BankAccountC7BuilderC012intermediaryC12AddressLine2yAESSF">intermediaryBankAddressLine2(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the intermediary bank street address, second line.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">intermediaryBankAddressLine2</span><span class="p">(</span><span class="n">_</span> <span class="nv">addressLine2</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Builder</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>intermediaryBankAddressLine2</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The intermediary bank street address, second line.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a self <code>HyperwalletBankAccount.Builder</code> instance.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/hyperwallet/hyperwallet-ios-core-sdk-sandbox/Model/TransferMethod/HyperwalletBankAccount.swift#L590-L593">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A11BankAccountC7BuilderC012intermediaryC4CityyAESSF"></a>
+                    <a name="//apple_ref/swift/Method/intermediaryBankCity(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A11BankAccountC7BuilderC012intermediaryC4CityyAESSF">intermediaryBankCity(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the intermediary bank city.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">intermediaryBankCity</span><span class="p">(</span><span class="n">_</span> <span class="nv">city</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Builder</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>intermediaryBankCity</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The intermediary bank city.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a self <code>HyperwalletBankAccount.Builder</code> instance.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/hyperwallet/hyperwallet-ios-core-sdk-sandbox/Model/TransferMethod/HyperwalletBankAccount.swift#L599-L602">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A11BankAccountC7BuilderC012intermediaryC7CountryyAESSF"></a>
+                    <a name="//apple_ref/swift/Method/intermediaryBankCountry(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A11BankAccountC7BuilderC012intermediaryC7CountryyAESSF">intermediaryBankCountry(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the intermediary bank country.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">intermediaryBankCountry</span><span class="p">(</span><span class="n">_</span> <span class="nv">country</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Builder</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>intermediaryBankCountry</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The intermediary bank country.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a self <code>HyperwalletBankAccount.Builder</code> instance.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/hyperwallet/hyperwallet-ios-core-sdk-sandbox/Model/TransferMethod/HyperwalletBankAccount.swift#L608-L611">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A11BankAccountC7BuilderC012intermediaryC2IdyAESSF"></a>
+                    <a name="//apple_ref/swift/Method/intermediaryBankId(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A11BankAccountC7BuilderC012intermediaryC2IdyAESSF">intermediaryBankId(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the intermediary bank&rsquo;s 11-character SWIFT code.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">intermediaryBankId</span><span class="p">(</span><span class="n">_</span> <span class="nv">intermediaryBankId</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Builder</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>intermediaryBankId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The intermediary bank&rsquo;s 11-character SWIFT code.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a self <code>HyperwalletBankAccount.Builder</code> instance.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/hyperwallet/hyperwallet-ios-core-sdk-sandbox/Model/TransferMethod/HyperwalletBankAccount.swift#L617-L620">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A11BankAccountC7BuilderC012intermediaryC4NameyAESSF"></a>
+                    <a name="//apple_ref/swift/Method/intermediaryBankName(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A11BankAccountC7BuilderC012intermediaryC4NameyAESSF">intermediaryBankName(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the intermediary bank name.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">intermediaryBankName</span><span class="p">(</span><span class="n">_</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Builder</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>intermediaryBankName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The intermediary bank name.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a self <code>HyperwalletBankAccount.Builder</code> instance.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/hyperwallet/hyperwallet-ios-core-sdk-sandbox/Model/TransferMethod/HyperwalletBankAccount.swift#L626-L629">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A11BankAccountC7BuilderC012intermediaryC10PostalCodeyAESSF"></a>
+                    <a name="//apple_ref/swift/Method/intermediaryBankPostalCode(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A11BankAccountC7BuilderC012intermediaryC10PostalCodeyAESSF">intermediaryBankPostalCode(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the intermediary bank postal code.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">intermediaryBankPostalCode</span><span class="p">(</span><span class="n">_</span> <span class="nv">postalCode</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Builder</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>intermediaryBankPostalCode</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The intermediary bank postal code.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a self <code>HyperwalletBankAccount.Builder</code> instance.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/hyperwallet/hyperwallet-ios-core-sdk-sandbox/Model/TransferMethod/HyperwalletBankAccount.swift#L635-L638">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A11BankAccountC7BuilderC012intermediaryC13StateProvinceyAESSF"></a>
+                    <a name="//apple_ref/swift/Method/intermediaryBankStateProvince(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A11BankAccountC7BuilderC012intermediaryC13StateProvinceyAESSF">intermediaryBankStateProvince(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the intermediary bank state, province or region.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">intermediaryBankStateProvince</span><span class="p">(</span><span class="n">_</span> <span class="nv">stateProvince</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Builder</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>intermediaryBankStateProvince</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The intermediary bank state, province or region.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a self <code>HyperwalletBankAccount.Builder</code> instance.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/hyperwallet/hyperwallet-ios-core-sdk-sandbox/Model/TransferMethod/HyperwalletBankAccount.swift#L644-L647">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A11BankAccountC7BuilderC8lastNameyAESSF"></a>
+                    <a name="//apple_ref/swift/Method/lastName(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A11BankAccountC7BuilderC8lastNameyAESSF">lastName(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the bank account holder&rsquo;s last name.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">lastName</span><span class="p">(</span><span class="n">_</span> <span class="nv">lastName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Builder</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>lastName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The bank account holder&rsquo;s last name.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a self <code>HyperwalletBankAccount.Builder</code> instance.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/hyperwallet/hyperwallet-ios-core-sdk-sandbox/Model/TransferMethod/HyperwalletBankAccount.swift#L653-L656">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A11BankAccountC7BuilderC10middleNameyAESSF"></a>
+                    <a name="//apple_ref/swift/Method/middleName(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A11BankAccountC7BuilderC10middleNameyAESSF">middleName(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the bank account holder&rsquo;s middle name.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">middleName</span><span class="p">(</span><span class="n">_</span> <span class="nv">middleName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Builder</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>middleName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The bank account holder&rsquo;s middle name.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a self <code>HyperwalletBankAccount.Builder</code> instance.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/hyperwallet/hyperwallet-ios-core-sdk-sandbox/Model/TransferMethod/HyperwalletBankAccount.swift#L662-L665">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A11BankAccountC7BuilderC12mobileNumberyAESSF"></a>
+                    <a name="//apple_ref/swift/Method/mobileNumber(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A11BankAccountC7BuilderC12mobileNumberyAESSF">mobileNumber(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the bank account holder&rsquo;s cell phone number.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">mobileNumber</span><span class="p">(</span><span class="n">_</span> <span class="nv">mobileNumber</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Builder</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>mobileNumber</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The bank account holder&rsquo;s cell phone number.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a self <code>HyperwalletBankAccount.Builder</code> instance.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/hyperwallet/hyperwallet-ios-core-sdk-sandbox/Model/TransferMethod/HyperwalletBankAccount.swift#L671-L674">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A11BankAccountC7BuilderC10passportIdyAESSF"></a>
+                    <a name="//apple_ref/swift/Method/passportId(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A11BankAccountC7BuilderC10passportIdyAESSF">passportId(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the bank account holder&rsquo;s passport number.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">passportId</span><span class="p">(</span><span class="n">_</span> <span class="nv">passportId</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Builder</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>passportId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The bank account holder&rsquo;s passport number.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a self <code>HyperwalletBankAccount.Builder</code> instance.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/hyperwallet/hyperwallet-ios-core-sdk-sandbox/Model/TransferMethod/HyperwalletBankAccount.swift#L680-L683">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A11BankAccountC7BuilderC11phoneNumberyAESSF"></a>
+                    <a name="//apple_ref/swift/Method/phoneNumber(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A11BankAccountC7BuilderC11phoneNumberyAESSF">phoneNumber(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the bank account holder&rsquo;s phone number.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">phoneNumber</span><span class="p">(</span><span class="n">_</span> <span class="nv">phoneNumber</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Builder</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>phoneNumber</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The bank account holder&rsquo;s phone number.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a self <code>HyperwalletBankAccount.Builder</code> instance.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/hyperwallet/hyperwallet-ios-core-sdk-sandbox/Model/TransferMethod/HyperwalletBankAccount.swift#L689-L692">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A11BankAccountC7BuilderC10postalCodeyAESSF"></a>
+                    <a name="//apple_ref/swift/Method/postalCode(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A11BankAccountC7BuilderC10postalCodeyAESSF">postalCode(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the bank account holder&rsquo;s postal code.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">postalCode</span><span class="p">(</span><span class="n">_</span> <span class="nv">postalCode</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Builder</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>postalCode</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The bank account holder&rsquo;s postal code.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a self <code>HyperwalletBankAccount.Builder</code> instance.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/hyperwallet/hyperwallet-ios-core-sdk-sandbox/Model/TransferMethod/HyperwalletBankAccount.swift#L698-L701">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A11BankAccountC7BuilderC11profileTypeyAESSF"></a>
+                    <a name="//apple_ref/swift/Method/profileType(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A11BankAccountC7BuilderC11profileTypeyAESSF">profileType(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the bank account holder&rsquo;s profile type.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">profileType</span><span class="p">(</span><span class="n">_</span> <span class="nv">profileType</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Builder</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>profileType</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The bank account holder&rsquo;s profile type, e.g. INDIVIDUAL or BUSINESS</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a self <code>HyperwalletBankAccount.Builder</code> instance.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/hyperwallet/hyperwallet-ios-core-sdk-sandbox/Model/TransferMethod/HyperwalletBankAccount.swift#L707-L710">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A11BankAccountC7BuilderC13stateProvinceyAESSF"></a>
+                    <a name="//apple_ref/swift/Method/stateProvince(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A11BankAccountC7BuilderC13stateProvinceyAESSF">stateProvince(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the bank account holder&rsquo;s state, province or region.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">stateProvince</span><span class="p">(</span><span class="n">_</span> <span class="nv">stateProvince</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Builder</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>stateProvince</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The bank account holder&rsquo;s state, province or region.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a self <code>HyperwalletBankAccount.Builder</code> instance.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/hyperwallet/hyperwallet-ios-core-sdk-sandbox/Model/TransferMethod/HyperwalletBankAccount.swift#L716-L719">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A11BankAccountC7BuilderC4typeyAESSF"></a>
+                    <a name="//apple_ref/swift/Method/type(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A11BankAccountC7BuilderC4typeyAESSF">type(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the type of transfer method, e.g. BANK_ACCOUNT or WIRE_ACCOUNT.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">type</span><span class="p">(</span><span class="n">_</span> <span class="nv">type</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Builder</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>type</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The type of transfer method, e.g. BANK_ACCOUNT or WIRE_ACCOUNT.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a self <code>HyperwalletBankAccount.Builder</code> instance.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/hyperwallet/hyperwallet-ios-core-sdk-sandbox/Model/TransferMethod/HyperwalletBankAccount.swift#L725-L728">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A11BankAccountC7BuilderC16wireInstructionsyAESSF"></a>
+                    <a name="//apple_ref/swift/Method/wireInstructions(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A11BankAccountC7BuilderC16wireInstructionsyAESSF">wireInstructions(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets wire transfer instructions.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">wireInstructions</span><span class="p">(</span><span class="n">_</span> <span class="nv">wireInstructions</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Builder</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>wireInstructions</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Wire transfer instructions.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a self <code>HyperwalletBankAccount.Builder</code> instance.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/hyperwallet/hyperwallet-ios-core-sdk-sandbox/Model/TransferMethod/HyperwalletBankAccount.swift#L734-L737">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A11BankAccountC7BuilderC5buildACyF"></a>
+                    <a name="//apple_ref/swift/Method/build()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A11BankAccountC7BuilderC5buildACyF">build()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Builds a new instance of the <code><a href="../../Classes/HyperwalletBankAccount.html">HyperwalletBankAccount</a></code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">build</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../../Classes/HyperwalletBankAccount.html">HyperwalletBankAccount</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a new instance of the <code><a href="../../Classes/HyperwalletBankAccount.html">HyperwalletBankAccount</a></code>.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/hyperwallet/hyperwallet-ios-core-sdk-sandbox/Model/TransferMethod/HyperwalletBankAccount.swift#L742-L744">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>Copyright (c) 2018-present, Hyperwallet Systems Inc. All rights reserved.</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.12.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+    </section>
+  </body>
+</div>
+</html>

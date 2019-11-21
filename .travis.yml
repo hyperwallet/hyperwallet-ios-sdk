@@ -33,6 +33,8 @@ before_install:
   - xcrun simctl list | grep "(Booted)"
   # Print the swiftlint version
   - swiftlint version
+  # Installing pod
+  - pod install
 script: |
   set -o pipefail
   set -e
@@ -47,3 +49,15 @@ script: |
   swiftlint lint --reporter json
 
 after_success: slather
+# Installing Jazzy
+- gem install jazzy
+# Making document for core SDK
+- make documentation
+deploy:
+provider: pages
+skip-cleanup: true
+github-token: $GH_TOKEN  # Set in the settings page of your repository, as a secure variable
+local-dir: docs
+on:
+  branch: task/HW-57464-Github.io-Page-iOS-Core
+
