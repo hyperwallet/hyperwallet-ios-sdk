@@ -33,8 +33,6 @@ before_install:
   - xcrun simctl list | grep "(Booted)"
   # Print the swiftlint version
   - swiftlint version
-  # Installing pod
-  - pod install
   # Installing Jazzy
   - gem install jazzy
   # Making document for core SDK
