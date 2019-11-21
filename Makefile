@@ -1,6 +1,6 @@
 documentation:
 	@jazzy \
-        --min-acl internal \
+        --min-acl public \
         --no-hide-documentation-coverage \
         --theme fullwidth \
         --output ./docs \

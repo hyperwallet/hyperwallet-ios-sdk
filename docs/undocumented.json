@@ -1,129 +1,10 @@
 {
   "warnings": [
     {
-      "file": "/Users/asomasundaram/Desktop/HW SDK Github Page/hyperwallet-ios-sdk/Sources/AnyCodable.swift",
-      "line": 21,
-      "symbol": "AnyCodable",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
       "file": "/Users/asomasundaram/Desktop/HW SDK Github Page/hyperwallet-ios-sdk/Sources/Configuration.swift",
       "line": 21,
       "symbol": "Configuration",
       "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/asomasundaram/Desktop/HW SDK Github Page/hyperwallet-ios-sdk/Sources/Extensions/OSLog.swift",
-      "line": 26,
-      "symbol": "OSLog.initialization",
-      "symbol_kind": "source.lang.swift.decl.var.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/asomasundaram/Desktop/HW SDK Github Page/hyperwallet-ios-sdk/Sources/Extensions/OSLog.swift",
-      "line": 27,
-      "symbol": "OSLog.authentication",
-      "symbol_kind": "source.lang.swift.decl.var.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/asomasundaram/Desktop/HW SDK Github Page/hyperwallet-ios-sdk/Sources/Extensions/OSLog.swift",
-      "line": 28,
-      "symbol": "OSLog.data",
-      "symbol_kind": "source.lang.swift.decl.var.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/asomasundaram/Desktop/HW SDK Github Page/hyperwallet-ios-sdk/Sources/Extensions/OSLog.swift",
-      "line": 29,
-      "symbol": "OSLog.httpRequest",
-      "symbol_kind": "source.lang.swift.decl.var.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/asomasundaram/Desktop/HW SDK Github Page/hyperwallet-ios-sdk/Sources/Extensions/OSLog.swift",
-      "line": 30,
-      "symbol": "OSLog.graphQl",
-      "symbol_kind": "source.lang.swift.decl.var.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/asomasundaram/Desktop/HW SDK Github Page/hyperwallet-ios-sdk/Sources/Extensions/OSLog.swift",
-      "line": 31,
-      "symbol": "OSLog.notification",
-      "symbol_kind": "source.lang.swift.decl.var.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/asomasundaram/Desktop/HW SDK Github Page/hyperwallet-ios-sdk/Sources/HTTPClient.swift",
-      "line": 21,
-      "symbol": "HTTPClientProtocol",
-      "symbol_kind": "source.lang.swift.decl.protocol",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/asomasundaram/Desktop/HW SDK Github Page/hyperwallet-ios-sdk/Sources/HTTPClient.swift",
-      "line": 29,
-      "symbol": "HTTPClient",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/asomasundaram/Desktop/HW SDK Github Page/hyperwallet-ios-sdk/Sources/HTTPMethod.swift",
-      "line": 21,
-      "symbol": "HTTPMethod.get",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/asomasundaram/Desktop/HW SDK Github Page/hyperwallet-ios-sdk/Sources/HTTPMethod.swift",
-      "line": 22,
-      "symbol": "HTTPMethod.post",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/asomasundaram/Desktop/HW SDK Github Page/hyperwallet-ios-sdk/Sources/HTTPMethod.swift",
-      "line": 23,
-      "symbol": "HTTPMethod.put",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/asomasundaram/Desktop/HW SDK Github Page/hyperwallet-ios-sdk/Sources/HTTPTransaction.swift",
-      "line": 26,
-      "symbol": "HTTPTransaction.configuration",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/asomasundaram/Desktop/HW SDK Github Page/hyperwallet-ios-sdk/Sources/HTTPTransaction.swift",
-      "line": 28,
-      "symbol": "HTTPTransaction.init(provider:httpClient:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/asomasundaram/Desktop/HW SDK Github Page/hyperwallet-ios-sdk/Sources/HTTPTransaction.swift",
-      "line": 34,
-      "symbol": "HTTPTransaction.invalidate()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/asomasundaram/Desktop/HW SDK Github Page/hyperwallet-ios-sdk/Sources/HTTPTransaction.swift",
-      "line": 212,
-      "symbol": "HTTPTransaction.authenticationTokenHandler(_:_:_:_:_:_:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/asomasundaram/Desktop/HW SDK Github Page/hyperwallet-ios-sdk/Sources/Hyperwallet.swift",
-      "line": 113,
-      "symbol": "Hyperwallet.createBankAccountObjectiveC(account:completion:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
@@ -239,52 +120,10 @@
       "warning": "undocumented"
     },
     {
-      "file": "/Users/asomasundaram/Desktop/HW SDK Github Page/hyperwallet-ios-sdk/Sources/HyperwalletError.swift",
-      "line": 208,
-      "symbol": "ErrorTypeHelper",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
       "file": "/Users/asomasundaram/Desktop/HW SDK Github Page/hyperwallet-ios-sdk/Sources/Model/GraphQL/Connection.swift",
       "line": 24,
       "symbol": "Connection.nodes",
       "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/asomasundaram/Desktop/HW SDK Github Page/hyperwallet-ios-sdk/Sources/Model/GraphQL/GraphQlError.swift",
-      "line": 21,
-      "symbol": "GraphQlError",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/asomasundaram/Desktop/HW SDK Github Page/hyperwallet-ios-sdk/Sources/Model/GraphQL/GraphQlError.swift",
-      "line": 28,
-      "symbol": "Location",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/asomasundaram/Desktop/HW SDK Github Page/hyperwallet-ios-sdk/Sources/Model/GraphQL/GraphQlError.swift",
-      "line": 33,
-      "symbol": "Extension",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/asomasundaram/Desktop/HW SDK Github Page/hyperwallet-ios-sdk/Sources/Model/GraphQL/GraphQlResult.swift",
-      "line": 21,
-      "symbol": "GraphQlResult",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/asomasundaram/Desktop/HW SDK Github Page/hyperwallet-ios-sdk/Sources/Model/GraphQL/HyperwalletTransferMethodConfigurationField.swift",
-      "line": 35,
-      "symbol": "TransferMethodConfigurationFieldResult",
-      "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
@@ -408,72 +247,51 @@
     },
     {
       "file": "/Users/asomasundaram/Desktop/HW SDK Github Page/hyperwallet-ios-sdk/Sources/Model/GraphQL/TransferMethodConfiguration.swift",
-      "line": 114,
+      "line": 116,
       "symbol": "HyperwalletFieldGroup.group",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/asomasundaram/Desktop/HW SDK Github Page/hyperwallet-ios-sdk/Sources/Model/GraphQL/TransferMethodConfiguration.swift",
-      "line": 115,
+      "line": 117,
       "symbol": "HyperwalletFieldGroup.fields",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/asomasundaram/Desktop/HW SDK Github Page/hyperwallet-ios-sdk/Sources/Model/GraphQL/TransferMethodConfiguration.swift",
-      "line": 128,
+      "line": 130,
       "symbol": "HyperwalletProcessingTime.country",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/asomasundaram/Desktop/HW SDK Github Page/hyperwallet-ios-sdk/Sources/Model/GraphQL/TransferMethodConfiguration.swift",
-      "line": 129,
+      "line": 131,
       "symbol": "HyperwalletProcessingTime.currency",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/asomasundaram/Desktop/HW SDK Github Page/hyperwallet-ios-sdk/Sources/Model/GraphQL/TransferMethodConfiguration.swift",
-      "line": 130,
+      "line": 132,
       "symbol": "HyperwalletProcessingTime.transferMethodType",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/asomasundaram/Desktop/HW SDK Github Page/hyperwallet-ios-sdk/Sources/Model/GraphQL/TransferMethodConfiguration.swift",
-      "line": 131,
+      "line": 133,
       "symbol": "HyperwalletProcessingTime.value",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/asomasundaram/Desktop/HW SDK Github Page/hyperwallet-ios-sdk/Sources/Model/GraphQL/TransferMethodConfiguration.swift",
-      "line": 134,
+      "line": 136,
       "symbol": "HyperwalletTransferMethodType",
       "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/asomasundaram/Desktop/HW SDK Github Page/hyperwallet-ios-sdk/Sources/Model/GraphQL/TransferMethodConfiguration.swift",
-      "line": 151,
-      "symbol": "TransferMethodConfigurationField",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/asomasundaram/Desktop/HW SDK Github Page/hyperwallet-ios-sdk/Sources/Model/GraphQL/TransferMethodConfiguration.swift",
-      "line": 156,
-      "symbol": "TransferMethodConfigurationKey",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/asomasundaram/Desktop/HW SDK Github Page/hyperwallet-ios-sdk/Sources/Model/Paging/QueryParam.swift",
-      "line": 36,
-      "symbol": "QueryParam.QueryParam",
-      "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
@@ -1374,13 +1192,6 @@
     },
     {
       "file": "/Users/asomasundaram/Desktop/HW SDK Github Page/hyperwallet-ios-sdk/Sources/Model/Receipt/HyperwalletReceiptQueryParam.swift",
-      "line": 26,
-      "symbol": "HyperwalletReceiptQueryParam.QueryParam",
-      "symbol_kind": "source.lang.swift.decl.enum",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/asomasundaram/Desktop/HW SDK Github Page/hyperwallet-ios-sdk/Sources/Model/Receipt/HyperwalletReceiptQueryParam.swift",
       "line": 41,
       "symbol": "HyperwalletReceiptQueryParam.QuerySortable.ascendantAmount",
       "symbol_kind": "source.lang.swift.decl.enumelement",
@@ -1611,13 +1422,6 @@
       "warning": "undocumented"
     },
     {
-      "file": "/Users/asomasundaram/Desktop/HW SDK Github Page/hyperwallet-ios-sdk/Sources/Model/Transfer/HyperwalletTransferQueryParam.swift",
-      "line": 30,
-      "symbol": "HyperwalletTransferQueryParam.QueryParam",
-      "symbol_kind": "source.lang.swift.decl.enum",
-      "warning": "undocumented"
-    },
-    {
       "file": "/Users/asomasundaram/Desktop/HW SDK Github Page/hyperwallet-ios-sdk/Sources/Model/TransferMethod/HyperwalletBankAccount.swift",
       "line": 28,
       "symbol": "HyperwalletBankAccount.init(from:)",
@@ -1745,13 +1549,6 @@
     },
     {
       "file": "/Users/asomasundaram/Desktop/HW SDK Github Page/hyperwallet-ios-sdk/Sources/Model/TransferMethod/HyperwalletBankAccountQueryParam.swift",
-      "line": 32,
-      "symbol": "HyperwalletBankAccountQueryParam.QueryParam",
-      "symbol_kind": "source.lang.swift.decl.enum",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/asomasundaram/Desktop/HW SDK Github Page/hyperwallet-ios-sdk/Sources/Model/TransferMethod/HyperwalletBankAccountQueryParam.swift",
       "line": 43,
       "symbol": "HyperwalletBankAccountQueryParam.QueryStatus.activated",
       "symbol_kind": "source.lang.swift.decl.enumelement",
@@ -1786,13 +1583,6 @@
       "warning": "undocumented"
     },
     {
-      "file": "/Users/asomasundaram/Desktop/HW SDK Github Page/hyperwallet-ios-sdk/Sources/Model/TransferMethod/HyperwalletBankCardQueryParam.swift",
-      "line": 23,
-      "symbol": "HyperwalletBankCardQueryParam.QueryParam",
-      "symbol_kind": "source.lang.swift.decl.enum",
-      "warning": "undocumented"
-    },
-    {
       "file": "/Users/asomasundaram/Desktop/HW SDK Github Page/hyperwallet-ios-sdk/Sources/Model/TransferMethod/HyperwalletPayPalAccount.swift",
       "line": 27,
       "symbol": "HyperwalletPayPalAccount.init(from:)",
@@ -1800,24 +1590,10 @@
       "warning": "undocumented"
     },
     {
-      "file": "/Users/asomasundaram/Desktop/HW SDK Github Page/hyperwallet-ios-sdk/Sources/Model/TransferMethod/HyperwalletPayPalAccountQueryParam.swift",
-      "line": 23,
-      "symbol": "HyperwalletPayPalAccountQueryParam.QueryParam",
-      "symbol_kind": "source.lang.swift.decl.enum",
-      "warning": "undocumented"
-    },
-    {
       "file": "/Users/asomasundaram/Desktop/HW SDK Github Page/hyperwallet-ios-sdk/Sources/Model/TransferMethod/HyperwalletPrepaidCard.swift",
       "line": 27,
       "symbol": "HyperwalletPrepaidCard.init(from:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/asomasundaram/Desktop/HW SDK Github Page/hyperwallet-ios-sdk/Sources/Model/TransferMethod/HyperwalletPrepaidCardQueryParam.swift",
-      "line": 23,
-      "symbol": "HyperwalletPrepaidCardQueryParm.QueryParam",
-      "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
@@ -2207,13 +1983,6 @@
     },
     {
       "file": "/Users/asomasundaram/Desktop/HW SDK Github Page/hyperwallet-ios-sdk/Sources/Model/TransferMethod/HyperwalletTransferMethod.swift",
-      "line": 139,
-      "symbol": "HyperwalletTransferMethod.init(data:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/asomasundaram/Desktop/HW SDK Github Page/hyperwallet-ios-sdk/Sources/Model/TransferMethod/HyperwalletTransferMethod.swift",
       "line": 151,
       "symbol": "HyperwalletTransferMethod.TransferMethodType.bankAccount",
       "symbol_kind": "source.lang.swift.decl.enumelement",
@@ -2245,20 +2014,6 @@
       "line": 155,
       "symbol": "HyperwalletTransferMethod.TransferMethodType.prepaidCard",
       "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/asomasundaram/Desktop/HW SDK Github Page/hyperwallet-ios-sdk/Sources/Model/TransferMethod/HyperwalletTransferMethod.swift",
-      "line": 195,
-      "symbol": "HyperwalletTransferMethod.getFields()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/asomasundaram/Desktop/HW SDK Github Page/hyperwallet-ios-sdk/Sources/Model/TransferMethod/HyperwalletTransferMethodQueryParam.swift",
-      "line": 26,
-      "symbol": "HyperwalletTransferMethodQueryParam.QueryParam",
-      "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
@@ -2769,20 +2524,6 @@
       "file": "/Users/asomasundaram/Desktop/HW SDK Github Page/hyperwallet-ios-sdk/Sources/Model/User/HyperwalletUser.swift",
       "line": 186,
       "symbol": "HyperwalletUser.VerificationStatus.verified",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/asomasundaram/Desktop/HW SDK Github Page/hyperwallet-ios-sdk/Sources/TransactionType.swift",
-      "line": 26,
-      "symbol": "TransactionType.rest",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/asomasundaram/Desktop/HW SDK Github Page/hyperwallet-ios-sdk/Sources/TransactionType.swift",
-      "line": 27,
-      "symbol": "TransactionType.graphQl",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     }
