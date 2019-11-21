@@ -107,6 +107,8 @@ public struct HyperwalletField: Codable {
     public let validationMessage: HyperwalletValidationMessage?
     /// The field value
     public let value: String?
+    /// The mask, or nil if none exists
+    public let mask: HyperwalletMask?
 }
 
 /// Representation of list of HyperwalletField and the group to which it belongs
@@ -169,4 +171,22 @@ public struct TransferMethodConfiguration: Codable {
     let profile: String?
     /// The `HyperwalletFieldGroup`, or nil if none exists
     let fieldGroups: Connection<HyperwalletFieldGroup>?
+}
+
+/// Representation of the transfer method configuration field mask
+public struct HyperwalletMask: Codable {
+    /// The conditional pattern, or nil if none exists
+    public let conditionalPatterns: [HyperwalletConditionalPattern]?
+    /// The default pattern
+    public let defaultPattern: String
+    /// The scrub regex, or nil if none exists
+    public let scrubRegex: String?
+}
+
+/// Representation of the transfer method configuration field conditionalPatterns
+public struct HyperwalletConditionalPattern: Codable {
+    /// The pattern
+    public let pattern: String
+    /// The regex
+    public let regex: String
 }

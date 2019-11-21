@@ -68,6 +68,14 @@ public struct HyperwalletTransferMethodConfigurationFieldQuery: GraphQlQuery, Ha
                                         pattern
                                         empty
                                     }
+                                    mask {
+                                        conditionalPatterns {
+                                            pattern
+                                            regex
+                                        }
+                                        defaultPattern
+                                        scrubRegex
+                                    }
                                 }
                             }
                         }
