@@ -33,6 +33,10 @@ before_install:
   - xcrun simctl list | grep "(Booted)"
   # Print the swiftlint version
   - swiftlint version
+  # Installing Jazzy
+  - gem install jazzy
+  # Making document for core SDK
+  - make documentation
 script: |
   set -o pipefail
   set -e
@@ -47,10 +51,6 @@ script: |
   swiftlint lint --reporter json
 
 after_success: slather
-    # Installing Jazzy
-    - gem install jazzy
-    # Making document for core SDK
-    - make documentation
 deploy:
     provider: pages
     skip-cleanup: true
