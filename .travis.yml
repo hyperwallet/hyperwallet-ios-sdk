@@ -37,13 +37,6 @@ before_install:
   - gem install jazzy
   # Making document for core SDK
   - make documentation
-  deploy:
-      provider: pages
-      skip-cleanup: true
-      github-token: $CI_USER_TOKEN  # Set in the settings page of your repository, as a secure variable
-      local-dir: docs
-  on:
-    branch: master
 script: |
   set -o pipefail
   set -e
@@ -58,3 +51,11 @@ script: |
   swiftlint lint --reporter json
 
 after_success: slather
+deploy:
+    provider: pages
+    skip-cleanup: true
+    github-token: $CI_USER_TOKEN  # Set in the settings page of your repository, as a secure variable
+    local-dir: docs
+on:
+  branch: master
+
