@@ -56,7 +56,7 @@ deploy:
     skip-cleanup: true
     github-token: $CI_USER_TOKEN  # Set in the settings page of your repository, as a secure variable
     local-dir: docs
-    publish-branch: gh-pages
+    target_branch: gh-pages
 on:
-  branch: task/HW-57464-Github.io-Page-iOS-Core
+  branch: development
 
