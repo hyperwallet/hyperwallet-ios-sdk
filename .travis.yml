@@ -57,5 +57,4 @@ deploy:
     github-token: $CI_USER_TOKEN  # Set in the settings page of your repository, as a secure variable
     local-dir: docs
 on:
-  branch: master
-
+   branch: master
