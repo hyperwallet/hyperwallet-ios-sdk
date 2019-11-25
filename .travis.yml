@@ -56,5 +56,6 @@ deploy:
     skip-cleanup: true
     github-token: $CI_USER_TOKEN  # Set in the settings page of your repository, as a secure variable
     local-dir: docs
+    target-branch: gh-pages
 on:
-   branch: master
+   all_branches: true
