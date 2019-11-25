@@ -1,4 +1,0 @@
-[submodule "hyperwallet-ios-sdk"]
-	path = hyperwallet-ios-sdk
-	url = https://github.com/hyperwallet/hyperwallet-ios-sdk.git
-	branch = gh-pages

@@ -111,24 +111,6 @@ public final class Hyperwallet: NSObject {
                                     completionHandler: completion)
     }
 
-    /// Creates a `HyperwalletBankAccount` for the User associated with the authentication token returned from
-    /// `HyperwalletAuthenticationTokenProvider.retrieveAuthenticationToken(_ : @escaping CompletionHandler)`.
-    ///
-    /// The `completion: @escaping (HyperwalletBankAccount?, Error?) -> Void` that is passed in to this
-    /// method invocation will receive the successful response(HyperwalletBankAccount) or error(Error)
-    /// from processing the request.
-    ///
-    /// This function will request a new authentication token via `HyperwalletAuthenticationTokenProvider`
-    /// if the current one is expired or is about to expire.
-    ///
-    /// - Parameters:
-    ///   - account: the `HyperwalletBankAccount` to be created
-    ///   - completion: the callback handler of responses from the Hyperwallet platform
-    public func createBankAccountObjectiveC(account: HyperwalletBankAccount,
-                                            completion: @escaping (HyperwalletBankAccount?, Error?) -> Void) {
-        return createBankAccount(account: account, completion: completion)
-    }
-
     /// Creates a `HyperwalletBankCard` for the User associated with the authentication token returned from
     /// `HyperwalletAuthenticationTokenProvider.retrieveAuthenticationToken(_ : @escaping CompletionHandler)`.
     ///
