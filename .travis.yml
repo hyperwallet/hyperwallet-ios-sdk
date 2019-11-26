@@ -51,8 +51,7 @@ script: |
   - make docs
 
 after_success: slather
-    - if [ $TRAVIS_BRANCH = 'master' ] && [ $TRAVIS_PULL_REQUEST = 'false' ]; then sh
-    ./scripts/travisPublishDocs.sh; fi
+    - if [ $TRAVIS_BRANCH = 'master' ] && [ $TRAVIS_PULL_REQUEST = 'false' ]; then sh ./scripts/travisPublishDocs.sh; fi
 deploy:
     provider: pages
     skip-cleanup: true
