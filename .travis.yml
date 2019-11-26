@@ -35,6 +35,10 @@ before_install:
   - swiftlint version
   # Installing Jazzy
   - gem install jazzy
+  # Making document for core SDK
+  - make docs
+  # Running scripts for publishing docs
+  - if [ $TRAVIS_BRANCH = 'master' ] && [ $TRAVIS_PULL_REQUEST = 'false' ]; then sh ./scripts/travisPublishDocs.sh; fi
 script: |
   set -o pipefail
   set -e
@@ -47,8 +51,4 @@ script: |
     -configuration Debug ONLY_ACTIVE_ARCH=YES ENABLE_TESTABILITY=YES CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
   # Lint - Add `--strict` to fail for warning and violation
   swiftlint lint --reporter json
-  # Making document for core SDK
-  - make docs
-
 after_success: slather
-    - if [ $TRAVIS_BRANCH = 'master' ] && [ $TRAVIS_PULL_REQUEST = 'false' ]; then sh ./scripts/travisPublishDocs.sh; fi
