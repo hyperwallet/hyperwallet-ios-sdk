@@ -1,4 +1,4 @@
-documentation:
+docs:
 	@jazzy \
         --min-acl public \
         --no-hide-documentation-coverage \
