@@ -47,8 +47,7 @@ script: |
     -configuration Debug ONLY_ACTIVE_ARCH=YES ENABLE_TESTABILITY=YES CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
   # Lint - Add `--strict` to fail for warning and violation
   swiftlint lint --reporter json
-  # Making document for core SDK
-    - make docs
 after_success:
     - slather
+    - make docs
     - if [ $TRAVIS_BRANCH = 'task/HW-57464-Github.io-Page-iOS-Core' ] && [ $TRAVIS_PULL_REQUEST = 'false' ]; then sh ./scripts/travisPublishDocs.sh; fi
