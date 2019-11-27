@@ -38,7 +38,7 @@ class ConfigurationTests: XCTestCase {
         XCTAssertFalse(configuration.isTokenExpired(), "Token should not be expired")
     }
 
-    private func getConfiguration(_ expiryOn: Double) -> Configuration {
+    private func getConfiguration (_ expiryOn: Double) -> Configuration {
         return Configuration(createOn: issueTime,
                              clientToken: "client-token",
                              expiresOn: expiryOn,
