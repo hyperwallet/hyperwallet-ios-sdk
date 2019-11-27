@@ -49,5 +49,6 @@ script: |
     -configuration Debug ONLY_ACTIVE_ARCH=YES ENABLE_TESTABILITY=YES CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
   # Lint - Add `--strict` to fail for warning and violation
   swiftlint lint --reporter json
-after_success: slather
+after_success:
+    - slather
     - if [ $TRAVIS_BRANCH = 'master' ] && [ $TRAVIS_PULL_REQUEST = 'false' ]; then sh ./scripts/travisPublishDocs.sh; fi

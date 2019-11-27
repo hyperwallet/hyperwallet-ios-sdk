@@ -6,7 +6,7 @@ git config --global user.name "travis-ci-hyperwallet"
 
 # Publish docs
 mkdir ../gh-pages
-cp -r doc/_build/html/* ../gh-pages/
+cp -r docs/* ../gh-pages/
 cd ../gh-pages
 
 # Add branch
