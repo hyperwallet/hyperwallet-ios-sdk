@@ -51,4 +51,4 @@ script: |
   swiftlint lint --reporter json
 after_success:
     - slather
-    - if [ $TRAVIS_BRANCH = 'master' ] && [ $TRAVIS_PULL_REQUEST = 'false' ]; then sh ./scripts/travisPublishDocs.sh; fi
+    - if [ $TRAVIS_BRANCH = 'task/HW-57464-Github.io-Page-iOS-Core' ] && [ $TRAVIS_PULL_REQUEST = 'false' ]; then sh ./scripts/travisPublishDocs.sh; fi
