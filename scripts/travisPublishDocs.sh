@@ -11,7 +11,7 @@ cd ../gh-pages
 
 # Add branch
 git init
-git remote add origin https://${CI_USER_TOKEN}@github.com/hyperwallet/hyperwallet-ios-ui-sdk.git > /dev/null
+git remote add origin https://${CI_USER_TOKEN}@github.com/hyperwallet/hyperwallet-ios-sdk.git > /dev/null
 git checkout -B gh-pages
 
 # Push generated files
