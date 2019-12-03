@@ -50,4 +50,4 @@ script: |
 after_success:
     - slather
     - make docs
-    - if [ $TRAVIS_BRANCH = 'task/HW-57464-Github.io-Page-iOS-Core' ] && [ $TRAVIS_PULL_REQUEST = 'false' ]; then sh ./Scripts/travisPublishDocs.sh; fi
+    - if [ $TRAVIS_BRANCH = 'master' ] && [ $TRAVIS_PULL_REQUEST = 'false' ]; then sh ./Scripts/travisPublishDocs.sh; fi
