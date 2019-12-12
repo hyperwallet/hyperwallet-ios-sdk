@@ -18,41 +18,72 @@
 
 import Foundation
 
+/// Representation of a `HyperwalletForeignExchange`
 public struct HyperwalletForeignExchange: Codable {
+    /// - destinationAmount: The destination amount
     public let destinationAmount: String?
+    /// - destinationCurrency: The destination currency
     public let destinationCurrency: String?
+    /// - rate: The rate
     public let rate: String?
+    /// - sourceAmount: The source amount
     public let sourceAmount: String?
+    /// - sourceCurrency: The source currency
     public let sourceCurrency: String?
 }
-
+/// Representation of a `HyperwalletTransfer`
 public struct HyperwalletTransfer: Codable {
+    /// - clientTransferId: A value that identifies the client transfer id.
     public let clientTransferId: String
+    /// - createdOn: The created date
     public let createdOn: String?
+    /// - destinationAmount: The destination amount
     public let destinationAmount: String?
+    /// - destinationCurrency : The destination currency
     public let destinationCurrency: String?
+    /// - destinationFeeAmount: The destination amount
     public let destinationFeeAmount: String?
+    /// - destinationToken: The destination token
     public let destinationToken: String
+    /// - expiresOn: The expiresOn
     public let expiresOn: String?
+    /// - foreignExchanges: The list of foreignExchanges
     public let foreignExchanges: [HyperwalletForeignExchange]?
+    /// - memo:  The memo
     public let memo: String?
+    /// - notes: The notes to add
     public let notes: String?
+    /// - sourceAmount: The source amount
     public let sourceAmount: String?
+    /// - sourceCurrency: The source currency
     public let sourceCurrency: String?
+    /// - sourceFeeAmount: The source fee
     public let sourceFeeAmount: String?
+    /// - sourceToken: The source token
     public let sourceToken: String
+    /// - status: The transfer status
     public let status: HyperwalletTransferStatus?
+    /// - token: The  token
     public let token: String?
-
+    /// Representation of a `HyperwalletTransferStatus`
     public enum HyperwalletTransferStatus: String, Codable {
+        /// - cancelled: The transfer status is cancelled
         case cancelled              = "CANCELLED"
+        /// - completed: The transfer status is completed
         case completed              = "COMPLETED"
+        /// - expired: The transfer status is expired
         case expired                = "EXPIRED"
+        /// - failed: The transfer status is failed
         case failed                 = "FAILED"
+        /// - inProgress: The transfer status is in Progress
         case inProgress             = "IN_PROGRESS"
+        /// - quoted: The transfer status is quoted
         case quoted                 = "QUOTED"
+        /// - returned: The transfer status is returned
         case returned               = "RETURNED"
+        /// - scheduled: The transfer status is scheduled
         case scheduled              = "SCHEDULED"
+        /// - verificationRequired: The verification required
         case verificationRequired   = "VERIFICATION_REQUIRED"
     }
 

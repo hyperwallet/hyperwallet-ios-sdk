@@ -28,24 +28,22 @@ public class HyperwalletReceiptQueryParam: QueryParam {
     }
 
     /// Representation of the field's sortable
-    ///
-    /// - ascendantAmount: Sort the result by ascendant the field amount
-    /// - ascendantCreatedOn: Sort the result by ascendant the field create on
-    /// - ascendantCurrency: Sort the result by ascendant the field currency
-    /// - ascendantType: Sort the result by ascendant the field type
-    /// - descendantAmount: Sort the result by descendant the create amount
-    /// - descendantCreatedOn: Sort the result by descendant the field created on
-    /// - descendantCurrency: Sort the result by descendant the field currency
-    /// - descendantType: Sort the result by descendant the field type
     public enum QuerySortable: String {
+        /// - ascendantAmount: Sort the result by ascendant the field amount
         case ascendantAmount = "+amount"
+        /// - ascendantCreatedOn: Sort the result by ascendant the field create on
         case ascendantCreatedOn = "+createdOn"
+        /// - ascendantCurrency: Sort the result by ascendant the field currency
         case ascendantCurrency = "+currency"
+        /// - ascendantType: Sort the result by ascendant the field type
         case ascendantType = "+type"
-
+        /// - descendantAmount: Sort the result by descendant the create amount
         case descendantAmount = "-amount"
+        /// - descendantCreatedOn: Sort the result by descendant the field created on
         case descendantCreatedOn = "-createdOn"
+        /// - descendantCurrency: Sort the result by descendant the field currency
         case descendantCurrency = "-currency"
+        /// - descendantType: Sort the result by descendant the field type
         case descendantType = "-type"
     }
 

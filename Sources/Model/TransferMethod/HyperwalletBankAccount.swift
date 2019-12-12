@@ -24,73 +24,66 @@ public final class HyperwalletBankAccount: HyperwalletTransferMethod {
     override private init(data: [String: AnyCodable]) {
         super.init(data: data)
     }
-
+    /// Initialization of HyperwalletBankAccount
     public required init(from decoder: Decoder) throws {
         try super.init(from: decoder)
     }
 
     /// Representation of the bank account holder's role in the organization
-    ///
-    /// - director
-    /// - owner
-    /// - other
     public enum BusinessContactRole: String {
+        /// - director
         case director = "DIRECTOR"
+        /// - owner
         case owner = "OWNER"
+        /// - other
         case other = "OTHER"
     }
 
     /// Representation of the bank account holder's business type.
-    ///
-    /// - corporation
-    /// - partnership
     public enum BusinessType: String {
+        /// - corporation
         case corporation = "CORPORATION"
+        /// - partnership
         case partnership = "PARTNERSHIP"
     }
 
     /// Representation of the bank account holder's gender.
-    ///
-    /// - male
-    /// - female
     public enum Gender: String {
+         /// - male
         case male = "MALE"
+        /// - female
         case female = "FEMALE"
     }
 
     /// Representation of the bank account holder's government ID type
-    ///
-    /// - passport
-    /// - nationalIdCard
     public enum GovernmentIdType: String {
+        /// - passport
         case passport = "PASSPORT"
+        /// - nationalIdCard
         case nationalIdCard = "NATIONAL_ID_CARD"
     }
 
     /// Representation of the user's profile type.
-    ///
-    /// - business: Business.
-    /// - individual: Individual.
     public enum ProfileType: String {
+        /// - business: Business.
         case business = "BUSINESS"
+        /// - individual: Individual.
         case individual = "INDIVIDUAL"
     }
 
     /// Representation of the bank account's purpose type.
-    ///
-    /// - checking: When the user's bank account purpose is checking
-    /// - savings: When the user's bank account purpose is savings
     public enum PurposeType: String {
+        /// - checking: When the user's bank account purpose is checking
         case checking = "CHECKING"
+        /// - savings: When the user's bank account purpose is savings
         case savings = "SAVINGS"
     }
 
     /// Representation of the user's relationship with the bank account holder.
-    ///
-    /// - `self`: When the user owns the bank account
-    /// - ownCompany: When the bank account is owned by the user's business
     public enum RelationshipType: String {
+        /// - `self`: When the user owns the bank account
         case `self` = "SELF"
+        /// - ownCompany: When the bank account is owned by the user's business
         case ownCompany = "OWN_COMPANY"
     }
 

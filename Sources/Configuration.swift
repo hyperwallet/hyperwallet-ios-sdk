@@ -18,15 +18,20 @@
 
 import Foundation
 
+/// Representation of the Configuration
 public struct Configuration: Codable {
     let createOn: Double
     let clientToken: String
     let expiresOn: Double
     let graphQlUrl: String
     let restUrl: String
+    /// - environment: The environment type
     public let environment: String?
+    /// - insightsUrl: The insights Url
     public let insightsUrl: String?
+    /// - issuer: The issuer
     public let issuer: String
+    /// - userToken: The user token
     public let userToken: String
     var authorization: String!
     private static let stalePeriod = 30.0 // 30 seconds

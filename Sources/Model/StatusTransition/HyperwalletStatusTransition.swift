@@ -52,51 +52,50 @@ public struct HyperwalletStatusTransition: Codable {
     }
 
     /// Representation of the status.
-    ///
-    /// - activated: The status is activate.
-    /// - cancelled: The status is cancel.
-    /// - completed: The status is complete.
-    /// - deactivated: The status is deactivate.
-    /// - expired: The status is expire.
-    /// - failed: The status is fail.
-    /// - inProgress: The status is in progress.
-    /// - invalid: The status is invalid.
-    /// - lostOrStolen: The status is lost or stolen.
-    /// - pendingAccountActivation: The status is pending account activation.
-    /// - pendingIdVerification: The status is pending identity verification.
-    /// - pendingTaxVerification: The status is pending tax verification.
-    /// - pendingTransactionVerification: The status is pending transaction verification.
-    /// - pendingTransferMethodAction: The status is pending transfer method action.
-    /// - quoted: The status is quoted
-    /// - recalled: The status is recall.
-    /// - returned: The status is return.
-    /// - scheduled: The status is schedule.
-    /// - suspended: The status is suspend.
-    /// - unsuspended: The status is not suspended.
-    /// - verified: The status is verified.
-    /// - verificationRequired: The status is verification required
     public enum Status: String, Codable {
+        /// - activated: The status is activate.
         case activated                          = "ACTIVATED"
+        /// - cancelled: The status is cancel.
         case cancelled                          = "CANCELLED"
+        /// - completed: The status is complete.
         case completed                          = "COMPLETED"
+         /// - deactivated: The status is deactivate.
         case deactivated                        = "DE_ACTIVATED"
+        /// - expired: The status is expire.
         case expired                            = "EXPIRED"
+        /// - failed: The status is fail.
         case failed                             = "FAILED"
+        /// - inProgress: The status is in progress.
         case inProgress                         = "IN_PROGRESS"
+        /// - invalid: The status is invalid.
         case invalid                            = "INVALID"
+        /// - lostOrStolen: The status is lost or stolen.
         case lostOrStolen                       = "LOST_OR_STOLEN"
+        /// - pendingAccountActivation: The status is pending account activation.
         case pendingAccountActivation           = "PENDING_ACCOUNT_ACTIVATION"
+        /// - pendingIdVerification: The status is pending identity verification.
         case pendingIdVerification              = "PENDING_ID_VERIFICATION"
+        /// - pendingTaxVerification: The status is pending tax verification.
         case pendingTaxVerification             = "PENDING_TAX_VERIFICATION"
+        /// - pendingTransactionVerification: The status is pending transaction verification.
         case pendingTransactionVerification     = "PENDING_TRANSACTION_VERIFICATION"
+        /// - pendingTransferMethodAction: The status is pending transfer method action.
         case pendingTransferMethodAction        = "PENDING_TRANSACTION_METHOD_ACTION"
+        /// - quoted: The status is quoted
         case quoted                             = "QUOTED"
+        /// - recalled: The status is recall.
         case recalled                           = "RECALLED"
+        /// - returned: The status is return.
         case returned                           = "RETURNED"
+        /// - scheduled: The status is schedule.
         case scheduled                          = "SCHEDULED"
+        /// - suspended: The status is suspend.
         case suspended                          = "SUSPENDED"
+        /// - unsuspended: The status is not suspended.
         case unsuspended                        = "UNSUSPENDED"
+        /// - verificationRequired: The status is verification required
         case verificationRequired               = "VERIFICATION_REQUIRED"
+        /// - verified: The status is verified.
         case verified                           = "VERIFIED"
     }
 
@@ -104,7 +103,11 @@ public struct HyperwalletStatusTransition: Codable {
     public class Builder {
         private let notes: String?
         private let transition: Status
-
+        /// Initialization of Builder
+        ///
+        /// - Parameters:
+        ///   - notes: Comments regarding the status change
+        ///   - transition: The new status of the resource
         public init(notes: String? = nil, transition: Status) {
             self.notes = notes
             self.transition = transition
