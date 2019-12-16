@@ -87,11 +87,11 @@ public enum HyperwalletErrorType: Error, LocalizedError {
     case parseError(_ hyperwalletErrors: HyperwalletErrors)
     /// - notInitialized: Returned when the SDK was not initialized properly.
     case notInitialized(_ hyperwalletErrors: HyperwalletErrors)
-    /// - invalidUrl: Returned when a `URL()` fails to create a valid URL.
+    /// - invalidUrl: Returned when a provided URL is not valid
     case invalidUrl(_ hyperwalletErrors: HyperwalletErrors)
     /// - transactionAborted: Returned when a transaction is explicitly aborted.
     case transactionAborted(_ hyperwalletErrors: HyperwalletErrors)
-    /// - authenticationError:  Returned when the `HyperwalletAuthenticationTokenProvider` fails.
+    /// - authenticationError:  Returned on authentication failure
     case authenticationError(_ authenticationError: HyperwalletAuthenticationErrorType)
     /// - unexpected: Returned when an unexpected behavior happened.
     case unexpected(_ hyperwalletErrors: HyperwalletErrors)

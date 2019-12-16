@@ -18,7 +18,7 @@
 
 import Foundation
 
-/// Representation of the Configuration
+/// Configuration object retrieved on successful authentication
 public struct Configuration: Codable {
     let createOn: Double
     let clientToken: String
