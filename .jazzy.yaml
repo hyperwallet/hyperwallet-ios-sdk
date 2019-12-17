@@ -13,4 +13,53 @@ skip_undocumented: true
 source_directory: Sources
 theme: fullwidth
 use_safe_filenames: true
-output: docs:
+output: docs
+
+custom_categories:
+  - children:
+      - Hyperwallet
+    name: Common
+  - children:
+      - HyperwalletTransferMethod
+      - HyperwalletStatusTransition
+      - HyperwalletBankCard
+      - HyperwalletBankAccount
+      - HyperwalletTransferMethodQueryParam
+      - HyperwalletQueryParam
+      - HyperwalletPageList
+      - HyperwalletBankCardQueryParam
+      - HyperwalletBankAccountQueryParam
+      - HyperwalletTransferMethodConfigurationFieldQuery
+      - HyperwalletTransferMethodConfigurationKeysQuery
+      - HyperwalletTransferMethodConfigurationResult
+      - HyperwalletTransferMethodConfigurationFieldResult
+      - HyperwalletTransferMethodConfigurationKeyResult
+      - HyperwalletFee
+      - HyperwalletField
+      - HyperwalletFieldSelectionOption
+      - HyperwalletPageLink
+      - HyperwalletPageParameter
+      - HyperwalletValidationMessage
+      - TransferMethodConfiguration
+      - TransferMethodConfigurationTransactionResult
+      - GraphQlQuery
+    name: Models
+  - children:
+      - AuthenticationErrorType
+      - HyperwalletAuthenticationTokenProvider
+    name: Authentication Token Provider
+  - children:
+      - AuthenticationTokenDecoder
+      - Configuration
+      - HTTPClient
+      - HTTPClientProtocol
+      - HTTPMethod
+      - HTTPTransaction
+      - TransactionType
+    name: Helper
+  - children:
+      - ErrorGroup
+      - ErrorType
+      - HyperwalletError
+      - HyperwalletErrors
+    name: Errors
