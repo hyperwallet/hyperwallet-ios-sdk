@@ -25,157 +25,157 @@ public class HyperwalletUser: NSObject, Codable {
 
     /// Representation of the user field type.
     public enum UserField: String {
-        /// - addressLine1: The user's street address.
+        /// The user's street address.
         case addressLine1
-        /// - addressLine2: The user's address, second line.
+        /// The user's address, second line.
         case addressLine2
-        /// - businessContactAddressLine1: The business contact's street address.
+        /// The business contact's street address.
         case businessContactAddressLine1
-        /// - businessContactAddressLine2: The business contact's address, second line.
+        /// The business contact's address, second line.
         case businessContactAddressLine2
-        /// - businessContactCity: The business contact's city.
+        /// The business contact's city.
         case businessContactCity
-        /// - businessContactCountry: The business contact's country.
+        /// The business contact's country.
         case businessContactCountry
-        /// - businessContactPostalCode: The business contact's postal code.
+        /// The business contact's postal code.
         case businessContactPostalCode
-        /// - businessContactRole: The user's role in the organization.
+        /// The user's role in the organization.
         case businessContactRole
-        /// - businessContactStateProvince: The business contact's state, province or region.
+        /// The business contact's state, province or region.
         case businessContactStateProvince
-        /// - businessName: The business name.
+        /// The business name.
         case businessName
-        /// - businessOperatingName: The business' operating name.
+        /// The business' operating name.
         case businessOperatingName
-        /// - businessRegistrationCountry: The country where the business is registered.
+        /// The country where the business is registered.
         case businessRegistrationCountry
-        /// - businessRegistrationId: The business registration number or identifier assigned by a government body.
+        /// The business registration number or identifier assigned by a government body.
         case businessRegistrationId
-        /// - businessRegistrationStateProvince: The state, province or region where the business is registered.
+        /// The state, province or region where the business is registered.
         case businessRegistrationStateProvince
-        /// - businessType: The business type.
+        /// The business type.
         case businessType
-        /// - city: The user's city.
+        /// The user's city.
         case city
-        /// - clientUserId: A client-defined identifier for the user. This is the unique ID assigned to the user
+        /// A client-defined identifier for the user. This is the unique ID assigned to the user
         ///         on your system.
         case clientUserId
-        /// - country: The user's country.
+        /// The user's country.
         case country
-        /// - countryOfBirth: The user's birth country.
+        /// The user's birth country.
         case countryOfBirth
-        /// - countryOfNationality: The user's country of citizenship or nationality.
+        /// The user's country of citizenship or nationality.
         case countryOfNationality
-        /// - createdOn: The datetime the user account was created on in ISO 8601 format (YYYY-MM-DDThh:mm:ss).
+        /// The datetime the user account was created on in ISO 8601 format (YYYY-MM-DDThh:mm:ss).
         ///         Note that the timezone used is UTC, therefore no time offset is returned.
         case createdOn
-        /// - dateOfBirth: The user's date of birth (All users must be at least 13 years old).
+        /// The user's date of birth (All users must be at least 13 years old).
         case dateOfBirth
-        /// - driversLicenseId: The user's driver's license number.
+        /// The user's driver's license number.
         case driversLicenseId
-        /// - email: The contact email address for the user account. This must be unique for your program,
+        /// The contact email address for the user account. This must be unique for your program,
         ///         so you cannot have two users belonging to the same program with the same email address.
         case email
-        /// - employerId: The user's employer identifier, generally used for tax purposes.
+        /// The user's employer identifier, generally used for tax purposes.
         case employerId
-        /// - firstName: The user's first name.
+        /// The user's first name.
         case firstName
-        /// - gender: The user's gender.
+        /// The user's gender.
         case gender
-        /// - governmentId: The user's government ID number, such as a Social Security Number.
+        /// The user's government ID number, such as a Social Security Number.
         case governmentId
-        /// - governmentIdType: The user's government ID type.
+        /// The user's government ID type.
         case governmentIdType
-        /// - language: The preferred language for the user's account. Defaults to English if not provided.
+        /// The preferred language for the user's account. Defaults to English if not provided.
         case language
-        /// - lastName: The user's last name.
+        /// The user's last name.
         case lastName
-        /// - middleName: The user's middle name.
+        /// The user's middle name.
         case middleName
-        /// - mobileNumber: The user's cell phone number.
+        /// The user's cell phone number.
         case mobileNumber
-        /// - passportId: The user's passport number.
+        /// The user's passport number.
         case passportId
-        /// - phoneNumber: The user's phone number.
+        /// The user's phone number.
         case phoneNumber
-        /// - postalCode: The user's postal code.
+        /// The user's postal code.
         case postalCode
-        /// - profileType: The user's postal code.
+        /// The user's postal code.
         case profileType
-        /// - programToken: The unique identifier for the program to which the user will belong.
+        /// The unique identifier for the program to which the user will belong.
         case programToken
-        /// - stateProvince: The user's state, province or region.
+        /// The user's state, province or region.
         case stateProvince
-        /// - status: The user account status.
+        /// The user account status.
         case status
-        /// - timeZone: The local time of a region or a country. e.g. GMT, PST, ...
+        /// The local time of a region or a country. e.g. GMT, PST, ...
         case timeZone
-        /// - token: The unique, auto-generated user identifier. Max 64 characters, prefixed with "usr-".
+        /// The unique, auto-generated user identifier. Max 64 characters, prefixed with "usr-".
         case token
-        /// - verificationStatus: The user's verification status. A user may be required to verify their identity after
+        /// The user's verification status. A user may be required to verify their identity after
         ///         a certain threshold of payments is reached.
         case verificationStatus
     }
 
     /// The business type.
     public enum BusinessType: String {
-        /// - corporation: Corporation.
+        /// The corporation business type
         case corporation = "CORPORATION"
-        /// - partnership: Partnership.
+        /// The partnership business type
         case partnership = "PARTNERSHIP"
     }
 
     /// The user's role in the organization.
     public enum BusinessContactRole: String {
-        /// - director: Director.
+        /// The director role
         case director = "DIRECTOR"
-        /// - other: Other.
+        /// The other role
         case other = "OTHER"
-        /// - owner: Owner.
+        /// The owner role
         case owner = "OWNER"
     }
 
     /// Representation of the gender.
     public enum Gender: String {
-        /// - female: Female.
+        /// The female gender
         case female = "FEMALE"
-        /// - male: Male.
+        /// The male gender
         case male = "MALE"
     }
 
     /// Representation of the user's profile type.
     public enum ProfileType: String {
-        /// - business: Business.
+        /// The business profile type.
         case business = "BUSINESS"
-        /// - individual: Individual.
+        /// The individual profile type.
         case individual = "INDIVIDUAL"
     }
 
     /// Representation of the user account status type.
     public enum Status: String {
-        /// - activated: The user account is activate.
+        /// The user account is activate.
         case activated = "ACTIVATED"
-        /// - deactivated: The user account is deactivate.
+        /// The user account is deactivate.
         case deactivated = "DE_ACTIVATED"
-        /// - frozen: The user account is frozen.
+        /// The user account is frozen.
         case frozen = "FROZEN"
-        /// - locked: The user account is locked.
+        /// The user account is locked.
         case locked = "LOCKED"
-        /// - preActivated: The user account is pre activated.
+        /// The user account is pre activated.
         case preActivated = "PRE_ACTIVATED"
     }
 
     /// Representation of the user's verification status type.
     public enum VerificationStatus: String, Codable {
-        /// - failed: The user's verification status is fail. Temporary status before changing to REQUIRED.
+        /// The user's verification status is fail. Temporary status before changing to REQUIRED.
         case failed = "FAILED"
-        /// - notRequired: The user's verification status is not require.
+        /// The user's verification status is not require.
         case notRequired = "NOT_REQUIRED"
-        /// - required:  The user's verification status is require.
+        /// The user's verification status is require.
         case required = "REQUIRED"
-        /// - underReview:  The user's verification status is under review.
+        /// The user's verification status is under review.
         case underReview = "UNDER_REVIEW"
-        /// - verified:  The user's verification status is verified.
+        /// The user's verification status is verified.
         case verified = "VERIFIED"
     }
 

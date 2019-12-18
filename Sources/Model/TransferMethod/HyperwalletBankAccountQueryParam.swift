@@ -25,9 +25,9 @@ public class HyperwalletBankAccountQueryParam: HyperwalletTransferMethodQueryPar
 
     /// Represents the Bank Account types.
     public enum QueryType: String {
-        /// - bankAccount: Bank account type
+        /// The Bank account type
         case bankAccount = "BANK_ACCOUNT"
-        /// - wireAccount: Wire account type
+        /// The Wire account type
         case wireAccount = "WIRE_ACCOUNT"
     }
 
@@ -37,13 +37,13 @@ public class HyperwalletBankAccountQueryParam: HyperwalletTransferMethodQueryPar
 
     /// Representation of the bank account status
     public enum QueryStatus: String {
-        /// - activated: Filter by activated bank accounts
+        /// Filter by activated bank accounts
         case activated = "ACTIVATED"
-        /// - deActivated: Filter by deActivated bank accounts
+        /// Filter by deActivated bank accounts
         case deActivated = "DE_ACTIVATED"
-        /// - invalid: Filter only invalid bank accounts
+        /// Filter only invalid bank accounts
         case invalid = "INVALID"
-        /// - verified: Filter only verified bank accounts
+        /// Filter only verified bank accounts
         case verified = "VERIFIED"
     }
 

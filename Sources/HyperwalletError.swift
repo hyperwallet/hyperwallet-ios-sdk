@@ -81,25 +81,25 @@ public struct HyperwalletError: Decodable {
 
 /// The `HyperwalletErrorType` is the error type returned By Hyperwallet SDK.
 public enum HyperwalletErrorType: Error, LocalizedError {
-    /// - http: Returned when an HTTP code is not in the range 2xx.
+    /// Returned when an HTTP code is not in the range 2xx.
     case http(_ hyperwalletErrors: HyperwalletErrors, _ httpCode: Int)
-    /// - parseError:  Returned when a response parser process throws error.
+    /// Returned when a response parser process throws error.
     case parseError(_ hyperwalletErrors: HyperwalletErrors)
-    /// - notInitialized: Returned when the SDK was not initialized properly.
+    /// Returned when the SDK was not initialized properly.
     case notInitialized(_ hyperwalletErrors: HyperwalletErrors)
-    /// - invalidUrl: Returned when a provided URL is not valid
+    /// Returned when a provided URL is not valid
     case invalidUrl(_ hyperwalletErrors: HyperwalletErrors)
-    /// - transactionAborted: Returned when a transaction is explicitly aborted.
+    /// Returned when a transaction is explicitly aborted.
     case transactionAborted(_ hyperwalletErrors: HyperwalletErrors)
-    /// - authenticationError:  Returned on authentication failure
+    /// Returned on authentication failure
     case authenticationError(_ authenticationError: HyperwalletAuthenticationErrorType)
-    /// - unexpected: Returned when an unexpected behavior happened.
+    /// Returned when an unexpected behavior happened.
     case unexpected(_ hyperwalletErrors: HyperwalletErrors)
-    /// - graphQlErrors: Returned when a GraphQL parser process throws error.
+    /// Returned when a GraphQL parser process throws error.
     case graphQlErrors(_ hyperwalletErrors: HyperwalletErrors)
-    /// - invalidRequest: Returned when some step-in builds  the request throws error.
+    /// Returned when some step-in builds  the request throws error.
     case invalidRequest(_ hyperwalletErrors: HyperwalletErrors)
-    /// - connectionError:  Returned when during the connection process throws error.
+    /// Returned when during the connection process throws error.
     case connectionError(_ hyperwalletErrors: HyperwalletErrors)
 
     /// The error type group
@@ -195,11 +195,11 @@ public enum HyperwalletAuthenticationErrorType: LocalizedError {
 
 /// Representation of the error type group
 public enum HyperwalletErrorGroup: String {
-    /// - business:   Returned when a business error is thrown
+    /// Returned when a business error is thrown
     case business = "BUSINESS_ERROR"
-    /// - unexpected: Returned when an unexpected error is thrown
+    /// Returned when an unexpected error is thrown
     case unexpected = "UNEXPECTED_ERROR"
-    /// - connection: Returned when a connection error is thrown
+    /// Returned when a connection error is thrown
     case connection = "CONNECTION_ERROR"
 }
 

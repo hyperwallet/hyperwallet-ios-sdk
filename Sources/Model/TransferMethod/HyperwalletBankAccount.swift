@@ -31,59 +31,59 @@ public final class HyperwalletBankAccount: HyperwalletTransferMethod {
 
     /// Representation of the bank account holder's role in the organization
     public enum BusinessContactRole: String {
-        /// - director
+        /// The director role
         case director = "DIRECTOR"
-        /// - owner
+        /// The owner role
         case owner = "OWNER"
-        /// - other
+        /// The other role
         case other = "OTHER"
     }
 
     /// Representation of the bank account holder's business type.
     public enum BusinessType: String {
-        /// - corporation
+        /// The corporation business type
         case corporation = "CORPORATION"
-        /// - partnership
+        /// The partnership business type
         case partnership = "PARTNERSHIP"
     }
 
     /// Representation of the bank account holder's gender.
     public enum Gender: String {
-         /// - male
+        /// The male
         case male = "MALE"
-        /// - female
+        /// The female
         case female = "FEMALE"
     }
 
     /// Representation of the bank account holder's government ID type
     public enum GovernmentIdType: String {
-        /// - passport
+        /// The passport Id
         case passport = "PASSPORT"
-        /// - nationalIdCard
+        /// The national Id Card
         case nationalIdCard = "NATIONAL_ID_CARD"
     }
 
     /// Representation of the user's profile type.
     public enum ProfileType: String {
-        /// - business: Business.
+        /// The  business profile type
         case business = "BUSINESS"
-        /// - individual: Individual.
+        /// The Individual profile type
         case individual = "INDIVIDUAL"
     }
 
     /// Representation of the bank account's purpose type.
     public enum PurposeType: String {
-        /// - checking: When the user's bank account purpose is checking
+        /// When the user's bank account purpose is checking
         case checking = "CHECKING"
-        /// - savings: When the user's bank account purpose is savings
+        /// When the user's bank account purpose is savings
         case savings = "SAVINGS"
     }
 
     /// Representation of the user's relationship with the bank account holder.
     public enum RelationshipType: String {
-        /// - `self`: When the user owns the bank account
+        /// When the user owns the bank account
         case `self` = "SELF"
-        /// - ownCompany: When the bank account is owned by the user's business
+        /// When the bank account is owned by the user's business
         case ownCompany = "OWN_COMPANY"
     }
 

@@ -53,49 +53,49 @@ public struct HyperwalletStatusTransition: Codable {
 
     /// Representation of the status.
     public enum Status: String, Codable {
-        /// - activated: The status is activate.
+        /// The status is activate.
         case activated                          = "ACTIVATED"
-        /// - cancelled: The status is cancel.
+        /// The status is cancel.
         case cancelled                          = "CANCELLED"
-        /// - completed: The status is complete.
+        /// The status is complete.
         case completed                          = "COMPLETED"
-         /// - deactivated: The status is deactivate.
+        /// The status is deactivate.
         case deactivated                        = "DE_ACTIVATED"
-        /// - expired: The status is expire.
+        /// The status is expire.
         case expired                            = "EXPIRED"
-        /// - failed: The status is fail.
+        /// The status is fail.
         case failed                             = "FAILED"
-        /// - inProgress: The status is in progress.
+        /// The status is in progress.
         case inProgress                         = "IN_PROGRESS"
-        /// - invalid: The status is invalid.
+        /// The status is invalid.
         case invalid                            = "INVALID"
-        /// - lostOrStolen: The status is lost or stolen.
+        /// The status is lost or stolen.
         case lostOrStolen                       = "LOST_OR_STOLEN"
-        /// - pendingAccountActivation: The status is pending account activation.
+        /// The status is pending account activation.
         case pendingAccountActivation           = "PENDING_ACCOUNT_ACTIVATION"
-        /// - pendingIdVerification: The status is pending identity verification.
+        /// The status is pending identity verification.
         case pendingIdVerification              = "PENDING_ID_VERIFICATION"
-        /// - pendingTaxVerification: The status is pending tax verification.
+        /// The status is pending tax verification.
         case pendingTaxVerification             = "PENDING_TAX_VERIFICATION"
-        /// - pendingTransactionVerification: The status is pending transaction verification.
+        /// The status is pending transaction verification.
         case pendingTransactionVerification     = "PENDING_TRANSACTION_VERIFICATION"
-        /// - pendingTransferMethodAction: The status is pending transfer method action.
+        /// The status is pending transfer method action.
         case pendingTransferMethodAction        = "PENDING_TRANSACTION_METHOD_ACTION"
-        /// - quoted: The status is quoted
+        /// The status is quoted
         case quoted                             = "QUOTED"
-        /// - recalled: The status is recall.
+        /// The status is recall.
         case recalled                           = "RECALLED"
-        /// - returned: The status is return.
+        /// The status is return.
         case returned                           = "RETURNED"
-        /// - scheduled: The status is schedule.
+        /// The status is schedule.
         case scheduled                          = "SCHEDULED"
-        /// - suspended: The status is suspend.
+        /// The status is suspend.
         case suspended                          = "SUSPENDED"
-        /// - unsuspended: The status is not suspended.
+        /// The status is not suspended.
         case unsuspended                        = "UNSUSPENDED"
-        /// - verificationRequired: The status is verification required
+        /// The status is verification required
         case verificationRequired               = "VERIFICATION_REQUIRED"
-        /// - verified: The status is verified.
+        /// The status is verified.
         case verified                           = "VERIFIED"
     }
 

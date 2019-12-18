@@ -20,47 +20,47 @@ import Foundation
 
 /// Representation of a `HyperwalletCountry` node
 public struct HyperwalletCountry: Codable {
-    /// - code: The 2 letter ISO 3166-1 country code
+    /// The 2 letter ISO 3166-1 country code
     public let code: String?
-    /// - name: The country name
+    /// The country name
     public let name: String?
-    /// - currencies: The `HyperwalletCurrency` nodes that connect to this country node
+    /// The `HyperwalletCurrency` nodes that connect to this country node
     public let currencies: Connection<HyperwalletCurrency>?
 }
 
 /// Representation of a `HyperwalletCurrency` node
 public struct HyperwalletCurrency: Codable {
-    /// - code: The 3 letter ISO 4217-1 currency code
+    /// The 3 letter ISO 4217-1 currency code
     public let code: String?
-    /// - name: The currency name
+    /// The currency name
     public let name: String?
-    /// - currencies: The `HyperwalletTransferMethodType` nodes that connect to this currency node
+    /// The `HyperwalletTransferMethodType` nodes that connect to this currency node
     public let transferMethodTypes: Connection<HyperwalletTransferMethodType>?
 }
 
 /// Representation of the transfer method configuration field data type
 public enum HyperwalletDataType: String, Codable {
-    /// - text: The text field type
+    /// The text field type
     case text = "TEXT"
-    /// - selection: The selecion option field type
+    /// The selecion option field type
     case selection = "SELECTION"
-    /// - boolean: The boolean field type
+    /// The boolean field type
     case boolean = "BOOLEAN"
-    /// - number: The numeric field type
+    /// The numeric field type
     case number = "NUMBER"
-    /// - range: The range field type
+    /// The range field type
     case range = "RANGE"
-    /// - date: the date field type
+    /// The date field type
     case date = "DATE"
-    /// - datetime: The datetime field type
+    /// The datetime field type
     case datetime = "DATETIME"
-    /// - expiryDate: The expiry date field type
+    /// The expiry date field type
     case expiryDate = "EXPIRY_DATE"
-    /// - phone: The phone field type
+    /// The phone field type
     case phone = "PHONE"
-    /// - email: The email field type
+    /// The email field type
     case email = "EMAIL"
-    /// - file: The file field type
+    /// The file field type
     case file = "FILE"
 }
 

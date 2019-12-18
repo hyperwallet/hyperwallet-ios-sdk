@@ -1,7 +1,6 @@
 author: Hyperwallet Systems Inc
 clean: true
 author_url: https://www.hyperwallet.com/
-github_file_prefix: https://github.com/hyperwallet/hyperwallet-ios-core-sdk-sandbox
 github_url: https://github.com/hyperwallet/hyperwallet-ios-core-sdk-sandbox
 copyright: Copyright (c) 2018-present, Hyperwallet Systems Inc. All rights reserved.
 module: HyperwalletSDK
@@ -14,52 +13,3 @@ source_directory: Sources
 theme: fullwidth
 use_safe_filenames: true
 output: docs
-
-custom_categories:
-  - children:
-      - Hyperwallet
-    name: Common
-  - children:
-      - HyperwalletTransferMethod
-      - HyperwalletStatusTransition
-      - HyperwalletBankCard
-      - HyperwalletBankAccount
-      - HyperwalletTransferMethodQueryParam
-      - HyperwalletQueryParam
-      - HyperwalletPageList
-      - HyperwalletBankCardQueryParam
-      - HyperwalletBankAccountQueryParam
-      - HyperwalletTransferMethodConfigurationFieldQuery
-      - HyperwalletTransferMethodConfigurationKeysQuery
-      - HyperwalletTransferMethodConfigurationResult
-      - HyperwalletTransferMethodConfigurationFieldResult
-      - HyperwalletTransferMethodConfigurationKeyResult
-      - HyperwalletFee
-      - HyperwalletField
-      - HyperwalletFieldSelectionOption
-      - HyperwalletPageLink
-      - HyperwalletPageParameter
-      - HyperwalletValidationMessage
-      - TransferMethodConfiguration
-      - TransferMethodConfigurationTransactionResult
-      - GraphQlQuery
-    name: Models
-  - children:
-      - AuthenticationErrorType
-      - HyperwalletAuthenticationTokenProvider
-    name: Authentication Token Provider
-  - children:
-      - AuthenticationTokenDecoder
-      - Configuration
-      - HTTPClient
-      - HTTPClientProtocol
-      - HTTPMethod
-      - HTTPTransaction
-      - TransactionType
-    name: Helper
-  - children:
-      - ErrorGroup
-      - ErrorType
-      - HyperwalletError
-      - HyperwalletErrors
-    name: Errors

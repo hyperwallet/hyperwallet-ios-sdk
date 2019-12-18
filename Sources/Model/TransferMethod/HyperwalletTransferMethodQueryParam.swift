@@ -29,31 +29,31 @@ public class HyperwalletTransferMethodQueryParam: QueryParam {
 
     /// Representation of the transfer method status
     public enum QueryStatus: String {
-        /// - activated: Filter by activated bank accounts
+        /// Filter by activated bank accounts
         case activated = "ACTIVATED"
-        /// - deActivated: Filter by deActivated transfer methods
+        /// Filter by deActivated transfer methods
         case deActivated = "DE_ACTIVATED"
-        /// - invalid: Filter only invalid bank accounts
+        /// Filter only invalid bank accounts
         case invalid = "INVALID"
-        /// - lostOrStolen: Filter only lostOrStolen prepaid cards
+        /// Filter only lostOrStolen prepaid cards
         case lostOrStolen = "LOST_OR_STOLEN"
-        /// - preActivated: Filter by preActivated prepaid cards
+        /// Filter by preActivated prepaid cards
         case preActivated = "PRE_ACTIVATED"
-        /// - suspended: Filter only suspended prepaid cards
+        /// Filter only suspended prepaid cards
         case suspended = "SUSPENDED"
-        /// - verified: Filter only verified bank accounts
+        /// Filter only verified bank accounts
         case verified = "VERIFIED"
     }
 
     /// Representation of the field's sortable
     public enum QuerySortable: String {
-        /// - ascendantCreatedOn: Sort the result by ascendant the field create on
+        /// Sort the result by ascendant the field create on
         case ascendantCreatedOn = "+createdOn"
-        /// - ascendantStatus: Sort the result by ascendant the field status
+        /// Sort the result by ascendant the field status
         case ascendantStatus = "+status"
-        /// - descendantCreatedOn: Sort the result by descendant the create on
+        /// Sort the result by descendant the create on
         case descendantCreatedOn = "-createdOn"
-        /// - descendantStatus: Sort the result by descendant the field status
+        /// Sort the result by descendant the field status
         case descendantStatus = "-status"
     }
 
