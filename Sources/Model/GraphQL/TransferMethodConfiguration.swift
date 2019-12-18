@@ -110,7 +110,7 @@ public struct HyperwalletField: Codable {
 
 /// Representation of list of HyperwalletField and the group to which it belongs
 public struct HyperwalletFieldGroup: Codable {
-    /// The  group represents HyperwalletFieldGroup name
+    /// The  group
     public let group: String?
     /// The list of HyperwalletField
     public let fields: [HyperwalletField]?
@@ -118,32 +118,32 @@ public struct HyperwalletFieldGroup: Codable {
 
 /// Representation of the transfer method configuration field selection option
 public struct HyperwalletFieldSelectionOption: Codable {
-    /// The label represents SelectionOption title
+    /// The label
     public let label: String?
-    /// The value represents SelectionOption
+    /// The value
     public let value: String?
 }
 
 /// Representation of the transfer method configuration field processing times
 public struct HyperwalletProcessingTime: Codable {
-    /// ProcessingTime calculated for the country
+    /// The country to process
     public let country: String?
-    /// ProcessingTime calculated for the currency
+    /// The currency to process
     public let currency: String?
-    /// ProcessingTime calculated for The transfer method type
+    /// The transfer method type
     public let transferMethodType: String?
-    /// The value represents the HyperwalletProcessingTime
+    /// The value to process
     public let value: String?
 }
 /// Representation of transfer method type
 public struct HyperwalletTransferMethodType: Codable {
-    /// The code represents the chosen country code for the HyperwalletTransferMethodType
+    /// The country code
     public let code: String?
-    /// The name represents the chosen country name for the HyperwalletTransferMethodType
+    /// The country name
     public let name: String?
-    /// The fees calculated for the chosen country and currency
+    /// The fees for transfer
     public let fees: Connection<HyperwalletFee>?
-    /// The processing time calculated for the chosen country and currency
+    /// The processing time for transfer
     public let processingTimes: Connection<HyperwalletProcessingTime>?
 }
 
@@ -168,13 +168,13 @@ struct TransferMethodConfigurationKey: Codable {
 
 /// Representation of the transfer method configuration
 public struct TransferMethodConfiguration: Codable {
-    /// The country chosen for transfer method
+    /// The country
     let country: String?
-    /// The currency for the chosen country
+    /// The currency
     let currency: String?
-    /// The transfer method type for chosen currency
+    /// The transfer method type
     let transferMethodType: String?
-    /// The profile type for the chosen currency
+    /// The profile type
     let profile: String?
     /// The `HyperwalletFieldGroup`, or nil if none exists
     let fieldGroups: Connection<HyperwalletFieldGroup>?
@@ -182,18 +182,18 @@ public struct TransferMethodConfiguration: Codable {
 
 /// Representation of the transfer method configuration field mask
 public struct HyperwalletMask: Codable {
-    /// The list of HyperwalletConditionalPattern
+    /// The conditional pattern, or nil if none exists
     public let conditionalPatterns: [HyperwalletConditionalPattern]?
-    /// The default pattern for field formatting while conditionalPatterns is empty
+    /// The default pattern
     public let defaultPattern: String
-    /// The scrub regex represents the autofill characters while entering input
+    /// The scrub regex, or nil if none exists
     public let scrubRegex: String?
 }
 
 /// Representation of the transfer method configuration field conditionalPatterns
 public struct HyperwalletConditionalPattern: Codable {
-    /// The pattern defines the format of the field
+    /// The pattern
     public let pattern: String
-    /// The regex represents the autofill character while entering input
+    /// The regex
     public let regex: String
 }
