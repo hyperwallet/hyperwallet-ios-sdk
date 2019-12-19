@@ -1,7 +1,7 @@
 author: Hyperwallet Systems Inc
 clean: true
 author_url: https://www.hyperwallet.com/
-github_url: https://github.com/hyperwallet/hyperwallet-ios-core-sdk-sandbox
+github_url: https://github.com/hyperwallet/hyperwallet-ios-sdk
 copyright: Copyright (c) 2018-present, Hyperwallet Systems Inc. All rights reserved.
 module: HyperwalletSDK
 module_version: 0.0.1

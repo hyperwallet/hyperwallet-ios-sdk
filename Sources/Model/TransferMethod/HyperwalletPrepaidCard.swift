@@ -23,7 +23,7 @@ public final class HyperwalletPrepaidCard: HyperwalletTransferMethod {
     override private init(data: [String: AnyCodable]) {
         super.init(data: data)
     }
-    /// Initialization of HyperwalletPrepaidCard
+    /// The required initializer
     public required init(from decoder: Decoder) throws {
         try super.init(from: decoder)
     }

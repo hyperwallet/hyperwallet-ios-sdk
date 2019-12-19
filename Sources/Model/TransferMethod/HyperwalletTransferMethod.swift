@@ -38,14 +38,14 @@ public class HyperwalletTransferMethod: NSObject, Codable {
         case transferMethodCurrency
         /// The transfer method type.
         case type
-        /// Bank Account related fields
+        // Bank Account related fields
         ///
         /// The bank account holder's street address.
         case addressLine1
         /// The bank account holder's address, second line.
         case addressLine2
         /// The bank account number, IBAN or equivalent. If you are providing an IBAN,
-        ///         the first two letters of the IBAN must match the `transferMethodCountry`.
+        /// the first two letters of the IBAN must match the `transferMethodCountry`.
         case bankAccountId
         /// The purpose of the bank account (e.g. checking, savings, etc).
         case bankAccountPurpose
@@ -66,10 +66,10 @@ public class HyperwalletTransferMethod: NSObject, Codable {
         /// The country where the transfer method holder's business is registered
         case businessRegistrationCountry
         /// The bank account holder's business registration number or identifier, as
-        ///         assigned by the relevant government body.
+        /// assigned by the relevant government body.
         case businessRegistrationId
         /// The state, province or region where the bank account holder's business
-        ///         is registered.
+        /// is registered.
         case businessRegistrationStateProvince
         /// The bank account holder's business type.
         case businessType
@@ -132,7 +132,7 @@ public class HyperwalletTransferMethod: NSObject, Codable {
         /// The wire transfer instructions
         case wireInstructions
 
-        /// Bank Card related fields
+        // Bank Card related fields
         ///
         /// The card brand.
         case cardBrand
@@ -145,12 +145,12 @@ public class HyperwalletTransferMethod: NSObject, Codable {
         /// The expiration date for the card (YYYY-MM).
         case dateOfExpiry
 
-        /// PayPal account related fields
+        // PayPal account related fields
         ///
         /// The email address associated with the PayPal account.
         case email
 
-        /// prepaid card related fields
+        // prepaid card related fields
         ///
         /// The  card's package
         case cardPackage

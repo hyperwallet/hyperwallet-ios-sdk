@@ -125,7 +125,7 @@ public struct HyperwalletReceipt: Decodable, Equatable {
 
     /// The transaction type.
     public enum HyperwalletReceiptType: String, Decodable {
-        /// Generic fee types
+        // Generic fee types
         ///
         /// The annual fee
         case annualFee = "ANNUAL_FEE"
@@ -153,7 +153,7 @@ public struct HyperwalletReceipt: Decodable, Equatable {
         case standardShippingFee = "STANDARD_SHIPPING_FEE"
         /// The transfer fee
         case transferFee = "TRANSFER_FEE"
-        /// Generic payment types
+        // Generic payment types
         ///
         /// The adjustment
         case adjustment = "ADJUSTMENT"
@@ -165,7 +165,7 @@ public struct HyperwalletReceipt: Decodable, Equatable {
         case manualAdjustment = "MANUAL_ADJUSTMENT"
         /// The payment expiration
         case paymentExpiration = "PAYMENT_EXPIRATION"
-        /// Bank account-specific types
+        // Bank account-specific types
         ///
         /// The bank account transfer fee
         case bankAccountTransferFee = "BANK_ACCOUNT_TRANSFER_FEE"
@@ -175,7 +175,7 @@ public struct HyperwalletReceipt: Decodable, Equatable {
         case bankAccountTransferReturnFee = "BANK_ACCOUNT_TRANSFER_RETURN_FEE"
         ///
         case transferToBankAccount = "TRANSFER_TO_BANK_ACCOUNT"
-        /// Card-specific types
+        // Card-specific types
         ///
         /// The card activation fee
         case cardActivationFee = "CARD_ACTIVATION_FEE"
@@ -183,7 +183,7 @@ public struct HyperwalletReceipt: Decodable, Equatable {
         case cardActivationFeeWaiver = "CARD_ACTIVATION_FEE_WAIVER"
         /// The card fee
         case cardFee = "CARD_FEE"
-        ///
+        /// The manual transfer to prepaid card
         case manualTransferToPrepaidCard = "MANUAL_TRANSFER_TO_PREPAID_CARD"
         /// The prepaid card balance inquiry fee
         case prepaidCardBalanceInquiryFee = "PREPAID_CARD_BALANCE_INQUIRY_FEE"
@@ -215,7 +215,7 @@ public struct HyperwalletReceipt: Decodable, Equatable {
         case transferToDebitCard = "TRANSFER_TO_DEBIT_CARD"
         /// The transfer to prepaid card
         case transferToPrepaidCard = "TRANSFER_TO_PREPAID_CARD"
-        /// Donation types
+        // Donation types
         ///
         /// The donation
         case donation = "DONATION"
@@ -223,7 +223,7 @@ public struct HyperwalletReceipt: Decodable, Equatable {
         case donationFee = "DONATION_FEE"
         /// The donation return
         case donationReturn = "DONATION_RETURN"
-        /// Merchant payment types
+        // Merchant payment types
         ///
         /// The merchant payment
         case merchantPayment = "MERCHANT_PAYMENT"
@@ -233,13 +233,13 @@ public struct HyperwalletReceipt: Decodable, Equatable {
         case merchantPaymentRefund = "MERCHANT_PAYMENT_REFUND"
         /// The merchant payment return
         case merchantPaymentReturn = "MERCHANT_PAYMENT_RETURN"
-        /// MoneyGram types
+        // MoneyGram types
         ///
         /// The money gram transfer return
         case moneygramTransferReturn = "MONEYGRAM_TRANSFER_RETURN"
         /// The transfer to money gram
         case transferToMoneygram = "TRANSFER_TO_MONEYGRAM"
-        /// Paper check types
+        // Paper check types
         ///
         /// The paper check fee
         case paperCheckFee = "PAPER_CHECK_FEE"
@@ -247,7 +247,7 @@ public struct HyperwalletReceipt: Decodable, Equatable {
         case paperCheckRefund = "PAPER_CHECK_REFUND"
         /// The transfer to paper check
         case transferToPaperCheck = "TRANSFER_TO_PAPER_CHECK"
-        /// User and program account types
+        // User and program account types
         ///
         /// The account to be closed
         case accountClosure = "ACCOUNT_CLOSURE"
@@ -273,7 +273,7 @@ public struct HyperwalletReceipt: Decodable, Equatable {
         case transferToProgramAccount = "TRANSFER_TO_PROGRAM_ACCOUNT"
         /// The transfer to user
         case transferToUser = "TRANSFER_TO_USER"
-        /// Virtual incentive types
+        // Virtual incentive types
         ///
         /// The virtual incentive cancellation
         case virtualIncentiveCancellation = "VIRTUAL_INCENTIVE_CANCELLATION"
@@ -283,7 +283,7 @@ public struct HyperwalletReceipt: Decodable, Equatable {
         case virtualIncentivePurchase = "VIRTUAL_INCENTIVE_PURCHASE"
         /// The virtual incentive refund
         case virtualIncentiveRefund = "VIRTUAL_INCENTIVE_REFUND"
-        /// Western Union and WUBS types
+        // Western Union and WUBS types
         ///
         /// The transfer to western union
         case transferToWesternUnion = "TRANSFER_TO_WESTERN_UNION"
@@ -293,7 +293,7 @@ public struct HyperwalletReceipt: Decodable, Equatable {
         case westernUnionTransferReturn = "WESTERN_UNION_TRANSFER_RETURN"
         /// The wubs wire transfer return
         case wubsWireTransferReturn = "WUBS_WIRE_TRANSFER_RETURN"
-        /// Wire transfer types
+        // Wire transfer types
         ///
         /// The transfer to Wire
         case transferToWire = "TRANSFER_TO_WIRE"
@@ -303,7 +303,7 @@ public struct HyperwalletReceipt: Decodable, Equatable {
         case wireTransferReturn = "WIRE_TRANSFER_RETURN"
         /// The prepaid card sale
         case prepaidCardSale = "PREPAID_CARD_SALE"
-        /// PayPal transfer types
+        // PayPal transfer types
         ///
         /// Transfer to PayPalAccount
         case transferToPayPalAccount = "TRANSFER_TO_PAYPAL_ACCOUNT"
@@ -318,7 +318,7 @@ public struct HyperwalletReceipt: Decodable, Equatable {
         /// The debit entry type
         case debit = "DEBIT"
     }
-    /// The bank account type
+    /// The bank account purpose type
     public enum BankAccountPurposeType: String, Decodable {
         /// The bank account checking type
         case checking = "CHECKING"

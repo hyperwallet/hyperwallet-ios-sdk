@@ -29,11 +29,11 @@ public class HyperwalletTransferMethodQueryParam: QueryParam {
 
     /// Representation of the transfer method status
     public enum QueryStatus: String {
-        /// Filter by activated bank accounts
+        /// Filter by activated transfer methods
         case activated = "ACTIVATED"
         /// Filter by deActivated transfer methods
         case deActivated = "DE_ACTIVATED"
-        /// Filter only invalid bank accounts
+        /// Filter only invalid transfer methods
         case invalid = "INVALID"
         /// Filter only lostOrStolen prepaid cards
         case lostOrStolen = "LOST_OR_STOLEN"
@@ -41,19 +41,19 @@ public class HyperwalletTransferMethodQueryParam: QueryParam {
         case preActivated = "PRE_ACTIVATED"
         /// Filter only suspended prepaid cards
         case suspended = "SUSPENDED"
-        /// Filter only verified bank accounts
+        /// Filter only verified transfer methods
         case verified = "VERIFIED"
     }
 
     /// Representation of the field's sortable
     public enum QuerySortable: String {
-        /// Sort the result by ascendant the field create on
+        /// Sort the result by ascendant created on
         case ascendantCreatedOn = "+createdOn"
-        /// Sort the result by ascendant the field status
+        /// Sort the result by ascendant  status
         case ascendantStatus = "+status"
-        /// Sort the result by descendant the create on
+        /// Sort the result by descendant  created on
         case descendantCreatedOn = "-createdOn"
-        /// Sort the result by descendant the field status
+        /// Sort the result by descendant  status
         case descendantStatus = "-status"
     }
 

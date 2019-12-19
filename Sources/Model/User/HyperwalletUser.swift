@@ -58,7 +58,7 @@ public class HyperwalletUser: NSObject, Codable {
         /// The user's city.
         case city
         /// A client-defined identifier for the user. This is the unique ID assigned to the user
-        ///         on your system.
+        /// on your system.
         case clientUserId
         /// The user's country.
         case country
@@ -67,14 +67,14 @@ public class HyperwalletUser: NSObject, Codable {
         /// The user's country of citizenship or nationality.
         case countryOfNationality
         /// The datetime the user account was created on in ISO 8601 format (YYYY-MM-DDThh:mm:ss).
-        ///         Note that the timezone used is UTC, therefore no time offset is returned.
+        /// Note that the timezone used is UTC, therefore no time offset is returned.
         case createdOn
         /// The user's date of birth (All users must be at least 13 years old).
         case dateOfBirth
         /// The user's driver's license number.
         case driversLicenseId
         /// The contact email address for the user account. This must be unique for your program,
-        ///         so you cannot have two users belonging to the same program with the same email address.
+        /// so you cannot have two users belonging to the same program with the same email address.
         case email
         /// The user's employer identifier, generally used for tax purposes.
         case employerId
@@ -113,7 +113,7 @@ public class HyperwalletUser: NSObject, Codable {
         /// The unique, auto-generated user identifier. Max 64 characters, prefixed with "usr-".
         case token
         /// The user's verification status. A user may be required to verify their identity after
-        ///         a certain threshold of payments is reached.
+        /// a certain threshold of payments is reached.
         case verificationStatus
     }
 
@@ -153,9 +153,9 @@ public class HyperwalletUser: NSObject, Codable {
 
     /// Representation of the user account status type.
     public enum Status: String {
-        /// The user account is activate.
+        /// The user account is activated.
         case activated = "ACTIVATED"
-        /// The user account is deactivate.
+        /// The user account is deactivated.
         case deactivated = "DE_ACTIVATED"
         /// The user account is frozen.
         case frozen = "FROZEN"
