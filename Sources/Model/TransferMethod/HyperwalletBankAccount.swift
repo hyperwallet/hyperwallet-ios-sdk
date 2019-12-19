@@ -65,7 +65,7 @@ public final class HyperwalletBankAccount: HyperwalletTransferMethod {
 
     /// Representation of the user's profile type.
     public enum ProfileType: String {
-        /// The  business profile type
+        /// The business profile type
         case business = "BUSINESS"
         /// The Individual profile type
         case individual = "INDIVIDUAL"

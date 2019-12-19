@@ -63,7 +63,7 @@ public struct HyperwalletTransfer: Codable {
     public let sourceToken: String
     /// The transfer status
     public let status: HyperwalletTransferStatus?
-    /// The  token
+    /// The token
     public let token: String?
     /// Representation of a `HyperwalletTransferStatus`
     public enum HyperwalletTransferStatus: String, Codable {

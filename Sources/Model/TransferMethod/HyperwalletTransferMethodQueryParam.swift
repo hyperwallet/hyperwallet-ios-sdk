@@ -49,11 +49,11 @@ public class HyperwalletTransferMethodQueryParam: QueryParam {
     public enum QuerySortable: String {
         /// Sort the result by ascendant created on
         case ascendantCreatedOn = "+createdOn"
-        /// Sort the result by ascendant  status
+        /// Sort the result by ascendant status
         case ascendantStatus = "+status"
-        /// Sort the result by descendant  created on
+        /// Sort the result by descendant created on
         case descendantCreatedOn = "-createdOn"
-        /// Sort the result by descendant  status
+        /// Sort the result by descendant status
         case descendantStatus = "-status"
     }
 

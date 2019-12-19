@@ -25,7 +25,7 @@ public class HyperwalletTransferMethod: NSObject, Codable {
 
     /// Representation of the transfer method's field type
     public enum TransferMethodField: String {
-        /// Common transfer method fields
+        // Common transfer method fields
         /// The datetime when the transfer method was created on.
         case createdOn
         /// The transfer method status transition.
@@ -77,7 +77,7 @@ public class HyperwalletTransferMethod: NSObject, Codable {
         case city
         /// The bank account holder's country.
         case country
-        /// The country where bank account holder  born
+        /// The country where bank account holder born
         case countryOfBirth
         /// The Nationality of the bank account holder
         case countryOfNationality
@@ -85,7 +85,7 @@ public class HyperwalletTransferMethod: NSObject, Codable {
         case dateOfBirth
         /// The LicenseId of the bank account holder
         case driversLicenseId
-        /// The employer Id of the  bank account holder
+        /// The employer Id of the bank account holder
         case employerId
         /// The bank account holder's first name.
         case firstName
@@ -95,15 +95,15 @@ public class HyperwalletTransferMethod: NSObject, Codable {
         case governmentId
         /// The bank account holder's government IdType
         case governmentIdType
-        /// The bank account holder's  Intermediary Bank AccountId
+        /// The bank account holder's Intermediary Bank AccountId
         case intermediaryBankAccountId
-        /// The bank account holder's  Intermediary Bank AddressLine1
+        /// The bank account holder's Intermediary Bank AddressLine1
         case intermediaryBankAddressLine1
-        /// The bank account holder's  Intermediary Bank AddressLine2
+        /// The bank account holder's Intermediary Bank AddressLine2
         case intermediaryBankAddressLine2
-        /// The bank account holder's  Intermediary Bank's City
+        /// The bank account holder's Intermediary Bank's City
         case intermediaryBankCity
-        /// The bank account holder's Intermediary Bank's  Country
+        /// The bank account holder's Intermediary Bank's Country
         case intermediaryBankCountry
         /// The bank account holder's Intermediary Bank Id
         case intermediaryBankId
@@ -111,7 +111,7 @@ public class HyperwalletTransferMethod: NSObject, Codable {
         case intermediaryBankName
         /// The bank account holder's Intermediary PostalCode:
         case intermediaryBankPostalCode
-        /// The bank account holder's Intermediary Bank's  State and Province
+        /// The bank account holder's Intermediary Bank's State and Province
         case intermediaryBankStateProvince
         /// The bank account holder's last name.
         case lastName
@@ -152,7 +152,7 @@ public class HyperwalletTransferMethod: NSObject, Codable {
 
         // prepaid card related fields
         ///
-        /// The  card's package
+        /// The card's package
         case cardPackage
         /// The user token
         case userToken

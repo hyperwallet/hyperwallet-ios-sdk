@@ -97,7 +97,7 @@ public enum HyperwalletErrorType: Error, LocalizedError {
     case unexpected(_ hyperwalletErrors: HyperwalletErrors)
     /// Returned when a GraphQL parser process throws error.
     case graphQlErrors(_ hyperwalletErrors: HyperwalletErrors)
-    /// Returned when some step-in builds  the request throws error.
+    /// Returned when some step-in builds the request throws error.
     case invalidRequest(_ hyperwalletErrors: HyperwalletErrors)
     /// Returned when during the connection process throws error.
     case connectionError(_ hyperwalletErrors: HyperwalletErrors)

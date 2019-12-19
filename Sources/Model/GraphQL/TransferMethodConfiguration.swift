@@ -110,7 +110,7 @@ public struct HyperwalletField: Codable {
 
 /// Representation of list of HyperwalletField and the group to which it belongs
 public struct HyperwalletFieldGroup: Codable {
-    /// The  group
+    /// The group
     public let group: String?
     /// The list of HyperwalletField
     public let fields: [HyperwalletField]?
