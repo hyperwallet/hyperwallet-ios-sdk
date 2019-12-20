@@ -50,4 +50,4 @@ script: |
 after_success:
     - slather
     - make docs
-    - if [ $TRAVIS_BRANCH = 'task/hw-58894-add-documentation-to-the-missing-classes/function-in-core-sdk' ] && [ $TRAVIS_PULL_REQUEST = 'false' ]; then sh ./Scripts/travisPublishDocs.sh; fi
+    - if [ $TRAVIS_BRANCH = 'master' ] && [ $TRAVIS_PULL_REQUEST = 'false' ]; then sh ./Scripts/travisPublishDocs.sh; fi
