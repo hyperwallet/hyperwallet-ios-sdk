@@ -28,34 +28,32 @@ public class HyperwalletTransferMethodQueryParam: QueryParam {
     }
 
     /// Representation of the transfer method status
-    ///
-    /// - activated: Filter by activated bank accounts
-    /// - deActivated: Filter by deActivated transfer methods
-    /// - invalid: Filter only invalid bank accounts
-    /// - lostOrStolen: Filter only lostOrStolen prepaid cards
-    /// - preActivated: Filter by preActivated prepaid cards
-    /// - suspended: Filter only suspended prepaid cards
-    /// - verified: Filter only verified bank accounts
     public enum QueryStatus: String {
+        /// Filter by activated transfer methods
         case activated = "ACTIVATED"
+        /// Filter by deActivated transfer methods
         case deActivated = "DE_ACTIVATED"
+        /// Filter only invalid transfer methods
         case invalid = "INVALID"
+        /// Filter only lostOrStolen prepaid cards
         case lostOrStolen = "LOST_OR_STOLEN"
+        /// Filter by preActivated prepaid cards
         case preActivated = "PRE_ACTIVATED"
+        /// Filter only suspended prepaid cards
         case suspended = "SUSPENDED"
+        /// Filter only verified transfer methods
         case verified = "VERIFIED"
     }
 
     /// Representation of the field's sortable
-    ///
-    /// - ascendantCreatedOn: Sort the result by ascendant the field create on
-    /// - ascendantStatus: Sort the result by ascendant the field status
-    /// - descendantCreatedOn: Sort the result by descendant the create on
-    /// - descendantStatus: Sort the result by descendant the field status
     public enum QuerySortable: String {
+        /// Sort the result by ascendant created on
         case ascendantCreatedOn = "+createdOn"
+        /// Sort the result by ascendant status
         case ascendantStatus = "+status"
+        /// Sort the result by descendant created on
         case descendantCreatedOn = "-createdOn"
+        /// Sort the result by descendant status
         case descendantStatus = "-status"
     }
 

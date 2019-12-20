@@ -20,6 +20,6 @@ import Foundation
 
 /// Representation of the GraphQL's Connection type
 public struct Connection<T: Codable>: Codable {
-    // Array of Connection type
+    /// Array of Connection type
     public let nodes: [T]?
 }

@@ -23,7 +23,7 @@ public final class HyperwalletPayPalAccount: HyperwalletTransferMethod {
     override private init(data: [String: AnyCodable]) {
         super.init(data: data)
     }
-
+    /// The required initializer
     public required init(from decoder: Decoder) throws {
         try super.init(from: decoder)
     }
