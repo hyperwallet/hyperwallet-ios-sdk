@@ -19,6 +19,6 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0.0-beta05</string>
 	<key>CFBundleVersion</key>
-	<string>1.0.0-beta05</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
 </dict>
 </plist>
