@@ -14,7 +14,7 @@ lane :release do
 end
 
 def updateVersion(type)
-  version = get_version_number(target: "HyperwalletSDK")
+  version = last_git_tag
   if type == "beta" then
     version_components = version.split("beta")
     last_component = Integer(version_components[-1]) + 1
