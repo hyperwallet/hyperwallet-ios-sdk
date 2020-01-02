@@ -1,0 +1,41 @@
+lane :beta do
+  version = updateVersion("beta")
+  update("beta", version)
+end
+
+lane :release do
+  version = get_version_number(target: "HyperwalletSDK")
+  commit = last_git_commit
+  message = commit[:message]
+  add_git_tag(tag: "#{version}", message: "#{message}")
+  set_github_release(tag_name: "#{version}", description: "#{message}")
+  push_to_git_remote
+  pod_push(allow_warnings: true, skip_tests: true)
+end
+
+def updateVersion(type)
+  version = last_git_tag
+  if type == "beta" then
+    version_components = version.split("beta")
+    last_component = Integer(version_components[-1]) + 1
+    last_component_string = last_component.to_s
+    if last_component_string.size == 1 then
+      last_component_string = "0" + last_component_string
+    end
+    version_components[-1] = last_component_string
+    build_version = version_components.join("beta")
+  end
+end
+
+def update(type, version)
+  podspec_name = "HyperwalletSDK.podspec"
+  pod_lib_lint(allow_warnings: true, skip_tests: true)
+  version_bump_podspec(version_number: version, path: podspec_name)
+  increment_version_number(version_number: version)
+  get_version_number(target: "HyperwalletSDK")
+  git_add(path: podspec_name)
+  git_add(path: "**/Info.plist")
+  git_commit(path: [podspec_name, "**/Info.plist"],
+             message: "#{version} release")
+  push_to_git_remote
+end
