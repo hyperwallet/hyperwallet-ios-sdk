@@ -467,6 +467,28 @@ Hyperwallet.shared.listTransfers { (result, error) in
 })
 ```
 
+### List User Balances
+```swift
+let balanceQueryParam = HyperwalletBalanceQueryParam()
+balanceQueryParam.currency = "USD"
+balanceQueryParam.sortBy = HyperwalletBalanceQueryParam.QuerySortable.descendantAmount.rawValue
+
+Hyperwallet.shared.listUserBalances(queryParam: balanceQueryParam) { (result, error) in
+    // In case of failure, error (HyperwalletErrorType) will contain HyperwalletErrors containing information about what caused the failure
+    guard error == nil else {
+    print(error?.getHyperwalletErrors()?.errorList?)
+    return
+    }
+
+    // In case of successful, response (HyperwalletPageList<HyperwalletBalance>? in this case) will contain information about or nil if not exist.
+    if let balances = result?.data {
+        for balance in balances {
+            print(balance.amount ?? "")
+        }
+    }
+}
+```
+
 ## Transfer Method Configurations
 
 ### Get countries, currencies and transfer method types

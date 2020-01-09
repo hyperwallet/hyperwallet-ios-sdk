@@ -20,14 +20,14 @@ import Foundation
 
 /// Representation of the balance QueryParam fields.
 public class HyperwalletBalanceQueryParam: QueryParam {
-    /// A value that identifies the balance currency.
+    /// A value that identifies the currency of balance
     public var currency: String?
 
     enum QueryParam: String {
         case currency
     }
 
-    /// Representation of the field's sortable
+    /// Representation of the sortable fields
     public enum QuerySortable: String {
         /// Sort the result by ascendant amount
         case ascendantAmount = "+amount"

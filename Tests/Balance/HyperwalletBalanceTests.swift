@@ -3,7 +3,8 @@ import Hippolyte
 import XCTest
 
 class HyperwalletBalanceTests: XCTestCase {
-    private var balanceResponse: String?
+    private var testCaseDescription: String?
+    private var mockResponseFileName: String?
     private var currency: String?
     private var sortBy: String?
     private var expectedCurrency: String?
@@ -23,7 +24,7 @@ class HyperwalletBalanceTests: XCTestCase {
     func testListUserBalances_success() {
         // Given
         let expectation = self.expectation(description: "List User Balances completed")
-        let response = HyperwalletTestHelper.okHTTPResponse(for: balanceResponse!)
+        let response = HyperwalletTestHelper.okHTTPResponse(for: mockResponseFileName!)
         let url = String(format: "%@/balances", HyperwalletTestHelper.userRestURL)
         let request = HyperwalletTestHelper.buildGetRequestRegexMatcher(pattern: url, response)
         HyperwalletTestHelper.setUpMockServer(request: request)
@@ -47,18 +48,20 @@ class HyperwalletBalanceTests: XCTestCase {
         wait(for: [expectation], timeout: 1)
 
         // Then
-        XCTAssertNil(errorResponse, "The `errorResponse` should be nil")
-        XCTAssertNotNil(userBalanceList, "The `userBalanceList` should not be nil")
-        XCTAssertEqual(userBalanceList?.count, Int(userBalanceCount!), "The `count` should be \(userBalanceCount!)")
-        XCTAssertNotNil(userBalanceList?.data, "The `data` should be not nil")
-        XCTAssertNotNil(userBalanceList?.links, "The `links` should be not nil")
+        XCTAssertNil(errorResponse, "\(testCaseDescription!) - The `errorResponse` should be nil")
+        XCTAssertNotNil(userBalanceList, "\(testCaseDescription!) - The `userBalanceList` should not be nil")
+        XCTAssertEqual(userBalanceList?.count,
+                       Int(userBalanceCount!),
+                       "\(testCaseDescription!) - The `count` should be \(userBalanceCount!)")
+        XCTAssertNotNil(userBalanceList?.data, "\(testCaseDescription!) - The `data` should be not nil")
+        XCTAssertNotNil(userBalanceList?.links, "\(testCaseDescription!) - The `links` should be not nil")
         XCTAssertNotNil(userBalanceList?.links?.first?.params?.rel)
 
         if let userBalance = userBalanceList?.data?.first {
             XCTAssertEqual(userBalance.amount, amount)
             XCTAssertEqual(userBalance.currency, expectedCurrency)
         } else {
-            assertionFailure("The user balance should be not nil")
+            assertionFailure("\(testCaseDescription!) - The user balance should be not nil")
         }
     }
 
@@ -66,44 +69,47 @@ class HyperwalletBalanceTests: XCTestCase {
         let testSuite = XCTestSuite(name: String(describing: self))
         let testParameters = getTestParameters()
 
-        for testParameter in testParameters {
-            addTest(balanceResponse: testParameter[0]!,
-                    currency: testParameter[1],
-                    sortBy: testParameter[2],
-                    expectedCurrency: testParameter[3]!,
-                    amount: testParameter[4]!,
-                    userBalanceCount: testParameter[5]!,
-                    toTestSuite: testSuite)
+        for testCaseParameters in testParameters {
+            addTest(testCaseParameters, toTestSuite: testSuite)
         }
         return testSuite
     }
 
-    // swiftlint:disable function_parameter_count
-    private static func addTest(balanceResponse: String,
-                                currency: String?,
-                                sortBy: String?,
-                                expectedCurrency: String,
-                                amount: String,
-                                userBalanceCount: String,
+    private static func addTest(_ testCaseParameters: [String?],
                                 toTestSuite testSuite: XCTestSuite) {
         testInvocations.forEach { invocation in
             let testCase = HyperwalletBalanceTests(invocation: invocation)
-            testCase.balanceResponse = balanceResponse
-            testCase.currency = currency
-            testCase.sortBy = sortBy
-            testCase.expectedCurrency = expectedCurrency
-            testCase.amount = amount
-            testCase.userBalanceCount = userBalanceCount
+            testCase.testCaseDescription = testCaseParameters[0]!
+            testCase.mockResponseFileName = testCaseParameters[1]!
+            testCase.currency = testCaseParameters[2]
+            testCase.sortBy = testCaseParameters[3]
+            testCase.expectedCurrency = testCaseParameters[4]!
+            testCase.amount = testCaseParameters[5]!
+            testCase.userBalanceCount = testCaseParameters[6]!
             testSuite.addTest(testCase)
         }
     }
 
     private static func getTestParameters() -> [[String?]] {
+        // Each test case parameter contains
+        // testCaseDescription, mockResponseFileName, currency, sortBy, expectedCurrency, amount, userBalanceCount
         let testParameters = [
-            ["ListUserBalancesResponseWithCurrency", "USD", "currency", "USD", "9933.35", "1"],
-            ["ListUserBalancesResponseWithoutCurrency", nil, "currency", "CAD", "988.03", "10"],
-            ["ListUserBalancesResponseSortCurrencyDesc", nil, "-currency", "USD", "9933.35", "10"],
-            ["ListUserBalancesResponseWithoutCurrency", nil, nil, "CAD", "988.03", "10"]
+            [
+                "List of balances for USD, sorted on currency",
+                "ListUserBalancesResponseWithCurrency", "USD", "currency", "USD", "9933.35", "1"
+            ],
+            [
+                "List of balances without currency, sorted on currency",
+                "ListUserBalancesResponseWithoutCurrency", nil, "currency", "CAD", "988.03", "10"
+            ],
+            [
+                "List of balances without currency, sorted on currency descending",
+                "ListUserBalancesResponseSortCurrencyDesc", nil, "-currency", "USD", "9933.35", "10"
+            ],
+            [
+                "List of balances without currency and sortBy",
+                "ListUserBalancesResponseWithoutCurrency", nil, nil, "CAD", "988.03", "10"
+            ]
         ]
         return testParameters
     }
