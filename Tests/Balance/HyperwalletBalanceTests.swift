@@ -70,12 +70,12 @@ class HyperwalletBalanceTests: XCTestCase {
         let testParameters = getTestParameters()
 
         for testCaseParameters in testParameters {
-            addTest(testCaseParameters, toTestSuite: testSuite)
+            addTest(with: testCaseParameters, toTestSuite: testSuite)
         }
         return testSuite
     }
 
-    private static func addTest(_ testCaseParameters: [String?],
+    private static func addTest(with testCaseParameters: [String?],
                                 toTestSuite testSuite: XCTestSuite) {
         testInvocations.forEach { invocation in
             let testCase = HyperwalletBalanceTests(invocation: invocation)
