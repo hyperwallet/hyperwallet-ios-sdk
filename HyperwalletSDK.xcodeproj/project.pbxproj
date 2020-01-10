@@ -47,8 +47,8 @@
 		B327ED7F23C66B6B0007EF58 /* HyperwalletBalance.swift in Sources */ = {isa = PBXBuildFile; fileRef = B327ED7E23C66B6B0007EF58 /* HyperwalletBalance.swift */; };
 		B327ED8123C66D350007EF58 /* HyperwalletBalanceQueryParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = B327ED8023C66D350007EF58 /* HyperwalletBalanceQueryParam.swift */; };
 		B327ED8723C689570007EF58 /* HyperwalletBalanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B327ED8523C688A00007EF58 /* HyperwalletBalanceTests.swift */; };
-		B327ED8923C691880007EF58 /* ListUserBalancesResponseWithCurrency.json in Resources */ = {isa = PBXBuildFile; fileRef = B327ED8823C691880007EF58 /* ListUserBalancesResponseWithCurrency.json */; };
-		B327ED8B23C6A5C70007EF58 /* ListUserBalancesResponseWithoutCurrency.json in Resources */ = {isa = PBXBuildFile; fileRef = B327ED8A23C6A5C60007EF58 /* ListUserBalancesResponseWithoutCurrency.json */; };
+		B327ED8923C691880007EF58 /* ListUserBalancesResponseWithCurrencyFilter.json in Resources */ = {isa = PBXBuildFile; fileRef = B327ED8823C691880007EF58 /* ListUserBalancesResponseWithCurrencyFilter.json */; };
+		B327ED8B23C6A5C70007EF58 /* ListUserBalancesResponseSuccess.json in Resources */ = {isa = PBXBuildFile; fileRef = B327ED8A23C6A5C60007EF58 /* ListUserBalancesResponseSuccess.json */; };
 		B327ED8D23C6B43E0007EF58 /* ListUserBalancesResponseSortCurrencyDesc.json in Resources */ = {isa = PBXBuildFile; fileRef = B327ED8C23C6B43E0007EF58 /* ListUserBalancesResponseSortCurrencyDesc.json */; };
 		DB0AFDF32277725600ABEFFD /* HyperwalletUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0AFDF22277725600ABEFFD /* HyperwalletUser.swift */; };
 		DB0AFDF62277869500ABEFFD /* HyperwalletUserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0AFDF42277868E00ABEFFD /* HyperwalletUserTests.swift */; };
@@ -172,8 +172,8 @@
 		B327ED7E23C66B6B0007EF58 /* HyperwalletBalance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperwalletBalance.swift; sourceTree = "<group>"; };
 		B327ED8023C66D350007EF58 /* HyperwalletBalanceQueryParam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperwalletBalanceQueryParam.swift; sourceTree = "<group>"; };
 		B327ED8523C688A00007EF58 /* HyperwalletBalanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperwalletBalanceTests.swift; sourceTree = "<group>"; };
-		B327ED8823C691880007EF58 /* ListUserBalancesResponseWithCurrency.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ListUserBalancesResponseWithCurrency.json; sourceTree = "<group>"; };
-		B327ED8A23C6A5C60007EF58 /* ListUserBalancesResponseWithoutCurrency.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ListUserBalancesResponseWithoutCurrency.json; sourceTree = "<group>"; };
+		B327ED8823C691880007EF58 /* ListUserBalancesResponseWithCurrencyFilter.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ListUserBalancesResponseWithCurrencyFilter.json; sourceTree = "<group>"; };
+		B327ED8A23C6A5C60007EF58 /* ListUserBalancesResponseSuccess.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ListUserBalancesResponseSuccess.json; sourceTree = "<group>"; };
 		B327ED8C23C6B43E0007EF58 /* ListUserBalancesResponseSortCurrencyDesc.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ListUserBalancesResponseSortCurrencyDesc.json; sourceTree = "<group>"; };
 		DB0AFDF22277725600ABEFFD /* HyperwalletUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperwalletUser.swift; sourceTree = "<group>"; };
 		DB0AFDF42277868E00ABEFFD /* HyperwalletUserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperwalletUserTests.swift; sourceTree = "<group>"; };
@@ -480,8 +480,8 @@
 			isa = PBXGroup;
 			children = (
 				B327ED8523C688A00007EF58 /* HyperwalletBalanceTests.swift */,
-				B327ED8823C691880007EF58 /* ListUserBalancesResponseWithCurrency.json */,
-				B327ED8A23C6A5C60007EF58 /* ListUserBalancesResponseWithoutCurrency.json */,
+				B327ED8823C691880007EF58 /* ListUserBalancesResponseWithCurrencyFilter.json */,
+				B327ED8A23C6A5C60007EF58 /* ListUserBalancesResponseSuccess.json */,
 				B327ED8C23C6B43E0007EF58 /* ListUserBalancesResponseSortCurrencyDesc.json */,
 			);
 			path = Balance;
@@ -721,8 +721,8 @@
 				DBCA37B0225D6D1700CD4137 /* StatusTransitionMockedResponseSuccess.json in Resources */,
 				DBCA37C0225D6E3A00CD4137 /* TransferMethodMockedSuccessResponse.json in Resources */,
 				64D2493F22BD0FA300561C14 /* CreateTransferResponse.json in Resources */,
-				B327ED8923C691880007EF58 /* ListUserBalancesResponseWithCurrency.json in Resources */,
-				B327ED8B23C6A5C70007EF58 /* ListUserBalancesResponseWithoutCurrency.json in Resources */,
+				B327ED8923C691880007EF58 /* ListUserBalancesResponseWithCurrencyFilter.json in Resources */,
+				B327ED8B23C6A5C70007EF58 /* ListUserBalancesResponseSuccess.json in Resources */,
 				DBCA37BC225D6DD900CD4137 /* BankCardErrorResponseWithMissingCardNumber.json in Resources */,
 				DB764E91227833E10053BB91 /* UserBusinessResponse.json in Resources */,
 				DBCA37B9225D6D1700CD4137 /* BankCardErrorResponseWithInvalidBranchId.json in Resources */,

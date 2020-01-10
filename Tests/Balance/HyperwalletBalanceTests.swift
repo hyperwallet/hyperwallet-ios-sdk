@@ -3,12 +3,12 @@ import Hippolyte
 import XCTest
 
 class HyperwalletBalanceTests: XCTestCase {
-    private var testCaseDescription: String?
-    private var mockResponseFileName: String?
-    private var currency: String?
-    private var sortBy: String?
-    private var expectedCurrency: String?
     private var amount: String?
+    private var currency: String?
+    private var expectedCurrency: String?
+    private var mockResponseFileName: String?
+    private var sortBy: String?
+    private var testCaseDescription: String?
     private var userBalanceCount: String?
 
     override func setUp() {
@@ -96,11 +96,11 @@ class HyperwalletBalanceTests: XCTestCase {
         let testParameters = [
             [
                 "List of balances for USD, sorted on currency",
-                "ListUserBalancesResponseWithCurrency", "USD", "currency", "USD", "9933.35", "1"
+                "ListUserBalancesResponseWithCurrencyFilter", "USD", "currency", "USD", "9933.35", "1"
             ],
             [
                 "List of balances without currency, sorted on currency",
-                "ListUserBalancesResponseWithoutCurrency", nil, "currency", "CAD", "988.03", "10"
+                "ListUserBalancesResponseSuccess", nil, "currency", "CAD", "988.03", "10"
             ],
             [
                 "List of balances without currency, sorted on currency descending",
@@ -108,7 +108,7 @@ class HyperwalletBalanceTests: XCTestCase {
             ],
             [
                 "List of balances without currency and sortBy",
-                "ListUserBalancesResponseWithoutCurrency", nil, nil, "CAD", "988.03", "10"
+                "ListUserBalancesResponseSuccess", nil, nil, "CAD", "988.03", "10"
             ]
         ]
         return testParameters
