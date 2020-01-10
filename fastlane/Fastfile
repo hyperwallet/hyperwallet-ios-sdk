@@ -32,7 +32,6 @@ def update(type, version)
   pod_lib_lint(allow_warnings: true, skip_tests: true)
   version_bump_podspec(version_number: version, path: podspec_name)
   increment_version_number(version_number: version)
-  get_version_number(target: "HyperwalletSDK")
   git_add(path: podspec_name)
   git_add(path: "**/Info.plist")
   git_commit(path: [podspec_name, "**/Info.plist"],
