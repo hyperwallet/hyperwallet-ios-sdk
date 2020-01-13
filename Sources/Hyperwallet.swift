@@ -765,6 +765,38 @@ public final class Hyperwallet: NSObject {
                                     completionHandler: completion)
     }
 
+    /// Returns the list of balances for the User associated with the authentication token.
+    ///
+    /// The ordering and filtering of `HyperwalletBalance` will be based on the criteria specified within the
+    /// `HyperwalletBalanceQueryParam` object, if it is not nil. Otherwise the default ordering and
+    /// filtering will be applied.
+    ///
+    /// * Offset: 0
+    /// * Limit: 10
+    /// * Currency: All
+    /// * Sort By: currency
+    ///
+    /// The `completion: @escaping (HyperwalletPageList<HyperwalletBalance>?, HyperwalletErrorType?) -> Void`
+    /// that is passed in to this method invocation will receive the successful
+    /// response(HyperwalletPageList<HyperwalletBalance>?) or error(HyperwalletErrorType) from processing
+    /// the request.
+    ///
+    /// This function will request a new authentication token via `HyperwalletAuthenticationTokenProvider`
+    /// if the current one is expired or is about to expire.
+    ///
+    /// - Parameters:
+    ///   - queryParam: the ordering and filtering criteria
+    ///   - completion: the callback handler of responses from the Hyperwallet platform
+    public func listUserBalances(queryParam: HyperwalletBalanceQueryParam? = nil,
+                                 completion: @escaping (HyperwalletPageList<HyperwalletBalance>?,
+        HyperwalletErrorType?) -> Void) {
+        httpTransaction.performRest(httpMethod: .get,
+                                    urlPath: "users/%@/balances",
+                                    payload: "",
+                                    queryParam: queryParam,
+                                    completionHandler: completion)
+    }
+
     private func transferMethodConfigurationFieldResponseHandler(_ completionHandler: @escaping (
         (TransferMethodConfigurationFieldResult?, HyperwalletErrorType?) -> Void))
         -> (TransferMethodConfigurationField?, HyperwalletErrorType?) -> Void {
