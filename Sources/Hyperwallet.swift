@@ -47,7 +47,7 @@ public final class Hyperwallet: NSObject {
         self.httpTransaction = HTTPTransaction(provider: provider)
     }
 
-    /// Clearing Hyperwallet instance.
+    /// Clears Hyperwallet instance.
     public static func clearInstance() {
         if let httpTransaction = instance?.httpTransaction {
             httpTransaction.invalidate()
