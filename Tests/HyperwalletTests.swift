@@ -68,6 +68,7 @@ class HyperwalletTests: XCTestCase {
             error: authErrorResponse)
 
         // When
+        Hyperwallet.clearInstance()
         Hyperwallet.setup(authenticationProvider)
         Hyperwallet.shared.getConfiguration(completion: { (result, error) in
             configuration = result
@@ -80,6 +81,7 @@ class HyperwalletTests: XCTestCase {
         XCTAssertNil(configuration, "Configuration should not be returned")
         XCTAssertNotNil(errorResponse, "A valid error response should be returned")
         XCTAssertTrue(errorResponse?.getAuthenticationError()?.message() == "Authentication token cannot be retrieved")
+        Hyperwallet.clearInstance()
     }
 
     func testSetup_getConfiguration_decodeError() {
@@ -91,6 +93,7 @@ class HyperwalletTests: XCTestCase {
         let authenticationProvider = AuthenticationProviderMock(authorizationData: "Garbage")
 
         // When
+        Hyperwallet.clearInstance()
         Hyperwallet.setup(authenticationProvider)
         Hyperwallet.shared.getConfiguration(completion: { (result, error) in
             configuration = result
@@ -104,5 +107,6 @@ class HyperwalletTests: XCTestCase {
         XCTAssertNotNil(errorResponse, "A valid error response should be returned")
         XCTAssertTrue(errorResponse?.getHyperwalletErrors()?.errorList?.count == 1)
         XCTAssertTrue(errorResponse?.getHyperwalletErrors()?.errorList?[0].message == "Invalid Authnetication token")
+        Hyperwallet.clearInstance()
     }
 }
