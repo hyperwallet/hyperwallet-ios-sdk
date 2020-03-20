@@ -109,8 +109,7 @@ public enum HyperwalletErrorType: Error, LocalizedError {
             return httpCode == 400
                 ? HyperwalletErrorGroup.business
                 : HyperwalletErrorGroup.unexpected
-        case .authenticationError,
-             .parseError,
+        case .parseError,
              .notInitialized,
              .invalidUrl,
              .transactionAborted,
@@ -121,6 +120,9 @@ public enum HyperwalletErrorType: Error, LocalizedError {
 
         case .connectionError:
             return HyperwalletErrorGroup.connection
+
+        case .authenticationError:
+            return HyperwalletErrorGroup.authentication
         }
     }
 
@@ -201,6 +203,8 @@ public enum HyperwalletErrorGroup: String {
     case unexpected = "UNEXPECTED_ERROR"
     /// Returned when a connection error is thrown
     case connection = "CONNECTION_ERROR"
+    /// Returned when a authentication error is thrown
+    case authentication = "AUTHENTICATION_ERROR"
 }
 
 internal struct ErrorTypeHelper {

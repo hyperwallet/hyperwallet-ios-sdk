@@ -221,7 +221,7 @@ class HyperwalletErrorTests: XCTestCase {
         // When
         XCTAssertNotNil(testAuthErrorExpired)
         XCTAssertEqual("Expired", testAuthErrorExpiredMessage, "Should be 'Expired'")
-        XCTAssertEqual("UNEXPECTED_ERROR", testAuthErrorExpiredGroup, "Should be 'UNEXPECTED_ERROR'")
+        XCTAssertEqual("AUTHENTICATION_ERROR", testAuthErrorExpiredGroup, "Should be 'AUTHENTICATION_ERROR'")
         XCTAssertNil(testAuthErrorExpired.getHttpCode())
     }
 
@@ -237,6 +237,6 @@ class HyperwalletErrorTests: XCTestCase {
         XCTAssertNotNil(testAuthErrorUnexpected)
         XCTAssertNil(testAuthErrorUnexpected.getHyperwalletErrors())
         XCTAssertEqual("Unexpected", testAuthErrorUnexpectedMessage, "Should be 'Unexpected'")
-        XCTAssertEqual("UNEXPECTED_ERROR", testAuthErrorUnexpectedGroup, "Should be 'UNEXPECTED_ERROR'")
+        XCTAssertEqual("AUTHENTICATION_ERROR", testAuthErrorUnexpectedGroup, "Should be 'AUTHENTICATION_ERROR'")
     }
 }
