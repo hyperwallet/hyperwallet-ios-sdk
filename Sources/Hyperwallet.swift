@@ -47,15 +47,22 @@ public final class Hyperwallet: NSObject {
         self.httpTransaction = HTTPTransaction(provider: provider)
     }
 
+    /// Clears Hyperwallet instance.
+    public static func clearInstance() {
+        if let httpTransaction = instance?.httpTransaction {
+            httpTransaction.invalidate()
+        }
+        instance = nil
+    }
+
     /// Creates a new instance of the Hyperwallet Core SDK interface object. If a previously created instance exists,
     /// it will be replaced.
     ///
     /// - Parameter provider: a provider of Hyperwallet authentication tokens.
     public static func setup(_ provider: HyperwalletAuthenticationTokenProvider) {
-        if instance?.httpTransaction != nil {
-            instance?.httpTransaction.invalidate()
+        if instance == nil {
+            instance = Hyperwallet(provider)
         }
-        instance = Hyperwallet(provider)
     }
 
     /// Retrieves a configuration if one exists - else using the authentication token from the provider,
