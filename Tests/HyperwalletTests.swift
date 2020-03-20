@@ -109,4 +109,17 @@ class HyperwalletTests: XCTestCase {
         XCTAssertTrue(errorResponse?.getHyperwalletErrors()?.errorList?[0].message == "Invalid Authnetication token")
         Hyperwallet.clearInstance()
     }
+
+    func testClearInstance() {
+        Hyperwallet.setup(HyperwalletTestHelper.authenticationProvider)
+        let hyperwalletInstance1 = Hyperwallet.shared
+        XCTAssertNotNil(hyperwalletInstance1)
+        Hyperwallet.clearInstance()
+        Hyperwallet.setup(HyperwalletTestHelper.authenticationProvider)
+        let hyperwalletInstance2 = Hyperwallet.shared
+        XCTAssertNotNil(hyperwalletInstance2)
+        XCTAssertNotEqual(hyperwalletInstance1,
+                          hyperwalletInstance2,
+                          "hyperwalletInstance2 should not be same as hyperwalletInstance1")
+    }
 }
