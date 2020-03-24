@@ -106,7 +106,7 @@ public enum HyperwalletErrorType: Error, LocalizedError {
     public var group: HyperwalletErrorGroup {
         switch self {
         case .http(_, let httpCode):
-            return httpCode == 400
+            return (httpCode == 400 || httpCode == 401)
                 ? HyperwalletErrorGroup.business
                 : HyperwalletErrorGroup.unexpected
         case .parseError,
