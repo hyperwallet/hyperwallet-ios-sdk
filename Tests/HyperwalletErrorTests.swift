@@ -81,11 +81,11 @@ class HyperwalletErrorTests: XCTestCase {
     func testHyperwalletError_generalHttpError() {
         let hyperwalletError = HyperwalletError(message: "Please check your login credentials and try again",
                                                 code: "INCORRECT_LOGIN_CREDENTIALS")
-        let testErrorTypeHttp = HyperwalletErrorType.http(HyperwalletErrors(errorList: [hyperwalletError]), 401)
+        let testErrorTypeHttp = HyperwalletErrorType.http(HyperwalletErrors(errorList: [hyperwalletError]), 402)
 
         XCTAssertNotNil(testErrorTypeHttp)
-        XCTAssertEqual(testErrorTypeHttp.group, HyperwalletErrorGroup.business)
-     }
+        XCTAssertEqual(testErrorTypeHttp.group, HyperwalletErrorGroup.unexpected)
+    }
 
     func testHyperwalletError_initializeHyperwalletNotInitializedError() {
         // Given
