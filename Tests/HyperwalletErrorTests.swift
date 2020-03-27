@@ -84,7 +84,7 @@ class HyperwalletErrorTests: XCTestCase {
         let testErrorTypeHttp = HyperwalletErrorType.http(HyperwalletErrors(errorList: [hyperwalletError]), 401)
 
         XCTAssertNotNil(testErrorTypeHttp)
-        XCTAssertEqual(testErrorTypeHttp.group, HyperwalletErrorGroup.unexpected)
+        XCTAssertEqual(testErrorTypeHttp.group, HyperwalletErrorGroup.business)
      }
 
     func testHyperwalletError_initializeHyperwalletNotInitializedError() {
