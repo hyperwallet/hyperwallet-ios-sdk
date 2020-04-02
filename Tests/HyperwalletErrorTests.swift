@@ -79,9 +79,9 @@ class HyperwalletErrorTests: XCTestCase {
     }
 
     func testHyperwalletError_generalHttpError() {
-        let hyperwalletError = HyperwalletError(message: "Please check your login credentials and try again",
-                                                code: "INCORRECT_LOGIN_CREDENTIALS")
-        let testErrorTypeHttp = HyperwalletErrorType.http(HyperwalletErrors(errorList: [hyperwalletError]), 402)
+        let hyperwalletError = HyperwalletError(message: "The caller does not have access to the requested resource",
+                                                code: "FORBIDDEN")
+        let testErrorTypeHttp = HyperwalletErrorType.http(HyperwalletErrors(errorList: [hyperwalletError]), 403)
 
         XCTAssertNotNil(testErrorTypeHttp)
         XCTAssertEqual(testErrorTypeHttp.group, HyperwalletErrorGroup.unexpected)
