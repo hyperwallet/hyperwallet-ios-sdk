@@ -135,8 +135,6 @@ final class HTTPTransaction {
                 } catch {
                     completionHandler(nil, ErrorTypeHelper.invalidRequest(for: error))
                 }
-            } else {
-                completionHandler(nil, ErrorTypeHelper.unexpectedError())
             }
     }
 

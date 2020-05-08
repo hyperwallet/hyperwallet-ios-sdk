@@ -63,6 +63,3 @@ Carthage/
 # Fastlane
 fastlane/README.md
 fastlane/report.xml
-
-# Gem
-Gemfile.lock
