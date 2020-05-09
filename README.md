@@ -7,6 +7,7 @@
 [![CocoaPods](https://img.shields.io/cocoapods/v/HyperwalletSDK.svg?color=lightgray)](https://cocoapods.org/pods/HyperwalletSDK)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
+NOTE: This is a beta product available for use in your mobile app. If you are interested in using this product, please notify your Relationship Manager and / or Project Manager to support you during the integration process.
 
 Welcome to Hyperwallet's iOS SDK. This library will help you create transfer methods in your iOS app, such as bank account, PayPal account, etc. See our [iOS Integration Guide](https://www.hyperwallet.com/developers/) to get started!
 
@@ -26,13 +27,13 @@ Use [Carthage](https://github.com/Carthage/Carthage) or [CocoaPods](https://coco
 ### Carthage
 Specify it in your Cartfile:
 ```ogdl
-github "hyperwallet/hyperwallet-ios-sdk" "1.0.0-beta05"
+github "hyperwallet/hyperwallet-ios-sdk" "1.0.0-beta06"
 ```
 
 ### CocoaPods
 Specify it in your Podfile:
 ```ruby
-pod 'HyperwalletSDK', '~> 1.0.0-beta05'
+pod 'HyperwalletSDK', '~> 1.0.0-beta06'
 ```
 
 ## Initialization
@@ -464,6 +465,28 @@ Hyperwallet.shared.listTransfers { (result, error) in
         }
     }
 })
+```
+
+### List User Balances
+```swift
+let balanceQueryParam = HyperwalletBalanceQueryParam()
+balanceQueryParam.currency = "USD"
+balanceQueryParam.sortBy = HyperwalletBalanceQueryParam.QuerySortable.descendantAmount.rawValue
+
+Hyperwallet.shared.listUserBalances(queryParam: balanceQueryParam) { (result, error) in
+    // In case of failure, error (HyperwalletErrorType) will contain HyperwalletErrors containing information about what caused the failure
+    guard error == nil else {
+    print(error?.getHyperwalletErrors()?.errorList?)
+    return
+    }
+
+    // In case of successful, response (HyperwalletPageList<HyperwalletBalance>? in this case) will contain information about or nil if not exist.
+    if let balances = result?.data {
+        for balance in balances {
+            print(balance.amount ?? "")
+        }
+    }
+}
 ```
 
 ## Transfer Method Configurations

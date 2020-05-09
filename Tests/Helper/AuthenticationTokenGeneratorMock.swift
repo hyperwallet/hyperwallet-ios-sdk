@@ -6,6 +6,8 @@ struct AuthenticationTokenGeneratorMock {
     private var restUrl: String
     private var graphQlUrl: String
     private var minuteExpireIn: Int
+    private let insightsUrl: String?
+    private let environment: String?
 
     init(hostName: String = "localhost",
          minuteExpireIn: Int = 10,
@@ -14,6 +16,8 @@ struct AuthenticationTokenGeneratorMock {
         self.graphQlUrl = "https://\(hostName)/graphql"
         self.minuteExpireIn = minuteExpireIn
         self.userToken = userToken
+        self.insightsUrl = "http://insights.url"
+        self.environment = "DEV"
     }
 
     init(
@@ -23,6 +27,8 @@ struct AuthenticationTokenGeneratorMock {
         self.graphQlUrl = graphQlUrl
         self.minuteExpireIn = 10
         self.userToken = "YourUserToken"
+        self.insightsUrl = "http://insights.url"
+        self.environment = "DEV"
     }
 
     /// Returns the Authentication Token
@@ -45,7 +51,34 @@ struct AuthenticationTokenGeneratorMock {
         "aud": "abc-00000-00000",
         "iss": "cbd-00000-00000",
         "rest-uri": "\(restUrl)",
-        "graphql-uri": "\(graphQlUrl)"
+        "graphql-uri": "\(graphQlUrl)",
+        "insights-uri": "\(insightsUrl!)",
+        "environment": "\(environment!)",
+        }
+        """
+    }
+
+    /// Returns the Authentication Token
+    var tokenWithoutInsightsProperties: String {
+        let headerBase64 = Data(header.utf8).base64EncodedString()
+        let payloadBase64 = Data(payloadWithoutInsightsProperties.utf8).base64EncodedString()
+        let signatureBase64 = Data("fake Signature".utf8).base64EncodedString()
+
+        return "\(headerBase64).\(payloadBase64).\(signatureBase64)"
+    }
+
+    private var payloadWithoutInsightsProperties: String {
+        let currentDate = Date()
+        let expireIn = buildFutureDate(baseDate: currentDate, minute: minuteExpireIn)
+        return """
+        {
+        "sub": "\(userToken)",
+        "iat": \(Int(currentDate.timeIntervalSince1970)),
+        "exp": \(expireIn),
+        "aud": "abc-00000-00000",
+        "iss": "cbd-00000-00000",
+        "rest-uri": "\(restUrl)",
+        "graphql-uri": "\(graphQlUrl)",
         }
         """
     }

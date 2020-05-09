@@ -18,8 +18,10 @@
 
 import Foundation
 
-/// Representation of the GraphQL's Connection type
-public struct Connection<T: Codable>: Codable {
-    /// Array of Connection type
-    public let nodes: [T]?
+/// Details of the balance.
+public struct HyperwalletBalance: Decodable {
+    /// The currency of balance
+    public let currency: String?
+    /// The amount of balance
+    public let amount: String?
 }

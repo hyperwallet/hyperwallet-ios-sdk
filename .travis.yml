@@ -1,5 +1,5 @@
 language: swift
-osx_image: xcode10.2
+osx_image: xcode11.1
 os: osx
 branches:
  only:
@@ -15,7 +15,7 @@ env:
   - IOS_FRAMEWORK_SCHEME="HyperwalletSDK"
 
   matrix:
-    - ios_version='12.1'  ios_device='iPhone XR' scheme="$IOS_FRAMEWORK_SCHEME"  platform='iOS Simulator'
+    - ios_version='13.1'  ios_device='iPhone 11' scheme="$IOS_FRAMEWORK_SCHEME"  platform='iOS Simulator'
 before_install:
   # Boot the emulator by ID
   - |
@@ -33,6 +33,8 @@ before_install:
   - xcrun simctl list | grep "(Booted)"
   # Print the swiftlint version
   - swiftlint version
+  # Installing Jazzy
+  - gem install jazzy
 script: |
   set -o pipefail
   set -e
@@ -45,5 +47,7 @@ script: |
     -configuration Debug ONLY_ACTIVE_ARCH=YES ENABLE_TESTABILITY=YES CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
   # Lint - Add `--strict` to fail for warning and violation
   swiftlint lint --reporter json
-
-after_success: slather
+after_success:
+    - slather
+    - make docs
+    - if [ $TRAVIS_BRANCH = 'master' ] && [ $TRAVIS_PULL_REQUEST = 'false' ]; then sh ./Scripts/travisPublishDocs.sh; fi

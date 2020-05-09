@@ -18,41 +18,72 @@
 
 import Foundation
 
+/// Representation of a `HyperwalletForeignExchange`
 public struct HyperwalletForeignExchange: Codable {
+    /// The destination amount
     public let destinationAmount: String?
+    /// The destination currency
     public let destinationCurrency: String?
+    /// The rate
     public let rate: String?
+    /// The source amount
     public let sourceAmount: String?
+    /// The source currency
     public let sourceCurrency: String?
 }
-
+/// Representation of a `HyperwalletTransfer`
 public struct HyperwalletTransfer: Codable {
+    /// A value that identifies the client transfer id.
     public let clientTransferId: String
+    /// The created date
     public let createdOn: String?
+    /// The destination amount
     public let destinationAmount: String?
+    /// The destination currency
     public let destinationCurrency: String?
+    /// The destination amount
     public let destinationFeeAmount: String?
+    /// The destination token
     public let destinationToken: String
+    /// The expiresOn
     public let expiresOn: String?
+    /// The list of foreignExchanges
     public let foreignExchanges: [HyperwalletForeignExchange]?
+    /// The memo
     public let memo: String?
+    /// The notes to add
     public let notes: String?
+    /// The source amount
     public let sourceAmount: String?
+    /// The source currency
     public let sourceCurrency: String?
+    /// The source fee
     public let sourceFeeAmount: String?
+    /// The source token
     public let sourceToken: String
+    /// The transfer status
     public let status: HyperwalletTransferStatus?
+    /// The token
     public let token: String?
-
+    /// Representation of a `HyperwalletTransferStatus`
     public enum HyperwalletTransferStatus: String, Codable {
+        /// The transfer status is cancelled
         case cancelled              = "CANCELLED"
+        /// The transfer status is completed
         case completed              = "COMPLETED"
+        /// The transfer status is expired
         case expired                = "EXPIRED"
+        /// The transfer status is failed
         case failed                 = "FAILED"
+        /// The transfer status is in Progress
         case inProgress             = "IN_PROGRESS"
+        /// The transfer status is quoted
         case quoted                 = "QUOTED"
+        /// The transfer status is returned
         case returned               = "RETURNED"
+        /// The transfer status is scheduled
         case scheduled              = "SCHEDULED"
+        /// The verification required
         case verificationRequired   = "VERIFICATION_REQUIRED"
     }
 

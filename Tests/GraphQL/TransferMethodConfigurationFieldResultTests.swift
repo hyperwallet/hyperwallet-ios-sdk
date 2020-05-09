@@ -41,10 +41,10 @@ class TransferMethodConfigurationFieldResultTests: XCTestCase {
                        2,
                        "The amount of groups is different from the expected value")
         XCTAssertEqual(fieldResult.fieldGroups()?.first?.group,
-                       "IDENTIFICATION",
+                       "ACCOUNT_HOLDER",
                        "First group should be IDENTIFICATION")
         XCTAssertEqual(fieldResult.fieldGroups()?.last?.group,
-                       "BUSINESS_INFORMATION",
+                       "ACCOUNT_INFORMATION",
                        "Last group should be BUSINESS_INFORMATION")
     }
 

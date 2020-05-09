@@ -19,51 +19,48 @@
 import Foundation
 
 /// Representation of a `HyperwalletCountry` node
-///
-/// - code: The 2 letter ISO 3166-1 country code
-/// - name: The country name
-/// - currencies: The `HyperwalletCurrency` nodes that connect to this country node
 public struct HyperwalletCountry: Codable {
+    /// The 2 letter ISO 3166-1 country code
     public let code: String?
+    /// The country name
     public let name: String?
+    /// The `HyperwalletCurrency` nodes that connect to this country node
     public let currencies: Connection<HyperwalletCurrency>?
 }
 
 /// Representation of a `HyperwalletCurrency` node
-///
-/// - code: The 3 letter ISO 4217-1 currency code
-/// - name: The currency name
-/// - currencies: The `HyperwalletTransferMethodType` nodes that connect to this currency node
 public struct HyperwalletCurrency: Codable {
+    /// The 3 letter ISO 4217-1 currency code
     public let code: String?
+    /// The currency name
     public let name: String?
+    /// The `HyperwalletTransferMethodType` nodes that connect to this currency node
     public let transferMethodTypes: Connection<HyperwalletTransferMethodType>?
 }
 
 /// Representation of the transfer method configuration field data type
-///
-/// - text: The text field type
-/// - selection: The selecion option field type
-/// - boolean: The boolean field type
-/// - number: The numeric field type
-/// - range: The range field type
-/// - date: the date field type
-/// - datetime: The datetime field type
-/// - expiryDate: The expiry date field type
-/// - phone: The phone field type
-/// - email: The email field type
-/// - file: The file field type
 public enum HyperwalletDataType: String, Codable {
+    /// The text field type
     case text = "TEXT"
+    /// The selecion option field type
     case selection = "SELECTION"
+    /// The boolean field type
     case boolean = "BOOLEAN"
+    /// The numeric field type
     case number = "NUMBER"
+    /// The range field type
     case range = "RANGE"
+    /// The date field type
     case date = "DATE"
+    /// The datetime field type
     case datetime = "DATETIME"
+    /// The expiry date field type
     case expiryDate = "EXPIRY_DATE"
+    /// The phone field type
     case phone = "PHONE"
+    /// The email field type
     case email = "EMAIL"
+    /// The file field type
     case file = "FILE"
 }
 
@@ -107,11 +104,15 @@ public struct HyperwalletField: Codable {
     public let validationMessage: HyperwalletValidationMessage?
     /// The field value
     public let value: String?
+    /// The mask, or nil if none exists
+    public let mask: HyperwalletMask?
 }
 
 /// Representation of list of HyperwalletField and the group to which it belongs
 public struct HyperwalletFieldGroup: Codable {
+    /// The group
     public let group: String?
+    /// The list of HyperwalletField
     public let fields: [HyperwalletField]?
 }
 
@@ -125,16 +126,24 @@ public struct HyperwalletFieldSelectionOption: Codable {
 
 /// Representation of the transfer method configuration field processing times
 public struct HyperwalletProcessingTime: Codable {
+    /// The country to process
     public let country: String?
+    /// The currency to process
     public let currency: String?
+    /// The transfer method type
     public let transferMethodType: String?
+    /// The value to process
     public let value: String?
 }
-
+/// Representation of transfer method type
 public struct HyperwalletTransferMethodType: Codable {
+    /// The country code
     public let code: String?
+    /// The country name
     public let name: String?
+    /// The fees for transfer
     public let fees: Connection<HyperwalletFee>?
+    /// The processing time for transfer
     public let processingTimes: Connection<HyperwalletProcessingTime>?
 }
 
@@ -169,4 +178,22 @@ public struct TransferMethodConfiguration: Codable {
     let profile: String?
     /// The `HyperwalletFieldGroup`, or nil if none exists
     let fieldGroups: Connection<HyperwalletFieldGroup>?
+}
+
+/// Representation of the transfer method configuration field mask
+public struct HyperwalletMask: Codable {
+    /// The conditional pattern, or nil if none exists
+    public let conditionalPatterns: [HyperwalletConditionalPattern]?
+    /// The default pattern
+    public let defaultPattern: String
+    /// The scrub regex, or nil if none exists
+    public let scrubRegex: String?
+}
+
+/// Representation of the transfer method configuration field conditionalPatterns
+public struct HyperwalletConditionalPattern: Codable {
+    /// The pattern
+    public let pattern: String
+    /// The regex
+    public let regex: String
 }

@@ -18,8 +18,32 @@
 
 import Foundation
 
-/// Representation of the GraphQL's Connection type
-public struct Connection<T: Codable>: Codable {
-    /// Array of Connection type
-    public let nodes: [T]?
+/// Representation of the balance QueryParam fields.
+public class HyperwalletBalanceQueryParam: QueryParam {
+    /// A value that identifies the currency of balance
+    public var currency: String?
+
+    enum QueryParam: String {
+        case currency
+    }
+
+    /// Representation of the sortable fields
+    public enum QuerySortable: String {
+        /// Sort the result by ascendant amount
+        case ascendantAmount = "+amount"
+        /// Sort the result by ascendant currency
+        case ascendantCurrency = "+currency"
+        /// Sort the result by descendant amount
+        case descendantAmount = "-amount"
+        /// Sort the result by descendant currency
+        case descendantCurrency = "-currency"
+    }
+
+    override func toQuery() -> [String: String] {
+        var query = super.toQuery()
+        if let currency = currency {
+            query[QueryParam.currency.rawValue] = currency
+        }
+        return query
+    }
 }
