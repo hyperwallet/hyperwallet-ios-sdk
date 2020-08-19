@@ -7,7 +7,6 @@
 [![CocoaPods](https://img.shields.io/cocoapods/v/HyperwalletSDK.svg?color=lightgray)](https://cocoapods.org/pods/HyperwalletSDK)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
-NOTE: This is a beta product available for use in your mobile app. If you are interested in using this product, please notify your Relationship Manager and / or Project Manager to support you during the integration process.
 
 Welcome to Hyperwallet's iOS SDK. This library will help you create transfer methods in your iOS app, such as bank account, PayPal account, etc. See our [iOS Integration Guide](https://www.hyperwallet.com/developers/) to get started!
 
