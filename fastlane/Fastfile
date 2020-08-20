@@ -3,8 +3,8 @@ lane :beta do
   update("beta", version)
 end
 
-lane :release do
-  version = get_version_number(target: "HyperwalletSDK")
+lane :release_beta do
+  version = updateVersion("beta")
   commit = last_git_commit
   message = commit[:message]
   add_git_tag(tag: "#{version}", message: "#{message}")
@@ -31,10 +31,7 @@ def update(type, version)
   podspec_name = "HyperwalletSDK.podspec"
   pod_lib_lint(allow_warnings: true, skip_tests: true)
   version_bump_podspec(version_number: version, path: podspec_name)
-  increment_version_number(version_number: version)
   git_add(path: podspec_name)
-  git_add(path: "**/Info.plist")
-  git_commit(path: [podspec_name, "**/Info.plist"],
-             message: "#{version} release")
+  git_commit(path: [podspec_name], message: "#{version} release")
   push_to_git_remote
 end
