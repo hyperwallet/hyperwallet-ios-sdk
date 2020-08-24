@@ -160,7 +160,7 @@ let payPalQueryParam = HyperwalletPayPalAccountQueryParam()
 payPalQueryParam.status = .activated
 payPalQueryParam.sortBy = .ascendantCreatedOn
 
-Hyperwallet.shared.listPayPalAccount(queryParam: payPalQueryParam) { (result, error) in
+Hyperwallet.shared.listPayPalAccounts(queryParam: payPalQueryParam) { (result, error) in
     // In case of failure, error (HyperwalletErrorType) will contain HyperwalletErrors containing information about what caused the failure
     guard error == nil else {
         print(error?.getHyperwalletErrors()?.errorList?)
@@ -171,6 +171,71 @@ Hyperwallet.shared.listPayPalAccount(queryParam: payPalQueryParam) { (result, er
     if let payPalAccounts = result?.data {
         for payPalAccount in payPalAccounts {
         print(payPalAccount.getField(fieldName: .token) ?? "")
+        }
+    }
+}
+```
+
+### Create Venmo Account
+```swift
+let venmoAccount = HyperwalletVenmoAccount.Builder(transferMethodCountry: "US", transferMethodCurrency: "USD")
+    .accountId("9876543210")
+    .build()
+
+Hyperwallet.shared.createVenmoAccount(account: venmoAccount, completion: { (result, error) in
+    // Code to handle successful response or error
+    // In case of successful creation, response (HyperwalletVenmoAccount in this case) will contain information about the user’s Venmo account
+    // In case of failure, error (HyperwalletErrorType) will contain HyperwalletErrors containing information about what caused the failure of Venmo account creation
+})
+```
+
+### Get Venmo Account
+```swift
+Hyperwallet.shared.getVenmoAccount(transferMethodToken: "123123", completion: { (result, error) in
+    // In case of successful, response (HyperwalletVenmoAccount? in this case) will contain information about the user’s Venmo account or nil if not exist.
+    // In case of failure, error (HyperwalletErrorType) will contain HyperwalletErrors containing information about what caused the failure
+})
+```
+
+### Update Venmo Account
+```swift
+let venmoAccount = HyperwalletVenmoAccount.Builder(token: "trm-12345")
+    .accountId("9876543210")
+    .build()
+
+Hyperwallet.shared.updateVenmoAccount(account: venmoAccount, completion: { (result, error) in
+    // Code to handle successful response or error
+    // In case of successful creation, response (HyperwalletVenmoAccount in this case) will contain information about the user’s Venmo account
+    // In case of failure, error (HyperwalletErrorType) will contain HyperwalletErrors containing information about what caused the failure of Venmo account updating
+})
+```
+
+### Deactivate Venmo Account
+```swift
+Hyperwallet.shared.deactivateVenmoAccount(transferMethodToken: "trm-12345", notes: "deactivate Venmo account", completion: { (result, error) in
+    // Code to handle successful response or error
+    // In case of successful creation, response (HyperwalletStatusTransition in this case) will contain information about the status transition
+    // In case of failure, error (HyperwalletErrorType) will contain HyperwalletErrors containing information about what caused the failure of Venmo account deactivation
+})
+```
+
+### List Venmo Account
+```swift
+let venmoQueryParam = HyperwalletVenmoQueryParam()
+venmoQueryParam.status = .activated
+venmoQueryParam.sortBy = .ascendantCreatedOn
+
+Hyperwallet.shared.listVenmoAccounts(queryParam: venmoQueryParam) { (result, error) in
+    // In case of failure, error (HyperwalletErrorType) will contain HyperwalletErrors containing information about what caused the failure
+    guard error == nil else {
+        print(error?.getHyperwalletErrors()?.errorList?)
+        return
+    }
+
+    // In case of successful, response (HyperwalletPageList<HyperwalletVenmoAccount>? in this case) will contain information about or nil if not exist.
+    if let venmoAccounts = result?.data {
+        for venmoAccount in venmoAccounts {
+           print(venmoAccount.getField(fieldName: .token) ?? "")
         }
     }
 }

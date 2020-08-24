@@ -304,7 +304,7 @@ class HyperwalletVenmoAccountTests: XCTestCase {
 
     func testDeactivateVenmoAccount_invalidTransition() {
         // Given
-        let expectation = self.expectation(description: "Deactivate Venm0 account failed")
+        let expectation = self.expectation(description: "Deactivate Venmo account failed")
         let response = HyperwalletTestHelper
                 .badRequestHTTPResponse(for: "StatusTransitionMockedResponseInvalidTransition")
         let url = String(format: "%@/venmo-accounts/trm-12345/status-transitions", HyperwalletTestHelper.userRestURL)
