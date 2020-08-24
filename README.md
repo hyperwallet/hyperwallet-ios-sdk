@@ -27,13 +27,13 @@ Use [Carthage](https://github.com/Carthage/Carthage) or [CocoaPods](https://coco
 ### Carthage
 Specify it in your Cartfile:
 ```ogdl
-github "hyperwallet/hyperwallet-ios-sdk" "1.0.0-beta06"
+github "hyperwallet/hyperwallet-ios-sdk" "1.0.0-beta07"
 ```
 
 ### CocoaPods
 Specify it in your Podfile:
 ```ruby
-pod 'HyperwalletSDK', '~> 1.0.0-beta06'
+pod 'HyperwalletSDK', '~> 1.0.0-beta07'
 ```
 
 ## Initialization
