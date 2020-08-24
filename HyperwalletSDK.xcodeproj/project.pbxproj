@@ -117,6 +117,17 @@
 		DBCA37BC225D6DD900CD4137 /* BankCardErrorResponseWithMissingCardNumber.json in Resources */ = {isa = PBXBuildFile; fileRef = DBCA37BB225D6DD900CD4137 /* BankCardErrorResponseWithMissingCardNumber.json */; };
 		DBCA37BE225D6E1900CD4137 /* BankCardResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = DBCA37BD225D6E1900CD4137 /* BankCardResponse.json */; };
 		DBCA37C0225D6E3A00CD4137 /* TransferMethodMockedSuccessResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = DBCA37BF225D6E3A00CD4137 /* TransferMethodMockedSuccessResponse.json */; };
+		E84381C0BBE7F7A6D9AD04E8 /* HyperwalletVenmoQueryParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8438F714A2ED30BE185DE8C /* HyperwalletVenmoQueryParam.swift */; };
+		E84382073237BBFB9B03C00C /* VenmoAccountMissingAccountId.json in Resources */ = {isa = PBXBuildFile; fileRef = E8438A5AF96BD0809F4B8287 /* VenmoAccountMissingAccountId.json */; };
+		E84382CC1BE536B23E3F8EEA /* VenmoAccountWrongFormatAccountId.json in Resources */ = {isa = PBXBuildFile; fileRef = E84381CE41DDB491C2F2B63D /* VenmoAccountWrongFormatAccountId.json */; };
+		E84382D7D9B88D30117E833F /* HyperwalletVenmoAccountTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84387C963FD99B5F8D69E49 /* HyperwalletVenmoAccountTests.swift */; };
+		E843832E81E184EC95C632CA /* VenmoAccountList.json in Resources */ = {isa = PBXBuildFile; fileRef = E8438B2F7AA2659EA914914B /* VenmoAccountList.json */; };
+		E84384B6EEE1B33A35A8A5E4 /* VenmoAccountList.json in Resources */ = {isa = PBXBuildFile; fileRef = E8438B2F7AA2659EA914914B /* VenmoAccountList.json */; };
+		E84386A084517B13701D478D /* VenmoAccountResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = E843856BD0D7E5295973780D /* VenmoAccountResponse.json */; };
+		E8438B2A7A266EEF5106635D /* VenmoAccountMissingAccountId.json in Resources */ = {isa = PBXBuildFile; fileRef = E8438A5AF96BD0809F4B8287 /* VenmoAccountMissingAccountId.json */; };
+		E8438C4BD714EB191BF7A98B /* HyperwalletVenmoAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8438FACD77368B4A83CCA41 /* HyperwalletVenmoAccount.swift */; };
+		E8438CA7F43C3CB6FD545187 /* VenmoAccountResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = E843856BD0D7E5295973780D /* VenmoAccountResponse.json */; };
+		E8438DB98656EB3F69DE0776 /* VenmoAccountWrongFormatAccountId.json in Resources */ = {isa = PBXBuildFile; fileRef = E84381CE41DDB491C2F2B63D /* VenmoAccountWrongFormatAccountId.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -243,6 +254,13 @@
 		DBCA37BB225D6DD900CD4137 /* BankCardErrorResponseWithMissingCardNumber.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BankCardErrorResponseWithMissingCardNumber.json; sourceTree = "<group>"; };
 		DBCA37BD225D6E1900CD4137 /* BankCardResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BankCardResponse.json; sourceTree = "<group>"; };
 		DBCA37BF225D6E3A00CD4137 /* TransferMethodMockedSuccessResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TransferMethodMockedSuccessResponse.json; sourceTree = "<group>"; };
+		E84381CE41DDB491C2F2B63D /* VenmoAccountWrongFormatAccountId.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = VenmoAccountWrongFormatAccountId.json; sourceTree = "<group>"; };
+		E843856BD0D7E5295973780D /* VenmoAccountResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = VenmoAccountResponse.json; sourceTree = "<group>"; };
+		E84387C963FD99B5F8D69E49 /* HyperwalletVenmoAccountTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HyperwalletVenmoAccountTests.swift; sourceTree = "<group>"; };
+		E8438A5AF96BD0809F4B8287 /* VenmoAccountMissingAccountId.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = VenmoAccountMissingAccountId.json; sourceTree = "<group>"; };
+		E8438B2F7AA2659EA914914B /* VenmoAccountList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = VenmoAccountList.json; sourceTree = "<group>"; };
+		E8438F714A2ED30BE185DE8C /* HyperwalletVenmoQueryParam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HyperwalletVenmoQueryParam.swift; sourceTree = "<group>"; };
+		E8438FACD77368B4A83CCA41 /* HyperwalletVenmoAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HyperwalletVenmoAccount.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -399,6 +417,8 @@
 				DB1A03F5225D3DE40080C8D6 /* HyperwalletTransferMethodQueryParam.swift */,
 				07B1FE5F22C29BCD00F461D0 /* HyperwalletPrepaidCard.swift */,
 				07B1FE6122C2A11F00F461D0 /* HyperwalletPrepaidCardQueryParam.swift */,
+				E8438FACD77368B4A83CCA41 /* HyperwalletVenmoAccount.swift */,
+				E8438F714A2ED30BE185DE8C /* HyperwalletVenmoQueryParam.swift */,
 			);
 			path = TransferMethod;
 			sourceTree = "<group>";
@@ -436,6 +456,7 @@
 				0733FE2A2277C743000FB92A /* HyperwalletPayPalAccountTests.swift */,
 				07B1FE6622C2C67500F461D0 /* HyperwalletPrepaidCardTests.swift */,
 				DBCA3773225D6A8D00CD4137 /* HyperwalletTransferMethodTests.swift */,
+				E84387C963FD99B5F8D69E49 /* HyperwalletVenmoAccountTests.swift */,
 			);
 			path = TransferMethod;
 			sourceTree = "<group>";
@@ -596,6 +617,10 @@
 				DBCA37AD225D6D1700CD4137 /* TransferMethodConfigurationKeysResponse.json */,
 				DBCA37AB225D6D1700CD4137 /* TransferMethodConfigurationKeysWithoutFeeResponse.json */,
 				DBCA37BF225D6E3A00CD4137 /* TransferMethodMockedSuccessResponse.json */,
+				E843856BD0D7E5295973780D /* VenmoAccountResponse.json */,
+				E8438A5AF96BD0809F4B8287 /* VenmoAccountMissingAccountId.json */,
+				E84381CE41DDB491C2F2B63D /* VenmoAccountWrongFormatAccountId.json */,
+				E8438B2F7AA2659EA914914B /* VenmoAccountList.json */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -709,6 +734,10 @@
 				DB866F2A2261EE28003C41F6 /* README.md in Resources */,
 				DB866F292261EE28003C41F6 /* LICENSE in Resources */,
 				DB866F262261EE28003C41F6 /* Cartfile.resolved in Resources */,
+				E8438CA7F43C3CB6FD545187 /* VenmoAccountResponse.json in Resources */,
+				E84382073237BBFB9B03C00C /* VenmoAccountMissingAccountId.json in Resources */,
+				E8438DB98656EB3F69DE0776 /* VenmoAccountWrongFormatAccountId.json in Resources */,
+				E843832E81E184EC95C632CA /* VenmoAccountList.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -753,6 +782,10 @@
 				DBCA37B1225D6D1700CD4137 /* TransferMethodConfigurationGraphQlResponse.json in Resources */,
 				DBCA37B4225D6D1700CD4137 /* StatusTransitionMockedResponseInvalidTransition.json in Resources */,
 				B327ED8D23C6B43E0007EF58 /* ListUserBalancesResponseSortCurrencyDesc.json in Resources */,
+				E84386A084517B13701D478D /* VenmoAccountResponse.json in Resources */,
+				E8438B2A7A266EEF5106635D /* VenmoAccountMissingAccountId.json in Resources */,
+				E84382CC1BE536B23E3F8EEA /* VenmoAccountWrongFormatAccountId.json in Resources */,
+				E84384B6EEE1B33A35A8A5E4 /* VenmoAccountList.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -824,6 +857,8 @@
 				07B1FE6022C29BCD00F461D0 /* HyperwalletPrepaidCard.swift in Sources */,
 				0733FE092277C191000FB92A /* HyperwalletPayPalAccount.swift in Sources */,
 				DB1A03D9225D3DD80080C8D6 /* HTTPClient.swift in Sources */,
+				E8438C4BD714EB191BF7A98B /* HyperwalletVenmoAccount.swift in Sources */,
+				E84381C0BBE7F7A6D9AD04E8 /* HyperwalletVenmoQueryParam.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -855,6 +890,7 @@
 				641324DB22954D4F00512816 /* HyperwalletBankAccountTests.swift in Sources */,
 				DBCA3778225D6A8D00CD4137 /* HyperwalletBankCardTests.swift in Sources */,
 				2B5433FB229EDF0900F900D2 /* HyperwalletReceiptTests.swift in Sources */,
+				E84382D7D9B88D30117E833F /* HyperwalletVenmoAccountTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

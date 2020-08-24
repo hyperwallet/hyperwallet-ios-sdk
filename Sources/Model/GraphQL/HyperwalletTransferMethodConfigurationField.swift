@@ -48,10 +48,10 @@ final class TransferMethodConfigurationFieldResult: HyperwalletTransferMethodCon
     }
 
     func fieldGroups() -> [HyperwalletFieldGroup]? {
-        return transferMethodUIConfigurations?.first?.fieldGroups?.nodes
+        transferMethodUIConfigurations?.first?.fieldGroups?.nodes
     }
 
     func transferMethodType() -> HyperwalletTransferMethodType? {
-        return country?.currencies?.nodes?.first?.transferMethodTypes?.nodes?.first
+        country?.currencies?.nodes?.first?.transferMethodTypes?.nodes?.first
     }
 }

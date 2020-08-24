@@ -30,32 +30,32 @@ public final class HyperwalletPrepaidCard: HyperwalletTransferMethod {
 
     /// The prepaid card's type
     public var cardType: String? {
-        return getField(TransferMethodField.cardType.rawValue)
+        getField(TransferMethodField.cardType.rawValue)
     }
 
     /// The prepaid card's package
     public var cardPackage: String? {
-        return getField(TransferMethodField.cardPackage.rawValue)
+        getField(TransferMethodField.cardPackage.rawValue)
     }
 
     /// The prepaid card's number
     public var cardNumber: String? {
-        return getField(TransferMethodField.cardNumber.rawValue)
+        getField(TransferMethodField.cardNumber.rawValue)
     }
 
     /// The prepaid card's brand
     public var cardBrand: String? {
-        return getField(TransferMethodField.cardBrand.rawValue)
+        getField(TransferMethodField.cardBrand.rawValue)
     }
 
     /// The prepaid card's expiry date
     public var dateOfExpiry: String? {
-        return getField(TransferMethodField.dateOfExpiry.rawValue)
+        getField(TransferMethodField.dateOfExpiry.rawValue)
     }
 
     /// The prepaid card's user token (instant issue cards only)
     public var userToken: String? {
-        return getField(TransferMethodField.userToken.rawValue)
+        getField(TransferMethodField.userToken.rawValue)
     }
 
     /// A helper class to build the `HyperwalletPrepaidCard` instance.
@@ -104,7 +104,7 @@ public final class HyperwalletPrepaidCard: HyperwalletTransferMethod {
         ///
         /// - Returns: a new instance of the `HyperwalletPrepaidCard`.
         public func build() -> HyperwalletPrepaidCard {
-            return HyperwalletPrepaidCard(data: self.storage)
+            HyperwalletPrepaidCard(data: self.storage)
         }
     }
 }

@@ -31,22 +31,22 @@ public class HyperwalletBankCard: HyperwalletTransferMethod {
 
     /// The card brand
     public var cardBrand: String? {
-        return getField(TransferMethodField.cardBrand.rawValue)
+        getField(TransferMethodField.cardBrand.rawValue)
     }
 
     /// The card number
     public var cardNumber: String? {
-        return getField(TransferMethodField.cardNumber.rawValue)
+        getField(TransferMethodField.cardNumber.rawValue)
     }
 
     /// The card type
     public var cardType: String? {
-        return getField(TransferMethodField.cardType.rawValue)
+        getField(TransferMethodField.cardType.rawValue)
     }
 
     /// The expiration date.
     public var dateOfExpiry: String? {
-        return getField(TransferMethodField.dateOfExpiry.rawValue)
+        getField(TransferMethodField.dateOfExpiry.rawValue)
     }
 
     /// A helper class to build the `HyperwalletBankCard` instance.
@@ -79,7 +79,7 @@ public class HyperwalletBankCard: HyperwalletTransferMethod {
         ///
         /// - Returns: a new instance of the `HyperwalletBankCard`.
         public func build() -> HyperwalletBankCard {
-            return HyperwalletBankCard(data: self.storage)
+            HyperwalletBankCard(data: self.storage)
         }
 
         /// Sets the card number

@@ -157,8 +157,8 @@ class HTTPTransactionTests: XCTestCase {
                                                                        transferMethodType: "BANK_ACCOUNT",
                                                                        profile: "INDIVIDUAL")
         // When - an API call request is made
-        let completionHandler = {
-            (data: Connection<TransferMethodConfiguration>?, error: HyperwalletErrorType?) -> Void in
+        let completionHandler = { (data: Connection<TransferMethodConfiguration>?, error: HyperwalletErrorType?)
+                        -> Void in
             response = data
             hyperwalletError = error
         }
@@ -190,8 +190,8 @@ class HTTPTransactionTests: XCTestCase {
                                                                        transferMethodType: "BANK_ACCOUNT",
                                                                        profile: "INDIVIDUAL")
         // When - an API call request is made
-        let completionHandler = {
-            (data: Connection<TransferMethodConfiguration>?, error: HyperwalletErrorType?) -> Void in
+        let completionHandler = { (data: Connection<TransferMethodConfiguration>?, error: HyperwalletErrorType?)
+                        -> Void in
             response = data
             hyperwalletError = error
         }

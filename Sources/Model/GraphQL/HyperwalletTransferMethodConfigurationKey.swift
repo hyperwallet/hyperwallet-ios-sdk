@@ -57,7 +57,7 @@ final class TransferMethodConfigurationKeyResult: HyperwalletTransferMethodConfi
     ///
     /// - Returns: a list of countries
     func countries() -> [HyperwalletCountry]? {
-        return hyperwalletCountries
+        hyperwalletCountries
     }
 
     /// Returns the list of currencies based on the country
@@ -65,7 +65,7 @@ final class TransferMethodConfigurationKeyResult: HyperwalletTransferMethodConfi
     /// - Parameter countryCode: the 2 letter ISO 3166-1 country code
     /// - Returns: a list of currencies
     func currencies(from countryCode: String) -> [HyperwalletCurrency]? {
-        return hyperwalletCountries?.first(where: { $0.code == countryCode })?.currencies?.nodes
+        hyperwalletCountries?.first(where: { $0.code == countryCode })?.currencies?.nodes
     }
 
     /// Returns the list of transfer method types based on the parameters
@@ -75,6 +75,6 @@ final class TransferMethodConfigurationKeyResult: HyperwalletTransferMethodConfi
     ///   - currencyCode: the 3 letter ISO 4217-1 currency code
     /// - Returns: a list of transfer method types
     func transferMethodTypes(countryCode: String, currencyCode: String) -> [HyperwalletTransferMethodType]? {
-        return currencies(from: countryCode)?.first(where: { $0.code == currencyCode })?.transferMethodTypes?.nodes
+        currencies(from: countryCode)?.first(where: { $0.code == currencyCode })?.transferMethodTypes?.nodes
     }
 }

@@ -16,7 +16,7 @@ class HyperwalletTestHelper {
 
     // MARK: Build Requests
     static func buildPostRequest(baseUrl: String, _ response: StubResponse) -> StubRequest {
-        return StubRequest.Builder()
+        StubRequest.Builder()
             .stubRequest(withMethod: .POST, url: URL(string: baseUrl)!)
             .addHeader(withKey: contentType, value: applicationJson)
             .addResponse(response)
@@ -24,7 +24,7 @@ class HyperwalletTestHelper {
     }
 
     static func buildGetRequest(baseUrl: String, _ response: StubResponse) -> StubRequest {
-        return StubRequest.Builder()
+        StubRequest.Builder()
             .stubRequest(withMethod: .GET, url: URL(string: baseUrl)!)
             .addHeader(withKey: contentType, value: applicationJson)
             .addResponse(response)
@@ -41,7 +41,7 @@ class HyperwalletTestHelper {
     }
 
     static func buildPutRequest(baseUrl: String, _ response: StubResponse) -> StubRequest {
-        return StubRequest.Builder()
+        StubRequest.Builder()
             .stubRequest(withMethod: .PUT, url: URL(string: baseUrl)!)
             .addHeader(withKey: contentType, value: applicationJson)
             .addResponse(response)
@@ -63,7 +63,7 @@ class HyperwalletTestHelper {
     ///
     /// - Returns: the StubResponse
     static func noContentHTTPResponse() -> StubResponse {
-        return setUpMockedResponse(payload: Data(), httpCode: 204)
+        setUpMockedResponse(payload: Data(), httpCode: 204)
     }
 
     /// Builts the stub HTTP 400 - Bad Request
@@ -93,7 +93,7 @@ class HyperwalletTestHelper {
                                     error: NSError? = nil,
                                     httpCode: Int = 200,
                                     contentType: String = HyperwalletTestHelper.applicationJson) -> StubResponse {
-        return responseBuilder(payload, httpCode, error)
+        responseBuilder(payload, httpCode, error)
             .addHeader(withKey: HyperwalletTestHelper.contentType, value: contentType)
             .build()
     }
