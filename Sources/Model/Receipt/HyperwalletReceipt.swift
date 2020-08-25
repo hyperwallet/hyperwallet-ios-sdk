@@ -118,7 +118,7 @@ public struct HyperwalletReceipt: Decodable, Equatable {
     public let type: HyperwalletReceiptType?
 
     public static func == (lhs: HyperwalletReceipt, rhs: HyperwalletReceipt) -> Bool {
-        return lhs.journalId == rhs.journalId &&
+        lhs.journalId == rhs.journalId &&
             rhs.entry == lhs.entry &&
             rhs.type == lhs.type
     }
@@ -307,6 +307,10 @@ public struct HyperwalletReceipt: Decodable, Equatable {
         ///
         /// Transfer to PayPalAccount
         case transferToPayPalAccount = "TRANSFER_TO_PAYPAL_ACCOUNT"
+        // Venmo transfer type
+        ///
+        /// Transfer to Venmo account
+        case transferToVenmoAccount = "TRANSFER_TO_VENMO_ACCOUNT"
         /// Default - unknown transfer type
         case unknown = "UNKNOWN_RECEIPT_TYPE"
     }

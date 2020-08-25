@@ -140,7 +140,7 @@ public struct HyperwalletTransferMethodConfigurationFieldQuery: GraphQlQuery, Ha
     }
 
     public func toGraphQl(userToken: String) -> String {
-        return String(format: query, userToken, profile, country, currency, transferMethodType)
+        String(format: query, userToken, profile, country, currency, transferMethodType)
     }
 
     public func hash(into hasher: inout Hasher) {
@@ -206,6 +206,6 @@ public struct HyperwalletTransferMethodConfigurationKeysQuery: GraphQlQuery {
     }
 
     public func toGraphQl(userToken: String) -> String {
-        return String(format: query, userToken, limit)
+        String(format: query, userToken, limit)
     }
 }

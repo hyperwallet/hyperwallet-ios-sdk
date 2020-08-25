@@ -376,7 +376,7 @@ class HyperwalletBankAccountIndividualTests: XCTestCase {
 
 private extension HyperwalletBankAccountIndividualTests {
     func buildIndividualBankAccount() -> HyperwalletBankAccount {
-        return HyperwalletBankAccount
+        HyperwalletBankAccount
             .Builder(transferMethodCountry: "US",
                      transferMethodCurrency: "USD",
                      transferMethodProfileType: "INDIVIDUAL",
@@ -413,7 +413,7 @@ private extension HyperwalletBankAccountIndividualTests {
     }
 
     func buildBusinessBankAccount() -> HyperwalletBankAccount {
-        return HyperwalletBankAccount
+        HyperwalletBankAccount
             .Builder(transferMethodCountry: "US",
                      transferMethodCurrency: "USD",
                      transferMethodProfileType: "BUSINESS",
@@ -440,7 +440,7 @@ private extension HyperwalletBankAccountIndividualTests {
     }
 
     func buildIndividualWireAccount() -> HyperwalletBankAccount {
-        return HyperwalletBankAccount
+        HyperwalletBankAccount
             .Builder(transferMethodCountry: "US",
                      transferMethodCurrency: "USD",
                      transferMethodProfileType: "INDIVIDUAL",
@@ -474,7 +474,7 @@ private extension HyperwalletBankAccountIndividualTests {
     }
 
     func buildBusinessWireAccount() -> HyperwalletBankAccount {
-        return HyperwalletBankAccount
+        HyperwalletBankAccount
             .Builder(transferMethodCountry: "US",
                      transferMethodCurrency: "USD",
                      transferMethodProfileType: "BUSINESS",

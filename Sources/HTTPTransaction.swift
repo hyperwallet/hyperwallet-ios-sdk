@@ -143,7 +143,7 @@ final class HTTPTransaction {
         _ error: HyperwalletErrorType?) -> Void)
         -> (GraphQlResult<Response>?, HyperwalletErrorType?) -> Void
         where Response: Decodable {
-            return { (result, error) in
+            { (result, error) in
                 if let error = error {
                     completionHandler(nil, error)
                 }
@@ -160,7 +160,7 @@ final class HTTPTransaction {
     static func requestHandler<Response>( _ completionHandler: @escaping (_ response: Response?,
                                                                           _ error: HyperwalletErrorType?) -> Void)
         -> HTTPClientProtocol.ResultHandler where Response: Decodable {
-            return { (data, response, error) in
+            { (data, response, error) in
                 // Check the transport error has occurred;
                 guard error == nil, let httpResponse = response as? HTTPURLResponse else {
                     completionHandler(nil, ErrorTypeHelper.connectionError(for: error))
@@ -215,7 +215,7 @@ final class HTTPTransaction {
                                                        _ completionHandler: @escaping ((_ response: Response?,
                                                                                 _ error: HyperwalletErrorType?) -> Void)
         ) -> HyperwalletAuthenticationTokenProvider.CompletionHandler where Request: Encodable, Response: Decodable {
-        return { [weak self] (authenticationToken, error) in
+        { [weak self] (authenticationToken, error) in
             guard let strongSelf = self else {
                 completionHandler(nil, ErrorTypeHelper.transactionAborted())
                 return

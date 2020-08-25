@@ -117,7 +117,7 @@ public struct HyperwalletStatusTransition: Codable {
         ///
         /// - Returns: a new instance of the `HyperwalletTransfer`.
         public func build() -> HyperwalletStatusTransition {
-            return HyperwalletStatusTransition(notes: notes, transition: transition)
+            HyperwalletStatusTransition(notes: notes, transition: transition)
         }
     }
 }
