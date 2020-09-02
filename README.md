@@ -554,6 +554,27 @@ Hyperwallet.shared.listUserBalances(queryParam: balanceQueryParam) { (result, er
 }
 ```
 
+### List Prepaid Card Balances
+```swift
+let prepaidCardBalanceQueryParam = HyperwalletPrepaidCardBalanceQueryParam()
+prepaidCardBalanceQueryParam.sortBy = HyperwalletPrepaidCardBalanceQueryParam.QuerySortable.descendantAmount.rawValue
+
+Hyperwallet.shared.listPrepaidCardBalances(prepaidCardToken: "trm-1234", queryParam: prepaidCardBalanceQueryParam) { (result, error) in
+    // In case of failure, error (HyperwalletErrorType) will contain HyperwalletErrors containing information about what caused the failure
+    guard error == nil else {
+    print(error?.getHyperwalletErrors()?.errorList?)
+    return
+    }
+
+    // In case of successful, response (HyperwalletPageList<HyperwalletBalance>? in this case) will contain information about or nil if not exist.
+    if let balances = result?.data {
+        for balance in balances {
+            print(balance.amount ?? "")
+        }
+    }
+}
+```
+
 ## Transfer Method Configurations
 
 ### Get countries, currencies and transfer method types
