@@ -9,7 +9,7 @@ class HyperwalletPrepaidCardBalanceTests: XCTestCase {
     private var mockResponseFileName: String?
     private var sortBy: String?
     private var testCaseDescription: String?
-    private var userBalanceCount: String?
+    private var prepaidCardBalanceCount: String?
 
     override func setUp() {
         Hyperwallet.setup(HyperwalletTestHelper.authenticationProvider)
@@ -21,7 +21,7 @@ class HyperwalletPrepaidCardBalanceTests: XCTestCase {
         }
     }
 
-    func testListUserBalances_success() {
+    func testListPrepaidCardBalances_success() {
         if testCaseDescription != "Empty Result" {
             // Given
             let expectation = self.expectation(description: "List Prepaid Card Balances completed")
@@ -30,19 +30,19 @@ class HyperwalletPrepaidCardBalanceTests: XCTestCase {
             let request = HyperwalletTestHelper.buildGetRequestRegexMatcher(pattern: url, response)
             HyperwalletTestHelper.setUpMockServer(request: request)
 
-            var userBalanceList: HyperwalletPageList<HyperwalletBalance>?
+            var prepaidCardBalanceList: HyperwalletPageList<HyperwalletBalance>?
             var errorResponse: HyperwalletErrorType?
 
             // When
             var balanceQueryParam: HyperwalletPrepaidCardBalanceQueryParam?
-            if sortBy != nil || currency != nil {
+            if sortBy != nil {
                 balanceQueryParam = HyperwalletPrepaidCardBalanceQueryParam()
                 balanceQueryParam?.sortBy = sortBy
             }
 
             Hyperwallet.shared.listPrepaidCardBalances(prepaidCardToken: "trm-1234",
                                                        queryParam: balanceQueryParam) { (result, error) in
-                userBalanceList = result
+                prepaidCardBalanceList = result
                 errorResponse = error
                 expectation.fulfill()
             }
@@ -50,24 +50,25 @@ class HyperwalletPrepaidCardBalanceTests: XCTestCase {
 
             // Then
             XCTAssertNil(errorResponse, "\(testCaseDescription!) - The `errorResponse` should be nil")
-            XCTAssertNotNil(userBalanceList, "\(testCaseDescription!) - The `userBalanceList` should not be nil")
-            XCTAssertEqual(userBalanceList?.count,
-                           Int(userBalanceCount!),
-                           "\(testCaseDescription!) - The `count` should be \(userBalanceCount!)")
-            XCTAssertNotNil(userBalanceList?.data, "\(testCaseDescription!) - The `data` should be not nil")
-            XCTAssertNotNil(userBalanceList?.links, "\(testCaseDescription!) - The `links` should be not nil")
-            XCTAssertNotNil(userBalanceList?.links?.first?.params?.rel)
+            XCTAssertNotNil(prepaidCardBalanceList,
+                            "\(testCaseDescription!) - The `prepaidCardBalanceList` should not be nil")
+            XCTAssertEqual(prepaidCardBalanceList?.count,
+                           Int(prepaidCardBalanceCount!),
+                           "\(testCaseDescription!) - The `count` should be \(prepaidCardBalanceCount!)")
+            XCTAssertNotNil(prepaidCardBalanceList?.data, "\(testCaseDescription!) - The `data` should be not nil")
+            XCTAssertNotNil(prepaidCardBalanceList?.links, "\(testCaseDescription!) - The `links` should be not nil")
+            XCTAssertNotNil(prepaidCardBalanceList?.links?.first?.params?.rel)
 
-            if let userBalance = userBalanceList?.data?.first {
-                XCTAssertEqual(userBalance.amount, amount)
-                XCTAssertEqual(userBalance.currency, expectedCurrency)
+            if let prepaidCardBalance = prepaidCardBalanceList?.data?.first {
+                XCTAssertEqual(prepaidCardBalance.amount, amount)
+                XCTAssertEqual(prepaidCardBalance.currency, expectedCurrency)
             } else {
-                assertionFailure("\(testCaseDescription!) - The user balance should be not nil")
+                assertionFailure("\(testCaseDescription!) - The prepaid card balance should be not nil")
             }
         }
     }
 
-    func testListUserBalances_emptyResult() {
+    func testListPrepaidACardBalances_emptyResult() {
         if testCaseDescription == "Empty Result" {
             // Given
             let expectation = self.expectation(description: "List Prepaid Card Balances completed")
@@ -76,12 +77,12 @@ class HyperwalletPrepaidCardBalanceTests: XCTestCase {
             let request = HyperwalletTestHelper.buildGetRequestRegexMatcher(pattern: url, response)
             HyperwalletTestHelper.setUpMockServer(request: request)
 
-            var userBalanceList: HyperwalletPageList<HyperwalletBalance>?
+            var prepaidCardBalanceList: HyperwalletPageList<HyperwalletBalance>?
             var errorResponse: HyperwalletErrorType?
 
             //When
            Hyperwallet.shared.listPrepaidCardBalances(prepaidCardToken: "trm-1234") { (result, error) in
-                userBalanceList = result
+                prepaidCardBalanceList = result
                 errorResponse = error
                 expectation.fulfill()
            }
@@ -89,7 +90,7 @@ class HyperwalletPrepaidCardBalanceTests: XCTestCase {
 
             // Then
             XCTAssertNil(errorResponse, "The `errorResponse` should be nil")
-            XCTAssertNil(userBalanceList, "The `userBalanceList` should be nil")
+            XCTAssertNil(prepaidCardBalanceList, "The `prepaidCardBalanceList` should be nil")
         }
     }
 
@@ -113,14 +114,15 @@ class HyperwalletPrepaidCardBalanceTests: XCTestCase {
             testCase.sortBy = testCaseParameters[3]
             testCase.expectedCurrency = testCaseParameters[4]
             testCase.amount = testCaseParameters[5]
-            testCase.userBalanceCount = testCaseParameters[6]
+            testCase.prepaidCardBalanceCount = testCaseParameters[6]
             testSuite.addTest(testCase)
         }
     }
 
     private static func getTestParameters() -> [[String?]] {
         // Each test case parameter contains
-        // testCaseDescription, mockResponseFileName, currency, sortBy, expectedCurrency, amount, userBalanceCount
+        // testCaseDescription, mockResponseFileName, currency, sortBy, expectedCurrency, amount,
+        // prepaidCardBalanceCount
         let testParameters = [
             [
                 "List of balances for USD, sorted on currency",

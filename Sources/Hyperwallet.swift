@@ -940,7 +940,6 @@ public final class Hyperwallet: NSObject {
     ///
     /// * Offset: 0
     /// * Limit: 10
-    /// * Currency: All
     /// * Sort By: currency
     ///
     /// The `completion: @escaping (HyperwalletPageList<HyperwalletBalance>?, HyperwalletErrorType?) -> Void`
@@ -986,8 +985,7 @@ public final class Hyperwallet: NSObject {
 
     private func retrieveAuthenticationTokenResponseHandler(
         completion: @escaping (Configuration?, HyperwalletErrorType?) -> Void)
-        -> (String?, Error?) -> Void {
-        {(authenticationToken, error) in
+        -> (String?, Error?) -> Void { {(authenticationToken, error) in
             guard error == nil else {
                 completion(nil, ErrorTypeHelper.authenticationError(
                     message: "Error occured while retrieving authentication token",
