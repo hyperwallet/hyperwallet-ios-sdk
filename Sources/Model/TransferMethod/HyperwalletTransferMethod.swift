@@ -144,6 +144,8 @@ public class HyperwalletTransferMethod: NSObject, Codable {
         case cvv
         /// The expiration date for the card (YYYY-MM).
         case dateOfExpiry
+        /// The primary card token
+        case primaryCardToken
 
         // PayPal account related fields
         ///
