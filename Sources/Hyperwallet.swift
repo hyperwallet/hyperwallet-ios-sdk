@@ -932,6 +932,39 @@ public final class Hyperwallet: NSObject {
                                     completionHandler: completion)
     }
 
+    /// Returns the list of prepaid card balances for the User associated with the authentication token.
+    ///
+    /// The ordering and filtering of `HyperwalletBalance` will be based on the criteria specified within the
+    /// `HyperwalletPrepaidCardBalanceQueryParam` object, if it is not nil. Otherwise the default ordering and
+    /// filtering will be applied.
+    ///
+    /// * Offset: 0
+    /// * Limit: 10
+    /// * Sort By: currency
+    ///
+    /// The `completion: @escaping (HyperwalletPageList<HyperwalletBalance>?, HyperwalletErrorType?) -> Void`
+    /// that is passed in to this method invocation will receive the successful
+    /// response(HyperwalletPageList<HyperwalletBalance>?) or error(HyperwalletErrorType) from processing
+    /// the request.
+    ///
+    /// This function will request a new authentication token via `HyperwalletAuthenticationTokenProvider`
+    /// if the current one is expired or is about to expire.
+    ///
+    /// - Parameters:
+    ///   - prepaidCardToken: the prepaid card token
+    ///   - queryParam: the ordering and filtering criteria
+    ///   - completion: the callback handler of responses from the Hyperwallet platform
+    public func listPrepaidCardBalances(prepaidCardToken: String,
+                                        queryParam: HyperwalletPrepaidCardBalanceQueryParam? = nil,
+                                        completion: @escaping (HyperwalletPageList<HyperwalletBalance>?,
+                                                               HyperwalletErrorType?) -> Void) {
+        httpTransaction.performRest(httpMethod: .get,
+                                    urlPath: "users/%@/prepaid-cards/\(prepaidCardToken)/balances",
+                                    payload: "",
+                                    queryParam: queryParam,
+                                    completionHandler: completion)
+    }
+
     private func transferMethodConfigurationFieldResponseHandler(_ completionHandler:
             @escaping (TransferMethodConfigurationFieldResult?, HyperwalletErrorType?) -> Void)
         -> (TransferMethodConfigurationField?, HyperwalletErrorType?) -> Void {
@@ -952,8 +985,7 @@ public final class Hyperwallet: NSObject {
 
     private func retrieveAuthenticationTokenResponseHandler(
         completion: @escaping (Configuration?, HyperwalletErrorType?) -> Void)
-        -> (String?, Error?) -> Void {
-        {(authenticationToken, error) in
+        -> (String?, Error?) -> Void { {(authenticationToken, error) in
             guard error == nil else {
                 completion(nil, ErrorTypeHelper.authenticationError(
                     message: "Error occured while retrieving authentication token",

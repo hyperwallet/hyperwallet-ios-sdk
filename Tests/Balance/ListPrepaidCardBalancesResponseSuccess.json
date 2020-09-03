@@ -1,0 +1,20 @@
+{
+    "count": 1,
+    "offset": 0,
+    "limit": 10,
+    "data": [
+        {
+            "currency": "USD",
+            "amount": "9933.35"
+        }
+    ],
+    "links": [
+        {
+            "params": {
+                "rel": "self"
+            },
+            "href": "https://localhost:8181/rest/v3/users/usr-112233/prepaid-cards/trm-1234/balances?offset=0&limit=10"
+        }
+    ]
+}
+
