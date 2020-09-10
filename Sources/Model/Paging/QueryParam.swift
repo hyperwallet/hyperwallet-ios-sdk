@@ -33,7 +33,7 @@ public class QueryParam {
     /// The user receipts attribute to sort the result set by.
     public var sortBy: String?
 
-    enum QueryParam: String {
+    private enum QueryParam: String {
         case createdAfter
         case createdBefore
         case limit

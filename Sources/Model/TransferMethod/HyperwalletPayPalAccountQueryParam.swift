@@ -20,7 +20,7 @@ import Foundation
 
 /// Representation of the PayPal account query parameters.
 public class HyperwalletPayPalAccountQueryParam: HyperwalletTransferMethodQueryParam {
-    enum QueryParam: String {
+    private enum QueryParam: String {
         case type
     }
 
