@@ -20,12 +20,11 @@ import Foundation
 
 /// Representation of the user receipts QueryParam fields.
 public class HyperwalletReceiptQueryParam: QueryParam {
-    /// A value that identifies the user receipts currency.
-    public var currency: String?
-
-    enum QueryParam: String {
+    private enum QueryParam: String {
         case currency
     }
+    /// A value that identifies the user receipts currency.
+    public var currency: String?
 
     /// Representation of the field's sortable
     public enum QuerySortable: String {

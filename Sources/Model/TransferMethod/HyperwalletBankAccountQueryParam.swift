@@ -20,6 +20,9 @@ import Foundation
 
 /// Representation of the bank account query parameters.
 public class HyperwalletBankAccountQueryParam: HyperwalletTransferMethodQueryParam {
+    private enum QueryParam: String {
+        case type
+    }
     /// The bank account type.
     public var type: QueryType?
 
@@ -29,10 +32,6 @@ public class HyperwalletBankAccountQueryParam: HyperwalletTransferMethodQueryPar
         case bankAccount = "BANK_ACCOUNT"
         /// The Wire account type
         case wireAccount = "WIRE_ACCOUNT"
-    }
-
-    enum QueryParam: String {
-        case type
     }
 
     /// Representation of the bank account status

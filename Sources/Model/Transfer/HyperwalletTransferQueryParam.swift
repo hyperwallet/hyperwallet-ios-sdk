@@ -21,13 +21,13 @@ import Foundation
 /// Representation of the user transfers QueryParams fields.
 public class HyperwalletTransferQueryParam: QueryParam {
     /// A value that identifies the client transfer id.
-    var clientTransferId: String?
+    public var clientTransferId: String?
     /// A value that identifies the destination token.
-    var destinationToken: String?
+    public var destinationToken: String?
     /// A value that identifies the source token.
-    var sourceToken: String?
+    public var sourceToken: String?
 
-    enum QueryParam: String {
+    private enum QueryParam: String {
         case clientTransferId
         case destinationToken
         case sourceToken
