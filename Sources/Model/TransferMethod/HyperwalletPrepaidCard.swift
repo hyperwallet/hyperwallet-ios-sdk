@@ -53,6 +53,11 @@ public final class HyperwalletPrepaidCard: HyperwalletTransferMethod {
         getField(TransferMethodField.dateOfExpiry.rawValue)
     }
 
+    /// The primary prepaid card's token
+    public var primaryCardToken: String? {
+        getField(TransferMethodField.primaryCardToken.rawValue)
+    }
+
     /// The prepaid card's user token (instant issue cards only)
     public var userToken: String? {
         getField(TransferMethodField.userToken.rawValue)
