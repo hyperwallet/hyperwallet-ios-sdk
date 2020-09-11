@@ -64,6 +64,7 @@ class HyperwalletPrepaidCardTests: XCTestCase {
         let lastPrepaidCard = prepaidCardList?.data?.last
         XCTAssertEqual(lastPrepaidCard?.type, "PREPAID_CARD", "The type should be PREPAID_CARD")
         XCTAssertEqual(lastPrepaidCard?.token, "trm-456", "The token should be trm-456")
+        XCTAssertEqual(lastPrepaidCard?.primaryCardToken, "trm-123", "The primary card token should be trm-123")
         XCTAssertEqual(lastPrepaidCard?.cardNumber, "************2345", "The cardNumber should be ************2345")
         XCTAssertEqual(lastPrepaidCard?.dateOfExpiry, "2023-06", "The dateOfExpiry should be 2023-06")
         XCTAssertEqual(lastPrepaidCard?.cardPackage, "L1", "The cardPackage should be L1")

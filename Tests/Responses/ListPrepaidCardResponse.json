@@ -27,6 +27,7 @@
         },
         {
             "token": "trm-456",
+            "primaryCardToken": "trm-123",
             "type": "PREPAID_CARD",
             "status": "DEACTIVATED",
             "verificationStatus": "NOT_REQUIRED",
