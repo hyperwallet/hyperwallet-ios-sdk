@@ -20,7 +20,7 @@ import Foundation
 
 /// Representation of the bank card query parameters.
 public class HyperwalletBankCardQueryParam: HyperwalletTransferMethodQueryParam {
-    enum QueryParam: String {
+    private enum QueryParam: String {
         case type
     }
 

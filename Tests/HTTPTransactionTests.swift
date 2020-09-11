@@ -85,28 +85,28 @@ class HTTPTransactionTests: XCTestCase {
         let limit = urlValueComponents?.queryItems?.first { $0.name == "limit" }
         XCTAssertNotNil(limit, "The limit should be part of the URL")
         XCTAssertEqual(limit?.value, "80", "The limit should be 80")
-        let limitKey = QueryParam.QueryParam.limit.rawValue
+        let limitKey = "limit"
         XCTAssertNotNil(queryParamsDictionary?[limitKey], "The limit should be part of the URL")
         XCTAssertEqual(queryParamsDictionary?[limitKey], "80", "The limit should be 80")
 
         let offset = urlValueComponents?.queryItems?.first { $0.name == "offset" }
         XCTAssertNotNil(offset, "The offset should be part of the URL")
         XCTAssertEqual(offset?.value, "0", "The offset should be 0")
-        let offsetKey = QueryParam.QueryParam.offset.rawValue
+        let offsetKey = "offset"
         XCTAssertNotNil(queryParamsDictionary?[offsetKey], "The offset should be part of the URL")
         XCTAssertEqual(queryParamsDictionary?[offsetKey], "0", "The offset should be 0")
 
         let status = urlValueComponents?.queryItems?.first { $0.name == "status" }
         XCTAssertNotNil(status, "The status should be part of the URL")
         XCTAssertEqual(status?.value, "ACTIVATED", "The status should be ACTIVATED")
-        let statusKey = HyperwalletTransferMethodQueryParam.QueryParam.status.rawValue
+        let statusKey = "status"
         XCTAssertNotNil(queryParamsDictionary?[statusKey], "The status should be part of the URL")
         XCTAssertEqual(queryParamsDictionary?[statusKey], "ACTIVATED", "The status should be ACTIVATED")
 
         let type = urlValueComponents?.queryItems?.first { $0.name == "type" }
         XCTAssertNotNil(type, "The type should be part of the URL")
         XCTAssertEqual(type?.value, "BANK_ACCOUNT", "The type should be BANK_ACCOUNT")
-        let typeKey = HyperwalletBankAccountQueryParam.QueryParam.type.rawValue
+        let typeKey = "type"
         XCTAssertNotNil(queryParamsDictionary?[typeKey], "The type should be part of the URL")
         XCTAssertEqual(queryParamsDictionary?[typeKey], "BANK_ACCOUNT", "The type should be BANK_ACCOUNT")
     }

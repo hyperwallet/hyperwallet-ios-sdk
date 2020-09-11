@@ -20,12 +20,11 @@ import Foundation
 
 /// Representation of the common transfer method's query parameters.
 public class HyperwalletTransferMethodQueryParam: QueryParam {
-    /// Returns transfer method with this status.
-    public var status: QueryStatus?
-
-    enum QueryParam: String {
+    private enum QueryParam: String {
         case status
     }
+    /// Returns transfer method with this status.
+    public var status: QueryStatus?
 
     /// Representation of the transfer method status
     public enum QueryStatus: String {
@@ -59,20 +58,9 @@ public class HyperwalletTransferMethodQueryParam: QueryParam {
 
     override public func toQuery() -> [String: String] {
         var query = super.toQuery()
-        if let date = createdAfter {
-            query[QueryParam.createdAfter.rawValue] = ISO8601DateFormatter.ignoreTimeZone.string(from: date)
-        }
-
-        if let date = createdBefore {
-            query[QueryParam.createdBefore.rawValue] = ISO8601DateFormatter.ignoreTimeZone.string(from: date)
-        }
 
         if let status = status {
             query[QueryParam.status.rawValue] = status.rawValue
-        }
-
-        if let sortBy = sortBy {
-            query[QueryParam.sortBy.rawValue] = sortBy
         }
         return query
     }
