@@ -255,8 +255,8 @@ public struct HyperwalletReceipt: Decodable, Equatable {
         case prepaidCardIncome = "PREPAID_CARD_INCOME"
         /// The prepaid card load fee
         case prepaidCardLoadFee = "PREPAID_CARD_LOAD_FEE"
-        /// The prepaid card payment interest
-        case prepaidCardPaymentInterest = "PREPAID_CARD_OVERDUE_PAYMENT_INTEREST"
+        /// The prepaid card overdue payment interest
+        case prepaidCardOverduePaymentInterest = "PREPAID_CARD_OVERDUE_PAYMENT_INTEREST"
         // Donation types
         ///
         /// The donation
