@@ -257,6 +257,40 @@ public struct HyperwalletReceipt: Decodable, Equatable {
         case prepaidCardLoadFee = "PREPAID_CARD_LOAD_FEE"
         /// The prepaid card overdue payment interest
         case prepaidCardOverduePaymentInterest = "PREPAID_CARD_OVERDUE_PAYMENT_INTEREST"
+        /// The prepaid card payment
+        case prepaidCardPayment = "PREPAID_CARD_PAYMENT"
+        /// The prepaid card pin reprint fee
+        case prepaidCardPinReprintFee = "PREPAID_CARD_PIN_REPRINT_FEE"
+        /// The prepaid card priority pass fee
+        case prepaidCardPriorityPassFee = "PREPAID_CARD_PRIORITY_PASS_FEE"
+        /// The prepaid card priority pass renewal
+        case prepaidCardPriorityPassRenewal = "PREPAID_CARD_PRIORITY_PASS_RENEWAL"
+        /// The prepaid card recurring interest
+        case prepaidCardRecurringInterest = "PREPAID_CARD_RECURRING_INTEREST"
+        /// The prepaid card refund repress
+        case prepaidCardRefundRepress = "PREPAID_CARD_REFUND_REPRESS"
+        /// The prepaid card refund repress reversal
+        case prepaidCardRefundRepressReversal = "PREPAID_CARD_REFUND_REPRESS_REVERSAL"
+        /// The prepaid card statement fee
+        case prepaidCardStatementFee = "PREPAID_CARD_STATEMENT_FEE"
+        /// The prepaid card telephone support fee
+        case prepaidCardTelephoneSupportFee = "PREPAID_CARD_TELEPHONE_SUPPORT_FEE"
+        /// The prepaid card transfer fee
+        case prepaidCardTransferFee = "PREPAID_CARD_TRANSFER_FEE"
+        /// The prepaid card transfer return
+        case prepaidCardTransferReturn = "PREPAID_CARD_TRANSFER_RETURN"
+        /// The prepaid card bank withdrawal chargeback
+        case prepaidCardBankWithdrawalChargeback = "PREPAID_CARD_BANK_WITHDRAWAL_CHARGEBACK"
+        /// The prepaid card refund fee
+        case prepaidCardRefundfee = "PREPAID_CARD_REFUND_FEE"
+        /// The prepaid card monthly maintenance fee
+        case prepaidCardMonthlyMaintenanceFee = "PREPAID_CARD_MONTHLY_MAINTENANCE_FEE"
+        /// The prepaid card transaction fee
+        case prepaidCardTransactionFee = "PREPAID_CARD_TRANSACTION_FEE"
+        /// The prepaid card sms fee
+        case prepaidCardSmsFee = "PREPAID_CARD_SMS_FEE"
+        /// The prepaid card declined authorization fee
+        case prepaidCardDeclinedAuthorizationFee = "PREPAID_CARD_DECLINED_AUTHORIZATION_FEE"
         // Donation types
         ///
         /// The donation
