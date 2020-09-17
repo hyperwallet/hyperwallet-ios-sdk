@@ -291,6 +291,8 @@ public struct HyperwalletReceipt: Decodable, Equatable {
         case prepaidCardSmsFee = "PREPAID_CARD_SMS_FEE"
         /// The prepaid card declined authorization fee
         case prepaidCardDeclinedAuthorizationFee = "PREPAID_CARD_DECLINED_AUTHORIZATION_FEE"
+        /// The prepaid card purchases
+        case fispc = "FISPC"
         // Donation types
         ///
         /// The donation
