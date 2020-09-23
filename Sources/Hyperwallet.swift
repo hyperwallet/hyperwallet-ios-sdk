@@ -397,6 +397,27 @@ public final class Hyperwallet: NSObject {
                                     payload: "",
                                     completionHandler: completion)
     }
+    
+    /// Returns the `HyperwalletPrepaidCard` linked to the transfer method token specified, or nil if none exists.
+    ///
+    /// The `completion: @escaping (HyperwalletPrepaidCard?, HyperwalletErrorType?) -> Void` that is passed in to
+    /// this method invocation will receive the successful response(HyperwalletPrepaidCard) or error(HyperwalletErrorType)
+    /// from processing the request.
+    ///
+    /// This function will request a new authentication token via `HyperwalletAuthenticationTokenProvider`
+    /// if the current one is expired or is about to expire.
+    ///
+    /// - Parameters:
+    ///   - transferMethodToken: the Hyperwallet specific unique identifier for the `HyperwalletPrepaidCard`
+    ///                          being requested
+    ///   - completion: the callback handler of responses from the Hyperwallet platform
+    public func getPrepaidCard(transferMethodToken: String,
+                               completion: @escaping (HyperwalletPrepaidCard?, HyperwalletErrorType?) -> Void) {
+        httpTransaction.performRest(httpMethod: .get,
+                                    urlPath: "users/%@/prepaid-cards/\(transferMethodToken)",
+                                    payload: "",
+                                    completionHandler: completion)
+    }
 
     /// Returns the `HyperwalletTransfer` linked to the transfer method token specified, or nil if none exists.
     ///

@@ -388,6 +388,14 @@ Hyperwallet.shared.listBankCards(queryParam: bankCardQueryParam) { (result, erro
 }
 ```
 
+### Get Prepaid Card
+```swift
+Hyperwallet.shared.getPrepaidCard(transferMethodToken: "123123", completion: { (result, error) in
+    // In case of successful, response (HyperwalletPrepaidCard? in this case) will contain information about the user’s prepaid card or nil if not exist.
+    // In case of failure, error (HyperwalletErrorType) will contain HyperwalletErrors containing information about what caused the failure
+})
+```
+
 ### List Prepaid Cards
 ```swift
 let prepaidCardQueryParam = HyperwalletPrepaidCardQueryParam()
