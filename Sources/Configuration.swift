@@ -33,6 +33,8 @@ public struct Configuration: Codable {
     public let issuer: String
     /// The user token
     public let userToken: String
+    /// The program model
+    public let programModel: String?
     var authorization: String!
     private static let stalePeriod = 30.0 // 30 seconds
     private let createOnBootTime = ProcessInfo.processInfo.systemUptime
@@ -47,6 +49,7 @@ public struct Configuration: Codable {
         case restUrl = "rest-uri"
         case insightsUrl = "insights-uri"
         case environment = "environment"
+        case programModel = "program-model"
     }
 
     func isTokenStale() -> Bool {

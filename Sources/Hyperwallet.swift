@@ -397,12 +397,12 @@ public final class Hyperwallet: NSObject {
                                     payload: "",
                                     completionHandler: completion)
     }
-    
+
     /// Returns the `HyperwalletPrepaidCard` linked to the transfer method token specified, or nil if none exists.
     ///
     /// The `completion: @escaping (HyperwalletPrepaidCard?, HyperwalletErrorType?) -> Void` that is passed in to
-    /// this method invocation will receive the successful response(HyperwalletPrepaidCard) or error(HyperwalletErrorType)
-    /// from processing the request.
+    /// this method invocation will receive the successful response(HyperwalletPrepaidCard) or
+    /// error(HyperwalletErrorType) from processing the request.
     ///
     /// This function will request a new authentication token via `HyperwalletAuthenticationTokenProvider`
     /// if the current one is expired or is about to expire.
@@ -988,8 +988,7 @@ public final class Hyperwallet: NSObject {
 
     private func transferMethodConfigurationFieldResponseHandler(_ completionHandler:
             @escaping (TransferMethodConfigurationFieldResult?, HyperwalletErrorType?) -> Void)
-        -> (TransferMethodConfigurationField?, HyperwalletErrorType?) -> Void {
-            { (response, error) in
+        -> (TransferMethodConfigurationField?, HyperwalletErrorType?) -> Void { { (response, error) in
                 let result = TransferMethodConfigurationFieldResult(response?.transferMethodUIConfigurations?.nodes,
                                                                     response?.countries?.nodes?.first)
                 completionHandler(result, error)
@@ -998,8 +997,7 @@ public final class Hyperwallet: NSObject {
 
     private func transferMethodConfigurationKeyResponseHandler(_ completionHandler:
             @escaping (TransferMethodConfigurationKeyResult?, HyperwalletErrorType?) -> Void)
-        -> (TransferMethodConfigurationKey?, HyperwalletErrorType?) -> Void {
-            { (response, error) in
+        -> (TransferMethodConfigurationKey?, HyperwalletErrorType?) -> Void { { (response, error) in
                 completionHandler(TransferMethodConfigurationKeyResult(response?.countries?.nodes), error)
             }
     }
