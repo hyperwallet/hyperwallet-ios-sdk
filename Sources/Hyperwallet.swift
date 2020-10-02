@@ -609,7 +609,7 @@ public final class Hyperwallet: NSObject {
     /// or nil if non exist.
     ///
     /// The ordering and filtering of `HyperwalletPrepaidCard` will be based on the criteria specified within the
-    /// `HyperwalletPrepaidCardQueryParm` object, if it is not nil. Otherwise the default ordering and
+    /// `HyperwalletPrepaidCardQueryParam` object, if it is not nil. Otherwise the default ordering and
     /// filtering will be applied.
     ///
     /// * Offset: 0
@@ -630,7 +630,7 @@ public final class Hyperwallet: NSObject {
     /// - Parameters:
     ///   - queryParam: the ordering and filtering criteria
     ///   - completion: the callback handler of responses from the Hyperwallet platform
-    public func listPrepaidCards(queryParam: HyperwalletPrepaidCardQueryParm? = nil,
+    public func listPrepaidCards(queryParam: HyperwalletPrepaidCardQueryParam? = nil,
                                  completion: @escaping (HyperwalletPageList<HyperwalletPrepaidCard>?,
         HyperwalletErrorType?) -> Void) {
         httpTransaction.performRest(httpMethod: .get,
