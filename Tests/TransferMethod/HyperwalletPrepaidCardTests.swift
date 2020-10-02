@@ -68,7 +68,7 @@ class HyperwalletPrepaidCardTests: XCTestCase {
 
         // Then
         XCTAssertNil(errorResponse, "The `errorResponse` should be nil")
-        XCTAssertNotNil(prepaidCardList, "The `bankAccountList` should not be nil")
+        XCTAssertNotNil(prepaidCardList, "The `prepaidCardList` should not be nil")
         XCTAssertEqual(prepaidCardList?.count, 2, "The `count` should be 2")
         XCTAssertNotNil(prepaidCardList?.data, "The `data` should be not nil")
 
