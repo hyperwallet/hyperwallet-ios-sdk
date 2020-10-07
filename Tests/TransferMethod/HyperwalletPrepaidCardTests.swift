@@ -13,6 +13,33 @@ class HyperwalletPrepaidCardTests: XCTestCase {
         }
     }
 
+    func testGetPrepaidCard_success() {
+        // Given
+        let expectation = self.expectation(description: "Get prepaid card completed")
+        let response = HyperwalletTestHelper.okHTTPResponse(for: "PrepaidCardResponse")
+        let url = String(format: "%@/prepaid-cards/trm-123", HyperwalletTestHelper.userRestURL)
+        let request = HyperwalletTestHelper.buildGetRequest(baseUrl: url, response)
+        HyperwalletTestHelper.setUpMockServer(request: request)
+
+        var prepaidCardResponse: HyperwalletPrepaidCard?
+        var errorResponse: HyperwalletErrorType?
+
+        // When
+        Hyperwallet.shared.getPrepaidCard(transferMethodToken: "trm-123", completion: { (result, error) in
+            prepaidCardResponse = result
+            errorResponse = error
+            expectation.fulfill()
+        })
+
+        wait(for: [expectation], timeout: 1)
+
+        // Then
+        XCTAssertNil(errorResponse, "The `errorResponse` should be nil")
+        XCTAssertNotNil(prepaidCardResponse?.getFields())
+        XCTAssertEqual(prepaidCardResponse?.cardBrand, "VISA")
+        XCTAssertEqual(prepaidCardResponse?.type, HyperwalletTransferMethod.TransferMethodType.prepaidCard.rawValue)
+    }
+
     //swiftlint:disable function_body_length
     func testListPrepaidCards_success() {
         // Given
@@ -26,9 +53,9 @@ class HyperwalletPrepaidCardTests: XCTestCase {
         var errorResponse: HyperwalletErrorType?
 
         // When
-        let prepaidCardQueryParam = HyperwalletPrepaidCardQueryParm()
-        prepaidCardQueryParam.status = HyperwalletPrepaidCardQueryParm.QueryStatus.deActivated
-        prepaidCardQueryParam.sortBy = HyperwalletPrepaidCardQueryParm.QuerySortable.ascendantCreatedOn.rawValue
+        let prepaidCardQueryParam = HyperwalletPrepaidCardQueryParam()
+        prepaidCardQueryParam.status = HyperwalletPrepaidCardQueryParam.QueryStatus.deActivated
+        prepaidCardQueryParam.sortBy = HyperwalletPrepaidCardQueryParam.QuerySortable.ascendantCreatedOn.rawValue
         prepaidCardQueryParam.createdAfter = ISO8601DateFormatter.ignoreTimeZone.date(from: "2019-06-20T21:21:43")
         prepaidCardQueryParam.createdBefore = ISO8601DateFormatter.ignoreTimeZone.date(from: "2019-06-20T23:21:43")
 
@@ -41,7 +68,7 @@ class HyperwalletPrepaidCardTests: XCTestCase {
 
         // Then
         XCTAssertNil(errorResponse, "The `errorResponse` should be nil")
-        XCTAssertNotNil(prepaidCardList, "The `bankAccountList` should not be nil")
+        XCTAssertNotNil(prepaidCardList, "The `prepaidCardList` should not be nil")
         XCTAssertEqual(prepaidCardList?.count, 2, "The `count` should be 2")
         XCTAssertNotNil(prepaidCardList?.data, "The `data` should be not nil")
 
@@ -85,9 +112,9 @@ class HyperwalletPrepaidCardTests: XCTestCase {
         var errorResponse: HyperwalletErrorType?
 
         // When
-        let prepaidCardQueryParam = HyperwalletPrepaidCardQueryParm()
-        prepaidCardQueryParam.status = HyperwalletPrepaidCardQueryParm.QueryStatus.activated
-        prepaidCardQueryParam.sortBy = HyperwalletPrepaidCardQueryParm.QuerySortable.ascendantCreatedOn.rawValue
+        let prepaidCardQueryParam = HyperwalletPrepaidCardQueryParam()
+        prepaidCardQueryParam.status = HyperwalletPrepaidCardQueryParam.QueryStatus.activated
+        prepaidCardQueryParam.sortBy = HyperwalletPrepaidCardQueryParam.QuerySortable.ascendantCreatedOn.rawValue
         prepaidCardQueryParam.createdAfter = ISO8601DateFormatter.ignoreTimeZone.date(from: "2019-01-01T00:30:11")
 
         Hyperwallet.shared.listPrepaidCards(queryParam: prepaidCardQueryParam) { (result, error) in

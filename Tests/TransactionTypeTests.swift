@@ -70,6 +70,7 @@ class TransactionTypeTests: XCTestCase {
                                           insightsUrl: "",
                                           issuer: "",
                                           userToken: "",
+                                          programModel: "",
                                           authorization: "")
 
         XCTAssertThrowsError(try transactionType.createRequest(configuration,
@@ -98,6 +99,7 @@ class TransactionTypeTests: XCTestCase {
                                           insightsUrl: "",
                                           issuer: "",
                                           userToken: "",
+                                          programModel: "",
                                           authorization: "")
 
         let urlPath = transactionType == .rest ? "users/%@/bank-account" : ""
@@ -146,6 +148,7 @@ class TransactionTypeTests: XCTestCase {
                                           insightsUrl: "",
                                           issuer: "",
                                           userToken: "",
+                                          programModel: "",
                                           authorization: "")
 
         let urlPath = transactionType == .graphQl ? "/graphql" : ""

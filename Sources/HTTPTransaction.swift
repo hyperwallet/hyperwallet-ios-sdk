@@ -142,8 +142,7 @@ final class HTTPTransaction {
         @escaping (_ response: Response?,
         _ error: HyperwalletErrorType?) -> Void)
         -> (GraphQlResult<Response>?, HyperwalletErrorType?) -> Void
-        where Response: Decodable {
-            { (result, error) in
+        where Response: Decodable { { (result, error) in
                 if let error = error {
                     completionHandler(nil, error)
                 }
@@ -159,8 +158,7 @@ final class HTTPTransaction {
     /// Handles the callback has been performed by HTTPClient
     static func requestHandler<Response>( _ completionHandler: @escaping (_ response: Response?,
                                                                           _ error: HyperwalletErrorType?) -> Void)
-        -> HTTPClientProtocol.ResultHandler where Response: Decodable {
-            { (data, response, error) in
+        -> HTTPClientProtocol.ResultHandler where Response: Decodable { { (data, response, error) in
                 // Check the transport error has occurred;
                 guard error == nil, let httpResponse = response as? HTTPURLResponse else {
                     completionHandler(nil, ErrorTypeHelper.connectionError(for: error))
@@ -214,8 +212,8 @@ final class HTTPTransaction {
                                                        _ payload: Request?,
                                                        _ completionHandler: @escaping ((_ response: Response?,
                                                                                 _ error: HyperwalletErrorType?) -> Void)
-        ) -> HyperwalletAuthenticationTokenProvider.CompletionHandler where Request: Encodable, Response: Decodable {
-        { [weak self] (authenticationToken, error) in
+        ) -> HyperwalletAuthenticationTokenProvider.CompletionHandler
+        where Request: Encodable, Response: Decodable { { [weak self] (authenticationToken, error) in
             guard let strongSelf = self else {
                 completionHandler(nil, ErrorTypeHelper.transactionAborted())
                 return
