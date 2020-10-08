@@ -23,16 +23,6 @@ public class HyperwalletBankAccountQueryParam: HyperwalletTransferMethodQueryPar
     private enum QueryParam: String {
         case type
     }
-    /// The bank account type.
-    public var type: QueryType?
-
-    /// Represents the Bank Account types.
-    public enum QueryType: String {
-        /// The Bank account type
-        case bankAccount = "BANK_ACCOUNT"
-        /// The Wire account type
-        case wireAccount = "WIRE_ACCOUNT"
-    }
 
     /// Representation of the bank account status
     public enum QueryStatus: String {

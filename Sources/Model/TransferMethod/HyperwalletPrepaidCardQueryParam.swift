@@ -27,7 +27,7 @@ public class HyperwalletPrepaidCardQueryParm: HyperwalletTransferMethodQueryPara
     override public func toQuery() -> [String: String] {
         var query = super.toQuery()
 
-        query[QueryParam.type.rawValue] = "PREPAID_CARD"
+        query[QueryParam.type.rawValue] = type?.rawValue
         return query
     }
 }

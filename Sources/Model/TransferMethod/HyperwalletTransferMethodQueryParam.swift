@@ -22,9 +22,11 @@ import Foundation
 public class HyperwalletTransferMethodQueryParam: QueryParam {
     private enum QueryParam: String {
         case status
+        case type
     }
     /// Returns transfer method with this status.
     public var status: QueryStatus?
+    public var type: QueryType?
 
     /// Representation of the transfer method status
     public enum QueryStatus: String {
@@ -56,11 +58,32 @@ public class HyperwalletTransferMethodQueryParam: QueryParam {
         case descendantStatus = "-status"
     }
 
+    /// Representation of the transfer method type
+    public enum QueryType: String {
+        /// The Bank account type
+        case bankAccount = "BANK_ACCOUNT"
+        /// The Wire account type
+        case wireAccount = "WIRE_ACCOUNT"
+        /// The Bank Card type
+        case bankCard = "BANK_CARD"
+        /// The Paypal account type
+        case paypalAccount = "PAYPAL_ACCOUNT"
+        /// The Venmo account type
+        case venmoAccount = "VENMO_ACCOUNT"
+        /// The Prepaid card type
+        case prepaidCard = "PREPAID_CARD"
+        /// The Paper check type
+        case paperCheck = "PAPER_CHECK"
+    }
+
     override public func toQuery() -> [String: String] {
         var query = super.toQuery()
 
         if let status = status {
             query[QueryParam.status.rawValue] = status.rawValue
+        }
+        if let type = type {
+            query[QueryParam.type.rawValue] = type.rawValue
         }
         return query
     }
