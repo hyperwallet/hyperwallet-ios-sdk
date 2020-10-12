@@ -20,7 +20,7 @@ import Foundation
 
 /// Representation of the common transfer method's query parameters.
 public class HyperwalletTransferMethodQueryParam: QueryParam {
-    enum QueryParam: String {
+   public enum QueryParam: String {
         case status
         case type
     }

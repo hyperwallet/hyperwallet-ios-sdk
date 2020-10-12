@@ -20,10 +20,6 @@ import Foundation
 
 /// Representation of the common Venmo's query parameters.
 public class HyperwalletVenmoQueryParam: HyperwalletTransferMethodQueryParam {
-    enum QueryParam: String {
-        case type
-    }
-
     override public func toQuery() -> [String: String] {
         var query = super.toQuery()
 

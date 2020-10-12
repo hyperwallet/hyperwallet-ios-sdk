@@ -20,10 +20,6 @@ import Foundation
 
 /// Representation of the prepaid card query parameters.
 public class HyperwalletPrepaidCardQueryParm: HyperwalletTransferMethodQueryParam {
-    private enum QueryParam: String {
-        case type
-    }
-
     override public func toQuery() -> [String: String] {
         var query = super.toQuery()
 
