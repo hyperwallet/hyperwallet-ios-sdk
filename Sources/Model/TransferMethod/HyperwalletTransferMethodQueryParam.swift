@@ -20,13 +20,14 @@ import Foundation
 
 /// Representation of the common transfer method's query parameters.
 public class HyperwalletTransferMethodQueryParam: QueryParam {
-    private enum QueryParam: String {
+    enum QueryParam: String {
         case status
         case type
     }
+
     /// Returns transfer method with this status.
     public var status: QueryStatus?
-    public var type: QueryType?
+    public var type: HyperwalletTransferMethod.TransferMethodType?
 
     /// Representation of the transfer method status
     public enum QueryStatus: String {
@@ -56,24 +57,6 @@ public class HyperwalletTransferMethodQueryParam: QueryParam {
         case descendantCreatedOn = "-createdOn"
         /// Sort the result by descendant status
         case descendantStatus = "-status"
-    }
-
-    /// Representation of the transfer method type
-    public enum QueryType: String {
-        /// The Bank account type
-        case bankAccount = "BANK_ACCOUNT"
-        /// The Wire account type
-        case wireAccount = "WIRE_ACCOUNT"
-        /// The Bank Card type
-        case bankCard = "BANK_CARD"
-        /// The Paypal account type
-        case paypalAccount = "PAYPAL_ACCOUNT"
-        /// The Venmo account type
-        case venmoAccount = "VENMO_ACCOUNT"
-        /// The Prepaid card type
-        case prepaidCard = "PREPAID_CARD"
-        /// The Paper check type
-        case paperCheck = "PAPER_CHECK"
     }
 
     override public func toQuery() -> [String: String] {

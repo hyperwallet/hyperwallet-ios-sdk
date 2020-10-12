@@ -27,7 +27,7 @@ public class HyperwalletVenmoQueryParam: HyperwalletTransferMethodQueryParam {
     override public func toQuery() -> [String: String] {
         var query = super.toQuery()
 
-        query[QueryParam.type.rawValue] = type?.rawValue
+        query[QueryParam.type.rawValue] = HyperwalletTransferMethod.TransferMethodType.venmoAccount.rawValue
         return query
     }
 }

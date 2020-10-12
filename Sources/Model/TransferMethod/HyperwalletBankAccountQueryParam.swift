@@ -20,10 +20,6 @@ import Foundation
 
 /// Representation of the bank account query parameters.
 public class HyperwalletBankAccountQueryParam: HyperwalletTransferMethodQueryParam {
-    private enum QueryParam: String {
-        case type
-    }
-
     /// Representation of the bank account status
     public enum QueryStatus: String {
         /// Filter by activated bank accounts
@@ -38,10 +34,14 @@ public class HyperwalletBankAccountQueryParam: HyperwalletTransferMethodQueryPar
 
     override public func toQuery() -> [String: String] {
         var query = super.toQuery()
-        if let type = type {
-            query[QueryParam.type.rawValue] = type.rawValue
-        }
 
+        if let type = type {
+            if type.rawValue == HyperwalletTransferMethod.TransferMethodType.bankAccount.rawValue {
+                  query[QueryParam.type.rawValue] = HyperwalletTransferMethod.TransferMethodType.bankAccount.rawValue
+            } else {
+                 query[QueryParam.type.rawValue] = HyperwalletTransferMethod.TransferMethodType.wireAccount.rawValue
+            }
+        }
         return query
     }
 }
