@@ -630,7 +630,7 @@ public final class Hyperwallet: NSObject {
     /// - Parameters:
     ///   - queryParam: the ordering and filtering criteria
     ///   - completion: the callback handler of responses from the Hyperwallet platform
-    public func listPrepaidCards(queryParam: HyperwalletPrepaidCardQueryParm? = nil,
+    public func listPrepaidCards(queryParam: HyperwalletPrepaidCardQueryParam? = nil,
                                  completion: @escaping (HyperwalletPageList<HyperwalletPrepaidCard>?,
         HyperwalletErrorType?) -> Void) {
         httpTransaction.performRest(httpMethod: .get,

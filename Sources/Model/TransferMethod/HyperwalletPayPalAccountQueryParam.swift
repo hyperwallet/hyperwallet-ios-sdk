@@ -23,7 +23,9 @@ public class HyperwalletPayPalAccountQueryParam: HyperwalletTransferMethodQueryP
     override public func toQuery() -> [String: String] {
         var query = super.toQuery()
 
-        query[QueryParam.type.rawValue] = HyperwalletTransferMethod.TransferMethodType.payPalAccount.rawValue
+        if type != nil {
+            query[QueryParam.type.rawValue] = QueryType.payPalAccount.rawValue
+        }
         return query
     }
 }

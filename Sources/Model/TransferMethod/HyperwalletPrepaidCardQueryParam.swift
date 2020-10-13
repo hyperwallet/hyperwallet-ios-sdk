@@ -19,11 +19,27 @@
 import Foundation
 
 /// Representation of the prepaid card query parameters.
-public class HyperwalletPrepaidCardQueryParm: HyperwalletTransferMethodQueryParam {
+public class HyperwalletPrepaidCardQueryParam: HyperwalletTransferMethodQueryParam {
+    /// Representation of the transfer method status
+    public enum QueryStatus: String {
+        /// Filter by activated transfer methods
+        case activated = "ACTIVATED"
+        /// Filter by deActivated transfer methods
+        case deActivated = "DE_ACTIVATED"
+        /// Filter only lostOrStolen prepaid cards
+        case lostOrStolen = "LOST_OR_STOLEN"
+        /// Filter by preActivated prepaid cards
+        case preActivated = "PRE_ACTIVATED"
+        /// Filter only suspended prepaid cards
+        case suspended = "SUSPENDED"
+    }
+
     override public func toQuery() -> [String: String] {
         var query = super.toQuery()
 
-        query[QueryParam.type.rawValue] = HyperwalletTransferMethod.TransferMethodType.prepaidCard.rawValue
+        if type != nil {
+            query[QueryParam.type.rawValue] = QueryType.prepaidCard.rawValue
+        }
         return query
     }
 }

@@ -23,7 +23,9 @@ public class HyperwalletBankCardQueryParam: HyperwalletTransferMethodQueryParam 
     override public func toQuery() -> [String: String] {
         var query = super.toQuery()
 
-        query[QueryParam.type.rawValue] = HyperwalletTransferMethod.TransferMethodType.bankCard.rawValue
+        if type != nil {
+            query[QueryParam.type.rawValue] = QueryType.bankCard.rawValue
+        }
         return query
     }
 }

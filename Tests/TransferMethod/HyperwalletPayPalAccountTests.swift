@@ -265,9 +265,9 @@ class HyperwalletPayPalAccountTests: XCTestCase {
 
         // When
         let payPalAccountQueryParam = HyperwalletPayPalAccountQueryParam()
-        payPalAccountQueryParam.status = .activated
-        payPalAccountQueryParam.type = .payPalAccount
+        payPalAccountQueryParam.status = HyperwalletPayPalAccountQueryParam.QueryStatus.activated.rawValue
         payPalAccountQueryParam.createdAfter = ISO8601DateFormatter.ignoreTimeZone.date(from: "2018-12-15T00:30:11")
+        payPalAccountQueryParam.sortBy = HyperwalletTransferMethodQueryParam.QuerySortable.ascendantCreatedOn.rawValue
 
         Hyperwallet.shared.listPayPalAccounts(queryParam: payPalAccountQueryParam) { (result, error) in
             payPalAccountList = result
@@ -303,8 +303,7 @@ class HyperwalletPayPalAccountTests: XCTestCase {
 
         // When
         let payPalAccountQueryParam = HyperwalletPayPalAccountQueryParam()
-        payPalAccountQueryParam.status = .deActivated
-        payPalAccountQueryParam.type = .payPalAccount
+        payPalAccountQueryParam.status = HyperwalletPayPalAccountQueryParam.QueryStatus.deActivated.rawValue
 
         // When
         Hyperwallet.shared.listPayPalAccounts(queryParam: payPalAccountQueryParam) { (result, error) in

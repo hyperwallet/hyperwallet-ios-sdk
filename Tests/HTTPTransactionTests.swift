@@ -62,8 +62,8 @@ class HTTPTransactionTests: XCTestCase {
         // Given
         let queryParam = HyperwalletBankAccountQueryParam()
         queryParam.limit = 80
-        queryParam.status = .activated
-        queryParam.type = .bankAccount
+        queryParam.status = HyperwalletBankAccountQueryParam.QueryStatus.activated.rawValue
+        queryParam.type = HyperwalletBankAccountQueryParam.QueryType.bankAccount.rawValue
         var queryParamsDictionary: [String: String]?
         var urlValueComponents: URLComponents?
         // When

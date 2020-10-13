@@ -20,28 +20,11 @@ import Foundation
 
 /// Representation of the bank account query parameters.
 public class HyperwalletBankAccountQueryParam: HyperwalletTransferMethodQueryParam {
-    /// Representation of the bank account status
-    public enum QueryStatus: String {
-        /// Filter by activated bank accounts
-        case activated = "ACTIVATED"
-        /// Filter by deActivated bank accounts
-        case deActivated = "DE_ACTIVATED"
-        /// Filter only invalid bank accounts
-        case invalid = "INVALID"
-        /// Filter only verified bank accounts
-        case verified = "VERIFIED"
-    }
-
-    override public func toQuery() -> [String: String] {
-        var query = super.toQuery()
-
-        if let type = type {
-            if type.rawValue == HyperwalletTransferMethod.TransferMethodType.bankAccount.rawValue {
-                  query[QueryParam.type.rawValue] = HyperwalletTransferMethod.TransferMethodType.bankAccount.rawValue
-            } else {
-                 query[QueryParam.type.rawValue] = HyperwalletTransferMethod.TransferMethodType.wireAccount.rawValue
-            }
-        }
-        return query
+    /// Representation of the transfer method's type
+    public enum QueryType: String {
+        /// When the transfer method is Bank Account
+        case bankAccount = "BANK_ACCOUNT"
+        /// When the transfer method is Wire Account
+        case wireAccount = "WIRE_ACCOUNT"
     }
 }

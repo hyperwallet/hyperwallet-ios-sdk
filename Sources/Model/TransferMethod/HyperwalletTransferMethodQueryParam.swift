@@ -20,14 +20,15 @@ import Foundation
 
 /// Representation of the common transfer method's query parameters.
 public class HyperwalletTransferMethodQueryParam: QueryParam {
-   public enum QueryParam: String {
+    enum QueryParam: String {
         case status
         case type
     }
 
     /// Returns transfer method with this status.
-    public var status: QueryStatus?
-    public var type: HyperwalletTransferMethod.TransferMethodType?
+    public var status: String?
+    /// Returns transfer method of that type
+    public var type: String?
 
     /// Representation of the transfer method status
     public enum QueryStatus: String {
@@ -37,12 +38,6 @@ public class HyperwalletTransferMethodQueryParam: QueryParam {
         case deActivated = "DE_ACTIVATED"
         /// Filter only invalid transfer methods
         case invalid = "INVALID"
-        /// Filter only lostOrStolen prepaid cards
-        case lostOrStolen = "LOST_OR_STOLEN"
-        /// Filter by preActivated prepaid cards
-        case preActivated = "PRE_ACTIVATED"
-        /// Filter only suspended prepaid cards
-        case suspended = "SUSPENDED"
         /// Filter only verified transfer methods
         case verified = "VERIFIED"
     }
@@ -59,14 +54,30 @@ public class HyperwalletTransferMethodQueryParam: QueryParam {
         case descendantStatus = "-status"
     }
 
+    /// Representation of the transfer method's type
+    public enum QueryType: String {
+        /// When the transfer method is Bank Account
+        case bankAccount = "BANK_ACCOUNT"
+        /// When the transfer method is Bank Card
+        case bankCard = "BANK_CARD"
+        /// When the transfer method is PayPal Account
+        case payPalAccount = "PAYPAL_ACCOUNT"
+        /// When the transfer method is Wire Account
+        case wireAccount = "WIRE_ACCOUNT"
+        /// When the transfer method is Prepaid Card
+        case prepaidCard = "PREPAID_CARD"
+        /// When the transfer method is Venmo Account
+        case venmoAccount = "VENMO_ACCOUNT"
+    }
+
     override public func toQuery() -> [String: String] {
         var query = super.toQuery()
 
         if let status = status {
-            query[QueryParam.status.rawValue] = status.rawValue
+            query[QueryParam.status.rawValue] = status
         }
         if let type = type {
-            query[QueryParam.type.rawValue] = type.rawValue
+            query[QueryParam.type.rawValue] = type
         }
         return query
     }
