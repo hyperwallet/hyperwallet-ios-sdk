@@ -160,6 +160,7 @@ class HyperwalletVenmoAccountTests: XCTestCase {
         // When
     let venmoQuery = HyperwalletVenmoQueryParam()
         venmoQuery.status = HyperwalletVenmoQueryParam.QueryStatus.activated.rawValue
+        venmoQuery.type = HyperwalletVenmoQueryParam.QueryType.venmoAccount.rawValue
         venmoQuery.createdAfter = ISO8601DateFormatter.ignoreTimeZone.date(from: "2018-12-15T00:30:11")
 
         Hyperwallet.shared.listVenmoAccounts(queryParam: venmoQuery) { (result, error) in

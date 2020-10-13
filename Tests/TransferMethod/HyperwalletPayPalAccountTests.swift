@@ -266,6 +266,7 @@ class HyperwalletPayPalAccountTests: XCTestCase {
         // When
         let payPalAccountQueryParam = HyperwalletPayPalAccountQueryParam()
         payPalAccountQueryParam.status = HyperwalletPayPalAccountQueryParam.QueryStatus.activated.rawValue
+        payPalAccountQueryParam.type = HyperwalletPayPalAccountQueryParam.QueryType.payPalAccount.rawValue
         payPalAccountQueryParam.createdAfter = ISO8601DateFormatter.ignoreTimeZone.date(from: "2018-12-15T00:30:11")
         payPalAccountQueryParam.sortBy = HyperwalletTransferMethodQueryParam.QuerySortable.ascendantCreatedOn.rawValue
 

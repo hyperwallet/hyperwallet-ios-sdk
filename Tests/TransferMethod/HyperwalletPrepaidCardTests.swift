@@ -55,6 +55,7 @@ class HyperwalletPrepaidCardTests: XCTestCase {
         // When
         let prepaidCardQueryParam = HyperwalletPrepaidCardQueryParam()
         prepaidCardQueryParam.status = HyperwalletPrepaidCardQueryParam.QueryStatus.deActivated.rawValue
+        prepaidCardQueryParam.type = HyperwalletPrepaidCardQueryParam.QueryType.prepaidCard.rawValue
         prepaidCardQueryParam.sortBy = HyperwalletPrepaidCardQueryParam.QuerySortable.ascendantCreatedOn.rawValue
         prepaidCardQueryParam.createdAfter = ISO8601DateFormatter.ignoreTimeZone.date(from: "2019-06-20T21:21:43")
         prepaidCardQueryParam.createdBefore = ISO8601DateFormatter.ignoreTimeZone.date(from: "2019-06-20T23:21:43")
