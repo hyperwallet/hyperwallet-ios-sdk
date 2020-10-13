@@ -48,6 +48,7 @@ class ConfigurationTests: XCTestCase {
                       insightsUrl: "https://test/insightsUrl",
                       issuer: "issuer-token",
                       userToken: "user-token",
+                      programModel: "program-model",
                       authorization: "")
     }
 }

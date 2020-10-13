@@ -398,6 +398,27 @@ public final class Hyperwallet: NSObject {
                                     completionHandler: completion)
     }
 
+    /// Returns the `HyperwalletPrepaidCard` linked to the transfer method token specified, or nil if none exists.
+    ///
+    /// The `completion: @escaping (HyperwalletPrepaidCard?, HyperwalletErrorType?) -> Void` that is passed in to
+    /// this method invocation will receive the successful response(HyperwalletPrepaidCard) or
+    /// error(HyperwalletErrorType) from processing the request.
+    ///
+    /// This function will request a new authentication token via `HyperwalletAuthenticationTokenProvider`
+    /// if the current one is expired or is about to expire.
+    ///
+    /// - Parameters:
+    ///   - transferMethodToken: the Hyperwallet specific unique identifier for the `HyperwalletPrepaidCard`
+    ///                          being requested
+    ///   - completion: the callback handler of responses from the Hyperwallet platform
+    public func getPrepaidCard(transferMethodToken: String,
+                               completion: @escaping (HyperwalletPrepaidCard?, HyperwalletErrorType?) -> Void) {
+        httpTransaction.performRest(httpMethod: .get,
+                                    urlPath: "users/%@/prepaid-cards/\(transferMethodToken)",
+                                    payload: "",
+                                    completionHandler: completion)
+    }
+
     /// Returns the `HyperwalletTransfer` linked to the transfer method token specified, or nil if none exists.
     ///
     /// The `completion: @escaping (HyperwalletTransfer?, HyperwalletErrorType?) -> Void` that is passed in to this
@@ -588,7 +609,7 @@ public final class Hyperwallet: NSObject {
     /// or nil if non exist.
     ///
     /// The ordering and filtering of `HyperwalletPrepaidCard` will be based on the criteria specified within the
-    /// `HyperwalletPrepaidCardQueryParm` object, if it is not nil. Otherwise the default ordering and
+    /// `HyperwalletPrepaidCardQueryParam` object, if it is not nil. Otherwise the default ordering and
     /// filtering will be applied.
     ///
     /// * Offset: 0
@@ -609,7 +630,7 @@ public final class Hyperwallet: NSObject {
     /// - Parameters:
     ///   - queryParam: the ordering and filtering criteria
     ///   - completion: the callback handler of responses from the Hyperwallet platform
-    public func listPrepaidCards(queryParam: HyperwalletPrepaidCardQueryParm? = nil,
+    public func listPrepaidCards(queryParam: HyperwalletPrepaidCardQueryParam? = nil,
                                  completion: @escaping (HyperwalletPageList<HyperwalletPrepaidCard>?,
         HyperwalletErrorType?) -> Void) {
         httpTransaction.performRest(httpMethod: .get,
@@ -967,8 +988,7 @@ public final class Hyperwallet: NSObject {
 
     private func transferMethodConfigurationFieldResponseHandler(_ completionHandler:
             @escaping (TransferMethodConfigurationFieldResult?, HyperwalletErrorType?) -> Void)
-        -> (TransferMethodConfigurationField?, HyperwalletErrorType?) -> Void {
-            { (response, error) in
+        -> (TransferMethodConfigurationField?, HyperwalletErrorType?) -> Void { { (response, error) in
                 let result = TransferMethodConfigurationFieldResult(response?.transferMethodUIConfigurations?.nodes,
                                                                     response?.countries?.nodes?.first)
                 completionHandler(result, error)
@@ -977,8 +997,7 @@ public final class Hyperwallet: NSObject {
 
     private func transferMethodConfigurationKeyResponseHandler(_ completionHandler:
             @escaping (TransferMethodConfigurationKeyResult?, HyperwalletErrorType?) -> Void)
-        -> (TransferMethodConfigurationKey?, HyperwalletErrorType?) -> Void {
-            { (response, error) in
+        -> (TransferMethodConfigurationKey?, HyperwalletErrorType?) -> Void { { (response, error) in
                 completionHandler(TransferMethodConfigurationKeyResult(response?.countries?.nodes), error)
             }
     }

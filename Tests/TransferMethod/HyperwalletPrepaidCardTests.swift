@@ -13,6 +13,33 @@ class HyperwalletPrepaidCardTests: XCTestCase {
         }
     }
 
+    func testGetPrepaidCard_success() {
+        // Given
+        let expectation = self.expectation(description: "Get prepaid card completed")
+        let response = HyperwalletTestHelper.okHTTPResponse(for: "PrepaidCardResponse")
+        let url = String(format: "%@/prepaid-cards/trm-123", HyperwalletTestHelper.userRestURL)
+        let request = HyperwalletTestHelper.buildGetRequest(baseUrl: url, response)
+        HyperwalletTestHelper.setUpMockServer(request: request)
+
+        var prepaidCardResponse: HyperwalletPrepaidCard?
+        var errorResponse: HyperwalletErrorType?
+
+        // When
+        Hyperwallet.shared.getPrepaidCard(transferMethodToken: "trm-123", completion: { (result, error) in
+            prepaidCardResponse = result
+            errorResponse = error
+            expectation.fulfill()
+        })
+
+        wait(for: [expectation], timeout: 1)
+
+        // Then
+        XCTAssertNil(errorResponse, "The `errorResponse` should be nil")
+        XCTAssertNotNil(prepaidCardResponse?.getFields())
+        XCTAssertEqual(prepaidCardResponse?.cardBrand, "VISA")
+        XCTAssertEqual(prepaidCardResponse?.type, HyperwalletTransferMethod.TransferMethodType.prepaidCard.rawValue)
+    }
+
     //swiftlint:disable function_body_length
     func testListPrepaidCards_success() {
         // Given
@@ -42,7 +69,7 @@ class HyperwalletPrepaidCardTests: XCTestCase {
 
         // Then
         XCTAssertNil(errorResponse, "The `errorResponse` should be nil")
-        XCTAssertNotNil(prepaidCardList, "The `bankAccountList` should not be nil")
+        XCTAssertNotNil(prepaidCardList, "The `prepaidCardList` should not be nil")
         XCTAssertEqual(prepaidCardList?.count, 2, "The `count` should be 2")
         XCTAssertNotNil(prepaidCardList?.data, "The `data` should be not nil")
 
