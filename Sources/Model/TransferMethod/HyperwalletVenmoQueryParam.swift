@@ -20,14 +20,12 @@ import Foundation
 
 /// Representation of the common Venmo's query parameters.
 public class HyperwalletVenmoQueryParam: HyperwalletTransferMethodQueryParam {
-    enum QueryParam: String {
-        case type
-    }
-
     override public func toQuery() -> [String: String] {
         var query = super.toQuery()
 
-        query[QueryParam.type.rawValue] = "VENMO_ACCOUNT"
+        if type != nil {
+            query[QueryParam.type.rawValue] = QueryType.venmoAccount.rawValue
+        }
         return query
     }
 }

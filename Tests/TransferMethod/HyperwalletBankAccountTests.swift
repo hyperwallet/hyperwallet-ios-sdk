@@ -316,8 +316,8 @@ class HyperwalletBankAccountIndividualTests: XCTestCase {
 
         // When
         let bankAccountQueryParam = HyperwalletBankAccountQueryParam()
-        bankAccountQueryParam.status = .deActivated
-        bankAccountQueryParam.type = .bankAccount
+        bankAccountQueryParam.status = HyperwalletBankAccountQueryParam.QueryStatus.deActivated.rawValue
+        bankAccountQueryParam.type = HyperwalletBankAccountQueryParam.QueryType.bankAccount.rawValue
         bankAccountQueryParam.sortBy = HyperwalletBankAccountQueryParam.QuerySortable.ascendantCreatedOn.rawValue
         bankAccountQueryParam.createdAfter = ISO8601DateFormatter.ignoreTimeZone.date(from: "2018-12-15T00:30:11")
         bankAccountQueryParam.createdBefore = ISO8601DateFormatter.ignoreTimeZone.date(from: "2018-12-18T00:30:11")
@@ -357,8 +357,8 @@ class HyperwalletBankAccountIndividualTests: XCTestCase {
         var bankAccountList: HyperwalletPageList<HyperwalletBankAccount>?
         var errorResponse: HyperwalletErrorType?
         let bankAccountQueryParam = HyperwalletBankAccountQueryParam()
-        bankAccountQueryParam.status = .activated
-        bankAccountQueryParam.type = .wireAccount
+        bankAccountQueryParam.status = HyperwalletBankAccountQueryParam.QueryStatus.activated.rawValue
+        bankAccountQueryParam.type = HyperwalletBankAccountQueryParam.QueryType.wireAccount.rawValue
 
         // When
         Hyperwallet.shared.listBankAccounts(queryParam: bankAccountQueryParam) { (result, error) in

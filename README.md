@@ -157,8 +157,8 @@ Hyperwallet.shared.deactivatePayPalAccount(transferMethodToken: "trm-12345", not
 ### List PayPal Account
 ```swift
 let payPalQueryParam = HyperwalletPayPalAccountQueryParam()
-payPalQueryParam.status = .activated
-payPalQueryParam.sortBy = .ascendantCreatedOn
+payPalQueryParam.status = HyperwalletPayPalAccountQueryParam.QueryStatus.activated.rawValue
+payPalQueryParam.sortBy = HyperwalletTransferMethodQueryParam.QuerySortable.ascendantCreatedOn.rawValue
 
 Hyperwallet.shared.listPayPalAccounts(queryParam: payPalQueryParam) { (result, error) in
     // In case of failure, error (HyperwalletErrorType) will contain HyperwalletErrors containing information about what caused the failure
@@ -222,8 +222,8 @@ Hyperwallet.shared.deactivateVenmoAccount(transferMethodToken: "trm-12345", note
 ### List Venmo Account
 ```swift
 let venmoQueryParam = HyperwalletVenmoQueryParam()
-venmoQueryParam.status = .activated
-venmoQueryParam.sortBy = .ascendantCreatedOn
+venmoQueryParam.status = HyperwalletVenmoQueryParam.QueryStatus.activated.rawValue
+venmoQueryParam.sortBy = HyperwalletVenmoQueryParam.QuerySortable.ascendantCreatedOn.rawValue
 
 Hyperwallet.shared.listVenmoAccounts(queryParam: venmoQueryParam) { (result, error) in
     // In case of failure, error (HyperwalletErrorType) will contain HyperwalletErrors containing information about what caused the failure
@@ -299,8 +299,8 @@ Hyperwallet.shared.deactivateBankAccount(transferMethodToken: "trm-12345", notes
 ### List Bank Account
 ```swift
 let bankAccountQueryParam = HyperwalletBankAccountQueryParam()
-bankAccountQueryParam.status = .activated
-bankAccountQueryParam.sortBy = .ascendantCreatedOn
+bankAccountQueryParam.status = HyperwalletBankAccountQueryParam.QueryStatus.activated.rawValue
+bankAccountQueryParam.sortBy = HyperwalletBankAccountQueryParam.QuerySortable.ascendantCreatedOn.rawValue
 
 Hyperwallet.shared.listBankAccounts(queryParam: bankAccountQueryParam) { (result, error) in
     // In case of failure, error (HyperwalletErrorType) will contain HyperwalletErrors containing information about what caused the failure
@@ -369,8 +369,8 @@ Hyperwallet.shared.deactivateBankCard(transferMethodToken: "trm-12345", notes: "
 ### List Bank Card
 ```swift
 let bankCardQueryParam = HyperwalletBankCardQueryParam()
-bankCardQueryParam.status = .activated
-bankCardQueryParam.sortBy = .ascendantCreatedOn
+bankCardQueryParam.status = HyperwalletBankCardQueryParam.QueryStatus.activated.rawValue
+bankCardQueryParam.sortBy = HyperwalletBankCardQueryParam.QuerySortable.ascendantCreatedOn.rawValue
 
 Hyperwallet.shared.listBankCards(queryParam: bankCardQueryParam) { (result, error) in
     // In case of failure, error (HyperwalletErrorType) will contain HyperwalletErrors containing information about what caused the failure
@@ -399,8 +399,8 @@ Hyperwallet.shared.getPrepaidCard(transferMethodToken: "123123", completion: { (
 ### List Prepaid Cards
 ```swift
 let prepaidCardQueryParam = HyperwalletPrepaidCardQueryParam()
-prepaidCardQueryParam.status = .activated
-prepaidCardQueryParam.sortBy = .ascendantCreatedOn
+prepaidCardQueryParam.status = HyperwalletPrepaidCardQueryParam.QueryStatus.activated.rawValue
+prepaidCardQueryParam.sortBy = HyperwalletPrepaidCardQueryParam.QuerySortable.ascendantCreatedOn.rawValue
 
 Hyperwallet.shared.listPrepaidCards(queryParam: prepaidCardQueryParam) { (result, error) in
     // In case of failure, error (HyperwalletErrorType) will contain HyperwalletErrors containing information about what caused the failure
@@ -467,7 +467,7 @@ Hyperwallet.shared.listUserReceipts(queryParam: receiptQueryParam) { (result, er
 ### List Transfer Methods
 ```swift
 let transferMethodQueryParam = HyperwalletTransferMethodQueryParam()
-transferMethodQueryParam.sortBy = .ascendantCreatedOn
+transferMethodQueryParam.sortBy = HyperwalletTransferMethodQueryParam.QuerySortable.ascendantCreatedOn.rawValue
 
 Hyperwallet.shared.listTransferMethods(queryParam: transferMethodQueryParam) { (result, error) in
     // In case of failure, error (HyperwalletErrorType) will contain HyperwalletErrors containing information about what caused the failure

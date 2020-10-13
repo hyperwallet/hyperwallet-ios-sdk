@@ -31,7 +31,7 @@ class HyperwalletTransferMethodTests: XCTestCase {
             from: "2018-12-15T00:30:11")
         transferMethodQueryParam.createdBefore = ISO8601DateFormatter.ignoreTimeZone.date(
             from: "2018-12-18T00:30:11")
-        transferMethodQueryParam.status = HyperwalletTransferMethodQueryParam.QueryStatus.activated
+        transferMethodQueryParam.status = HyperwalletTransferMethodQueryParam.QueryStatus.activated.rawValue
 
         // When
         Hyperwallet.shared.listTransferMethods(queryParam: transferMethodQueryParam) { (result, error) in
