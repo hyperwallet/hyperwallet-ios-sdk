@@ -38,6 +38,12 @@ public class HyperwalletTransferMethodQueryParam: QueryParam {
         case deActivated = "DE_ACTIVATED"
         /// Filter only invalid transfer methods
         case invalid = "INVALID"
+        /// Filter only lost or stolen prepaid cards
+        case lostOrStolen = "LOST_OR_STOLEN"
+        /// Filter by preActivated prepaid cards
+        case preActivated = "PRE_ACTIVATED"
+        /// Filter only suspended prepaid cards
+        case suspended = "SUSPENDED"
         /// Filter only verified transfer methods
         case verified = "VERIFIED"
     }
