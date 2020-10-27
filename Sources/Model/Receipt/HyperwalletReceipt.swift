@@ -395,6 +395,8 @@ public struct HyperwalletReceipt: Decodable, Equatable {
         case venmoAccountTransferReturn = "VENMO_ACCOUNT_TRANSFER_RETURN"
         /// Default - unknown transfer type
         case unknown = "UNKNOWN_RECEIPT_TYPE"
+        /// Transfer To Bank Card
+        case transferToBankCard = "TRANSFER_TO_BANK_CARD"
     }
 
     /// The entry type.
