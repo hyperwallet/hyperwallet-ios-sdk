@@ -80,6 +80,17 @@
             "clientPaymentId" : "trans-02",
             "payeeName" : "Vasya Pupkin"
         }
+    },{
+        "journalId": "CC002F14A500",
+        "type": "TRANSFER_TO_BANK_CARD",
+        "createdOn": "2017-02-01T17:12:19",
+        "entry": "CREDIT",
+        "destinationToken": "trm-97a32",
+        "amount": "11.00",
+        "currency": "USD",
+        "details": {
+            "cardNumber": "************7917"
+        }
     }],
     "links" : [ {
         "params" : {
