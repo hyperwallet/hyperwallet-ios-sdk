@@ -18,6 +18,7 @@
 
 import Foundation
 import os.log
+import UIKit
 
 /// Builds and performs the HTTP request
 final class HTTPTransaction {
@@ -243,6 +244,13 @@ final class HTTPTransaction {
         }
     }
 
+    private static let sdkVersion: String = {
+        guard let info = Bundle.main.infoDictionary else {
+            return "Unknown"
+        }
+        return info["CFBundleShortVersionString"] as? String ?? "Unknown"
+    }()
+
     /// Returns the `User-Agent` header.
     /// Returns the Hyperwallet SDK `User-Agent` header.
     ///
@@ -253,11 +261,13 @@ final class HTTPTransaction {
 
         let version = ProcessInfo.processInfo.operatingSystemVersion
         let osVersion = "\(version.majorVersion).\(version.minorVersion).\(version.patchVersion)"
-        let executable = info[kCFBundleExecutableKey as String] as? String ?? "Unknown"
+        let displayName = info["CFBundleDisplayName"] as? String ?? "Unknown"
         let sdkVersion = info["CFBundleShortVersionString"] as? String ?? "Unknown"
         let sdkBuild = info[kCFBundleVersionKey as String] as? String ?? "Unknown"
         let sdkBuildVersion = "\(sdkVersion).\(sdkBuild)"
-        return "HyperwalletSDK/iOS/\(sdkBuildVersion); App: \(executable); iOS: \(osVersion)"
+        let deviceName = UIDevice.current.name
+
+        return "HyperwalletApp/iOS/\(sdkBuildVersion); App: \(displayName); iOS: \(osVersion); \(deviceName)"
     }()
 
     /// Returns the accept content type.
@@ -275,6 +285,11 @@ final class HTTPTransaction {
         Locale.preferredLanguages.prefix(6).first ?? "en-US"
     }()
 
+    /// Returns the sdk type.
+    private static let sdkType: String = {
+        "ios"
+    }()
+
     /// Builds the HTTP header configuration
     static let urlSessionConfiguration: URLSessionConfiguration = {
         let configuration = URLSessionConfiguration.ephemeral
@@ -282,6 +297,9 @@ final class HTTPTransaction {
         configuration.timeoutIntervalForRequest = HTTPTransaction.defaultTimeout
         configuration.httpAdditionalHeaders = [
             "User-Agent": userAgent,
+            "x-sdk-version": sdkVersion,
+            "x-sdk-type": sdkType,
+            "x-sdk-contextId": UUID().uuidString,
             "Accept-Language": acceptLanguage,
             "Accept": contentType,
             "Content-Type": contentType
