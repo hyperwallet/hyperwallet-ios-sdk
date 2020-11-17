@@ -271,7 +271,7 @@ final class HTTPTransaction {
         let sdkBuildVersion = "\(sdkVersion).\(sdkBuild)"
         let deviceName = UIDevice.current.name
 
-        return "HyperwalletApp/iOS/\(sdkBuildVersion); App: \(displayName); iOS: \(osVersion); \(deviceName)"
+        return "HyperwalletSDK/iOS/\(sdkBuildVersion); App: \(displayName); iOS: \(osVersion); \(deviceName)"
     }()
 
     /// Returns the accept content type.
