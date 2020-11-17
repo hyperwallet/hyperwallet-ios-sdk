@@ -262,8 +262,9 @@ final class HTTPTransaction {
         let version = ProcessInfo.processInfo.operatingSystemVersion
         let osVersion = "\(version.majorVersion).\(version.minorVersion).\(version.patchVersion)"
         var displayName = info["CFBundleDisplayName"] as? String ?? "Unknown"
-        if let appBundleInfoDictionary = Bundle.main.infoDictionary as NSDictionary? {
-            displayName = appBundleInfoDictionary["CFBundleDisplayName"] as? String ?? "Unknown"
+        if let appInfo = Bundle.main.infoDictionary as NSDictionary?,
+            let appDisplayName = appInfo["CFBundleDisplayName"] as? String {
+            displayName = appDisplayName
         }
         let sdkVersion = info["CFBundleShortVersionString"] as? String ?? "Unknown"
         let sdkBuild = info[kCFBundleVersionKey as String] as? String ?? "Unknown"
