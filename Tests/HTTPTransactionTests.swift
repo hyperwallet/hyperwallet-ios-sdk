@@ -19,10 +19,14 @@ class HTTPTransactionTests: XCTestCase {
         XCTAssertEqual(configuration.timeoutIntervalForRequest, 10.0)
         XCTAssertEqual(header?["Content-Type"] as? String, "application/json")
         XCTAssertTrue((header?["Accept-Language"] as? String ?? "").contains("en"))
+        XCTAssertNotNil(header?["x-sdk-version"])
+        XCTAssertTrue((header?["x-sdk-type"] as? String ?? "").contains("ios"))
+        XCTAssertNotNil(header?["x-sdk-contextId"])
         let userAgent = header?["User-Agent"] as? String
         XCTAssertTrue(userAgent?.contains("HyperwalletSDK/iOS/") ?? false )
         XCTAssertTrue(userAgent?.contains("App:") ?? false)
         XCTAssertTrue(userAgent?.contains("iOS:") ?? false)
+        XCTAssertEqual(userAgent?.components(separatedBy: ";").count, 4)
     }
 
     func testPerformRest_newConfiguration() {
