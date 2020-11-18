@@ -245,7 +245,7 @@ final class HTTPTransaction {
     }
 
     private static let sdkVersion: String = {
-        guard let info = Bundle.main.infoDictionary else {
+        guard let info = Bundle(for: Hyperwallet.self).infoDictionary else {
             return "Unknown"
         }
         return info["CFBundleShortVersionString"] as? String ?? "Unknown"
@@ -266,10 +266,10 @@ final class HTTPTransaction {
             let appDisplayName = appInfo["CFBundleDisplayName"] as? String {
             displayName = appDisplayName
         }
-        let sdkVersion = info["CFBundleShortVersionString"] as? String ?? "Unknown"
+        let sdkVersion = HTTPTransaction.sdkVersion
         let sdkBuild = info[kCFBundleVersionKey as String] as? String ?? "Unknown"
         let sdkBuildVersion = "\(sdkVersion).\(sdkBuild)"
-        let deviceName = UIDevice.current.name
+        let deviceName = UIDevice.current.model
 
         return "HyperwalletSDK/iOS/\(sdkBuildVersion); App: \(displayName); iOS: \(osVersion); \(deviceName)"
     }()
