@@ -1071,6 +1071,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
+				TAG_VERSION = "1.0.0-beta09";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1100,6 +1101,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
+				TAG_VERSION = "1.0.0-beta09";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

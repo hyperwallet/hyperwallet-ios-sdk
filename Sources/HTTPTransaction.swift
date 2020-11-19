@@ -248,7 +248,7 @@ final class HTTPTransaction {
         guard let info = Bundle(for: Hyperwallet.self).infoDictionary else {
             return "Unknown"
         }
-        return info["CFBundleShortVersionString"] as? String ?? "Unknown"
+        return info["TAG_VERSION"] as? String ?? "Unknown"
     }()
 
     /// Returns the `User-Agent` header.
@@ -266,12 +266,10 @@ final class HTTPTransaction {
             let appDisplayName = appInfo["CFBundleDisplayName"] as? String {
             displayName = appDisplayName
         }
-        let sdkVersion = HTTPTransaction.sdkVersion
         let sdkBuild = info[kCFBundleVersionKey as String] as? String ?? "Unknown"
-        let sdkBuildVersion = "\(sdkVersion).\(sdkBuild)"
         let deviceName = UIDevice.current.model
 
-        return "HyperwalletSDK/iOS/\(sdkBuildVersion); App: \(displayName); iOS: \(osVersion); \(deviceName)"
+        return "HyperwalletSDK/iOS/\(sdkVersion); App: \(displayName); iOS: \(osVersion); \(deviceName)"
     }()
 
     /// Returns the accept content type.
