@@ -28,6 +28,8 @@ def updateVersion(type)
 end
 
 def update(type, version)
+  # Update the TAG_VERSION property
+  set_info_plist_value(path: "Sources/Info.plist", key: "TAG_VERSION", value: version)
   podspec_name = "HyperwalletSDK.podspec"
   pod_lib_lint(allow_warnings: true, skip_tests: true)
   version_bump_podspec(version_number: version, path: podspec_name)
