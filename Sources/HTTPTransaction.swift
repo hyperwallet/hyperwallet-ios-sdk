@@ -245,10 +245,7 @@ final class HTTPTransaction {
     }
 
     private static let sdkVersion: String = {
-        guard let info = Bundle(for: Hyperwallet.self).infoDictionary else {
-            return "Unknown"
-        }
-        return info["TAG_VERSION"] as? String ?? "Unknown"
+        Bundle(for: Hyperwallet.self).infoDictionary?["TAG_VERSION"] as? String ?? "Unknown"
     }()
 
     /// Returns the `User-Agent` header.
