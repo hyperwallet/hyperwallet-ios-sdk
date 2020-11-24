@@ -19,10 +19,14 @@ class HTTPTransactionTests: XCTestCase {
         XCTAssertEqual(configuration.timeoutIntervalForRequest, 10.0)
         XCTAssertEqual(header?["Content-Type"] as? String, "application/json")
         XCTAssertTrue((header?["Accept-Language"] as? String ?? "").contains("en"))
+        XCTAssertNotNil(header?["x-sdk-version"])
+        XCTAssertTrue((header?["x-sdk-type"] as? String ?? "").contains("ios"))
+        XCTAssertNotNil(header?["x-sdk-contextId"])
         let userAgent = header?["User-Agent"] as? String
         XCTAssertTrue(userAgent?.contains("HyperwalletSDK/iOS/") ?? false )
         XCTAssertTrue(userAgent?.contains("App:") ?? false)
         XCTAssertTrue(userAgent?.contains("iOS:") ?? false)
+        XCTAssertEqual(userAgent?.components(separatedBy: ";").count, 4)
     }
 
     func testPerformRest_newConfiguration() {
@@ -62,8 +66,8 @@ class HTTPTransactionTests: XCTestCase {
         // Given
         let queryParam = HyperwalletBankAccountQueryParam()
         queryParam.limit = 80
-        queryParam.status = .activated
-        queryParam.type = .bankAccount
+        queryParam.status = HyperwalletBankAccountQueryParam.QueryStatus.activated.rawValue
+        queryParam.type = HyperwalletBankAccountQueryParam.QueryType.bankAccount.rawValue
         var queryParamsDictionary: [String: String]?
         var urlValueComponents: URLComponents?
         // When
@@ -157,8 +161,8 @@ class HTTPTransactionTests: XCTestCase {
                                                                        transferMethodType: "BANK_ACCOUNT",
                                                                        profile: "INDIVIDUAL")
         // When - an API call request is made
-        let completionHandler = {
-            (data: Connection<TransferMethodConfiguration>?, error: HyperwalletErrorType?) -> Void in
+        let completionHandler = { (data: Connection<TransferMethodConfiguration>?, error: HyperwalletErrorType?)
+                        -> Void in
             response = data
             hyperwalletError = error
         }
@@ -190,8 +194,8 @@ class HTTPTransactionTests: XCTestCase {
                                                                        transferMethodType: "BANK_ACCOUNT",
                                                                        profile: "INDIVIDUAL")
         // When - an API call request is made
-        let completionHandler = {
-            (data: Connection<TransferMethodConfiguration>?, error: HyperwalletErrorType?) -> Void in
+        let completionHandler = { (data: Connection<TransferMethodConfiguration>?, error: HyperwalletErrorType?)
+                        -> Void in
             response = data
             hyperwalletError = error
         }

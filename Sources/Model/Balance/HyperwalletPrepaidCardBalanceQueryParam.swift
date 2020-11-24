@@ -17,15 +17,17 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 import Foundation
-
-/// Representation of the prepaid card query parameters.
-public class HyperwalletPrepaidCardQueryParam: HyperwalletTransferMethodQueryParam {
-    override public func toQuery() -> [String: String] {
-        var query = super.toQuery()
-
-        if type != nil {
-            query[QueryParam.type.rawValue] = QueryType.prepaidCard.rawValue
-        }
-        return query
+/// Representation of the prepaid card balance QueryParam fields.
+public class HyperwalletPrepaidCardBalanceQueryParam: QueryParam {
+    /// Representation of the sortable fields
+    public enum QuerySortable: String {
+        /// Sort the result by ascendant amount
+        case ascendantAmount = "+amount"
+        /// Sort the result by ascendant currency
+        case ascendantCurrency = "+currency"
+        /// Sort the result by descendant amount
+        case descendantAmount = "-amount"
+        /// Sort the result by descendant currency
+        case descendantCurrency = "-currency"
     }
 }

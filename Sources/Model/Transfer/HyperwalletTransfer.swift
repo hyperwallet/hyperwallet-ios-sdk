@@ -213,15 +213,15 @@ public struct HyperwalletTransfer: Codable {
         ///
         /// - Returns: a new instance of the `HyperwalletTransfer`.
         public func build() -> HyperwalletTransfer {
-            return HyperwalletTransfer(clientTransferId: clientTransferId,
-                                       destinationAmount: destinationAmount,
-                                       destinationCurrency: destinationCurrency,
-                                       destinationToken: destinationToken,
-                                       memo: memo,
-                                       notes: notes,
-                                       sourceAmount: sourceAmount,
-                                       sourceCurrency: sourceCurrency,
-                                       sourceToken: sourceToken)
+            HyperwalletTransfer(clientTransferId: clientTransferId,
+                                destinationAmount: destinationAmount,
+                                destinationCurrency: destinationCurrency,
+                                destinationToken: destinationToken,
+                                memo: memo,
+                                notes: notes,
+                                sourceAmount: sourceAmount,
+                                sourceCurrency: sourceCurrency,
+                                sourceToken: sourceToken)
         }
     }
 }

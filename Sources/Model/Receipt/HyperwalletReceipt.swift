@@ -118,7 +118,7 @@ public struct HyperwalletReceipt: Decodable, Equatable {
     public let type: HyperwalletReceiptType?
 
     public static func == (lhs: HyperwalletReceipt, rhs: HyperwalletReceipt) -> Bool {
-        return lhs.journalId == rhs.journalId &&
+        lhs.journalId == rhs.journalId &&
             rhs.entry == lhs.entry &&
             rhs.type == lhs.type
     }
@@ -211,10 +211,88 @@ public struct HyperwalletReceipt: Decodable, Equatable {
         case prepaidCardSaleReversal = "PREPAID_CARD_SALE_REVERSAL"
         /// The prepaid card unload
         case prepaidCardUnload = "PREPAID_CARD_UNLOAD"
-        /// The transfer to debitcard
+        /// The transfer to debit card
         case transferToDebitCard = "TRANSFER_TO_DEBIT_CARD"
         /// The transfer to prepaid card
         case transferToPrepaidCard = "TRANSFER_TO_PREPAID_CARD"
+        /// The prepaid card account deposit
+        case prepaidCardAccountDeposit = "PREPAID_CARD_ACCOUNT_DEPOSIT"
+        /// The prepaid card account fee
+        case prepaidCardAccountFee = "PREPAID_CARD_ACCOUNT_FEE"
+        /// The prepaid card annual fee discount
+        case prepaidCardAnnualFeeDiscount = "PREPAID_CARD_ANNUAL_FEE_DISCOUNT"
+        /// The prepaid card bill reprint fee
+        case prepaidCardBillReprintFee = "PREPAID_CARD_BILL_REPRINT_FEE"
+        /// The prepaid card atm or cash advance fee
+        case prepaidCardAtmOrCashAdvanceFee = "PREPAID_CARD_ATM_OR_CASH_ADVANCE_FEE"
+        /// The prepaid card cash advance chargeback
+        case prepaidCardCashAdvanceChargeback = "PREPAID_CARD_CASH_ADVANCE_CHARGEBACK"
+        /// The prepaid card cash advance chargeback reversal
+        case prepaidCardCashAdvanceChargebackReversal = "PREPAID_CARD_CASH_ADVANCE_CHARGEBACK_REVERSAL"
+        /// The prepaid card cash advance repress
+        case prepaidCardCashAdvanceRepress = "PREPAID_CARD_CASH_ADVANCE_REPRESS"
+        /// The prepaid card cash advance repress reversal
+        case prepaidCardCashAdvanceRepressReversal = "PREPAID_CARD_CASH_ADVANCE_REPRESS_REVERSAL"
+        /// The prepaid card chargeback
+        case prepaidCardChargeback = "PREPAID_CARD_CHARGEBACK"
+        /// The prepaid card chargeback refund
+        case prepaidCardChargebackRefund = "PREPAID_CARD_CHARGEBACK_REFUND"
+        /// The prepaid card chargeback refund reversal
+        case prepaidCardChargebackRefundReversal = "PREPAID_CARD_CHARGEBACK_REFUND_REVERSAL"
+        /// The prepaid card chargeback reversal
+        case prepaidCardChargebackReversal = "PREPAID_CARD_CHARGEBACK_REVERSAL"
+        /// The prepaid card commission or fee
+        case prepaidCardCommissionOrFee = "PREPAID_CARD_COMMISSION_OR_FEE"
+        /// The prepaid card debit transfer
+        case prepaidCardDebitTransfer = "PREPAID_CARD_DEBIT_TRANSFER"
+        /// The prepaid card document request fee
+        case prepaidCardDocumentRequestFee = "PREPAID_CARD_DOCUMENT_REQUEST_FEE"
+        /// The prepaid card emergency cash
+        case prepaidCardEmergencyCash = "PREPAID_CARD_EMERGENCY_CASH"
+        /// The prepaid card emergency card
+        case prepaidCardEmergencyCard = "PREPAID_CARD_EMERGENCY_CARD"
+        /// The prepaid card income
+        case prepaidCardIncome = "PREPAID_CARD_INCOME"
+        /// The prepaid card load fee
+        case prepaidCardLoadFee = "PREPAID_CARD_LOAD_FEE"
+        /// The prepaid card overdue payment interest
+        case prepaidCardOverduePaymentInterest = "PREPAID_CARD_OVERDUE_PAYMENT_INTEREST"
+        /// The prepaid card payment
+        case prepaidCardPayment = "PREPAID_CARD_PAYMENT"
+        /// The prepaid card pin reprint fee
+        case prepaidCardPinReprintFee = "PREPAID_CARD_PIN_REPRINT_FEE"
+        /// The prepaid card priority pass fee
+        case prepaidCardPriorityPassFee = "PREPAID_CARD_PRIORITY_PASS_FEE"
+        /// The prepaid card priority pass renewal
+        case prepaidCardPriorityPassRenewal = "PREPAID_CARD_PRIORITY_PASS_RENEWAL"
+        /// The prepaid card recurring interest
+        case prepaidCardRecurringInterest = "PREPAID_CARD_RECURRING_INTEREST"
+        /// The prepaid card refund repress
+        case prepaidCardRefundRepress = "PREPAID_CARD_REFUND_REPRESS"
+        /// The prepaid card refund repress reversal
+        case prepaidCardRefundRepressReversal = "PREPAID_CARD_REFUND_REPRESS_REVERSAL"
+        /// The prepaid card statement fee
+        case prepaidCardStatementFee = "PREPAID_CARD_STATEMENT_FEE"
+        /// The prepaid card telephone support fee
+        case prepaidCardTelephoneSupportFee = "PREPAID_CARD_TELEPHONE_SUPPORT_FEE"
+        /// The prepaid card transfer fee
+        case prepaidCardTransferFee = "PREPAID_CARD_TRANSFER_FEE"
+        /// The prepaid card transfer return
+        case prepaidCardTransferReturn = "PREPAID_CARD_TRANSFER_RETURN"
+        /// The prepaid card bank withdrawal chargeback
+        case prepaidCardBankWithdrawalChargeback = "PREPAID_CARD_BANK_WITHDRAWAL_CHARGEBACK"
+        /// The prepaid card refund fee
+        case prepaidCardRefundfee = "PREPAID_CARD_REFUND_FEE"
+        /// The prepaid card monthly maintenance fee
+        case prepaidCardMonthlyMaintenanceFee = "PREPAID_CARD_MONTHLY_MAINTENANCE_FEE"
+        /// The prepaid card transaction fee
+        case prepaidCardTransactionFee = "PREPAID_CARD_TRANSACTION_FEE"
+        /// The prepaid card sms fee
+        case prepaidCardSmsFee = "PREPAID_CARD_SMS_FEE"
+        /// The prepaid card declined authorization fee
+        case prepaidCardDeclinedAuthorizationFee = "PREPAID_CARD_DECLINED_AUTHORIZATION_FEE"
+        /// The prepaid card purchases
+        case fispc = "FISPC"
         // Donation types
         ///
         /// The donation
@@ -305,8 +383,18 @@ public struct HyperwalletReceipt: Decodable, Equatable {
         case prepaidCardSale = "PREPAID_CARD_SALE"
         // PayPal transfer types
         ///
-        /// Transfer to PayPalAccount
+        /// Transfer to PayPal account
         case transferToPayPalAccount = "TRANSFER_TO_PAYPAL_ACCOUNT"
+        /// Return to Paypal Account
+        case paypalAccountTransferReturn = "PAYPAL_ACCOUNT_TRANSFER_RETURN"
+        // Venmo transfer type
+        ///
+        /// Transfer to Venmo account
+        case transferToVenmoAccount = "TRANSFER_TO_VENMO_ACCOUNT"
+        /// Return to Venmo account
+        case venmoAccountTransferReturn = "VENMO_ACCOUNT_TRANSFER_RETURN"
+        /// Transfer To Bank Card
+        case transferToBankCard = "TRANSFER_TO_BANK_CARD"
         /// Default - unknown transfer type
         case unknown = "UNKNOWN_RECEIPT_TYPE"
     }

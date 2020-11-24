@@ -17,7 +17,7 @@ def updateVersion(type)
   version = last_git_tag
   if type == "beta" then
     version_components = version.split("beta")
-    last_component = Integer(version_components[-1]) + 1
+    last_component = version_components[-1].to_i + 1
     last_component_string = last_component.to_s
     if last_component_string.size == 1 then
       last_component_string = "0" + last_component_string
@@ -28,10 +28,13 @@ def updateVersion(type)
 end
 
 def update(type, version)
+  # Update the TAG_VERSION property
+  info_plist_path = "Sources/Info.plist"
+  set_info_plist_value(path: info_plist_path, key: "TAG_VERSION", value: version)
   podspec_name = "HyperwalletSDK.podspec"
   pod_lib_lint(allow_warnings: true, skip_tests: true)
   version_bump_podspec(version_number: version, path: podspec_name)
-  git_add(path: podspec_name)
-  git_commit(path: [podspec_name], message: "#{version} release")
+  git_add(path: [podspec_name, info_plist_path, "*.md"])
+  git_commit(path: [podspec_name, info_plist_path, "*.md"], message: "#{version} release")
   push_to_git_remote
 end

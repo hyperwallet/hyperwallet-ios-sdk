@@ -1,0 +1,16 @@
+{
+  "token" : "trm-123456789",
+  "type" : "VENMO_ACCOUNT",
+  "status" : "ACTIVATED",
+  "createdOn" : "2020-08-21T17:12:02",
+  "transferMethodCountry" : "US",
+  "transferMethodCurrency" : "USD",
+  "accountId" : "9876543210",
+  "userToken" : "usr-123456789",
+  "links" : [ {
+    "params" : {
+      "rel" : "self"
+    },
+    "href" : "https://localhost/rest/v3/users/usr-123456789/venmo-accounts/trm-123456789"
+  } ]
+}

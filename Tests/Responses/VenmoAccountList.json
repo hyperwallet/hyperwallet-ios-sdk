@@ -1,0 +1,32 @@
+{
+  "count": 1,
+  "offset": 0,
+  "limit": 10,
+  "data": [
+    {
+      "token": "trm-123456789",
+      "type": "VENMO_ACCOUNT",
+      "status": "ACTIVATED",
+      "createdOn": "2020-08-09T22:50:14",
+      "transferMethodCountry": "US",
+      "transferMethodCurrency": "USD",
+      "accountId": "9876543210",
+      "links": [
+        {
+          "params": {
+            "rel": "self"
+          },
+          "href": "https://localhost/rest/v3/users/usr-12345678/venmo-accounts/trm-12345678"
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "params": {
+        "rel": "self"
+      },
+      "href": "https://localhost/rest/v3/users/usr-12345678/venmo-accounts?offset=0&limit=10"
+    }
+  ]
+}

@@ -85,7 +85,7 @@ struct AuthenticationTokenGeneratorMock {
 
     /// Returns the Authentication header
     private var header: String {
-        return """
+        """
         {
         "alg": "ALGORITHM"
         }

@@ -316,8 +316,8 @@ class HyperwalletBankAccountIndividualTests: XCTestCase {
 
         // When
         let bankAccountQueryParam = HyperwalletBankAccountQueryParam()
-        bankAccountQueryParam.status = .deActivated
-        bankAccountQueryParam.type = .bankAccount
+        bankAccountQueryParam.status = HyperwalletBankAccountQueryParam.QueryStatus.deActivated.rawValue
+        bankAccountQueryParam.type = HyperwalletBankAccountQueryParam.QueryType.bankAccount.rawValue
         bankAccountQueryParam.sortBy = HyperwalletBankAccountQueryParam.QuerySortable.ascendantCreatedOn.rawValue
         bankAccountQueryParam.createdAfter = ISO8601DateFormatter.ignoreTimeZone.date(from: "2018-12-15T00:30:11")
         bankAccountQueryParam.createdBefore = ISO8601DateFormatter.ignoreTimeZone.date(from: "2018-12-18T00:30:11")
@@ -357,8 +357,8 @@ class HyperwalletBankAccountIndividualTests: XCTestCase {
         var bankAccountList: HyperwalletPageList<HyperwalletBankAccount>?
         var errorResponse: HyperwalletErrorType?
         let bankAccountQueryParam = HyperwalletBankAccountQueryParam()
-        bankAccountQueryParam.status = .activated
-        bankAccountQueryParam.type = .wireAccount
+        bankAccountQueryParam.status = HyperwalletBankAccountQueryParam.QueryStatus.activated.rawValue
+        bankAccountQueryParam.type = HyperwalletBankAccountQueryParam.QueryType.wireAccount.rawValue
 
         // When
         Hyperwallet.shared.listBankAccounts(queryParam: bankAccountQueryParam) { (result, error) in
@@ -376,7 +376,7 @@ class HyperwalletBankAccountIndividualTests: XCTestCase {
 
 private extension HyperwalletBankAccountIndividualTests {
     func buildIndividualBankAccount() -> HyperwalletBankAccount {
-        return HyperwalletBankAccount
+        HyperwalletBankAccount
             .Builder(transferMethodCountry: "US",
                      transferMethodCurrency: "USD",
                      transferMethodProfileType: "INDIVIDUAL",
@@ -413,7 +413,7 @@ private extension HyperwalletBankAccountIndividualTests {
     }
 
     func buildBusinessBankAccount() -> HyperwalletBankAccount {
-        return HyperwalletBankAccount
+        HyperwalletBankAccount
             .Builder(transferMethodCountry: "US",
                      transferMethodCurrency: "USD",
                      transferMethodProfileType: "BUSINESS",
@@ -440,7 +440,7 @@ private extension HyperwalletBankAccountIndividualTests {
     }
 
     func buildIndividualWireAccount() -> HyperwalletBankAccount {
-        return HyperwalletBankAccount
+        HyperwalletBankAccount
             .Builder(transferMethodCountry: "US",
                      transferMethodCurrency: "USD",
                      transferMethodProfileType: "INDIVIDUAL",
@@ -474,7 +474,7 @@ private extension HyperwalletBankAccountIndividualTests {
     }
 
     func buildBusinessWireAccount() -> HyperwalletBankAccount {
-        return HyperwalletBankAccount
+        HyperwalletBankAccount
             .Builder(transferMethodCountry: "US",
                      transferMethodCurrency: "USD",
                      transferMethodProfileType: "BUSINESS",

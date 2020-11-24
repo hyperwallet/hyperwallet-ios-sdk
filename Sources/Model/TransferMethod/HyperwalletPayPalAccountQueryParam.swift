@@ -20,14 +20,12 @@ import Foundation
 
 /// Representation of the PayPal account query parameters.
 public class HyperwalletPayPalAccountQueryParam: HyperwalletTransferMethodQueryParam {
-    private enum QueryParam: String {
-        case type
-    }
-
     override public func toQuery() -> [String: String] {
         var query = super.toQuery()
 
-        query[QueryParam.type.rawValue] = "PAYPAL_ACCOUNT"
+        if type != nil {
+            query[QueryParam.type.rawValue] = QueryType.payPalAccount.rawValue
+        }
         return query
     }
 }

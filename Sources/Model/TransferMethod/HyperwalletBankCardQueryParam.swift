@@ -20,14 +20,12 @@ import Foundation
 
 /// Representation of the bank card query parameters.
 public class HyperwalletBankCardQueryParam: HyperwalletTransferMethodQueryParam {
-    private enum QueryParam: String {
-        case type
-    }
-
     override public func toQuery() -> [String: String] {
         var query = super.toQuery()
 
-        query[QueryParam.type.rawValue] = "BANK_CARD"
+        if type != nil {
+            query[QueryParam.type.rawValue] = QueryType.bankCard.rawValue
+        }
         return query
     }
 }

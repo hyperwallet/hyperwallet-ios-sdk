@@ -18,6 +18,7 @@
 
 import Foundation
 import os.log
+import UIKit
 
 /// Builds and performs the HTTP request
 final class HTTPTransaction {
@@ -142,8 +143,7 @@ final class HTTPTransaction {
         @escaping (_ response: Response?,
         _ error: HyperwalletErrorType?) -> Void)
         -> (GraphQlResult<Response>?, HyperwalletErrorType?) -> Void
-        where Response: Decodable {
-            { (result, error) in
+        where Response: Decodable { { (result, error) in
                 if let error = error {
                     completionHandler(nil, error)
                 }
@@ -159,8 +159,7 @@ final class HTTPTransaction {
     /// Handles the callback has been performed by HTTPClient
     static func requestHandler<Response>( _ completionHandler: @escaping (_ response: Response?,
                                                                           _ error: HyperwalletErrorType?) -> Void)
-        -> HTTPClientProtocol.ResultHandler where Response: Decodable {
-            return { (data, response, error) in
+        -> HTTPClientProtocol.ResultHandler where Response: Decodable { { (data, response, error) in
                 // Check the transport error has occurred;
                 guard error == nil, let httpResponse = response as? HTTPURLResponse else {
                     completionHandler(nil, ErrorTypeHelper.connectionError(for: error))
@@ -214,8 +213,8 @@ final class HTTPTransaction {
                                                        _ payload: Request?,
                                                        _ completionHandler: @escaping ((_ response: Response?,
                                                                                 _ error: HyperwalletErrorType?) -> Void)
-        ) -> HyperwalletAuthenticationTokenProvider.CompletionHandler where Request: Encodable, Response: Decodable {
-        return { [weak self] (authenticationToken, error) in
+        ) -> HyperwalletAuthenticationTokenProvider.CompletionHandler
+        where Request: Encodable, Response: Decodable { { [weak self] (authenticationToken, error) in
             guard let strongSelf = self else {
                 completionHandler(nil, ErrorTypeHelper.transactionAborted())
                 return
@@ -245,6 +244,10 @@ final class HTTPTransaction {
         }
     }
 
+    private static let sdkVersion: String = {
+        Bundle(for: Hyperwallet.self).infoDictionary?["TAG_VERSION"] as? String ?? "Unknown"
+    }()
+
     /// Returns the `User-Agent` header.
     /// Returns the Hyperwallet SDK `User-Agent` header.
     ///
@@ -255,11 +258,15 @@ final class HTTPTransaction {
 
         let version = ProcessInfo.processInfo.operatingSystemVersion
         let osVersion = "\(version.majorVersion).\(version.minorVersion).\(version.patchVersion)"
-        let executable = info[kCFBundleExecutableKey as String] as? String ?? "Unknown"
-        let sdkVersion = info["CFBundleShortVersionString"] as? String ?? "Unknown"
+        var displayName = info["CFBundleDisplayName"] as? String ?? "Unknown"
+        if let appInfo = Bundle.main.infoDictionary as NSDictionary?,
+            let appDisplayName = appInfo["CFBundleDisplayName"] as? String {
+            displayName = appDisplayName
+        }
         let sdkBuild = info[kCFBundleVersionKey as String] as? String ?? "Unknown"
-        let sdkBuildVersion = "\(sdkVersion).\(sdkBuild)"
-        return "HyperwalletSDK/iOS/\(sdkBuildVersion); App: \(executable); iOS: \(osVersion)"
+        let deviceName = UIDevice.current.model
+
+        return "HyperwalletSDK/iOS/\(sdkVersion); App: \(displayName); iOS: \(osVersion); \(deviceName)"
     }()
 
     /// Returns the accept content type.
@@ -277,6 +284,11 @@ final class HTTPTransaction {
         Locale.preferredLanguages.prefix(6).first ?? "en-US"
     }()
 
+    /// Returns the sdk type.
+    private static let sdkType: String = {
+        "ios"
+    }()
+
     /// Builds the HTTP header configuration
     static let urlSessionConfiguration: URLSessionConfiguration = {
         let configuration = URLSessionConfiguration.ephemeral
@@ -284,6 +296,9 @@ final class HTTPTransaction {
         configuration.timeoutIntervalForRequest = HTTPTransaction.defaultTimeout
         configuration.httpAdditionalHeaders = [
             "User-Agent": userAgent,
+            "x-sdk-version": sdkVersion,
+            "x-sdk-type": sdkType,
+            "x-sdk-contextId": UUID().uuidString,
             "Accept-Language": acceptLanguage,
             "Accept": contentType,
             "Content-Type": contentType

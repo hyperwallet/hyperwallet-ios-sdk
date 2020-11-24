@@ -1,5 +1,5 @@
 //
-// Copyright 2018 - Present Hyperwallet
+// Copyright 2020 - Present Hyperwallet
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy of this software
 // and associated documentation files (the "Software"), to deal in the Software without restriction,
@@ -18,13 +18,13 @@
 
 import Foundation
 
-/// Representation of the prepaid card query parameters.
-public class HyperwalletPrepaidCardQueryParam: HyperwalletTransferMethodQueryParam {
+/// Representation of the common Venmo's query parameters.
+public class HyperwalletVenmoQueryParam: HyperwalletTransferMethodQueryParam {
     override public func toQuery() -> [String: String] {
         var query = super.toQuery()
 
         if type != nil {
-            query[QueryParam.type.rawValue] = QueryType.prepaidCard.rawValue
+            query[QueryParam.type.rawValue] = QueryType.venmoAccount.rawValue
         }
         return query
     }

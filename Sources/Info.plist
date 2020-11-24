@@ -20,5 +20,7 @@
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>TAG_VERSION</key>
+	<string>1.0.0-beta10</string>
 </dict>
 </plist>
