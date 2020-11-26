@@ -184,7 +184,7 @@ public class HyperwalletTransferMethod: NSObject, Codable {
         /// When the transfer method is Venmo Account
         case venmoAccount = "VENMO_ACCOUNT"
         /// When the transfer method is Paper Check
-        case peperCheck = "PAPER_CHECK"
+        case paperCheck = "PAPER_CHECK"
     }
 
     /// Creates a new instance of the `HyperwalletTransferMethod`
