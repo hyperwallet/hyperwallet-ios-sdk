@@ -206,14 +206,18 @@ public class HyperwalletPaperCheckAccount: HyperwalletTransferMethod {
         }
 
         /// Creates a new instance of the `HyperwalletPaperCheckAccount.Builder`
-        /// based on the required parameters to create Bank card.
+        /// based on the required parameters to create paper Check account.
         ///
         /// - Parameters:
-        ///   - transferMethodCountry: The bank card country.
-        ///   - transferMethodCurrency: The bank card currency.
-        ///   - transferMethodProfileType: The method profile type
-        public init(transferMethodCountry: String, transferMethodCurrency: String, transferMethodProfileType: String) {
-            storage[TransferMethodField.type.rawValue] = AnyCodable(value: TransferMethodType.bankCard.rawValue)
+        ///   - transferMethodCountry: The bank account country.
+        ///   - transferMethodCurrency: The bank account currency.
+        ///   - transferMethodProfileType: The bank account holder's profile type, e.g. INDIVIDUAL or BUSINESS
+        ///   - transferMethodType: The bank account type, e.g. BANK_ACCOUNT or WIRE_ACCOUNT
+        public init(transferMethodCountry: String,
+                    transferMethodCurrency: String,
+                    transferMethodProfileType: String,
+                    transferMethodType: String) {
+            storage[TransferMethodField.type.rawValue] = AnyCodable(value: transferMethodType)
             storage[TransferMethodField.transferMethodCountry.rawValue] = AnyCodable(value: transferMethodCountry)
             storage[TransferMethodField.transferMethodCurrency.rawValue] = AnyCodable(value: transferMethodCurrency)
             storage[TransferMethodField.profileType.rawValue] = AnyCodable(value: transferMethodProfileType)
