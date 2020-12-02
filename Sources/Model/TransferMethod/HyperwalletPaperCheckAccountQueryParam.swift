@@ -23,10 +23,8 @@ public class HyperwalletPaperCheckAccountQueryParam: HyperwalletTransferMethodQu
     override public func toQuery() -> [String: String] {
         var query = super.toQuery()
 
-        if let type = type, type == QueryType.wireAccount.rawValue {
-            query[QueryParam.type.rawValue] = type
-        } else if type != nil {
-            query[QueryParam.type.rawValue] = QueryType.bankAccount.rawValue
+        if type != nil {
+            query[QueryParam.type.rawValue] = QueryType.paperCheckAccount.rawValue
         }
         return query
     }

@@ -193,6 +193,31 @@ public class HyperwalletPaperCheckAccount: HyperwalletTransferMethod {
         getField(TransferMethodField.governmentIdType.rawValue)
     }
 
+    /// The bank account holder's phone number.
+    public var phoneNumber: String? {
+        getField(TransferMethodField.phoneNumber.rawValue)
+    }
+
+    /// The bank account holder's cell phone number.
+    public var mobileNumber: String? {
+        getField(TransferMethodField.mobileNumber.rawValue)
+    }
+
+    /// The bank account holder's last name.
+    public var lastName: String? {
+        getField(TransferMethodField.lastName.rawValue)
+    }
+
+    /// The bank account holder's middle name.
+    public var middleName: String? {
+        getField(TransferMethodField.middleName.rawValue)
+    }
+
+    /// The bank account holder's passport number.
+    public var passportId: String? {
+        getField(TransferMethodField.passportId.rawValue)
+    }
+
     /// A helper class to build the `HyperwalletPaperCheckAccount` instance.
     public final class Builder {
         private var storage = [String: AnyCodable]()

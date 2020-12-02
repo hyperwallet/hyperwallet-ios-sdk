@@ -48,8 +48,13 @@
 		980C15DB2273BF91004C60D6 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = 980C15DA2273BF91004C60D6 /* CHANGELOG.md */; };
 		980C15F12273D1FA004C60D6 /* ListBankCardResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = DBCA37A6225D6D1700CD4137 /* ListBankCardResponse.json */; };
 		98101DC42238A2F000BA04CA /* HyperwalletSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98101DBA2238A2F000BA04CA /* HyperwalletSDK.framework */; };
+		B062E353E292414C07C70355 /* HyperwalletPaperCheckAccountTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B062EB9A428EB097C6B5B4FC /* HyperwalletPaperCheckAccountTests.swift */; };
+		B062E601D8A9A6E7FCC498F7 /* PaperCheckAccountErrorResponseWithMissingStateProvince.json in Resources */ = {isa = PBXBuildFile; fileRef = B062EC1CDD525FA26E0A7ED3 /* PaperCheckAccountErrorResponseWithMissingStateProvince.json */; };
+		B062EA1444CB4994B8D9AA73 /* ListPaperCheckAccountResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = B062EB32004F6CDC55028D37 /* ListPaperCheckAccountResponse.json */; };
 		B062EAC060764557C3C10497 /* ListPrepaidCardBalancesResponseSuccess.json in Resources */ = {isa = PBXBuildFile; fileRef = B062E2EA3710B0D9432C055C /* ListPrepaidCardBalancesResponseSuccess.json */; };
+		B062ECDDC58F6B4924B88B94 /* PaperCheckAccountIndividualResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = B062E470A67F25DDA9FAA711 /* PaperCheckAccountIndividualResponse.json */; };
 		B062EDD6B61D1A2D118183F7 /* HyperwalletPrepaidCardBalanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B062ED9C3E0C8A8D1F1146DE /* HyperwalletPrepaidCardBalanceTests.swift */; };
+		B062EFE8EFA8BD39172CD276 /* PaperCheckAccountBusinessResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = B062EC5C4AC51AD8307C13F9 /* PaperCheckAccountBusinessResponse.json */; };
 		B327ED7F23C66B6B0007EF58 /* HyperwalletBalance.swift in Sources */ = {isa = PBXBuildFile; fileRef = B327ED7E23C66B6B0007EF58 /* HyperwalletBalance.swift */; };
 		B327ED8123C66D350007EF58 /* HyperwalletBalanceQueryParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = B327ED8023C66D350007EF58 /* HyperwalletBalanceQueryParam.swift */; };
 		B327ED8723C689570007EF58 /* HyperwalletBalanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B327ED8523C688A00007EF58 /* HyperwalletBalanceTests.swift */; };
@@ -191,6 +196,11 @@
 		98101DC32238A2F000BA04CA /* HyperwalletSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HyperwalletSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		98101DCA2238A2F000BA04CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B062E2EA3710B0D9432C055C /* ListPrepaidCardBalancesResponseSuccess.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ListPrepaidCardBalancesResponseSuccess.json; sourceTree = "<group>"; };
+		B062E470A67F25DDA9FAA711 /* PaperCheckAccountIndividualResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PaperCheckAccountIndividualResponse.json; sourceTree = "<group>"; };
+		B062EB32004F6CDC55028D37 /* ListPaperCheckAccountResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ListPaperCheckAccountResponse.json; sourceTree = "<group>"; };
+		B062EB9A428EB097C6B5B4FC /* HyperwalletPaperCheckAccountTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HyperwalletPaperCheckAccountTests.swift; sourceTree = "<group>"; };
+		B062EC1CDD525FA26E0A7ED3 /* PaperCheckAccountErrorResponseWithMissingStateProvince.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PaperCheckAccountErrorResponseWithMissingStateProvince.json; sourceTree = "<group>"; };
+		B062EC5C4AC51AD8307C13F9 /* PaperCheckAccountBusinessResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PaperCheckAccountBusinessResponse.json; sourceTree = "<group>"; };
 		B062ED9C3E0C8A8D1F1146DE /* HyperwalletPrepaidCardBalanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HyperwalletPrepaidCardBalanceTests.swift; sourceTree = "<group>"; };
 		B327ED7E23C66B6B0007EF58 /* HyperwalletBalance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperwalletBalance.swift; sourceTree = "<group>"; };
 		B327ED8023C66D350007EF58 /* HyperwalletBalanceQueryParam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperwalletBalanceQueryParam.swift; sourceTree = "<group>"; };
@@ -295,6 +305,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E6A04172577162E00244BE6 /* PaperCheck */ = {
+			isa = PBXGroup;
+			children = (
+				B062E470A67F25DDA9FAA711 /* PaperCheckAccountIndividualResponse.json */,
+				B062EC5C4AC51AD8307C13F9 /* PaperCheckAccountBusinessResponse.json */,
+				B062EC1CDD525FA26E0A7ED3 /* PaperCheckAccountErrorResponseWithMissingStateProvince.json */,
+				B062EB32004F6CDC55028D37 /* ListPaperCheckAccountResponse.json */,
+			);
+			path = PaperCheck;
+			sourceTree = "<group>";
+		};
 		641324DE22954E2500512816 /* BankAccount */ = {
 			isa = PBXGroup;
 			children = (
@@ -471,6 +492,7 @@
 				07B1FE6622C2C67500F461D0 /* HyperwalletPrepaidCardTests.swift */,
 				DBCA3773225D6A8D00CD4137 /* HyperwalletTransferMethodTests.swift */,
 				E84387C963FD99B5F8D69E49 /* HyperwalletVenmoAccountTests.swift */,
+				B062EB9A428EB097C6B5B4FC /* HyperwalletPaperCheckAccountTests.swift */,
 			);
 			path = TransferMethod;
 			sourceTree = "<group>";
@@ -607,6 +629,7 @@
 		DB99FF2E225D600000F86181 /* Responses */ = {
 			isa = PBXGroup;
 			children = (
+				2E6A04172577162E00244BE6 /* PaperCheck */,
 				641324DE22954E2500512816 /* BankAccount */,
 				641EBE992292DA3300D718F4 /* AuthenticationTokens */,
 				64D2493D22BD023600561C14 /* Transfer */,
@@ -806,6 +829,10 @@
 				E84382CC1BE536B23E3F8EEA /* VenmoAccountWrongFormatAccountId.json in Resources */,
 				E84384B6EEE1B33A35A8A5E4 /* VenmoAccountList.json in Resources */,
 				B062EAC060764557C3C10497 /* ListPrepaidCardBalancesResponseSuccess.json in Resources */,
+				B062ECDDC58F6B4924B88B94 /* PaperCheckAccountIndividualResponse.json in Resources */,
+				B062EFE8EFA8BD39172CD276 /* PaperCheckAccountBusinessResponse.json in Resources */,
+				B062E601D8A9A6E7FCC498F7 /* PaperCheckAccountErrorResponseWithMissingStateProvince.json in Resources */,
+				B062EA1444CB4994B8D9AA73 /* ListPaperCheckAccountResponse.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -915,6 +942,7 @@
 				2B5433FB229EDF0900F900D2 /* HyperwalletReceiptTests.swift in Sources */,
 				E84382D7D9B88D30117E833F /* HyperwalletVenmoAccountTests.swift in Sources */,
 				B062EDD6B61D1A2D118183F7 /* HyperwalletPrepaidCardBalanceTests.swift in Sources */,
+				B062E353E292414C07C70355 /* HyperwalletPaperCheckAccountTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
