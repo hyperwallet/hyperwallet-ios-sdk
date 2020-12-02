@@ -18,7 +18,7 @@
 
 import Foundation
 
-/// Representation of the bank account query parameters.
+/// Representation of the paper check account query parameters.
 public class HyperwalletPaperCheckAccountQueryParam: HyperwalletTransferMethodQueryParam {
     override public func toQuery() -> [String: String] {
         var query = super.toQuery()

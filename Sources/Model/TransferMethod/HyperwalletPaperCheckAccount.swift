@@ -18,7 +18,7 @@
 
 import Foundation
 
-/// Representation of the user's bank card
+/// Representation of the user's paper check
 @objcMembers
 public class HyperwalletPaperCheckAccount: HyperwalletTransferMethod {
     override private init(data: [String: AnyCodable]) {
