@@ -276,7 +276,7 @@ class HyperwalletPaperCheckTests: XCTestCase {
         // Then
         XCTAssertNil(errorResponse, "The `errorResponse` should be nil")
         XCTAssertNotNil(paperCheckList, "The `PaperCheckList` should not be nil")
-        XCTAssertEqual(paperCheckList?.count, 204, "The `count` should be 204")
+        XCTAssertEqual(paperCheckList?.count, 2, "The `count` should be 2")
         XCTAssertNotNil(paperCheckList?.data, "The `data` should be not nil")
 
         XCTAssertNotNil(paperCheckList?.links, "The `links` should be not nil")

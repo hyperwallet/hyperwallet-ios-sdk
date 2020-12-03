@@ -332,7 +332,7 @@ class HyperwalletBankAccountIndividualTests: XCTestCase {
         // Then
         XCTAssertNil(errorResponse, "The `errorResponse` should be nil")
         XCTAssertNotNil(bankAccountList, "The `bankAccountList` should not be nil")
-        XCTAssertEqual(bankAccountList?.count, 204, "The `count` should be 204")
+        XCTAssertEqual(bankAccountList?.count, 2, "The `count` should be 2")
         XCTAssertNotNil(bankAccountList?.data, "The `data` should be not nil")
 
         XCTAssertNotNil(bankAccountList?.links, "The `links` should be not nil")
