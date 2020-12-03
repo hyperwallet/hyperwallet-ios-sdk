@@ -957,7 +957,7 @@ public final class Hyperwallet: NSObject {
     /// `HyperwalletAuthenticationTokenProvider.retrieveAuthenticationToken(_ : @escaping CompletionHandler)`.
     ///
     /// To identify the `HyperwalletPaperCheck` that is going to be updated, the transfer method token must be
-    /// set as part of the `HyperwalletBankAccount` object passed in.
+    /// set as part of the `HyperwalletPaperCheck` object passed in.
     ///
     /// The `completion: @escaping (HyperwalletPaperCheck?, HyperwalletErrorType?) -> Void`
     /// that is passed in to this method invocation will receive the successful response(HyperwalletPaperCheck)
