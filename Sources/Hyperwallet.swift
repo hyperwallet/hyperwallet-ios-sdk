@@ -118,22 +118,22 @@ public final class Hyperwallet: NSObject {
                                     completionHandler: completion)
     }
 
-    /// Creates a `HyperwalletPaperCheckAccount` for the User associated with the authentication token returned from
+    /// Creates a `HyperwalletPaperCheck` for the User associated with the authentication token returned from
     /// `HyperwalletAuthenticationTokenProvider.retrieveAuthenticationToken(_ : @escaping CompletionHandler)`.
     ///
-    /// The `completion: @escaping (HyperwalletPaperCheckAccount?, HyperwalletErrorType?) -> Void`
-    /// that is passed in to this method invocation will receive the successful response(HyperwalletPaperCheckAccount)
+    /// The `completion: @escaping (HyperwalletPaperCheck?, HyperwalletErrorType?) -> Void`
+    /// that is passed in to this method invocation will receive the successful response(HyperwalletPaperCheck)
     /// or error(HyperwalletErrorType) from processing the request.
     ///
     /// This function will request a new authentication token via `HyperwalletAuthenticationTokenProvider`
     /// if the current one is expired or is about to expire.
     ///
     /// - Parameters:
-    ///   - account: the `HyperwalletBankAccount` to be created
+    ///   - account: the `HyperwalletPaperCheck` to be created
     ///   - completion: the callback handler of responses from the Hyperwallet platform
-    public func createPaperCheckAccount(
-        account: HyperwalletPaperCheckAccount,
-        completion: @escaping (HyperwalletPaperCheckAccount?, HyperwalletErrorType?) -> Void) {
+    public func createPaperCheck(
+        account: HyperwalletPaperCheck,
+        completion: @escaping (HyperwalletPaperCheck?, HyperwalletErrorType?) -> Void) {
         httpTransaction.performRest(httpMethod: .post,
                                     urlPath: "users/%@/paper-checks",
                                     payload: account,
@@ -255,8 +255,8 @@ public final class Hyperwallet: NSObject {
                                     completionHandler: completion)
     }
 
-    /// Deactivates the `HyperwalletPaperCheckAccount` linked to the transfer method token specified. The
-    /// `HyperwalletPaperCheckAccount` being deactivated must belong to the User that is associated with the
+    /// Deactivates the `HyperwalletPaperCheck` linked to the transfer method token specified. The
+    /// `HyperwalletPaperCheck` being deactivated must belong to the User that is associated with the
     /// authentication token returned from
     /// `HyperwalletAuthenticationTokenProvider.retrieveAuthenticationToken(_ : @escaping CompletionHandler)`.
     ///
@@ -268,13 +268,13 @@ public final class Hyperwallet: NSObject {
     /// if the current one is expired or is about to expire.
     ///
     /// - Parameters:
-    ///   - transferMethodToken: the Hyperwallet specific unique identifier for the `HyperwalletBankAccount`
+    ///   - transferMethodToken: the Hyperwallet specific unique identifier for the `HyperwalletPaperCheck`
     ///                          being deactivated
     ///   - notes: a note regarding the status change
     ///   - completion: the callback handler of responses from the Hyperwallet platform
-    public func deactivatePaperCheckAccount(transferMethodToken: String,
-                                            notes: String? = nil,
-                                            completion: @escaping (HyperwalletStatusTransition?,
+    public func deactivatePaperCheck(transferMethodToken: String,
+                                     notes: String? = nil,
+                                     completion: @escaping (HyperwalletStatusTransition?,
                                                              HyperwalletErrorType?) -> Void) {
         let statusTransition = HyperwalletStatusTransition.Builder(notes: notes, transition: .deactivated).build()
         httpTransaction.performRest(httpMethod: .post,
@@ -409,19 +409,19 @@ public final class Hyperwallet: NSObject {
                                     completionHandler: completion)
     }
 
-    /// Returns the `HyperwalletPaperCheckAccount` linked to the transfer method token specified, or nil if none exists.
+    /// Returns the `HyperwalletPaperCheck` linked to the transfer method token specified, or nil if none exists.
     ///
-    /// The `completion: @escaping (HyperwalletPaperCheckAccount?, HyperwalletErrorType?) -> Void`
-    /// that is passed in to this method invocation will receive the successful response(HyperwalletPaperCheckAccount)
+    /// The `completion: @escaping (HyperwalletPaperCheck?, HyperwalletErrorType?) -> Void`
+    /// that is passed in to this method invocation will receive the successful response(HyperwalletPaperCheck)
     /// or error(HyperwalletErrorType) from processing the request.
     ///
     /// - Parameters:
-    ///   - transferMethodToken: the Hyperwallet specific unique identifier for the `HyperwalletPaperCheckAccount`
+    ///   - transferMethodToken: the Hyperwallet specific unique identifier for the `HyperwalletPaperCheck`
     ///                          being requested
     ///   - completion: the callback handler of responses from the Hyperwallet platform
-    public func getPaperCheckAccount(
+    public func getPaperCheck(
         transferMethodToken: String,
-        completion: @escaping (HyperwalletPaperCheckAccount?, HyperwalletErrorType?) -> Void) {
+        completion: @escaping (HyperwalletPaperCheck?, HyperwalletErrorType?) -> Void) {
         httpTransaction.performRest(httpMethod: .get,
                                     urlPath: "users/%@/paper-checks/\(transferMethodToken)",
                                     payload: "",
@@ -562,13 +562,13 @@ public final class Hyperwallet: NSObject {
                                     completionHandler: completion)
     }
 
-    /// Returns the list of `HyperwalletPaperCheckAccount`s for the User associated with the authentication token
+    /// Returns the list of `HyperwalletPaperCheck`s for the User associated with the authentication token
     /// returned from
     /// `HyperwalletAuthenticationTokenProvider.retrieveAuthenticationToken(_ : @escaping CompletionHandler)`,
     /// or nil if non exist.
     ///
-    /// The ordering and filtering of `HyperwalletPaperCheckAccount`s will be based on the criteria specified within
-    /// the `HyperwalletPaperCheckAccountQueryParam` object, if it is not nil. Otherwise the default ordering and
+    /// The ordering and filtering of `HyperwalletPaperCheck`s will be based on the criteria specified within
+    /// the `HyperwalletPaperCheckQueryParam` object, if it is not nil. Otherwise the default ordering and
     /// filtering will be applied:
     ///
     /// * Offset: 0
@@ -579,9 +579,9 @@ public final class Hyperwallet: NSObject {
     /// * Status: All
     /// * Sort By: Created On
     ///
-    /// The `completion: @escaping (HyperwalletPageList<HyperwalletPaperCheckAccount>?, HyperwalletErrorType?) -> Void`
+    /// The `completion: @escaping (HyperwalletPageList<HyperwalletPaperCheck>?, HyperwalletErrorType?) -> Void`
     /// that is passed in to this method invocation will receive the successful
-    /// response(HyperwalletPageList<HyperwalletPaperCheckAccount>?) or error(HyperwalletErrorType) from processing the
+    /// response(HyperwalletPageList<HyperwalletPaperCheck>?) or error(HyperwalletErrorType) from processing the
     /// request.
     ///
     /// This function will request a new authentication token via `HyperwalletAuthenticationTokenProvider`
@@ -590,8 +590,8 @@ public final class Hyperwallet: NSObject {
     /// - Parameters:
     ///   - queryParam: the ordering and filtering criteria
     ///   - completion: the callback handler of responses from the Hyperwallet platform
-    public func listPaperCheckAccounts(queryParam: HyperwalletPaperCheckAccountQueryParam? = nil,
-                                       completion: @escaping (HyperwalletPageList<HyperwalletPaperCheckAccount>?,
+    public func listPaperChecks(queryParam: HyperwalletPaperCheckQueryParam? = nil,
+                                completion: @escaping (HyperwalletPageList<HyperwalletPaperCheck>?,
         HyperwalletErrorType?) -> Void) {
         httpTransaction.performRest(httpMethod: .get,
                                     urlPath: "users/%@/paper-checks",
@@ -953,24 +953,24 @@ public final class Hyperwallet: NSObject {
                                     completionHandler: completion)
     }
 
-    /// Updates the `HyperwalletPaperCheckAccount` for the User associated with the authentication token returned from
+    /// Updates the `HyperwalletPaperCheck` for the User associated with the authentication token returned from
     /// `HyperwalletAuthenticationTokenProvider.retrieveAuthenticationToken(_ : @escaping CompletionHandler)`.
     ///
-    /// To identify the `HyperwalletPaperCheckAccount` that is going to be updated, the transfer method token must be
+    /// To identify the `HyperwalletPaperCheck` that is going to be updated, the transfer method token must be
     /// set as part of the `HyperwalletBankAccount` object passed in.
     ///
-    /// The `completion: @escaping (HyperwalletPaperCheckAccount?, HyperwalletErrorType?) -> Void`
-    /// that is passed in to this method invocation will receive the successful response(HyperwalletPaperCheckAccount)
+    /// The `completion: @escaping (HyperwalletPaperCheck?, HyperwalletErrorType?) -> Void`
+    /// that is passed in to this method invocation will receive the successful response(HyperwalletPaperCheck)
     /// or error(HyperwalletErrorType) from processing the request.
     ///
     /// This function will request a new authentication token via `HyperwalletAuthenticationTokenProvider`
     /// if the current one is expired or is about to expire.
     ///
-    /// - parameters: account: the `HyperwalletPaperCheckAccount` to be updated
+    /// - parameters: account: the `HyperwalletPaperCheck` to be updated
     /// - parameters: completion: the callback handler of responses from the Hyperwallet platform
-    public func updatePaperCheckAccount(
-        account: HyperwalletPaperCheckAccount,
-        completion: @escaping (HyperwalletPaperCheckAccount?, HyperwalletErrorType?) -> Void) {
+    public func updatePaperCheck(
+        account: HyperwalletPaperCheck,
+        completion: @escaping (HyperwalletPaperCheck?, HyperwalletErrorType?) -> Void) {
         let token = account.token ?? ""
         httpTransaction.performRest(httpMethod: .put,
                                     urlPath: "users/%@/paper-checks/\(token)",

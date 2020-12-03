@@ -3,7 +3,7 @@
         {
             "message": "You have to provide a value for this field",
             "fieldName": "stateProvince",
-            "code": "CONSTRAIN_VALIDATION"
+            "code": "CONSTRAINT_VALIDATION"
         }
     ]
 }

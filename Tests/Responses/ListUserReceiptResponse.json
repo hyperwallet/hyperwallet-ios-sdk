@@ -1,101 +1,151 @@
 {
-    "count" : 4,
-    "offset" : 0,
-    "limit" : 10,
-    "data" : [ {
-        "journalId" : "51660665",
-        "type" : "PAYMENT",
-        "createdOn" : "2019-05-27T15:42:07",
-        "entry" : "CREDIT",
-        "sourceToken" : "act-12345",
-        "destinationToken" : "usr-12345",
-        "amount" : "5000.00",
-        "fee" : "0.00",
-        "currency" : "USD",
-        "details" : {
-            "clientPaymentId" : "trans-0001",
-            "payeeName" : "Vasya Pupkin"
-        }
-    }, {
-        "journalId" : "51660666",
-        "type" : "TRANSFER_TO_BANK_ACCOUNT",
-        "createdOn" : "2019-05-27T15:57:49",
-        "entry" : "DEBIT",
-        "sourceToken" : "usr-54321",
-        "destinationToken" : "trm-987654",
-        "amount" : "10.25",
-        "fee" : "0.25",
-        "currency" : "USD",
-        "details" : {
-            "payeeName" : "Vasya Pupkin",
-            "bankAccountId" : "jen@sample.net"
-        }
-    }, {
-        "journalId" : "51660667",
-        "type" : "PAYMENT",
-        "createdOn" : "2019-05-27T16:01:10",
-        "entry" : "CREDIT",
-        "sourceToken" : "act-13579",
-        "destinationToken" : "usr-97531",
-        "amount" : "11.00",
-        "fee" : "0.00",
-        "currency" : "USD",
-        "details" : {
-            "clientPaymentId" : "trans-02",
-            "payeeName" : "Vasya Pupkin"
-        }
-    }, {
-        "journalId": "CC002F14A573",
-        "type": "TRANSFER_TO_DEBIT_CARD",
-        "createdOn": "2017-11-01T17:12:19",
-        "entry": "CREDIT",
-        "destinationToken": "trm-97a32",
-        "amount": "11.00",
-        "currency": "USD",
-        "details": {
-            "cardNumber": "************7917"
-        }
-    }, {
-        "journalId": "CC002F14A574",
-        "type": "TRANSFER_TO_PAYPAL_ACCOUNT",
-        "createdOn": "2017-11-01T17:12:19",
-        "entry": "CREDIT",
-        "destinationToken": "trm-97a32",
-        "amount": "11.00",
-        "currency": "USD",
-        "details": {
-            "cardNumber": "************7917"
-        }
-    }, {
-        "journalId" : "51660667",
-        "type" : "UNKNOWN_TYPE",
-        "createdOn" : "2019-05-27T16:01:10",
-        "entry" : "CREDIT",
-        "sourceToken" : "act-13579",
-        "destinationToken" : "usr-97531",
-        "amount" : "11.00",
-        "fee" : "0.00",
-        "currency" : "USD",
-        "details" : {
-            "clientPaymentId" : "trans-02",
-            "payeeName" : "Vasya Pupkin"
-        }
-    },{
-        "journalId": "CC002F14A500",
-        "type": "TRANSFER_TO_BANK_CARD",
-        "createdOn": "2017-02-01T17:12:19",
-        "entry": "CREDIT",
-        "destinationToken": "trm-97a32",
-        "amount": "11.00",
-        "currency": "USD",
-        "details": {
-            "cardNumber": "************7917"
-        }
-    }],
-    "links" : [ {
-        "params" : {
-            "rel" : "self"
+    "count": 107,
+    "offset": 0,
+    "limit": 5,
+    "data": [
+        {
+            "token": "rcp-01bafa2a-9e44-4f3d-8a1f-6d701596243d",
+            "journalId": "64450180",
+            "type": "TRANSFER_TO_BANK_ACCOUNT",
+            "createdOn": "2020-12-02T01:59:57",
+            "entry": "DEBIT",
+            "sourceToken": "usr-c76a8977-cb23-4634-b478-72e6b5287e65",
+            "destinationToken": "trm-7a9a1296-efe6-46e8-a8ce-bdd5e3b57988",
+            "amount": "82899",
+            "fee": "205",
+            "currency": "JPY",
+            "details": {
+                "payeeName": "Test Test test",
+                "branchId": "8689",
+                "bankAccountId": "**3445",
+                "bankAccountPurpose": "Current Account (Tōza yokin, 当座預金)"
+            },
+            "links": [
+                {
+                    "params": {
+                        "rel": "self"
+                    },
+                    "href": "https://qamaster-api.aws.paylution.net/rest/v3/users/usr-c76a8977-cb23-4634-b478-72e6b5287e65/receipts/rcp-01bafa2a-9e44-4f3d-8a1f-6d701596243d"
+                }
+            ]
         },
-        "href" : "https://localhost:8181/rest/v3/users/usr-112233/receipts?offset=0&limit=10"
-    } ]
+        {
+            "token": "rcp-36b71a13-5e90-47f8-b219-a92382c43c89",
+            "journalId": "64450179",
+            "type": "FOREIGN_EXCHANGE",
+            "createdOn": "2020-12-02T01:59:57",
+            "entry": "CREDIT",
+            "sourceToken": "usr-c76a8977-cb23-4634-b478-72e6b5287e65",
+            "destinationToken": "usr-c76a8977-cb23-4634-b478-72e6b5287e65",
+            "amount": "82899",
+            "currency": "JPY",
+            "foreignExchangeRate": "82.899",
+            "foreignExchangeCurrency": "JPY",
+            "details": {
+                "notes": "Buying ¥82,899 JPY at exchange rate 82.899"
+            },
+            "links": [
+                {
+                    "params": {
+                        "rel": "self"
+                    },
+                    "href": "https://qamaster-api.aws.paylution.net/rest/v3/users/usr-c76a8977-cb23-4634-b478-72e6b5287e65/receipts/rcp-36b71a13-5e90-47f8-b219-a92382c43c89"
+                }
+            ]
+        },
+        {
+            "token": "rcp-4573e525-d657-4a12-a39b-e84d133e002c",
+            "journalId": "64450179",
+            "type": "FOREIGN_EXCHANGE",
+            "createdOn": "2020-12-02T01:59:57",
+            "entry": "DEBIT",
+            "sourceToken": "usr-c76a8977-cb23-4634-b478-72e6b5287e65",
+            "destinationToken": "usr-c76a8977-cb23-4634-b478-72e6b5287e65",
+            "amount": "1000.00",
+            "currency": "CAD",
+            "foreignExchangeRate": "82.899",
+            "foreignExchangeCurrency": "JPY",
+            "details": {
+                "notes": "Buying ¥82,899 JPY at exchange rate 82.899"
+            },
+            "links": [
+                {
+                    "params": {
+                        "rel": "self"
+                    },
+                    "href": "https://qamaster-api.aws.paylution.net/rest/v3/users/usr-c76a8977-cb23-4634-b478-72e6b5287e65/receipts/rcp-4573e525-d657-4a12-a39b-e84d133e002c"
+                }
+            ]
+        },
+        {
+            "token": "rcp-40e87acc-b1a9-4fb1-a93b-e0dd3dd6e8a9",
+            "journalId": "64450178",
+            "type": "PAYMENT",
+            "createdOn": "2020-12-02T01:51:01",
+            "entry": "CREDIT",
+            "sourceToken": "act-68adaba2-42f4-4f0f-8670-81c09f319a12",
+            "destinationToken": "usr-c76a8977-cb23-4634-b478-72e6b5287e65",
+            "amount": "1000.00",
+            "fee": "0.00",
+            "currency": "CAD",
+            "details": {
+                "clientPaymentId": "erer",
+                "payeeName": "test mobile-qa test"
+            },
+            "links": [
+                {
+                    "params": {
+                        "rel": "self"
+                    },
+                    "href": "https://qamaster-api.aws.paylution.net/rest/v3/users/usr-c76a8977-cb23-4634-b478-72e6b5287e65/receipts/rcp-40e87acc-b1a9-4fb1-a93b-e0dd3dd6e8a9"
+                }
+            ]
+        },
+        {
+            "token": "rcp-0852babc-6b77-4d9d-95ba-ea47d286181e",
+            "journalId": "64432163",
+            "type": "TRANSFER_TO_BANK_ACCOUNT",
+            "createdOn": "2020-11-27T01:04:37",
+            "entry": "DEBIT",
+            "sourceToken": "usr-c76a8977-cb23-4634-b478-72e6b5287e65",
+            "destinationToken": "trm-7a9a1296-efe6-46e8-a8ce-bdd5e3b57988",
+            "amount": "82899",
+            "fee": "205",
+            "currency": "JPY",
+            "details": {
+                "payeeName": "Test Test test",
+                "branchId": "8689",
+                "bankAccountId": "**3445",
+                "bankAccountPurpose": "Current Account (Tōza yokin, 当座預金)"
+            },
+            "links": [
+                {
+                    "params": {
+                        "rel": "self"
+                    },
+                    "href": "https://qamaster-api.aws.paylution.net/rest/v3/users/usr-c76a8977-cb23-4634-b478-72e6b5287e65/receipts/rcp-0852babc-6b77-4d9d-95ba-ea47d286181e"
+                }
+            ]
+        }
+    ],
+    "links": [
+        {
+            "params": {
+                "rel": "self"
+            },
+            "href": "https://qamaster-api.aws.paylution.net/rest/v3/users/usr-c76a8977-cb23-4634-b478-72e6b5287e65/receipts?offset=0&limit=5&sortBy=-createdOn&createdAfter=2019-12-02T01%3A50%3A10"
+        },
+        {
+            "params": {
+                "rel": "next"
+            },
+            "href": "https://qamaster-api.aws.paylution.net/rest/v3/users/usr-c76a8977-cb23-4634-b478-72e6b5287e65/receipts?offset=5&limit=5&sortBy=-createdOn&createdAfter=2019-12-02T01%3A50%3A10"
+        },
+        {
+            "params": {
+                "rel": "last"
+            },
+            "href": "https://qamaster-api.aws.paylution.net/rest/v3/users/usr-c76a8977-cb23-4634-b478-72e6b5287e65/receipts?offset=102&limit=5&sortBy=-createdOn&createdAfter=2019-12-02T01%3A50%3A10"
+        }
+    ]
 }

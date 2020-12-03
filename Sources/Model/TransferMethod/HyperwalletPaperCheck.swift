@@ -20,71 +20,13 @@ import Foundation
 
 /// Representation of the user's paper check
 @objcMembers
-public class HyperwalletPaperCheckAccount: HyperwalletTransferMethod {
+public class HyperwalletPaperCheck: HyperwalletTransferMethod {
     override private init(data: [String: AnyCodable]) {
         super.init(data: data)
     }
     /// The required initializer
     public required init(from decoder: Decoder) throws {
         try super.init(from: decoder)
-    }
-
-    /// Representation of the user's relationship with the bank account holder.
-    public enum RelationshipType: String {
-        /// When the user owns the bank account
-        case `self` = "SELF"
-        /// When the bank account is owned by the user's business
-        case ownCompany = "OWN_COMPANY"
-    }
-
-    /// Representation of the shipping method for paper check
-    public enum ShippingMethodType: String {
-        /// Shipped in 2-15 business days
-        case standard = "STANDARD"
-        /// Shipped in 2-5 business days
-        case expedited = "EXPEDITED"
-    }
-
-    /// Representation of the bank account holder's role in the organization
-    public enum BusinessContactRole: String {
-        /// The director role
-        case director = "DIRECTOR"
-        /// The owner role
-        case owner = "OWNER"
-        /// The other role
-        case other = "OTHER"
-    }
-
-    /// Representation of the bank account holder's business type.
-    public enum BusinessType: String {
-        /// The corporation business type
-        case corporation = "CORPORATION"
-        /// The partnership business type
-        case partnership = "PARTNERSHIP"
-    }
-
-    /// Representation of the bank account holder's gender.
-    public enum Gender: String {
-        /// The male
-        case male = "MALE"
-        /// The female
-        case female = "FEMALE"
-    }
-
-    /// Representation of the bank account holder's government ID type
-    public enum GovernmentIdType: String {
-        /// The passport Id
-        case passport = "PASSPORT"
-        /// The national Id Card
-        case nationalIdCard = "NATIONAL_ID_CARD"
-    }
-
-    /// Representation of the user's profile type.
-    public enum ProfileType: String {
-        /// The business profile type
-        case business = "BUSINESS"
-        /// The Individual profile type
-        case individual = "INDIVIDUAL"
     }
 
     /// The user's relationship with the bank account holder.
@@ -158,6 +100,11 @@ public class HyperwalletPaperCheckAccount: HyperwalletTransferMethod {
         getField(TransferMethodField.countryOfBirth.rawValue)
     }
 
+    /// The bank account holder's nationality country.
+    public var countryOfNationality: String? {
+        getField(TransferMethodField.countryOfNationality.rawValue)
+    }
+
     /// The bank account holder's date of birth (All users must be at least 13 years old).
     public var dateOfBirth: String? {
         getField(TransferMethodField.dateOfBirth.rawValue)
@@ -218,11 +165,11 @@ public class HyperwalletPaperCheckAccount: HyperwalletTransferMethod {
         getField(TransferMethodField.passportId.rawValue)
     }
 
-    /// A helper class to build the `HyperwalletPaperCheckAccount` instance.
+    /// A helper class to build the `HyperwalletPaperCheck` instance.
     public final class Builder {
         private var storage = [String: AnyCodable]()
 
-        /// Creates a new instance of the `HyperwalletPaperCheckAccount.Builder`
+        /// Creates a new instance of the `HyperwalletPaperCheck.Builder`
         /// based on the required parameter to updaate Bank card.
         ///
         /// - Parameter token: The bank card token.
@@ -230,14 +177,14 @@ public class HyperwalletPaperCheckAccount: HyperwalletTransferMethod {
             storage[TransferMethodField.token.rawValue] = AnyCodable(value: token)
         }
 
-        /// Creates a new instance of the `HyperwalletPaperCheckAccount.Builder`
-        /// based on the required parameters to create paper Check account.
+        /// Creates a new instance of the `HyperwalletPaperCheck.Builder`
+        /// based on the required parameters to create paper check.
         ///
         /// - Parameters:
         ///   - transferMethodCountry: The bank account country.
         ///   - transferMethodCurrency: The bank account currency.
         ///   - transferMethodProfileType: The bank account holder's profile type, e.g. INDIVIDUAL or BUSINESS
-        ///   - transferMethodType: The bank account type, e.g. BANK_ACCOUNT or WIRE_ACCOUNT
+        ///   - transferMethodType: The bank account type, i.e, PAPER_CHECK
         public init(transferMethodCountry: String,
                     transferMethodCurrency: String,
                     transferMethodProfileType: String,
@@ -251,7 +198,7 @@ public class HyperwalletPaperCheckAccount: HyperwalletTransferMethod {
         /// Sets the bank account holder's street address.
         ///
         /// - Parameter addressLine1: The bank account holder's street address.
-        /// - Returns: a self `HyperwalletPaperCheckAccount.Builder` instance.
+        /// - Returns: a self `HyperwalletPaperCheck.Builder` instance.
         public func addressLine1(_ addressLine1: String) -> Builder {
            storage[TransferMethodField.addressLine1.rawValue] = AnyCodable(value: addressLine1)
            return self
@@ -260,7 +207,7 @@ public class HyperwalletPaperCheckAccount: HyperwalletTransferMethod {
         /// Sets the bank account holder's address, second line.
         ///
         /// - Parameter addressLine2: The bank account holder's address, second line.
-        /// - Returns: a self `HyperwalletPaperCheckAccount.Builder` instance.
+        /// - Returns: a self `HyperwalletPaperCheck.Builder` instance.
         public func addressLine2(_ addressLine2: String) -> Builder {
             storage[TransferMethodField.addressLine2.rawValue] = AnyCodable(value: addressLine2)
             return self
@@ -269,16 +216,16 @@ public class HyperwalletPaperCheckAccount: HyperwalletTransferMethod {
         /// Sets the user's relationship with the bank account holder.
         ///
         /// - Parameter relationship: The `RelationshipType`
-        /// - Returns: a self `HyperwalletPaperCheckAccount.Builder` instance.
-        public func bankAccountRelationship(_ relationship: RelationshipType) -> Builder {
-            storage[TransferMethodField.bankAccountRelationship.rawValue] = AnyCodable(value: relationship.rawValue)
+        /// - Returns: a self `HyperwalletPaperCheck.Builder` instance.
+        public func bankAccountRelationship(_ relationship: String) -> Builder {
+            storage[TransferMethodField.bankAccountRelationship.rawValue] = AnyCodable(value: relationship)
             return self
         }
 
         /// Sets the bank account holder's city.
         ///
         /// - Parameter city: The bank account holder's city.
-        /// - Returns: a self `HyperwalletPaperCheckAccount.Builder` instance.
+        /// - Returns: a self `HyperwalletPaperCheck.Builder` instance.
         public func city(_ city: String) -> Builder {
             storage[TransferMethodField.city.rawValue] = AnyCodable(value: city)
             return self
@@ -287,7 +234,7 @@ public class HyperwalletPaperCheckAccount: HyperwalletTransferMethod {
         /// Sets the bank account holder's country.
         ///
         /// - Parameter country: The bank account holder's country.
-        /// - Returns: a self `HyperwalletPaperCheckAccount.Builder` instance.
+        /// - Returns: a self `HyperwalletPaperCheck.Builder` instance.
         public func country(_ country: String) -> Builder {
             storage[TransferMethodField.country.rawValue] = AnyCodable(value: country)
             return self
@@ -296,7 +243,7 @@ public class HyperwalletPaperCheckAccount: HyperwalletTransferMethod {
         /// Sets the bank account holder's postal code.
         ///
         /// - Parameter postalCode: The bank account holder's postal code.
-        /// - Returns: a self `HyperwalletPaperCheckAccount.Builder` instance.
+        /// - Returns: a self `HyperwalletPaperCheck.Builder` instance.
         public func postalCode(_ postalCode: String) -> Builder {
             storage[TransferMethodField.postalCode.rawValue] = AnyCodable(value: postalCode)
             return self
@@ -305,16 +252,16 @@ public class HyperwalletPaperCheckAccount: HyperwalletTransferMethod {
         /// Sets the shipping method for paper check.
         ///
         /// - Parameter shippingMethod: The bank account holder's postal code.
-        /// - Returns: a self `HyperwalletPaperCheckAccount.Builder` instance.
-        public func shippingMethod(_ shippingMethod: ShippingMethodType) -> Builder {
-            storage[TransferMethodField.shippingMethod.rawValue] = AnyCodable(value: shippingMethod.rawValue)
+        /// - Returns: a self `HyperwalletPaperCheck.Builder` instance.
+        public func shippingMethod(_ shippingMethod: String) -> Builder {
+            storage[TransferMethodField.shippingMethod.rawValue] = AnyCodable(value: shippingMethod)
             return self
         }
 
         /// Sets the bank account holder's state, province or region.
         ///
         /// - Parameter stateProvince: The bank account holder's state, province or region.
-        /// - Returns: a self `HyperwalletPaperCheckAccount.Builder` instance.
+        /// - Returns: a self `HyperwalletPaperCheck.Builder` instance.
         public func stateProvince(_ stateProvince: String) -> Builder {
             storage[TransferMethodField.stateProvince.rawValue] = AnyCodable(value: stateProvince)
             return self
@@ -383,6 +330,15 @@ public class HyperwalletPaperCheckAccount: HyperwalletTransferMethod {
             return self
         }
 
+        // Sets the bank account holder's nationality country.
+        ///
+        /// - Parameter countryOfNationality: The bank account holder's birth country.
+        /// - Returns: a self `HyperwalletBankAccount.Builder` instance.
+        public func countryOfNationality(_ countryOfNationality: String) -> Builder {
+            storage[TransferMethodField.countryOfNationality.rawValue] = AnyCodable(value: countryOfNationality)
+            return self
+        }
+
         /// Sets the bank account holder's date of birth (All users must be at least 13 years old).
         ///
         /// - Parameter dateOfBirth: The bank account holder's date of birth
@@ -423,8 +379,8 @@ public class HyperwalletPaperCheckAccount: HyperwalletTransferMethod {
         ///
         /// - Parameter gender: The bank account holder's gender.
         /// - Returns: a self `HyperwalletBankAccount.Builder` instance.
-        public func gender(_ gender: Gender) -> Builder {
-            storage[TransferMethodField.gender.rawValue] = AnyCodable(value: gender.rawValue)
+        public func gender(_ gender: String) -> Builder {
+            storage[TransferMethodField.gender.rawValue] = AnyCodable(value: gender)
             return self
         }
 
@@ -441,8 +397,8 @@ public class HyperwalletPaperCheckAccount: HyperwalletTransferMethod {
         ///
         /// - Parameter governmentIdType: The bank account holder's government ID type.
         /// - Returns: a self `HyperwalletBankAccount.Builder` instance.
-        public func governmentIdType(_ governmentIdType: GovernmentIdType) -> Builder {
-            storage[TransferMethodField.governmentIdType.rawValue] = AnyCodable(value: governmentIdType.rawValue)
+        public func governmentIdType(_ governmentIdType: String) -> Builder {
+            storage[TransferMethodField.governmentIdType.rawValue] = AnyCodable(value: governmentIdType)
             return self
         }
 
@@ -450,8 +406,8 @@ public class HyperwalletPaperCheckAccount: HyperwalletTransferMethod {
         ///
         /// - Parameter businessContactRole: The bank account holder's role in the organization.
         /// - Returns: a self `HyperwalletBankAccount.Builder` instance.
-        public func businessContactRole(_ businessContactRole: BusinessContactRole) -> Builder {
-            storage[TransferMethodField.businessContactRole.rawValue] = AnyCodable(value: businessContactRole.rawValue)
+        public func businessContactRole(_ businessContactRole: String) -> Builder {
+            storage[TransferMethodField.businessContactRole.rawValue] = AnyCodable(value: businessContactRole)
             return self
         }
 
@@ -498,16 +454,16 @@ public class HyperwalletPaperCheckAccount: HyperwalletTransferMethod {
         ///
         /// - Parameter businessType: The bank account holder's business type.
         /// - Returns: a self `HyperwalletBankAccount.Builder` instance.
-        public func businessType(_ businessType: BusinessType) -> Builder {
-            storage[TransferMethodField.businessType.rawValue] = AnyCodable(value: businessType.rawValue)
+        public func businessType(_ businessType: String) -> Builder {
+            storage[TransferMethodField.businessType.rawValue] = AnyCodable(value: businessType)
             return self
         }
 
-        /// Builds a new instance of the `HyperwalletPaperCheckAccount`.
+        /// Builds a new instance of the `HyperwalletPaperCheck`.
         ///
-        /// - Returns: a new instance of the `HyperwalletPaperCheckAccount`.
-        public func build() -> HyperwalletPaperCheckAccount {
-            HyperwalletPaperCheckAccount(data: self.storage)
+        /// - Returns: a new instance of the `HyperwalletPaperCheck`.
+        public func build() -> HyperwalletPaperCheck {
+            HyperwalletPaperCheck(data: self.storage)
         }
     }
 }

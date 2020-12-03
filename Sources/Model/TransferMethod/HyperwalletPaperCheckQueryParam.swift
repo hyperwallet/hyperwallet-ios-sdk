@@ -18,13 +18,13 @@
 
 import Foundation
 
-/// Representation of the paper check account query parameters.
-public class HyperwalletPaperCheckAccountQueryParam: HyperwalletTransferMethodQueryParam {
+/// Representation of the paper check query parameters.
+public class HyperwalletPaperCheckQueryParam: HyperwalletTransferMethodQueryParam {
     override public func toQuery() -> [String: String] {
         var query = super.toQuery()
 
         if type != nil {
-            query[QueryParam.type.rawValue] = QueryType.paperCheckAccount.rawValue
+            query[QueryParam.type.rawValue] = QueryType.paperCheck.rawValue
         }
         return query
     }
