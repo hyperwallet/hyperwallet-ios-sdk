@@ -34,4 +34,11 @@ class HyperwalletTransferMethodConfigurationFieldQueryTests: XCTestCase {
         XCTAssertNotEqual(usUsdFieldQuery, usCadFieldQuery)
         XCTAssertNotEqual(usUsdFieldQuery.hashValue, usCadFieldQuery.hashValue)
     }
+
+    func testHashable_editFieldQueryNotEqual() {
+        let fieldQuery = HyperwalletTransferMethodUpdateConfigurationFieldQuery(transferMethodToken: "93939939393")
+        let fieldQuery1 = HyperwalletTransferMethodUpdateConfigurationFieldQuery(transferMethodToken: "93939939398")
+        XCTAssertNotEqual(fieldQuery, fieldQuery1)
+        XCTAssertNotEqual(fieldQuery.hashValue, fieldQuery1.hashValue)
+    }
 }

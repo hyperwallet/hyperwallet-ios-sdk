@@ -162,6 +162,10 @@ struct TransferMethodConfigurationField: Codable {
     var transferMethodUIConfigurations: Connection<TransferMethodConfiguration>?
 }
 
+struct TransferMethodUpdateConfigurationField: Codable {
+    var transferMethodUpdateUIConfigurations: Connection<TransferMethodUpdateConfiguration>?
+}
+
 struct TransferMethodConfigurationKey: Codable {
     let countries: Connection<HyperwalletCountry>?
 }
@@ -180,6 +184,11 @@ public struct TransferMethodConfiguration: Codable {
     let fieldGroups: Connection<HyperwalletFieldGroup>?
 }
 
+/// Representation of the transfer method update configuration
+public struct TransferMethodUpdateConfiguration: Codable {
+    /// The `HyperwalletFieldGroup`, or nil if none exists
+    let fieldGroups: Connection<HyperwalletFieldGroup>?
+}
 /// Representation of the transfer method configuration field mask
 public struct HyperwalletMask: Codable {
     /// The conditional pattern, or nil if none exists
