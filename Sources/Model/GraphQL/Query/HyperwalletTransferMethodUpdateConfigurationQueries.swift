@@ -26,12 +26,10 @@ public struct HyperwalletTransferMethodUpdateConfigurationFieldQuery: GraphQlQue
     private var transferMethodToken: String
     private var query = """
         query QueryUpdateTransferMethod(
-            $idToken: String =  "%@"
             $trmToken: String =  "%@"
         ){
             transferMethodUpdateUIConfigurations (
                 trmToken: $trmToken
-                idToken: $idToken
             ) {
                 nodes {
                     country
@@ -104,7 +102,7 @@ public struct HyperwalletTransferMethodUpdateConfigurationFieldQuery: GraphQlQue
     }
 
     public func toGraphQl(userToken: String) -> String {
-        String(format: query, userToken, transferMethodToken)
+        String(format: query, transferMethodToken)
     }
 
     public func hash(into hasher: inout Hasher) {

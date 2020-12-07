@@ -18,29 +18,41 @@
 
 import Foundation
 
-/// The `HyperwalletTransferMethodConfigurationField` protocol for processing the transfer method
+/// The `HyperwalletTransferMethodUpdateConfigurationField` protocol for processing the update transfer method
 /// configuration field result from the Hyperwallet platform.
 public protocol HyperwalletTransferMethodUpdateConfigurationField {
-    /// Returns a list of `HyperwalletField`
+    /// Returns a list of `HyperwalletFieldGroup`
     ///
     /// - Returns: a list of `HyperwalletFieldGroup`
     func fieldGroups() -> [HyperwalletFieldGroup]?
+
+    /// Returns `HyperwalletTransferMethodData`
+    ///
+    /// - Returns: `HyperwalletTransferMethodData`
+    func transferMethodData() -> HyperwalletTransferMethodData?
 }
 
 final class TransferMethodUpdateConfigurationFieldResult: HyperwalletTransferMethodUpdateConfigurationField {
-    private let transferMethodUpdateUIConfigurations: [TransferMethodUpdateConfiguration]?
+    private let transferMethodUpdateUIConfigurations: [TransferMethodConfiguration]?
 
-    /// Creates a new instance of the 'HyperwalletTransferMethodConfigurationField' based on the
+    /// Creates a new instance of the 'TransferMethodUpdateConfigurationFieldResult' based on the
     /// transfer method configuration result
     ///
     /// - Parameters:
-    ///   - transferMethodUIConfigurations: the GraphQL `[TransferMethodUIConfiguration]`
-    ///   - country: the GraphQL `HyperwalletCountry`
-    init(_ transferMethodUpdateUIConfigurations: [TransferMethodUpdateConfiguration]?) {
+    ///   - transferMethodUpdateUIConfigurations: the GraphQL `[TransferMethodConfiguration]`
+    init(_ transferMethodUpdateUIConfigurations: [TransferMethodConfiguration]?) {
         self.transferMethodUpdateUIConfigurations = transferMethodUpdateUIConfigurations
     }
 
     func fieldGroups() -> [HyperwalletFieldGroup]? {
         transferMethodUpdateUIConfigurations?.first?.fieldGroups?.nodes
+    }
+
+    func transferMethodData() -> HyperwalletTransferMethodData? {
+        let transferMethodData = transferMethodUpdateUIConfigurations?.first
+        return HyperwalletTransferMethodData(country: transferMethodData?.country,
+                                             currency: transferMethodData?.currency,
+                                             transferMethodType: transferMethodData?.transferMethodType,
+                                             profile: transferMethodData?.profile)
     }
 }
