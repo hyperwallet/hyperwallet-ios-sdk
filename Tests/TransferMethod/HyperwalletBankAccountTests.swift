@@ -143,7 +143,7 @@ class HyperwalletBankAccountIndividualTests: XCTestCase {
                                                          transferMethodType: "BANK_ACCOUNT")
             .bankAccountId("12345")
             .branchId("123456")
-            .bankAccountPurpose(.checking)
+            .bankAccountPurpose("CHECKING")
             .build()
 
         Hyperwallet.shared.createBankAccount(account: bankAccount, completion: { (result, error) in
@@ -332,7 +332,7 @@ class HyperwalletBankAccountIndividualTests: XCTestCase {
         // Then
         XCTAssertNil(errorResponse, "The `errorResponse` should be nil")
         XCTAssertNotNil(bankAccountList, "The `bankAccountList` should not be nil")
-        XCTAssertEqual(bankAccountList?.count, 204, "The `count` should be 204")
+        XCTAssertEqual(bankAccountList?.count, 2, "The `count` should be 2")
         XCTAssertNotNil(bankAccountList?.data, "The `data` should be not nil")
 
         XCTAssertNotNil(bankAccountList?.links, "The `links` should be not nil")
@@ -386,8 +386,8 @@ private extension HyperwalletBankAccountIndividualTests {
             .branchName("XYZ")
             .bankId("123")
             .bankName("ABC")
-            .bankAccountRelationship(.self)
-            .bankAccountPurpose(.checking)
+            .bankAccountRelationship("SELF")
+            .bankAccountPurpose("CHECKING")
             .intermediaryBankAccountId("123")
             .intermediaryBankId("12675")
             .passportId("112323")
@@ -395,11 +395,11 @@ private extension HyperwalletBankAccountIndividualTests {
             .middleName("Good")
             .lastName("Guy")
             .countryOfBirth("US")
-            .gender(.male)
+            .gender("MALE")
             .driversLicenseId("1234")
             .employerId("1234")
             .governmentId("12898")
-            .governmentIdType(.passport)
+            .governmentIdType("PASSPORT")
             .phoneNumber("604-345-1777")
             .mobileNumber("604-345-1888")
             .dateOfBirth("1991-01-01")
@@ -420,13 +420,13 @@ private extension HyperwalletBankAccountIndividualTests {
                      transferMethodType: "BANK_ACCOUNT")
             .bankAccountId("7861012345")
             .branchId("102000021")
-            .bankAccountRelationship(.ownCompany)
-            .bankAccountPurpose(.checking)
-            .businessContactRole(.owner)
+            .bankAccountRelationship("OWN_COMPANY")
+            .bankAccountPurpose("CHECKING")
+            .businessContactRole("OWNER")
             .businessRegistrationCountry("US")
             .businessRegistrationId("1234")
             .businessRegistrationStateProvince("WA")
-            .businessType(.corporation)
+            .businessType("CORPORATION")
             .businessName("US BANK NA")
             .phoneNumber("604-345-1777")
             .mobileNumber("604-345-1888")
@@ -447,8 +447,8 @@ private extension HyperwalletBankAccountIndividualTests {
                      transferMethodType: "WIRE_ACCOUNT")
             .bankAccountId("675825207")
             .branchId("026009593")
-            .bankAccountRelationship(.self)
-            .bankAccountPurpose(.checking)
+            .bankAccountRelationship("SELF")
+            .bankAccountPurpose("CHECKING")
             .firstName("Tommy")
             .lastName("Gray")
             .phoneNumber("604-345-1777")
@@ -483,13 +483,13 @@ private extension HyperwalletBankAccountIndividualTests {
             .bankName("US BANK NA")
             .branchId("026009593")
             .bankAccountId("675825208")
-            .bankAccountRelationship(.ownCompany)
-            .bankAccountPurpose(.checking)
+            .bankAccountRelationship("OWN_COMPANY")
+            .bankAccountPurpose("")
             .businessName("Some company")
             .businessRegistrationId("123455511")
             .businessRegistrationStateProvince("BC")
             .businessRegistrationCountry("CA")
-            .businessContactRole(.owner)
+            .businessContactRole("OWNER")
             .phoneNumber("604-345-1777")
             .mobileNumber("604-345-1888")
             .country("US")
@@ -520,11 +520,9 @@ private extension HyperwalletBankAccountIndividualTests {
         XCTAssertEqual(bankAccountResponse?.profileType, "BUSINESS")
         XCTAssertEqual(bankAccountResponse?.bankAccountId, "7861012345")
         XCTAssertEqual(bankAccountResponse?.branchId, "102000021")
-
-        verifyRelationship(.ownCompany, in: bankAccountResponse)
-        verifyPurpose(.checking, in: bankAccountResponse)
-        verifyBusinessType(.corporation, in: bankAccountResponse)
-
+        XCTAssertEqual(bankAccountResponse?.bankAccountRelationship, "OWN_COMPANY")
+        XCTAssertEqual(bankAccountResponse?.bankAccountPurpose, "CHECKING")
+        XCTAssertEqual(bankAccountResponse?.businessType, "CORPORATION")
         XCTAssertEqual(bankAccountResponse?.businessName, "US BANK NA")
         XCTAssertEqual(bankAccountResponse?.phoneNumber, "604-345-1777")
         XCTAssertEqual(bankAccountResponse?.mobileNumber, "604-345-1888")
@@ -542,12 +540,9 @@ private extension HyperwalletBankAccountIndividualTests {
         XCTAssertNotNil(bankAccountResponse?.getFields())
         XCTAssertEqual(bankAccountResponse?.bankAccountId, "675825206")
         XCTAssertEqual(bankAccountResponse?.branchId, "026009593")
-
-        verifyRelationship(.self, in: bankAccountResponse)
-        verifyPurpose(.checking, in: bankAccountResponse)
-        verifyGender(.male, in: bankAccountResponse)
-        verifyGovernmentIdType(.passport, in: bankAccountResponse)
-
+        XCTAssertEqual(bankAccountResponse?.bankAccountRelationship, "SELF")
+        XCTAssertEqual(bankAccountResponse?.bankAccountPurpose, "CHECKING")
+        XCTAssertEqual(bankAccountResponse?.gender, "MALE")
         XCTAssertEqual(bankAccountResponse?.firstName, "Some")
         XCTAssertEqual(bankAccountResponse?.middleName, "Good")
         XCTAssertEqual(bankAccountResponse?.lastName, "Guy")
@@ -575,10 +570,8 @@ private extension HyperwalletBankAccountIndividualTests {
         XCTAssertNotNil(wireAccountResponse?.getFields())
         XCTAssertEqual(wireAccountResponse?.bankAccountId, "675825207")
         XCTAssertEqual(wireAccountResponse?.branchId, "026009593")
-
-        verifyRelationship(.self, in: wireAccountResponse)
-        verifyPurpose(.checking, in: wireAccountResponse)
-
+        XCTAssertEqual(wireAccountResponse?.bankAccountRelationship, "SELF")
+        XCTAssertEqual(wireAccountResponse?.bankAccountPurpose, "CHECKING")
         XCTAssertEqual(wireAccountResponse?.firstName, "Tommy")
         XCTAssertEqual(wireAccountResponse?.lastName, "Gray")
         XCTAssertEqual(wireAccountResponse?.phoneNumber, "604-345-1777")
@@ -616,11 +609,9 @@ private extension HyperwalletBankAccountIndividualTests {
         XCTAssertEqual(bankAccountResponse?.branchId, "026009593")
         XCTAssertEqual(bankAccountResponse?.bankId, "13254687")
         XCTAssertEqual(bankAccountResponse?.branchId, "026009593")
-
-        verifyRelationship(.ownCompany, in: bankAccountResponse)
-        verifyPurpose(.checking, in: bankAccountResponse)
-        verifyRole(.owner, in: bankAccountResponse)
-
+        XCTAssertEqual(bankAccountResponse?.bankAccountRelationship, "OWN_COMPANY")
+        XCTAssertEqual(bankAccountResponse?.bankAccountPurpose, "CHECKING")
+        XCTAssertEqual(bankAccountResponse?.businessContactRole, "OWNER")
         XCTAssertEqual(bankAccountResponse?.businessName, "Some company")
         XCTAssertEqual(bankAccountResponse?.businessRegistrationId, "123455511")
         XCTAssertEqual(bankAccountResponse?.businessRegistrationCountry, "CA")
@@ -649,35 +640,5 @@ private extension HyperwalletBankAccountIndividualTests {
         XCTAssertEqual(bankAccountResponse?.profileType, "BUSINESS")
         XCTAssertEqual(bankAccountResponse?.type, "WIRE_ACCOUNT")
         XCTAssertEqual(bankAccountResponse?.bankName, "Bank of America NA")
-    }
-
-    func verifyRelationship(_ relationship: HyperwalletBankAccount.RelationshipType,
-                            in bankAccountResponse: HyperwalletBankAccount?) {
-        XCTAssertEqual(bankAccountResponse?.bankAccountRelationship, relationship.rawValue)
-    }
-
-    func verifyPurpose(_ purpose: HyperwalletBankAccount.PurposeType,
-                       in bankAccountResponse: HyperwalletBankAccount?) {
-        XCTAssertEqual(bankAccountResponse?.bankAccountPurpose, purpose.rawValue)
-    }
-
-    func verifyRole(_ role: HyperwalletBankAccount.BusinessContactRole,
-                    in bankAccountResponse: HyperwalletBankAccount?) {
-        XCTAssertEqual(bankAccountResponse?.businessContactRole, role.rawValue)
-    }
-
-    func verifyBusinessType(_ type: HyperwalletBankAccount.BusinessType,
-                            in bankAccountResponse: HyperwalletBankAccount?) {
-        XCTAssertEqual(bankAccountResponse?.businessType, type.rawValue)
-    }
-
-    func verifyGender(_ gender: HyperwalletBankAccount.Gender,
-                      in bankAccountResponse: HyperwalletBankAccount?) {
-        XCTAssertEqual(bankAccountResponse?.gender, gender.rawValue)
-    }
-
-    func verifyGovernmentIdType(_ governmentIdType: HyperwalletBankAccount.GovernmentIdType,
-                                in bankAccountResponse: HyperwalletBankAccount?) {
-        XCTAssertEqual(bankAccountResponse?.governmentIdType, governmentIdType.rawValue)
     }
 }

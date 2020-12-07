@@ -318,6 +318,81 @@ Hyperwallet.shared.listBankAccounts(queryParam: bankAccountQueryParam) { (result
 }
 ```
 
+### Create Paper Check
+
+```swift
+let paperCheck = HyperwalletPaperCheck.Builder(transferMethodCountry: "US",   
+                                               transferMethodCurrency: "USD",
+                                               transferMethodProfileType: "INDIVIDUAL")
+.shippingMethod("STANDARD")
+.build()
+
+Hyperwallet.shared.createPaperCheck(account: paperCheck, completion: { (result, error) in
+    // In case of failure, error (HyperwalletErrorType) will contain HyperwalletErrors containing information about what caused the failure of account creation
+    guard error == nil else {
+        print(error?.getHyperwalletErrors()?.errorList?)
+        return
+    }   
+
+    // On successful creation, response (HyperwalletPaperCheck in this case) payload will contain information about the paper check created
+    print(result)
+})
+```
+### Get Paper Check
+```swift
+Hyperwallet.shared.getPaperCheck(transferMethodToken: "123123", completion: { (result, error) in
+    // On success, response (HyperwalletPaperCheck? in this case) will contain information about the user’s paper check or nil if not exist.
+    // In case of failure, error (HyperwalletErrorType) will contain HyperwalletErrors containing information about what caused the failure
+})
+```
+
+### Update Paper Check
+
+```swift
+let paperCheck = HyperwalletPaperCheck
+.Builder(token: "12345")
+.shippingMethod("STANDARD")
+.build()
+
+Hyperwallet.shared.updatePaperCheck(account: paperCheck, completion: { (response, error) in
+    // Code to handle successful response or error
+    // On successful update, response (HyperwalletPaperCheck in this case) payload will contain information about the paper check updated
+    // In case of failure, error (HyperwalletErrorType) will contain HyperwalletErrors containing information about what caused the failure while updating
+})
+```
+
+### Deactivate Paper Check
+
+```swift
+Hyperwallet.shared.deactivatePaperCheck(transferMethodToken: "trm-12345", notes: "deactivate paper check", completion: { (result, error) in
+    // Code to handle successful response or error
+    // On successful deactivation, response (HyperwalletStatusTransition in this case) will contain information about the status transition
+    // In case of failure, error (HyperwalletErrorType) will contain HyperwalletErrors containing information about what caused the failure
+})
+```
+
+### List Paper Check
+```swift
+let paperCheckQueryParam = HyperwalletPaperCheckQueryParam()
+paperCheckQueryParam.status = HyperwalletPaperCheckQueryParam.QueryStatus.activated.rawValue
+paperCheckQueryParam.sortBy = HyperwalletPaperCheckQueryParam.QuerySortable.ascendantCreatedOn.rawValue
+
+Hyperwallet.shared.listPaperChecks(queryParam: paperCheckQueryParam) { (result, error) in
+    // In case of failure, error (HyperwalletErrorType) will contain HyperwalletErrors containing information about what caused the failure
+    guard error == nil else {
+        print(error?.getHyperwalletErrors()?.errorList?)
+        return
+    }
+
+    // On success, response (HyperwalletPageList<HyperwalletPaperCheck>? in this case) will contain information about or nil if not exist.
+    if let paperChecks = result?.data {
+        for paperCheck in paperChecks {
+            print(paperCheck.token ?? "")
+        }
+    }
+}
+```
+
 ### Create Bank Card
 ```swift
 let bankCard = HyperwalletBankCard.Builder(transferMethodCountry: "US",

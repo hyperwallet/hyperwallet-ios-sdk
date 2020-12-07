@@ -29,64 +29,6 @@ public final class HyperwalletBankAccount: HyperwalletTransferMethod {
         try super.init(from: decoder)
     }
 
-    /// Representation of the bank account holder's role in the organization
-    public enum BusinessContactRole: String {
-        /// The director role
-        case director = "DIRECTOR"
-        /// The owner role
-        case owner = "OWNER"
-        /// The other role
-        case other = "OTHER"
-    }
-
-    /// Representation of the bank account holder's business type.
-    public enum BusinessType: String {
-        /// The corporation business type
-        case corporation = "CORPORATION"
-        /// The partnership business type
-        case partnership = "PARTNERSHIP"
-    }
-
-    /// Representation of the bank account holder's gender.
-    public enum Gender: String {
-        /// The male
-        case male = "MALE"
-        /// The female
-        case female = "FEMALE"
-    }
-
-    /// Representation of the bank account holder's government ID type
-    public enum GovernmentIdType: String {
-        /// The passport Id
-        case passport = "PASSPORT"
-        /// The national Id Card
-        case nationalIdCard = "NATIONAL_ID_CARD"
-    }
-
-    /// Representation of the user's profile type.
-    public enum ProfileType: String {
-        /// The business profile type
-        case business = "BUSINESS"
-        /// The Individual profile type
-        case individual = "INDIVIDUAL"
-    }
-
-    /// Representation of the bank account's purpose type.
-    public enum PurposeType: String {
-        /// When the user's bank account purpose is checking
-        case checking = "CHECKING"
-        /// When the user's bank account purpose is savings
-        case savings = "SAVINGS"
-    }
-
-    /// Representation of the user's relationship with the bank account holder.
-    public enum RelationshipType: String {
-        /// When the user owns the bank account
-        case `self` = "SELF"
-        /// When the bank account is owned by the user's business
-        case ownCompany = "OWN_COMPANY"
-    }
-
     /// The bank account holder's street address.
     public var addressLine1: String? {
         getField(TransferMethodField.addressLine1.rawValue)
@@ -177,6 +119,11 @@ public final class HyperwalletBankAccount: HyperwalletTransferMethod {
     /// The bank account holder's birth country.
     public var countryOfBirth: String? {
         getField(TransferMethodField.countryOfBirth.rawValue)
+    }
+
+    /// The bank account holder's nationality country.
+    public var countryOfNationality: String? {
+        getField(TransferMethodField.countryOfNationality.rawValue)
     }
 
     /// The bank account holder's date of birth (All users must be at least 13 years old).
@@ -361,8 +308,8 @@ public final class HyperwalletBankAccount: HyperwalletTransferMethod {
         ///
         /// - Parameter purpose: The `PurposeType`
         /// - Returns: a self `HyperwalletBankAccount.Builder` instance.
-        public func bankAccountPurpose(_ purpose: PurposeType) -> Builder {
-            storage[TransferMethodField.bankAccountPurpose.rawValue] = AnyCodable(value: purpose.rawValue)
+        public func bankAccountPurpose(_ purpose: String) -> Builder {
+            storage[TransferMethodField.bankAccountPurpose.rawValue] = AnyCodable(value: purpose)
             return self
         }
 
@@ -370,8 +317,8 @@ public final class HyperwalletBankAccount: HyperwalletTransferMethod {
         ///
         /// - Parameter relationship: The `RelationshipType`
         /// - Returns: a self `HyperwalletBankAccount.Builder` instance.
-        public func bankAccountRelationship(_ relationship: RelationshipType) -> Builder {
-            storage[TransferMethodField.bankAccountRelationship.rawValue] = AnyCodable(value: relationship.rawValue)
+        public func bankAccountRelationship(_ relationship: String) -> Builder {
+            storage[TransferMethodField.bankAccountRelationship.rawValue] = AnyCodable(value: relationship)
             return self
         }
 
@@ -415,8 +362,8 @@ public final class HyperwalletBankAccount: HyperwalletTransferMethod {
         ///
         /// - Parameter businessContactRole: The bank account holder's role in the organization.
         /// - Returns: a self `HyperwalletBankAccount.Builder` instance.
-        public func businessContactRole(_ businessContactRole: BusinessContactRole) -> Builder {
-            storage[TransferMethodField.businessContactRole.rawValue] = AnyCodable(value: businessContactRole.rawValue)
+        public func businessContactRole(_ businessContactRole: String) -> Builder {
+            storage[TransferMethodField.businessContactRole.rawValue] = AnyCodable(value: businessContactRole)
             return self
         }
 
@@ -463,8 +410,8 @@ public final class HyperwalletBankAccount: HyperwalletTransferMethod {
         ///
         /// - Parameter businessType: The bank account holder's business type.
         /// - Returns: a self `HyperwalletBankAccount.Builder` instance.
-        public func businessType(_ businessType: BusinessType) -> Builder {
-            storage[TransferMethodField.businessType.rawValue] = AnyCodable(value: businessType.rawValue)
+        public func businessType(_ businessType: String) -> Builder {
+            storage[TransferMethodField.businessType.rawValue] = AnyCodable(value: businessType)
             return self
         }
 
@@ -492,6 +439,15 @@ public final class HyperwalletBankAccount: HyperwalletTransferMethod {
         /// - Returns: a self `HyperwalletBankAccount.Builder` instance.
         public func countryOfBirth(_ countryOfBirth: String) -> Builder {
             storage[TransferMethodField.countryOfBirth.rawValue] = AnyCodable(value: countryOfBirth)
+            return self
+        }
+
+        // Sets the bank account holder's nationality country.
+        ///
+        /// - Parameter countryOfNationality: The bank account holder's birth country.
+        /// - Returns: a self `HyperwalletBankAccount.Builder` instance.
+        public func countryOfNationality(_ countryOfNationality: String) -> Builder {
+            storage[TransferMethodField.countryOfNationality.rawValue] = AnyCodable(value: countryOfNationality)
             return self
         }
 
@@ -535,8 +491,8 @@ public final class HyperwalletBankAccount: HyperwalletTransferMethod {
         ///
         /// - Parameter gender: The bank account holder's gender.
         /// - Returns: a self `HyperwalletBankAccount.Builder` instance.
-        public func gender(_ gender: Gender) -> Builder {
-            storage[TransferMethodField.gender.rawValue] = AnyCodable(value: gender.rawValue)
+        public func gender(_ gender: String) -> Builder {
+            storage[TransferMethodField.gender.rawValue] = AnyCodable(value: gender)
             return self
         }
 
@@ -553,8 +509,8 @@ public final class HyperwalletBankAccount: HyperwalletTransferMethod {
         ///
         /// - Parameter governmentIdType: The bank account holder's government ID type.
         /// - Returns: a self `HyperwalletBankAccount.Builder` instance.
-        public func governmentIdType(_ governmentIdType: GovernmentIdType) -> Builder {
-            storage[TransferMethodField.governmentIdType.rawValue] = AnyCodable(value: governmentIdType.rawValue)
+        public func governmentIdType(_ governmentIdType: String) -> Builder {
+            storage[TransferMethodField.governmentIdType.rawValue] = AnyCodable(value: governmentIdType)
             return self
         }
 
