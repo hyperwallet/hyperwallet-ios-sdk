@@ -40,10 +40,6 @@ public struct HyperwalletTransferMethodUpdateConfigurationFieldQuery: GraphQlQue
                         nodes {
                             group
                             isEditable
-                            instruction {
-                                textTop
-                                textBottom
-                            }
                             fields {
                                 category
                                 value

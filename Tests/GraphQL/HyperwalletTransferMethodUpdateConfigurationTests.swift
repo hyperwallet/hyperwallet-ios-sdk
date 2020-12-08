@@ -31,6 +31,7 @@ class HyperwalletTransferMethodUpdateConfigurationTests: XCTestCase {
         }
     }
 
+    //swiftlint:disable function_body_length
     func testRetrieveTransferMethodConfigurationFields_success() {
         // Given
         let request = setUpTransferMethodUpdateConfigurationRequest("TransferMethodUpdateConfigurationFieldsResponse")
@@ -51,28 +52,56 @@ class HyperwalletTransferMethodUpdateConfigurationTests: XCTestCase {
 
         wait(for: [expectation], timeout: 1)
 
+        let fieldGroups = graphQlResponse?.transferMethodConfiguration()?.fieldGroups?.nodes
+
         // Then
         XCTAssertNil(errorResponse, "The `errorResponse` should be nil")
         XCTAssertNotNil(graphQlResponse)
-        XCTAssertEqual(graphQlResponse?.fieldGroups()?.count, 3, "`fieldGroups()` should be 3")
+        XCTAssertEqual(fieldGroups?.count,
+                       3,
+                       "`fieldGroups()` should be 3")
 
-//        let bankAccountIdMask = graphQlResponse?.fieldGroups()?
-//            .first(where: { $0.group == "ACCOUNT_INFORMATION" })?.fields?
-//            .first(where: { $0.name == "bankAccountId" })?.mask
-//        XCTAssertNotNil(bankAccountIdMask)
-//        XCTAssertEqual(bankAccountIdMask?.defaultPattern, "#####-####")
-//        XCTAssertEqual(bankAccountIdMask?.scrubRegex, "\\-")
-//        let branchIdMask = graphQlResponse?.fieldGroups()?
-//            .first(where: { $0.group == "ACCOUNT_INFORMATION" })?.fields?
-//            .first(where: { $0.name == "branchId" })?.mask
-//        XCTAssertNotNil(branchIdMask)
-//        XCTAssertEqual(branchIdMask?.conditionalPatterns?.count, 2)
-//        XCTAssertEqual(branchIdMask?.conditionalPatterns?.first?.pattern, "# ###### ##")
-//        XCTAssertEqual(branchIdMask?.conditionalPatterns?.first?.regex, "^4")
-//        XCTAssertEqual(branchIdMask?.conditionalPatterns?.last?.pattern, "## #######")
-//        XCTAssertEqual(branchIdMask?.conditionalPatterns?.last?.regex, "^5[1-5]")
-//        XCTAssertEqual(branchIdMask?.defaultPattern, "#####.###.#")
-//        XCTAssertEqual(branchIdMask?.scrubRegex, "\\s")
+        let bankAccount = fieldGroups?
+            .first(where: { $0.group == "ACCOUNT_INFORMATION" })?.fields?
+            .first(where: { $0.name == "bankAccountId" })
+        XCTAssertNotNil(bankAccount)
+        XCTAssertEqual(bankAccount?.value, "****9822")
+        XCTAssertEqual(bankAccount?.dataType, HyperwalletDataType.number.rawValue)
+        XCTAssertEqual(bankAccount?.isRequired, true)
+        XCTAssertEqual(bankAccount?.isEditable, true)
+        XCTAssertEqual(bankAccount?.label, "Account Number")
+        XCTAssertEqual(bankAccount?.regularExpression, "^(?![0-]+$)[0-9-]{3,17}$")
+        XCTAssertEqual(bankAccount?.validationMessage?.length,
+                       "The minimum length of this field is 3 and maximum length is 17.")
+        XCTAssertEqual(bankAccount?.fieldValueMasked, true)
+
+        let firstName = fieldGroups?
+        .first(where: { $0.group == "ACCOUNT_HOLDER" })?.fields?
+        .first(where: { $0.name == "firstName" })
+        XCTAssertEqual(firstName?.value, "Cheng")
+        XCTAssertEqual(firstName?.dataType, HyperwalletDataType.text.rawValue)
+        XCTAssertEqual(firstName?.isRequired, true)
+        XCTAssertEqual(firstName?.isEditable, true)
+        XCTAssertEqual(firstName?.label, "First Name")
+        XCTAssertEqual(firstName?.regularExpression,
+                       "^[\\sa-zA-Z0-9\\-.,'\\u00C0-\\u00FF\\u0100-\\u017F\\u0180-\\u024F]{1,50}$")
+        XCTAssertEqual(firstName?.validationMessage?.empty,
+                       "You must provide a value for this field")
+        XCTAssertEqual(firstName?.fieldValueMasked, false)
+
+        let postalCode = fieldGroups?
+        .first(where: { $0.group == "ADDRESS" })?.fields?
+        .first(where: { $0.name == "postalCode" })
+        XCTAssertEqual(postalCode?.value, "12345")
+        XCTAssertEqual(postalCode?.dataType, HyperwalletDataType.text.rawValue)
+        XCTAssertEqual(postalCode?.isRequired, true)
+        XCTAssertEqual(postalCode?.isEditable, true)
+        XCTAssertEqual(postalCode?.label, "Zip/Postal Code")
+        XCTAssertEqual(postalCode?.regularExpression,
+                       "^(?![\\-]+$)[\\sa-zA-Z0-9\\-]{2,16}$")
+        XCTAssertEqual(postalCode?.validationMessage?.pattern,
+                       "is invalid length or format.")
+        XCTAssertEqual(postalCode?.fieldValueMasked, false)
     }
 
     private func setUpTransferMethodUpdateConfigurationRequest(_ responseFile: String,

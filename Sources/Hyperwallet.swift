@@ -912,17 +912,16 @@ public final class Hyperwallet: NSObject {
     /// token returned from
     /// `HyperwalletAuthenticationTokenProvider.retrieveAuthenticationToken(_ : @escaping CompletionHandler)`.
     ///
-    /// The `completion: @escaping (HyperwalletTransferMethodConfigurationField?, HyperwalletErrorType?) -> Void`
+    /// The `completion: @escaping (HyperwalletTransferMethodUpdateConfigurationField?, HyperwalletErrorType?) -> Void`
     /// that is passed in to this method invocation will receive the successful
-    /// response(HyperwalletTransferMethodConfigurationField) or error(HyperwalletErrorType) from processing the
+    /// response(HyperwalletTransferMethodUpdateConfigurationField) or error(HyperwalletErrorType) from processing the
     /// request.
     ///
     /// This function will request a new authentication token via `HyperwalletAuthenticationTokenProvider`
     /// if the current one is expired or is about to expire.
     ///
     /// - Parameters:
-    ///   - request: containing a transfer method update configuration key tuple of country, currency,
-    ///              transfer method type and profile
+    ///   - request: containing transfer method token to be updated
     ///   - completion: the callback handler of responses from the Hyperwallet platform
     public func retrieveTransferMethodUpdateConfigurationFields(
         request: HyperwalletTransferMethodUpdateConfigurationFieldQuery,

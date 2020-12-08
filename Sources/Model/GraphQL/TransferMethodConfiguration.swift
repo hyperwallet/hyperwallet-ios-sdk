@@ -203,15 +203,3 @@ public struct HyperwalletConditionalPattern: Codable {
     /// The regex
     public let regex: String
 }
-
-/// Representation of the transfer method data for update transfer method
-public struct HyperwalletTransferMethodData: Codable {
-    /// The country
-    let country: String?
-    /// The currency
-    let currency: String?
-    /// The transfer method type
-    let transferMethodType: String?
-    /// The profile type
-    let profile: String?
-}
