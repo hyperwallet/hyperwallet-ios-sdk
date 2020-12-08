@@ -73,17 +73,6 @@ public struct HyperwalletTransferMethodUpdateConfigurationFieldQuery: GraphQlQue
                             }
                         }
                     }
-                    bankBranches {
-                        nodes {
-                            bankCode
-                            branches {
-                                value
-                                label
-                            }
-                        }
-                        bankElement
-                        branchElement
-                    }
                 }
             }
         }
@@ -92,7 +81,7 @@ public struct HyperwalletTransferMethodUpdateConfigurationFieldQuery: GraphQlQue
     /// Create a new `HyperwalletTransferMethodUpdateConfigurationFieldQuery` from the transferMethodToken
     ///
     /// - Parameters:
-    ///   - transferMethodToken: token
+    ///   - transferMethodToken: token from the transfer method
     public init(transferMethodToken: String) {
         self.transferMethodToken = transferMethodToken
     }

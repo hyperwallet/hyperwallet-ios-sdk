@@ -32,7 +32,7 @@ class HyperwalletTransferMethodUpdateConfigurationTests: XCTestCase {
     }
 
     //swiftlint:disable function_body_length
-    func testRetrieveTransferMethodConfigurationFields_success() {
+    func testRetrieveTransferMethodUpdateConfigurationFields_success() {
         // Given
         let request = setUpTransferMethodUpdateConfigurationRequest("TransferMethodUpdateConfigurationFieldsResponse")
         HyperwalletTestHelper.setUpMockServer(request: request)
@@ -52,7 +52,7 @@ class HyperwalletTransferMethodUpdateConfigurationTests: XCTestCase {
 
         wait(for: [expectation], timeout: 1)
 
-        let fieldGroups = graphQlResponse?.transferMethodConfiguration()?.fieldGroups?.nodes
+        let fieldGroups = graphQlResponse?.transferMethodUpdateConfiguration()?.fieldGroups?.nodes
 
         // Then
         XCTAssertNil(errorResponse, "The `errorResponse` should be nil")

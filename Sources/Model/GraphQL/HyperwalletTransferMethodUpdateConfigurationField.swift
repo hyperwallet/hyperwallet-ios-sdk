@@ -21,10 +21,10 @@ import Foundation
 /// The `HyperwalletTransferMethodUpdateConfigurationField` protocol for processing the update transfer method
 /// configuration field result from the Hyperwallet platform.
 public protocol HyperwalletTransferMethodUpdateConfigurationField {
-    /// Returns a list of `TransferMethodConfiguration`
+    /// Returns `TransferMethodConfiguration`
     ///
-    /// - Returns: a list of `TransferMethodConfiguration`
-    func transferMethodConfiguration() -> TransferMethodConfiguration?
+    /// - Returns: `TransferMethodConfiguration`
+    func transferMethodUpdateConfiguration() -> TransferMethodConfiguration?
 }
 
 final class TransferMethodUpdateConfigurationFieldResult: HyperwalletTransferMethodUpdateConfigurationField {
@@ -39,7 +39,7 @@ final class TransferMethodUpdateConfigurationFieldResult: HyperwalletTransferMet
         self.transferMethodUpdateUIConfigurations = transferMethodUpdateUIConfigurations
     }
 
-    func transferMethodConfiguration() -> TransferMethodConfiguration? {
+    func transferMethodUpdateConfiguration() -> TransferMethodConfiguration? {
         transferMethodUpdateUIConfigurations?.first
     }
 }
