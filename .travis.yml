@@ -1,6 +1,5 @@
 language: swift
 osx_image: xcode11.7
-os: osx
 branches:
  only:
   - /.*/
