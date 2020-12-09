@@ -175,15 +175,15 @@ struct TransferMethodConfigurationKey: Codable {
 /// Representation of the transfer method configuration
 public struct TransferMethodConfiguration: Codable {
     /// The country
-    let country: String?
+    public let country: String?
     /// The currency
-    let currency: String?
+    public let currency: String?
     /// The transfer method type
-    let transferMethodType: String?
+    public let transferMethodType: String?
     /// The profile type
-    let profile: String?
+    public let profile: String?
     /// The `HyperwalletFieldGroup`, or nil if none exists
-    let fieldGroups: Connection<HyperwalletFieldGroup>?
+    public let fieldGroups: Connection<HyperwalletFieldGroup>?
 }
 
 /// Representation of the transfer method configuration field mask
