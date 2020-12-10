@@ -24,22 +24,22 @@ public protocol HyperwalletTransferMethodUpdateConfigurationField {
     /// Returns `TransferMethodConfiguration`
     ///
     /// - Returns: `TransferMethodConfiguration`
-    func transferMethodUpdateConfiguration() -> TransferMethodConfiguration?
+    func transferMethodUpdateConfiguration() -> HyperwalletTransferMethodConfiguration?
 }
 
 final class TransferMethodUpdateConfigurationFieldResult: HyperwalletTransferMethodUpdateConfigurationField {
-    private let transferMethodUpdateUIConfigurations: [TransferMethodConfiguration]?
+    private let transferMethodUpdateUIConfigurations: [HyperwalletTransferMethodConfiguration]?
 
     /// Creates a new instance of the 'TransferMethodUpdateConfigurationFieldResult' based on the
     /// transfer method configuration result
     ///
     /// - Parameters:
     ///   - transferMethodUpdateUIConfigurations: the GraphQL `[TransferMethodConfiguration]`
-    init(_ transferMethodUpdateUIConfigurations: [TransferMethodConfiguration]?) {
+    init(_ transferMethodUpdateUIConfigurations: [HyperwalletTransferMethodConfiguration]?) {
         self.transferMethodUpdateUIConfigurations = transferMethodUpdateUIConfigurations
     }
 
-    func transferMethodUpdateConfiguration() -> TransferMethodConfiguration? {
+    func transferMethodUpdateConfiguration() -> HyperwalletTransferMethodConfiguration? {
         transferMethodUpdateUIConfigurations?.first
     }
 }

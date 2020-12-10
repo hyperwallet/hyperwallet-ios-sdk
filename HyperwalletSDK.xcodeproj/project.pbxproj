@@ -74,7 +74,7 @@
 		DB1A03E2225D3DD80080C8D6 /* HyperwalletError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1A03D5225D3DD80080C8D6 /* HyperwalletError.swift */; };
 		DB1A03E3225D3DD80080C8D6 /* Hyperwallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1A03D6225D3DD80080C8D6 /* Hyperwallet.swift */; };
 		DB1A03FC225D3DE40080C8D6 /* HyperwalletTransferMethodConfigurationField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1A03E6225D3DE40080C8D6 /* HyperwalletTransferMethodConfigurationField.swift */; };
-		DB1A03FE225D3DE40080C8D6 /* TransferMethodConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1A03E8225D3DE40080C8D6 /* TransferMethodConfiguration.swift */; };
+		DB1A03FE225D3DE40080C8D6 /* HyperwalletTransferMethodConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1A03E8225D3DE40080C8D6 /* HyperwalletTransferMethodConfiguration.swift */; };
 		DB1A03FF225D3DE40080C8D6 /* HyperwalletTransferMethodConfigurationKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1A03E9225D3DE40080C8D6 /* HyperwalletTransferMethodConfigurationKey.swift */; };
 		DB1A0401225D3DE40080C8D6 /* HyperwalletTransferMethodConfigurationQueries.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1A03EC225D3DE40080C8D6 /* HyperwalletTransferMethodConfigurationQueries.swift */; };
 		DB1A0402225D3DE40080C8D6 /* GraphQlQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1A03ED225D3DE40080C8D6 /* GraphQlQuery.swift */; };
@@ -139,6 +139,7 @@
 		E8438C4BD714EB191BF7A98B /* HyperwalletVenmoAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8438FACD77368B4A83CCA41 /* HyperwalletVenmoAccount.swift */; };
 		E8438CA7F43C3CB6FD545187 /* VenmoAccountResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = E843856BD0D7E5295973780D /* VenmoAccountResponse.json */; };
 		E8438DB98656EB3F69DE0776 /* VenmoAccountWrongFormatAccountId.json in Resources */ = {isa = PBXBuildFile; fileRef = E84381CE41DDB491C2F2B63D /* VenmoAccountWrongFormatAccountId.json */; };
+		FD1208CC2581FE3200A8D8B2 /* TransferMethodUpdateConfigurationFieldsVenmoResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = FD1208CB2581FE3200A8D8B2 /* TransferMethodUpdateConfigurationFieldsVenmoResponse.json */; };
 		FD536D072579F98B0056DC2D /* HyperwalletTransferMethodUpdateConfigurationQueries.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD536D062579F98B0056DC2D /* HyperwalletTransferMethodUpdateConfigurationQueries.swift */; };
 		FD536D09257A3C610056DC2D /* HyperwalletTransferMethodUpdateConfigurationField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD536D08257A3C610056DC2D /* HyperwalletTransferMethodUpdateConfigurationField.swift */; };
 		FD536D0C257A60CE0056DC2D /* HyperwalletTransferMethodUpdateConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD536D0A257A60920056DC2D /* HyperwalletTransferMethodUpdateConfigurationTests.swift */; };
@@ -228,7 +229,7 @@
 		DB1A03D5225D3DD80080C8D6 /* HyperwalletError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HyperwalletError.swift; sourceTree = "<group>"; };
 		DB1A03D6225D3DD80080C8D6 /* Hyperwallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hyperwallet.swift; sourceTree = "<group>"; };
 		DB1A03E6225D3DE40080C8D6 /* HyperwalletTransferMethodConfigurationField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HyperwalletTransferMethodConfigurationField.swift; sourceTree = "<group>"; };
-		DB1A03E8225D3DE40080C8D6 /* TransferMethodConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransferMethodConfiguration.swift; sourceTree = "<group>"; };
+		DB1A03E8225D3DE40080C8D6 /* HyperwalletTransferMethodConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HyperwalletTransferMethodConfiguration.swift; sourceTree = "<group>"; };
 		DB1A03E9225D3DE40080C8D6 /* HyperwalletTransferMethodConfigurationKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HyperwalletTransferMethodConfigurationKey.swift; sourceTree = "<group>"; };
 		DB1A03EC225D3DE40080C8D6 /* HyperwalletTransferMethodConfigurationQueries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HyperwalletTransferMethodConfigurationQueries.swift; sourceTree = "<group>"; };
 		DB1A03ED225D3DE40080C8D6 /* GraphQlQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphQlQuery.swift; sourceTree = "<group>"; };
@@ -290,6 +291,7 @@
 		E8438B2F7AA2659EA914914B /* VenmoAccountList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = VenmoAccountList.json; sourceTree = "<group>"; };
 		E8438F714A2ED30BE185DE8C /* HyperwalletVenmoQueryParam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HyperwalletVenmoQueryParam.swift; sourceTree = "<group>"; };
 		E8438FACD77368B4A83CCA41 /* HyperwalletVenmoAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HyperwalletVenmoAccount.swift; sourceTree = "<group>"; };
+		FD1208CB2581FE3200A8D8B2 /* TransferMethodUpdateConfigurationFieldsVenmoResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TransferMethodUpdateConfigurationFieldsVenmoResponse.json; sourceTree = "<group>"; };
 		FD536D062579F98B0056DC2D /* HyperwalletTransferMethodUpdateConfigurationQueries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperwalletTransferMethodUpdateConfigurationQueries.swift; sourceTree = "<group>"; };
 		FD536D08257A3C610056DC2D /* HyperwalletTransferMethodUpdateConfigurationField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperwalletTransferMethodUpdateConfigurationField.swift; sourceTree = "<group>"; };
 		FD536D0A257A60920056DC2D /* HyperwalletTransferMethodUpdateConfigurationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperwalletTransferMethodUpdateConfigurationTests.swift; sourceTree = "<group>"; };
@@ -586,7 +588,7 @@
 				DB1A03E6225D3DE40080C8D6 /* HyperwalletTransferMethodConfigurationField.swift */,
 				FD536D08257A3C610056DC2D /* HyperwalletTransferMethodUpdateConfigurationField.swift */,
 				DB1A03E9225D3DE40080C8D6 /* HyperwalletTransferMethodConfigurationKey.swift */,
-				DB1A03E8225D3DE40080C8D6 /* TransferMethodConfiguration.swift */,
+				DB1A03E8225D3DE40080C8D6 /* HyperwalletTransferMethodConfiguration.swift */,
 			);
 			path = GraphQL;
 			sourceTree = "<group>";
@@ -675,6 +677,7 @@
 				FDF2E7A5257E06D600589076 /* TransferMethodUpdateConfigurationFieldsResponse.json */,
 				FDD2F4D02580B1D0008E4CFC /* TransferMethodUpdateConfigurationFieldsBankCardResponse.json */,
 				FDD2F4CE2580AFB0008E4CFC /* TransferMethodUpdateConfigurationFieldsPaypalResponse.json */,
+				FD1208CB2581FE3200A8D8B2 /* TransferMethodUpdateConfigurationFieldsVenmoResponse.json */,
 				DBCA37AB225D6D1700CD4137 /* TransferMethodConfigurationKeysWithoutFeeResponse.json */,
 				DBCA37BF225D6E3A00CD4137 /* TransferMethodMockedSuccessResponse.json */,
 				E843856BD0D7E5295973780D /* VenmoAccountResponse.json */,
@@ -847,6 +850,7 @@
 				DBCA37B4225D6D1700CD4137 /* StatusTransitionMockedResponseInvalidTransition.json in Resources */,
 				980B9AE7251C0A2400653D1C /* PrepaidCardResponse.json in Resources */,
 				B327ED8D23C6B43E0007EF58 /* ListUserBalancesResponseSortCurrencyDesc.json in Resources */,
+				FD1208CC2581FE3200A8D8B2 /* TransferMethodUpdateConfigurationFieldsVenmoResponse.json in Resources */,
 				E84386A084517B13701D478D /* VenmoAccountResponse.json in Resources */,
 				E8438B2A7A266EEF5106635D /* VenmoAccountMissingAccountId.json in Resources */,
 				E84382CC1BE536B23E3F8EEA /* VenmoAccountWrongFormatAccountId.json in Resources */,
@@ -927,7 +931,7 @@
 				DB1A040E225D3DE40080C8D6 /* HyperwalletBankCard.swift in Sources */,
 				DB1A0409225D3DE40080C8D6 /* QueryParam.swift in Sources */,
 				DB1A0408225D3DE40080C8D6 /* HyperwalletTransferMethodQueryParam.swift in Sources */,
-				DB1A03FE225D3DE40080C8D6 /* TransferMethodConfiguration.swift in Sources */,
+				DB1A03FE225D3DE40080C8D6 /* HyperwalletTransferMethodConfiguration.swift in Sources */,
 				07B1FE6022C29BCD00F461D0 /* HyperwalletPrepaidCard.swift in Sources */,
 				0733FE092277C191000FB92A /* HyperwalletPayPalAccount.swift in Sources */,
 				DB1A03D9225D3DD80080C8D6 /* HTTPClient.swift in Sources */,

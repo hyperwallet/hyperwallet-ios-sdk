@@ -33,7 +33,7 @@ public protocol HyperwalletTransferMethodConfigurationField {
 }
 
 final class TransferMethodConfigurationFieldResult: HyperwalletTransferMethodConfigurationField {
-    private let transferMethodUIConfigurations: [TransferMethodConfiguration]?
+    private let transferMethodUIConfigurations: [HyperwalletTransferMethodConfiguration]?
     private let country: HyperwalletCountry?
 
     /// Creates a new instance of the 'HyperwalletTransferMethodConfigurationField' based on the
@@ -42,7 +42,7 @@ final class TransferMethodConfigurationFieldResult: HyperwalletTransferMethodCon
     /// - Parameters:
     ///   - transferMethodUIConfigurations: the GraphQL `[TransferMethodUIConfiguration]`
     ///   - country: the GraphQL `HyperwalletCountry`
-    init(_ transferMethodUIConfigurations: [TransferMethodConfiguration]?, _ country: HyperwalletCountry?) {
+    init(_ transferMethodUIConfigurations: [HyperwalletTransferMethodConfiguration]?, _ country: HyperwalletCountry?) {
         self.transferMethodUIConfigurations = transferMethodUIConfigurations
         self.country = country
     }

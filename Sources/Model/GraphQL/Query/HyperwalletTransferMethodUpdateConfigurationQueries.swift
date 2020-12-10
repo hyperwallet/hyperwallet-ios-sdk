@@ -20,7 +20,7 @@ import Foundation
 
 /// The `HyperwalletTransferMethodUpdateConfigurationFieldQuery`
 /// struct defines and builds a query to retrieve the fields
-/// required to update a transfer method (Bank Account, Bank Card, PayPal Account, Prepaid Card, Paper Check)
+/// required to update a transfer method (Bank Account, Bank Card, PayPal Account, Prepaid Card, Paper Check and Venmo)
 /// with the Hyperwallet platform.
 public struct HyperwalletTransferMethodUpdateConfigurationFieldQuery: GraphQlQuery, Hashable {
     private var transferMethodToken: String

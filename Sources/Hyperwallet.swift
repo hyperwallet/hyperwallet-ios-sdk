@@ -907,9 +907,8 @@ public final class Hyperwallet: NSObject {
                                        completionHandler: transferMethodConfigurationFieldResponseHandler(completion))
     }
 
-    /// Returns the transfer method update configuration field set for the User that is associated with the
-    /// authentication
-    /// token returned from
+    /// Returns the transfer method update configuration fields set for the User that is associated with
+    /// the authentication token returned from
     /// `HyperwalletAuthenticationTokenProvider.retrieveAuthenticationToken(_ : @escaping CompletionHandler)`.
     ///
     /// The `completion: @escaping (HyperwalletTransferMethodUpdateConfigurationField?, HyperwalletErrorType?) -> Void`
@@ -921,7 +920,7 @@ public final class Hyperwallet: NSObject {
     /// if the current one is expired or is about to expire.
     ///
     /// - Parameters:
-    ///   - request: containing transfer method token to be updated
+    ///   - request: GraphQL query  containing  transfer method token  and required configuration fields
     ///   - completion: the callback handler of responses from the Hyperwallet platform
     public func retrieveTransferMethodUpdateConfigurationFields(
         request: HyperwalletTransferMethodUpdateConfigurationFieldQuery,

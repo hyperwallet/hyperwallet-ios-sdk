@@ -161,11 +161,11 @@ public struct HyperwalletValidationMessage: Codable {
 
 struct TransferMethodConfigurationField: Codable {
     var countries: Connection<HyperwalletCountry>?
-    var transferMethodUIConfigurations: Connection<TransferMethodConfiguration>?
+    var transferMethodUIConfigurations: Connection<HyperwalletTransferMethodConfiguration>?
 }
 
 struct TransferMethodUpdateConfigurationField: Codable {
-    var transferMethodUpdateUIConfigurations: Connection<TransferMethodConfiguration>?
+    var transferMethodUpdateUIConfigurations: Connection<HyperwalletTransferMethodConfiguration>?
 }
 
 struct TransferMethodConfigurationKey: Codable {
@@ -173,7 +173,7 @@ struct TransferMethodConfigurationKey: Codable {
 }
 
 /// Representation of the transfer method configuration
-public struct TransferMethodConfiguration: Codable {
+public struct HyperwalletTransferMethodConfiguration: Codable {
     /// The country
     public let country: String?
     /// The currency

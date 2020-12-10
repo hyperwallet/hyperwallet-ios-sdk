@@ -32,7 +32,7 @@ class HyperwalletTransferMethodUpdateConfigurationTests: XCTestCase {
     }
 
     //swiftlint:disable function_body_length
-    func testRetrieveTransferMethodUpdateConfigurationFields_BankAccount() {
+    func testRetrieveTransferMethodUpdateConfigurationFields_bankAccount() {
         // Given
         let request = setUpTransferMethodUpdateConfigurationRequest("TransferMethodUpdateConfigurationFieldsResponse")
         HyperwalletTestHelper.setUpMockServer(request: request)
@@ -104,7 +104,7 @@ class HyperwalletTransferMethodUpdateConfigurationTests: XCTestCase {
         XCTAssertEqual(postalCode?.fieldValueMasked, false)
     }
 
-    func testRetrieveTransferMethodUpdateConfigurationFields_Paypal() {
+    func testRetrieveTransferMethodUpdateConfigurationFields_paypal() {
         // Given
         let request = setUpTransferMethodUpdateConfigurationRequest(
             "TransferMethodUpdateConfigurationFieldsPaypalResponse")
@@ -149,7 +149,7 @@ class HyperwalletTransferMethodUpdateConfigurationTests: XCTestCase {
         XCTAssertEqual(email?.fieldValueMasked, false)
     }
 
-    func testRetrieveTransferMethodUpdateConfigurationFields_BankCard() {
+    func testRetrieveTransferMethodUpdateConfigurationFields_bankCard() {
         // Given
         let request = setUpTransferMethodUpdateConfigurationRequest(
             "TransferMethodUpdateConfigurationFieldsBankCardResponse")
@@ -222,6 +222,52 @@ class HyperwalletTransferMethodUpdateConfigurationTests: XCTestCase {
                        "The minimum length of this field is 3 and maximum length is 4.")
         XCTAssertEqual(cvv?.fieldValueMasked, false)
         XCTAssertEqual(cvv?.mask?.defaultPattern, "###")
+    }
+
+    func testRetrieveTransferMethodUpdateConfigurationFields_venmo() {
+        // Given
+        let request = setUpTransferMethodUpdateConfigurationRequest(
+            "TransferMethodUpdateConfigurationFieldsVenmoResponse")
+        HyperwalletTestHelper.setUpMockServer(request: request)
+
+        let expectation = self.expectation(description:
+            "Retrieve update transfer method configuration fields for Venmo")
+
+        var graphQlResponse: HyperwalletTransferMethodUpdateConfigurationField?
+        var errorResponse: HyperwalletErrorType?
+        // When
+        let fieldQuery = HyperwalletTransferMethodUpdateConfigurationFieldQuery(transferMethodToken: "trm-0000004")
+
+        Hyperwallet.shared.retrieveTransferMethodUpdateConfigurationFields(request: fieldQuery) { (result, error) in
+            graphQlResponse = result
+            errorResponse = error
+            expectation.fulfill()
+        }
+
+        wait(for: [expectation], timeout: 1)
+
+        let fieldGroups = graphQlResponse?.transferMethodUpdateConfiguration()?.fieldGroups?.nodes
+
+        // Then
+        XCTAssertNil(errorResponse, "The `errorResponse` should be nil")
+        XCTAssertNotNil(graphQlResponse)
+        XCTAssertEqual(fieldGroups?.count,
+                       1,
+                       "`fieldGroups()` should be 1")
+
+        let accountId = fieldGroups?
+            .first(where: { $0.group == "ACCOUNT_INFORMATION" })?.fields?
+            .first(where: { $0.name == "accountId" })
+        XCTAssertNotNil(accountId)
+        XCTAssertEqual(accountId?.value, "5555555555")
+        XCTAssertEqual(accountId?.dataType, HyperwalletDataType.text.rawValue)
+        XCTAssertEqual(accountId?.isRequired, true)
+        XCTAssertEqual(accountId?.isEditable, true)
+        XCTAssertEqual(accountId?.label, "Mobile Number")
+        XCTAssertEqual(accountId?.regularExpression, "^([0-9]{10})$")
+        XCTAssertEqual(accountId?.validationMessage?.length,
+                       "The exact length of this field is 10.")
+        XCTAssertEqual(accountId?.fieldValueMasked, false)
     }
 
     private func setUpTransferMethodUpdateConfigurationRequest(_ responseFile: String,

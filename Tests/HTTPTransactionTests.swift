@@ -147,7 +147,7 @@ class HTTPTransactionTests: XCTestCase {
 
     func testPerformGraphQl_responseWithErrorsAndData_returnOnlyData() {
         // Given - SDK is initialized
-        var response: Connection<TransferMethodConfiguration>?
+        var response: Connection<HyperwalletTransferMethodConfiguration>?
         var hyperwalletError: HyperwalletErrorType?
 
         httpClientMock.data = HyperwalletTestHelper.getDataFromJson("TransferMethodConfigurationGraphQlResponse")
@@ -161,13 +161,13 @@ class HTTPTransactionTests: XCTestCase {
                                                                        transferMethodType: "BANK_ACCOUNT",
                                                                        profile: "INDIVIDUAL")
         // When - an API call request is made
-        let completionHandler = { (data: Connection<TransferMethodConfiguration>?, error: HyperwalletErrorType?)
-                        -> Void in
+        let handler = { (data: Connection<HyperwalletTransferMethodConfiguration>?, error: HyperwalletErrorType?)
+            -> Void in
             response = data
             hyperwalletError = error
         }
 
-        transaction.performGraphQl(request, completionHandler: completionHandler)
+        transaction.performGraphQl(request, completionHandler: handler)
 
         // Then
         XCTAssertNotNil(response)
@@ -180,7 +180,7 @@ class HTTPTransactionTests: XCTestCase {
         let graphQlResponse = """
             {}
         """.data(using: .utf8)
-        var response: Connection<TransferMethodConfiguration>?
+        var response: Connection<HyperwalletTransferMethodConfiguration>?
         var hyperwalletError: HyperwalletErrorType?
 
         httpClientMock.data = graphQlResponse
@@ -194,13 +194,13 @@ class HTTPTransactionTests: XCTestCase {
                                                                        transferMethodType: "BANK_ACCOUNT",
                                                                        profile: "INDIVIDUAL")
         // When - an API call request is made
-        let completionHandler = { (data: Connection<TransferMethodConfiguration>?, error: HyperwalletErrorType?)
+        let handler = { (data: Connection<HyperwalletTransferMethodConfiguration>?, error: HyperwalletErrorType?)
                         -> Void in
             response = data
             hyperwalletError = error
         }
 
-        transaction.performGraphQl(request, completionHandler: completionHandler)
+        transaction.performGraphQl(request, completionHandler: handler)
 
         // Then
 
