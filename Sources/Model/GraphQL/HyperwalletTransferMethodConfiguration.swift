@@ -106,6 +106,8 @@ public struct HyperwalletField: Codable {
     public let value: String?
     /// The mask, or nil if none exists
     public let mask: HyperwalletMask?
+    /// Indicate if the field is masked, or nil if none exists
+    public let fieldValueMasked: Bool?
 }
 
 /// Representation of list of HyperwalletField and the group to which it belongs
@@ -159,7 +161,11 @@ public struct HyperwalletValidationMessage: Codable {
 
 struct TransferMethodConfigurationField: Codable {
     var countries: Connection<HyperwalletCountry>?
-    var transferMethodUIConfigurations: Connection<TransferMethodConfiguration>?
+    var transferMethodUIConfigurations: Connection<HyperwalletTransferMethodConfiguration>?
+}
+
+struct TransferMethodUpdateConfigurationField: Codable {
+    var transferMethodUpdateUIConfigurations: Connection<HyperwalletTransferMethodConfiguration>?
 }
 
 struct TransferMethodConfigurationKey: Codable {
@@ -167,17 +173,17 @@ struct TransferMethodConfigurationKey: Codable {
 }
 
 /// Representation of the transfer method configuration
-public struct TransferMethodConfiguration: Codable {
+public struct HyperwalletTransferMethodConfiguration: Codable {
     /// The country
-    let country: String?
+    public let country: String?
     /// The currency
-    let currency: String?
+    public let currency: String?
     /// The transfer method type
-    let transferMethodType: String?
+    public let transferMethodType: String?
     /// The profile type
-    let profile: String?
+    public let profile: String?
     /// The `HyperwalletFieldGroup`, or nil if none exists
-    let fieldGroups: Connection<HyperwalletFieldGroup>?
+    public let fieldGroups: Connection<HyperwalletFieldGroup>?
 }
 
 /// Representation of the transfer method configuration field mask

@@ -907,6 +907,28 @@ public final class Hyperwallet: NSObject {
                                        completionHandler: transferMethodConfigurationFieldResponseHandler(completion))
     }
 
+    /// Returns the transfer method update configuration fields set for the User that is associated with
+    /// the authentication token returned from
+    /// `HyperwalletAuthenticationTokenProvider.retrieveAuthenticationToken(_ : @escaping CompletionHandler)`.
+    ///
+    /// The `completion: @escaping (HyperwalletTransferMethodUpdateConfigurationField?, HyperwalletErrorType?) -> Void`
+    /// that is passed in to this method invocation will receive the successful
+    /// response(HyperwalletTransferMethodUpdateConfigurationField) or error(HyperwalletErrorType) from processing the
+    /// request.
+    ///
+    /// This function will request a new authentication token via `HyperwalletAuthenticationTokenProvider`
+    /// if the current one is expired or is about to expire.
+    ///
+    /// - Parameters:
+    ///   - request: GraphQL query  containing  transfer method token  and required configuration fields
+    ///   - completion: the callback handler of responses from the Hyperwallet platform
+    public func retrieveTransferMethodUpdateConfigurationFields(
+        request: HyperwalletTransferMethodUpdateConfigurationFieldQuery,
+        completion: @escaping (HyperwalletTransferMethodUpdateConfigurationField?, HyperwalletErrorType?) -> Void) {
+        httpTransaction.performGraphQl(request, completionHandler:
+            transferMethodUpdateConfigurationFiledResponseHandler(completion))
+    }
+
     /// Returns the transfer method configuration key set, processing times, and fees for the User that is associated
     /// with the authentication token returned from
     /// `HyperwalletAuthenticationTokenProvider.retrieveAuthenticationToken(_ : @escaping CompletionHandler)`.
@@ -1123,6 +1145,16 @@ public final class Hyperwallet: NSObject {
         -> (TransferMethodConfigurationField?, HyperwalletErrorType?) -> Void { { (response, error) in
                 let result = TransferMethodConfigurationFieldResult(response?.transferMethodUIConfigurations?.nodes,
                                                                     response?.countries?.nodes?.first)
+                completionHandler(result, error)
+            }
+    }
+
+    private func transferMethodUpdateConfigurationFiledResponseHandler(_ completionHandler:
+            @escaping (TransferMethodUpdateConfigurationFieldResult?, HyperwalletErrorType?) -> Void)
+        -> (TransferMethodUpdateConfigurationField?, HyperwalletErrorType?) -> Void { { (response, error) in
+                let result = TransferMethodUpdateConfigurationFieldResult(response?
+                    .transferMethodUpdateUIConfigurations?
+                    .nodes)
                 completionHandler(result, error)
             }
     }

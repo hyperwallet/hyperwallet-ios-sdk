@@ -713,5 +713,23 @@ Hyperwallet.shared.retrieveTransferMethodConfigurationFields(request: fieldQuery
 }
 ```
 
+### Get fields for updating transfer method
+```swift
+let fieldQuery = HyperwalletTransferMethodUpdateConfigurationFieldQuery(transferMethodToken: "trm-0000001")
+
+Hyperwallet.shared.retrieveTransferMethodUpdateConfigurationFields(request: fieldQuery) { (result, error) in
+    guard error == nil else {
+        print(error?.getHyperwalletErrors()?.errorList)
+        return
+    }
+
+    guard let result = result else { return }
+
+    print(result.transferMethodUpdateConfiguration()?.fieldGroups?.nodes)
+    print(result.transferMethodUpdateConfiguration()?.transferMethodType)
+}
+```
+
+
 ## License
 The Hyperwallet iOS SDK is open source and available under the [MIT](https://github.com/hyperwallet/hyperwallet-ios-sdk/blob/master/LICENSE) license
