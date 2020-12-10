@@ -104,7 +104,7 @@ class HyperwalletTransferMethodUpdateConfigurationTests: XCTestCase {
         XCTAssertEqual(postalCode?.fieldValueMasked, false)
     }
 
-    func testRetrieveTransferMethodUpdateConfigurationFields_paypal() {
+    func testRetrieveTransferMethodUpdateConfigurationFields_payPal() {
         // Given
         let request = setUpTransferMethodUpdateConfigurationRequest(
             "TransferMethodUpdateConfigurationFieldsPaypalResponse")
