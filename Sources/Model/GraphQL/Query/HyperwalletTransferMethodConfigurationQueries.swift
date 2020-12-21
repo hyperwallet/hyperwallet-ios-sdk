@@ -28,14 +28,14 @@ public struct HyperwalletTransferMethodConfigurationFieldQuery: GraphQlQuery, Ha
     private var profile: String
     private var query = """
         query QueryCreateTransferMethod(
-            $idToken: String =  "%@",
+            $usrToken: String =  "%@",
             $profileType: Profile = %@
             $country: Country = %@
             $currency: Currency = %@
             $transferMethodType: TransferMethodType = %@
 
         ){
-            transferMethodUIConfigurations (idToken: $idToken,
+            transferMethodCreateUIConfigurations (usrToken: $usrToken,
                 profileType: $profileType
                 country: $country,
                 currency: $currency,
@@ -81,7 +81,7 @@ public struct HyperwalletTransferMethodConfigurationFieldQuery: GraphQlQuery, Ha
                         }
                     }
                 },
-          countries (idToken: $idToken,
+          countries (usrToken: $usrToken,
                      code: $country){
               nodes {
                 code
