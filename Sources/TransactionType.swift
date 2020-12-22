@@ -63,7 +63,7 @@ internal enum TransactionType {
                                          httpBody: Body?) throws -> URLRequest where Body: Encodable {
         let formattedPath = String(format: path, configuration.userToken)
         let baseURL = URL(string: configuration.restUrl + formattedPath)
-        //let baseURL = url(configuration, path)
+        // let baseURL = url(configuration, path)
         guard let url = addQueryIfRequired(baseURL, query) else {
             throw ErrorTypeHelper.invalidUrl()
         }
