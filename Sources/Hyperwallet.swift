@@ -1143,8 +1143,9 @@ public final class Hyperwallet: NSObject {
     private func transferMethodConfigurationFieldResponseHandler(_ completionHandler:
             @escaping (TransferMethodConfigurationFieldResult?, HyperwalletErrorType?) -> Void)
         -> (TransferMethodConfigurationField?, HyperwalletErrorType?) -> Void { { (response, error) in
-                let result = TransferMethodConfigurationFieldResult(response?.transferMethodUIConfigurations?.nodes,
-                                                                    response?.countries?.nodes?.first)
+                let result =
+                    TransferMethodConfigurationFieldResult(response?.transferMethodCreateUIConfigurations?.nodes,
+                                                           response?.countries?.nodes?.first)
                 completionHandler(result, error)
             }
     }
