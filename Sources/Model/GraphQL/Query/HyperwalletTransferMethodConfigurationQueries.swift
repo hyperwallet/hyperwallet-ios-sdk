@@ -27,99 +27,98 @@ public struct HyperwalletTransferMethodConfigurationFieldQuery: GraphQlQuery, Ha
     private var transferMethodType: String
     private var profile: String
     private var query = """
-        query QueryCreateTransferMethod(
-            $usrToken: String =  "%@",
-            $profileType: Profile = %@
-            $country: Country = %@
-            $currency: Currency = %@
-            $transferMethodType: TransferMethodType = %@
-
-        ){
-            transferMethodCreateUIConfigurations (usrToken: $usrToken,
-                profileType: $profileType
-                country: $country,
-                currency: $currency,
-                transferMethodType: $transferMethodType) {
-                    nodes {
-                        country
-                        currency
-                        transferMethodType
-                        profile
-                        fieldGroups {
-                            nodes {
-                                group
-                                fields {
-                                    dataType
-                                    isRequired
-                                    isEditable
-                                    name
-                                    label
-                                    placeholder
-                                    value
-                                    maxLength
-                                    minLength
-                                    regularExpression
-                                    fieldSelectionOptions {
-                                        label
-                                        value
-                                    }
-                                    validationMessage {
-                                        length
-                                        pattern
-                                        empty
-                                    }
-                                    mask {
-                                        conditionalPatterns {
-                                            pattern
-                                            regex
-                                        }
-                                        defaultPattern
-                                        scrubRegex
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
-          countries (usrToken: $usrToken,
-                     code: $country){
-              nodes {
-                code
-                name
-                iso3
-                currencies (code:$currency){
-                  nodes {
-                    code
-                    name
-                    transferMethodTypes (code:$transferMethodType){
-                      nodes {
-                        code
-                        name
-                        processingTimes {
-                          nodes {
-                            country
-                            currency
-                            transferMethodType
-                            value
-                          }
-                        }
-                        fees {
-                          nodes {
-                            currency
-                            feeRateType
-                            value
-                            minimum
-                            maximum
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-         }
-    """
+                            query QueryCreateTransferMethod(
+                                                    $usrToken: String =  "%@",
+                                                    $profileType: Profile = %@
+                                                    $country: Country = %@
+                                                    $currency: Currency = %@
+                                                    $transferMethodType: TransferMethodType = %@
+                                                ){
+                                                    transferMethodCreateUIConfigurations (usrToken: $usrToken,
+                                                        profileType: $profileType
+                                                        country: $country,
+                                                        currency: $currency,
+                                                        transferMethodType: $transferMethodType) {
+                                                            nodes {
+                                                                country
+                                                                currency
+                                                                transferMethodType
+                                                                profile
+                                                                fieldGroups {
+                                                                    nodes {
+                                                                        group
+                                                                        fields {
+                                                                            dataType
+                                                                            isRequired
+                                                                            isEditable
+                                                                            name
+                                                                            label
+                                                                            placeholder
+                                                                            value
+                                                                            maxLength
+                                                                            minLength
+                                                                            regularExpression
+                                                                            fieldSelectionOptions {
+                                                                                label
+                                                                                value
+                                                                            }
+                                                                            validationMessage {
+                                                                                length
+                                                                                pattern
+                                                                                empty
+                                                                            }
+                                                                            mask {
+                                                                                conditionalPatterns {
+                                                                                    pattern
+                                                                                    regex
+                                                                                }
+                                                                                defaultPattern
+                                                                                scrubRegex
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                  countries (idToken: $usrToken,
+                                                             code: $country){
+                                                      nodes {
+                                                        code
+                                                        name
+                                                        iso3
+                                                        currencies (code:$currency){
+                                                          nodes {
+                                                            code
+                                                            name
+                                                            transferMethodTypes (code:$transferMethodType){
+                                                              nodes {
+                                                                code
+                                                                name
+                                                                processingTimes {
+                                                                  nodes {
+                                                                    country
+                                                                    currency
+                                                                    transferMethodType
+                                                                    value
+                                                                  }
+                                                                }
+                                                                fees {
+                                                                  nodes {
+                                                                    currency
+                                                                    feeRateType
+                                                                    value
+                                                                    minimum
+                                                                    maximum
+                                                                  }
+                                                                }
+                                                              }
+                                                            }
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                 }
+                        """
 
     /// Create a new `HyperwalletTransferMethodConfigurationQuery` from the country, currency, transferMethodType
     /// and profile
@@ -159,44 +158,44 @@ public struct HyperwalletTransferMethodConfigurationFieldQuery: GraphQlQuery, Ha
 public struct HyperwalletTransferMethodConfigurationKeysQuery: GraphQlQuery {
     private var limit: Int = 0
     private var query = """
-    query {
-        countries (idToken: "%@") {
-            nodes {
-                code
-                name
-                currencies {
-                    nodes {
-                        code
-                        name
-                        transferMethodTypes {
-                            nodes {
-                                code
-                                name
-                                processingTimes {
-                                  nodes {
-                                    country
-                                    currency
-                                    transferMethodType
-                                    value
-                                  }
-                                }
-                                fees {
-                                    nodes {
-                                      currency
-                                      value
-                                      feeRateType
-                                      maximum
-                                      minimum
+                        query {
+                            countries (idToken: "%@") {
+                                nodes {
+                                    code
+                                    name
+                                    currencies {
+                                        nodes {
+                                            code
+                                            name
+                                            transferMethodTypes {
+                                                nodes {
+                                                    code
+                                                    name
+                                                    processingTimes {
+                                                      nodes {
+                                                        country
+                                                        currency
+                                                        transferMethodType
+                                                        value
+                                                      }
+                                                    }
+                                                    fees {
+                                                        nodes {
+                                                          currency
+                                                          value
+                                                          feeRateType
+                                                          maximum
+                                                          minimum
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
                                     }
                                 }
                             }
                         }
-                    }
-                }
-            }
-        }
-    }
-    """
+                        """
 
     //// Create a new `HyperwalletTransferMethodConfigurationKeysQuery` instance
     ///
