@@ -35,7 +35,7 @@ public struct HyperwalletTransferMethodConfigurationFieldQuery: GraphQlQuery, Ha
             $transferMethodType: TransferMethodType = %@
 
         ){
-            transferMethodCreateUIConfigurations (idToken: $idToken,
+            transferMethodUIConfigurations (idToken: $idToken,
                 profileType: $profileType
                 country: $country,
                 currency: $currency,
