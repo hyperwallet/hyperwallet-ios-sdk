@@ -125,15 +125,7 @@
         "details" : {
             "clientPaymentId" : "trans-02",
             "payeeName" : "Vasya Pupkin"
-        },
-        "links": [
-            {
-                "params": {
-                    "rel": "self"
-                },
-                "href": "https://localhost:8181/rest/v3/users/usr-112233/receipts/rcpToken6"
-            }
-        ]
+        }
     },{
         "token": "rcpToken7",
         "journalId": "CC002F14A500",
@@ -145,41 +137,7 @@
         "currency": "USD",
         "details": {
             "cardNumber": "************7917"
-        },
-        "links": [
-            {
-                "params": {
-                    "rel": "self"
-                },
-                "href": "https://localhost:8181/rest/v3/users/usr-112233/receipts/rcpToken7"
-            }
-        ]
-    },
-    {
-        "token": "rcpToken8",
-        "journalId": "64450180",
-        "type": "TRANSFER_TO_BANK_ACCOUNT",
-        "createdOn": "2020-12-02T01:59:57",
-        "entry": "DEBIT",
-        "sourceToken": "usrToken",
-        "destinationToken": "trmToken",
-        "amount": "82899",
-        "fee": "205",
-        "currency": "JPY",
-        "details": {
-            "payeeName": "Test Test test",
-            "branchId": "8689",
-            "bankAccountId": "**3445",
-            "bankAccountPurpose": "Current Account (Tōza yokin, 当座預金)"
-        },
-        "links": [
-            {
-                "params": {
-                    "rel": "self"
-                },
-                "href": "https://localhost:8181/rest/v3/users/usr-112233/receipts/rcpToken8"
-            }
-        ]
+        }
     }],
     "links" : [ {
         "params" : {

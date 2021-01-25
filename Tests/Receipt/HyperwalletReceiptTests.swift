@@ -86,15 +86,12 @@ class HyperwalletReceiptTests: XCTestCase {
         let lastReceipt = userReceiptList?.data?[5]
         XCTAssertEqual(lastReceipt?.type?.rawValue, "UNKNOWN_RECEIPT_TYPE")
 
-        let transferToBankAccountReceipt = userReceiptList?.data?.last!
-        XCTAssertNotNil(transferToBankAccountReceipt, "transferToBankAccountReceipt should not be nil")
-        receiptType = HyperwalletReceipt.HyperwalletReceiptType.transferToBankAccount.rawValue
-        XCTAssertEqual(transferToBankAccountReceipt?.type?.rawValue,
+        let transferToBankCardReceipt = userReceiptList?.data?.last!
+        XCTAssertNotNil(transferToBankCardReceipt, "transferToBankCardReceipt should not be nil")
+        receiptType = HyperwalletReceipt.HyperwalletReceiptType.transferToBankCard.rawValue
+        XCTAssertEqual(transferToBankCardReceipt?.type?.rawValue,
                        receiptType,
-                       "Type should be TRANSFER_TO_BANK_ACCOUNT")
-        XCTAssertEqual(transferToBankAccountReceipt?.details?.bankAccountPurpose,
-                       "Current Account (Tōza yokin, 当座預金)",
-                       "Bank Account purpose should be Current Account (Tōza yokin, 当座預金)")
+                       "Type should be TRANSFER_TO_BANK_CARD")
     }
 
     func testListPrepaidCardReceipts_success() {
