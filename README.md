@@ -1,7 +1,7 @@
 # Hyperwallet iOS Core SDK
 
 [![Platforms](https://img.shields.io/cocoapods/p/HyperwalletSDK.svg?)](https://cocoapods.org/pods/HyperwalletSDK)
-[![Build Status](https://travis-ci.org/hyperwallet/hyperwallet-ios-sdk.svg?branch=master)](https://travis-ci.org/hyperwallet/hyperwallet-ios-sdk)
+[![Build Status](https://travis-ci.com/hyperwallet/hyperwallet-ios-sdk.svg?branch=master)](https://travis-ci.com/hyperwallet/hyperwallet-ios-sdk)
 [![Coverage Status](https://coveralls.io/repos/github/hyperwallet/hyperwallet-ios-sdk/badge.svg?branch=master)](https://coveralls.io/github/hyperwallet/hyperwallet-ios-sdk?branch=master)
 
 [![CocoaPods](https://img.shields.io/cocoapods/v/HyperwalletSDK.svg?color=lightgray)](https://cocoapods.org/pods/HyperwalletSDK)
@@ -27,13 +27,13 @@ Use [Carthage](https://github.com/Carthage/Carthage) or [CocoaPods](https://coco
 ### Carthage
 Specify it in your Cartfile:
 ```ogdl
-github "hyperwallet/hyperwallet-ios-sdk" "1.0.0-beta10"
+github "hyperwallet/hyperwallet-ios-sdk" "1.0.0-beta11"
 ```
 
 ### CocoaPods
 Specify it in your Podfile:
 ```ruby
-pod 'HyperwalletSDK', '~> 1.0.0-beta10'
+pod 'HyperwalletSDK', '~> 1.0.0-beta11'
 ```
 
 ## Initialization
