@@ -12,7 +12,7 @@ class AnyCodableTests: XCTestCase {
                      transferMethodType: "BANK_ACCOUNT")
                      .bankAccountId("12345")
                      .branchId("123456")
-                     .bankAccountPurpose(.checking)
+                     .bankAccountPurpose("CHECKING")
             .build()
 
         // When

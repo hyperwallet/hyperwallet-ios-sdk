@@ -10,7 +10,7 @@ class TransferMethodConfigurationFieldResultTests: XCTestCase {
         transferMethodConfigurationField = hyperwalletGraphQlField(data:
             HyperwalletTestHelper.getDataFromJson("TransferMethodConfigurationFieldsResponse"))!
         fieldResult = TransferMethodConfigurationFieldResult(transferMethodConfigurationField?
-            .transferMethodUIConfigurations?.nodes, transferMethodConfigurationField.countries?.nodes?.first)
+            .transferMethodCreateUIConfigurations?.nodes, transferMethodConfigurationField.countries?.nodes?.first)
     }
 
     func testFees_success() {

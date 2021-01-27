@@ -1,7 +1,7 @@
 # Hyperwallet iOS Core SDK
 
 [![Platforms](https://img.shields.io/cocoapods/p/HyperwalletSDK.svg?)](https://cocoapods.org/pods/HyperwalletSDK)
-[![Build Status](https://travis-ci.org/hyperwallet/hyperwallet-ios-sdk.svg?branch=master)](https://travis-ci.org/hyperwallet/hyperwallet-ios-sdk)
+[![Build Status](https://travis-ci.com/hyperwallet/hyperwallet-ios-sdk.svg?branch=master)](https://travis-ci.com/hyperwallet/hyperwallet-ios-sdk)
 [![Coverage Status](https://coveralls.io/repos/github/hyperwallet/hyperwallet-ios-sdk/badge.svg?branch=master)](https://coveralls.io/github/hyperwallet/hyperwallet-ios-sdk?branch=master)
 
 [![CocoaPods](https://img.shields.io/cocoapods/v/HyperwalletSDK.svg?color=lightgray)](https://cocoapods.org/pods/HyperwalletSDK)
@@ -27,13 +27,13 @@ Use [Carthage](https://github.com/Carthage/Carthage) or [CocoaPods](https://coco
 ### Carthage
 Specify it in your Cartfile:
 ```ogdl
-github "hyperwallet/hyperwallet-ios-sdk" "1.0.0-beta10"
+github "hyperwallet/hyperwallet-ios-sdk" "1.0.0-beta11"
 ```
 
 ### CocoaPods
 Specify it in your Podfile:
 ```ruby
-pod 'HyperwalletSDK', '~> 1.0.0-beta10'
+pod 'HyperwalletSDK', '~> 1.0.0-beta11'
 ```
 
 ## Initialization
@@ -313,6 +313,81 @@ Hyperwallet.shared.listBankAccounts(queryParam: bankAccountQueryParam) { (result
     if let bankAccounts = result?.data {
         for bankAccount in bankAccounts {
             print(bankAccount.token ?? "")
+        }
+    }
+}
+```
+
+### Create Paper Check
+
+```swift
+let paperCheck = HyperwalletPaperCheck.Builder(transferMethodCountry: "US",   
+                                               transferMethodCurrency: "USD",
+                                               transferMethodProfileType: "INDIVIDUAL")
+.shippingMethod("STANDARD")
+.build()
+
+Hyperwallet.shared.createPaperCheck(account: paperCheck, completion: { (result, error) in
+    // In case of failure, error (HyperwalletErrorType) will contain HyperwalletErrors containing information about what caused the failure of account creation
+    guard error == nil else {
+        print(error?.getHyperwalletErrors()?.errorList?)
+        return
+    }   
+
+    // On successful creation, response (HyperwalletPaperCheck in this case) payload will contain information about the paper check created
+    print(result)
+})
+```
+### Get Paper Check
+```swift
+Hyperwallet.shared.getPaperCheck(transferMethodToken: "123123", completion: { (result, error) in
+    // On success, response (HyperwalletPaperCheck? in this case) will contain information about the user’s paper check or nil if not exist.
+    // In case of failure, error (HyperwalletErrorType) will contain HyperwalletErrors containing information about what caused the failure
+})
+```
+
+### Update Paper Check
+
+```swift
+let paperCheck = HyperwalletPaperCheck
+.Builder(token: "12345")
+.shippingMethod("STANDARD")
+.build()
+
+Hyperwallet.shared.updatePaperCheck(account: paperCheck, completion: { (response, error) in
+    // Code to handle successful response or error
+    // On successful update, response (HyperwalletPaperCheck in this case) payload will contain information about the paper check updated
+    // In case of failure, error (HyperwalletErrorType) will contain HyperwalletErrors containing information about what caused the failure while updating
+})
+```
+
+### Deactivate Paper Check
+
+```swift
+Hyperwallet.shared.deactivatePaperCheck(transferMethodToken: "trm-12345", notes: "deactivate paper check", completion: { (result, error) in
+    // Code to handle successful response or error
+    // On successful deactivation, response (HyperwalletStatusTransition in this case) will contain information about the status transition
+    // In case of failure, error (HyperwalletErrorType) will contain HyperwalletErrors containing information about what caused the failure
+})
+```
+
+### List Paper Check
+```swift
+let paperCheckQueryParam = HyperwalletPaperCheckQueryParam()
+paperCheckQueryParam.status = HyperwalletPaperCheckQueryParam.QueryStatus.activated.rawValue
+paperCheckQueryParam.sortBy = HyperwalletPaperCheckQueryParam.QuerySortable.ascendantCreatedOn.rawValue
+
+Hyperwallet.shared.listPaperChecks(queryParam: paperCheckQueryParam) { (result, error) in
+    // In case of failure, error (HyperwalletErrorType) will contain HyperwalletErrors containing information about what caused the failure
+    guard error == nil else {
+        print(error?.getHyperwalletErrors()?.errorList?)
+        return
+    }
+
+    // On success, response (HyperwalletPageList<HyperwalletPaperCheck>? in this case) will contain information about or nil if not exist.
+    if let paperChecks = result?.data {
+        for paperCheck in paperChecks {
+            print(paperCheck.token ?? "")
         }
     }
 }
@@ -637,6 +712,24 @@ Hyperwallet.shared.retrieveTransferMethodConfigurationFields(request: fieldQuery
     print(result.fieldGroups()?.fields))
 }
 ```
+
+### Get fields for updating transfer method
+```swift
+let fieldQuery = HyperwalletTransferMethodUpdateConfigurationFieldQuery(transferMethodToken: "trm-0000001")
+
+Hyperwallet.shared.retrieveTransferMethodUpdateConfigurationFields(request: fieldQuery) { (result, error) in
+    guard error == nil else {
+        print(error?.getHyperwalletErrors()?.errorList)
+        return
+    }
+
+    guard let result = result else { return }
+
+    print(result.transferMethodUpdateConfiguration()?.fieldGroups?.nodes)
+    print(result.transferMethodUpdateConfiguration()?.transferMethodType)
+}
+```
+
 
 ## License
 The Hyperwallet iOS SDK is open source and available under the [MIT](https://github.com/hyperwallet/hyperwallet-ios-sdk/blob/master/LICENSE) license

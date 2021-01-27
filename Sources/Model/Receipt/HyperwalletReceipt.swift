@@ -23,7 +23,7 @@ public struct HyperwalletReceiptDetails: Decodable {
     /// The bank account number, IBAN or equivalent
     public let bankAccountId: String?
     /// The bank account type, e.g. CHECKING or SAVINGS
-    public let bankAccountPurpose: HyperwalletReceipt.BankAccountPurposeType?
+    public let bankAccountPurpose: String?
     /// The bank code, BIC/SWIFT or equivalent
     public let bankId: String?
     /// The bank name
@@ -405,13 +405,6 @@ public struct HyperwalletReceipt: Decodable, Equatable {
         case credit = "CREDIT"
         /// The debit entry type
         case debit = "DEBIT"
-    }
-    /// The bank account purpose type
-    public enum BankAccountPurposeType: String, Decodable {
-        /// The bank account checking type
-        case checking = "CHECKING"
-        /// The bank account savings type
-        case savings = "SAVINGS"
     }
 }
 

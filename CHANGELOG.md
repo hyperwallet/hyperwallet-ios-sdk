@@ -1,6 +1,13 @@
 Changelog
 =========
 
+[1.0.0-beta11](https://github.com/hyperwallet/hyperwallet-ios-sdk/releases/tag/1.0.0-beta11)
+-------------------
+- Support Paper Check as a transfer method
+- Support update transfer method
+- Enhancements
+
+
 [1.0.0-beta10](https://github.com/hyperwallet/hyperwallet-ios-sdk/releases/tag/1.0.0-beta10)
 -------------------
 - Added Venmo as a Transfer method

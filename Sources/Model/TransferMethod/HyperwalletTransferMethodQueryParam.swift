@@ -74,6 +74,8 @@ public class HyperwalletTransferMethodQueryParam: QueryParam {
         case prepaidCard = "PREPAID_CARD"
         /// When the transfer method is Venmo Account
         case venmoAccount = "VENMO_ACCOUNT"
+        /// When the transfer method is Paper Check
+        case paperCheck = "PAPER_CHECK"
     }
 
     override public func toQuery() -> [String: String] {
