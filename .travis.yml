@@ -1,5 +1,5 @@
 language: swift
-osx_image: xcode11.7
+osx_image: xcode12.2
 os: osx
 branches:
  only:
@@ -15,7 +15,7 @@ env:
   - IOS_FRAMEWORK_SCHEME="HyperwalletSDK"
 
   matrix:
-    - ios_version='13.7'  ios_device='iPhone 11' scheme="$IOS_FRAMEWORK_SCHEME"  platform='iOS Simulator'
+    - ios_version='14.0'  ios_device='iPhone 11' scheme="$IOS_FRAMEWORK_SCHEME"  platform='iOS Simulator'
 before_install:
   # Boot the emulator by ID
   - |
@@ -25,7 +25,7 @@ before_install:
   - xcrun simctl list
   # Update the brew and build dependencies tools
   - brew outdated carthage || brew upgrade carthage
-  - carthage bootstrap --verbose --no-use-binaries --platform iOS --cache-builds
+  - carthage update --platform ios --use-xcframeworks --cache-builds
   - gem i slather
   # Force to update the Swiftlint to the last stable version
   - brew outdated swiftlint || brew upgrade swiftlint
