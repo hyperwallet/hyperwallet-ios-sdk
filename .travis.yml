@@ -30,7 +30,7 @@ before_install:
   # Force to update the Swiftlint to the last stable version
   - brew outdated swiftlint || brew upgrade swiftlint
   # Print the booted emulator
-  - xcrun simctl list | grep "(Booted)"
+  #- xcrun simctl list | grep "(Booted)"
   # Print the swiftlint version
   - swiftlint version
   # Installing Jazzy
