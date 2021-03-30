@@ -1,7 +1,7 @@
 @testable import HyperwalletSDK
 import XCTest
 
-//swiftlint:disable force_try
+// swiftlint:disable force_try
 class TransferMethodConfigurationFieldResultTests: XCTestCase {
     var transferMethodConfigurationField: TransferMethodConfigurationField!
     var fieldResult: TransferMethodConfigurationFieldResult!

@@ -1,7 +1,7 @@
 @testable import HyperwalletSDK
 import XCTest
 
-//swiftlint:disable force_cast force_try
+// swiftlint:disable force_cast force_try
 class AnyCodableTests: XCTestCase {
     func testEncode() {
         // Given

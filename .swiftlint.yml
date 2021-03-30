@@ -13,7 +13,6 @@ identifier_name:
       error: 100
 opt_in_rules: # some rules are only opt-in
   - first_where
-  - unused_private_declaration
   - empty_count
   - empty_string
   - empty_xctest_method

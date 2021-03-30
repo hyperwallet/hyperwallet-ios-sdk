@@ -33,7 +33,7 @@ class HTTPTransactionTests: XCTestCase {
         // Given 
         var hasRequestTransactionPerformed = false
         // When - an API call request is made
-        let completionHandler = {(data: [String: String]?, error: HyperwalletErrorType?) -> Void in
+        let completionHandler = {(_: [String: String]?, _: HyperwalletErrorType?) -> Void in
             hasRequestTransactionPerformed = true
         }
         transaction.performRest(httpMethod: .get,
@@ -71,7 +71,7 @@ class HTTPTransactionTests: XCTestCase {
         var queryParamsDictionary: [String: String]?
         var urlValueComponents: URLComponents?
         // When
-        let completionHandler = { (data: [String: String]?, error: HyperwalletErrorType?) -> Void in }
+        let completionHandler = { (_: [String: String]?, _: HyperwalletErrorType?) -> Void in }
         transaction.performRest(httpMethod: .get,
                                 urlPath: "users/%@/bank-accounts",
                                 payload: "",
@@ -122,7 +122,7 @@ class HTTPTransactionTests: XCTestCase {
                                                                        transferMethodType: "BANK_ACCOUNT",
                                                                        profile: "INDIVIDUAL")
         // When - an API call request is made
-        let completionHandler = { (data: [String: String]?, error: HyperwalletErrorType?) -> Void in }
+        let completionHandler = { (_: [String: String]?, _: HyperwalletErrorType?) -> Void in }
 
         transaction.performGraphQl(request, completionHandler: completionHandler)
 

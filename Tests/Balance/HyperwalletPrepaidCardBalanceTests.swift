@@ -80,7 +80,7 @@ class HyperwalletPrepaidCardBalanceTests: XCTestCase {
             var prepaidCardBalanceList: HyperwalletPageList<HyperwalletBalance>?
             var errorResponse: HyperwalletErrorType?
 
-            //When
+            // When
            Hyperwallet.shared.listPrepaidCardBalances(prepaidCardToken: "trm-1234") { (result, error) in
                 prepaidCardBalanceList = result
                 errorResponse = error
@@ -94,6 +94,7 @@ class HyperwalletPrepaidCardBalanceTests: XCTestCase {
         }
     }
 
+    // swiftlint:disable empty_xctest_method
     override static var defaultTestSuite: XCTestSuite {
         let testSuite = XCTestSuite(name: String(describing: self))
         let testParameters = getTestParameters()
