@@ -1,7 +1,7 @@
 @testable import HyperwalletSDK
 import XCTest
 
-//swiftlint:disable force_try
+// swiftlint:disable force_try
 class TransferMethodConfigurationKeyResultTests: XCTestCase {
     var transferMethodConfigurationKey: TransferMethodConfigurationKey!
     var keyResult: TransferMethodConfigurationKeyResult!
@@ -10,26 +10,6 @@ class TransferMethodConfigurationKeyResultTests: XCTestCase {
         transferMethodConfigurationKey = hyperwalletGraphQlKey(data:
             HyperwalletTestHelper.getDataFromJson("TransferMethodConfigurationKeysResponse"))!
         keyResult = TransferMethodConfigurationKeyResult(transferMethodConfigurationKey.countries?.nodes)
-    }
-
-    func testPerformanceCountries() {
-        self.measure {
-            _ = keyResult.countries()
-        }
-    }
-
-    func testPerformanceUSCurrencies() {
-        self.measure {
-            _ = keyResult.currencies(from: keyResult.countries()?.first?.code ?? "")
-        }
-    }
-
-    func testPerformanceTransferMethods() {
-        self.measure {
-            let country = keyResult.countries()?.first
-            _ = keyResult.transferMethodTypes(countryCode: country?.code ?? "",
-                                              currencyCode: country?.currencies?.nodes?.first?.code ?? "")
-        }
     }
 
     func testCountries_success() {

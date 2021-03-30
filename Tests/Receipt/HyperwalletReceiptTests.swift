@@ -13,7 +13,7 @@ class HyperwalletReceiptTests: XCTestCase {
         }
     }
 
-    //swiftlint:disable function_body_length
+    // swiftlint:disable function_body_length
     func testListUserReceipts_success() {
         // Given
         let expectation = self.expectation(description: "List User Receipts completed")

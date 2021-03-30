@@ -31,7 +31,7 @@ class HyperwalletTransferMethodUpdateConfigurationTests: XCTestCase {
         }
     }
 
-    //swiftlint:disable function_body_length
+    // swiftlint:disable function_body_length
     func testRetrieveTransferMethodUpdateConfigurationFields_bankAccount() {
         // Given
         let request = setUpTransferMethodUpdateConfigurationRequest("TransferMethodUpdateConfigurationFieldsResponse")

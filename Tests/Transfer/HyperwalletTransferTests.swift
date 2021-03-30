@@ -24,7 +24,7 @@ class HyperwalletTransferTests: XCTestCase {
         var transferResponse: HyperwalletTransfer?
         var errorResponse: HyperwalletErrorType?
 
-        //When
+        // When
         let transferRequest = HyperwalletTransfer.Builder(clientTransferId: "6712348070812",
                                                           sourceToken: "usr-123456",
                                                           destinationToken: "trm-invalid-token")
@@ -115,7 +115,7 @@ class HyperwalletTransferTests: XCTestCase {
     }
 
     func testScheduleTransfer_success() {
-        //Given
+        // Given
         let expectation = self.expectation(description: "Schedule transfer completed")
         let response = HyperwalletTestHelper.okHTTPResponse(for: "ScheduleTransferResponse")
         let url = String(format: "%@transfers/trf-123456/status-transitions", HyperwalletTestHelper.restURL)
@@ -125,7 +125,7 @@ class HyperwalletTransferTests: XCTestCase {
         var statusTransitionResponse: HyperwalletStatusTransition?
         var errorResponse: HyperwalletErrorType?
 
-        //When
+        // When
         Hyperwallet.shared.scheduleTransfer(transferToken: "trf-123456", completion: { (result, error) in
             statusTransitionResponse = result
             errorResponse = error
@@ -133,14 +133,14 @@ class HyperwalletTransferTests: XCTestCase {
         })
         wait(for: [expectation], timeout: 1)
 
-        //Then
+        // Then
         XCTAssertNil(errorResponse, "The `errorResponse` should be nil")
         XCTAssertNotNil(statusTransitionResponse, "The `statusTransitionResponse` should not be nil")
         verifyStatusTransitionResponse(statusTransitionResponse)
     }
 
     func testListTransfers_success() {
-        //Given
+        // Given
         let expectation = self.expectation(description: "List Transfers completed")
         let response = HyperwalletTestHelper.okHTTPResponse(for: "ListTransferResponse")
         let url = String(format: "%@transfers?+", HyperwalletTestHelper.restURL)
@@ -154,7 +154,7 @@ class HyperwalletTransferTests: XCTestCase {
         transferQueryParam.sourceToken = "usr-123456"
         transferQueryParam.destinationToken = "trm-123456"
 
-        //When
+        // When
         Hyperwallet.shared.listTransfers(queryParam: transferQueryParam) { (result, error) in
             transfersList = result
             errorResponse = error
@@ -162,7 +162,7 @@ class HyperwalletTransferTests: XCTestCase {
         }
         wait(for: [expectation], timeout: 1)
 
-        //Then
+        // Then
         XCTAssertNil(errorResponse, "The `errorResponse` should be nil")
         verifyTransfersListResponse(transfersList)
     }
@@ -178,7 +178,7 @@ class HyperwalletTransferTests: XCTestCase {
         var transfersList: HyperwalletPageList<HyperwalletTransfer>?
         var errorResponse: HyperwalletErrorType?
 
-        //When
+        // When
         Hyperwallet.shared.listTransfers { (result, error) in
             transfersList = result
             errorResponse = error
@@ -195,13 +195,13 @@ class HyperwalletTransferTests: XCTestCase {
 private extension HyperwalletTransferTests {
     func verifyTransferResponse(_ response: HyperwalletTransfer?) {
         XCTAssertNotNil(response, "The `response` should be not nil")
-        //Mandatory fields
+        // Mandatory fields
         XCTAssertEqual(response?.clientTransferId, "6712348070812", "The `clientTransferId` should be 6712348070812")
         XCTAssertEqual(response?.destinationAmount, "62.29", "The `destinationAmount` should be 62.29")
         XCTAssertEqual(response?.destinationCurrency, "USD", "The `destinationCurrency` should be USD")
         XCTAssertEqual(response?.destinationToken, "trm-123456", "The `destinationToken` should be trm-123456")
         XCTAssertEqual(response?.sourceToken, "usr-123456", "The `sourceToken` should be usr-123456")
-        //Optional fields
+        // Optional fields
         XCTAssertEqual(response?.sourceAmount, "80", "The `sourceAmount` should be 80")
         XCTAssertEqual(response?.sourceCurrency, "CAD", "The `sourceCurrency` should be CAD")
 

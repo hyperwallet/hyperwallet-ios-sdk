@@ -79,7 +79,7 @@ class HyperwalletBalanceTests: XCTestCase {
             var userBalanceList: HyperwalletPageList<HyperwalletBalance>?
             var errorResponse: HyperwalletErrorType?
 
-            //When
+            // When
             Hyperwallet.shared.listUserBalances { (result, error) in
                 userBalanceList = result
                 errorResponse = error
@@ -93,6 +93,7 @@ class HyperwalletBalanceTests: XCTestCase {
         }
     }
 
+    // swiftlint:disable empty_xctest_method
     override static var defaultTestSuite: XCTestSuite {
         let testSuite = XCTestSuite(name: String(describing: self))
         let testParameters = getTestParameters()

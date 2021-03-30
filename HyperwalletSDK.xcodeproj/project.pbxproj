@@ -47,7 +47,7 @@
 		980B9AE7251C0A2400653D1C /* PrepaidCardResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 980B9AE5251C052600653D1C /* PrepaidCardResponse.json */; };
 		980C15DB2273BF91004C60D6 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = 980C15DA2273BF91004C60D6 /* CHANGELOG.md */; };
 		980C15F12273D1FA004C60D6 /* ListBankCardResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = DBCA37A6225D6D1700CD4137 /* ListBankCardResponse.json */; };
-		980E77B72613A8B400F0834B /* Hippolyte.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD8C499225E014E30062A440 /* Hippolyte.xcframework */; };
+		980E79402613B68E00F0834B /* Hippolyte.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD8C499225E014E30062A440 /* Hippolyte.xcframework */; };
 		98101DC42238A2F000BA04CA /* HyperwalletSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98101DBA2238A2F000BA04CA /* HyperwalletSDK.framework */; };
 		B062E353E292414C07C70355 /* HyperwalletPaperCheckTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B062EB9A428EB097C6B5B4FC /* HyperwalletPaperCheckTests.swift */; };
 		B062E601D8A9A6E7FCC498F7 /* PaperCheckErrorResponseWithMissingStateProvince.json in Resources */ = {isa = PBXBuildFile; fileRef = B062EC1CDD525FA26E0A7ED3 /* PaperCheckErrorResponseWithMissingStateProvince.json */; };
@@ -101,7 +101,6 @@
 		DB1A0422225D571B0080C8D6 /* AuthenticationTokenGeneratorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1A0420225D571A0080C8D6 /* AuthenticationTokenGeneratorMock.swift */; };
 		DB1A0423225D571B0080C8D6 /* AuthenticationProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1A0421225D571B0080C8D6 /* AuthenticationProviderMock.swift */; };
 		DB2A3B092261D2DC0049F891 /* HyperwalletSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = DB2A3B082261D2DC0049F891 /* HyperwalletSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DB2A3B0E2261D4260049F891 /* Hippolyte.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB2A3B0D2261D4260049F891 /* Hippolyte.framework */; };
 		DB3151CF22780AA300FC9F8E /* UserIndividualResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = DB3151CE22780AA300FC9F8E /* UserIndividualResponse.json */; };
 		DB45190F22DD00A00022BD1F /* HyperwalletTransferMethodConfigurationFieldQueryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB45190E22DD00A00022BD1F /* HyperwalletTransferMethodConfigurationFieldQueryTests.swift */; };
 		DB764E91227833E10053BB91 /* UserBusinessResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = DB764E8F22782D890053BB91 /* UserBusinessResponse.json */; };
@@ -307,7 +306,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				980E77B72613A8B400F0834B /* Hippolyte.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,7 +313,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB2A3B0E2261D4260049F891 /* Hippolyte.framework in Frameworks */,
+				980E79402613B68E00F0834B /* Hippolyte.xcframework in Frameworks */,
 				98101DC42238A2F000BA04CA /* HyperwalletSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -886,7 +884,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -e\nset -x\n\nif ! which swiftlint > /dev/null; then\necho \"warning: SwiftLint is not installed. To install run `brew install SwiftLint`\"\nelse\nswiftlint autocorrect\nswiftlint\nfi\n";
+			shellScript = "set -e\nset -x\n\nif ! which swiftlint > /dev/null; then\necho \"warning: SwiftLint is not installed. To install run `brew install SwiftLint`\"\nelse\nswiftlint --fix\nswiftlint\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1194,7 +1192,6 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hyperwallet.ios.HyperwalletSDKTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1222,7 +1219,6 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hyperwallet.ios.HyperwalletSDKTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
