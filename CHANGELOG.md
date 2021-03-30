@@ -1,6 +1,10 @@
 Changelog
 =========
 
+[1.0.0-beta13](https://github.com/hyperwallet/hyperwallet-ios-sdk/releases/tag/1.0.0-beta13)
+-------------------
+- Fixed Xcode 12 issue
+
 [1.0.0-beta12](https://github.com/hyperwallet/hyperwallet-ios-sdk/releases/tag/1.0.0-beta12)
 -------------------
 - Added support for iOS 14
@@ -11,13 +15,11 @@ Changelog
 - Support update transfer method
 - Enhancements
 
-
 [1.0.0-beta10](https://github.com/hyperwallet/hyperwallet-ios-sdk/releases/tag/1.0.0-beta10)
 -------------------
 - Added Venmo as a Transfer method
 - Added support for List Prepaid Card Balances
 - Enhancements
-
 
 [1.0.0-beta09](https://github.com/hyperwallet/hyperwallet-ios-sdk/releases/tag/1.0.0-beta09)
 -------------------

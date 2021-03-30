@@ -58,7 +58,7 @@ class TransactionTypeTests: XCTestCase {
         XCTAssertEqual(authorizationValue, "Bearer \(authenticationToken)", "The Bearer token should be equals")
     }
 
-    //swiftlint:disable force_cast
+    // swiftlint:disable force_cast
     func testCreateRestRequest_invalidURL() {
         let transactionType: TransactionType = .rest
         let configuration = Configuration(createOn: 0,
