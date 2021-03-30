@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -47,6 +47,7 @@
 		980B9AE7251C0A2400653D1C /* PrepaidCardResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 980B9AE5251C052600653D1C /* PrepaidCardResponse.json */; };
 		980C15DB2273BF91004C60D6 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = 980C15DA2273BF91004C60D6 /* CHANGELOG.md */; };
 		980C15F12273D1FA004C60D6 /* ListBankCardResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = DBCA37A6225D6D1700CD4137 /* ListBankCardResponse.json */; };
+		980E77B72613A8B400F0834B /* Hippolyte.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD8C499225E014E30062A440 /* Hippolyte.xcframework */; };
 		98101DC42238A2F000BA04CA /* HyperwalletSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98101DBA2238A2F000BA04CA /* HyperwalletSDK.framework */; };
 		B062E353E292414C07C70355 /* HyperwalletPaperCheckTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B062EB9A428EB097C6B5B4FC /* HyperwalletPaperCheckTests.swift */; };
 		B062E601D8A9A6E7FCC498F7 /* PaperCheckErrorResponseWithMissingStateProvince.json in Resources */ = {isa = PBXBuildFile; fileRef = B062EC1CDD525FA26E0A7ED3 /* PaperCheckErrorResponseWithMissingStateProvince.json */; };
@@ -306,6 +307,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				980E77B72613A8B400F0834B /* Hippolyte.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
