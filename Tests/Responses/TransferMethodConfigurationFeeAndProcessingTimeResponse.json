@@ -1,54 +1,70 @@
 {
-  "errors": [
-    {
-      "message": "Could not find associated fees.",
-      "locations": [
-        {
-          "line": 26,
-          "column": 25
-        }
-      ],
-      "path": [
-        "countries",
-        "nodes",
-        0,
-        "currencies",
-        "nodes",
-        0,
-        "transferMethodTypes",
-        "nodes",
-        0,
-        "fees"
-      ],
-      "extensions": {
-        "errorType": "DataFetchingException",
-        "timestamp": "2021-06-09 05:24:51"
-      }
-    }
-  ],
   "data": {
     "countries": {
       "nodes": [
         {
-          "code": "US",
-          "name": "United States",
+          "code": "CA",
+          "name": "Canada",
           "currencies": {
             "nodes": [
               {
-                "code": "EUR",
-                "name": "EUR",
+                "code": "CAD",
+                "name": "CAD",
                 "transferMethodTypes": {
                   "nodes": [
                     {
-                      "code": "WIRE_ACCOUNT",
-                      "name": "Wire Transfer",
+                      "code": "BANK_ACCOUNT",
+                      "name": "Bank Account",
                       "processingTimes": {
                         "nodes": [
                           {
-                            "country": "US",
-                            "currency": "EUR",
-                            "transferMethodType": "WIRE_ACCOUNT",
-                            "value": "1 - 2 Business days"
+                            "country": "CA",
+                            "currency": "CAD",
+                            "transferMethodType": "BANK_ACCOUNT",
+                            "value": "1 - 3 Business days"
+                          }
+                        ]
+                      },
+                      "fees": {
+                          "nodes": [
+                              {
+                                  "value": "2.20",
+                                  "feeRateType": "FLAT",
+                                  "currency": "CAD"
+                              },
+                              {
+                                  "value":"8.9",
+                                  "feeRateType":"PERCENT",
+                                  "currency": "CAD",
+                                  "minimum":"0.05",
+                                  "maximum":"1.00"
+                              }
+                          ]
+                      }
+                    },
+                    {
+                      "code": "PAPER_CHECK",
+                      "name": "Paper Check",
+                      "processingTimes": {
+                        "nodes": [
+                          {
+                            "country": "CA",
+                            "currency": "CAD",
+                            "transferMethodType": "PAPER_CHECK",
+                            "value": "5 - 7 Business days"
+                          }
+                        ]
+                      },
+                      "fees": {
+                        "nodes": [
+                          {
+                            "currency": "CAD",
+                            "feeRateType": "FLAT",
+                            "value": "3.50"
+                          },
+                          {
+                            "currency": "CAD",
+                            "feeRateType": "PERCENT"
                           }
                         ]
                       }
