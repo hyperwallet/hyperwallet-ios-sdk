@@ -1,0 +1,65 @@
+{
+  "errors": [
+    {
+      "message": "Could not find associated fees.",
+      "locations": [
+        {
+          "line": 26,
+          "column": 25
+        }
+      ],
+      "path": [
+        "countries",
+        "nodes",
+        0,
+        "currencies",
+        "nodes",
+        0,
+        "transferMethodTypes",
+        "nodes",
+        0,
+        "fees"
+      ],
+      "extensions": {
+        "errorType": "DataFetchingException",
+        "timestamp": "2021-06-09 05:24:51"
+      }
+    }
+  ],
+  "data": {
+    "countries": {
+      "nodes": [
+        {
+          "code": "US",
+          "name": "United States",
+          "currencies": {
+            "nodes": [
+              {
+                "code": "EUR",
+                "name": "EUR",
+                "transferMethodTypes": {
+                  "nodes": [
+                    {
+                      "code": "WIRE_ACCOUNT",
+                      "name": "Wire Transfer",
+                      "processingTimes": {
+                        "nodes": [
+                          {
+                            "country": "US",
+                            "currency": "EUR",
+                            "transferMethodType": "WIRE_ACCOUNT",
+                            "value": "1 - 2 Business days"
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

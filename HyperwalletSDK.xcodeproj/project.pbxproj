@@ -140,6 +140,7 @@
 		E8438CA7F43C3CB6FD545187 /* VenmoAccountResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = E843856BD0D7E5295973780D /* VenmoAccountResponse.json */; };
 		E8438DB98656EB3F69DE0776 /* VenmoAccountWrongFormatAccountId.json in Resources */ = {isa = PBXBuildFile; fileRef = E84381CE41DDB491C2F2B63D /* VenmoAccountWrongFormatAccountId.json */; };
 		FD1208CC2581FE3200A8D8B2 /* TransferMethodUpdateConfigurationFieldsVenmoResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = FD1208CB2581FE3200A8D8B2 /* TransferMethodUpdateConfigurationFieldsVenmoResponse.json */; };
+		FD2B6ECB2670D6980021078B /* TransferMethodConfigurationFeeAndProcessingTimeResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = FD2B6ECA2670D6980021078B /* TransferMethodConfigurationFeeAndProcessingTimeResponse.json */; };
 		FD536D072579F98B0056DC2D /* HyperwalletTransferMethodUpdateConfigurationQueries.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD536D062579F98B0056DC2D /* HyperwalletTransferMethodUpdateConfigurationQueries.swift */; };
 		FD536D09257A3C610056DC2D /* HyperwalletTransferMethodUpdateConfigurationField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD536D08257A3C610056DC2D /* HyperwalletTransferMethodUpdateConfigurationField.swift */; };
 		FD536D0C257A60CE0056DC2D /* HyperwalletTransferMethodUpdateConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD536D0A257A60920056DC2D /* HyperwalletTransferMethodUpdateConfigurationTests.swift */; };
@@ -292,6 +293,7 @@
 		E8438F714A2ED30BE185DE8C /* HyperwalletVenmoQueryParam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HyperwalletVenmoQueryParam.swift; sourceTree = "<group>"; };
 		E8438FACD77368B4A83CCA41 /* HyperwalletVenmoAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HyperwalletVenmoAccount.swift; sourceTree = "<group>"; };
 		FD1208CB2581FE3200A8D8B2 /* TransferMethodUpdateConfigurationFieldsVenmoResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TransferMethodUpdateConfigurationFieldsVenmoResponse.json; sourceTree = "<group>"; };
+		FD2B6ECA2670D6980021078B /* TransferMethodConfigurationFeeAndProcessingTimeResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TransferMethodConfigurationFeeAndProcessingTimeResponse.json; sourceTree = "<group>"; };
 		FD536D062579F98B0056DC2D /* HyperwalletTransferMethodUpdateConfigurationQueries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperwalletTransferMethodUpdateConfigurationQueries.swift; sourceTree = "<group>"; };
 		FD536D08257A3C610056DC2D /* HyperwalletTransferMethodUpdateConfigurationField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperwalletTransferMethodUpdateConfigurationField.swift; sourceTree = "<group>"; };
 		FD536D0A257A60920056DC2D /* HyperwalletTransferMethodUpdateConfigurationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperwalletTransferMethodUpdateConfigurationTests.swift; sourceTree = "<group>"; };
@@ -675,6 +677,7 @@
 				DBCA37A9225D6D1700CD4137 /* TransferMethodConfigurationFieldsResponse.json */,
 				DBCA37A4225D6D1600CD4137 /* TransferMethodConfigurationGraphQlResponse.json */,
 				DBCA37AD225D6D1700CD4137 /* TransferMethodConfigurationKeysResponse.json */,
+				FD2B6ECA2670D6980021078B /* TransferMethodConfigurationFeeAndProcessingTimeResponse.json */,
 				FDF2E7A5257E06D600589076 /* TransferMethodUpdateConfigurationFieldsResponse.json */,
 				FDD2F4D02580B1D0008E4CFC /* TransferMethodUpdateConfigurationFieldsBankCardResponse.json */,
 				FDD2F4CE2580AFB0008E4CFC /* TransferMethodUpdateConfigurationFieldsPaypalResponse.json */,
@@ -843,6 +846,7 @@
 				64278CAF22C0CE0D00B8736B /* CreateTransferResponseInvalidDestinationToken.json in Resources */,
 				DBCA37B8225D6D1700CD4137 /* TransferMethodConfigurationKeysWithoutFeeResponse.json in Resources */,
 				DBCA37B7225D6D1700CD4137 /* BankAccountErrorResponseWithMissingBankId.json in Resources */,
+				FD2B6ECB2670D6980021078B /* TransferMethodConfigurationFeeAndProcessingTimeResponse.json in Resources */,
 				DBCA37AE225D6D1700CD4137 /* BankAccountIndividualResponse.json in Resources */,
 				644A69C122B0F7640058E77E /* WireAccountBusinessResponse.json in Resources */,
 				DBCA37B2225D6D1700CD4137 /* BankCardErrorResponseWithInvalidCardNumber.json in Resources */,
