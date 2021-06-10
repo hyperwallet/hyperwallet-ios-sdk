@@ -198,7 +198,7 @@ public struct HyperwalletTransferMethodConfigurationKeysQuery: GraphQlQuery {
 /// and transfer method type tuple.
 /// that is required to construct a `HyperwalletTransferMethodConfigurationFieldQuery`.
 // swiftlint:disable type_name
-public struct HyperwalletTransferMethodConfigurationFeeAndProcessingTimeQuery: GraphQlQuery {
+public struct HyperwalletTransferMethodConfigurationFeeAndProcessingTimeQuery: GraphQlQuery, Hashable {
     private var country: String = ""
     private var currency: String = ""
 
@@ -253,5 +253,10 @@ public struct HyperwalletTransferMethodConfigurationFeeAndProcessingTimeQuery: G
 
     public func toGraphQl(userToken: String) -> String {
         String(format: query, userToken, country, currency)
+    }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(country)
+        hasher.combine(currency)
     }
 }
