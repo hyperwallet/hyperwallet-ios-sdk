@@ -205,8 +205,8 @@ public struct HyperwalletTransferMethodConfigurationFeeAndProcessingTimeQuery: G
     private var query = """
         query QueryFeeAndProcessing(
             $idToken: String = "%@",
-            $country: Country = "%@",
-            $currency: Currency = "%@"
+            $country: Country = %@,
+            $currency: Currency = %@
         ) {
           countries (idToken: $idToken,code: $country){
                         nodes {
