@@ -967,7 +967,7 @@ public final class Hyperwallet: NSObject {
     /// - Parameters:
     ///   - request: containing the transfer method configuration key query
     ///   - completion: the callback handler of responses from the Hyperwallet platform
-    public func retrieveTransferMethodConfigurationKeysForFeeAndProcessingTime(
+    public func retrieveFeeAndProcessingTime(
         request: HyperwalletTransferMethodConfigurationFeeAndProcessingTimeQuery,
         completion: @escaping (HyperwalletTransferMethodConfigurationKey?,
                                HyperwalletErrorType?) -> Void) {

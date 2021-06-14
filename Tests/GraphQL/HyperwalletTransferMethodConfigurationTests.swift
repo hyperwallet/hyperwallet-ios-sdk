@@ -149,7 +149,7 @@ class HyperwalletTransferMethodConfigurationTests: XCTestCase {
         let keysQuery = HyperwalletTransferMethodConfigurationFeeAndProcessingTimeQuery(country: "CA", currency: "CAD")
 
         Hyperwallet.shared
-            .retrieveTransferMethodConfigurationKeysForFeeAndProcessingTime(request: keysQuery,
+            .retrieveFeeAndProcessingTime(request: keysQuery,
                                                                             completion: { (result, error) in
                                                                                 graphQlResponse = result
                                                                                 errorResponse = error
