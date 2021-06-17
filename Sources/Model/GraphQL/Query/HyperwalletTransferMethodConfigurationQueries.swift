@@ -168,12 +168,6 @@ public struct HyperwalletTransferMethodConfigurationKeysQuery: GraphQlQuery {
                     nodes {
                         code
                         name
-                        transferMethodTypes {
-                            nodes {
-                                code
-                                name
-                            }
-                        }
                     }
                 }
             }
@@ -193,12 +187,11 @@ public struct HyperwalletTransferMethodConfigurationKeysQuery: GraphQlQuery {
     }
 }
 
-/// The 'HyperwalletTransferMethodConfigurationFeeAndProcessingTimeQuery' struct defines
+/// The 'HyperwalletTransferMethodTypesFeesAndProcessingTimesQuery' struct defines
 /// and builds a query to retrieve the processing time and fees associated with each country, currency
 /// and transfer method type tuple.
 /// that is required to construct a `HyperwalletTransferMethodConfigurationFieldQuery`.
-// swiftlint:disable type_name
-public struct HyperwalletTransferMethodConfigurationFeeAndProcessingTimeQuery: GraphQlQuery, Hashable {
+public struct HyperwalletTransferMethodTypesFeesAndProcessingTimesQuery: GraphQlQuery, Hashable {
     private var country: String = ""
     private var currency: String = ""
 

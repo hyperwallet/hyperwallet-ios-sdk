@@ -660,7 +660,7 @@ Hyperwallet.shared.listPrepaidCardBalances(prepaidCardToken: "trm-1234", queryPa
 
 ## Transfer Method Configurations
 
-### Get countries, currencies and transfer method types
+### Get countries, currencies
 ```swift
 let keysQuery = HyperwalletTransferMethodConfigurationKeysQuery()
 
@@ -681,14 +681,32 @@ Hyperwallet.shared.retrieveTransferMethodConfigurationKeys(request: keysQuery) {
         currencies = result.currencies(from: countries.first!.code)
     }
 
-    // Get transfer method types based on the first country code and its first currency code
-    if let countryCode = countries?.first?.code, let currencyCode = currencies?.first?.code {
-        transferMethodTypes = result.transferMethodTypes(countryCode: countryCode, currencyCode: currencyCode)
-    }
-
     print(countries)
     print(currencies)
+}
+```
+
+### Get transfer method types, fees and processing times for Country and Currency
+```swift
+let country = "CA"
+let currency = "CAD"
+let keysQuery = HyperwalletTransferMethodTypesFeesAndProcessingTimesQuery(country: country, currency: currency)
+
+Hyperwallet
+    .shared
+    .retrieveTransferMethodTypesFeesAndProcessingTimes(request: keysQuery) { (result, error) in
+    guard error == nil else {
+        print(error?.getHyperwalletErrors()?.errorList?)
+        return
+    }
+
+    guard let result = result else { return }
+    
+    // Get transfer method types based on the first country code and its first currency code
+    transferMethodTypes = result.transferMethodTypes(countryCode: country, currencyCode: currency)
     print(transferMethodTypes)
+    print(transferMethodTypes?.first?.fees)
+    print(transferMethodTypes?.first?.processingTimes)
 }
 ```
 

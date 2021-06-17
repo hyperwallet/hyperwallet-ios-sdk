@@ -40,8 +40,6 @@ class HyperwalletTransferMethodConfigurationTests: XCTestCase {
         XCTAssertNil(errorResponse, "The `errorResponse` should be nil")
         XCTAssertEqual(graphQlResponse?.countries()?.count, 4, "countries()` should be 4")
         XCTAssertEqual(graphQlResponse?.currencies(from: "CA")?.count, 2, "currencies(...)` should be 2")
-        XCTAssertEqual(graphQlResponse?.transferMethodTypes(countryCode: "CA", currencyCode: "CAD")?
-                                       .count, 2, "`transferMethodTypes(...)` should be 2")
     }
 
     func testRetrieveTransferMethodConfigurationKeys_withoutFees() {
@@ -74,8 +72,6 @@ class HyperwalletTransferMethodConfigurationTests: XCTestCase {
         XCTAssertNil(fees, "Fees should be nil" )
         XCTAssertEqual(graphQlResponse?.countries()?.count, 1, "`countries()` should be 1")
         XCTAssertEqual(graphQlResponse?.currencies(from: "HR")?.count, 1, "currencies(...)` should be 1")
-        XCTAssertEqual(graphQlResponse?.transferMethodTypes(countryCode: "HR", currencyCode: "HRK")?
-                                       .count, 1, "transferMethodTypes(...)` should be 1")
     }
 
     func testRetrieveTransferMethodConfigurationFields_success() {
@@ -130,7 +126,7 @@ class HyperwalletTransferMethodConfigurationTests: XCTestCase {
         XCTAssertEqual(branchIdMask?.scrubRegex, "\\s")
     }
 
-    func testRetrieveTransferMethodConfigurationFeeAndProcessingTime_success() {
+    func testRetrieveTransferMethodTypesFeesAndProcessingTimes() {
         // Given
         let request = setUpTransferMethodConfigurationRequest("TransferMethodConfigurationFeeAndProcessingTimeResponse")
         HyperwalletTestHelper.setUpMockServer(request: request)
@@ -146,15 +142,15 @@ class HyperwalletTransferMethodConfigurationTests: XCTestCase {
         var paperCheckProcessingTime: HyperwalletProcessingTime?
 
         // When
-        let keysQuery = HyperwalletTransferMethodConfigurationFeeAndProcessingTimeQuery(country: "CA", currency: "CAD")
+        let keysQuery = HyperwalletTransferMethodTypesFeesAndProcessingTimesQuery(country: "CA", currency: "CAD")
 
-        Hyperwallet.shared
-            .retrieveFeeAndProcessingTime(request: keysQuery,
-                                                                            completion: { (result, error) in
-                                                                                graphQlResponse = result
-                                                                                errorResponse = error
-                                                                                expectation.fulfill()
-                                                                            })
+        Hyperwallet
+            .shared
+            .retrieveTransferMethodTypesFeesAndProcessingTimes(request: keysQuery) { (result, error) in
+                graphQlResponse = result
+                errorResponse = error
+                expectation.fulfill()
+            }
         wait(for: [expectation], timeout: 1)
 
         print(graphQlResponse?.transferMethodTypes(countryCode: "CA", currencyCode: "CAD") ?? "")

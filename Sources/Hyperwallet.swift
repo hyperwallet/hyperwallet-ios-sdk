@@ -951,13 +951,13 @@ public final class Hyperwallet: NSObject {
                                        completionHandler: transferMethodConfigurationKeyResponseHandler(completion))
     }
 
-    /// Returns the transfer method configuration processing times, and fees for the User that is associated
+    /// Returns the transfer method types, processing times, and fees for the User that is associated
     /// with the authentication token returned from
     /// `HyperwalletAuthenticationTokenProvider.retrieveAuthenticationToken(_ : @escaping CompletionHandler)`.
     ///
     /// The `completion: @escaping (HyperwalletTransferMethodConfigurationKey?, HyperwalletErrorType?) -> Void`
     /// that is passed in to this method invocation will receive the successful
-    /// response(HyperwalletTransferMethodConfigurationFeeAndProcessingTime) or
+    /// response(HyperwalletTransferMethodConfigurationKey) or
     /// error(HyperwalletErrorType) from processing the
     /// request.
     ///
@@ -967,8 +967,8 @@ public final class Hyperwallet: NSObject {
     /// - Parameters:
     ///   - request: containing the transfer method configuration key query
     ///   - completion: the callback handler of responses from the Hyperwallet platform
-    public func retrieveFeeAndProcessingTime(
-        request: HyperwalletTransferMethodConfigurationFeeAndProcessingTimeQuery,
+    public func retrieveTransferMethodTypesFeesAndProcessingTimes(
+        request: HyperwalletTransferMethodTypesFeesAndProcessingTimesQuery,
         completion: @escaping (HyperwalletTransferMethodConfigurationKey?,
                                HyperwalletErrorType?) -> Void) {
         httpTransaction.performGraphQl(request,

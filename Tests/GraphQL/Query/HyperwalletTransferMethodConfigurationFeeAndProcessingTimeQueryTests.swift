@@ -23,12 +23,12 @@ import XCTest
 class HyperwalletTransferMethodConfigurationFeeAndProcessingTimeQueryTests: XCTestCase {
     func testHashable_fieldQueryNotEqual() {
         let usUsdFieldQuery =
-            HyperwalletTransferMethodConfigurationFeeAndProcessingTimeQuery(country: "US",
-                                                                            currency: "USD")
+            HyperwalletTransferMethodTypesFeesAndProcessingTimesQuery(country: "US",
+                                                                      currency: "USD")
 
         let usCadQuery =
-            HyperwalletTransferMethodConfigurationFeeAndProcessingTimeQuery(country: "US",
-                                                                            currency: "CAD")
+            HyperwalletTransferMethodTypesFeesAndProcessingTimesQuery(country: "US",
+                                                                      currency: "CAD")
 
         XCTAssertNotEqual(usUsdFieldQuery, usCadQuery)
         XCTAssertNotEqual(usUsdFieldQuery.hashValue, usCadQuery.hashValue)
