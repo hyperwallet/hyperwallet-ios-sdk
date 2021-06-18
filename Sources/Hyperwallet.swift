@@ -929,7 +929,7 @@ public final class Hyperwallet: NSObject {
             transferMethodUpdateConfigurationFiledResponseHandler(completion))
     }
 
-    /// Returns the transfer method configuration key set, processing times, and fees for the User that is associated
+    /// Returns the transfer method configuration key set for the User that is associated
     /// with the authentication token returned from
     /// `HyperwalletAuthenticationTokenProvider.retrieveAuthenticationToken(_ : @escaping CompletionHandler)`.
     ///
@@ -947,6 +947,30 @@ public final class Hyperwallet: NSObject {
     public func retrieveTransferMethodConfigurationKeys(
         request: HyperwalletTransferMethodConfigurationKeysQuery,
         completion: @escaping (HyperwalletTransferMethodConfigurationKey?, HyperwalletErrorType?) -> Void) {
+        httpTransaction.performGraphQl(request,
+                                       completionHandler: transferMethodConfigurationKeyResponseHandler(completion))
+    }
+
+    /// Returns the transfer method types, processing times, and fees for the User that is associated
+    /// with the authentication token returned from
+    /// `HyperwalletAuthenticationTokenProvider.retrieveAuthenticationToken(_ : @escaping CompletionHandler)`.
+    ///
+    /// The `completion: @escaping (HyperwalletTransferMethodConfigurationKey?, HyperwalletErrorType?) -> Void`
+    /// that is passed in to this method invocation will receive the successful
+    /// response(HyperwalletTransferMethodConfigurationKey) or
+    /// error(HyperwalletErrorType) from processing the
+    /// request.
+    ///
+    /// This function will request a new authentication token via `HyperwalletAuthenticationTokenProvider`
+    /// if the current one is expired or is about to expire.
+    ///
+    /// - Parameters:
+    ///   - request: containing the transfer method configuration key query
+    ///   - completion: the callback handler of responses from the Hyperwallet platform
+    public func retrieveTransferMethodTypesFeesAndProcessingTimes(
+        request: HyperwalletTransferMethodTypesFeesAndProcessingTimesQuery,
+        completion: @escaping (HyperwalletTransferMethodConfigurationKey?,
+                               HyperwalletErrorType?) -> Void) {
         httpTransaction.performGraphQl(request,
                                        completionHandler: transferMethodConfigurationKeyResponseHandler(completion))
     }
