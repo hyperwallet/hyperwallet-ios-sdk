@@ -168,29 +168,6 @@ public struct HyperwalletTransferMethodConfigurationKeysQuery: GraphQlQuery {
                     nodes {
                         code
                         name
-                        transferMethodTypes {
-                            nodes {
-                                code
-                                name
-                                processingTimes {
-                                  nodes {
-                                    country
-                                    currency
-                                    transferMethodType
-                                    value
-                                  }
-                                }
-                                fees {
-                                    nodes {
-                                      currency
-                                      value
-                                      feeRateType
-                                      maximum
-                                      minimum
-                                    }
-                                }
-                            }
-                        }
                     }
                 }
             }
@@ -207,5 +184,72 @@ public struct HyperwalletTransferMethodConfigurationKeysQuery: GraphQlQuery {
 
     public func toGraphQl(userToken: String) -> String {
         String(format: query, userToken, limit)
+    }
+}
+
+/// The 'HyperwalletTransferMethodTypesFeesAndProcessingTimesQuery' struct defines
+/// and builds a query to retrieve the processing time and fees associated with each country, currency
+/// and transfer method type tuple.
+/// that is required to construct a `HyperwalletTransferMethodConfigurationFieldQuery`.
+public struct HyperwalletTransferMethodTypesFeesAndProcessingTimesQuery: GraphQlQuery, Hashable {
+    private var country: String = ""
+    private var currency: String = ""
+
+    private var query = """
+        query QueryFeeAndProcessing(
+            $idToken: String = "%@",
+            $country: Country = %@,
+            $currency: Currency = %@
+        ) {
+          countries (idToken: $idToken,code: $country){
+                        nodes {
+                          code
+                          name
+                          currencies (code: $currency){
+                            nodes {
+                              code
+                              name
+                              transferMethodTypes {
+                                nodes {
+                                  code
+                                  name
+                                  processingTimes {
+                                    nodes {
+                                      country
+                                      currency
+                                      transferMethodType
+                                      value
+                                    }
+                                  }
+                                  fees {
+                                    nodes {
+                                      currency
+                                      feeRateType
+                                      value
+                                      minimum
+                                      maximum
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+        }
+    """
+
+    public init(country: String, currency: String) {
+        self.country = country
+        self.currency = currency
+    }
+
+    public func toGraphQl(userToken: String) -> String {
+        String(format: query, userToken, country, currency)
+    }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(country)
+        hasher.combine(currency)
     }
 }
