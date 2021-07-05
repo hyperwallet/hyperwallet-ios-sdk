@@ -24,11 +24,6 @@ class HyperwalletTransferMethodConfigurationTests: XCTestCase {
 
         var graphQlResponse: HyperwalletTransferMethodConfigurationKey?
         var errorResponse: HyperwalletErrorType?
-        var fees: [HyperwalletFee]?
-        var flatFee: HyperwalletFee?
-        var percentFee: HyperwalletFee?
-        var bankAccountProcessingTime: HyperwalletProcessingTime?
-        var payPalAccountProcessingTime: HyperwalletProcessingTime?
 
         // When
         let keysQuery = HyperwalletTransferMethodConfigurationKeysQuery()
@@ -45,56 +40,6 @@ class HyperwalletTransferMethodConfigurationTests: XCTestCase {
         XCTAssertNil(errorResponse, "The `errorResponse` should be nil")
         XCTAssertEqual(graphQlResponse?.countries()?.count, 4, "countries()` should be 4")
         XCTAssertEqual(graphQlResponse?.currencies(from: "CA")?.count, 2, "currencies(...)` should be 2")
-        XCTAssertEqual(graphQlResponse?.transferMethodTypes(countryCode: "CA", currencyCode: "CAD")?
-                                       .count, 2, "`transferMethodTypes(...)` should be 2")
-        fees = graphQlResponse?.transferMethodTypes(countryCode: "CA", currencyCode: "CAD")?
-                               .first(where: { $0.code == "BANK_ACCOUNT" })
-                               .flatMap { $0.fees?.nodes }
-        flatFee = fees?.first
-        percentFee = fees?.last
-
-        XCTAssertNotNil(fees)
-        XCTAssertEqual(fees?.count, 2)
-        XCTAssertEqual(flatFee?.value, "2.20")
-        XCTAssertEqual(flatFee?.feeRateType, "FLAT")
-        XCTAssertEqual(percentFee?.value, "8.9")
-        XCTAssertEqual(percentFee?.feeRateType, "PERCENT")
-        XCTAssertEqual(percentFee?.minimum, "0.05")
-        XCTAssertEqual(percentFee?.maximum, "1.00")
-
-        bankAccountProcessingTime = graphQlResponse?.transferMethodTypes(countryCode: "CA", currencyCode: "CAD")?
-            .first(where: { $0.code == "BANK_ACCOUNT" })
-            .flatMap { $0.processingTimes?.nodes?.first }
-        XCTAssertNotNil(bankAccountProcessingTime, "The bankAccountProcessingTime should not be nil")
-        XCTAssertEqual(bankAccountProcessingTime!.value,
-                       "1-3 business days",
-                       "Type should be 1-3 business days")
-        XCTAssertEqual(bankAccountProcessingTime!.country,
-                       "CA",
-                       "The country should be CA")
-        XCTAssertEqual(bankAccountProcessingTime!.currency,
-                       "CAD",
-                       "The currency should be CAD")
-        XCTAssertEqual(bankAccountProcessingTime!.transferMethodType,
-                       "BANK_ACCOUNT",
-                       "The transferMethodType should be BANK_ACCOUNT")
-
-        payPalAccountProcessingTime = graphQlResponse?.transferMethodTypes(countryCode: "CA", currencyCode: "CAD")?
-            .first(where: { $0.code == "PAYPAL_ACCOUNT" })
-            .flatMap { $0.processingTimes?.nodes?.first }
-        XCTAssertNotNil(payPalAccountProcessingTime, "The payPalAccountProcessingTime should not be nil")
-        XCTAssertEqual(payPalAccountProcessingTime!.value,
-                       "IMMEDIATE",
-                       "The value should be IMMEDIATE")
-        XCTAssertEqual(payPalAccountProcessingTime!.country,
-                       "CA",
-                       "The country should be CA")
-        XCTAssertEqual(payPalAccountProcessingTime!.currency,
-                       "CAD",
-                       "The currency should be CAD")
-        XCTAssertEqual(payPalAccountProcessingTime!.transferMethodType,
-                       "PAYPAL_ACCOUNT",
-                       "The transferMethodType should be PAYPAL_ACCOUNT")
     }
 
     func testRetrieveTransferMethodConfigurationKeys_withoutFees() {
@@ -127,8 +72,6 @@ class HyperwalletTransferMethodConfigurationTests: XCTestCase {
         XCTAssertNil(fees, "Fees should be nil" )
         XCTAssertEqual(graphQlResponse?.countries()?.count, 1, "`countries()` should be 1")
         XCTAssertEqual(graphQlResponse?.currencies(from: "HR")?.count, 1, "currencies(...)` should be 1")
-        XCTAssertEqual(graphQlResponse?.transferMethodTypes(countryCode: "HR", currencyCode: "HRK")?
-                                       .count, 1, "transferMethodTypes(...)` should be 1")
     }
 
     func testRetrieveTransferMethodConfigurationFields_success() {
@@ -181,6 +124,91 @@ class HyperwalletTransferMethodConfigurationTests: XCTestCase {
         XCTAssertEqual(branchIdMask?.conditionalPatterns?.last?.regex, "^5[1-5]")
         XCTAssertEqual(branchIdMask?.defaultPattern, "#####.###.#")
         XCTAssertEqual(branchIdMask?.scrubRegex, "\\s")
+    }
+
+    func testRetrieveTransferMethodTypesFeesAndProcessingTimes() {
+        // Given
+        let request = setUpTransferMethodConfigurationRequest("TransferMethodConfigurationFeeAndProcessingTimeResponse")
+        HyperwalletTestHelper.setUpMockServer(request: request)
+
+        let expectation = self.expectation(description: "Retrieve transfer method configuration keys")
+
+        var graphQlResponse: HyperwalletTransferMethodConfigurationKey?
+        var errorResponse: HyperwalletErrorType?
+        var fees: [HyperwalletFee]?
+        var flatFee: HyperwalletFee?
+        var percentFee: HyperwalletFee?
+        var bankAccountProcessingTime: HyperwalletProcessingTime?
+        var paperCheckProcessingTime: HyperwalletProcessingTime?
+
+        // When
+        let keysQuery = HyperwalletTransferMethodTypesFeesAndProcessingTimesQuery(country: "CA", currency: "CAD")
+
+        Hyperwallet
+            .shared
+            .retrieveTransferMethodTypesFeesAndProcessingTimes(request: keysQuery) { (result, error) in
+                graphQlResponse = result
+                errorResponse = error
+                expectation.fulfill()
+            }
+        wait(for: [expectation], timeout: 1)
+
+        print(graphQlResponse?.transferMethodTypes(countryCode: "CA", currencyCode: "CAD") ?? "")
+
+        // Then
+        XCTAssertNil(errorResponse, "The `errorResponse` should be nil")
+        XCTAssertEqual(graphQlResponse?.countries()?.count, 1, "countries()` should be 1")
+        XCTAssertEqual(graphQlResponse?.currencies(from: "CA")?.count, 1, "currencies(...)` should be 1")
+        XCTAssertEqual(graphQlResponse?.transferMethodTypes(countryCode: "CA", currencyCode: "CAD")?
+                                       .count, 2, "`transferMethodTypes(...)` should be 2")
+        fees = graphQlResponse?.transferMethodTypes(countryCode: "CA", currencyCode: "CAD")?
+                               .first(where: { $0.code == "BANK_ACCOUNT" })
+                               .flatMap { $0.fees?.nodes }
+        flatFee = fees?.first
+        percentFee = fees?.last
+
+        XCTAssertNotNil(fees)
+        XCTAssertEqual(fees?.count, 2)
+        XCTAssertEqual(flatFee?.value, "2.20")
+        XCTAssertEqual(flatFee?.feeRateType, "FLAT")
+        XCTAssertEqual(percentFee?.value, "8.9")
+        XCTAssertEqual(percentFee?.feeRateType, "PERCENT")
+        XCTAssertEqual(percentFee?.minimum, "0.05")
+        XCTAssertEqual(percentFee?.maximum, "1.00")
+
+        bankAccountProcessingTime = graphQlResponse?.transferMethodTypes(countryCode: "CA", currencyCode: "CAD")?
+            .first(where: { $0.code == "BANK_ACCOUNT" })
+            .flatMap { $0.processingTimes?.nodes?.first }
+        XCTAssertNotNil(bankAccountProcessingTime, "The bankAccountProcessingTime should not be nil")
+        XCTAssertEqual(bankAccountProcessingTime!.value,
+                       "1 - 3 Business days",
+                       "Type should be 1 - 3 Business days")
+        XCTAssertEqual(bankAccountProcessingTime!.country,
+                       "CA",
+                       "The country should be CA")
+        XCTAssertEqual(bankAccountProcessingTime!.currency,
+                       "CAD",
+                       "The currency should be CAD")
+        XCTAssertEqual(bankAccountProcessingTime!.transferMethodType,
+                       "BANK_ACCOUNT",
+                       "The transferMethodType should be BANK_ACCOUNT")
+
+        paperCheckProcessingTime = graphQlResponse?.transferMethodTypes(countryCode: "CA", currencyCode: "CAD")?
+            .first(where: { $0.code == "PAPER_CHECK" })
+            .flatMap { $0.processingTimes?.nodes?.first }
+        XCTAssertNotNil(paperCheckProcessingTime, "The payPalAccountProcessingTime should not be nil")
+        XCTAssertEqual(paperCheckProcessingTime!.value,
+                       "5 - 7 Business days",
+                       "The value should be 5 - 7 Business days")
+        XCTAssertEqual(paperCheckProcessingTime!.country,
+                       "CA",
+                       "The country should be CA")
+        XCTAssertEqual(paperCheckProcessingTime!.currency,
+                       "CAD",
+                       "The currency should be CAD")
+        XCTAssertEqual(paperCheckProcessingTime!.transferMethodType,
+                       "PAPER_CHECK",
+                       "The transferMethodType should be PAPER_CHECK")
     }
 
     private func setUpTransferMethodConfigurationRequest(_ responseFile: String,
