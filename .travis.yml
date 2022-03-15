@@ -19,10 +19,10 @@ env:
 before_install:
   # Boot the emulator by ID
   - echo $(xcrun xctrace list devices | grep Simulator | grep "$ios_device")
-  - echo $(xcrun xctrace list devices | grep Simulator | grep "$ios_device ($ios_version)*")
-  - echo $(xcrun xctrace list devices | grep Simulator | grep "$ios_device ($ios_version)*" | grep -o "[0-9A-F]\{8\}-[0-9A-F]\{4\}-[0-9A-F]\{4\}-[0-9A-F]\{4\}-[0-9A-F]\{12\}")
+  - echo $(xcrun xctrace list devices | grep Simulator | grep "$ios_device Simulator ($ios_version)*")
+  - echo $(xcrun xctrace list devices | grep Simulator | grep "$ios_device Simulator ($ios_version)*" | grep -o "[0-9A-F]\{8\}-[0-9A-F]\{4\}-[0-9A-F]\{4\}-[0-9A-F]\{4\}-[0-9A-F]\{12\}")
   - |
-     ios_uid=$(xcrun xctrace list devices | grep Simulator | grep "$ios_device ($ios_version)*" | grep -o "[0-9A-F]\{8\}-[0-9A-F]\{4\}-[0-9A-F]\{4\}-[0-9A-F]\{4\}-[0-9A-F]\{12\}")
+     ios_uid=$(xcrun xctrace list devices | grep Simulator | grep "$ios_device Simulator ($ios_version)*" | grep -o "[0-9A-F]\{8\}-[0-9A-F]\{4\}-[0-9A-F]\{4\}-[0-9A-F]\{4\}-[0-9A-F]\{12\}")
      xcrun simctl boot $ios_uid
   # List all emulator available
   - xcrun simctl list
