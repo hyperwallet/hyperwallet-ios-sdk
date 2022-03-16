@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
     spec.name                  = 'HyperwalletSDK'
-    spec.version               = '1.0.0-beta15'
+    spec.version               = '1.0.0-beta14'
     spec.summary               = 'Hyperwallet Core SDK for iOS to integrate with Hyperwallet Platform'
     spec.homepage              = 'https://github.com/hyperwallet/hyperwallet-ios-sdk'
     spec.license               = { :type => 'MIT', :file => 'LICENSE' }
