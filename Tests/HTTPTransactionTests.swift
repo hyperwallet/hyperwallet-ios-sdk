@@ -16,7 +16,7 @@ class HTTPTransactionTests: XCTestCase {
         let configuration = HTTPTransaction.urlSessionConfiguration
         let header = configuration.httpAdditionalHeaders
 
-        XCTAssertEqual(configuration.timeoutIntervalForRequest, 5.0)
+        XCTAssertEqual(configuration.timeoutIntervalForRequest, 30.0)
         XCTAssertEqual(header?["Content-Type"] as? String, "application/json")
         XCTAssertTrue((header?["Accept-Language"] as? String ?? "").contains("en"))
         XCTAssertNotNil(header?["x-sdk-version"])
