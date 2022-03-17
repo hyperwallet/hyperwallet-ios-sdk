@@ -48,6 +48,6 @@ script: |
   # Lint - Add `--strict` to fail for warning and violation
   swiftlint lint --reporter json
 after_success:
-    # - slather
+    - slather
     - make docs
     - if [ $TRAVIS_BRANCH = 'master' ] && [ $TRAVIS_PULL_REQUEST = 'false' ]; then sh ./Scripts/travisPublishDocs.sh; fi
