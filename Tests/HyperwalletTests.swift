@@ -14,7 +14,7 @@ class HyperwalletTests: XCTestCase {
         Hyperwallet.shared.getUser { (_, _) in
             expectation.fulfill()
         }
-        wait(for: [expectation], timeout: 1)
+        wait(for: [expectation], timeout: 10)
 
         Hyperwallet.shared.getConfiguration(completion: { (result, _) in
             configuration = result
