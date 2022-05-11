@@ -19,8 +19,6 @@
 		07C00B522278EE4D00E0930C /* PayPalAccountResponseWithInvalidEmail.json in Resources */ = {isa = PBXBuildFile; fileRef = 07C00B502278EC3500E0930C /* PayPalAccountResponseWithInvalidEmail.json */; };
 		07C00B59227A120F00E0930C /* PayPalAccountResponseNotProfileEmail.json in Resources */ = {isa = PBXBuildFile; fileRef = 07C00B57227A11CB00E0930C /* PayPalAccountResponseNotProfileEmail.json */; };
 		07E5FCB7228C9ECA008C5B15 /* TransferMethodConfigurationKeyResultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E5FCB6228C9ECA008C5B15 /* TransferMethodConfigurationKeyResultTests.swift */; };
-		11B7FF8F282B441E005522A7 /* Hippolyte.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD8C499225E014E30062A440 /* Hippolyte.xcframework */; };
-		11B7FF90282B441E005522A7 /* Hippolyte.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FD8C499225E014E30062A440 /* Hippolyte.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2B5433FB229EDF0900F900D2 /* HyperwalletReceiptTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5433FA229EDF0900F900D2 /* HyperwalletReceiptTests.swift */; };
 		2B5433FD229EF11A00F900D2 /* ListPayPalAccountResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 07C00B542278EFB200E0930C /* ListPayPalAccountResponse.json */; };
 		2B5433FE229EF11F00F900D2 /* ListUserReceiptResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B5433F8229EDDED00F900D2 /* ListUserReceiptResponse.json */; };
@@ -162,20 +160,6 @@
 			remoteInfo = HyperwalletCoreSDK;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		11B7FF91282B441E005522A7 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				11B7FF90282B441E005522A7 /* Hippolyte.xcframework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0733FE082277C191000FB92A /* HyperwalletPayPalAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperwalletPayPalAccount.swift; sourceTree = "<group>"; };
@@ -325,7 +309,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11B7FF8F282B441E005522A7 /* Hippolyte.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -742,7 +725,6 @@
 				98101DB72238A2F000BA04CA /* Frameworks */,
 				98101DB82238A2F000BA04CA /* Resources */,
 				DBCA37C3225E52DA00CD4137 /* Swiftlint */,
-				11B7FF91282B441E005522A7 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
