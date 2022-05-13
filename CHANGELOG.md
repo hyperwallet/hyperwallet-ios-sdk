@@ -1,5 +1,9 @@
 Changelog
 =========
+[1.0.0-beta16](https://github.com/hyperwallet/hyperwallet-ios-sdk/releases/tag/1.0.0-beta16)
+-------------------
+- iOS upgrade to version 13
+=========
 [1.0.0-beta15](https://github.com/hyperwallet/hyperwallet-ios-sdk/releases/tag/1.0.0-beta15)
 -------------------
 - Connection timeout increased
