@@ -21,6 +21,6 @@
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>TAG_VERSION</key>
-	<string>1.0.0-beta14</string>
+	<string>1.0.0-beta16</string>
 </dict>
 </plist>
