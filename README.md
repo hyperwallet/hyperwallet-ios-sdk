@@ -18,7 +18,7 @@ We also provide an out-of-the-box  [Hyperwallet iOS UI SDK](https://github.com/h
 ## Prerequisites
 * A Hyperwallet merchant account
 * Set Up your server to manage the user's authentication process on the Hyperwallet platform. See the  [Authentication](#Authentication) section for more information.
-* iOS 10.0+
+* iOS 13.0+
 * Xcode 10.2+
 * Swift 5.0
 
@@ -27,13 +27,13 @@ Use [Carthage](https://github.com/Carthage/Carthage) or [CocoaPods](https://coco
 ### Carthage
 Specify it in your Cartfile:
 ```ogdl
-github "hyperwallet/hyperwallet-ios-sdk" "1.0.0-beta15"
+github "hyperwallet/hyperwallet-ios-sdk" "1.0.0-beta16"
 ```
 
 ### CocoaPods
 Specify it in your Podfile:
 ```ruby
-pod 'HyperwalletSDK', '~> 1.0.0-beta15'
+pod 'HyperwalletSDK', '~> 1.0.0-beta16'
 ```
 
 ## Initialization
