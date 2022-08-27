@@ -19,7 +19,7 @@ env:
 before_install:
   # Boot the emulator by ID
   - xcrun xctrace list devices
-  - ios_uid=$(xcrun xctrace list devices | grep Simulator | grep "$ios_device Simulator ($ios_version)*" | grep -o "[0-9A-F]\{8\}-[0-9A-F]\{4\}-[0-9A-F]\{4\}-[0-9A-F]\{4\}-[0-9A-F]\{12\}")
+  - ios_uid=$(xcrun xctrace list devices | grep Simulator | grep "$ios_device Simulator ($ios_version) ([0-9A-F]\{8\}-[0-9A-F]\{4\}-[0-9A-F]\{4\}-[0-9A-F]\{4\}-[0-9A-F]\{12\})" | grep -o "[0-9A-F]\{8\}-[0-9A-F]\{4\}-[0-9A-F]\{4\}-[0-9A-F]\{4\}-[0-9A-F]\{12\}")
   - echo $ios_uid
   - xcrun simctl boot $ios_uid
 
