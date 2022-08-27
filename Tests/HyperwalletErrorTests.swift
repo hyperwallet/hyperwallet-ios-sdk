@@ -86,7 +86,7 @@ class HyperwalletErrorTests: XCTestCase {
         XCTAssertNotNil(testErrorTypeHttp)
         XCTAssertEqual(testErrorTypeHttp.group, HyperwalletErrorGroup.authentication)
      }
-    
+
     func testHyperwalletError_forbiddenAccessHttpError() {
         let hyperwalletError = HyperwalletError(message: "Please check your login credentials and try again",
                                                 code: "FORBIDDEN_ACCESS")
