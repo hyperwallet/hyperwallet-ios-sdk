@@ -2,7 +2,7 @@ Changelog
 =========
 [1.0.0-beta17](https://github.com/hyperwallet/hyperwallet-ios-sdk/releases/tag/1.0.0-beta17)
 -------------------
-- Enhanced Hyperwallet Error Group to handle HTTP 401
+- Handle HTTP 401
 
 [1.0.0-beta16](https://github.com/hyperwallet/hyperwallet-ios-sdk/releases/tag/1.0.0-beta16)
 -------------------
