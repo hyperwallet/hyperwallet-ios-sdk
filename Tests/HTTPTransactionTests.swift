@@ -30,7 +30,7 @@ class HTTPTransactionTests: XCTestCase {
     }
 
     func testPerformRest_newConfiguration() {
-        // Given 
+        // Given
         var hasRequestTransactionPerformed = false
         // When - an API call request is made
         let completionHandler = {(_: [String: String]?, _: HyperwalletErrorType?) -> Void in
@@ -206,6 +206,130 @@ class HTTPTransactionTests: XCTestCase {
 
         XCTAssertNil(response)
         XCTAssertNil(hyperwalletError)
+    }
+    
+    func testPerformGraphQl_HTTP401_returnAuthenticationErrorGroup() {
+        // Given - SDK is initialized
+        var response: Connection<HyperwalletTransferMethodConfiguration>?
+        var hyperwalletError: HyperwalletErrorType?
+
+        let request = HyperwalletTransferMethodConfigurationFieldQuery(country: "AR",
+                                                                       currency: "ARS",
+                                                                       transferMethodType: "BANK_ACCOUNT",
+                                                                       profile: "INDIVIDUAL")
+        
+        
+        httpClientMock.data = HyperwalletTestHelper.getDataFromJson("JWTTokenExpired")
+        httpClientMock.urlResponse = HTTPURLResponse(url: URL(string: "http://localhost")!,
+                                                     statusCode: 401,
+                                                     httpVersion: "post",
+                                                     headerFields: ["Content-type": "application/json"])
+
+        // When - an API call request is made
+        let handler = { (data: Connection<HyperwalletTransferMethodConfiguration>?, error: HyperwalletErrorType?)
+                        -> Void in
+            response = data
+            hyperwalletError = error
+        }
+
+        transaction.performGraphQl(request, completionHandler: handler)
+
+        // Then
+        XCTAssertNil(response, "The response should be null")
+        XCTAssertNotNil(hyperwalletError, "The hyperwalletError should not be null")
+        XCTAssertEqual(hyperwalletError?.getHttpCode(), 401)
+        XCTAssertEqual(hyperwalletError?.group, HyperwalletErrorGroup.authentication)
+        XCTAssertEqual(hyperwalletError?.getHyperwalletErrors()?.errorList?.first?.code, "JWT_EXPIRED")
+        XCTAssertEqual(hyperwalletError?.getHyperwalletErrors()?.errorList?.first?.message,
+                       "JWT expired")
+    }
+    
+    func testPerformGraphQl_HTTP403_returnUnexpectedErrorGroup() {
+        // Given - SDK is initialized
+
+        var response: Connection<HyperwalletTransferMethodConfiguration>?
+        var hyperwalletError: HyperwalletErrorType?
+        let request = HyperwalletTransferMethodConfigurationFieldQuery(country: "AR",
+                                                                       currency: "ARS",
+                                                                       transferMethodType: "BANK_ACCOUNT",
+                                                                       profile: "INDIVIDUAL")
+        httpClientMock.data = "{}".data(using: .utf8)
+        httpClientMock.urlResponse = HTTPURLResponse(url: URL(string: "http://localhost")!,
+                                                     statusCode: 403,
+                                                     httpVersion: "post",
+                                                     headerFields: ["Content-type": "application/json"])
+
+        // When - an API call request is made
+        let handler = { (data: Connection<HyperwalletTransferMethodConfiguration>?, error: HyperwalletErrorType?)
+                        -> Void in
+            response = data
+            hyperwalletError = error
+        }
+
+        transaction.performGraphQl(request, completionHandler: handler)
+
+        // Then
+        XCTAssertNil(response, "The response should be null")
+        XCTAssertNotNil(hyperwalletError, "The hyperwalletError should not be null")
+        XCTAssertEqual(hyperwalletError?.getHttpCode(), 403)
+        XCTAssertEqual(hyperwalletError?.group, HyperwalletErrorGroup.unexpected)
+    }
+    
+    func testPerformRest_HTTP401_returnAuthenticationErrorGroup() {
+        // Given - SDK is initialized
+
+        var response: [String: String]?
+        var hyperwalletError: HyperwalletErrorType?
+
+        httpClientMock.data = HyperwalletTestHelper.getDataFromJson("JWTTokenExpired")
+        httpClientMock.urlResponse = HTTPURLResponse(url: URL(string: "http://localhost")!,
+                                                     statusCode: 401,
+                                                     httpVersion: "post",
+                                                     headerFields: ["Content-type": "application/json"])
+
+        // When - an API call request is made
+        let completionHandler = { (data: [String: String]?, error: HyperwalletErrorType?) -> Void in
+            response = data
+            hyperwalletError = error
+        }
+
+        transaction.performRest(httpMethod: .post, urlPath: "", payload: "", completionHandler: completionHandler)
+
+        // Then
+        XCTAssertNil(response, "The response should be null")
+        XCTAssertNotNil(hyperwalletError, "The hyperwalletError should not be null")
+        XCTAssertEqual(hyperwalletError?.getHttpCode(), 401)
+        XCTAssertEqual(hyperwalletError?.group, HyperwalletErrorGroup.authentication)
+        XCTAssertEqual(hyperwalletError?.getHyperwalletErrors()?.errorList?.first?.code, "JWT_EXPIRED")
+        XCTAssertEqual(hyperwalletError?.getHyperwalletErrors()?.errorList?.first?.message,
+                       "JWT expired")
+    }
+    
+    func testPerformRest_HTTP403_returnUnexpectedErrorGroup() {
+        // Given - SDK is initialized
+
+        var response: [String: String]?
+        var hyperwalletError: HyperwalletErrorType?
+
+        httpClientMock.data = "{}".data(using: .utf8)
+        httpClientMock.urlResponse = HTTPURLResponse(url: URL(string: "http://localhost")!,
+                                                     statusCode: 403,
+                                                     httpVersion: "post",
+                                                     headerFields: ["Content-type": "application/json"])
+
+        // When - an API call request is made
+        let completionHandler = { (data: [String: String]?, error: HyperwalletErrorType?) -> Void in
+            response = data
+            hyperwalletError = error
+        }
+
+        transaction.performRest(httpMethod: .post, urlPath: "", payload: "", completionHandler: completionHandler)
+
+        // Then
+        XCTAssertNil(response, "The response should be null")
+        XCTAssertNotNil(hyperwalletError, "The hyperwalletError should not be null")
+        XCTAssertEqual(hyperwalletError?.getHttpCode(), 403)
+        XCTAssertEqual(hyperwalletError?.group, HyperwalletErrorGroup.unexpected)
     }
 
     func testPerformRest_HTTP204_returnEmptyResponseAndError() {
@@ -464,6 +588,63 @@ class HTTPTransactionTests: XCTestCase {
         XCTAssertEqual(errorType?.getHyperwalletErrors()?.errorList?.first?.code, "INVALID_FIELD_LENGTH")
         XCTAssertEqual(errorType?.getHyperwalletErrors()?.errorList?.first?.message,
                        "Invalid field length for cardNumber")
+    }
+    
+    func testRequestHandler_httpCodeUnauthorized_hyperwalletError() {
+        // Given
+        var response: [String: String]?
+        var errorType: HyperwalletErrorType?
+        let urlResponse = HTTPURLResponse(url: URL(string: "http://localhost")!,
+                                          statusCode: 401,
+                                          httpVersion: "post",
+                                          headerFields: ["Content-type": "application/json"])
+
+        let data = HyperwalletTestHelper.getDataFromJson("JWTTokenExpired")
+
+        // When
+        let completionHandler = {(data: [String: String]?, error: HyperwalletErrorType?) -> Void in
+            response = data
+            errorType = error
+        }
+
+        let requestHandler = HTTPTransaction.requestHandler(completionHandler)
+
+        requestHandler(data, urlResponse, nil)
+
+        // Then
+        XCTAssertNil(response, "The response should be null")
+        XCTAssertNotNil(errorType, "The hyperwalletError should not be null")
+        XCTAssertEqual(errorType?.getHttpCode(), 401)
+        XCTAssertEqual(errorType?.group, HyperwalletErrorGroup.authentication)
+        XCTAssertEqual(errorType?.getHyperwalletErrors()?.errorList?.first?.code, "JWT_EXPIRED")
+        XCTAssertEqual(errorType?.getHyperwalletErrors()?.errorList?.first?.message,
+                       "JWT expired")
+    }
+    
+    func testRequestHandler_httpCodeForbiddenAccess_hyperwalletError() {
+        // Given
+        var response: [String: String]?
+        var errorType: HyperwalletErrorType?
+        let urlResponse = HTTPURLResponse(url: URL(string: "http://localhost")!,
+                                          statusCode: 403,
+                                          httpVersion: "post",
+                                          headerFields: ["Content-type": "application/json"])
+
+        // When
+        let completionHandler = {(data: [String: String]?, error: HyperwalletErrorType?) -> Void in
+            response = data
+            errorType = error
+        }
+
+        let requestHandler = HTTPTransaction.requestHandler(completionHandler)
+
+        requestHandler("{}".data(using: .utf8)!, urlResponse, nil)
+
+        // Then
+        XCTAssertNil(response, "The response should be null")
+        XCTAssertNotNil(errorType, "The hyperwalletError should not be null")
+        XCTAssertEqual(errorType?.getHttpCode(), 403)
+        XCTAssertEqual(errorType?.group, HyperwalletErrorGroup.unexpected)
     }
 
     func testRequestHandler_httpCodeSuccessWithJSONFormatPayload_parseData() {
