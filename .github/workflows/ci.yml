@@ -59,10 +59,6 @@ jobs:
           # Lint - Add `--strict` to fail for warning and violation
           swiftlint lint --reporter json
 
-      - run: |
-          bundle config path vendor/bundle
-          bundle install --without=documentation --jobs 4 --retry 3
-
       - name: Extract branch name
         shell: bash
         run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
