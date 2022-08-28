@@ -34,9 +34,6 @@ jobs:
       - name: Install dependencies
         run: carthage update --platform ios --cache-builds --use-xcframeworks --no-use-binaries
 
-      - name: Install test coverage reports tool - slather
-        run: gem i slather
-
       - name: Install lint tool - swiftlint
         # Force to update the Swiftlint to the last stable version
         run: |
@@ -55,7 +52,7 @@ jobs:
       - name: Lint validation
         run:
           # Lint - Add `--strict` to fail for warning and violation
-          swiftlint lint --reporter json
+          swiftlint lint --strict --reporter json
 
       - name: Convert Test Coverage Resport to lcov formart
         uses: maxep/xcodebuild-lcov-action@0.1.0
