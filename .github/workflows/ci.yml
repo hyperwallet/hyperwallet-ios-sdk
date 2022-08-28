@@ -18,12 +18,12 @@ on:
 jobs:
   tests:
     name: Tests
+    runs-on: macos-latest
+
     strategy:
       fail-fast: false
       matrix:
-        os: [macos-11, macos-latest, macos-10.15]
         xcode_version: [13.2.1]
-    runs-on: ${{ matrix.os }}
 
     steps:
       - name: Get Sources
