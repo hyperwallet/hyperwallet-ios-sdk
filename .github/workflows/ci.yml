@@ -43,9 +43,6 @@ jobs:
           brew outdated swiftlint || brew upgrade swiftlint
           swiftlint version
 
-      - name: Install documentation tool - jazzy
-        run: gem install jazzy
-
       - name: Run unit tests
         run:
           xcodebuild -enableCodeCoverage YES clean build test
@@ -60,14 +57,14 @@ jobs:
           # Lint - Add `--strict` to fail for warning and violation
           swiftlint lint --reporter json
 
-      - name: Test Coverage
+      - name: Convert Test Coverage Resport to lcov formart
         uses: maxep/xcodebuild-lcov-action@0.1.0
         with:
             derived-data-path: ./output
             target: HyperwalletSDK.framework
             output-file: ./coverage/lcov.info
 
-      - name: Coveralls
+      - name: Post to Coveralls
         uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
