@@ -51,7 +51,7 @@ jobs:
           xcodebuild -enableCodeCoverage YES clean build test
             -project HyperwalletSDK.xcodeproj
             -scheme "HyperwalletSDK"
-            -derivedDataPath ""./output"
+            -derivedDataPath "./output"
             -destination "platform=iOS Simulator,name=iPhone 13,OS=15.2"
             -configuration Debug ONLY_ACTIVE_ARCH=YES ENABLE_TESTABILITY=YES CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
 
