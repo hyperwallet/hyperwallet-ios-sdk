@@ -49,9 +49,9 @@ jobs:
       - name: Run unit tests
         run:
           xcodebuild -enableCodeCoverage YES clean build test
-            -project HyperwalletSDK.xcodeproj \
-            -scheme "HyperwalletSDK" \
-            -destination "platform=iOS Simulator,name=iPhone 13,OS=15.5" \
+            -project HyperwalletSDK.xcodeproj
+            -scheme "HyperwalletSDK"
+            -destination "platform=iOS Simulator,name=iPhone 13,OS=15.5"
             -configuration Debug ONLY_ACTIVE_ARCH=YES ENABLE_TESTABILITY=YES CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
 
       - name: Lint validation
