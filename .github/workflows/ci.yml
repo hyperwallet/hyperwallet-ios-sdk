@@ -23,10 +23,11 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        xcode_version: [13.2.1]
+        xcode_version: [ '13.2.1' ]
 
     steps:
-      - uses: actions/checkout@master
+      - name: Get Sources
+        uses: actions/checkout@v2
 
       - name: Setup Xcode
         uses: maxim-lobanov/setup-xcode@v1
