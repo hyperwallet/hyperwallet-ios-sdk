@@ -65,7 +65,7 @@ jobs:
         with:
             derived-data-path: ./output
             target: HyperwalletSDK.framework
-            output-file: ./output/lcov.info
+            output-file: ./coverage/lcov.info
 
       - name: Coveralls
         uses: coverallsapp/github-action@master
