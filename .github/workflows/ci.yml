@@ -41,7 +41,7 @@ jobs:
         # Force to update the Swiftlint to the last stable version
         run: |
           brew outdated swiftlint || brew upgrade swiftlint
-          wiftlint version
+          swiftlint version
 
       - name: Install documentation tool - jazzy
         run: gem install jazzy
