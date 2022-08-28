@@ -51,6 +51,7 @@ jobs:
           xcodebuild -enableCodeCoverage YES clean build test
             -project HyperwalletSDK.xcodeproj
             -scheme "HyperwalletSDK"
+            -derivedDataPath ""./output"
             -destination "platform=iOS Simulator,name=iPhone 13,OS=15.2"
             -configuration Debug ONLY_ACTIVE_ARCH=YES ENABLE_TESTABILITY=YES CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
 
@@ -58,16 +59,6 @@ jobs:
         run:
           # Lint - Add `--strict` to fail for warning and violation
           swiftlint lint --reporter json
-
-      - name: Run tests
-        uses: sersoft-gmbh/xcodebuild-action@v1
-        with:
-            project: HyperwalletSDK.xcodeproj
-            scheme: HyperwalletSDK
-            derived-data-path: ./output
-            destination: "platform=iOS Simulator,name=iPhone 13,OS=15.2"
-            action: test
-            enable-code-coverage: true
 
       - name: Test Coverage
         uses: maxep/xcodebuild-lcov-action@0.1.0
