@@ -207,7 +207,7 @@ class HTTPTransactionTests: XCTestCase {
         XCTAssertNil(response)
         XCTAssertNil(hyperwalletError)
     }
-    
+
     func testPerformGraphQl_HTTP401_returnAuthenticationErrorGroup() {
         // Given - SDK is initialized
         var response: Connection<HyperwalletTransferMethodConfiguration>?
@@ -217,8 +217,7 @@ class HTTPTransactionTests: XCTestCase {
                                                                        currency: "ARS",
                                                                        transferMethodType: "BANK_ACCOUNT",
                                                                        profile: "INDIVIDUAL")
-        
-        
+
         httpClientMock.data = HyperwalletTestHelper.getDataFromJson("JWTTokenExpired")
         httpClientMock.urlResponse = HTTPURLResponse(url: URL(string: "http://localhost")!,
                                                      statusCode: 401,
@@ -243,7 +242,7 @@ class HTTPTransactionTests: XCTestCase {
         XCTAssertEqual(hyperwalletError?.getHyperwalletErrors()?.errorList?.first?.message,
                        "JWT expired")
     }
-    
+
     func testPerformGraphQl_HTTP403_returnUnexpectedErrorGroup() {
         // Given - SDK is initialized
 
@@ -274,7 +273,7 @@ class HTTPTransactionTests: XCTestCase {
         XCTAssertEqual(hyperwalletError?.getHttpCode(), 403)
         XCTAssertEqual(hyperwalletError?.group, HyperwalletErrorGroup.unexpected)
     }
-    
+
     func testPerformRest_HTTP401_returnAuthenticationErrorGroup() {
         // Given - SDK is initialized
 
@@ -304,7 +303,7 @@ class HTTPTransactionTests: XCTestCase {
         XCTAssertEqual(hyperwalletError?.getHyperwalletErrors()?.errorList?.first?.message,
                        "JWT expired")
     }
-    
+
     func testPerformRest_HTTP403_returnUnexpectedErrorGroup() {
         // Given - SDK is initialized
 
@@ -589,7 +588,7 @@ class HTTPTransactionTests: XCTestCase {
         XCTAssertEqual(errorType?.getHyperwalletErrors()?.errorList?.first?.message,
                        "Invalid field length for cardNumber")
     }
-    
+
     func testRequestHandler_httpCodeUnauthorized_hyperwalletError() {
         // Given
         var response: [String: String]?
@@ -620,7 +619,7 @@ class HTTPTransactionTests: XCTestCase {
         XCTAssertEqual(errorType?.getHyperwalletErrors()?.errorList?.first?.message,
                        "JWT expired")
     }
-    
+
     func testRequestHandler_httpCodeForbiddenAccess_hyperwalletError() {
         // Given
         var response: [String: String]?

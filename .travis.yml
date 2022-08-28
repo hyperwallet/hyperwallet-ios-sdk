@@ -23,8 +23,6 @@ before_install:
   - echo $ios_uid
   - xcrun simctl boot $ios_uid
 
-  # List all emulator available
-  - xcrun simctl list
   # Update the brew and build dependencies tools
   - brew update && brew upgrade carthage
   - carthage update --platform ios --cache-builds --use-xcframeworks --no-use-binaries
