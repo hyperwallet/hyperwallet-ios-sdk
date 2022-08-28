@@ -24,7 +24,6 @@ jobs:
         xcode_version: [13.2.1]
     runs-on: ${{ matrix.os }}
     steps:
-
       - name: Get Sources
         uses: actions/checkout@v2
 
