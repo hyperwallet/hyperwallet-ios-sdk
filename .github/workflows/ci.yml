@@ -30,3 +30,6 @@ jobs:
         uses: maxim-lobanov/setup-xcode@v1
         with:
           xcode-version: '${{ matrix.xcode_version }}'
+
+      - name: Update brew
+        run: brew update
