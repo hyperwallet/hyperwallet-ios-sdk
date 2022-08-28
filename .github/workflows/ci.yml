@@ -34,8 +34,8 @@ jobs:
       - name: Install dependencies
         run: carthage update --platform ios --cache-builds --use-xcframeworks --no-use-binaries
 
-      # - name: Install test coverage reports tool - slather
-      #   run: gem i slather
+      - name: Install test coverage reports tool - slather
+        run: gem i slather
 
       - name: Install lint tool - swiftlint
         # Force to update the Swiftlint to the last stable version
@@ -59,11 +59,11 @@ jobs:
           # Lint - Add `--strict` to fail for warning and violation
           swiftlint lint --reporter json
 
-      - name: Extract branch name
+      - name: Report Code Coverage
         shell: bash
         run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
         id: get_branch
-      - run: bundle exec slather
+      - run: slather
         env:
           GIT_BRANCH: ${{ steps.get_branch.outputs.branch }}
           CI_PULL_REQUEST: ${{ github.event.number }}
