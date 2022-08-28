@@ -24,6 +24,8 @@ jobs:
         xcode_version: [13.2.1]
     runs-on: ${{ matrix.os }}
     steps:
+      - uses: actions/checkout@v3
+
       - uses: maxim-lobanov/setup-xcode@v1
         with:
           xcode-version: '${{ matrix.xcode_version }}'
