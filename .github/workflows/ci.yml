@@ -20,7 +20,7 @@ jobs:
     name: Tests
     strategy:
       matrix:
-        os: [macos-11, macos-latest, macos-10.15]
+        os: [macos-11, macos-latest]
         xcode_version: [13.2.1]
     runs-on: ${{ matrix.os }}
     steps:
@@ -31,5 +31,30 @@ jobs:
         with:
           xcode-version: '${{ matrix.xcode_version }}'
 
-      - name: Update brew
-        run: brew update
+      - name: Install dependencies
+        run: carthage update --platform ios --cache-builds --use-xcframeworks --no-use-binaries
+
+      - name: Install test coverage reports tool - slather
+        run: gem i slather
+
+      - name: Install lint tool - swiftlint
+        # Force to update the Swiftlint to the last stable version
+        run: |
+          brew outdated swiftlint || brew upgrade swiftlint
+          wiftlint version
+
+      - name: Install documentation tool - jazzy
+        run: gem install jazzy
+
+      - name: Run unit tests
+        run:
+          xcodebuild -enableCodeCoverage YES clean build test
+            -project HyperwalletSDK.xcodeproj \
+            -scheme "HyperwalletSDK" \
+            -destination "platform=iOS Simulator,name=iPhone 13,OS=15.5" \
+            -configuration Debug ONLY_ACTIVE_ARCH=YES ENABLE_TESTABILITY=YES CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+
+      - name: Lint validation
+        run:
+          # Lint - Add `--strict` to fail for warning and violation
+          swiftlint lint --reporter json
