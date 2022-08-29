@@ -1,4 +1,4 @@
-# Hyperwallet iOS Core SDK
+# Hyperwallet iOS Core SDK test
 
 [![Platforms](https://img.shields.io/cocoapods/p/HyperwalletSDK.svg?)](https://cocoapods.org/pods/HyperwalletSDK)
 [![Build Status](https://travis-ci.com/hyperwallet/hyperwallet-ios-sdk.svg?branch=master)](https://travis-ci.com/hyperwallet/hyperwallet-ios-sdk)
