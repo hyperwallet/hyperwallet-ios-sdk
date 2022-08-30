@@ -27,13 +27,13 @@ Use [Carthage](https://github.com/Carthage/Carthage) or [CocoaPods](https://coco
 ### Carthage
 Specify it in your Cartfile:
 ```ogdl
-github "hyperwallet/hyperwallet-ios-sdk" "1.0.0-beta16"
+github "hyperwallet/hyperwallet-ios-sdk" "1.0.0-beta17"
 ```
 
 ### CocoaPods
 Specify it in your Podfile:
 ```ruby
-pod 'HyperwalletSDK', '~> 1.0.0-beta16'
+pod 'HyperwalletSDK', '~> 1.0.0-beta17'
 ```
 
 ## Initialization
@@ -701,7 +701,7 @@ Hyperwallet
     }
 
     guard let result = result else { return }
-    
+
     // Get transfer method types based on the first country code and its first currency code
     transferMethodTypes = result.transferMethodTypes(countryCode: country, currencyCode: currency)
     print(transferMethodTypes)
