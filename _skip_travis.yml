@@ -1,0 +1,53 @@
+language: swift
+osx_image: xcode13.1
+os: osx
+branches:
+ only:
+  - /.*/
+cache:
+    directories:
+      - Carthage
+env:
+  global:
+  - LC_CTYPE=en_US.UTF-8
+  - LANG=en_US.UTF-8
+  - PROJECT=HyperwalletSDK.xcodeproj
+  - IOS_FRAMEWORK_SCHEME="HyperwalletSDK"
+
+  matrix:
+    - ios_version='15.0'  ios_device='iPhone 11' scheme="$IOS_FRAMEWORK_SCHEME"  platform='iOS Simulator'
+before_install:
+  # Boot the emulator by ID
+  - |
+     ios_uid=$(xcrun xctrace list devices | grep Simulator | grep "$ios_device Simulator ($ios_version)*" | grep -o "[0-9A-F]\{8\}-[0-9A-F]\{4\}-[0-9A-F]\{4\}-[0-9A-F]\{4\}-[0-9A-F]\{12\}")
+     xcrun simctl boot $ios_uid
+  # List all emulator available
+  - xcrun simctl list
+  # Update the brew and build dependencies tools
+  - brew update && brew upgrade carthage
+  - carthage update --platform ios --cache-builds --use-xcframeworks --no-use-binaries
+  - gem i slather
+  # Force to update the Swiftlint to the last stable version
+  - brew outdated swiftlint || brew upgrade swiftlint
+  # Print the booted emulator
+  #- xcrun simctl list | grep "(Booted)"
+  # Print the swiftlint version
+  - swiftlint version
+  # Installing Jazzy
+  - gem install jazzy
+script: |
+  set -o pipefail
+  set -e
+  # Define the destination emulator
+  destination="platform=$platform,OS=$ios_version,name=$ios_device"
+  # Build and test Framework in Debug
+  xcodebuild -enableCodeCoverage YES clean build test -project "$PROJECT" \
+    -scheme "$scheme" \
+    -destination "$destination" \
+    -configuration Debug ONLY_ACTIVE_ARCH=YES ENABLE_TESTABILITY=YES CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+  # Lint - Add `--strict` to fail for warning and violation
+  swiftlint lint --reporter json
+after_success:
+    # - slather
+    - make docs
+    - if [ $TRAVIS_BRANCH = 'master' ] && [ $TRAVIS_PULL_REQUEST = 'false' ]; then sh ./Scripts/travisPublishDocs.sh; fi
