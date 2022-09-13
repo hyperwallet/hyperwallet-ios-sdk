@@ -1,7 +1,0 @@
-coverage_service: coveralls
-xcodeproj: HyperwalletSDK.xcodeproj
-scheme: HyperwalletSDK
-ignore:
-  - Tests/*
-  - Sources/Model/User/HyperwalletUser.swift
-  - Sources/Model/TransferMethod/HyperwalletPrepaidCard.swift
