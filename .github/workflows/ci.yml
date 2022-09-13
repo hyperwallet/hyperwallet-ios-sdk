@@ -1,0 +1,81 @@
+name: Core SDK CI
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+      - support/SDK-V3
+      - feature/**
+      - bugfix/**
+  pull_request:
+    branches:
+      - master
+      - support/SDK-V3
+      - feature/**
+      - bugfix/**
+
+jobs:
+  tests:
+    name: Tests
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: macos-12
+            xcode_version: 13.4
+            fastlane_task: unit_tests
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: '${{ matrix.xcode_version }}'
+
+      - name: Carthage [Setup cache]
+        uses: actions/cache@v3
+        with:
+          path: Carthage
+          key: ${{ runner.os }}-carthage-${{ hashFiles('**/Cartfile.resolved') }}
+          restore-keys: |
+            ${{ runner.os }}-carthage-${{ hashFiles('**/Cartfile.resolved') }}
+
+      - name: Carthage [Install dependencies]
+        run: carthage bootstrap
+          --platform ios
+          --cache-builds
+          --use-xcframeworks
+          --no-use-binaries
+
+      - name: Run ${{ matrix.task_title }}
+        run: fastlane ${{ matrix.fastlane_task }}
+
+      - name: Lint validation
+        run:
+          swiftlint lint --strict --reporter json
+
+      - name: Code Coverage [Build report]
+        run: |
+          export PATH="/usr/local/opt/llvm/bin:$PATH"
+          llvm-cov report \
+          --use-color \
+          --instr-profile=$(find ./output -name "*.profdata") \
+          --object $(find ./output -name "HyperwalletSDK") \
+          -ignore-filename-regex="HyperwalletPrepaidCard.swift|/HyperwalletUser.swift"
+
+      - name: Code Coverage [Export report to lcov format]
+        run: |
+          export PATH="/usr/local/opt/llvm/bin:$PATH"
+          mkdir coverage
+          llvm-cov export \
+          --format=lcov > ./coverage/lcov.info \
+          --instr-profile=$(find ./output -name "*.profdata") \
+          --object $(find ./output -name "HyperwalletSDK") \
+          -ignore-filename-regex="HyperwalletPrepaidCard.swift|/HyperwalletUser.swift"
+
+      - name: Post to Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
