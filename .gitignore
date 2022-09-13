@@ -63,3 +63,6 @@ Carthage/
 # Fastlane
 fastlane/README.md
 fastlane/report.xml
+fastlane/test_output
+coverage
+output
