@@ -101,6 +101,8 @@
 		DB1A0422225D571B0080C8D6 /* AuthenticationTokenGeneratorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1A0420225D571A0080C8D6 /* AuthenticationTokenGeneratorMock.swift */; };
 		DB1A0423225D571B0080C8D6 /* AuthenticationProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1A0421225D571B0080C8D6 /* AuthenticationProviderMock.swift */; };
 		DB2A3B092261D2DC0049F891 /* HyperwalletSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = DB2A3B082261D2DC0049F891 /* HyperwalletSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB2BBC2928B99806005AACE0 /* JWTTokenExpired.json in Resources */ = {isa = PBXBuildFile; fileRef = DB2BBC2828B99806005AACE0 /* JWTTokenExpired.json */; };
+		DB2BBC2A28B99806005AACE0 /* JWTTokenExpired.json in Resources */ = {isa = PBXBuildFile; fileRef = DB2BBC2828B99806005AACE0 /* JWTTokenExpired.json */; };
 		DB3151CF22780AA300FC9F8E /* UserIndividualResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = DB3151CE22780AA300FC9F8E /* UserIndividualResponse.json */; };
 		DB45190F22DD00A00022BD1F /* HyperwalletTransferMethodConfigurationFieldQueryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB45190E22DD00A00022BD1F /* HyperwalletTransferMethodConfigurationFieldQueryTests.swift */; };
 		DB764E91227833E10053BB91 /* UserBusinessResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = DB764E8F22782D890053BB91 /* UserBusinessResponse.json */; };
@@ -257,6 +259,7 @@
 		DB1A0420225D571A0080C8D6 /* AuthenticationTokenGeneratorMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationTokenGeneratorMock.swift; sourceTree = "<group>"; };
 		DB1A0421225D571B0080C8D6 /* AuthenticationProviderMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationProviderMock.swift; sourceTree = "<group>"; };
 		DB2A3B082261D2DC0049F891 /* HyperwalletSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HyperwalletSDK.h; sourceTree = "<group>"; };
+		DB2BBC2828B99806005AACE0 /* JWTTokenExpired.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = JWTTokenExpired.json; sourceTree = "<group>"; };
 		DB3151CE22780AA300FC9F8E /* UserIndividualResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = UserIndividualResponse.json; sourceTree = "<group>"; };
 		DB45190E22DD00A00022BD1F /* HyperwalletTransferMethodConfigurationFieldQueryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperwalletTransferMethodConfigurationFieldQueryTests.swift; sourceTree = "<group>"; };
 		DB764E8F22782D890053BB91 /* UserBusinessResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = UserBusinessResponse.json; sourceTree = "<group>"; };
@@ -652,23 +655,21 @@
 		DB99FF2E225D600000F86181 /* Responses */ = {
 			isa = PBXGroup;
 			children = (
-				2E6A04172577162E00244BE6 /* PaperCheck */,
-				641324DE22954E2500512816 /* BankAccount */,
 				641EBE992292DA3300D718F4 /* AuthenticationTokens */,
-				64D2493D22BD023600561C14 /* Transfer */,
-				DB764E8F22782D890053BB91 /* UserBusinessResponse.json */,
-				DB3151CE22780AA300FC9F8E /* UserIndividualResponse.json */,
+				641324DE22954E2500512816 /* BankAccount */,
 				DBCA37AA225D6D1700CD4137 /* BankAccountErrorResponseWithMissingBankId.json */,
 				DBCA37AC225D6D1700CD4137 /* BankCardErrorResponseWithInvalidBranchId.json */,
 				DBCA37A5225D6D1700CD4137 /* BankCardErrorResponseWithInvalidCardNumber.json */,
 				DBCA37BB225D6DD900CD4137 /* BankCardErrorResponseWithMissingCardNumber.json */,
 				DBCA37BD225D6E1900CD4137 /* BankCardResponse.json */,
+				DB2BBC2828B99806005AACE0 /* JWTTokenExpired.json */,
 				DBCA37A2225D6D1600CD4137 /* ListBankAccountResponse.json */,
 				DBCA37A6225D6D1700CD4137 /* ListBankCardResponse.json */,
 				07C00B542278EFB200E0930C /* ListPayPalAccountResponse.json */,
+				4A41069B22B10FAF00A930AC /* ListPrepaidCardReceiptResponse.json */,
 				07B1FE6322C2C56800F461D0 /* ListPrepaidCardResponse.json */,
 				2B5433F8229EDDED00F900D2 /* ListUserReceiptResponse.json */,
-				4A41069B22B10FAF00A930AC /* ListPrepaidCardReceiptResponse.json */,
+				2E6A04172577162E00244BE6 /* PaperCheck */,
 				07C00B062277D30000E0930C /* PayPalAccountResponse.json */,
 				07C00B57227A11CB00E0930C /* PayPalAccountResponseNotProfileEmail.json */,
 				07C00B502278EC3500E0930C /* PayPalAccountResponseWithInvalidEmail.json */,
@@ -676,20 +677,23 @@
 				980B9AE5251C052600653D1C /* PrepaidCardResponse.json */,
 				DBCA37A7225D6D1700CD4137 /* StatusTransitionMockedResponseInvalidTransition.json */,
 				DBCA37A3225D6D1600CD4137 /* StatusTransitionMockedResponseSuccess.json */,
+				64D2493D22BD023600561C14 /* Transfer */,
+				FD2B6ECA2670D6980021078B /* TransferMethodConfigurationFeeAndProcessingTimeResponse.json */,
 				DBCA37A9225D6D1700CD4137 /* TransferMethodConfigurationFieldsResponse.json */,
 				DBCA37A4225D6D1600CD4137 /* TransferMethodConfigurationGraphQlResponse.json */,
 				DBCA37AD225D6D1700CD4137 /* TransferMethodConfigurationKeysResponse.json */,
-				FD2B6ECA2670D6980021078B /* TransferMethodConfigurationFeeAndProcessingTimeResponse.json */,
-				FDF2E7A5257E06D600589076 /* TransferMethodUpdateConfigurationFieldsResponse.json */,
-				FDD2F4D02580B1D0008E4CFC /* TransferMethodUpdateConfigurationFieldsBankCardResponse.json */,
-				FDD2F4CE2580AFB0008E4CFC /* TransferMethodUpdateConfigurationFieldsPaypalResponse.json */,
-				FD1208CB2581FE3200A8D8B2 /* TransferMethodUpdateConfigurationFieldsVenmoResponse.json */,
 				DBCA37AB225D6D1700CD4137 /* TransferMethodConfigurationKeysWithoutFeeResponse.json */,
 				DBCA37BF225D6E3A00CD4137 /* TransferMethodMockedSuccessResponse.json */,
-				E843856BD0D7E5295973780D /* VenmoAccountResponse.json */,
-				E8438A5AF96BD0809F4B8287 /* VenmoAccountMissingAccountId.json */,
-				E84381CE41DDB491C2F2B63D /* VenmoAccountWrongFormatAccountId.json */,
+				FDD2F4D02580B1D0008E4CFC /* TransferMethodUpdateConfigurationFieldsBankCardResponse.json */,
+				FDD2F4CE2580AFB0008E4CFC /* TransferMethodUpdateConfigurationFieldsPaypalResponse.json */,
+				FDF2E7A5257E06D600589076 /* TransferMethodUpdateConfigurationFieldsResponse.json */,
+				FD1208CB2581FE3200A8D8B2 /* TransferMethodUpdateConfigurationFieldsVenmoResponse.json */,
+				DB764E8F22782D890053BB91 /* UserBusinessResponse.json */,
+				DB3151CE22780AA300FC9F8E /* UserIndividualResponse.json */,
 				E8438B2F7AA2659EA914914B /* VenmoAccountList.json */,
+				E8438A5AF96BD0809F4B8287 /* VenmoAccountMissingAccountId.json */,
+				E843856BD0D7E5295973780D /* VenmoAccountResponse.json */,
+				E84381CE41DDB491C2F2B63D /* VenmoAccountWrongFormatAccountId.json */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -804,6 +808,7 @@
 				DB866F2A2261EE28003C41F6 /* README.md in Resources */,
 				DB866F292261EE28003C41F6 /* LICENSE in Resources */,
 				DB866F262261EE28003C41F6 /* Cartfile.resolved in Resources */,
+				DB2BBC2928B99806005AACE0 /* JWTTokenExpired.json in Resources */,
 				E8438CA7F43C3CB6FD545187 /* VenmoAccountResponse.json in Resources */,
 				E84382073237BBFB9B03C00C /* VenmoAccountMissingAccountId.json in Resources */,
 				E8438DB98656EB3F69DE0776 /* VenmoAccountWrongFormatAccountId.json in Resources */,
@@ -851,6 +856,7 @@
 				DBCA37AE225D6D1700CD4137 /* BankAccountIndividualResponse.json in Resources */,
 				644A69C122B0F7640058E77E /* WireAccountBusinessResponse.json in Resources */,
 				DBCA37B2225D6D1700CD4137 /* BankCardErrorResponseWithInvalidCardNumber.json in Resources */,
+				DB2BBC2A28B99806005AACE0 /* JWTTokenExpired.json in Resources */,
 				64278CB922C3C8EF00B8736B /* ListTransferResponse.json in Resources */,
 				641EBE9E2292E2B600D718F4 /* BankAccountBusinessResponse.json in Resources */,
 				DBCA37B1225D6D1700CD4137 /* TransferMethodConfigurationGraphQlResponse.json in Resources */,
@@ -1147,7 +1153,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TAG_VERSION = "1.0.0-beta16";
+				TAG_VERSION = "1.0.0-beta17";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1177,7 +1183,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
-				TAG_VERSION = "1.0.0-beta16";
+				TAG_VERSION = "1.0.0-beta17";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

@@ -1,5 +1,5 @@
 language: swift
-osx_image: xcode13.1
+osx_image: xcode13.4
 os: osx
 branches:
  only:
@@ -15,14 +15,14 @@ env:
   - IOS_FRAMEWORK_SCHEME="HyperwalletSDK"
 
   matrix:
-    - ios_version='15.0'  ios_device='iPhone 11' scheme="$IOS_FRAMEWORK_SCHEME"  platform='iOS Simulator'
+    - ios_version='15.5'  ios_device='iPhone 13' scheme="$IOS_FRAMEWORK_SCHEME"  platform='iOS Simulator'
 before_install:
   # Boot the emulator by ID
-  - |
-     ios_uid=$(xcrun xctrace list devices | grep Simulator | grep "$ios_device Simulator ($ios_version)*" | grep -o "[0-9A-F]\{8\}-[0-9A-F]\{4\}-[0-9A-F]\{4\}-[0-9A-F]\{4\}-[0-9A-F]\{12\}")
-     xcrun simctl boot $ios_uid
-  # List all emulator available
-  - xcrun simctl list
+  - xcrun xctrace list devices
+  - ios_uid=$(xcrun xctrace list devices | grep Simulator | grep "$ios_device Simulator ($ios_version) ([0-9A-F]\{8\}-[0-9A-F]\{4\}-[0-9A-F]\{4\}-[0-9A-F]\{4\}-[0-9A-F]\{12\})" | grep -o "[0-9A-F]\{8\}-[0-9A-F]\{4\}-[0-9A-F]\{4\}-[0-9A-F]\{4\}-[0-9A-F]\{12\}")
+  - echo $ios_uid
+  - xcrun simctl boot $ios_uid
+
   # Update the brew and build dependencies tools
   - brew update && brew upgrade carthage
   - carthage update --platform ios --cache-builds --use-xcframeworks --no-use-binaries

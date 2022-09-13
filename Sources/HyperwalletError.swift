@@ -106,9 +106,7 @@ public enum HyperwalletErrorType: Error, LocalizedError {
     public var group: HyperwalletErrorGroup {
         switch self {
         case .http(_, let httpCode):
-            return httpCode == 400
-                ? HyperwalletErrorGroup.business
-                : HyperwalletErrorGroup.unexpected
+            return mapErrorGroupFor(httpCode)
         case .parseError,
              .notInitialized,
              .invalidUrl,
@@ -170,6 +168,18 @@ public enum HyperwalletErrorType: Error, LocalizedError {
 
         default:
             return nil
+        }
+    }
+
+    /// Maps  Hyperwallet Error Group for HTTP Code
+    ///
+    /// - Parameter httpCode: the reponse HTTP code
+    /// - Returns the HyperwalletErrorGroup
+    private func mapErrorGroupFor(_ httpCode: Int) -> HyperwalletErrorGroup {
+        switch httpCode {
+        case 400: return HyperwalletErrorGroup.business
+        case 401: return HyperwalletErrorGroup.authentication
+        default: return HyperwalletErrorGroup.unexpected
         }
     }
 }
