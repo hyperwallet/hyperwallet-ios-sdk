@@ -94,7 +94,6 @@ class HyperwalletPrepaidCardBalanceTests: XCTestCase {
         }
     }
 
-    // swiftlint:disable empty_xctest_method
     override static var defaultTestSuite: XCTestSuite {
         let testSuite = XCTestSuite(name: String(describing: self))
         let testParameters = getTestParameters()
