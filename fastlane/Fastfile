@@ -13,6 +13,18 @@ lane :release_beta do
   pod_push(allow_warnings: true, skip_tests: true)
 end
 
+lane :unit_tests do
+  run_tests(
+    project: "HyperwalletSDK.xcodeproj",
+    devices: ['iPhone 13 Pro'],
+    derived_data_path: './output',
+    scheme: "HyperwalletSDK",
+    configuration: 'Debug',
+    code_coverage: true,
+    xcargs: 'ONLY_ACTIVE_ARCH=YES ENABLE_TESTABILITY=YES CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO'
+  )
+end
+
 def updateVersion(type)
   version = last_git_tag
   if type == "beta" then
