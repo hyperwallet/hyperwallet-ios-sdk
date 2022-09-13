@@ -19,9 +19,12 @@ jobs:
   tests:
     name: Tests
     strategy:
+      fail-fast: false
       matrix:
-        os: [macos-latest]
-        xcode_version: [13.2.1]
+        include:
+          - os: macos-12
+            xcode_version: 13.4
+            fastlane_task: unit_tests
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
@@ -31,35 +34,48 @@ jobs:
         with:
           xcode-version: '${{ matrix.xcode_version }}'
 
-      - name: Install dependencies
-        run: carthage update --platform ios --cache-builds --use-xcframeworks --no-use-binaries
+      - name: Carthage [Setup cache]
+        uses: actions/cache@v3
+        with:
+          path: Carthage
+          key: ${{ runner.os }}-carthage-${{ hashFiles('**/Cartfile.resolved') }}
+          restore-keys: |
+            ${{ runner.os }}-carthage-
 
-      - name: Install lint tool - swiftlint
-        # Force to update the Swiftlint to the last stable version
-        run: |
-          brew outdated swiftlint || brew upgrade swiftlint
-          swiftlint version
+      - name: Carthage [Install dependencies]
+        run: carthage bootstrap
+          --platform ios
+          --cache-builds
+          --use-xcframeworks
+          --no-use-binaries
 
-      - name: Run unit tests
-        run:
-          xcodebuild -enableCodeCoverage YES clean build test
-            -project HyperwalletSDK.xcodeproj
-            -scheme "HyperwalletSDK"
-            -derivedDataPath "./output"
-            -destination "platform=iOS Simulator,name=iPhone 13,OS=15.2"
-            -configuration Debug ONLY_ACTIVE_ARCH=YES ENABLE_TESTABILITY=YES CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+      - name: Run ${{ matrix.task_title }}
+        run: fastlane ${{ matrix.fastlane_task }}
 
       - name: Lint validation
         run:
-          # Lint - Add `--strict` to fail for warning and violation
           swiftlint lint --strict --reporter json
 
-      - name: Convert Test Coverage Resport to lcov formart
-        uses: maxep/xcodebuild-lcov-action@0.1.0
-        with:
-            derived-data-path: ./output
-            target: HyperwalletSDK.framework
-            output-file: ./coverage/lcov.info
+      - name: Code Coverage [Build report]
+        if: matrix.code_coverage
+        run: |
+          export PATH="/usr/local/opt/llvm/bin:$PATH"
+          llvm-cov report \
+          --use-color \
+          --instr-profile=$(find ./output -name "*.profdata") \
+          --object $(find ./output -name "HyperwalletSDK") \
+          -ignore-filename-regex="HyperwalletPrepaidCard.swift|/HyperwalletUser.swift"
+
+      - name: Code Coverage [Export report to lcov format]
+        if: matrix.code_coverage
+        run: |
+          export PATH="/usr/local/opt/llvm/bin:$PATH"
+          mkdir coverage
+          llvm-cov export \
+          --format=lcov > ./coverage/lcov.info \
+          --instr-profile=$(find ./output -name "*.profdata") \
+          --object $(find ./output -name "HyperwalletSDK") \
+          -ignore-filename-regex="HyperwalletPrepaidCard.swift|/HyperwalletUser.swift"
 
       - name: Post to Coveralls
         uses: coverallsapp/github-action@master
