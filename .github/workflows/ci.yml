@@ -57,7 +57,6 @@ jobs:
           swiftlint lint --strict --reporter json
 
       - name: Code Coverage [Build report]
-        if: matrix.code_coverage
         run: |
           export PATH="/usr/local/opt/llvm/bin:$PATH"
           llvm-cov report \
@@ -67,7 +66,6 @@ jobs:
           -ignore-filename-regex="HyperwalletPrepaidCard.swift|/HyperwalletUser.swift"
 
       - name: Code Coverage [Export report to lcov format]
-        if: matrix.code_coverage
         run: |
           export PATH="/usr/local/opt/llvm/bin:$PATH"
           mkdir coverage
