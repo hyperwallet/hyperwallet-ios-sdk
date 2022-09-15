@@ -25,6 +25,9 @@ jobs:
           - os: macos-12
             xcode_version: 13.4
             fastlane_task: unit_tests
+          - os: macos-12
+            xcode_version: 14.0
+            fastlane_task: unit_tests
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
@@ -38,16 +41,12 @@ jobs:
         uses: actions/cache@v3
         with:
           path: Carthage
-          key: ${{ runner.os }}-carthage-${{ hashFiles('**/Cartfile.resolved') }}
+          key: ${{ runner.os }}-carthage-${{ matrix.xcode_version }}-${{ hashFiles('**/Cartfile.resolved') }}
           restore-keys: |
-            ${{ runner.os }}-carthage-${{ hashFiles('**/Cartfile.resolved') }}
+            ${{ runner.os }}-carthage-${{ matrix.xcode_version }}-${{ hashFiles('**/Cartfile.resolved') }}
 
       - name: Carthage [Install dependencies]
-        run: carthage bootstrap
-          --platform ios
-          --cache-builds
-          --use-xcframeworks
-          --no-use-binaries
+          run: carthage bootstrap --platform ios --cache-builds --use-xcframeworks --no-use-binaries
 
       - name: Run ${{ matrix.task_title }}
         run: fastlane ${{ matrix.fastlane_task }}
