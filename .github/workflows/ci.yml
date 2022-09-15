@@ -46,7 +46,12 @@ jobs:
             ${{ runner.os }}-carthage-${{ matrix.xcode_version }}-${{ hashFiles('**/Cartfile.resolved') }}
 
       - name: Carthage [Install dependencies]
-          run: carthage bootstrap --platform ios --cache-builds --use-xcframeworks --no-use-binaries
+          run: |
+          carthage bootstrap \
+            --platform ios \
+            --cache-builds \
+            --use-xcframeworks \
+            --no-use-binaries
 
       - name: Run ${{ matrix.task_title }}
         run: fastlane ${{ matrix.fastlane_task }}
