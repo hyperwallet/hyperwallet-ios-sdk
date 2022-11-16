@@ -35,6 +35,6 @@ jobs:
         env:
           REPO: self
           BRANCH: gh-pages
-          FOLDER: target/site/apidocs
+          FOLDER: docs
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           MESSAGE: "Documentation updated"
