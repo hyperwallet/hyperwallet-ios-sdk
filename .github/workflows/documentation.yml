@@ -17,12 +17,9 @@ jobs:
   documentation:
     name: Documentation
     strategy:
-      fail-fast: false
       matrix:
         include:
           - os: macos-12
-            xcode_version: 13.4
-            fastlane_task: unit_tests
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
@@ -31,10 +28,20 @@ jobs:
         run: make docs
 
       - name: Push
-        uses: s0/git-publish-subdir-action@develop
-        env:
-          REPO: self
-          BRANCH: gh-pages
-          FOLDER: docs
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          MESSAGE: "Documentation updated"
+        run: |
+          mkdir ../gh-pages
+          cp -r docs/* ../gh-pages/
+          cd ../gh-pages
+
+          git config --global user.email "ci-hyperwallet@paypal.com"
+          git config --global user.name "ci-hyperwallet"
+
+          # Add branch
+          git init
+          git remote add origin https://x-access-token:${env.GITHUB_TOKEN}@github.com/hyperwallet/hyperwallet-ios-sdk.git > /dev/null
+
+          git checkout -B gh-pages
+          git add -A .
+          git commit -m "Documentation updated"
+
+          git push origin gh-pages
