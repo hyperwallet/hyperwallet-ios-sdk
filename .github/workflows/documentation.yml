@@ -27,21 +27,8 @@ jobs:
       - name: Generate documentation
         run: make docs
 
-      - name: Push
-        run: |
-          mkdir ../gh-pages
-          cp -r docs/* ../gh-pages/
-          cd ../gh-pages
-
-          git config --global user.email "ci-hyperwallet@paypal.com"
-          git config --global user.name "ci-hyperwallet"
-
-          # Add branch
-          git init
-          git remote add origin https://x-access-token:${env.GITHUB_TOKEN}@github.com/hyperwallet/hyperwallet-ios-sdk.git > /dev/null
-
-          git checkout -B gh-pages
-          git add -A .
-          git commit -m "Documentation updated"
-
-          git push origin gh-pages
+      - name: Publish on GitHub Pages
+        uses: ftnext/action-push-ghpages@v1.0.0
+        with:
+          build_dir: docs
+          github_token: ${{ secrets.GITHUB_TOKEN }}
