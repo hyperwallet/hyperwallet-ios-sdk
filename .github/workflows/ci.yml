@@ -58,6 +58,7 @@ jobs:
 
       - name: Code Coverage [Build report]
         run: |
+          brew install llvm
           ls $(brew --prefix llvm)/bin
           export PATH="$(brew --prefix llvm)/bin:$PATH"
           llvm-cov report \
