@@ -58,7 +58,8 @@ jobs:
 
       - name: Code Coverage [Build report]
         run: |
-          ls /usr/local/opt/llvm
+          echo $(brew --prefix llvm)
+          export PATH="$(brew --prefix llvm)/bin:$PATH"
           llvm-cov report \
           --use-color \
           --instr-profile=$(find ./output -name "*.profdata") \
