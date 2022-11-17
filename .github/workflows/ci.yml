@@ -10,7 +10,7 @@ on:
       - bugfix/**
 
 jobs:
-  tests:
+  test:
     name: Tests ${{ matrix.os }} - ${{ matrix.xcode_version }} - ${{ matrix.fastlane_task }}
     strategy:
       fail-fast: false
