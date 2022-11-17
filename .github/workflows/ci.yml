@@ -43,10 +43,10 @@ jobs:
             ${{ runner.os }}-carthage-${{ hashFiles('**/Cartfile.resolved') }}
 
       - name: Carthage [Install dependencies]
-        run: carthage bootstrap  \
-          --platform ios  \
-          --cache-builds  \
-          --use-xcframeworks  \
+        run: carthage bootstrap
+          --platform ios
+          --cache-builds
+          --use-xcframeworks
           --no-use-binaries
 
       - name: Run ${{ matrix.task_title }}
