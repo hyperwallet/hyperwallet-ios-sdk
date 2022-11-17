@@ -8,16 +8,10 @@ on:
       - support/SDK-V3
       - feature/**
       - bugfix/**
-  pull_request:
-    branches:
-      - master
-      - support/SDK-V3
-      - feature/**
-      - bugfix/**
 
 jobs:
   tests:
-    name: Tests
+    name: Tests ${{ matrix.os }} - ${{ matrix.xcode_version }} - ${{ matrix.fastlane_task }}
     strategy:
       fail-fast: false
       matrix:
@@ -56,10 +50,22 @@ jobs:
         run:
           swiftlint lint --strict --reporter json
 
+  code-coverage:
+    needs: [ test ]
+    name: Report code coverage - ${{ matrix.os }} - ${{ matrix.xcode_version }} - ${{ matrix.fastlane_task }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: macos-12
+            xcode_version: 13.4
+            fastlane_task: unit_tests
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v3
       - name: Code Coverage [Build report]
         run: |
           brew install llvm
-          ls $(brew --prefix llvm)/bin
           export PATH="$(brew --prefix llvm)/bin:$PATH"
           llvm-cov report \
           --use-color \
