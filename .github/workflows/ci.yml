@@ -58,7 +58,7 @@ jobs:
 
       - name: Code Coverage [Build report]
         run: |
-          echo $(brew --prefix llvm)
+          ls $(brew --prefix llvm)/bin
           export PATH="$(brew --prefix llvm)/bin:$PATH"
           llvm-cov report \
           --use-color \
