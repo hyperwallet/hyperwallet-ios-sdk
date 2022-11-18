@@ -1,4 +1,4 @@
-name: Core SDK CI
+name: iOS Core SDK CI
 
 on:
   workflow_dispatch:
@@ -11,7 +11,7 @@ on:
 
 jobs:
   test:
-    name: Test ${{ matrix.os }} - ${{ matrix.xcode_version }} - ${{ matrix.fastlane_task }}
+    name: Test - ${{ matrix.os }} - ${{ matrix.xcode_version }} - ${{ matrix.fastlane_task }}
     strategy:
       fail-fast: false
       matrix:
