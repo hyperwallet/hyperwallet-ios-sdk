@@ -62,7 +62,7 @@ jobs:
 
       - name: Code Coverage [Export report to lcov format]
         run: |
-          export PATH="/usr/local/opt/llvm/bin:$PATH"
+          export PATH="$(brew --prefix llvm)/bin:$PATH"
           mkdir coverage
           llvm-cov export \
           --format=lcov > ./coverage/lcov.info \
