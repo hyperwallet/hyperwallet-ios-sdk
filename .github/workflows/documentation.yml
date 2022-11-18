@@ -5,6 +5,9 @@ on:
   push:
     branches:
       - master
+      - support/SDK-V3
+      - feature/**
+      - bugfix/**
 
 jobs:
   documentation:
