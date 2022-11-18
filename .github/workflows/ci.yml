@@ -19,6 +19,7 @@ jobs:
           - os: macos-12
             xcode_version: 13.4
             fastlane_task: unit_tests
+
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
