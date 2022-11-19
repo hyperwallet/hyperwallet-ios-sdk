@@ -1,0 +1,35 @@
+name: Update Documentation
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+
+jobs:
+  documentation:
+    name: Documentation
+    strategy:
+      matrix:
+        include:
+          - os: macos-12
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Generate documentation
+        run: |
+          jazzy \
+            --min-acl public \
+            --no-hide-documentation-coverage \
+            --theme fullwidth \
+            --title HyperwalletSDK \
+            --module HyperwalletSDK \
+            --output ./docs \
+            --documentation=./*.md
+
+      - name: Publish on GitHub Pages
+        uses: ftnext/action-push-ghpages@v1.0.0
+        with:
+          build_dir: docs
+          github_token: ${{ secrets.GITHUB_TOKEN }}

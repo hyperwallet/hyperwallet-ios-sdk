@@ -93,7 +93,7 @@ class HyperwalletPrepaidCardBalanceTests: XCTestCase {
             XCTAssertNil(prepaidCardBalanceList, "The `prepaidCardBalanceList` should be nil")
         }
     }
-    
+
     override static var defaultTestSuite: XCTestSuite {
         let testSuite = XCTestSuite(name: String(describing: self))
         let testParameters = getTestParameters()

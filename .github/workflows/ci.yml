@@ -1,4 +1,4 @@
-name: Core SDK CI
+name: iOS Core SDK CI
 
 on:
   workflow_dispatch:
@@ -8,16 +8,10 @@ on:
       - support/SDK-V3
       - feature/**
       - bugfix/**
-  pull_request:
-    branches:
-      - master
-      - support/SDK-V3
-      - feature/**
-      - bugfix/**
 
 jobs:
-  tests:
-    name: Tests
+  test:
+    name: Test - ${{ matrix.os }} - ${{ matrix.xcode_version }} - ${{ matrix.fastlane_task }}
     strategy:
       fail-fast: false
       matrix:
@@ -25,6 +19,7 @@ jobs:
           - os: macos-12
             xcode_version: 13.4
             fastlane_task: unit_tests
+
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
@@ -58,7 +53,8 @@ jobs:
 
       - name: Code Coverage [Build report]
         run: |
-          export PATH="/usr/local/opt/llvm/bin:$PATH"
+          brew install llvm
+          export PATH="$(brew --prefix llvm)/bin:$PATH"
           llvm-cov report \
           --use-color \
           --instr-profile=$(find ./output -name "*.profdata") \
@@ -67,7 +63,7 @@ jobs:
 
       - name: Code Coverage [Export report to lcov format]
         run: |
-          export PATH="/usr/local/opt/llvm/bin:$PATH"
+          export PATH="$(brew --prefix llvm)/bin:$PATH"
           mkdir coverage
           llvm-cov export \
           --format=lcov > ./coverage/lcov.info \
