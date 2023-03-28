@@ -40,7 +40,6 @@ class HyperwalletPrepaidCardTests: XCTestCase {
         XCTAssertEqual(prepaidCardResponse?.type, HyperwalletTransferMethod.TransferMethodType.prepaidCard.rawValue)
     }
 
-    // swiftlint:disable function_body_length
     func testListPrepaidCards_success() {
         // Given
         let expectation = self.expectation(description: "List prepaid cards completed")

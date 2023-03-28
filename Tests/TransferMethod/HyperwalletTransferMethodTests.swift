@@ -121,3 +121,4 @@ class HyperwalletTransferMethodTests: XCTestCase {
         XCTAssertNil(transferMethods, "The `transferMethods` should be nil")
     }
 }
+// swiftlint:enable function_body_length

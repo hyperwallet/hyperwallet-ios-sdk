@@ -2,6 +2,7 @@ import Hippolyte
 @testable import HyperwalletSDK
 import XCTest
 
+// swiftlint:disable function_body_length
 class HyperwalletReceiptTests: XCTestCase {
     override func setUp() {
         Hyperwallet.setup(HyperwalletTestHelper.authenticationProvider)
@@ -13,7 +14,6 @@ class HyperwalletReceiptTests: XCTestCase {
         }
     }
 
-    // swiftlint:disable function_body_length
     func testListUserReceipts_success() {
         // Given
         let expectation = self.expectation(description: "List User Receipts completed")
@@ -153,3 +153,4 @@ class HyperwalletReceiptTests: XCTestCase {
         }
     }
 }
+// swiftlint:enable function_body_length

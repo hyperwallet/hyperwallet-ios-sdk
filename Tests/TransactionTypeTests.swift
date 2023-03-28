@@ -81,6 +81,7 @@ class TransactionTypeTests: XCTestCase {
                            "INVALID_URL")
         }
     }
+    // swiftlint:enable force_cast
 
     private func assertCreateRestRequestSucceeded(transactionType: TransactionType,
                                                   httpMethod: HTTPMethod,

@@ -93,6 +93,16 @@ class HyperwalletBalanceTests: XCTestCase {
         }
     }
 
+    override static var defaultTestSuite: XCTestSuite {
+        let testSuite = XCTestSuite(name: String(describing: self))
+        let testParameters = getTestParameters()
+
+        for testCaseParameters in testParameters {
+            addTest(with: testCaseParameters, toTestSuite: testSuite)
+        }
+        return testSuite
+    }
+
     private static func addTest(with testCaseParameters: [String?],
                                 toTestSuite testSuite: XCTestSuite) {
         testInvocations.forEach { invocation in

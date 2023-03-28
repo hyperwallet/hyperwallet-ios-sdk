@@ -61,7 +61,6 @@ class HTTPTransactionTests: XCTestCase {
         XCTAssertNotNil(configuration.authorization, "The authorization has not been initialized")
     }
 
-    // swiftlint:disable function_body_length
     func testPerformRest_successURLRequest() {
         // Given
         let queryParam = HyperwalletBankAccountQueryParam()
