@@ -2,7 +2,7 @@ import Hippolyte
 @testable import HyperwalletSDK
 import XCTest
 
-// swiftlint:disable multiline_arguments
+// swiftlint:disable multiline_arguments function_body_length
 class HyperwalletTransferMethodConfigurationTests: XCTestCase {
     override func setUp() {
         Hyperwallet.setup(HyperwalletTestHelper.authenticationProvider)
@@ -14,7 +14,6 @@ class HyperwalletTransferMethodConfigurationTests: XCTestCase {
         }
     }
 
-    // swiftlint:disable function_body_length
     func testRetrieveTransferMethodConfigurationKeys_success() {
         // Given
         let request = setUpTransferMethodConfigurationRequest("TransferMethodConfigurationKeysResponse")
@@ -219,3 +218,4 @@ class HyperwalletTransferMethodConfigurationTests: XCTestCase {
                                                                                                 error: error))
     }
 }
+// swiftlint:enable multiline_arguments function_body_length

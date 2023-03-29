@@ -103,3 +103,4 @@ class TransferMethodConfigurationFieldResultTests: XCTestCase {
         return graphQlResult.data
     }
 }
+// swiftlint:enable force_try

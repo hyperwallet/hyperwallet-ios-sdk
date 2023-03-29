@@ -83,3 +83,4 @@ class AnyCodableTests: XCTestCase {
         XCTAssertNotNil(result[4].value as! String, "") // null
     }
 }
+// swiftlint:enable force_cast force_try

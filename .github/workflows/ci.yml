@@ -17,7 +17,7 @@ jobs:
       matrix:
         include:
           - os: macos-12
-            xcode_version: 13.4
+            xcode_version: 14.2
             fastlane_task: unit_tests
 
     runs-on: ${{ matrix.os }}

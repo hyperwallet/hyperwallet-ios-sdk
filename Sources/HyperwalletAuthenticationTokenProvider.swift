@@ -23,7 +23,8 @@ import Foundation
 /// to authenticate the User to the Hyperwallet platform.
 ///
 /// Implementations of `HyperwalletAuthenticationTokenProvider` are expected to be non-blocking and thread safe.
-@objc public protocol HyperwalletAuthenticationTokenProvider {
+@objc
+public protocol HyperwalletAuthenticationTokenProvider {
     /// A callback interface to handle the submission of an authentication token or an error message in case of failure.
     ///
     /// The authentication token is a JSON web token that contains as part of its claim set the principal that will

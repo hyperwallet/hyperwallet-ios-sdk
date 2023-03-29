@@ -34,3 +34,4 @@ class HyperwalletTransferMethodConfigurationFeeAndProcessingTimeQueryTests: XCTe
         XCTAssertNotEqual(usUsdFieldQuery.hashValue, usCadQuery.hashValue)
     }
 }
+// swiftlint:enable type_name

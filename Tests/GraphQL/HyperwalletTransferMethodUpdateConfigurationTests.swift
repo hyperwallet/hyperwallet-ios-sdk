@@ -20,6 +20,7 @@ import Hippolyte
 @testable import HyperwalletSDK
 import XCTest
 
+// swiftlint:disable function_body_length
 class HyperwalletTransferMethodUpdateConfigurationTests: XCTestCase {
     override func setUp() {
         Hyperwallet.setup(HyperwalletTestHelper.authenticationProvider)
@@ -31,7 +32,6 @@ class HyperwalletTransferMethodUpdateConfigurationTests: XCTestCase {
         }
     }
 
-    // swiftlint:disable function_body_length
     func testRetrieveTransferMethodUpdateConfigurationFields_bankAccount() {
         // Given
         let request = setUpTransferMethodUpdateConfigurationRequest("TransferMethodUpdateConfigurationFieldsResponse")
@@ -279,3 +279,4 @@ class HyperwalletTransferMethodUpdateConfigurationTests: XCTestCase {
                                                                                                 error: error))
     }
 }
+// swiftlint:enable function_body_length

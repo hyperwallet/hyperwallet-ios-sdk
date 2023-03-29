@@ -13,7 +13,6 @@ class HyperwalletUserTests: XCTestCase {
         }
     }
 
-    // swiftlint:disable function_body_length
     func testGetUser_individualSuccess() {
         // Given
         let expectation = self.expectation(description: "Get HyperwalletUser completed")
