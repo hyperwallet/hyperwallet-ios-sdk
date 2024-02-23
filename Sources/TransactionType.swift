@@ -70,7 +70,7 @@ internal enum TransactionType {
         var request = URLRequest(url: url)
         request.addValue("Bearer " + configuration.authorization, forHTTPHeaderField: "Authorization")
         request.httpMethod = method.rawValue
-        if httpBody != nil, (method == .post || method == .put) {
+        if httpBody != nil, method == .post || method == .put {
             let encoder = JSONEncoder()
             let data = try? encoder.encode(httpBody)
             request.httpBody = data
