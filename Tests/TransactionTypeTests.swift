@@ -65,7 +65,7 @@ class TransactionTypeTests: XCTestCase {
                                           clientToken: "",
                                           expiresOn: 10,
                                           graphQlUrl: "",
-                                          restUrl: "localhost/",
+                                          restUrl: "",
                                           environment: "",
                                           insightsUrl: "",
                                           issuer: "",
@@ -75,7 +75,7 @@ class TransactionTypeTests: XCTestCase {
 
         XCTAssertThrowsError(try transactionType.createRequest(configuration,
                                                                method: .post,
-                                                               urlPath: "?$filter=owners/ref eq 'test'",
+                                                               urlPath: "",
                                                                httpBody: "")) { error in
             XCTAssertEqual((error as! HyperwalletErrorType).getHyperwalletErrors()?.errorList?.first?.code,
                            "INVALID_URL")

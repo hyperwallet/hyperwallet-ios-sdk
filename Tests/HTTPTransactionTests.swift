@@ -357,7 +357,7 @@ class HTTPTransactionTests: XCTestCase {
 
     func testPerformRest_invalidRestUrl_invalidRequest() {
         // Given
-        let authorizationTokenMock = AuthenticationTokenGeneratorMock(restUrl: "Invalid url", graphQlUrl: "Invalid url")
+        let authorizationTokenMock = AuthenticationTokenGeneratorMock(restUrl: "", graphQlUrl: "Invalid url")
         buildInvalidTransaction(authorizationTokenMock.token)
         var response: [String: String]?
         var hyperwalletError: HyperwalletErrorType?
