@@ -1,5 +1,10 @@
 Changelog
 =========
+[1.0.0-beta19](https://github.com/hyperwallet/hyperwallet-ios-sdk/releases/tag/1.0.0-beta17)
+ -------------------
+ - Updated ci to xcode version 15
+ - Add privacy manifest
+
 [1.0.0-beta17](https://github.com/hyperwallet/hyperwallet-ios-sdk/releases/tag/1.0.0-beta17)
  -------------------
  - Handle HTTP 401
