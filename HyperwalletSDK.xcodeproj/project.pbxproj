@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -62,6 +62,7 @@
 		B327ED8923C691880007EF58 /* ListUserBalancesResponseWithCurrencyFilter.json in Resources */ = {isa = PBXBuildFile; fileRef = B327ED8823C691880007EF58 /* ListUserBalancesResponseWithCurrencyFilter.json */; };
 		B327ED8B23C6A5C70007EF58 /* ListUserBalancesResponseSuccess.json in Resources */ = {isa = PBXBuildFile; fileRef = B327ED8A23C6A5C60007EF58 /* ListUserBalancesResponseSuccess.json */; };
 		B327ED8D23C6B43E0007EF58 /* ListUserBalancesResponseSortCurrencyDesc.json in Resources */ = {isa = PBXBuildFile; fileRef = B327ED8C23C6B43E0007EF58 /* ListUserBalancesResponseSortCurrencyDesc.json */; };
+		B4E1984D2B8D4CF5003FBDDE /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = B4E1984C2B8D4CF5003FBDDE /* PrivacyInfo.xcprivacy */; };
 		DB0AFDF32277725600ABEFFD /* HyperwalletUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0AFDF22277725600ABEFFD /* HyperwalletUser.swift */; };
 		DB0AFDF62277869500ABEFFD /* HyperwalletUserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0AFDF42277868E00ABEFFD /* HyperwalletUserTests.swift */; };
 		DB1A03D7225D3DD80080C8D6 /* AnyCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1A03CA225D3DD80080C8D6 /* AnyCodable.swift */; };
@@ -220,6 +221,7 @@
 		B327ED8823C691880007EF58 /* ListUserBalancesResponseWithCurrencyFilter.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ListUserBalancesResponseWithCurrencyFilter.json; sourceTree = "<group>"; };
 		B327ED8A23C6A5C60007EF58 /* ListUserBalancesResponseSuccess.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ListUserBalancesResponseSuccess.json; sourceTree = "<group>"; };
 		B327ED8C23C6B43E0007EF58 /* ListUserBalancesResponseSortCurrencyDesc.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ListUserBalancesResponseSortCurrencyDesc.json; sourceTree = "<group>"; };
+		B4E1984C2B8D4CF5003FBDDE /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		DB0AFDF22277725600ABEFFD /* HyperwalletUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperwalletUser.swift; sourceTree = "<group>"; };
 		DB0AFDF42277868E00ABEFFD /* HyperwalletUserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperwalletUserTests.swift; sourceTree = "<group>"; };
 		DB1A03CA225D3DD80080C8D6 /* AnyCodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyCodable.swift; sourceTree = "<group>"; };
@@ -431,6 +433,7 @@
 				DB1A03D5225D3DD80080C8D6 /* HyperwalletError.swift */,
 				DB1A03CB225D3DD80080C8D6 /* TransactionType.swift */,
 				98101DBE2238A2F000BA04CA /* Info.plist */,
+				B4E1984C2B8D4CF5003FBDDE /* PrivacyInfo.xcprivacy */,
 				DB2A3B082261D2DC0049F891 /* HyperwalletSDK.h */,
 			);
 			path = Sources;
@@ -803,6 +806,7 @@
 				DB866F272261EE28003C41F6 /* HyperwalletSDK.podspec in Resources */,
 				FDF2E7A6257E06D600589076 /* TransferMethodUpdateConfigurationFieldsResponse.json in Resources */,
 				980C15DB2273BF91004C60D6 /* CHANGELOG.md in Resources */,
+				B4E1984D2B8D4CF5003FBDDE /* PrivacyInfo.xcprivacy in Resources */,
 				DB866F282261EE28003C41F6 /* Cartfile.private in Resources */,
 				DB866F2A2261EE28003C41F6 /* README.md in Resources */,
 				DB866F292261EE28003C41F6 /* LICENSE in Resources */,
