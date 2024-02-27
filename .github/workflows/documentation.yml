@@ -16,9 +16,10 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
+      
       - name: Install Jazz
         run: gem install jazzy
-        
+      
       - name: Generate documentation
         run: |
           jazzy \
