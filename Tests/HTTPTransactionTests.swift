@@ -33,7 +33,7 @@ class HTTPTransactionTests: XCTestCase {
         // Given
         var hasRequestTransactionPerformed = false
         // When - an API call request is made
-        let completionHandler = {(_: [String: String]?, _: HyperwalletErrorType?) -> Void in
+        let completionHandler = {(_: [String: String]?, _: HyperwalletErrorType?) in
             hasRequestTransactionPerformed = true
         }
         transaction.performRest(httpMethod: .get,
@@ -70,7 +70,7 @@ class HTTPTransactionTests: XCTestCase {
         var queryParamsDictionary: [String: String]?
         var urlValueComponents: URLComponents?
         // When
-        let completionHandler = { (_: [String: String]?, _: HyperwalletErrorType?) -> Void in }
+        let completionHandler = { (_: [String: String]?, _: HyperwalletErrorType?) in }
         transaction.performRest(httpMethod: .get,
                                 urlPath: "users/%@/bank-accounts",
                                 payload: "",
@@ -121,7 +121,7 @@ class HTTPTransactionTests: XCTestCase {
                                                                        transferMethodType: "BANK_ACCOUNT",
                                                                        profile: "INDIVIDUAL")
         // When - an API call request is made
-        let completionHandler = { (_: [String: String]?, _: HyperwalletErrorType?) -> Void in }
+        let completionHandler = { (_: [String: String]?, _: HyperwalletErrorType?) in }
 
         transaction.performGraphQl(request, completionHandler: completionHandler)
 
@@ -160,8 +160,7 @@ class HTTPTransactionTests: XCTestCase {
                                                                        transferMethodType: "BANK_ACCOUNT",
                                                                        profile: "INDIVIDUAL")
         // When - an API call request is made
-        let handler = { (data: Connection<HyperwalletTransferMethodConfiguration>?, error: HyperwalletErrorType?)
-            -> Void in
+        let handler = { (data: Connection<HyperwalletTransferMethodConfiguration>?, error: HyperwalletErrorType?)in
             response = data
             hyperwalletError = error
         }
@@ -193,8 +192,7 @@ class HTTPTransactionTests: XCTestCase {
                                                                        transferMethodType: "BANK_ACCOUNT",
                                                                        profile: "INDIVIDUAL")
         // When - an API call request is made
-        let handler = { (data: Connection<HyperwalletTransferMethodConfiguration>?, error: HyperwalletErrorType?)
-                        -> Void in
+        let handler = { (data: Connection<HyperwalletTransferMethodConfiguration>?, error: HyperwalletErrorType?)in
             response = data
             hyperwalletError = error
         }
@@ -224,8 +222,7 @@ class HTTPTransactionTests: XCTestCase {
                                                      headerFields: ["Content-type": "application/json"])
 
         // When - an API call request is made
-        let handler = { (data: Connection<HyperwalletTransferMethodConfiguration>?, error: HyperwalletErrorType?)
-                        -> Void in
+        let handler = { (data: Connection<HyperwalletTransferMethodConfiguration>?, error: HyperwalletErrorType?)in
             response = data
             hyperwalletError = error
         }
@@ -258,8 +255,7 @@ class HTTPTransactionTests: XCTestCase {
                                                      headerFields: ["Content-type": "application/json"])
 
         // When - an API call request is made
-        let handler = { (data: Connection<HyperwalletTransferMethodConfiguration>?, error: HyperwalletErrorType?)
-                        -> Void in
+        let handler = { (data: Connection<HyperwalletTransferMethodConfiguration>?, error: HyperwalletErrorType?)in
             response = data
             hyperwalletError = error
         }
@@ -286,7 +282,7 @@ class HTTPTransactionTests: XCTestCase {
                                                      headerFields: ["Content-type": "application/json"])
 
         // When - an API call request is made
-        let completionHandler = { (data: [String: String]?, error: HyperwalletErrorType?) -> Void in
+        let completionHandler = { (data: [String: String]?, error: HyperwalletErrorType?) in
             response = data
             hyperwalletError = error
         }
@@ -316,7 +312,7 @@ class HTTPTransactionTests: XCTestCase {
                                                      headerFields: ["Content-type": "application/json"])
 
         // When - an API call request is made
-        let completionHandler = { (data: [String: String]?, error: HyperwalletErrorType?) -> Void in
+        let completionHandler = { (data: [String: String]?, error: HyperwalletErrorType?) in
             response = data
             hyperwalletError = error
         }
@@ -343,7 +339,7 @@ class HTTPTransactionTests: XCTestCase {
                                                      headerFields: ["": ""])
 
         // When - an API call request is made
-        let completionHandler = { (data: [String: String]?, error: HyperwalletErrorType?) -> Void in
+        let completionHandler = { (data: [String: String]?, error: HyperwalletErrorType?) in
             response = data
             hyperwalletError = error
         }
@@ -364,7 +360,7 @@ class HTTPTransactionTests: XCTestCase {
         let expectation = XCTestExpectation(description: "Wait for async operation completion")
 
         // When
-        let completionHandler = {(data: [String: String]?, error: HyperwalletErrorType?) -> Void in
+        let completionHandler = {(data: [String: String]?, error: HyperwalletErrorType?) in
             response = data
             hyperwalletError = error
             expectation.fulfill()
@@ -400,7 +396,7 @@ class HTTPTransactionTests: XCTestCase {
         var errorType: HyperwalletErrorType?
 
         // When
-        let completionHandler = {(data: [String: String]?, error: HyperwalletErrorType?) -> Void in
+        let completionHandler = {(data: [String: String]?, error: HyperwalletErrorType?) in
             response = data
             errorType = error
         }
@@ -424,7 +420,7 @@ class HTTPTransactionTests: XCTestCase {
         var hyperwalletError: HyperwalletErrorType?
 
         // When
-        let completionHandler = {(data: [String: String]?, error: HyperwalletErrorType?) -> Void in
+        let completionHandler = {(data: [String: String]?, error: HyperwalletErrorType?) in
             response = data
             hyperwalletError = error
         }
@@ -462,7 +458,7 @@ class HTTPTransactionTests: XCTestCase {
         var errorType: HyperwalletErrorType?
 
         // When
-        let completionHandler = {(data: [String: String]?, error: HyperwalletErrorType?) -> Void in
+        let completionHandler = {(data: [String: String]?, error: HyperwalletErrorType?) in
             response = data
             errorType = error
         }
@@ -490,7 +486,7 @@ class HTTPTransactionTests: XCTestCase {
                                           textEncodingName: "")
 
         // When
-        let completionHandler = {(data: [String: String]?, error: HyperwalletErrorType?) -> Void in
+        let completionHandler = {(data: [String: String]?, error: HyperwalletErrorType?) in
             response = data
             errorType = error
         }
@@ -518,7 +514,7 @@ class HTTPTransactionTests: XCTestCase {
                                           headerFields: ["Content-type": "application/json"])
 
         // When
-        let completionHandler = {(data: [String: String]?, error: HyperwalletErrorType?) -> Void in
+        let completionHandler = {(data: [String: String]?, error: HyperwalletErrorType?) in
             response = data
             errorType = error
         }
@@ -543,7 +539,7 @@ class HTTPTransactionTests: XCTestCase {
                                           headerFields: ["Content-type": "text/html"])
 
         // When
-        let completionHandler = {(data: [String: String]?, error: HyperwalletErrorType?) -> Void in
+        let completionHandler = {(data: [String: String]?, error: HyperwalletErrorType?) in
             response = data
             errorType = error
         }
@@ -570,7 +566,7 @@ class HTTPTransactionTests: XCTestCase {
         let data = HyperwalletTestHelper.getDataFromJson("BankCardErrorResponseWithInvalidCardNumber")
 
         // When
-        let completionHandler = {(data: [String: String]?, error: HyperwalletErrorType?) -> Void in
+        let completionHandler = {(data: [String: String]?, error: HyperwalletErrorType?) in
             response = data
             errorType = error
         }
@@ -600,7 +596,7 @@ class HTTPTransactionTests: XCTestCase {
         let data = HyperwalletTestHelper.getDataFromJson("JWTTokenExpired")
 
         // When
-        let completionHandler = {(data: [String: String]?, error: HyperwalletErrorType?) -> Void in
+        let completionHandler = {(data: [String: String]?, error: HyperwalletErrorType?) in
             response = data
             errorType = error
         }
@@ -629,7 +625,7 @@ class HTTPTransactionTests: XCTestCase {
                                           headerFields: ["Content-type": "application/json"])
 
         // When
-        let completionHandler = {(data: [String: String]?, error: HyperwalletErrorType?) -> Void in
+        let completionHandler = {(data: [String: String]?, error: HyperwalletErrorType?) in
             response = data
             errorType = error
         }
@@ -648,7 +644,7 @@ class HTTPTransactionTests: XCTestCase {
     func testRequestHandler_httpCodeSuccessWithJSONFormatPayload_parseData() {
         var response: [String: String]?
         var errorType: HyperwalletErrorType?
-        let completionHandler = {(data: [String: String]?, error: HyperwalletErrorType?) -> Void in
+        let completionHandler = {(data: [String: String]?, error: HyperwalletErrorType?) in
             response = data
             errorType = error
         }
@@ -665,7 +661,7 @@ class HTTPTransactionTests: XCTestCase {
         var response: [String]?
         var errorType: HyperwalletErrorType?
 
-        let completionHandler = {(data: [String]?, error: HyperwalletErrorType?) -> Void in
+        let completionHandler = {(data: [String]?, error: HyperwalletErrorType?) in
             response = data
             errorType = error
         }
@@ -683,7 +679,7 @@ class HTTPTransactionTests: XCTestCase {
         var errorType: HyperwalletErrorType?
 
         // When
-        let completionHandler = {(data: [String: String]?, error: HyperwalletErrorType?) -> Void in
+        let completionHandler = {(data: [String: String]?, error: HyperwalletErrorType?) in
             response = data
             errorType = error
         }
