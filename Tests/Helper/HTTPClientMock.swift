@@ -4,7 +4,7 @@ import Foundation
 class HTTPClientMock: HTTPClientProtocol {
     var hasPerformed = false
     var request: URLRequest?
-    var data: Data? = "{}".data(using: .utf8)
+    var data: Data? = Data("{}".utf8)
     var urlResponse: URLResponse?
     var error: Error?
 
@@ -12,7 +12,7 @@ class HTTPClientMock: HTTPClientProtocol {
     func reset() {
         hasPerformed = false
         request = nil
-        data = "{}".data(using: .utf8)
+        data = Data("{}".utf8)
         urlResponse = nil
         error = nil
     }

@@ -72,7 +72,7 @@ public class AuthenticationTokenProvider: HyperwalletAuthenticationTokenProvider
         let task = defaultSession.dataTask(with: request) {(data, response, error) in
             DispatchQueue.main.async {
                     guard let data = data,
-                        let clientToken = String(data: data, encoding: .utf8),
+                        let clientToken = String(decoding: data, as: UTF8.self),
                         let response = response as? HTTPURLResponse else {
                             completionHandler(nil, HyperwalletAuthenticationErrorType.unexpected(error?.localizedDescription ??
                                 "authentication token cannot be retrieved"))
