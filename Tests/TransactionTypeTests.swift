@@ -116,9 +116,9 @@ class TransactionTypeTests: XCTestCase {
             if httpMethod == .get {
                 XCTAssertNil(urlRequest.httpBody, "The HTTP body should be nil")
             } else {
-                let httpBody = String(data: urlRequest.httpBody!, as: UTF8.self)
+                let httpBody = String(decoding: urlRequest.httpBody!, as: UTF8.self)
                 let payloadData = try JSONEncoder().encode(payload)
-                let payloadString = String(data: payloadData, as: UTF8.self)
+                let payloadString = String(decoding: payloadData, as: UTF8.self)
                 XCTAssertEqual(httpBody, payloadString, "The HTTP body should be equals to payload")
             }
 
@@ -165,7 +165,7 @@ class TransactionTypeTests: XCTestCase {
             if httpMethod == .get {
                 XCTAssertNil(urlRequest.httpBody, "The HTTP body should be nil")
             } else {
-                let query = String(data: urlRequest.httpBody!, as: UTF8.self)
+                let query = String(decoding: urlRequest.httpBody!, as: UTF8.self)
                 let payloadString = payload.toGraphQl(userToken: configuration.userToken)
                 XCTAssertEqual(query, payloadString, "The HTTP body should be equals to payload")
             }
