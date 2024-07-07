@@ -1,9 +1,17 @@
 Changelog
 =========
-[1.0.0-beta19](https://github.com/hyperwallet/hyperwallet-ios-sdk/releases/tag/1.0.0-beta17)
+[1.0.0-beta20](https://github.com/hyperwallet/hyperwallet-ios-sdk/releases/tag/1.0.0-beta20)
+ -------------------
+ - Add privacy manifest on CocoaPods Spec
+ - Update Privacy manifest by declaring systemUptime
+[1.0.0-beta19](https://github.com/hyperwallet/hyperwallet-ios-sdk/releases/tag/1.0.0-beta19)
  -------------------
  - Updated ci to xcode version 15
  - Add privacy manifest
+
+[1.0.0-beta18](https://github.com/hyperwallet/hyperwallet-ios-sdk/releases/tag/1.0.0-beta18)
+ -------------------
+ - Address swiftlint issues
 
 [1.0.0-beta17](https://github.com/hyperwallet/hyperwallet-ios-sdk/releases/tag/1.0.0-beta17)
  -------------------
