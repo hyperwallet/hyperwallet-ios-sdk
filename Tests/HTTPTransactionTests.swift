@@ -175,9 +175,9 @@ class HTTPTransactionTests: XCTestCase {
     func testPerformGraphQl_emptyResponseData_returnNilDataAndGraphQlErrors() {
         // Given - SDK is initialized
 
-        let graphQlResponse = """
+        let graphQlResponse = Data("""
             {}
-        """.data(using: .utf8)
+        """.utf8)
         var response: Connection<HyperwalletTransferMethodConfiguration>?
         var hyperwalletError: HyperwalletErrorType?
 
@@ -248,7 +248,7 @@ class HTTPTransactionTests: XCTestCase {
                                                                        currency: "ARS",
                                                                        transferMethodType: "BANK_ACCOUNT",
                                                                        profile: "INDIVIDUAL")
-        httpClientMock.data = "{}".data(using: .utf8)
+        httpClientMock.data = Data("{}".utf8)
         httpClientMock.urlResponse = HTTPURLResponse(url: URL(string: "http://localhost")!,
                                                      statusCode: 403,
                                                      httpVersion: "post",
@@ -305,7 +305,7 @@ class HTTPTransactionTests: XCTestCase {
         var response: [String: String]?
         var hyperwalletError: HyperwalletErrorType?
 
-        httpClientMock.data = "{}".data(using: .utf8)
+        httpClientMock.data = Data("{}".utf8)
         httpClientMock.urlResponse = HTTPURLResponse(url: URL(string: "http://localhost")!,
                                                      statusCode: 403,
                                                      httpVersion: "post",
@@ -632,7 +632,7 @@ class HTTPTransactionTests: XCTestCase {
 
         let requestHandler = HTTPTransaction.requestHandler(completionHandler)
 
-        requestHandler("{}".data(using: .utf8)!, urlResponse, nil)
+        requestHandler(Data("{}".utf8), urlResponse, nil)
 
         // Then
         XCTAssertNil(response, "The response should be null")

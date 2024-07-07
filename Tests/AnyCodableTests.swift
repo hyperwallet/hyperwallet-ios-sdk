@@ -20,7 +20,7 @@ class AnyCodableTests: XCTestCase {
 
         // Then
         XCTAssertNotNil(jsonBody)
-        let jsonBodyString = String(data: jsonBody, encoding: .utf8)!
+        let jsonBodyString = String(data: jsonBody, as: UTF8.self)
         XCTAssertTrue(((jsonBodyString.contains("USD"))))
     }
 
@@ -69,7 +69,7 @@ class AnyCodableTests: XCTestCase {
 
     func testDecode_arraySupportedTypes() {
         // Given
-        let jsonBody = "[1, \"String\", 1.2, true, null]".data(using: .utf8)!
+        let jsonBody = Data("[1, \"String\", 1.2, true, null]".utf8)
 
         // When
         let result = try! JSONDecoder().decode(Array<AnyCodable>.self, from: jsonBody)
