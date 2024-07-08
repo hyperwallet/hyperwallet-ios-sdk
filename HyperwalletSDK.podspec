@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
     spec.name                  = 'HyperwalletSDK'
-    spec.version               = '1.0.0-beta19'
+    spec.version               = '1.0.0-beta20'
     spec.summary               = 'Hyperwallet Core SDK for iOS to integrate with Hyperwallet Platform'
     spec.homepage              = 'https://github.com/hyperwallet/hyperwallet-ios-sdk'
     spec.license               = { :type => 'MIT', :file => 'LICENSE' }
@@ -11,6 +11,7 @@ Pod::Spec.new do |spec|
     spec.source_files          = 'Sources/**/*.swift'
     spec.requires_arc          = true
     spec.swift_version         = '5.0'
+    spec.resource_bundles      = { 'HyperwalletSDK' => ['Sources/PrivacyInfo.xcprivacy'] }
 
     spec.test_spec 'Tests' do |test_spec|
         test_spec.source_files = 'Tests/**/*.swift'
