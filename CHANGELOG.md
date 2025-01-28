@@ -1,5 +1,9 @@
 Changelog
 =========
+[1.0.1](https://github.com/hyperwallet/hyperwallet-ios-sdk/releases/tag/1.0.1)
+-------------------
+- Fetch Default currency on list of Transfer Method country.
+
 [1.0.0-beta20](https://github.com/hyperwallet/hyperwallet-ios-sdk/releases/tag/1.0.0-beta20)
  -------------------
  - Add privacy manifest on CocoaPods Spec

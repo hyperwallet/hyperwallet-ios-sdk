@@ -24,6 +24,8 @@ public struct HyperwalletCountry: Codable {
     public let code: String?
     /// The country name
     public let name: String?
+    /// The 3 letter ISO 4217-1 default currency code
+    public let defaultCurrencyCode: String?
     /// The `HyperwalletCurrency` nodes that connect to this country node
     public let currencies: Connection<HyperwalletCurrency>?
 }

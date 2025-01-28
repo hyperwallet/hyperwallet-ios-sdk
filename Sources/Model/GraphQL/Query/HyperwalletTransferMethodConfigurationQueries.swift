@@ -164,7 +164,8 @@ public struct HyperwalletTransferMethodConfigurationKeysQuery: GraphQlQuery {
             nodes {
                 code
                 name
-                currencies {
+                defaultCurrencyCode
+                 currencies {
                     nodes {
                         code
                         name
