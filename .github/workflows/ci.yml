@@ -47,9 +47,12 @@ jobs:
       - name: Run ${{ matrix.task_title }}
         run: fastlane ${{ matrix.fastlane_task }}
 
+      - name: Install Lint
+        run:
+          brew install swiftlint
+
       - name: Lint validation
-        run: |
-          which swiftlint
+        run: 
           swiftlint lint --strict --reporter json
 
       - name: Code Coverage [Build report]
