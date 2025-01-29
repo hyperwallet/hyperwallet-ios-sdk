@@ -48,7 +48,8 @@ jobs:
         run: fastlane ${{ matrix.fastlane_task }}
 
       - name: Lint validation
-        run:
+        run: |
+          which swiftlint
           swiftlint lint --strict --reporter json
 
       - name: Code Coverage [Build report]
