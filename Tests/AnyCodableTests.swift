@@ -20,8 +20,9 @@ class AnyCodableTests: XCTestCase {
 
         // Then
         XCTAssertNotNil(jsonBody)
-        let jsonBodyString = String(decoding: jsonBody, as: UTF8.self)
-        XCTAssertTrue(((jsonBodyString.contains("USD"))))
+        let jsonBodyString = String(bytes: jsonBody, encoding: .utf8)
+        XCTAssertNotNil(jsonBodyString)
+        XCTAssertTrue(((jsonBodyString!.contains("USD"))))
     }
 
     func testDecode() {
