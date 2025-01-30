@@ -16,8 +16,8 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - os: macos-12
-            xcode_version: 14.2
+          - os: macos-15
+            xcode_version: 16.2
             fastlane_task: unit_tests
 
     runs-on: ${{ matrix.os }}
@@ -47,8 +47,12 @@ jobs:
       - name: Run ${{ matrix.task_title }}
         run: fastlane ${{ matrix.fastlane_task }}
 
-      - name: Lint validation
+      - name: Install Lint
         run:
+          brew install swiftlint
+
+      - name: Lint validation
+        run: 
           swiftlint lint --strict --reporter json
 
       - name: Code Coverage [Build report]
