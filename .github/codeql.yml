@@ -20,7 +20,7 @@ jobs:
     steps:
       - uses: hyperwallet/public-security-workflows/codeql@main
         with:
-          language: java
-          build-mode: 'none'
+          language: swift
+          build-mode: 'manual'
           timeout-minutes: 25
 
