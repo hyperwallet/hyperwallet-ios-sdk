@@ -1,0 +1,12 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/runner/work/hyperwallet-ios-sdk/hyperwallet-ios-sdk/Sources/Model/GraphQL/Query/HyperwalletTransferMethodConfigurationQueries.swift",
+      "line": 243,
+      "symbol": "HyperwalletTransferMethodTypesFeesAndProcessingTimesQuery.init(country:currency:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/runner/work/hyperwallet-ios-sdk/hyperwallet-ios-sdk/Sources"
+}
