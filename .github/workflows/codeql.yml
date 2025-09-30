@@ -13,14 +13,14 @@ on:
 
 jobs:
   analyze:
-    # The CodeQL analysis will run on both Linux and macOS to ensure broad
-    # coverage.  On macOS we also specify an Xcode version for Swift builds.
+    # The CodeQL analysis will run on macOS with the specified Xcode version.
     name: Code Scanning - CodeQL
     strategy:
       fail-fast: false
       matrix:
         include:
-          - os: ubuntu-latest
+          # Only run the CodeQL scan on macOS.  You can add additional entries
+          # here if you need to support other macOS versions or Xcode releases.
           - os: macos-15
             xcode_version: 16.2
     runs-on: ${{ matrix.os }}
