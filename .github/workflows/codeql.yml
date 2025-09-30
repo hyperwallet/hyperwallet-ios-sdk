@@ -25,6 +25,6 @@ jobs:
       - uses: hyperwallet/public-security-workflows/codeql@main
         with:
           language: swift
-          build-mode: 'manual'
+          build-mode: 'none'
           timeout-minutes: 25
 
