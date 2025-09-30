@@ -1,0 +1,51 @@
+name: CodeQL (Swift) - SAST
+
+# Trigger the workflow on pushes and pull requests targeting the `master` branch
+# as well as through manual dispatch from the Actions tab.
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  analyze:
+    # The CodeQL analysis will run on macOS with the specified Xcode version.
+    name: Code Scanning - CodeQL
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # Only run the CodeQL scan on macOS.  You can add additional entries
+          # here if you need to support other macOS versions or Xcode releases.
+          - os: macos-15
+            xcode_version: 16.2
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 25
+    permissions:
+      security-events: write
+      packages: read
+      actions: read
+      contents: read
+    steps:
+      # Always check out the repository so the CodeQL scan has access to your source code.
+      - uses: actions/checkout@v3
+
+      # On macOS runners, set up the requested Xcode version to build Swift code.
+      - name: Setup Xcode
+        if: runner.os == 'macOS'
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: '${{ matrix.xcode_version }}'
+
+      # Invoke the reusable CodeQL workflow.  It will initialize CodeQL with the
+      # specified language (Swift) and perform an autobuild.  The timeout for
+      # scanning can be customized if needed.
+      - uses: hyperwallet/public-security-workflows/codeql@main
+        with:
+          language: swift
+          build-mode: autobuild
+          timeout-minutes: 25
