@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Structures  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+    <script src="js/lunr.min.js" defer></script>
+    <script src="js/typeahead.jquery.js" defer></script>
+    <script src="js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+    <a name="//apple_ref/swift/Section/Structures" class="dashAnchor"></a>
+
+    <a title="Structures  Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="index.html">
+          HyperwalletSDK
+        </a>
+         (99% documented)
+      </p>
+    
+      <div class="header-col--secondary">
+        <form role="search" action="search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </div>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/hyperwallet/hyperwallet-ios-sdk">
+            <img class="header-icon" src="img/gh.png" alt="GitHub"/>
+            View on GitHub
+          </a>
+        </p>
+    
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="index.html">HyperwalletSDK</a>
+      <img class="carat" src="img/carat.png" alt=""/>
+      Structures  Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Guides.html">Guides</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="changelog.html">CHANGELOG</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="readme.html">README</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/Hyperwallet.html">Hyperwallet</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/HyperwalletBalanceQueryParam.html">HyperwalletBalanceQueryParam</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/HyperwalletBalanceQueryParam/QuerySortable.html">– QuerySortable</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/HyperwalletBankAccount.html">HyperwalletBankAccount</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/HyperwalletBankAccount/Builder.html">– Builder</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/HyperwalletBankAccountQueryParam.html">HyperwalletBankAccountQueryParam</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/HyperwalletBankCard.html">HyperwalletBankCard</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/HyperwalletBankCard/Builder.html">– Builder</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/HyperwalletBankCardQueryParam.html">HyperwalletBankCardQueryParam</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/HyperwalletPaperCheck.html">HyperwalletPaperCheck</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/HyperwalletPaperCheck/Builder.html">– Builder</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/HyperwalletPaperCheckQueryParam.html">HyperwalletPaperCheckQueryParam</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/HyperwalletPayPalAccount.html">HyperwalletPayPalAccount</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/HyperwalletPayPalAccount/Builder.html">– Builder</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/HyperwalletPayPalAccountQueryParam.html">HyperwalletPayPalAccountQueryParam</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/HyperwalletPrepaidCard.html">HyperwalletPrepaidCard</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/HyperwalletPrepaidCard/Builder.html">– Builder</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/HyperwalletPrepaidCardBalanceQueryParam.html">HyperwalletPrepaidCardBalanceQueryParam</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/HyperwalletPrepaidCardBalanceQueryParam/QuerySortable.html">– QuerySortable</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/HyperwalletPrepaidCardQueryParam.html">HyperwalletPrepaidCardQueryParam</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/HyperwalletReceiptQueryParam.html">HyperwalletReceiptQueryParam</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/HyperwalletReceiptQueryParam/QuerySortable.html">– QuerySortable</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/HyperwalletTransferMethod.html">HyperwalletTransferMethod</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/HyperwalletTransferMethod/TransferMethodField.html">– TransferMethodField</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/HyperwalletTransferMethod/TransferMethodType.html">– TransferMethodType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/HyperwalletTransferMethodQueryParam.html">HyperwalletTransferMethodQueryParam</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/HyperwalletTransferMethodQueryParam/QueryStatus.html">– QueryStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/HyperwalletTransferMethodQueryParam/QuerySortable.html">– QuerySortable</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/HyperwalletTransferMethodQueryParam/QueryType.html">– QueryType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/HyperwalletTransferQueryParam.html">HyperwalletTransferQueryParam</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/HyperwalletUser.html">HyperwalletUser</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/HyperwalletUser/UserField.html">– UserField</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/HyperwalletUser/BusinessType.html">– BusinessType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/HyperwalletUser/BusinessContactRole.html">– BusinessContactRole</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/HyperwalletUser/Gender.html">– Gender</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/HyperwalletUser/ProfileType.html">– ProfileType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/HyperwalletUser/Status.html">– Status</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/HyperwalletUser/VerificationStatus.html">– VerificationStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/HyperwalletUser/Builder.html">– Builder</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/HyperwalletVenmoAccount.html">HyperwalletVenmoAccount</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/HyperwalletVenmoAccount/Builder.html">– Builder</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/HyperwalletVenmoQueryParam.html">HyperwalletVenmoQueryParam</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/QueryParam.html">QueryParam</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/HyperwalletAuthenticationErrorType.html">HyperwalletAuthenticationErrorType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/HyperwalletDataType.html">HyperwalletDataType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/HyperwalletErrorGroup.html">HyperwalletErrorGroup</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/HyperwalletErrorType.html">HyperwalletErrorType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions/ISO8601DateFormatter.html">ISO8601DateFormatter</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/HyperwalletAuthenticationTokenProvider.html">HyperwalletAuthenticationTokenProvider</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/HyperwalletTransferMethodConfigurationField.html">HyperwalletTransferMethodConfigurationField</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/HyperwalletTransferMethodConfigurationKey.html">HyperwalletTransferMethodConfigurationKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/HyperwalletTransferMethodUpdateConfigurationField.html">HyperwalletTransferMethodUpdateConfigurationField</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/Configuration.html">Configuration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/Connection.html">Connection</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/HyperwalletBalance.html">HyperwalletBalance</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/HyperwalletConditionalPattern.html">HyperwalletConditionalPattern</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/HyperwalletCountry.html">HyperwalletCountry</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/HyperwalletCurrency.html">HyperwalletCurrency</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/HyperwalletError.html">HyperwalletError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/HyperwalletErrors.html">HyperwalletErrors</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/HyperwalletErrors/CodingKeys.html">– CodingKeys</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/HyperwalletFee.html">HyperwalletFee</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/HyperwalletField.html">HyperwalletField</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/HyperwalletFieldGroup.html">HyperwalletFieldGroup</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/HyperwalletFieldSelectionOption.html">HyperwalletFieldSelectionOption</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/HyperwalletForeignExchange.html">HyperwalletForeignExchange</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/HyperwalletMask.html">HyperwalletMask</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/HyperwalletPageLink.html">HyperwalletPageLink</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/HyperwalletPageList.html">HyperwalletPageList</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/HyperwalletPageParameter.html">HyperwalletPageParameter</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/HyperwalletProcessingTime.html">HyperwalletProcessingTime</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/HyperwalletReceipt.html">HyperwalletReceipt</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/HyperwalletReceipt/HyperwalletReceiptType.html">– HyperwalletReceiptType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/HyperwalletReceipt/HyperwalletEntryType.html">– HyperwalletEntryType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/HyperwalletReceiptDetails.html">HyperwalletReceiptDetails</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/HyperwalletStatusTransition.html">HyperwalletStatusTransition</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/HyperwalletStatusTransition/Status.html">– Status</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/HyperwalletStatusTransition/Builder.html">– Builder</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/HyperwalletTransfer.html">HyperwalletTransfer</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/HyperwalletTransfer/HyperwalletTransferStatus.html">– HyperwalletTransferStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/HyperwalletTransfer/Builder.html">– Builder</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/HyperwalletTransferMethodConfiguration.html">HyperwalletTransferMethodConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/HyperwalletTransferMethodConfigurationFieldQuery.html">HyperwalletTransferMethodConfigurationFieldQuery</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/HyperwalletTransferMethodConfigurationKeysQuery.html">HyperwalletTransferMethodConfigurationKeysQuery</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/HyperwalletTransferMethodType.html">HyperwalletTransferMethodType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/HyperwalletTransferMethodTypesFeesAndProcessingTimesQuery.html">HyperwalletTransferMethodTypesFeesAndProcessingTimesQuery</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/HyperwalletTransferMethodUpdateConfigurationFieldQuery.html">HyperwalletTransferMethodUpdateConfigurationFieldQuery</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/HyperwalletValidationMessage.html">HyperwalletValidationMessage</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content top-matter">
+            <h1>Structures</h1>
+            <p>The following structures are available globally.</p>
+
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-content">
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK13ConfigurationV"></a>
+                    <a name="//apple_ref/swift/Struct/Configuration" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK13ConfigurationV">Configuration</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Configuration object retrieved on successful authentication</p>
+
+                        <a href="Structs/Configuration.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Configuration</span> <span class="p">:</span> <span class="kt">Codable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A6ErrorsV"></a>
+                    <a name="//apple_ref/swift/Struct/HyperwalletErrors" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A6ErrorsV">HyperwalletErrors</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Representation of the Hyperwallet error list</p>
+
+                        <a href="Structs/HyperwalletErrors.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">HyperwalletErrors</span> <span class="p">:</span> <span class="kt">Decodable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A5ErrorV"></a>
+                    <a name="//apple_ref/swift/Struct/HyperwalletError" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A5ErrorV">HyperwalletError</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Representation of the Hyperwallet error entity.</p>
+
+                        <a href="Structs/HyperwalletError.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">HyperwalletError</span> <span class="p">:</span> <span class="kt">Decodable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A7BalanceV"></a>
+                    <a name="//apple_ref/swift/Struct/HyperwalletBalance" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A7BalanceV">HyperwalletBalance</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Details of the balance.</p>
+
+                        <a href="Structs/HyperwalletBalance.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">HyperwalletBalance</span> <span class="p">:</span> <span class="kt">Decodable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK10ConnectionV"></a>
+                    <a name="//apple_ref/swift/Struct/Connection" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK10ConnectionV">Connection</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Representation of the GraphQL&rsquo;s Connection type</p>
+
+                        <a href="Structs/Connection.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Connection</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span> <span class="p">:</span> <span class="kt">Codable</span> <span class="k">where</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt">Decodable</span><span class="p">,</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt">Encodable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A7CountryV"></a>
+                    <a name="//apple_ref/swift/Struct/HyperwalletCountry" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A7CountryV">HyperwalletCountry</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Representation of a <code>HyperwalletCountry</code> node</p>
+
+                        <a href="Structs/HyperwalletCountry.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">HyperwalletCountry</span> <span class="p">:</span> <span class="kt">Codable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A8CurrencyV"></a>
+                    <a name="//apple_ref/swift/Struct/HyperwalletCurrency" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A8CurrencyV">HyperwalletCurrency</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Representation of a <code>HyperwalletCurrency</code> node</p>
+
+                        <a href="Structs/HyperwalletCurrency.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">HyperwalletCurrency</span> <span class="p">:</span> <span class="kt">Codable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A3FeeV"></a>
+                    <a name="//apple_ref/swift/Struct/HyperwalletFee" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A3FeeV">HyperwalletFee</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Representation of the fee</p>
+
+                        <a href="Structs/HyperwalletFee.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">HyperwalletFee</span> <span class="p">:</span> <span class="kt">Codable</span><span class="p">,</span> <span class="kt">Hashable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A5FieldV"></a>
+                    <a name="//apple_ref/swift/Struct/HyperwalletField" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A5FieldV">HyperwalletField</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Representation of the transfer method configuration field</p>
+
+                        <a href="Structs/HyperwalletField.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">HyperwalletField</span> <span class="p">:</span> <span class="kt">Codable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A10FieldGroupV"></a>
+                    <a name="//apple_ref/swift/Struct/HyperwalletFieldGroup" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A10FieldGroupV">HyperwalletFieldGroup</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Representation of list of HyperwalletField and the group to which it belongs</p>
+
+                        <a href="Structs/HyperwalletFieldGroup.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">HyperwalletFieldGroup</span> <span class="p">:</span> <span class="kt">Codable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A20FieldSelectionOptionV"></a>
+                    <a name="//apple_ref/swift/Struct/HyperwalletFieldSelectionOption" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A20FieldSelectionOptionV">HyperwalletFieldSelectionOption</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Representation of the transfer method configuration field selection option</p>
+
+                        <a href="Structs/HyperwalletFieldSelectionOption.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">HyperwalletFieldSelectionOption</span> <span class="p">:</span> <span class="kt">Codable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A14ProcessingTimeV"></a>
+                    <a name="//apple_ref/swift/Struct/HyperwalletProcessingTime" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A14ProcessingTimeV">HyperwalletProcessingTime</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Representation of the transfer method configuration field processing times</p>
+
+                        <a href="Structs/HyperwalletProcessingTime.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">HyperwalletProcessingTime</span> <span class="p">:</span> <span class="kt">Codable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A18TransferMethodTypeV"></a>
+                    <a name="//apple_ref/swift/Struct/HyperwalletTransferMethodType" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A18TransferMethodTypeV">HyperwalletTransferMethodType</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Representation of transfer method type</p>
+
+                        <a href="Structs/HyperwalletTransferMethodType.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">HyperwalletTransferMethodType</span> <span class="p">:</span> <span class="kt">Codable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A17ValidationMessageV"></a>
+                    <a name="//apple_ref/swift/Struct/HyperwalletValidationMessage" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A17ValidationMessageV">HyperwalletValidationMessage</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Representation of the transfer method configuration field validation message</p>
+
+                        <a href="Structs/HyperwalletValidationMessage.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">HyperwalletValidationMessage</span> <span class="p">:</span> <span class="kt">Codable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A27TransferMethodConfigurationV"></a>
+                    <a name="//apple_ref/swift/Struct/HyperwalletTransferMethodConfiguration" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A27TransferMethodConfigurationV">HyperwalletTransferMethodConfiguration</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Representation of the transfer method configuration</p>
+
+                        <a href="Structs/HyperwalletTransferMethodConfiguration.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">HyperwalletTransferMethodConfiguration</span> <span class="p">:</span> <span class="kt">Codable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A4MaskV"></a>
+                    <a name="//apple_ref/swift/Struct/HyperwalletMask" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A4MaskV">HyperwalletMask</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Representation of the transfer method configuration field mask</p>
+
+                        <a href="Structs/HyperwalletMask.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">HyperwalletMask</span> <span class="p">:</span> <span class="kt">Codable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A18ConditionalPatternV"></a>
+                    <a name="//apple_ref/swift/Struct/HyperwalletConditionalPattern" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A18ConditionalPatternV">HyperwalletConditionalPattern</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Representation of the transfer method configuration field conditionalPatterns</p>
+
+                        <a href="Structs/HyperwalletConditionalPattern.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">HyperwalletConditionalPattern</span> <span class="p">:</span> <span class="kt">Codable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A37TransferMethodConfigurationFieldQueryV"></a>
+                    <a name="//apple_ref/swift/Struct/HyperwalletTransferMethodConfigurationFieldQuery" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A37TransferMethodConfigurationFieldQueryV">HyperwalletTransferMethodConfigurationFieldQuery</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The <code>HyperwalletTransferMethodConfigurationFieldQuery</code> struct defines and builds a query to retrieve the fields
+required to create a transfer method (Bank Account, Bank Card, PayPal Account, Prepaid Card, Paper Check)
+with the Hyperwallet platform.</p>
+
+                        <a href="Structs/HyperwalletTransferMethodConfigurationFieldQuery.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">HyperwalletTransferMethodConfigurationFieldQuery</span> <span class="p">:</span> <span class="kt">GraphQlQuery</span><span class="p">,</span> <span class="kt">Hashable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A36TransferMethodConfigurationKeysQueryV"></a>
+                    <a name="//apple_ref/swift/Struct/HyperwalletTransferMethodConfigurationKeysQuery" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A36TransferMethodConfigurationKeysQueryV">HyperwalletTransferMethodConfigurationKeysQuery</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &lsquo;HyperwalletTransferMethodConfigurationKeysQuery&rsquo; struct defines and builds a query to retrieve the key set
+that is required to construct a <code><a href="Structs/HyperwalletTransferMethodConfigurationFieldQuery.html">HyperwalletTransferMethodConfigurationFieldQuery</a></code>.</p>
+
+<p>In addition to the key set, the query will also retrieve the processing time and fees associated with each
+country, currency and transfer method type tuple.</p>
+
+                        <a href="Structs/HyperwalletTransferMethodConfigurationKeysQuery.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">HyperwalletTransferMethodConfigurationKeysQuery</span> <span class="p">:</span> <span class="kt">GraphQlQuery</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A46TransferMethodTypesFeesAndProcessingTimesQueryV"></a>
+                    <a name="//apple_ref/swift/Struct/HyperwalletTransferMethodTypesFeesAndProcessingTimesQuery" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A46TransferMethodTypesFeesAndProcessingTimesQueryV">HyperwalletTransferMethodTypesFeesAndProcessingTimesQuery</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &lsquo;HyperwalletTransferMethodTypesFeesAndProcessingTimesQuery&rsquo; struct defines
+and builds a query to retrieve the processing time and fees associated with each country, currency
+and transfer method type tuple.
+that is required to construct a <code><a href="Structs/HyperwalletTransferMethodConfigurationFieldQuery.html">HyperwalletTransferMethodConfigurationFieldQuery</a></code>.</p>
+
+                        <a href="Structs/HyperwalletTransferMethodTypesFeesAndProcessingTimesQuery.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">HyperwalletTransferMethodTypesFeesAndProcessingTimesQuery</span> <span class="p">:</span> <span class="kt">GraphQlQuery</span><span class="p">,</span> <span class="kt">Hashable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A43TransferMethodUpdateConfigurationFieldQueryV"></a>
+                    <a name="//apple_ref/swift/Struct/HyperwalletTransferMethodUpdateConfigurationFieldQuery" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A43TransferMethodUpdateConfigurationFieldQueryV">HyperwalletTransferMethodUpdateConfigurationFieldQuery</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The <code>HyperwalletTransferMethodUpdateConfigurationFieldQuery</code>
+struct defines and builds a query to retrieve the fields
+required to update a transfer method (Bank Account, Bank Card, PayPal Account, Prepaid Card, Paper Check and Venmo)
+with the Hyperwallet platform.</p>
+
+                        <a href="Structs/HyperwalletTransferMethodUpdateConfigurationFieldQuery.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">HyperwalletTransferMethodUpdateConfigurationFieldQuery</span> <span class="p">:</span> <span class="kt">GraphQlQuery</span><span class="p">,</span> <span class="kt">Hashable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A8PageListV"></a>
+                    <a name="//apple_ref/swift/Struct/HyperwalletPageList" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A8PageListV">HyperwalletPageList</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Representation of subset content from a dataset</p>
+
+                        <a href="Structs/HyperwalletPageList.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">HyperwalletPageList</span><span class="o">&lt;</span><span class="kt">ListType</span><span class="o">&gt;</span> <span class="p">:</span> <span class="kt">Decodable</span> <span class="k">where</span> <span class="kt">ListType</span> <span class="p">:</span> <span class="kt">Decodable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A8PageLinkV"></a>
+                    <a name="//apple_ref/swift/Struct/HyperwalletPageLink" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A8PageLinkV">HyperwalletPageLink</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Representation of the page link</p>
+
+                        <a href="Structs/HyperwalletPageLink.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">HyperwalletPageLink</span> <span class="p">:</span> <span class="kt">Decodable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A13PageParameterV"></a>
+                    <a name="//apple_ref/swift/Struct/HyperwalletPageParameter" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A13PageParameterV">HyperwalletPageParameter</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Representation of the relationship between the current document and the linked document</p>
+
+                        <a href="Structs/HyperwalletPageParameter.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">HyperwalletPageParameter</span> <span class="p">:</span> <span class="kt">Decodable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A14ReceiptDetailsV"></a>
+                    <a name="//apple_ref/swift/Struct/HyperwalletReceiptDetails" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A14ReceiptDetailsV">HyperwalletReceiptDetails</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Details of the transaction.</p>
+
+                        <a href="Structs/HyperwalletReceiptDetails.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">HyperwalletReceiptDetails</span> <span class="p">:</span> <span class="kt">Decodable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A7ReceiptV"></a>
+                    <a name="//apple_ref/swift/Struct/HyperwalletReceipt" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A7ReceiptV">HyperwalletReceipt</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Representation of the Hyperwallet&rsquo;s receipt.</p>
+
+                        <a href="Structs/HyperwalletReceipt.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">HyperwalletReceipt</span> <span class="p">:</span> <span class="kt">Decodable</span><span class="p">,</span> <span class="kt">Equatable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A16StatusTransitionV"></a>
+                    <a name="//apple_ref/swift/Struct/HyperwalletStatusTransition" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A16StatusTransitionV">HyperwalletStatusTransition</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Representation of the status transition.</p>
+
+<p>The status transition describes a status change for an existing bank account, bank card, PayPal account,
+prepaid card, paper check or payment.</p>
+
+                        <a href="Structs/HyperwalletStatusTransition.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">HyperwalletStatusTransition</span> <span class="p">:</span> <span class="kt">Codable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A15ForeignExchangeV"></a>
+                    <a name="//apple_ref/swift/Struct/HyperwalletForeignExchange" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A15ForeignExchangeV">HyperwalletForeignExchange</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Representation of a <code>HyperwalletForeignExchange</code></p>
+
+                        <a href="Structs/HyperwalletForeignExchange.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">HyperwalletForeignExchange</span> <span class="p">:</span> <span class="kt">Codable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A8TransferV"></a>
+                    <a name="//apple_ref/swift/Struct/HyperwalletTransfer" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A8TransferV">HyperwalletTransfer</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Representation of a <code>HyperwalletTransfer</code></p>
+
+                        <a href="Structs/HyperwalletTransfer.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">HyperwalletTransfer</span> <span class="p">:</span> <span class="kt">Codable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>Copyright (c) 2018-present, Hyperwallet Systems Inc. All rights reserved.</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.15.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+    </section>
+  </body>
+</html>

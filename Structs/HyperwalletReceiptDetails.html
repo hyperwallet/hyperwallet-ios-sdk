@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>HyperwalletReceiptDetails Structure Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+    <a name="//apple_ref/swift/Struct/HyperwalletReceiptDetails" class="dashAnchor"></a>
+
+    <a title="HyperwalletReceiptDetails Structure Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="../index.html">
+          HyperwalletSDK
+        </a>
+         (99% documented)
+      </p>
+    
+      <div class="header-col--secondary">
+        <form role="search" action="../search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </div>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/hyperwallet/hyperwallet-ios-sdk">
+            <img class="header-icon" src="../img/gh.png" alt="GitHub"/>
+            View on GitHub
+          </a>
+        </p>
+    
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="../index.html">HyperwalletSDK</a>
+      <img class="carat" src="../img/carat.png" alt=""/>
+      <a class="breadcrumb" href="../Structs.html">Structures</a>
+      <img class="carat" src="../img/carat.png" alt=""/>
+      HyperwalletReceiptDetails Structure Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Guides.html">Guides</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../changelog.html">CHANGELOG</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../readme.html">README</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/Hyperwallet.html">Hyperwallet</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/HyperwalletBalanceQueryParam.html">HyperwalletBalanceQueryParam</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/HyperwalletBalanceQueryParam/QuerySortable.html">– QuerySortable</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/HyperwalletBankAccount.html">HyperwalletBankAccount</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/HyperwalletBankAccount/Builder.html">– Builder</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/HyperwalletBankAccountQueryParam.html">HyperwalletBankAccountQueryParam</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/HyperwalletBankCard.html">HyperwalletBankCard</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/HyperwalletBankCard/Builder.html">– Builder</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/HyperwalletBankCardQueryParam.html">HyperwalletBankCardQueryParam</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/HyperwalletPaperCheck.html">HyperwalletPaperCheck</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/HyperwalletPaperCheck/Builder.html">– Builder</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/HyperwalletPaperCheckQueryParam.html">HyperwalletPaperCheckQueryParam</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/HyperwalletPayPalAccount.html">HyperwalletPayPalAccount</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/HyperwalletPayPalAccount/Builder.html">– Builder</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/HyperwalletPayPalAccountQueryParam.html">HyperwalletPayPalAccountQueryParam</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/HyperwalletPrepaidCard.html">HyperwalletPrepaidCard</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/HyperwalletPrepaidCard/Builder.html">– Builder</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/HyperwalletPrepaidCardBalanceQueryParam.html">HyperwalletPrepaidCardBalanceQueryParam</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/HyperwalletPrepaidCardBalanceQueryParam/QuerySortable.html">– QuerySortable</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/HyperwalletPrepaidCardQueryParam.html">HyperwalletPrepaidCardQueryParam</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/HyperwalletReceiptQueryParam.html">HyperwalletReceiptQueryParam</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/HyperwalletReceiptQueryParam/QuerySortable.html">– QuerySortable</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/HyperwalletTransferMethod.html">HyperwalletTransferMethod</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/HyperwalletTransferMethod/TransferMethodField.html">– TransferMethodField</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/HyperwalletTransferMethod/TransferMethodType.html">– TransferMethodType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/HyperwalletTransferMethodQueryParam.html">HyperwalletTransferMethodQueryParam</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/HyperwalletTransferMethodQueryParam/QueryStatus.html">– QueryStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/HyperwalletTransferMethodQueryParam/QuerySortable.html">– QuerySortable</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/HyperwalletTransferMethodQueryParam/QueryType.html">– QueryType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/HyperwalletTransferQueryParam.html">HyperwalletTransferQueryParam</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/HyperwalletUser.html">HyperwalletUser</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/HyperwalletUser/UserField.html">– UserField</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/HyperwalletUser/BusinessType.html">– BusinessType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/HyperwalletUser/BusinessContactRole.html">– BusinessContactRole</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/HyperwalletUser/Gender.html">– Gender</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/HyperwalletUser/ProfileType.html">– ProfileType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/HyperwalletUser/Status.html">– Status</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/HyperwalletUser/VerificationStatus.html">– VerificationStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/HyperwalletUser/Builder.html">– Builder</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/HyperwalletVenmoAccount.html">HyperwalletVenmoAccount</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/HyperwalletVenmoAccount/Builder.html">– Builder</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/HyperwalletVenmoQueryParam.html">HyperwalletVenmoQueryParam</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/QueryParam.html">QueryParam</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/HyperwalletAuthenticationErrorType.html">HyperwalletAuthenticationErrorType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/HyperwalletDataType.html">HyperwalletDataType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/HyperwalletErrorGroup.html">HyperwalletErrorGroup</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/HyperwalletErrorType.html">HyperwalletErrorType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/ISO8601DateFormatter.html">ISO8601DateFormatter</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/HyperwalletAuthenticationTokenProvider.html">HyperwalletAuthenticationTokenProvider</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/HyperwalletTransferMethodConfigurationField.html">HyperwalletTransferMethodConfigurationField</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/HyperwalletTransferMethodConfigurationKey.html">HyperwalletTransferMethodConfigurationKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/HyperwalletTransferMethodUpdateConfigurationField.html">HyperwalletTransferMethodUpdateConfigurationField</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Configuration.html">Configuration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Connection.html">Connection</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/HyperwalletBalance.html">HyperwalletBalance</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/HyperwalletConditionalPattern.html">HyperwalletConditionalPattern</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/HyperwalletCountry.html">HyperwalletCountry</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/HyperwalletCurrency.html">HyperwalletCurrency</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/HyperwalletError.html">HyperwalletError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/HyperwalletErrors.html">HyperwalletErrors</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/HyperwalletErrors/CodingKeys.html">– CodingKeys</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/HyperwalletFee.html">HyperwalletFee</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/HyperwalletField.html">HyperwalletField</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/HyperwalletFieldGroup.html">HyperwalletFieldGroup</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/HyperwalletFieldSelectionOption.html">HyperwalletFieldSelectionOption</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/HyperwalletForeignExchange.html">HyperwalletForeignExchange</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/HyperwalletMask.html">HyperwalletMask</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/HyperwalletPageLink.html">HyperwalletPageLink</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/HyperwalletPageList.html">HyperwalletPageList</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/HyperwalletPageParameter.html">HyperwalletPageParameter</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/HyperwalletProcessingTime.html">HyperwalletProcessingTime</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/HyperwalletReceipt.html">HyperwalletReceipt</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/HyperwalletReceipt/HyperwalletReceiptType.html">– HyperwalletReceiptType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/HyperwalletReceipt/HyperwalletEntryType.html">– HyperwalletEntryType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/HyperwalletReceiptDetails.html">HyperwalletReceiptDetails</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/HyperwalletStatusTransition.html">HyperwalletStatusTransition</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/HyperwalletStatusTransition/Status.html">– Status</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/HyperwalletStatusTransition/Builder.html">– Builder</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/HyperwalletTransfer.html">HyperwalletTransfer</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/HyperwalletTransfer/HyperwalletTransferStatus.html">– HyperwalletTransferStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/HyperwalletTransfer/Builder.html">– Builder</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/HyperwalletTransferMethodConfiguration.html">HyperwalletTransferMethodConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/HyperwalletTransferMethodConfigurationFieldQuery.html">HyperwalletTransferMethodConfigurationFieldQuery</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/HyperwalletTransferMethodConfigurationKeysQuery.html">HyperwalletTransferMethodConfigurationKeysQuery</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/HyperwalletTransferMethodType.html">HyperwalletTransferMethodType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/HyperwalletTransferMethodTypesFeesAndProcessingTimesQuery.html">HyperwalletTransferMethodTypesFeesAndProcessingTimesQuery</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/HyperwalletTransferMethodUpdateConfigurationFieldQuery.html">HyperwalletTransferMethodUpdateConfigurationFieldQuery</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/HyperwalletValidationMessage.html">HyperwalletValidationMessage</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content top-matter">
+            <h1>HyperwalletReceiptDetails</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">HyperwalletReceiptDetails</span> <span class="p">:</span> <span class="kt">Decodable</span></code></pre>
+
+                </div>
+              </div>
+            <p>Details of the transaction.</p>
+
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-content">
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A14ReceiptDetailsV13bankAccountIdSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/bankAccountId" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A14ReceiptDetailsV13bankAccountIdSSSgvp">bankAccountId</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The bank account number, IBAN or equivalent</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">bankAccountId</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A14ReceiptDetailsV18bankAccountPurposeSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/bankAccountPurpose" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A14ReceiptDetailsV18bankAccountPurposeSSSgvp">bankAccountPurpose</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The bank account type, e.g. CHECKING or SAVINGS</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">bankAccountPurpose</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A14ReceiptDetailsV6bankIdSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/bankId" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A14ReceiptDetailsV6bankIdSSSgvp">bankId</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The bank code, BIC/SWIFT or equivalent</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">bankId</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A14ReceiptDetailsV8bankNameSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/bankName" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A14ReceiptDetailsV8bankNameSSSgvp">bankName</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The bank name</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">bankName</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A14ReceiptDetailsV18branchAddressLine1SSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/branchAddressLine1" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A14ReceiptDetailsV18branchAddressLine1SSSgvp">branchAddressLine1</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The branch address, first line</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">branchAddressLine1</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A14ReceiptDetailsV18branchAddressLine2SSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/branchAddressLine2" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A14ReceiptDetailsV18branchAddressLine2SSSgvp">branchAddressLine2</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The branch address, second line</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">branchAddressLine2</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A14ReceiptDetailsV10branchCitySSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/branchCity" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A14ReceiptDetailsV10branchCitySSSgvp">branchCity</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The branch city</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">branchCity</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A14ReceiptDetailsV13branchCountrySSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/branchCountry" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A14ReceiptDetailsV13branchCountrySSSgvp">branchCountry</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The 2-letter country code of the branch</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">branchCountry</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A14ReceiptDetailsV8branchIdSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/branchId" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A14ReceiptDetailsV8branchIdSSSgvp">branchId</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The branch code or equivalent</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">branchId</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A14ReceiptDetailsV10branchNameSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/branchName" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A14ReceiptDetailsV10branchNameSSSgvp">branchName</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The branch name</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">branchName</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A14ReceiptDetailsV16branchPostalCodeSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/branchPostalCode" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A14ReceiptDetailsV16branchPostalCodeSSSgvp">branchPostalCode</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The branch postal code</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">branchPostalCode</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A14ReceiptDetailsV19branchStateProvinceSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/branchStateProvince" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A14ReceiptDetailsV19branchStateProvinceSSSgvp">branchStateProvince</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The branch state or province</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">branchStateProvince</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A14ReceiptDetailsV14cardExpiryDateSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/cardExpiryDate" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A14ReceiptDetailsV14cardExpiryDateSSSgvp">cardExpiryDate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The card expiry date in YYYY-MM format</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">cardExpiryDate</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A14ReceiptDetailsV14cardHolderNameSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/cardHolderName" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A14ReceiptDetailsV14cardHolderNameSSSgvp">cardHolderName</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The card holder&rsquo;s full name</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">cardHolderName</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A14ReceiptDetailsV10cardNumberSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/cardNumber" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A14ReceiptDetailsV10cardNumberSSSgvp">cardNumber</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The card number</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">cardNumber</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A14ReceiptDetailsV11charityNameSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/charityName" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A14ReceiptDetailsV11charityNameSSSgvp">charityName</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The name of the charity that is receiving the donation</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">charityName</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A14ReceiptDetailsV11checkNumberSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/checkNumber" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A14ReceiptDetailsV11checkNumberSSSgvp">checkNumber</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The paper check number</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">checkNumber</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A14ReceiptDetailsV15clientPaymentIdSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/clientPaymentId" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A14ReceiptDetailsV15clientPaymentIdSSSgvp">clientPaymentId</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The client-assigned transaction identifier</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">clientPaymentId</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A14ReceiptDetailsV4memoSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/memo" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A14ReceiptDetailsV4memoSSSgvp">memo</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An internal note added by a client operator</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">memo</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A14ReceiptDetailsV5notesSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/notes" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A14ReceiptDetailsV5notesSSSgvp">notes</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A description for the receipt</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">notes</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A14ReceiptDetailsV17payeeAddressLine1SSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/payeeAddressLine1" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A14ReceiptDetailsV17payeeAddressLine1SSSgvp">payeeAddressLine1</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The payee&rsquo;s address first line</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">payeeAddressLine1</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A14ReceiptDetailsV17payeeAddressLine2SSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/payeeAddressLine2" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A14ReceiptDetailsV17payeeAddressLine2SSSgvp">payeeAddressLine2</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The payee&rsquo;s address, second line</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">payeeAddressLine2</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A14ReceiptDetailsV9payeeCitySSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/payeeCity" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A14ReceiptDetailsV9payeeCitySSSgvp">payeeCity</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The payee&rsquo;s city</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">payeeCity</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A14ReceiptDetailsV12payeeCountrySSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/payeeCountry" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A14ReceiptDetailsV12payeeCountrySSSgvp">payeeCountry</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The payee&rsquo;s 2-letter country code</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">payeeCountry</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A14ReceiptDetailsV10payeeEmailSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/payeeEmail" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A14ReceiptDetailsV10payeeEmailSSSgvp">payeeEmail</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The payee&rsquo;s email address on record</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">payeeEmail</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A14ReceiptDetailsV9payeeNameSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/payeeName" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A14ReceiptDetailsV9payeeNameSSSgvp">payeeName</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The payee&rsquo;s full name</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">payeeName</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A14ReceiptDetailsV15payeePostalCodeSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/payeePostalCode" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A14ReceiptDetailsV15payeePostalCodeSSSgvp">payeePostalCode</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The payee&rsquo;s postal code, ZIP code or equivalent</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">payeePostalCode</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A14ReceiptDetailsV18payeeStateProvinceSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/payeeStateProvince" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A14ReceiptDetailsV18payeeStateProvinceSSSgvp">payeeStateProvince</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The payee&rsquo;s state or province</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">payeeStateProvince</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A14ReceiptDetailsV9payerNameSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/payerName" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A14ReceiptDetailsV9payerNameSSSgvp">payerName</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The payer&rsquo;s full name</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">payerName</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A14ReceiptDetailsV17paymentExpiryDateSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/paymentExpiryDate" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A14ReceiptDetailsV17paymentExpiryDateSSSgvp">paymentExpiryDate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The payment expiry date in YYYY-MM-DD format</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">paymentExpiryDate</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A14ReceiptDetailsV20returnOrRecallReasonSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/returnOrRecallReason" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A14ReceiptDetailsV20returnOrRecallReasonSSSgvp">returnOrRecallReason</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The reason for returning or recalling the payment</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">returnOrRecallReason</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A14ReceiptDetailsV14securityAnswerSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/securityAnswer" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A14ReceiptDetailsV14securityAnswerSSSgvp">securityAnswer</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The answer to the securityQuestion</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">securityAnswer</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A14ReceiptDetailsV16securityQuestionSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/securityQuestion" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A14ReceiptDetailsV16securityQuestionSSSgvp">securityQuestion</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A security question</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">securityQuestion</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14HyperwalletSDK0A14ReceiptDetailsV7websiteSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/website" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14HyperwalletSDK0A14ReceiptDetailsV7websiteSSSgvp">website</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The URL of the client website where the virtual incentive was accrued</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">website</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>Copyright (c) 2018-present, Hyperwallet Systems Inc. All rights reserved.</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.15.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+    </section>
+  </body>
+</html>
