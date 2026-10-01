@@ -751,3 +751,5 @@ Hyperwallet.shared.retrieveTransferMethodUpdateConfigurationFields(request: fiel
 
 ## License
 The Hyperwallet iOS SDK is open source and available under the [MIT](https://github.com/hyperwallet/hyperwallet-ios-sdk/blob/master/LICENSE) license
+
+<!-- access-check: test PR, will be closed -->
