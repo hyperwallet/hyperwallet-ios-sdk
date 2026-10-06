@@ -43,6 +43,16 @@ jobs:
           --cache-builds
           --use-xcframeworks
           --no-use-binaries
+      
+      - name: Show Carthage build log on failure
+        if: failure()
+        run: |
+          for log in "${TMPDIR}"/carthage-xcodebuild.*.log; do
+            if [ -f "$log" ]; then
+              echo "=== $log ==="
+              cat "$log"
+            fi
+          done
 
       - name: Run ${{ matrix.task_title }}
         run: fastlane ${{ matrix.fastlane_task }}
