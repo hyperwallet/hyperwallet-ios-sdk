@@ -38,18 +38,27 @@ jobs:
             ${{ runner.os }}-carthage-${{ hashFiles('**/Cartfile.resolved') }}
 
       - name: Carthage [Install dependencies]
-        run: carthage bootstrap --verbose
-          --platform ios
-          --cache-builds
-          --use-xcframeworks
-          --no-use-binaries
-      
-      - name: Show Carthage build log
-        if: ${{ always() }}
+        shell: bash
         run: |
-          echo "TMPDIR=${TMPDIR:-/tmp}"
-          find "${TMPDIR:-/tmp}" -maxdepth 1 -name 'carthage-xcodebuild.*.log' \
-            -print -exec grep -n -C 4 -E 'error:|fatal error:|BUILD FAILED' {} \;
+          set +e
+          carthage bootstrap --verbose \
+            --platform ios \
+            --cache-builds \
+            --use-xcframeworks \
+            --no-use-binaries
+          carthage_status=$?
+
+          log_dir="${TMPDIR:-/tmp}"
+          echo "Searching for Carthage logs in: $log_dir"
+          find "$log_dir" -maxdepth 1 -type f -name 'carthage-xcodebuild.*.log' \
+            -print -exec sh -c '
+              for log do
+                echo "=== $log ==="
+                grep -n -C 4 -E "error:|fatal error:|BUILD FAILED" "$log" || tail -n 100 "$log"
+              done
+            ' sh {} +
+
+          exit "$carthage_status"
 
       - name: Run ${{ matrix.task_title }}
         run: fastlane ${{ matrix.fastlane_task }}
